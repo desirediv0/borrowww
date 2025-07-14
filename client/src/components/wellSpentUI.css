@@ -1,0 +1,6 @@
+.rotate-on-hover .rotate-svg {
+  transition: transform 0.6s;
+}
+.group:hover .rotate-svg {
+  transform: rotate(360deg);
+}
