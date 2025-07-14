@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/logo.svg'; // Adjust the path as necessary
+import logo from '../assets/logo.svg'; 
 import Image from 'next/image';
 
 export default function Footer() {
@@ -179,8 +179,8 @@ export default function Footer() {
               <Image
                 src="logo svg.svg"
                 alt="BorrowWWW Logo"
-               width={120}
-               height={40}
+                width={120}
+                height={40}
                 className="h-24 w-auto"
               />
             </div>
@@ -193,7 +193,6 @@ export default function Footer() {
             </div>
 
             {/* Language Selector */}
-           
           </div>
         </div>
 

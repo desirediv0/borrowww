@@ -1,4 +1,4 @@
-import { ArrowRight, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WellSpentUI from "@/components/wellSpentUI";
 import Image from "next/image";
