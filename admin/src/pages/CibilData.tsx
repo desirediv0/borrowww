@@ -3,13 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import {
   AlertTriangle,
-  Calendar,
   CheckCircle,
   Clock,
   CreditCard,
   Eye,
   Filter,
-  Phone,
   Search,
   TrendingUp,
 } from 'lucide-react';
@@ -18,7 +16,6 @@ import {
   BarChart,
   CartesianGrid,
   Cell,
-  Legend,
   Pie,
   PieChart,
   ResponsiveContainer,
@@ -64,8 +61,6 @@ interface CibilStats {
     color: string;
   }>;
 }
-
-const COLORS = ['#10B981', '#3B82F6', '#F59E0B', '#EF4444'];
 
 const CibilData: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'submitted' | 'unsubmitted'>('submitted');
@@ -193,6 +188,12 @@ const CibilData: React.FC = () => {
       default:
         return <Eye className="h-4 w-4 text-gray-600" />;
     }
+  };
+
+  const handleViewCibil = (cibilId: string) => {
+    // Navigate to CIBIL detail page or open modal
+    console.log('View CIBIL:', cibilId);
+    // You can implement navigation or modal here
   };
 
   const getStatusVariant = (status: string) => {
@@ -474,7 +475,7 @@ const CibilData: React.FC = () => {
                 <div className="text-sm text-muted-foreground">
                   {entry.user.cibilCheckCount} total checks
                 </div>
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" onClick={() => handleViewCibil(entry.id)}>
                   <Eye className="h-4 w-4" />
                 </Button>
               </div>

@@ -172,6 +172,27 @@ export const userService = {
     return apiFetch<{ user: User; cibilSummary: CibilData[] }>(`/users/${userId}`);
   },
 
+  // Get user details with CIBIL and loan summary
+  getUserDetails: async (userId: string) => {
+    return apiFetch<{
+      user: User;
+      cibilData: CibilData[];
+      loans: any[];
+      statistics: any;
+    }>(`/users/${userId}/details`);
+  },
+
+  // Get user activity
+  getUserActivity: async (userId: string, days: number = 30) => {
+    return apiFetch<{
+      cibilChecks: CibilData[];
+      loanApplications: any[];
+      lastLogin?: Date;
+      accountCreated: Date;
+      activityPeriod: string;
+    }>(`/users/${userId}/activity?days=${days}`);
+  },
+
   // Update user
   updateUser: async (userId: string, userData: Partial<User>) => {
     return apiFetch<{ user: User }>(`/users/${userId}`, {
@@ -233,7 +254,7 @@ export const cibilService = {
   },
 };
 
-// Loan Management Services (Placeholder)
+// Loan Management Services
 export const loanService = {
   // Get all loans
   getAllLoans: async (params: PaginationParams = {}) => {
@@ -241,17 +262,47 @@ export const loanService = {
     return apiFetch(`/loans?${queryString}`);
   },
 
+  // Get loan by ID
+  getLoanById: async (loanId: string) => {
+    return apiFetch(`/loans/${loanId}`);
+  },
+
   // Update loan status
-  updateLoanStatus: async (loanId: string, status: string) => {
+  updateLoanStatus: async (loanId: string, status: string, remarks?: string) => {
     return apiFetch(`/loans/${loanId}/status`, {
       method: 'PUT',
-      body: JSON.stringify({ status }),
+      body: JSON.stringify({ status, remarks }),
+    });
+  },
+
+  // Update loan
+  updateLoan: async (loanId: string, data: any) => {
+    return apiFetch(`/loans/${loanId}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  },
+
+  // Delete loan
+  deleteLoan: async (loanId: string) => {
+    return apiFetch(`/loans/${loanId}`, {
+      method: 'DELETE',
     });
   },
 
   // Get loan statistics
   getLoanStats: async () => {
     return apiFetch('/loans/stats');
+  },
+
+  // Get loan type distribution
+  getLoanTypeDistribution: async () => {
+    return apiFetch('/loans/type-distribution');
+  },
+
+  // Get recent loans
+  getRecentLoans: async (limit: number = 10) => {
+    return apiFetch(`/loans/recent?limit=${limit}`);
   },
 };
 

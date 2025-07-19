@@ -13,6 +13,8 @@ import {
   getLoanById,
   getLoanTypeDistribution,
   getRecentLoans,
+  updateLoan,
+  deleteLoan,
 } from "../../controllers/loan.controller.js";
 
 const router = express.Router();
@@ -44,5 +46,11 @@ router.get("/my-loans", authenticate, getUserLoans);
 
 // Update loan status (Admin only)
 router.put("/:id/status", authenticateAdmin, updateLoanStatus);
+
+// Update loan (Admin only)
+router.put("/:id", authenticateAdmin, updateLoan);
+
+// Delete loan (Admin only)
+router.delete("/:id", authenticateAdmin, deleteLoan);
 
 export default router;

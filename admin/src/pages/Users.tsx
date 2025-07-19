@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
 import { format } from 'date-fns';
-import { Edit, Eye, Filter, MoreHorizontal, Search, Trash2, UserCheck, UserX } from 'lucide-react';
+import {
+  Calendar,
+  Download,
+  Edit,
+  Eye,
+  Mail,
+  Phone,
+  Search,
+  Trash2,
+  User,
+  XCircle,
+} from 'lucide-react';
 
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
@@ -13,38 +24,40 @@ interface User {
   name: string;
   email: string;
   phone: string;
-  role: 'USER' | 'ADMIN';
+  userType: 'USER' | 'ADMIN';
   isVerified: boolean;
   cibilCheckCount: number;
-  lastCibilCheck?: Date | string;
-  lastLogin?: Date | string;
-  createdAt: string;
+  lastLogin?: Date;
+  createdAt: Date;
 }
 
-interface Pagination {
-  page: number;
-  limit: number;
-  total: number;
-  pages: number;
+interface UserDetails {
+  user: User;
+  cibilData: any[];
+  loans: any[];
+  statistics: {
+    totalLoans: number;
+    approvedLoans: number;
+    pendingLoans: number;
+    totalLoanAmount: number;
+    submittedCibil: number;
+    averageScore: number;
+  };
 }
 
 const Users: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [pagination, setPagination] = useState<Pagination>({
-    page: 1,
-    limit: 10,
-    total: 0,
-    pages: 0,
-  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [search, setSearch] = useState('');
-  const [roleFilter, setRoleFilter] = useState('');
-  const [verificationFilter, setVerificationFilter] = useState('');
-
-  useEffect(() => {
-    fetchUsers();
-  }, [pagination.page, pagination.limit, search, roleFilter, verificationFilter]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [roleFilter, setRoleFilter] = useState<string>('all');
+  const [verificationFilter, setVerificationFilter] = useState<string>('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [selectedUser, setSelectedUser] = useState<UserDetails | null>(null);
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingUser, setEditingUser] = useState<User | null>(null);
 
   const fetchUsers = async () => {
     try {
@@ -52,46 +65,34 @@ const Users: React.FC = () => {
       setError(null);
 
       const params: any = {
-        page: pagination.page,
-        limit: pagination.limit,
+        page: currentPage,
+        limit: 10,
       };
 
-      if (search) {
-        params.search = search;
+      if (searchTerm) {
+        params.search = searchTerm;
       }
 
-      if (roleFilter) {
+      if (roleFilter !== 'all') {
         params.role = roleFilter;
       }
 
-      if (verificationFilter) {
-        params.isVerified = verificationFilter === 'verified';
-      }
-
       const response = await userService.getAllUsers(params);
+      const data = response.data as any;
 
-      setUsers(response.data.users as any);
-      setPagination((prev) => ({
-        ...prev,
-        total: response.data.pagination.total,
-        pages: response.data.pagination.pages,
-      }));
+      setUsers(data.users || []);
+      setTotalPages(data.pagination?.pages || 1);
     } catch (err) {
       console.error('Error fetching users:', err);
-      setError('Failed to load users');
+      setError('Failed to fetch users');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    setPagination((prev) => ({ ...prev, page: 1 }));
-  };
-
-  const handlePageChange = (newPage: number) => {
-    setPagination((prev) => ({ ...prev, page: newPage }));
-  };
+  useEffect(() => {
+    fetchUsers();
+  }, [currentPage, searchTerm, roleFilter, verificationFilter]);
 
   const handleUserAction = async (userId: string, action: 'verify' | 'unverify' | 'delete') => {
     try {
@@ -113,182 +114,219 @@ const Users: React.FC = () => {
     }
   };
 
-  const handleViewUser = (userId: string) => {
-    // Navigate to user detail page or open modal
-    console.log('View user:', userId);
-    // You can implement navigation or modal here
+  const handleViewUser = async (userId: string) => {
+    try {
+      const response = await userService.getUserDetails(userId);
+      const userDetails = response.data as any;
+      setSelectedUser(userDetails);
+      setShowUserModal(true);
+    } catch (err) {
+      console.error('Error fetching user details:', err);
+      setError('Failed to fetch user details');
+    }
   };
 
-  const handleEditUser = (userId: string) => {
-    // Navigate to edit user page or open modal
-    console.log('Edit user:', userId);
-    // You can implement navigation or modal here
+  const handleEditUser = (user: User) => {
+    setEditingUser(user);
+    setShowEditModal(true);
   };
 
-  const getStatusColor = (user: User) => {
-    if (user.isVerified) return 'success';
-    return 'warning';
+  const handleSaveEdit = async () => {
+    if (!editingUser) return;
+
+    try {
+      await userService.updateUser(editingUser.id, {
+        name: editingUser.name,
+        email: editingUser.email,
+        isVerified: editingUser.isVerified,
+      });
+      setShowEditModal(false);
+      setEditingUser(null);
+      fetchUsers();
+    } catch (err) {
+      console.error('Error updating user:', err);
+      setError('Failed to update user');
+    }
   };
 
-  const getRoleColor = (role: string) => {
-    return role === 'ADMIN' ? 'destructive' : 'default';
-  };
+  const filteredUsers = users.filter((user) => {
+    if (verificationFilter === 'verified' && !user.isVerified) return false;
+    if (verificationFilter === 'unverified' && user.isVerified) return false;
+    return true;
+  });
 
-  if (loading && users.length === 0) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Users</h1>
-          <p className="text-muted-foreground">Manage and view all users in the system</p>
+          <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
+          <p className="text-gray-600">Manage and monitor user accounts</p>
         </div>
-        <div className="text-sm text-muted-foreground">Total: {pagination.total} users</div>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm">
+            <Download className="h-4 w-4 mr-2" />
+            Export
+          </Button>
+        </div>
       </div>
 
-      {/* Search and Filters */}
+      {/* Filters and Search */}
       <Card>
-        <CardContent className="pt-6">
-          <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <CardHeader>
+          <CardTitle className="text-lg">Filters & Search</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {/* Search */}
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search by name, email, or phone..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-10 pr-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                placeholder="Search users..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
-            <div className="flex gap-2">
-              <select
-                value={roleFilter}
-                onChange={(e) => setRoleFilter(e.target.value)}
-                className="px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
-              >
-                <option value="">All Roles</option>
-                <option value="USER">User</option>
-                <option value="ADMIN">Admin</option>
-              </select>
-              <select
-                value={verificationFilter}
-                onChange={(e) => setVerificationFilter(e.target.value)}
-                className="px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
-              >
-                <option value="">All Status</option>
-                <option value="verified">Verified</option>
-                <option value="unverified">Unverified</option>
-              </select>
-              <Button type="submit" variant="outline">
-                <Filter className="h-4 w-4 mr-2" />
-                Filter
-              </Button>
-            </div>
-          </form>
+
+            {/* Role Filter */}
+            <select
+              value={roleFilter}
+              onChange={(e) => setRoleFilter(e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="all">All Roles</option>
+              <option value="USER">Users</option>
+              <option value="ADMIN">Admins</option>
+            </select>
+
+            {/* Verification Filter */}
+            <select
+              value={verificationFilter}
+              onChange={(e) => setVerificationFilter(e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="all">All Status</option>
+              <option value="verified">Verified</option>
+              <option value="unverified">Unverified</option>
+            </select>
+
+            {/* Clear Filters */}
+            <Button
+              variant="outline"
+              onClick={() => {
+                setSearchTerm('');
+                setRoleFilter('all');
+                setVerificationFilter('all');
+              }}
+              className="w-full"
+            >
+              Clear Filters
+            </Button>
+          </div>
         </CardContent>
       </Card>
 
-      {/* Error Display */}
-      {error && (
-        <Card className="border-red-200 bg-red-50">
-          <CardContent className="pt-6">
-            <div className="flex items-center space-x-2">
-              <div className="h-5 w-5 text-red-500">⚠️</div>
-              <div>
-                <h3 className="text-sm font-medium text-red-800">Error</h3>
-                <p className="text-sm text-red-700">{error}</p>
-              </div>
-            </div>
-            <Button onClick={fetchUsers} variant="outline" size="sm" className="mt-4">
-              Try Again
-            </Button>
-          </CardContent>
-        </Card>
-      )}
-
       {/* Users Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {users.map((user) => (
-          <Card key={user.id} className="hover:shadow-md transition-shadow">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredUsers.map((user) => (
+          <Card key={user.id} className="hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
+              <div className="flex items-start justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <span className="text-blue-600 font-semibold text-lg">
-                      {user.name.charAt(0).toUpperCase()}
-                    </span>
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                    <User className="h-5 w-5 text-blue-600" />
                   </div>
                   <div>
                     <CardTitle className="text-lg">{user.name}</CardTitle>
-                    <CardDescription>{user.email}</CardDescription>
+                    <CardDescription className="flex items-center space-x-2">
+                      <Badge variant={user.isVerified ? 'default' : 'secondary'}>
+                        {user.isVerified ? 'Verified' : 'Unverified'}
+                      </Badge>
+                      <Badge variant="outline">{user.userType}</Badge>
+                    </CardDescription>
                   </div>
                 </div>
                 <div className="flex items-center space-x-1">
-                  <Badge variant={getRoleColor(user.role)}>{user.role}</Badge>
-                  <Badge variant={getStatusColor(user)}>
-                    {user.isVerified ? 'Verified' : 'Pending'}
-                  </Badge>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleViewUser(user.id)}
+                    className="h-8 w-8 p-0"
+                  >
+                    <Eye className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleEditUser(user)}
+                    className="h-8 w-8 p-0"
+                  >
+                    <Edit className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleUserAction(user.id, 'delete')}
+                    className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
                 </div>
               </div>
             </CardHeader>
             <CardContent className="space-y-3">
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <p className="text-muted-foreground">Phone</p>
-                  <p className="font-medium">{user.phone}</p>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <Mail className="h-4 w-4" />
+                  <span>{user.email}</span>
                 </div>
-                <div>
-                  <p className="text-muted-foreground">CIBIL Checks</p>
-                  <p className="font-medium">{user.cibilCheckCount}</p>
-                </div>
-                <div>
-                  <p className="text-muted-foreground">Joined</p>
-                  <p className="font-medium">{format(new Date(user.createdAt), 'MMM dd, yyyy')}</p>
-                </div>
-                <div>
-                  <p className="text-muted-foreground">Last Login</p>
-                  <p className="font-medium">
-                    {user.lastLogin ? format(new Date(user.lastLogin), 'MMM dd') : 'Never'}
-                  </p>
+                {user.phone && (
+                  <div className="flex items-center space-x-2 text-sm text-gray-600">
+                    <Phone className="h-4 w-4" />
+                    <span>{user.phone}</span>
+                  </div>
+                )}
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <Calendar className="h-4 w-4" />
+                  <span>Joined {format(new Date(user.createdAt), 'MMM dd, yyyy')}</span>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t">
-                <div className="flex space-x-1">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() =>
-                      handleUserAction(user.id, user.isVerified ? 'unverify' : 'verify')
-                    }
-                  >
-                    {user.isVerified ? (
-                      <UserX className="h-4 w-4" />
-                    ) : (
-                      <UserCheck className="h-4 w-4" />
-                    )}
-                  </Button>
-                  <Button variant="ghost" size="sm" onClick={() => handleViewUser(user.id)}>
-                    <Eye className="h-4 w-4" />
-                  </Button>
-                  <Button variant="ghost" size="sm" onClick={() => handleEditUser(user.id)}>
-                    <Edit className="h-4 w-4" />
-                  </Button>
+              <div className="flex items-center justify-between pt-2 border-t">
+                <div className="text-sm text-gray-600">
+                  CIBIL Checks: <span className="font-medium">{user.cibilCheckCount}</span>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => handleUserAction(user.id, 'delete')}
-                  className="text-red-600 hover:text-red-700"
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
+                <div className="flex space-x-1">
+                  {user.isVerified ? (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleUserAction(user.id, 'unverify')}
+                      className="h-7 text-xs"
+                    >
+                      Unverify
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleUserAction(user.id, 'verify')}
+                      className="h-7 text-xs"
+                    >
+                      Verify
+                    </Button>
+                  )}
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -296,49 +334,200 @@ const Users: React.FC = () => {
       </div>
 
       {/* Pagination */}
-      {pagination.pages > 1 && (
-        <Card>
-          <CardContent className="pt-6">
-            <div className="flex items-center justify-between">
-              <div className="text-sm text-muted-foreground">
-                Showing {(pagination.page - 1) * pagination.limit + 1} to{' '}
-                {Math.min(pagination.page * pagination.limit, pagination.total)} of{' '}
-                {pagination.total} results
-              </div>
-              <div className="flex space-x-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handlePageChange(pagination.page - 1)}
-                  disabled={pagination.page === 1}
-                >
-                  Previous
-                </Button>
-                <span className="flex items-center px-3 py-2 text-sm">
-                  Page {pagination.page} of {pagination.pages}
-                </span>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handlePageChange(pagination.page + 1)}
-                  disabled={pagination.page === pagination.pages}
-                >
-                  Next
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center space-x-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </Button>
+          <span className="text-sm text-gray-600">
+            Page {currentPage} of {totalPages}
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </Button>
+        </div>
       )}
 
-      {users.length === 0 && !loading && (
-        <Card>
-          <CardContent className="pt-6">
-            <div className="text-center py-8">
-              <p className="text-muted-foreground">No users found</p>
+      {/* User Details Modal */}
+      {showUserModal && selectedUser && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold">User Details</h2>
+                <Button variant="ghost" size="sm" onClick={() => setShowUserModal(false)}>
+                  <XCircle className="h-5 w-5" />
+                </Button>
+              </div>
+
+              <div className="space-y-6">
+                {/* User Info */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Basic Information</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium text-gray-600">Name</label>
+                      <p className="text-gray-900">{selectedUser.user.name}</p>
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-gray-600">Email</label>
+                      <p className="text-gray-900">{selectedUser.user.email}</p>
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-gray-600">Phone</label>
+                      <p className="text-gray-900">{selectedUser.user.phone || 'N/A'}</p>
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-gray-600">Status</label>
+                      <Badge variant={selectedUser.user.isVerified ? 'default' : 'secondary'}>
+                        {selectedUser.user.isVerified ? 'Verified' : 'Unverified'}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Statistics */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-3">Statistics</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="text-center p-3 bg-blue-50 rounded-lg">
+                      <div className="text-2xl font-bold text-blue-600">
+                        {selectedUser.statistics.totalLoans}
+                      </div>
+                      <div className="text-sm text-gray-600">Total Loans</div>
+                    </div>
+                    <div className="text-center p-3 bg-green-50 rounded-lg">
+                      <div className="text-2xl font-bold text-green-600">
+                        {selectedUser.statistics.approvedLoans}
+                      </div>
+                      <div className="text-sm text-gray-600">Approved</div>
+                    </div>
+                    <div className="text-center p-3 bg-yellow-50 rounded-lg">
+                      <div className="text-2xl font-bold text-yellow-600">
+                        {selectedUser.statistics.pendingLoans}
+                      </div>
+                      <div className="text-sm text-gray-600">Pending</div>
+                    </div>
+                    <div className="text-center p-3 bg-purple-50 rounded-lg">
+                      <div className="text-2xl font-bold text-purple-600">
+                        {selectedUser.statistics.submittedCibil}
+                      </div>
+                      <div className="text-sm text-gray-600">CIBIL Reports</div>
+                    </div>
+                    <div className="text-center p-3 bg-indigo-50 rounded-lg">
+                      <div className="text-2xl font-bold text-indigo-600">
+                        ₹{selectedUser.statistics.totalLoanAmount.toLocaleString()}
+                      </div>
+                      <div className="text-sm text-gray-600">Total Amount</div>
+                    </div>
+                    <div className="text-center p-3 bg-orange-50 rounded-lg">
+                      <div className="text-2xl font-bold text-orange-600">
+                        {selectedUser.statistics.averageScore}
+                      </div>
+                      <div className="text-sm text-gray-600">Avg Score</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Recent Loans */}
+                {selectedUser.loans.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold mb-3">Recent Loans</h3>
+                    <div className="space-y-2">
+                      {selectedUser.loans.slice(0, 5).map((loan) => (
+                        <div
+                          key={loan.id}
+                          className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                        >
+                          <div>
+                            <div className="font-medium">{loan.type} Loan</div>
+                            <div className="text-sm text-gray-600">{loan.purpose}</div>
+                          </div>
+                          <div className="text-right">
+                            <div className="font-medium">
+                              ₹{parseFloat(loan.amount).toLocaleString()}
+                            </div>
+                            <Badge variant={loan.status === 'APPROVED' ? 'default' : 'secondary'}>
+                              {loan.status}
+                            </Badge>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
+      )}
+
+      {/* Edit User Modal */}
+      {showEditModal && editingUser && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-md w-full">
+            <div className="p-6">
+              <h2 className="text-xl font-bold mb-4">Edit User</h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <input
+                    type="text"
+                    value={editingUser.name}
+                    onChange={(e) => setEditingUser({ ...editingUser, name: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input
+                    type="email"
+                    value={editingUser.email}
+                    onChange={(e) => setEditingUser({ ...editingUser, email: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id="verified"
+                    checked={editingUser.isVerified}
+                    onChange={(e) =>
+                      setEditingUser({ ...editingUser, isVerified: e.target.checked })
+                    }
+                    className="rounded"
+                  />
+                  <label htmlFor="verified" className="text-sm font-medium text-gray-700">
+                    Verified
+                  </label>
+                </div>
+              </div>
+              <div className="flex items-center justify-end space-x-2 mt-6">
+                <Button variant="outline" onClick={() => setShowEditModal(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={handleSaveEdit}>Save Changes</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Message */}
+      {error && (
+        <div className="fixed bottom-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+          {error}
+        </div>
       )}
     </div>
   );

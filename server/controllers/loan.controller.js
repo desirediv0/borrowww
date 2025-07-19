@@ -444,3 +444,74 @@ export const getRecentLoans = asyncHandler(async (req, res) => {
       )
     );
 });
+
+/**
+ * Update loan (Admin only)
+ * PUT /api/loans/:id
+ */
+export const updateLoan = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { purpose, remarks, amount, interestRate, duration } = req.body;
+
+  // Check if loan exists
+  const existingLoan = await prisma.loan.findUnique({
+    where: { id },
+  });
+
+  if (!existingLoan) {
+    throw new ApiError(404, "Loan not found");
+  }
+
+  // Prepare update data
+  const updateData = {};
+  if (purpose) updateData.purpose = purpose;
+  if (remarks !== undefined) updateData.remarks = remarks;
+  if (amount) updateData.amount = parseFloat(amount);
+  if (interestRate) updateData.interestRate = parseFloat(interestRate);
+  if (duration) updateData.duration = parseInt(duration);
+
+  const updatedLoan = await prisma.loan.update({
+    where: { id },
+    data: updateData,
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          phone: true,
+        },
+      },
+    },
+  });
+
+  res
+    .status(200)
+    .json(
+      new ApiResponsive(200, { loan: updatedLoan }, "Loan updated successfully")
+    );
+});
+
+/**
+ * Delete loan (Admin only)
+ * DELETE /api/loans/:id
+ */
+export const deleteLoan = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  // Check if loan exists
+  const existingLoan = await prisma.loan.findUnique({
+    where: { id },
+  });
+
+  if (!existingLoan) {
+    throw new ApiError(404, "Loan not found");
+  }
+
+  // Delete the loan
+  await prisma.loan.delete({
+    where: { id },
+  });
+
+  res.status(200).json(new ApiResponsive(200, {}, "Loan deleted successfully"));
+});
