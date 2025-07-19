@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { format, subDays } from 'date-fns';
+import { format } from 'date-fns';
 import { Activity, Clock, CreditCard, FileText, TrendingUp, Users } from 'lucide-react';
 import {
   Bar,
@@ -21,7 +21,7 @@ import {
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { adminAuthService, cibilService, loanService, userService } from '../services/api';
+import { adminAuthService } from '../services/api';
 
 interface DashboardStats {
   totalUsers: number;
@@ -49,8 +49,6 @@ interface ChartData {
   value: number;
   color: string;
 }
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
 const getStatusColor = (status: string) => {
   switch (status) {

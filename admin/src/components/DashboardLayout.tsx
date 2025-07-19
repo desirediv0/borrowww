@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import {
-  BarChart3,
   ChevronRight,
   CreditCard,
   FileText,
   LayoutDashboard,
   LogOut,
   Menu,
-  Settings,
   Users,
   X,
 } from 'lucide-react';

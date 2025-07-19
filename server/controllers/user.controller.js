@@ -469,3 +469,179 @@ export const searchUsers = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponsive(200, { users }, "User search completed"));
 });
+
+/**
+ * Get user details with CIBIL and loan summary (Admin only)
+ * GET /api/users/:id/details
+ */
+export const getUserDetails = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const user = await prisma.user.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      phone: true,
+      userType: true,
+      isVerified: true,
+      isActive: true,
+      cibilCheckCount: true,
+      lastCibilCheck: true,
+      lastLogin: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+
+  // Get user's CIBIL data
+  const cibilData = await prisma.cibilData.findMany({
+    where: { userId: id },
+    select: {
+      id: true,
+      score: true,
+      status: true,
+      isSubmitted: true,
+      createdAt: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  // Get user's loans
+  const loans = await prisma.loan.findMany({
+    where: { userId: id },
+    select: {
+      id: true,
+      type: true,
+      amount: true,
+      status: true,
+      purpose: true,
+      createdAt: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  // Calculate statistics
+  const totalLoans = loans.length;
+  const approvedLoans = loans.filter(
+    (loan) => loan.status === "APPROVED"
+  ).length;
+  const pendingLoans = loans.filter((loan) => loan.status === "PENDING").length;
+  const totalLoanAmount = loans.reduce(
+    (sum, loan) => sum + (parseFloat(loan.amount) || 0),
+    0
+  );
+
+  const submittedCibil = cibilData.filter((cibil) => cibil.isSubmitted).length;
+  const averageScore =
+    cibilData.length > 0
+      ? cibilData.reduce((sum, cibil) => sum + (cibil.score || 0), 0) /
+        cibilData.length
+      : 0;
+
+  res.status(200).json(
+    new ApiResponsive(
+      200,
+      {
+        user,
+        cibilData,
+        loans,
+        statistics: {
+          totalLoans,
+          approvedLoans,
+          pendingLoans,
+          totalLoanAmount,
+          submittedCibil,
+          averageScore: Math.round(averageScore),
+        },
+      },
+      "User details retrieved successfully"
+    )
+  );
+});
+
+/**
+ * Get user activity (Admin only)
+ * GET /api/users/:id/activity
+ */
+export const getUserActivity = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { days = 30 } = req.query;
+
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - parseInt(days));
+
+  // Get user's recent activity
+  const [cibilChecks, loanApplications, logins] = await Promise.all([
+    // CIBIL checks in the period
+    prisma.cibilData.findMany({
+      where: {
+        userId: id,
+        createdAt: {
+          gte: startDate,
+        },
+      },
+      select: {
+        id: true,
+        score: true,
+        isSubmitted: true,
+        createdAt: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    }),
+
+    // Loan applications in the period
+    prisma.loan.findMany({
+      where: {
+        userId: id,
+        createdAt: {
+          gte: startDate,
+        },
+      },
+      select: {
+        id: true,
+        type: true,
+        amount: true,
+        status: true,
+        createdAt: true,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    }),
+
+    // Get user's last login
+    prisma.user.findUnique({
+      where: { id },
+      select: {
+        lastLogin: true,
+        createdAt: true,
+      },
+    }),
+  ]);
+
+  res.status(200).json(
+    new ApiResponsive(
+      200,
+      {
+        cibilChecks,
+        loanApplications,
+        lastLogin: logins?.lastLogin,
+        accountCreated: logins?.createdAt,
+        activityPeriod: `${days} days`,
+      },
+      "User activity retrieved successfully"
+    )
+  );
+});
