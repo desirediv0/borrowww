@@ -1,85 +1,146 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import helmet from "helmet";
+import morgan from "morgan";
+import { config } from "dotenv";
+
+// Load environment variables
+config();
+
+// Import routes
+import userAuthRoutes from "./routes/auth/userAuth.js";
+import adminAuthRoutes from "./routes/auth/adminAuth.js";
+import userRoutes from "./routes/users.js";
+import cibilRoutes from "./routes/cibil/cibilModule.js";
+import loanRoutes from "./routes/loans/loans.js";
+import dashboardRoutes from "./routes/dashboard.js";
+
+// Import middleware
+import { errorHandler } from "./middleware/errorHandler.js";
+import { ApiError } from "./utils/ApiError.js";
+import { ApiResponsive } from "./utils/ApiResponsive.js";
 
 const app = express();
 
-// Security & Parse Middlewares
-app.use(express.json());
-
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-// CORS Configuration
+// Security middleware
 app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN.split(","),
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "Cache-Control",
-      "Pragma",
-      "Origin",
-      "Accept",
-      "X-Requested-With",
-    ],
-    exposedHeaders: ["Set-Cookie"],
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-    maxAge: 86400, // 24 hours
+  helmet({
+    crossOriginEmbedderPolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'"],
+        imgSrc: ["'self'", "data:", "https:"],
+      },
+    },
   })
 );
 
-// Handle preflight OPTIONS requests explicitly
-app.options("*", cors());
+// CORS configuration
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
 
-// Cache Control Headers
-app.use((req, res, next) => {
-  res.header("Cache-Control", "no-store, no-cache, must-revalidate, private");
-  res.header("Pragma", "no-cache");
-  res.header("Expires", "0");
-  res.header("X-Content-Type-Options", "nosniff");
-  res.header("X-Frame-Options", "DENY");
-  res.header("X-XSS-Protection", "1; mode=block");
-  res.header(
-    "Strict-Transport-Security",
-    "max-age=31536000; includeSubDomains"
-  );
-  next();
-});
+    const allowedOrigins = (
+      process.env.CORS_ORIGIN || "http://localhost:3000,http://localhost:5173"
+    ).split(",");
 
-// Static Files
-app.use(express.static("public/upload"));
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // Allow cookies
+  optionsSuccessStatus: 200,
+};
 
-// API Routes
+app.use(cors(corsOptions));
+
+// Body parsing middleware
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+app.use(cookieParser());
+
+// Request logging
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+} else {
+  app.use(morgan("combined"));
+}
 
 // Health check endpoint
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "success",
-    message: "Server is running",
-    timestamp: new Date().toISOString(),
-  });
+app.get("/", (req, res) => {
+  res.status(200).json(
+    new ApiResponsive(
+      200,
+      {
+        service: "Borrowww API Server",
+        status: "Running",
+        version: "1.0.0",
+        environment: process.env.NODE_ENV || "development",
+        timestamp: new Date().toISOString(),
+      },
+      "API Server is running successfully"
+    )
+  );
 });
 
-// Error Handling Middleware
-app.use((err, req, res, next) => {
-  console.error("Error:", err);
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || "Internal Server Error",
-    error: process.env.NODE_ENV === "development" ? err : {},
-  });
+app.get("/api/health", (req, res) => {
+  res.status(200).json(
+    new ApiResponsive(
+      200,
+      {
+        status: "OK",
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        memory: process.memoryUsage(),
+      },
+      "Health check passed"
+    )
+  );
 });
 
-// 404 Handler
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: "Route not found",
-  });
+// API Routes - Testing one by one to isolate issue
+app.use("/api/auth", userAuthRoutes); // User authentication
+app.use("/api/admin/auth", adminAuthRoutes); // Admin authentication
+app.use("/api/users", userRoutes); // User management (Admin)
+app.use("/api/cibil", cibilRoutes); // CIBIL management
+app.use("/api/loans", loanRoutes); // Loan management
+app.use("/api/dashboard", dashboardRoutes); // Dashboard data
+
+// 404 handler for undefined routes
+app.all("*", (req, res) => {
+  throw new ApiError(404, `Route ${req.originalUrl} not found`);
+});
+
+// Global error handling middleware
+app.use(errorHandler);
+
+// Graceful shutdown handling
+process.on("SIGTERM", () => {
+  console.log("SIGTERM received, shutting down gracefully");
+  process.exit(0);
+});
+
+process.on("SIGINT", () => {
+  console.log("SIGINT received, shutting down gracefully");
+  process.exit(0);
+});
+
+// Unhandled promise rejection handler
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Promise Rejection:", err);
+  process.exit(1);
+});
+
+// Uncaught exception handler
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+  process.exit(1);
 });
 
 export default app;

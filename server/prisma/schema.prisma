@@ -6,10 +6,133 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+// User model for both regular users and admins
+model User {
+  id           String    @id @default(cuid())
+  name         String
+  email        String?   @unique // Optional for users, required for admins
+  phone        String?   @unique // Required for users, optional for admins
+  userType     UserType  @default(USER)
+  password     String? // Only for admin users
+  isActive     Boolean   @default(true)
+  isVerified   Boolean   @default(false) // For OTP verification
+  lastLogin    DateTime?
+  otplessId    String? // Otpless user identifier
+  refreshToken String? // For JWT refresh mechanism
+
+  // CIBIL tracking fields
+  cibilCheckCount Int       @default(0) // Number of CIBIL checks
+  lastCibilCheck  DateTime? // Last CIBIL check timestamp
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  cibilData CibilData[]
+  loans     Loan[]
+  sessions  Session[]
+
+  @@map("users")
+}
+
+// Session model for managing user sessions
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// CIBIL credit data model
+model CibilData {
+  id          String           @id @default(cuid())
+  score       Int?
+  panNumber   String? // PAN number if provided
+  phoneNumber String? // Phone number if used for check
+  source      String? // Source API/service
+  reportData  Json? // Full CIBIL report as JSON
+  status      CibilCheckStatus @default(UNSUBMITTED)
+  isSubmitted Boolean          @default(false) // True if user completed submission
+  fetchedAt   DateTime?
+  expiresAt   DateTime? // For 28-day cache logic
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  // Relations
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([panNumber])
+  @@index([phoneNumber])
+  @@map("cibil_data")
+}
+
+// Loan application model
+model Loan {
+  id             String     @id @default(cuid())
+  type           LoanType
+  amount         Decimal?   @db.Decimal(12, 2)
+  interestRate   Decimal?   @db.Decimal(5, 2)
+  duration       Int? // Duration in months
+  status         LoanStatus @default(PENDING)
+  purpose        String?
+  monthlyIncome  Decimal?   @db.Decimal(12, 2)
+  employmentType String?
+  documents      Json? // Array of document URLs/info
+  remarks        String?
+  approvedAt     DateTime?
+  rejectedAt     DateTime?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  // Relations
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("loans")
+}
+
+// Enums
+enum UserType {
+  USER
+  ADMIN
+}
+
+enum CibilCheckStatus {
+  SUBMITTED
+  UNSUBMITTED
+  PROCESSING
+  FAILED
+}
+
+enum LoanType {
+  HOME
+  PERSONAL
+  CAR
+  BUSINESS
+  EDUCATION
+}
+
+enum LoanStatus {
+  PENDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  DISBURSED
+  CLOSED
 }
