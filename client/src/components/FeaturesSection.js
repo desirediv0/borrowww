@@ -1,7 +1,7 @@
 'use client';
 
+import { IconArrowUp } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
-import { IconArrowUp, IconSparkles } from '@tabler/icons-react';
 
 export default function FeaturesSection() {
   return (
@@ -42,8 +42,7 @@ export default function FeaturesSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            Remove all the friction that stands in the way of your money
-            goals.
+            Remove all the friction that stands in the way of your money goals.
           </motion.p>
         </motion.div>
 
@@ -85,7 +84,7 @@ export default function FeaturesSection() {
                   transition={{
                     duration: 2,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: 'easeInOut',
                   }}
                 >
                   $12,000
@@ -100,7 +99,7 @@ export default function FeaturesSection() {
                 transition={{
                   duration: 2,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: 'easeInOut',
                 }}
               >
                 <IconArrowUp className="w-8 h-8 text-white" strokeWidth={3} />
@@ -112,12 +111,12 @@ export default function FeaturesSection() {
               className="absolute -right-8 -bottom-8 w-32 h-32 bg-white/10 rounded-full"
               animate={{
                 scale: [1, 1.2, 1],
-                rotate: [0, 180, 360]
+                rotate: [0, 180, 360],
               }}
               transition={{
                 duration: 15,
                 repeat: Infinity,
-                ease: "linear"
+                ease: 'linear',
               }}
             />
           </motion.div>
@@ -153,10 +152,10 @@ export default function FeaturesSection() {
                 className="absolute inset-0 bg-gradient-to-br from-green-200 to-green-300"
                 animate={{
                   background: [
-                    "linear-gradient(45deg, #bbf7d0, #86efac)",
-                    "linear-gradient(45deg, #86efac, #4ade80)",
-                    "linear-gradient(45deg, #bbf7d0, #86efac)"
-                  ]
+                    'linear-gradient(45deg, #bbf7d0, #86efac)',
+                    'linear-gradient(45deg, #86efac, #4ade80)',
+                    'linear-gradient(45deg, #bbf7d0, #86efac)',
+                  ],
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               />
@@ -173,11 +172,11 @@ export default function FeaturesSection() {
                 <motion.h4
                   className="text-xl font-bold text-gray-900"
                   animate={{
-                    color: ["#111827", "#059669", "#111827"]
+                    color: ['#111827', '#059669', '#111827'],
                   }}
                   transition={{
                     duration: 2,
-                    repeat: Infinity
+                    repeat: Infinity,
                   }}
                 >
                   $25,000
@@ -190,11 +189,11 @@ export default function FeaturesSection() {
                   <motion.h4
                     className="font-bold"
                     animate={{
-                      scale: [1, 1.05, 1]
+                      scale: [1, 1.05, 1],
                     }}
                     transition={{
                       duration: 1.5,
-                      repeat: Infinity
+                      repeat: Infinity,
                     }}
                   >
                     $40,000
@@ -205,12 +204,12 @@ export default function FeaturesSection() {
                 <motion.div
                   className="w-10 h-10 bg-gray-300 rounded-full"
                   animate={{
-                    rotate: [0, 360]
+                    rotate: [0, 360],
                   }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: 'linear',
                   }}
                 />
               </div>
@@ -221,12 +220,12 @@ export default function FeaturesSection() {
               className="absolute -top-4 -right-4 w-24 h-24 bg-[#f5f2e8] rounded-full opacity-50"
               animate={{
                 scale: [1, 1.1, 1],
-                rotate: [0, -180, -360]
+                rotate: [0, -180, -360],
               }}
               transition={{
                 duration: 12,
                 repeat: Infinity,
-                ease: "linear"
+                ease: 'linear',
               }}
             />
           </motion.div>

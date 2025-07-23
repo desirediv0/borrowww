@@ -1,21 +1,26 @@
 'use client';
 
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandTwitter,
+  IconMail,
+} from '@tabler/icons-react';
 import { motion } from 'framer-motion';
-import { IconBrandTwitter, IconBrandLinkedin, IconBrandGithub, IconMail } from '@tabler/icons-react';
 
 export default function Footer() {
   const footerLinks = {
     Product: ['Features', 'Pricing', 'API', 'Documentation'],
     Company: ['About', 'Blog', 'Careers', 'Press'],
     Resources: ['Help Center', 'Community', 'Guides', 'Webinars'],
-    Legal: ['Privacy', 'Terms', 'Security', 'Compliance']
+    Legal: ['Privacy', 'Terms', 'Security', 'Compliance'],
   };
 
   const socialLinks = [
     { icon: IconBrandTwitter, href: '#', label: 'Twitter' },
     { icon: IconBrandLinkedin, href: '#', label: 'LinkedIn' },
     { icon: IconBrandGithub, href: '#', label: 'GitHub' },
-    { icon: IconMail, href: '#', label: 'Email' }
+    { icon: IconMail, href: '#', label: 'Email' },
   ];
 
   return (
@@ -24,17 +29,17 @@ export default function Footer() {
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
           {/* Logo and Description */}
-          <motion.div 
+          <motion.div
             className="col-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div 
+            <motion.div
               className="flex items-center gap-2 mb-4"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
               <div className="w-8 h-8 bg-[#2d5a4a] rounded-lg flex items-center justify-center">
                 <div className="w-4 h-4 bg-white rounded-sm transform rotate-45"></div>
@@ -42,9 +47,10 @@ export default function Footer() {
               <span className="text-xl font-semibold">Ascone</span>
             </motion.div>
             <p className="text-gray-400 leading-relaxed max-w-sm">
-              Change the way you use your money. From everyday spending to future planning with savings and investments.
+              Change the way you use your money. From everyday spending to future planning with
+              savings and investments.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex items-center gap-4 mt-6">
               {socialLinks.map((social, index) => (
@@ -89,7 +95,7 @@ export default function Footer() {
                       href="#"
                       className="text-gray-400 hover:text-white transition-colors duration-200"
                       whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     >
                       {link}
                     </motion.a>
@@ -101,7 +107,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <motion.div 
+        <motion.div
           className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -111,24 +117,24 @@ export default function Footer() {
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             © 2024 Ascone Finance. All rights reserved.
           </p>
-          
+
           <div className="flex items-center gap-6 text-sm">
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-gray-400 hover:text-white transition-colors duration-200"
               whileHover={{ y: -2 }}
             >
               Privacy Policy
             </motion.a>
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-gray-400 hover:text-white transition-colors duration-200"
               whileHover={{ y: -2 }}
             >
               Terms of Service
             </motion.a>
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-gray-400 hover:text-white transition-colors duration-200"
               whileHover={{ y: -2 }}
             >
@@ -139,12 +145,12 @@ export default function Footer() {
       </div>
 
       {/* Background decoration */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#2d5a4a] via-[#4ade80] to-[#2d5a4a]"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
+        transition={{ duration: 1.5, ease: 'easeInOut' }}
       />
     </footer>
   );
