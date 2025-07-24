@@ -144,25 +144,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
-      {/* Partner Logos Section */}
-      <div className="border-t bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <p className="text-gray-500 text-sm mb-6">Made in Webflow</p>
-          </div>
-          <div className="flex justify-center items-center gap-12 opacity-40">
-            {['OpenAI', 'Raycast', 'zenefits', 'loom'].map((logo) => (
-              <div
-                key={logo}
-                className="text-xl font-semibold text-gray-600 hover:opacity-60 transition-opacity cursor-pointer"
-              >
-                {logo}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
