@@ -8,10 +8,10 @@ import {
   Calculator,
   Calendar,
   Car,
-  DollarSign,
   GraduationCap,
   Heart,
   Home,
+  IndianRupee,
   Percent,
   TrendingUp,
   User,
@@ -99,9 +99,9 @@ export default function LoanCalculator() {
       minTerm: 1,
       maxTerm: 7,
       description: 'Quick personal loans for your immediate needs',
-      color: 'from-blue-600 to-blue-700',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
+      color: 'from-green-600 to-green-700',
+      bgColor: 'bg-green-50',
+      borderColor: 'border-green-200',
     },
     business: {
       name: 'Business Loan',
@@ -113,9 +113,9 @@ export default function LoanCalculator() {
       minTerm: 1,
       maxTerm: 10,
       description: 'Grow your business with flexible financing',
-      color: 'from-purple-600 to-purple-700',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200',
+      color: 'from-green-600 to-green-700',
+      bgColor: 'bg-green-50',
+      borderColor: 'border-green-200',
     },
     car: {
       name: 'Car Loan',
@@ -127,9 +127,9 @@ export default function LoanCalculator() {
       minTerm: 1,
       maxTerm: 8,
       description: 'Drive your dream car with easy financing',
-      color: 'from-orange-600 to-orange-700',
-      bgColor: 'bg-orange-50',
-      borderColor: 'border-orange-200',
+      color: 'from-green-600 to-green-700',
+      bgColor: 'bg-green-50',
+      borderColor: 'border-green-200',
     },
     education: {
       name: 'Education Loan',
@@ -141,9 +141,9 @@ export default function LoanCalculator() {
       minTerm: 1,
       maxTerm: 10,
       description: 'Invest in your future with education loans',
-      color: 'from-indigo-600 to-indigo-700',
-      bgColor: 'bg-indigo-50',
-      borderColor: 'border-indigo-200',
+      color: 'from-green-600 to-green-700',
+      bgColor: 'bg-green-50',
+      borderColor: 'border-green-200',
     },
     medical: {
       name: 'Medical Loan',
@@ -155,9 +155,9 @@ export default function LoanCalculator() {
       minTerm: 1,
       maxTerm: 5,
       description: 'Healthcare financing when you need it most',
-      color: 'from-red-600 to-red-700',
-      bgColor: 'bg-red-50',
-      borderColor: 'border-red-200',
+      color: 'from-green-600 to-green-700',
+      bgColor: 'bg-green-50',
+      borderColor: 'border-green-200',
     },
   };
 
@@ -278,204 +278,212 @@ export default function LoanCalculator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-2 space-y-4"
+            className="lg:col-span-2 space-y-6"
           >
             {/* Calculator Inputs */}
-            <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden">
+            <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden mb-4">
               <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 p-4">
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <div className={`p-2 rounded-lg ${currentLoanType.bgColor}`}>
-                    <currentLoanType.icon
-                      className={`w-5 h-5 text-${currentLoanType.color.split('-')[1]}-600`}
-                    />
+                    <currentLoanType.icon className="w-5 h-5 text-green-600" />
                   </div>
                   {currentLoanType.name} Calculator
                 </CardTitle>
                 <CardDescription>{currentLoanType.description}</CardDescription>
               </CardHeader>
-              <CardContent className="p-4 space-y-4">
-                {/* Loan Amount */}
-                <motion.div
-                  className="space-y-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="flex items-center justify-between">
-                    <Label className="text-base font-semibold flex items-center gap-2">
-                      <DollarSign className="w-4 h-4 text-green-600" />
-                      Loan Amount
-                    </Label>
-                    <span className="text-xl font-bold text-gray-900">
-                      ₹{loanAmount.toLocaleString('en-IN')}
-                    </span>
-                  </div>
-                  <div className="relative">
-                    <Slider
-                      min={currentLoanType.minAmount}
-                      max={currentLoanType.maxAmount}
-                      step={10000}
-                      value={[loanAmount]}
-                      onValueChange={(value) => setLoanAmount(value[0])}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-xs text-gray-500 mt-1">
-                      <span>₹{currentLoanType.minAmount.toLocaleString('en-IN')}</span>
-                      <span>₹{currentLoanType.maxAmount.toLocaleString('en-IN')}</span>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Interest Rate */}
-                <motion.div
-                  className="space-y-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  <div className="flex items-center justify-between">
-                    <Label className="text-base font-semibold flex items-center gap-2">
-                      <Percent className="w-4 h-4 text-blue-600" />
-                      Interest Rate (% per annum)
-                    </Label>
-                    <span className="text-xl font-bold text-gray-900">{interestRate}%</span>
-                  </div>
-                  <div className="relative">
-                    <Slider
-                      min={currentLoanType.minRate}
-                      max={currentLoanType.maxRate}
-                      step={0.1}
-                      value={[interestRate]}
-                      onValueChange={(value) => setInterestRate(value[0])}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-xs text-gray-500 mt-1">
-                      <span>{currentLoanType.minRate}%</span>
-                      <span>{currentLoanType.maxRate}%</span>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Loan Term */}
-                <motion.div
-                  className="space-y-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <div className="flex items-center justify-between">
-                    <Label className="text-base font-semibold flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-purple-600" />
-                      Loan Term (Years)
-                    </Label>
-                    <span className="text-xl font-bold text-gray-900">{loanTerm} years</span>
-                  </div>
-                  <div className="relative">
-                    <Slider
-                      min={currentLoanType.minTerm}
-                      max={currentLoanType.maxTerm}
-                      step={1}
-                      value={[loanTerm]}
-                      onValueChange={(value) => setLoanTerm(value[0])}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-xs text-gray-500 mt-1">
-                      <span>{currentLoanType.minTerm} years</span>
-                      <span>{currentLoanType.maxTerm} years</span>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Down Payment (for home loan) */}
-                {activeTab === 'home' && (
+              <CardContent className="p-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+                  {/* Loan Amount */}
                   <motion.div
-                    className="space-y-2"
+                    className="space-y-3 bg-white rounded-xl p-5 border border-green-100 shadow-sm"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
+                    transition={{ duration: 0.5 }}
                   >
-                    <div className="flex items-center justify-between">
-                      <Label className="text-base font-semibold flex items-center gap-2">
-                        <DollarSign className="w-4 h-4 text-orange-600" />
-                        Down Payment
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-base font-bold flex items-center gap-2 text-green-700">
+                        <IndianRupee className="w-4 h-4 text-green-600" />
+                        Loan Amount
                       </Label>
-                      <span className="text-xl font-bold text-gray-900">
-                        ₹{downPayment.toLocaleString('en-IN')}
+                      <span className="text-xl font-extrabold text-green-800">
+                        ₹{loanAmount.toLocaleString('en-IN')}
                       </span>
                     </div>
                     <div className="relative">
                       <Slider
-                        min={0}
-                        max={loanAmount * 0.9}
+                        min={currentLoanType.minAmount}
+                        max={currentLoanType.maxAmount}
                         step={10000}
-                        value={[downPayment]}
-                        onValueChange={(value) => setDownPayment(value[0])}
-                        className="w-full"
+                        value={[loanAmount]}
+                        onValueChange={(value) => setLoanAmount(value[0])}
+                        className="w-full h-3 bg-green-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        thumbClassName="bg-green-600 border-2 border-white w-6 h-6 shadow-lg"
+                        trackClassName="bg-green-400 h-3 rounded-full"
                       />
-                      <div className="flex justify-between text-xs text-gray-500 mt-1">
-                        <span>₹0</span>
-                        <span>₹{(loanAmount * 0.9).toLocaleString('en-IN')}</span>
+                      <div className="flex justify-between text-xs text-green-600 mt-1">
+                        <span>₹{currentLoanType.minAmount.toLocaleString('en-IN')}</span>
+                        <span>₹{currentLoanType.maxAmount.toLocaleString('en-IN')}</span>
                       </div>
                     </div>
                   </motion.div>
-                )}
 
-                {/* Monthly Income & Expenses */}
-                <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                  <div className="space-y-2">
-                    <Label className="text-base font-semibold flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-green-600" />
-                      Monthly Income
-                    </Label>
-                    <Input
-                      type="number"
-                      value={monthlyIncome}
-                      onChange={(e) => setMonthlyIncome(Number(e.target.value))}
-                      placeholder="50000"
-                      className="text-base p-3 border-2 border-gray-200 focus:border-blue-500 rounded-xl"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-base font-semibold flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-red-600" />
-                      Monthly Expenses
-                    </Label>
-                    <Input
-                      type="number"
-                      value={monthlyExpenses}
-                      onChange={(e) => setMonthlyExpenses(Number(e.target.value))}
-                      placeholder="20000"
-                      className="text-base p-3 border-2 border-gray-200 focus:border-red-500 rounded-xl"
-                    />
-                  </div>
-                </motion.div>
+                  {/* Interest Rate */}
+                  <motion.div
+                    className="space-y-3 bg-white rounded-xl p-5 border border-green-100 shadow-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-base font-bold flex items-center gap-2 text-green-700">
+                        <Percent className="w-4 h-4 text-green-600" />
+                        Interest Rate (% per annum)
+                      </Label>
+                      <span className="text-xl font-extrabold text-green-800">{interestRate}%</span>
+                    </div>
+                    <div className="relative">
+                      <Slider
+                        min={currentLoanType.minRate}
+                        max={currentLoanType.maxRate}
+                        step={1}
+                        value={[interestRate]}
+                        onValueChange={(value) => setInterestRate(value[0])}
+                        className="w-full h-3 bg-green-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        thumbClassName="bg-green-600 border-2 border-white w-6 h-6 shadow-lg"
+                        trackClassName="bg-green-400 h-3 rounded-full"
+                      />
+                      <div className="flex justify-between text-xs text-green-600 mt-1">
+                        <span>{currentLoanType.minRate}%</span>
+                        <span>{currentLoanType.maxRate}%</span>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Loan Term */}
+                  <motion.div
+                    className="space-y-3 bg-white rounded-xl p-5 border border-green-100 shadow-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-base font-bold flex items-center gap-2 text-green-700">
+                        <Calendar className="w-4 h-4 text-green-600" />
+                        Loan Term (Years)
+                      </Label>
+                      <span className="text-xl font-extrabold text-green-800">
+                        {loanTerm} years
+                      </span>
+                    </div>
+                    <div className="relative">
+                      <Slider
+                        min={currentLoanType.minTerm}
+                        max={currentLoanType.maxTerm}
+                        step={1}
+                        value={[loanTerm]}
+                        onValueChange={(value) => setLoanTerm(value[0])}
+                        className="w-full h-3 bg-green-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        thumbClassName="bg-green-600 border-2 border-white w-6 h-6 shadow-lg"
+                        trackClassName="bg-green-400 h-3 rounded-full"
+                      />
+                      <div className="flex justify-between text-xs text-green-600 mt-1">
+                        <span>{currentLoanType.minTerm} years</span>
+                        <span>{currentLoanType.maxTerm} years</span>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Down Payment (for home loan) */}
+                  {activeTab === 'home' && (
+                    <motion.div
+                      className="space-y-3 bg-white rounded-xl p-5 border border-green-100 shadow-sm"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <Label className="text-base font-bold flex items-center gap-2 text-green-700">
+                          <IndianRupee className="w-4 h-4 text-green-600" />
+                          Down Payment
+                        </Label>
+                        <span className="text-xl font-extrabold text-green-800">
+                          ₹{downPayment.toLocaleString('en-IN')}
+                        </span>
+                      </div>
+                      <div className="relative">
+                        <Slider
+                          min={0}
+                          max={loanAmount * 0.9}
+                          step={10000}
+                          value={[downPayment]}
+                          onValueChange={(value) => setDownPayment(value[0])}
+                          className="w-full h-3 bg-green-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                          thumbClassName="bg-green-600 border-2 border-white w-6 h-6 shadow-lg"
+                          trackClassName="bg-green-400 h-3 rounded-full"
+                        />
+                        <div className="flex justify-between text-xs text-green-600 mt-1">
+                          <span>₹0</span>
+                          <span>₹{(loanAmount * 0.9).toLocaleString('en-IN')}</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Monthly Income & Expenses */}
+                  <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                  >
+                    <div className="space-y-3 bg-white rounded-xl p-5 border border-green-100 shadow-sm">
+                      <Label className="text-base font-bold flex items-center gap-2 text-green-700">
+                        <TrendingUp className="w-4 h-4 text-green-600" />
+                        Monthly Income
+                      </Label>
+                      <Input
+                        type="number"
+                        value={monthlyIncome}
+                        onChange={(e) => setMonthlyIncome(Number(e.target.value))}
+                        placeholder="50000"
+                        className="text-base p-3 border-2 border-green-200 focus:border-green-500 rounded-xl bg-white shadow-sm"
+                      />
+                    </div>
+                    <div className="space-y-3 bg-white rounded-xl p-5 border border-green-100 shadow-sm">
+                      <Label className="text-base font-bold flex items-center gap-2 text-green-700">
+                        <TrendingUp className="w-4 h-4 text-green-600" />
+                        Monthly Expenses
+                      </Label>
+                      <Input
+                        type="number"
+                        value={monthlyExpenses}
+                        onChange={(e) => setMonthlyExpenses(Number(e.target.value))}
+                        placeholder="20000"
+                        className="text-base p-3 border-2 border-green-200 focus:border-green-500 rounded-xl bg-white shadow-sm"
+                      />
+                    </div>
+                  </motion.div>
+                </div>
               </CardContent>
             </Card>
 
-            {/* Results Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {/* Results Section - Redesigned */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* EMI Card */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <CardTitle
-                  className={`bg-gradient-to-br ${currentLoanType.color} text-white shadow-2xl border-0 rounded-2xl overflow-hidden`}
-                >
-                  <CardHeader className="bg-white/10 p-4">
-                    <CardTitle className="text-white text-xl">Monthly EMI</CardTitle>
+                <Card className="shadow-2xl border-0 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl overflow-hidden h-full flex flex-col justify-center items-center p-6">
+                  <CardHeader className="bg-transparent p-0 mb-2 w-full text-center">
+                    <CardTitle className="text-white text-2xl font-bold">Monthly EMI</CardTitle>
                   </CardHeader>
-                  <CardContent className="p-4">
+                  <CardContent className="p-0 w-full flex flex-col items-center">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={emi}
-                        className="text-3xl lg:text-4xl font-bold mb-1"
+                        className="text-4xl lg:text-5xl font-extrabold mb-1"
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.8, opacity: 0 }}
@@ -484,9 +492,9 @@ export default function LoanCalculator() {
                         ₹{emi.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                       </motion.div>
                     </AnimatePresence>
-                    <p className="text-white/80 text-sm">per month</p>
+                    <p className="text-white/80 text-base">per month</p>
                   </CardContent>
-                </CardTitle>
+                </Card>
               </motion.div>
 
               {/* Loan Summary */}
@@ -495,60 +503,62 @@ export default function LoanCalculator() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 p-4">
-                    <CardTitle className="text-xl">Loan Summary</CardTitle>
+                <Card className="shadow-2xl border-0 bg-white rounded-2xl overflow-hidden h-full flex flex-col justify-center p-6">
+                  <CardHeader className="bg-transparent p-0 mb-2 w-full text-center">
+                    <CardTitle className="text-black text-2xl font-bold">Loan Summary</CardTitle>
                   </CardHeader>
-                  <CardContent className="p-4 space-y-3">
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="text-center p-3 bg-gray-50 rounded-xl">
-                        <div className="text-lg font-bold text-gray-900">
+                  <CardContent className="p-0 w-full flex flex-col gap-4 items-center">
+                    <div className="grid grid-cols-2 gap-4 w-full">
+                      <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
+                        <div className="text-lg font-bold text-green-700">
                           ₹
                           {(loanAmount - (activeTab === 'home' ? downPayment : 0)).toLocaleString(
                             'en-IN'
                           )}
                         </div>
-                        <div className="text-xs text-gray-600">Principal Amount</div>
+                        <div className="text-xs text-green-600">Principal</div>
                       </div>
-                      <div className="text-center p-3 bg-gray-50 rounded-xl">
-                        <div className="text-lg font-bold text-gray-900">
+                      <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
+                        <div className="text-lg font-bold text-green-700">
                           ₹{totalInterest.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                         </div>
-                        <div className="text-xs text-gray-600">Total Interest</div>
+                        <div className="text-xs text-green-600">Total Interest</div>
                       </div>
                     </div>
-                    <div className="text-center p-3 bg-green-50 rounded-xl border border-green-200">
-                      <div className="text-lg font-bold text-green-700">
+                    <div className="text-center p-3 bg-green-100 rounded-xl border border-green-300 w-full">
+                      <div className="text-lg font-bold text-green-800">
                         ₹{totalPayment.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                       </div>
-                      <div className="text-xs text-green-600">Total Payment</div>
+                      <div className="text-xs text-green-700">Total Payment</div>
                     </div>
                   </CardContent>
                 </Card>
               </motion.div>
             </div>
 
-            {/* Affordability Check */}
+            {/* Affordability Check - Full width */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 p-4">
-                  <CardTitle className="text-xl">Affordability Check</CardTitle>
+              <Card className="shadow-2xl border-0 bg-white rounded-2xl overflow-hidden p-6">
+                <CardHeader className="bg-transparent p-0 mb-2 w-full text-center">
+                  <CardTitle className="text-green-700 text-2xl font-bold">
+                    Affordability Check
+                  </CardTitle>
                 </CardHeader>
-                <CardContent className="p-4 space-y-4">
-                  <div className="flex items-center justify-between">
+                <CardContent className="p-0 w-full flex flex-col gap-4 items-center">
+                  <div className="flex items-center justify-between w-full">
                     <span className="text-base font-semibold">EMI to Income Ratio</span>
                     <Badge
                       variant={isAffordable ? 'default' : 'destructive'}
-                      className="text-sm px-3 py-1 rounded-lg"
+                      className={`text-sm px-3 py-1 rounded-lg ${isAffordable ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}
                     >
                       {affordabilityRatio.toFixed(1)}%
                     </Badge>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-green-100 rounded-full h-2">
                     <motion.div
                       className={`h-2 rounded-full ${isAffordable ? 'bg-green-500' : 'bg-red-500'}`}
                       style={{ width: `${Math.min(affordabilityRatio, 100)}%` }}
@@ -568,22 +578,20 @@ export default function LoanCalculator() {
                       </span>
                     )}
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-green-700">
                     Available for EMI: ₹{availableForEMI.toLocaleString('en-IN')}
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
 
-            {/* Apply Now Button */}
+            {/* Apply Now Button - Full width */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <Button
-                className={`w-full bg-gradient-to-r ${currentLoanType.color} hover:opacity-90 text-white py-3 text-lg font-bold rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300`}
-              >
+              <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:opacity-90 text-white py-4 text-lg font-bold rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300">
                 Apply for {currentLoanType.name}
               </Button>
             </motion.div>

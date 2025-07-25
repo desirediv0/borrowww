@@ -1,5 +1,8 @@
 'use client';
 
+import Image from 'next/image';
+
+import logo from '@/assets/logo.svg';
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -24,41 +27,37 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="bg-gray-200 text-gray-800 pt-16 pb-8 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-12 items-start">
           {/* Logo and Description */}
-          <motion.div
-            className="col-span-2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.div
-              className="flex items-center gap-2 mb-4"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-            >
-              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-sm transform rotate-45"></div>
-              </div>
-              <span className="text-xl font-semibold">Borrowww</span>
-            </motion.div>
-            <p className="text-gray-400 leading-relaxed max-w-sm">
+          <div className="col-span-2 flex flex-col gap-4">
+            <div className="flex items-center gap-3 mb-2">
+              <Image
+                src={logo}
+                alt="Borrowww Logo"
+                width={48}
+                height={36}
+                className="rounded-lg p-1 shadow-md bg-white border border-blue-100"
+              />
+              <span className="text-2xl font-bold tracking-tight text-blue-700">Borrowww</span>
+            </div>
+            <span className="text-blue-600 font-medium text-sm mb-1">
+              CIBIL Check & Instant Loan Provider
+            </span>
+            <p className="text-gray-600 leading-relaxed max-w-sm text-base">
               India's leading CIBIL score checking and loan provider platform. Get instant loan
               approval with competitive rates and transparent process.
             </p>
-
             {/* Social Links */}
-            <div className="flex items-center gap-4 mt-6">
+            <div className="flex items-center gap-3 mt-4">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors duration-200"
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center hover:bg-blue-100 hover:scale-110 transition-all duration-200 shadow-sm border border-blue-100 text-blue-600"
+                  whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -70,7 +69,7 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Footer Links */}
           {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
@@ -81,7 +80,9 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             >
-              <h3 className="font-semibold text-white mb-4">{category}</h3>
+              <h3 className="font-semibold text-blue-700 mb-4 tracking-wide uppercase text-sm letter-spacing-1">
+                {category}
+              </h3>
               <ul className="space-y-3">
                 {links.map((link, linkIndex) => (
                   <motion.li
@@ -93,7 +94,7 @@ export default function Footer() {
                   >
                     <motion.a
                       href="#"
-                      className="text-gray-400 hover:text-white transition-colors duration-200"
+                      className="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium text-base"
                       whileHover={{ x: 5 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     >
@@ -106,36 +107,39 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Divider */}
+        <div className="w-full h-px bg-gradient-to-r from-blue-200 via-gray-100 to-green-200 mb-8" />
+
         {/* Bottom Footer */}
         <motion.div
-          className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+          className="flex flex-col md:flex-row justify-between items-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
+          <p className="text-gray-500 text-sm mb-2 md:mb-0">
             © 2024 Borrowww Finance. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6 text-sm">
             <motion.a
               href="#"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium"
               whileHover={{ y: -2 }}
             >
               Privacy Policy
             </motion.a>
             <motion.a
               href="#"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium"
               whileHover={{ y: -2 }}
             >
               Terms of Service
             </motion.a>
             <motion.a
               href="#"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium"
               whileHover={{ y: -2 }}
             >
               RBI Compliance
