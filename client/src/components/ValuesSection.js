@@ -116,80 +116,95 @@ export default function ValuesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((value, index) => (
             <motion.div
-              key={value.title}
-              className={`${value.bgColor} rounded-3xl p-8 border border-gray-200 relative overflow-hidden group cursor-pointer`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              whileHover={{
-                scale: 1.02,
-                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-              }}
+              key={index}
+              className="relative overflow-hidden shadow-lg cursor-pointer group bg-[#f5f2e8]"
+              style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
+              initial={{ scale: 1 }}
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              {/* Icon */}
+              {/* Background with smooth color transition */}
               <motion.div
-                className={`${value.textColor} mb-8`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.1 }}
-                whileHover={{
-                  rotate: [0, -10, 10, 0],
-                  transition: { duration: 0.5 },
-                }}
-              >
-                {value.icon}
-              </motion.div>
-
-              {/* Content */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 + index * 0.1 }}
-              >
-                <h3 className={`text-2xl font-bold ${value.textColor} mb-4`}>{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-8">{value.description}</p>
-              </motion.div>
-
-              {/* Arrow Button */}
-              <motion.div
-                className="absolute bottom-8 right-8"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 + index * 0.1 }}
-              >
-                <motion.button
-                  className={`w-12 h-12 rounded-full border-2 ${
-                    index === 2
-                      ? 'border-blue-500 bg-blue-500 text-white'
-                      : 'border-gray-300 text-gray-400 group-hover:border-blue-500 group-hover:text-blue-500'
-                  } flex items-center justify-center transition-all duration-300`}
-                  whileHover={{
-                    scale: 1.1,
-                    rotate: 45,
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <IconArrowRight className="w-5 h-5" />
-                </motion.button>
-              </motion.div>
-
-              {/* Background decoration */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-16 h-16 bg-gray-200 rounded-full opacity-20"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 180, 360],
-                }}
-                transition={{
-                  duration: 10,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
+                className="absolute inset-0 z-0"
+                initial={{ backgroundColor: '#f5f2e8' }}
+                whileHover={{ backgroundColor: '#ede9dd' }}
+                transition={{ duration: 0.6, ease: 'easeInOut' }}
+                style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
               />
+
+              {/* Curved background element that appears on hover */}
+              <motion.div
+                className="absolute inset-0 z-0"
+                initial={{
+                  clipPath: 'ellipse(0% 0% at 100% 0%)',
+                  backgroundColor: '#e5e2d8',
+                }}
+                whileHover={{
+                  clipPath: 'ellipse(120% 80% at 100% 0%)',
+                }}
+                transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+                style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
+              />
+
+              <div className="relative z-10 p-10 flex flex-col h-full justify-between">
+                {/* Icon with smooth transitions */}
+                <motion.div
+                  className="mb-8"
+                  initial={{ scale: 1, rotate: 0 }}
+                  whileHover={{ scale: 1.13, rotate: 8 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                >
+                  <div className="w-16 h-16 flex items-center justify-center text-gray-700">
+                    {value?.icon}
+                  </div>
+                </motion.div>
+
+                {/* Title with subtle animation */}
+                <motion.h3
+                  className="text-2xl font-semibold text-gray-900 mb-4"
+                  initial={{ y: 0 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                >
+                  {value?.title || 'Transparency'}
+                </motion.h3>
+
+                {/* Description */}
+                <motion.p
+                  className="text-gray-600 leading-relaxed mb-8"
+                  initial={{ opacity: 0.8 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  {value?.description ||
+                    'A departure from the industry norm of ambiguity, Montfort, as a public and finest company.'}
+                </motion.p>
+
+                {/* Arrow button with smooth transitions */}
+                <motion.div
+                  className="flex items-center justify-start"
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 6 }}
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                >
+                  <motion.div
+                    className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg"
+                    initial={{
+                      backgroundColor: '#23443e',
+                      color: '#ffffff',
+                      scale: 1,
+                    }}
+                    whileHover={{
+                      backgroundColor: '#1a332e',
+                      color: '#ffffff',
+                      scale: 1.12,
+                    }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  >
+                    <IconArrowRight />
+                  </motion.div>
+                </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>

@@ -182,15 +182,6 @@ export default function LoanCalculator() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
-            className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mb-4 shadow-lg"
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <Calculator className="w-8 h-8 text-white" />
-          </motion.div>
           <motion.h2
             className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
             initial={{ opacity: 0, y: 20 }}

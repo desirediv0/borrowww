@@ -108,7 +108,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-blue-200 via-gray-100 to-green-200 mb-8" />
+        <div className="w-full h-px bg-gradient-to-r from-blue-200 via-gray-100 to-blue-200 mb-8" />
 
         {/* Bottom Footer */}
         <motion.div
