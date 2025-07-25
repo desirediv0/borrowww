@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const LOOP_TIME = 20;
 
@@ -36,11 +37,13 @@ export default function LogoSlider() {
           {[...logos, ...logos].map((logo, i) => (
             <div key={i} className="flex-shrink-0 flex flex-col items-center w-24">
               <div className="w-24 h-16 bg-gray-100 rounded-lg flex items-center justify-center mb-2">
-                <img
+                <Image
                   src={logo.src}
                   alt={logo.alt}
                   className="max-h-12 max-w-[80px] object-contain"
                   draggable="false"
+                  width={100}
+                  height={100}
                 />
               </div>
               <span className="text-gray-700 text-xs text-center max-w-20">{logo.alt}</span>
