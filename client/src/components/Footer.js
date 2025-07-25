@@ -47,7 +47,7 @@ export default function Footer() {
               CIBIL Check & Instant Loan Provider
             </span>
             <p className="text-gray-600 leading-relaxed max-w-sm text-base">
-              India's leading CIBIL score checking and loan provider platform. Get instant loan
+              India&apos;s leading CIBIL score checking and loan provider platform. Get instant loan
               approval with competitive rates and transparent process.
             </p>
             {/* Social Links */}

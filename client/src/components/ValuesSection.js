@@ -106,7 +106,7 @@ export default function ValuesSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              We are India's leading CIBIL score checking and loan provider platform, helping
+              We are India&apos;s leading CIBIL score checking and loan provider platform, helping
               millions of customers achieve their financial goals with ease and transparency.
             </motion.p>
           </motion.div>
