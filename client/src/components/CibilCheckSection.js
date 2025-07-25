@@ -103,15 +103,15 @@ export default function CibilCheckSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-md rounded overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6">
+            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-md rounded-3xl overflow-hidden max-w-lg mx-auto lg:mx-0">
+              <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-t-3xl">
                 <CardTitle className="text-2xl">Free CIBIL Score Check</CardTitle>
                 <CardDescription className="text-blue-100">
                   Enter your details to get your credit score instantly
                 </CardDescription>
               </CardHeader>
-              <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-5">
+              <CardContent className="p-8 sm:p-6 md:p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="relative">
                     <Label htmlFor="fullName" className="text-base font-semibold text-blue-800">
                       Full Name
@@ -124,7 +124,7 @@ export default function CibilCheckSection() {
                         value={formData.fullName}
                         onChange={handleInputChange}
                         placeholder="Enter your full name"
-                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-16 p-3 border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl bg-white shadow-sm placeholder:text-gray-500 transition-all duration-200"
                         required
                       />
                     </div>
@@ -142,8 +142,9 @@ export default function CibilCheckSection() {
                         value={formData.panNumber}
                         onChange={handleInputChange}
                         placeholder="ABCDE1234F"
-                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-16 p-3 border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl bg-white shadow-sm placeholder:text-gray-500 transition-all duration-200 uppercase tracking-widest"
                         required
+                        maxLength={10}
                       />
                     </div>
                   </div>
@@ -163,8 +164,9 @@ export default function CibilCheckSection() {
                         value={formData.aadhaarNumber}
                         onChange={handleInputChange}
                         placeholder="1234 5678 9012"
-                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-16 p-3 border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl bg-white shadow-sm placeholder:text-gray-500 transition-all duration-200 tracking-widest"
                         required
+                        maxLength={14}
                       />
                     </div>
                   </div>
@@ -181,8 +183,9 @@ export default function CibilCheckSection() {
                         value={formData.mobileNumber}
                         onChange={handleInputChange}
                         placeholder="98765 43210"
-                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-16 p-3 border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl bg-white shadow-sm placeholder:text-gray-500 transition-all duration-200"
                         required
+                        maxLength={11}
                       />
                     </div>
                   </div>
@@ -199,7 +202,7 @@ export default function CibilCheckSection() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your@email.com"
-                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-16 p-3 border-2 border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 rounded-xl bg-white shadow-sm placeholder:text-gray-500 transition-all duration-200"
                         required
                       />
                     </div>
@@ -207,7 +210,7 @@ export default function CibilCheckSection() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 text-lg font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 text-lg font-bold rounded shadow-lg transform hover:scale-105 transition-all duration-300 focus:ring-2 focus:ring-blue-300 focus:outline-none"
                   >
                     Check CIBIL Score Now
                   </Button>
@@ -270,6 +273,26 @@ export default function CibilCheckSection() {
           </motion.div>
         </div>
       </div>
+      {/* Responsive tweaks */}
+      <style jsx global>{`
+        @media (max-width: 1024px) {
+          #cibil-check .grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 640px) {
+          #cibil-check .p-8,
+          #cibil-check .sm\\:p-6 {
+            padding: 1.25rem !important;
+          }
+          #cibil-check .text-4xl {
+            font-size: 2rem !important;
+          }
+          #cibil-check .text-xl {
+            font-size: 1.1rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
