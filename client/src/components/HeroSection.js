@@ -4,7 +4,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import { ArrowUp, Globe, Sparkles, Star } from 'lucide-react';
+import { ArrowUp, CreditCard, Globe, Shield, Sparkles, Star } from 'lucide-react';
 
 export default function HeroSection() {
   return (
@@ -30,23 +30,23 @@ export default function HeroSection() {
                 className="font-medium text-sm tracking-wider uppercase mb-4"
                 style={{ color: 'hsl(217, 91%, 60%)' }}
               >
-                TRY IT NOW!
+                INSTANT APPROVAL!
               </p>
 
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
-                Change the way
+                Check Your CIBIL
                 <br />
-                you use your
+                Score & Get
                 <br />
                 <span className="italic" style={{ color: 'hsl(217, 91%, 60%)' }}>
-                  money
+                  Instant Loans
                 </span>
               </h1>
             </div>
 
             <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-              From your everyday spending, to planning for your future with savings and investments,
-              Ascone helps you get more from your money.
+              Get your CIBIL score checked instantly and apply for personal loans, home loans,
+              business loans, and more. Quick approval with competitive rates.
             </p>
 
             <div className="flex items-center gap-8">
@@ -54,7 +54,7 @@ export default function HeroSection() {
                 className="text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all duration-300 shadow-lg"
                 style={{ backgroundColor: 'hsl(217, 91%, 60%)' }}
               >
-                Get Started Now
+                Check CIBIL Score
               </button>
 
               <div className="flex items-center gap-3">
@@ -64,9 +64,9 @@ export default function HeroSection() {
                   ))}
                 </div>
                 <div className="text-sm">
-                  <div className="font-semibold text-gray-900">5.0</div>
+                  <div className="font-semibold text-gray-900">4.9/5.0</div>
                   <div className="text-gray-500">
-                    from 120+ <span className="underline">reviews</span>
+                    from 10,000+ <span className="underline">customers</span>
                   </div>
                 </div>
               </div>
@@ -76,16 +76,24 @@ export default function HeroSection() {
           {/* Right Content - Cards Grid */}
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
-              {/* Top Left - Phone Image Card */}
-              <div className="rounded-3xl  aspect-square flex items-center justify-center overflow-hidden">
-                <Image src={'/1st.jpg'} width={300} height={300} alt="1st" />
+              {/* Top Left - CIBIL Score Card */}
+              <div className="rounded-3xl p-6 aspect-square flex flex-col justify-between bg-gradient-to-br from-blue-500 to-blue-600 text-white">
+                <div className="flex flex-col items-center justify-center">
+                  <h3 className="text-6xl font-bold mb-1">750+</h3>
+                  <p className="text-blue-100 text-sm">Average CIBIL Score</p>
+                </div>
+                <div className="flex justify-end">
+                  <div className="w-12 h-12 border-2 border-white/30 rounded-full flex items-center justify-center">
+                    <CreditCard className="w-6 h-6 text-white" />
+                  </div>
+                </div>
               </div>
 
-              {/* Top Right - Currencies Card */}
-              <div className="rounded-3xl rounded-l-full p-6 aspect-square flex flex-col justify-between bg-blue-100">
+              {/* Top Right - Loan Amount Card */}
+              <div className="rounded-3xl p-6 aspect-square flex flex-col justify-between bg-green-100">
                 <div className="flex flex-col items-center justify-center">
-                  <h3 className="text-6xl font-bold text-gray-800 mb-1">56+</h3>
-                  <p className="text-gray-700 text-sm">Currencies</p>
+                  <h3 className="text-4xl font-bold text-gray-800 mb-1">₹50L+</h3>
+                  <p className="text-gray-700 text-sm">Total Loans Disbursed</p>
                 </div>
                 <div className="flex justify-end">
                   <div className="w-12 h-12 border-2 border-gray-600 rounded-full flex items-center justify-center">
@@ -94,35 +102,25 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Bottom Left - Users Active Card */}
-              <div className="rounded-3xl p-6 aspect-square flex flex-col justify-between relative bg-blue-100">
+              {/* Bottom Left - Processing Time Card */}
+              <div className="rounded-3xl p-6 aspect-square flex flex-col justify-between relative bg-orange-100">
                 <div className="flex items-center justify-center flex-1">
-                  <Sparkles className="w-16 h-16 text-gray-700" />
+                  <Sparkles className="w-16 h-16 text-orange-700" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-700 mb-2">Users Active</p>
-                  <div className="flex -space-x-2">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="w-8 h-8 rounded-full border-2 border-white"
-                        style={{
-                          backgroundColor: i === 3 ? 'hsl(217, 91%, 60%)' : 'hsl(6, 90%, 55%)',
-                        }}
-                      />
-                    ))}
-                  </div>
+                  <p className="text-sm text-gray-700 mb-2">Processing Time</p>
+                  <div className="text-2xl font-bold text-gray-800">24 Hours</div>
                 </div>
               </div>
 
-              {/* Bottom Right - Savings Card */}
-              <div className="rounded-3xl p-6 aspect-square flex flex-col justify-between text-black relative bg-blue-100">
+              {/* Bottom Right - Interest Rate Card */}
+              <div className="rounded-3xl p-6 aspect-square flex flex-col justify-between text-black relative bg-purple-100">
                 <div>
                   <div className="flex items-center gap-1 mb-1">
-                    <h3 className="text-2xl font-bold">$196,000</h3>
+                    <h3 className="text-2xl font-bold">8.5%</h3>
                     <ArrowUp className="w-5 h-5" />
                   </div>
-                  <p className="text-black/80 text-sm">Saving</p>
+                  <p className="text-black/80 text-sm">Starting Interest Rate</p>
                 </div>
 
                 {/* Chart visualization */}

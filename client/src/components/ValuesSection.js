@@ -14,9 +14,9 @@ export default function ValuesSection() {
           <circle cx="36" cy="36" r="8" stroke="currentColor" strokeWidth="2" fill="none" />
         </svg>
       ),
-      title: 'Transparency',
+      title: 'Transparent Process',
       description:
-        'A departure from the industry norm of ambiguity, Montfort, as a public and finest company.',
+        'Complete transparency in CIBIL score checking and loan processing. No hidden charges, clear terms, and honest communication throughout your journey.',
       bgColor: 'bg-white',
       textColor: 'text-gray-900',
     },
@@ -47,9 +47,9 @@ export default function ValuesSection() {
           <path d="M32 8L40 16" stroke="currentColor" strokeWidth="2" />
         </svg>
       ),
-      title: 'Creative expansion',
+      title: 'Instant Approval',
       description:
-        'Ascone proprietary fintech platform helps our subsidiaries locate and manage investments.',
+        'Get your CIBIL score checked instantly and receive loan approval within 24 hours. Our advanced technology ensures quick processing and faster disbursals.',
       bgColor: 'bg-white',
       textColor: 'text-gray-900',
     },
@@ -61,16 +61,16 @@ export default function ValuesSection() {
           <circle cx="24" cy="24" r="3" fill="currentColor" />
         </svg>
       ),
-      title: 'Private Credit Investments',
+      title: 'Competitive Rates',
       description:
-        'We provide access to unique private credit investments; a rare but valuable part of a sound investment portfolio.',
+        'Access to the best loan rates starting from 8.5% with flexible repayment options. We partner with leading banks to offer you the most competitive terms.',
       bgColor: 'bg-[#f5f2e8]',
       textColor: 'text-gray-900',
     },
   ];
 
   return (
-    <section id="values" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
@@ -87,9 +87,9 @@ export default function ValuesSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Make your spend,
+              Why Choose
               <br />
-              Well-spent
+              Borrowww?
             </motion.h2>
           </motion.div>
 
@@ -106,8 +106,8 @@ export default function ValuesSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              Manages a diversified group of specialized private credit brands with efficient
-              tech-enabled processes.
+              We are India's leading CIBIL score checking and loan provider platform, helping
+              millions of customers achieve their financial goals with ease and transparency.
             </motion.p>
           </motion.div>
         </div>

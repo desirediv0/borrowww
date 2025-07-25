@@ -10,10 +10,10 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   const footerLinks = {
-    Product: ['Features', 'Pricing', 'API', 'Documentation'],
-    Company: ['About', 'Blog', 'Careers', 'Press'],
-    Resources: ['Help Center', 'Community', 'Guides', 'Webinars'],
-    Legal: ['Privacy', 'Terms', 'Security', 'Compliance'],
+    Services: ['CIBIL Check', 'Personal Loan', 'Home Loan', 'Business Loan'],
+    Company: ['About Us', 'Careers', 'Press', 'Partners'],
+    Support: ['Help Center', 'Contact Us', 'Documentation', 'Status'],
+    Legal: ['Privacy Policy', 'Terms of Service', 'Security', 'Compliance'],
   };
 
   const socialLinks = [
@@ -44,11 +44,11 @@ export default function Footer() {
               <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
                 <div className="w-4 h-4 bg-white rounded-sm transform rotate-45"></div>
               </div>
-              <span className="text-xl font-semibold">Ascone</span>
+              <span className="text-xl font-semibold">Borrowww</span>
             </motion.div>
             <p className="text-gray-400 leading-relaxed max-w-sm">
-              Change the way you use your money. From everyday spending to future planning with
-              savings and investments.
+              India's leading CIBIL score checking and loan provider platform. Get instant loan
+              approval with competitive rates and transparent process.
             </p>
 
             {/* Social Links */}
@@ -115,7 +115,7 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2024 Ascone Finance. All rights reserved.
+            © 2024 Borrowww Finance. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6 text-sm">
@@ -138,7 +138,7 @@ export default function Footer() {
               className="text-gray-400 hover:text-white transition-colors duration-200"
               whileHover={{ y: -2 }}
             >
-              Cookie Policy
+              RBI Compliance
             </motion.a>
           </div>
         </motion.div>

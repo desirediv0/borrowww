@@ -1,3 +1,4 @@
+import CibilCheckSection from '@/components/CibilCheckSection';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -11,9 +12,10 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <HeroSection />
+      <CibilCheckSection />
       <LogoSlider />
-      <LoanCalculator />
       <ValuesSection />
+      <LoanCalculator />
       <FAQSection />
       <Footer />
     </main>

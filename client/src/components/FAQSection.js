@@ -10,29 +10,34 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      question: 'How sending a bank transfer',
+      question: 'How do I check my CIBIL score?',
       answer:
-        'You can send bank transfers easily through our secure platform. Simply select the recipient, enter the amount, and confirm the transaction. All transfers are processed with bank-level security.',
+        'You can check your CIBIL score instantly by providing your basic details like PAN number, Aadhaar number, and contact information. The process is completely secure and takes only a few minutes.',
     },
     {
-      question: 'What is the scheduled payments feature?',
+      question: 'What documents are required for loan application?',
       answer:
-        'The scheduled payments feature allows you to manage all of your subscriptions or recurring payments in one place. This way, you can view details for every payment, which include the amount, frequency, payment dates etc.',
+        'For loan applications, you need identity proof (Aadhaar/PAN), address proof, income proof (salary slips/bank statements), and employment proof. The exact documents may vary based on loan type and amount.',
     },
     {
-      question: 'How can I reactivate a terminated card?',
+      question: 'How long does loan approval take?',
       answer:
-        'To reactivate a terminated card, please contact our customer support team through the app or website. They will guide you through the verification process and help restore your card access.',
+        'Most loan applications are approved within 24 hours after document verification. Personal loans and business loans typically have faster processing times compared to home loans.',
     },
     {
-      question: 'How about with a refund?',
+      question: 'What is the minimum CIBIL score required?',
       answer:
-        'Refunds are processed automatically for eligible transactions. For manual refund requests, please submit a ticket through our support system with transaction details, and we will process it within 3-5 business days.',
+        'Generally, a CIBIL score of 750+ is considered good for loan approval. However, we work with various lenders who may approve loans for scores as low as 650, depending on other factors.',
     },
     {
-      question: 'How can add money to my account?',
+      question: 'Are there any hidden charges?',
       answer:
-        'You can add money to your account through bank transfer, debit card, or by connecting your existing bank account. All funding methods are secure and typically process within minutes.',
+        'No, we maintain complete transparency. All charges including processing fees, interest rates, and other costs are clearly communicated upfront. There are no hidden charges in our loan process.',
+    },
+    {
+      question: 'Can I apply for multiple loans simultaneously?',
+      answer:
+        'Yes, you can apply for different types of loans, but approval depends on your income, existing loan obligations, and credit score. We recommend checking your eligibility before applying.',
     },
   ];
 
@@ -58,6 +63,15 @@ export default function FAQSection() {
               <br />
               questions
             </motion.h2>
+            <motion.p
+              className="text-lg text-gray-600 mt-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              Get answers to common questions about CIBIL score checking and loan applications
+            </motion.p>
           </motion.div>
 
           {/* Right Side - FAQ Items */}
