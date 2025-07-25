@@ -41,7 +41,7 @@ export default function Footer() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-              <div className="w-8 h-8 bg-[#2d5a4a] rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
                 <div className="w-4 h-4 bg-white rounded-sm transform rotate-45"></div>
               </div>
               <span className="text-xl font-semibold">Ascone</span>
@@ -57,7 +57,7 @@ export default function Footer() {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#2d5a4a] transition-colors duration-200"
+                  className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors duration-200"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, scale: 0 }}
@@ -143,15 +143,6 @@ export default function Footer() {
           </div>
         </motion.div>
       </div>
-
-      {/* Background decoration */}
-      <motion.div
-        className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#2d5a4a] via-[#4ade80] to-[#2d5a4a]"
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, ease: 'easeInOut' }}
-      />
     </footer>
   );
 }

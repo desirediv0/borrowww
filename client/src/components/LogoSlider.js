@@ -35,7 +35,7 @@ export default function LogoSlider() {
             <Image
               src={logo.src}
               alt={logo.alt}
-              className="h-12 md:h-16"
+              className="h-12 md:h-16 "
               width={200}
               height={200}
             />

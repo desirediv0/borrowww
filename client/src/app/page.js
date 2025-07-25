@@ -1,8 +1,8 @@
 import FAQSection from '@/components/FAQSection';
-import FeaturesSection from '@/components/FeaturesSection';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import LoanCalculator from '@/components/LoanCalculator';
 import LogoSlider from '@/components/LogoSlider';
 import ValuesSection from '@/components/ValuesSection';
 
@@ -12,7 +12,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <LogoSlider />
-      <FeaturesSection />
+      <LoanCalculator />
       <ValuesSection />
       <FAQSection />
       <Footer />

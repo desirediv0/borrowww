@@ -1,8 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
+import Image from 'next/image';
+
+import { logo } from '@/assets';
 import { IconMenu2, IconX } from '@tabler/icons-react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,15 +21,15 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Features', 'Values', 'Numbers', 'FAQ'];
+  const navItems = ['Features', 'Calculator', 'Values', 'Numbers', 'FAQ'];
 
   return (
     <>
       {/* Top Banner */}
-      <motion.div 
+      <motion.div
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="bg-[#2d5a4a] text-white py-3 px-4 text-center text-sm relative"
+        className="bg-blue-500 text-white py-3 px-4 text-center text-sm relative"
       >
         <div className="flex items-center justify-center gap-2">
           <span className="text-pink-300">🚀</span>
@@ -38,7 +42,7 @@ export default function Header() {
       </motion.div>
 
       {/* Main Header */}
-      <motion.header 
+      <motion.header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-white'
         }`}
@@ -49,15 +53,12 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <motion.div 
+            <motion.div
               className="flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-              <div className="w-8 h-8 bg-[#2d5a4a] rounded-lg flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-sm transform rotate-45"></div>
-              </div>
-              <span className="text-xl font-semibold text-gray-900">Ascone</span>
+              <Image src={logo} alt="borroww" width={80} height={80} />
             </motion.div>
 
             {/* Desktop Navigation */}
@@ -79,7 +80,7 @@ export default function Header() {
 
             {/* Auth Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <motion.button 
+              <motion.button
                 className="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -89,9 +90,9 @@ export default function Header() {
               >
                 Login
               </motion.button>
-              <motion.button 
-                className="bg-[#2d5a4a] text-white px-6 py-2 rounded-full font-medium hover:bg-[#234139] transition-colors duration-200"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(45, 90, 74, 0.3)" }}
+              <motion.button
+                className="bg-blue-500 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors duration-200"
+                whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(45, 90, 74, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -136,7 +137,7 @@ export default function Header() {
                   <button className="block w-full text-left text-gray-600 hover:text-gray-900 font-medium">
                     Login
                   </button>
-                  <button className="block w-full bg-[#2d5a4a] text-white px-4 py-2 rounded-full font-medium">
+                  <button className="block w-full bg-blue-500 text-white px-4 py-2 rounded-full font-medium">
                     Sign Up
                   </button>
                 </div>

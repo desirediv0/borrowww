@@ -83,7 +83,7 @@ export default function FAQSection() {
                   whileHover={{ x: 5 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 >
-                  <span className="text-lg font-medium text-gray-900 group-hover:text-[#2d5a4a] transition-colors duration-200">
+                  <span className="text-lg font-medium text-gray-900 group-hover:text-blue-500 transition-colors duration-200">
                     {faq.question}
                   </span>
                   <motion.div
@@ -91,7 +91,7 @@ export default function FAQSection() {
                     transition={{ duration: 0.2 }}
                     className="flex-shrink-0 ml-4"
                   >
-                    <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center group-hover:border-[#2d5a4a] group-hover:bg-[#2d5a4a] group-hover:text-white transition-all duration-200">
+                    <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center group-hover:border-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all duration-200">
                       <IconPlus className="w-4 h-4" />
                     </div>
                   </motion.div>
