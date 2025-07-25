@@ -70,7 +70,7 @@ export default function ValuesSection() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
@@ -117,27 +117,18 @@ export default function ValuesSection() {
           {values.map((value, index) => (
             <motion.div
               key={index}
-              className="relative overflow-hidden shadow-lg cursor-pointer group bg-[#f5f2e8]"
+              className="relative overflow-hidden shadow-lg cursor-pointer group bg-blue-50 border-2 border-blue-100"
               style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.04 }}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              {/* Background with smooth color transition */}
-              <motion.div
-                className="absolute inset-0 z-0"
-                initial={{ backgroundColor: '#f5f2e8' }}
-                whileHover={{ backgroundColor: '#ede9dd' }}
-                transition={{ duration: 0.6, ease: 'easeInOut' }}
-                style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
-              />
-
               {/* Curved background element that appears on hover */}
               <motion.div
                 className="absolute inset-0 z-0"
                 initial={{
                   clipPath: 'ellipse(0% 0% at 100% 0%)',
-                  backgroundColor: '#e5e2d8',
+                  backgroundColor: '#e0f2fe',
                 }}
                 whileHover={{
                   clipPath: 'ellipse(120% 80% at 100% 0%)',
@@ -190,7 +181,7 @@ export default function ValuesSection() {
                   <motion.div
                     className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg"
                     initial={{
-                      backgroundColor: '#23443e',
+                      backgroundColor: '#2158DE',
                       color: '#ffffff',
                       scale: 1,
                     }}
