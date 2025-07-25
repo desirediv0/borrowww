@@ -47,7 +47,7 @@ export default function CibilCheckSection() {
       icon: Shield,
       title: '100% Secure',
       description: 'Bank-level security to protect your data',
-      color: 'text-green-600',
+      color: 'text-blue-600',
     },
     {
       icon: CheckCircle,
@@ -103,17 +103,17 @@ export default function CibilCheckSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-md rounded-2xl overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white p-6">
+            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-md rounded overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6">
                 <CardTitle className="text-2xl">Free CIBIL Score Check</CardTitle>
-                <CardDescription className="text-green-100">
+                <CardDescription className="text-blue-100">
                   Enter your details to get your credit score instantly
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="relative">
-                    <Label htmlFor="fullName" className="text-base font-semibold text-green-800">
+                    <Label htmlFor="fullName" className="text-base font-semibold text-blue-800">
                       Full Name
                     </Label>
                     <div className="relative mt-2">
@@ -124,14 +124,14 @@ export default function CibilCheckSection() {
                         value={formData.fullName}
                         onChange={handleInputChange}
                         placeholder="Enter your full name"
-                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
                         required
                       />
                     </div>
                   </div>
 
                   <div className="relative">
-                    <Label htmlFor="panNumber" className="text-base font-semibold text-green-800">
+                    <Label htmlFor="panNumber" className="text-base font-semibold text-blue-800">
                       PAN Number
                     </Label>
                     <div className="relative mt-2">
@@ -142,7 +142,7 @@ export default function CibilCheckSection() {
                         value={formData.panNumber}
                         onChange={handleInputChange}
                         placeholder="ABCDE1234F"
-                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
                         required
                       />
                     </div>
@@ -151,7 +151,7 @@ export default function CibilCheckSection() {
                   <div className="relative">
                     <Label
                       htmlFor="aadhaarNumber"
-                      className="text-base font-semibold text-green-800"
+                      className="text-base font-semibold text-blue-800"
                     >
                       Aadhaar Number
                     </Label>
@@ -163,17 +163,14 @@ export default function CibilCheckSection() {
                         value={formData.aadhaarNumber}
                         onChange={handleInputChange}
                         placeholder="1234 5678 9012"
-                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
                         required
                       />
                     </div>
                   </div>
 
                   <div className="relative">
-                    <Label
-                      htmlFor="mobileNumber"
-                      className="text-base font-semibold text-green-800"
-                    >
+                    <Label htmlFor="mobileNumber" className="text-base font-semibold text-blue-800">
                       Mobile Number
                     </Label>
                     <div className="relative mt-2">
@@ -184,14 +181,14 @@ export default function CibilCheckSection() {
                         value={formData.mobileNumber}
                         onChange={handleInputChange}
                         placeholder="98765 43210"
-                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
                         required
                       />
                     </div>
                   </div>
 
                   <div className="relative">
-                    <Label htmlFor="email" className="text-base font-semibold text-green-800">
+                    <Label htmlFor="email" className="text-base font-semibold text-blue-800">
                       Email Address
                     </Label>
                     <div className="relative mt-2">
@@ -202,7 +199,7 @@ export default function CibilCheckSection() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your@email.com"
-                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        className="pl-14 p-3 border-2 border-blue-100 focus:border-blue-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
                         required
                       />
                     </div>
@@ -210,13 +207,13 @@ export default function CibilCheckSection() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 text-lg font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 text-lg font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
                   >
                     Check CIBIL Score Now
                   </Button>
                 </form>
 
-                <p className="text-xs text-green-600 mt-4 text-center">
+                <p className="text-xs text-blue-600 mt-4 text-center">
                   By submitting this form, you agree to our Terms of Service and Privacy Policy
                 </p>
               </CardContent>
@@ -234,14 +231,14 @@ export default function CibilCheckSection() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg border border-green-100 hover:shadow-2xl transition-all duration-300"
+                className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg border border-blue-100 hover:shadow-2xl transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + index * 0.1 }}
                 whileHover={{ scale: 1.03, y: -2 }}
               >
-                <div className="p-3 rounded-xl bg-green-50 text-green-600">
+                <div className="p-3 rounded-xl bg-blue-50 text-blue-600">
                   <feature.icon className="w-6 h-6" />
                 </div>
                 <div>
@@ -253,13 +250,13 @@ export default function CibilCheckSection() {
 
             {/* Additional Info Card */}
             <motion.div
-              className="bg-green-50 border-2 border-green-600 text-black p-6 rounded-2xl flex items-start gap-4 shadow-lg md:col-span-2"
+              className="bg-blue-50 border-2 border-blue-600 text-black p-6 rounded-2xl flex items-start gap-4 shadow-lg md:col-span-2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8 }}
             >
-              <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+              <CheckCircle className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold mb-2">Why Check CIBIL Score?</h3>
                 <ul className="space-y-2 text-gray-700 text-base">
