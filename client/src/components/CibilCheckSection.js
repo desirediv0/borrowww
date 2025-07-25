@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { CheckCircle, CreditCard, Shield, Zap } from 'lucide-react';
+import { toast } from 'sonner';
 
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
@@ -30,6 +31,9 @@ export default function CibilCheckSection() {
     e.preventDefault();
     // Handle form submission
     console.log('Form submitted:', formData);
+    toast.success('CIBIL score checked successfully!', {
+      style: { background: '#22c55e', color: 'white' },
+    });
   };
 
   const features = [
@@ -60,7 +64,7 @@ export default function CibilCheckSection() {
   ];
 
   return (
-    <section id="cibil-check" className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+    <section id="cibil-check" className="py-20 bg-gradient-to-br from-blue-50 to-blue-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -71,7 +75,7 @@ export default function CibilCheckSection() {
           transition={{ duration: 0.8 }}
         >
           <motion.h2
-            className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+            className="text-4xl lg:text-5xl font-bold text-black mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -80,7 +84,7 @@ export default function CibilCheckSection() {
             Check Your CIBIL Score
           </motion.h2>
           <motion.p
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-800 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -99,104 +103,120 @@ export default function CibilCheckSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6">
+            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-md rounded-2xl overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white p-6">
                 <CardTitle className="text-2xl">Free CIBIL Score Check</CardTitle>
-                <CardDescription className="text-blue-100">
+                <CardDescription className="text-green-100">
                   Enter your details to get your credit score instantly
                 </CardDescription>
               </CardHeader>
-              <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <Label htmlFor="fullName" className="text-base font-semibold">
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="relative">
+                    <Label htmlFor="fullName" className="text-base font-semibold text-green-800">
                       Full Name
                     </Label>
-                    <Input
-                      id="fullName"
-                      name="fullName"
-                      type="text"
-                      value={formData.fullName}
-                      onChange={handleInputChange}
-                      placeholder="Enter your full name"
-                      className="mt-2 p-3 border-2 border-gray-200 focus:border-blue-500 rounded-xl"
-                      required
-                    />
+                    <div className="relative mt-2">
+                      <Input
+                        id="fullName"
+                        name="fullName"
+                        type="text"
+                        value={formData.fullName}
+                        onChange={handleInputChange}
+                        placeholder="Enter your full name"
+                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        required
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <Label htmlFor="panNumber" className="text-base font-semibold">
+                  <div className="relative">
+                    <Label htmlFor="panNumber" className="text-base font-semibold text-green-800">
                       PAN Number
                     </Label>
-                    <Input
-                      id="panNumber"
-                      name="panNumber"
-                      type="text"
-                      value={formData.panNumber}
-                      onChange={handleInputChange}
-                      placeholder="ABCDE1234F"
-                      className="mt-2 p-3 border-2 border-gray-200 focus:border-blue-500 rounded-xl"
-                      required
-                    />
+                    <div className="relative mt-2">
+                      <Input
+                        id="panNumber"
+                        name="panNumber"
+                        type="text"
+                        value={formData.panNumber}
+                        onChange={handleInputChange}
+                        placeholder="ABCDE1234F"
+                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        required
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <Label htmlFor="aadhaarNumber" className="text-base font-semibold">
+                  <div className="relative">
+                    <Label
+                      htmlFor="aadhaarNumber"
+                      className="text-base font-semibold text-green-800"
+                    >
                       Aadhaar Number
                     </Label>
-                    <Input
-                      id="aadhaarNumber"
-                      name="aadhaarNumber"
-                      type="text"
-                      value={formData.aadhaarNumber}
-                      onChange={handleInputChange}
-                      placeholder="1234 5678 9012"
-                      className="mt-2 p-3 border-2 border-gray-200 focus:border-blue-500 rounded-xl"
-                      required
-                    />
+                    <div className="relative mt-2">
+                      <Input
+                        id="aadhaarNumber"
+                        name="aadhaarNumber"
+                        type="text"
+                        value={formData.aadhaarNumber}
+                        onChange={handleInputChange}
+                        placeholder="1234 5678 9012"
+                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        required
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <Label htmlFor="mobileNumber" className="text-base font-semibold">
+                  <div className="relative">
+                    <Label
+                      htmlFor="mobileNumber"
+                      className="text-base font-semibold text-green-800"
+                    >
                       Mobile Number
                     </Label>
-                    <Input
-                      id="mobileNumber"
-                      name="mobileNumber"
-                      type="tel"
-                      value={formData.mobileNumber}
-                      onChange={handleInputChange}
-                      placeholder="98765 43210"
-                      className="mt-2 p-3 border-2 border-gray-200 focus:border-blue-500 rounded-xl"
-                      required
-                    />
+                    <div className="relative mt-2">
+                      <Input
+                        id="mobileNumber"
+                        name="mobileNumber"
+                        type="tel"
+                        value={formData.mobileNumber}
+                        onChange={handleInputChange}
+                        placeholder="98765 43210"
+                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        required
+                      />
+                    </div>
                   </div>
 
-                  <div>
-                    <Label htmlFor="email" className="text-base font-semibold">
+                  <div className="relative">
+                    <Label htmlFor="email" className="text-base font-semibold text-green-800">
                       Email Address
                     </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="your@email.com"
-                      className="mt-2 p-3 border-2 border-gray-200 focus:border-blue-500 rounded-xl"
-                      required
-                    />
+                    <div className="relative mt-2">
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="your@email.com"
+                        className="pl-14 p-3 border-2 border-green-100 focus:border-green-500 rounded-xl bg-white shadow-sm placeholder:text-gray-500"
+                        required
+                      />
+                    </div>
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 text-lg font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3 text-lg font-bold rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
                   >
                     Check CIBIL Score Now
                   </Button>
                 </form>
 
-                <p className="text-xs text-gray-500 mt-4 text-center">
+                <p className="text-xs text-green-600 mt-4 text-center">
                   By submitting this form, you agree to our Terms of Service and Privacy Policy
                 </p>
               </CardContent>
@@ -209,43 +229,46 @@ export default function CibilCheckSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg border border-gray-100"
+                className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg border border-green-100 hover:shadow-2xl transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -2 }}
+                whileHover={{ scale: 1.03, y: -2 }}
               >
-                <div className={`p-3 rounded-xl bg-gray-50 ${feature.color}`}>
+                <div className="p-3 rounded-xl bg-green-50 text-green-600">
                   <feature.icon className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <h3 className="text-lg font-semibold text-black mb-1">{feature.title}</h3>
+                  <p className="text-gray-700 text-sm">{feature.description}</p>
                 </div>
               </motion.div>
             ))}
 
             {/* Additional Info Card */}
             <motion.div
-              className="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-2xl"
+              className="bg-green-50 border-2 border-green-600 text-black p-6 rounded-2xl flex items-start gap-4 shadow-lg md:col-span-2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8 }}
             >
-              <h3 className="text-xl font-bold mb-2">Why Check CIBIL Score?</h3>
-              <ul className="space-y-2 text-green-100">
-                <li>• Understand your creditworthiness</li>
-                <li>• Improve loan approval chances</li>
-                <li>• Get better interest rates</li>
-                <li>• Monitor your credit health</li>
-              </ul>
+              <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-xl font-bold mb-2">Why Check CIBIL Score?</h3>
+                <ul className="space-y-2 text-gray-700 text-base">
+                  <li>• Understand your creditworthiness</li>
+                  <li>• Improve loan approval chances</li>
+                  <li>• Get better interest rates</li>
+                  <li>• Monitor your credit health</li>
+                </ul>
+              </div>
             </motion.div>
           </motion.div>
         </div>
