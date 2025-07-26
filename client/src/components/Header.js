@@ -29,7 +29,7 @@ export default function Header() {
       <motion.div
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="bg-blue-500 text-white py-3 px-4 text-center text-sm relative"
+        className="bg-[var(--primary-blue)] text-white py-3 px-4 text-center text-sm relative"
       >
         <div className="flex items-center justify-center gap-2">
           <span className="text-pink-300">⚡</span>
@@ -50,7 +50,7 @@ export default function Header() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <motion.div
@@ -91,7 +91,7 @@ export default function Header() {
                 Check CIBIL
               </motion.button>
               <motion.button
-                className="bg-blue-500 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors duration-200"
+                className="bg-[var(--primary-blue)] text-white px-6 py-2 rounded-full font-medium hover:bg-[var(--primary-darkgreen)] transition-colors duration-200"
                 whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(45, 90, 74, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: 20 }}

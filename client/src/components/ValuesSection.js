@@ -71,7 +71,7 @@ export default function ValuesSection() {
 
   return (
     <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <motion.div
@@ -80,6 +80,15 @@ export default function ValuesSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
+            <motion.p
+              className="text-lg text-blue-600 leading-tight mb-3 uppercase font-normal"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Values
+            </motion.p>
             <motion.h2
               className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight"
               initial={{ opacity: 0, y: 20 }}
