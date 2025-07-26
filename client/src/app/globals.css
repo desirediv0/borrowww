@@ -85,3 +85,7 @@ html {
 .animate-pulse-slow {
   animation: pulse-slow 2s ease-in-out infinite;
 }
+
+.bg{
+  background-image: radial-gradient(circle at 45%, #ab40ff33 6%, #fff0 41%), radial-gradient(circle at 30% 40%, #ff007a33, #fff0 33%);
+}

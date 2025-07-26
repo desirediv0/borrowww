@@ -39,7 +39,7 @@ export default function HeroSection() {
                 <br />
                 Score & Get
                 <br />
-                <span className="italic" style={{ color: 'hsl(217, 91%, 60%)' }}>
+                <span className="italic text-[var(--primary-blue)]" >
                   Instant Loans
                 </span>
               </h1>
@@ -52,8 +52,7 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
               <button
-                className="text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:opacity-90 transition-all duration-300 shadow-lg"
-                style={{ backgroundColor: 'hsl(217, 91%, 60%)' }}
+                className="text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:opacity-90 transition-all duration-300 shadow-lg bg-[var(--primary-blue)]"
               >
                 Check CIBIL Score
               </button>

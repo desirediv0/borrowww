@@ -6,6 +6,7 @@ import HeroSection from '@/components/HeroSection';
 import LoanCalculator from '@/components/LoanCalculator';
 import LogoSlider from '@/components/LogoSlider';
 import ValuesSection from '@/components/ValuesSection';
+import Loans from '@/components/Loans';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <HeroSection />
       <CibilCheckSection />
       <LogoSlider />
+      {/* <Loans /> */}
       <ValuesSection />
       <LoanCalculator />
       <FAQSection />
