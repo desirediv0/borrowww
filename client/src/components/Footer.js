@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import logo from '@/assets/logo.svg';
+import logo from '@/assets/logo.png';
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -37,11 +37,11 @@ export default function Footer() {
               <Image
                 src={logo}
                 alt="Borrowww Logo"
-                width={48}
-                height={36}
-                className="rounded-lg p-1 shadow-md bg-white border border-blue-100"
+                width={200}
+                height={40}
+                className="rounded-lg p-1"
               />
-              <span className="text-2xl font-bold tracking-tight text-blue-700">Borrowww</span>
+              {/* <span className="text-2xl font-bold tracking-tight text-blue-700">Borrowww</span> */}
             </div>
             <span className="text-blue-600 font-medium text-sm mb-1">
               CIBIL Check & Instant Loan Provider

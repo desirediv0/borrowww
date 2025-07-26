@@ -1,3 +1,4 @@
-import logo from './logo.svg';
+import logo from './logo.png';
+import globeIcon from './globe.svg';
 
-export { logo };
+export { logo, globeIcon };

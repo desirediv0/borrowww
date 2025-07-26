@@ -117,10 +117,10 @@ export default function ValuesSection() {
           {values.map((value, index) => (
             <motion.div
               key={index}
-              className="relative overflow-hidden shadow-lg cursor-pointer group bg-blue-50 border-2 border-blue-100"
-              style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
+              className={`relative overflow-hidden shadow-lg cursor-pointer group border-2 border-blue-100 hover:bg-blue-50 hover:border-blue-50  ${index===1 ? 'hover:rounded-br-[80px]' : 'hover:rounded-tr-[80px]'} duration-300 ease-in-out`}
+              // style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
               initial={{ scale: 1 }}
-              whileHover={{ scale: 1.04 }}
+              // whileHover={{ scale: 1.04 }}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               {/* Curved background element that appears on hover */}
@@ -137,7 +137,7 @@ export default function ValuesSection() {
                 style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
               />
 
-              <div className="relative z-10 p-10 flex flex-col h-full justify-between">
+              <div className="relative z-10 p-10 md:p-12 flex flex-col h-full justify-between">
                 {/* Icon with smooth transitions */}
                 <motion.div
                   className="mb-8"
@@ -179,7 +179,7 @@ export default function ValuesSection() {
                   transition={{ duration: 0.25, ease: 'easeInOut' }}
                 >
                   <motion.div
-                    className="w-14 h-14 rounded-full flex items-center justify-center text-white shadow-lg"
+                    className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
                     initial={{
                       backgroundColor: '#2158DE',
                       color: '#ffffff',
@@ -192,7 +192,7 @@ export default function ValuesSection() {
                     }}
                     transition={{ duration: 0.4, ease: 'easeInOut' }}
                   >
-                    <IconArrowRight />
+                    <IconArrowRight className='-rotate-45' />
                   </motion.div>
                 </motion.div>
               </div>

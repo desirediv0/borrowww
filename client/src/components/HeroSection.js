@@ -3,6 +3,7 @@
 import React from 'react';
 
 import Image from 'next/image';
+import { globeIcon } from '@/assets';
 
 import { ArrowUp, CreditCard, Globe, Shield, Sparkles, Star } from 'lucide-react';
 
@@ -96,9 +97,10 @@ export default function HeroSection() {
                   <p className="text-gray-700 text-xs sm:text-sm">Total Loans Disbursed</p>
                 </div>
                 <div className="flex justify-end">
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center">
+                  {/* <div className="w-8 h-8 sm:w-12 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center">
                     <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
-                  </div>
+                  </div> */}
+                    <Image src={globeIcon} alt="Globe" width={70} height={50} className="rotate-12" />
                 </div>
               </div>
 

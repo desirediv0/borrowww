@@ -58,7 +58,7 @@ export default function Header() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
             >
-              <Image src={logo} alt="Borrowww" width={80} height={80} />
+              <Image src={logo} alt="Borrowww" width={200} height={80} />
             </motion.div>
 
             {/* Desktop Navigation */}

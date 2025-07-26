@@ -111,7 +111,7 @@ export default function CibilCheckSection() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-8 sm:p-6 md:p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="relative">
                     <Label htmlFor="fullName" className="text-base font-semibold text-blue-800">
                       Full Name
@@ -190,7 +190,7 @@ export default function CibilCheckSection() {
                     </div>
                   </div>
 
-                  <div className="relative">
+                  {/* <div className="relative">
                     <Label htmlFor="email" className="text-base font-semibold text-blue-800">
                       Email Address
                     </Label>
@@ -206,7 +206,7 @@ export default function CibilCheckSection() {
                         required
                       />
                     </div>
-                  </div>
+                  </div> */}
 
                   <Button
                     type="submit"
