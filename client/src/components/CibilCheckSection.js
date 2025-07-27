@@ -65,7 +65,7 @@ export default function CibilCheckSection() {
 
   return (
     <section id="cibil-check" className="py-20 bg-gradient-to-br from-blue-50 to-blue-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           className="text-center mb-12"
@@ -95,7 +95,7 @@ export default function CibilCheckSection() {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Left Side - Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

@@ -17,6 +17,36 @@
 html {
   scroll-behavior: smooth;
 }
+body{
+  font-family: 'aureate', sans-serif;
+
+}
+
+@font-face {
+  font-family: 'aureate';
+  src: url('/font/aureate-regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'quining';
+  src: url('/font/quning.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'kamelia';
+  src: url('/font/kamelia.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'monschone';
+  src: url('/font/monschone.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
+
 
 @layer base {
   * {

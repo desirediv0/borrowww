@@ -18,7 +18,7 @@ export default function LogoSlider() {
   return (
     <div className="overflow-hidden py-8 bg-white">
       <div className="text-center mb-8">
-        <h3 className="text-xl font-semibold text-gray-700 mb-2">Trusted by Leading Banks</h3>
+        <h3 className="text-xl md:text-4xl font-semibold text-gray-700 mb-2">Trusted by Leading Banks</h3>
         <p className="text-gray-500">Partnered with top financial institutions across India</p>
       </div>
       <div className="relative w-full">
@@ -35,18 +35,18 @@ export default function LogoSlider() {
           style={{ width: '200%' }}
         >
           {[...logos, ...logos].map((logo, i) => (
-            <div key={i} className="flex-shrink-0 flex flex-col items-center w-24">
-              <div className="w-24 h-16 bg-gray-100 rounded-lg flex items-center justify-center mb-2">
+            <div key={i} className="flex-shrink-0 flex flex-col items-center w-28">
+              <div className="w-28 h-28 flex items-center justify-center mb-2">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  className="max-h-12 max-w-[80px] object-contain"
+                  className="w-full h-full object-contain"
                   draggable="false"
                   width={100}
                   height={100}
                 />
               </div>
-              <span className="text-gray-700 text-xs text-center max-w-20">{logo.alt}</span>
+              {/* <span className="text-gray-700 text-xs text-center max-w-20">{logo.alt}</span> */}
             </div>
           ))}
         </motion.div>
