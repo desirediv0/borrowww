@@ -76,7 +76,7 @@ export default function LoanCalculator() {
   // Loan type configurations
   const loanTypes = {
     home: {
-      name: 'Home Loan',
+      name: 'EMI Calculator',
       icon: Home,
       minAmount: 100000,
       maxAmount: 50000000,
@@ -172,8 +172,8 @@ export default function LoanCalculator() {
   }, [activeTab, loanAmount, interestRate, loanTerm, loanTypes]);
 
   return (
-    <section id="calculator" className="py-12 bg-gradient-to-br from-gray-50 to-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="calculator" className="py-12 ">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           className="text-center mb-8"
@@ -212,27 +212,31 @@ export default function LoanCalculator() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-1"
           >
-            <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 p-4">
-                <CardTitle className="text-xl font-bold text-gray-900">Choose Loan Type</CardTitle>
+            <Card className="border-0 bg-[var(--primary-blue)] backdrop-blur-md overflow-hidden text-white p-4 md:p-6">
+              {/* <CardHeader className="p-4">
+                <CardTitle className="text-xl font-bold">Choose Loan Type</CardTitle>
                 <CardDescription>Select the type of loan you&apos;re interested in</CardDescription>
-              </CardHeader>
+              </CardHeader> */}
               <CardContent className="p-4">
                 <div className="space-y-2">
                   {Object.entries(loanTypes).map(([key, type]) => (
                     <motion.button
                       key={key}
                       onClick={() => setActiveTab(key)}
-                      className={`w-full p-3 rounded-xl transition-all duration-300 ${
-                        activeTab === key
-                          ? `bg-gradient-to-r ${type.color} text-white shadow-lg transform scale-105`
-                          : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 hover:border-gray-300'
-                      }`}
+                      // className={`w-full p-3 rounded-xl transition-all duration-300 ${
+                      //   activeTab === key
+                      //     ? `bg-gradient-to-r ${type.color} text-white shadow-lg transform scale-105`
+                      //     : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 hover:border-gray-300'
+                      // }`}
+                      className={`w-full p-3 pl-6 rounded-full transition-all duration-300 ${activeTab === key
+                          ? `bg-white text-black shadow-lg transform scale-105`
+                          : '  text-white border border-gray-200 hover:border-gray-300'
+                        }`}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <div
+                        {/* <div
                           className={`p-2 rounded-lg ${
                             activeTab === key ? 'bg-white/20' : type.bgColor
                           }`}
@@ -244,13 +248,12 @@ export default function LoanCalculator() {
                                 : `text-${type.color.split('-')[1]}-600`
                             }`}
                           />
-                        </div>
+                        </div> */}
                         <div className="text-left">
                           <div className="font-semibold text-base">{type.name}</div>
                           <div
-                            className={`text-xs ${
-                              activeTab === key ? 'text-white/80' : 'text-gray-500'
-                            }`}
+                            className={`text-xs ${activeTab === key ? 'text-black' : 'text-white'
+                              }`}
                           >
                             {type.description}
                           </div>
@@ -272,21 +275,41 @@ export default function LoanCalculator() {
             className="lg:col-span-2 space-y-6"
           >
             {/* Calculator Inputs */}
-            <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden mb-4">
+            <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-md overflow-hidden mb-4 rounded-bl-[10em]">
               <CardHeader className="bg-gradient-to-r from-gray-50 to-gray-100 p-4">
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <div className={`p-2 rounded-lg ${currentLoanType.bgColor}`}>
-                    <currentLoanType.icon className="w-5 h-5 text-blue-600" />
+                <div className='flex items-center justify-between'>
+                  <div>
+                    <CardTitle className="flex items-center gap-2 text-xl">
+                      <div className={`p-2 rounded-lg ${currentLoanType.bgColor}`}>
+                        <currentLoanType.icon className="w-5 h-5 text-blue-600" />
+                      </div>
+                      {currentLoanType.name} Calculator
+                    </CardTitle>
+                    <CardDescription>{currentLoanType.description}</CardDescription>
                   </div>
-                  {currentLoanType.name} Calculator
-                </CardTitle>
-                <CardDescription>{currentLoanType.description}</CardDescription>
+                  <div>
+                    <p>Monthly EMI</p>
+                    <div className="flex">
+                      <motion.div
+                        key={emi}
+                        className="text-4xl lg:text-5xl font-extrabold mb-1 text-[var(--primary-green)]"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.8, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        ₹{emi.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                      </motion.div>
+                      <p className='text-lg text-gray-600 my-auto pl-2'>/per month</p>
+                    </div>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent className="p-0">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 p-6">
                   {/* Loan Amount */}
                   <motion.div
-                    className="space-y-3 bg-white rounded-xl p-5 border border-blue-100 shadow-sm"
+                    className="space-y-3 bg-white rounded-xl p-5"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -320,7 +343,7 @@ export default function LoanCalculator() {
 
                   {/* Interest Rate */}
                   <motion.div
-                    className="space-y-3 bg-white rounded-xl p-5 border border-blue-100 shadow-sm"
+                    className="space-y-3 bg-white rounded-xl p-5"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
@@ -352,7 +375,7 @@ export default function LoanCalculator() {
 
                   {/* Loan Term */}
                   <motion.div
-                    className="space-y-3 bg-white rounded-xl p-5 border border-blue-100 shadow-sm"
+                    className="space-y-3 bg-white rounded-xl p-5"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -380,10 +403,59 @@ export default function LoanCalculator() {
                         <span>{currentLoanType.maxTerm} years</span>
                       </div>
                     </div>
+                    {/* Apply Now Button - Full width */}
+                    <motion.div
+                    className='flex justify-end pt-3 md:pt-8'
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                      <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:opacity-90 text-white py-4 md:py-6 px-8 text-lg font-bold rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300">
+                        Apply for {currentLoanType.name}
+                      </Button>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Loan Summary */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                  >
+                    <Card className=" bg-white border-none shadow-none overflow-hidden h-full flex flex-col justify-center p-6">
+                      <CardHeader className="bg-transparent p-0 mb-2 w-full text-center">
+                        <CardTitle className="text-black text-2xl font-bold">Loan Summary</CardTitle>
+                      </CardHeader>
+                      <CardContent className="p-0 w-full flex flex-col gap-4 items-center">
+                        <div className="grid grid-cols-2 gap-4 w-full">
+                          <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
+                            <div className="text-lg font-bold text-blue-700">
+                              ₹
+                              {(loanAmount - (activeTab === 'home' ? downPayment : 0)).toLocaleString(
+                                'en-IN'
+                              )}
+                            </div>
+                            <div className="text-xs text-blue-600">Principal</div>
+                          </div>
+                          <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
+                            <div className="text-lg font-bold text-blue-700">
+                              ₹{totalInterest.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                            </div>
+                            <div className="text-xs text-blue-600">Total Interest</div>
+                          </div>
+                        </div>
+                        <div className="text-center p-3 bg-blue-100 rounded-xl border border-blue-300 w-full">
+                          <div className="text-lg font-bold text-blue-800">
+                            ₹{totalPayment.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
+                          </div>
+                          <div className="text-xs text-blue-700">Total Payment</div>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </motion.div>
 
                   {/* Down Payment (for home loan) */}
-                  {activeTab === 'home' && (
+                  {/* {activeTab === 'home' && (
                     <motion.div
                       className="space-y-3 bg-white rounded-xl p-5 border border-blue-100 shadow-sm"
                       initial={{ opacity: 0, y: 20 }}
@@ -416,10 +488,10 @@ export default function LoanCalculator() {
                         </div>
                       </div>
                     </motion.div>
-                  )}
+                  )} */}
 
                   {/* Monthly Income & Expenses */}
-                  <motion.div
+                  {/* <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -451,7 +523,7 @@ export default function LoanCalculator() {
                         className="text-base p-3 border-2 border-blue-200 focus:border-blue-500 rounded-xl bg-white shadow-sm"
                       />
                     </div>
-                  </motion.div>
+                  </motion.div> */}
                 </div>
               </CardContent>
             </Card>
@@ -459,7 +531,7 @@ export default function LoanCalculator() {
             {/* Results Section - Redesigned */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* EMI Card */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
@@ -484,10 +556,10 @@ export default function LoanCalculator() {
                     <p className="text-white/80 text-base">per month</p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </motion.div> */}
 
               {/* Loan Summary */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -522,11 +594,11 @@ export default function LoanCalculator() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </motion.div> */}
             </div>
 
             {/* Affordability Check - Full width */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -572,10 +644,10 @@ export default function LoanCalculator() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </motion.div> */}
 
             {/* Apply Now Button - Full width */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -583,7 +655,7 @@ export default function LoanCalculator() {
               <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:opacity-90 text-white py-4 text-lg font-bold rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300">
                 Apply for {currentLoanType.name}
               </Button>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>

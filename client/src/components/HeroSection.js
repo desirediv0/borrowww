@@ -45,7 +45,7 @@ export default function HeroSection() {
               </h1>
             </div>
 
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-lg">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-lg pt-4 md:pt-16">
               Get your CIBIL score checked instantly and apply for personal loans, home loans,
               business loans, and more. Quick approval with competitive rates.
             </p>
