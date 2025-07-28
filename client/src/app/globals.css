@@ -18,7 +18,7 @@ html {
   scroll-behavior: smooth;
 }
 body{
-  font-family: 'kamelia', sans-serif;
+  font-family: 'Neuemontreal', sans-serif;
 
 }
 
@@ -45,6 +45,38 @@ body{
   src: url('/font/monschone.otf') format('opentype');
   font-style: normal;
   font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Neuemontreal';
+  src: url("/font/neuemontreal-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  /* font-display: swap; */
+}
+
+@font-face {
+  font-family: 'Neuemontreal';
+  src: url("/font/neuemontreal-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  /* font-display: swap; */
+}
+
+@font-face {
+  font-family: 'Neuemontreal';
+  src: url("/font/neuemontreal-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  /* font-display: swap; */
+}
+
+@font-face {
+  font-family: 'Neuemontreal';
+  src: url("/font/neuemontreal-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  /* font-display: swap; */
 }
 
 

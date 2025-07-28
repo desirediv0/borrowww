@@ -34,7 +34,7 @@ export default function HeroSection() {
                 INSTANT APPROVAL!
               </p>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 lg:leading-tight xl:leading-tight">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium text-gray-900 lg:leading-tight xl:leading-tight">
                 Check Your CIBIL
                 <br />
                 Score & Get
