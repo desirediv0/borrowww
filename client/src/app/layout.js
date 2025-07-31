@@ -18,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`bg-gray-50 overflow-x-hidden`}>
+      <body className={`overflow-x-hidden`}>
         <LenisProvider />
         {children}
         <Toaster position="top-center" />

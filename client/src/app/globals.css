@@ -9,7 +9,10 @@
   --ascone-gray: #6b7280;
   --ascone-dark: #1f2937;
 
-  --primary-blue: #1465bf;
+  --primary-blue: #3A6EA5;
+  --primary-blue-light: #C4D7E0;
+  --primary-blue-dark: #2D3E50;
+  /* --primary-blue: #1465bf; */
   --primary-green: #35a446;
   --primary-darkgreen: #266c2f;
 }
@@ -22,7 +25,7 @@ body{
 
 }
 
-@font-face {
+/* @font-face {
   font-family: 'aureate';
   src: url('/font/aureate-regular.otf') format('opentype');
   font-style: normal;
@@ -45,6 +48,18 @@ body{
   src: url('/font/monschone.otf') format('opentype');
   font-style: normal;
   font-weight: 400;
+} */
+
+.tiemposfine {
+  font-family: 'Tiemposfine', serif;
+}
+
+@font-face {
+  font-family: 'Tiemposfine';
+  src: url("/font/tiemposfine.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -87,6 +102,7 @@ body{
   body {
     @apply bg-white text-gray-900;
     font-family: 'Inter', sans-serif;
+    /* background-color: #E8F0F2; */
   }
 }
 
@@ -146,6 +162,34 @@ html {
 
 .animate-pulse-slow {
   animation: pulse-slow 2s ease-in-out infinite;
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.animate-breathing {
+  animation: breathing 2s ease-in-out infinite;
+}
+
+@keyframes drawChart {
+  0% {
+    stroke-dasharray: 0 200;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 200 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-chart {
+  animation: drawChart 3s ease-in-out infinite;
 }
 
 .bg{

@@ -64,8 +64,8 @@ export default function CibilCheckSection() {
   ];
 
   return (
-    <section id="cibil-check" className="py-20 bg-gradient-to-br from-blue-50 to-blue-100">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="cibil-check" className="py-20">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24">
         {/* Section Header */}
         <motion.div
           className="text-center mb-12"
@@ -95,7 +95,7 @@ export default function CibilCheckSection() {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="grid lg:grid-cols-3 gap-4 items-center">
           {/* Left Side - Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -103,17 +103,17 @@ export default function CibilCheckSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-md rounded-3xl overflow-hidden max-w-lg mx-auto lg:mx-0">
-              <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-t-3xl">
-                <CardTitle className="text-2xl">Free CIBIL Score Check</CardTitle>
-                <CardDescription className="text-blue-100">
+            <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-md overflow-hidden max-w-lg mx-auto lg:mx-0 bg-[var(--primary-blue)]">
+              <CardHeader className="text-white p-6 rounded-t-3xl">
+                <CardTitle className="text-2xl md:text-3xl font-medium">Free CIBIL Score Check</CardTitle>
+                <CardDescription className="text-blue-100 text-md">
                   Enter your details to get your credit score instantly
                 </CardDescription>
               </CardHeader>
-              <CardContent className="p-8 sm:p-6 md:p-8">
+              <CardContent className="px-6 py-4 md:px-8">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="relative">
-                    <Label htmlFor="fullName" className="text-base font-semibold text-blue-800">
+                    <Label htmlFor="fullName" className="text-base font-semibold text-gray-50">
                       Full Name
                     </Label>
                     <div className="relative mt-2">
@@ -131,7 +131,7 @@ export default function CibilCheckSection() {
                   </div>
 
                   <div className="relative">
-                    <Label htmlFor="panNumber" className="text-base font-semibold text-blue-800">
+                    <Label htmlFor="panNumber" className="text-base font-semibold text-gray-50">
                       PAN Number
                     </Label>
                     <div className="relative mt-2">
@@ -152,7 +152,7 @@ export default function CibilCheckSection() {
                   <div className="relative">
                     <Label
                       htmlFor="aadhaarNumber"
-                      className="text-base font-semibold text-blue-800"
+                      className="text-base font-semibold text-gray-50"
                     >
                       Aadhaar Number
                     </Label>
@@ -172,7 +172,7 @@ export default function CibilCheckSection() {
                   </div>
 
                   <div className="relative">
-                    <Label htmlFor="mobileNumber" className="text-base font-semibold text-blue-800">
+                    <Label htmlFor="mobileNumber" className="text-base font-semibold text-gray-50">
                       Mobile Number
                     </Label>
                     <div className="relative mt-2">
@@ -210,13 +210,13 @@ export default function CibilCheckSection() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 text-lg font-bold rounded shadow-lg transform hover:scale-105 transition-all duration-300 focus:ring-2 focus:ring-blue-300 focus:outline-none"
+                    className="w-full bg-[var(--primary-blue-dark)] hover:bg-[var(--primary-blue)] text-white py-3 text-lg font-bold rounded shadow-lg transform hover:scale-105 transition-all duration-300 focus:ring-2 focus:ring-blue-300 focus:outline-none"
                   >
                     Check CIBIL Score Now
                   </Button>
                 </form>
 
-                <p className="text-xs text-blue-600 mt-4 text-center">
+                <p className="text-xs text-blue-600 mt-4 text-center text-white">
                   By submitting this form, you agree to our Terms of Service and Privacy Policy
                 </p>
               </CardContent>
@@ -224,6 +224,12 @@ export default function CibilCheckSection() {
           </motion.div>
 
           {/* Right Side - Features */}
+          <motion.div
+          initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          className="bg-[var(--primary-blue-light)] col-span-2 p-6 h-full md:rounded-bl-[150px]">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -270,6 +276,7 @@ export default function CibilCheckSection() {
                 </ul>
               </div>
             </motion.div>
+          </motion.div>
           </motion.div>
         </div>
       </div>

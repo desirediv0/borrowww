@@ -134,7 +134,7 @@ export default function LoanCalculator() {
 
   return (
     <section id="calculator" className="py-12 ">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24">
         {/* Section Header */}
         <motion.div
           className="text-center mb-8"
@@ -173,8 +173,8 @@ export default function LoanCalculator() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-1"
           >
-            <Card className="border-0 bg-[var(--primary-blue)] backdrop-blur-md overflow-hidden text-white p-4 md:p-6">
-              <CardContent className="p-4">
+            <Card className="border-0 bg-[var(--primary-blue)] backdrop-blur-md h-full overflow-hidden text-white p-4 md:p-6">
+              <CardContent className="p-4 flex flex-col justify-between h-full">
                 <div className="space-y-2">
                   {Object.entries(loanTypes).map(([key, type]) => (
                     <motion.button
@@ -201,6 +201,97 @@ export default function LoanCalculator() {
                     </motion.button>
                   ))}
                 </div>
+                {/* Animated Histogram Chart */}
+                <div className="mt-8">
+                  <svg className="w-full h-64" viewBox="0 0 200 120">
+                    {/* Histogram Bars */}
+                    <motion.rect
+                      x="10" y="80" width="16" height="40"
+                      fill="white"
+                      initial={{ height: 0, y: 120 }}
+                      animate={{ height: 40, y: 80 }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 0
+                      }}
+                    />
+                    <motion.rect
+                      x="35" y="55" width="16" height="65" 
+                      fill="white"
+                      initial={{ height: 0, y: 120 }}
+                      animate={{ height: 65, y: 55 }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 0.2
+                      }}
+                    />
+                    <motion.rect
+                      x="60" y="30" width="16" height="90"
+                      fill="white"
+                      initial={{ height: 0, y: 120 }}
+                      animate={{ height: 90, y: 30 }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 0.4
+                      }}
+                    />
+                    <motion.rect
+                      x="85" y="10" width="16" height="110"
+                      fill="white"
+                      initial={{ height: 0, y: 120 }}
+                      animate={{ height: 110, y: 10 }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 0.6
+                      }}
+                    />
+                    <motion.rect
+                      x="110" y="20" width="16" height="100"
+                      fill="white"
+                      initial={{ height: 0, y: 120 }}
+                      animate={{ height: 100, y: 20 }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 0.8
+                      }}
+                    />
+                    <motion.rect
+                      x="135" y="40" width="16" height="80"
+                      fill="white"
+                      initial={{ height: 0, y: 120 }}
+                      animate={{ height: 80, y: 40 }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 1
+                      }}
+                    />
+                    <motion.rect
+                      x="160" y="60" width="16" height="60"
+                      fill="white"
+                      initial={{ height: 0, y: 120 }}
+                      animate={{ height: 60, y: 60 }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        delay: 1.2
+                      }}
+                    />
+                  </svg>
+                </div>
+
               </CardContent>
             </Card>
           </motion.div>

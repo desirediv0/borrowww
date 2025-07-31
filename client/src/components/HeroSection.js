@@ -6,10 +6,11 @@ import Image from 'next/image';
 import { globeIcon } from '@/assets';
 
 import { ArrowUp, CreditCard, Globe, Shield, Sparkles, Star } from 'lucide-react';
+import RotatingSVG from './Globe';
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Background floating elements */}
       {/* <div className="absolute inset-0">
         <div
@@ -22,7 +23,7 @@ export default function HeroSection() {
         />
       </div> */}
 
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pt-20 sm:pb-16">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24 pt-16 pb-10 sm:pt-20 sm:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8">
@@ -31,7 +32,7 @@ export default function HeroSection() {
                 className="font-medium text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4"
                 style={{ color: 'hsl(217, 91%, 60%)' }}
               >
-                INSTANT APPROVAL!
+                Fast APPROVAL!
               </p>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium text-gray-900 lg:leading-tight xl:leading-tight">
@@ -39,7 +40,7 @@ export default function HeroSection() {
                 <br />
                 Score & Get
                 <br />
-                <span className="italic" >
+                <span className="italic tiemposfine" >
                   Instant Loans
                 </span>
               </h1>
@@ -52,7 +53,7 @@ export default function HeroSection() {
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
               <button
-                className="text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:opacity-90 transition-all duration-300 shadow-lg bg-[var(--primary-blue)]"
+                className="text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:opacity-90 transition-all duration-300 shadow-lg bg-gradient-to-r from-[var(--primary-blue-dark)] to-[var(--primary-blue)]"
               >
                 Check CIBIL Score
               </button>
@@ -77,8 +78,8 @@ export default function HeroSection() {
           <div className="relative mt-10 lg:mt-0">
             <div className="grid grid-cols-2">
               {/* Top Left - CIBIL Score Card */}
-              <div className="p-4 sm:p-6 aspect-square flex flex-col justify-between bg-gradient-to-br from-blue-500 to-blue-600 text-white">
-                <div className="flex flex-col items-center justify-center">
+              <div className=" text-white">
+                {/* <div className="flex flex-col items-center justify-center">
                   <h3 className="text-3xl sm:text-6xl font-bold mb-1">750+</h3>
                   <p className="text-blue-100 text-xs sm:text-sm">Average CIBIL Score</p>
                 </div>
@@ -86,58 +87,87 @@ export default function HeroSection() {
                   <div className="w-8 h-8 sm:w-12 sm:h-12 border-2 border-white/30 rounded-full flex items-center justify-center">
                     <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                </div>
+                </div> */}
+                <Image src="/2.png" alt="CIBIL Score" width={100} height={100} className="aspect-square w-full mx-auto" />
               </div>
 
               {/* Top Right - Loan Amount Card */}
-              <div className="p-6 sm:p-12 aspect-square flex flex-col justify-between bg-green-100 overflow-hidden rounded-tr-2xl rounded-br-2xl sm:rounded-l-full">
+              {/* <div className="p-6 sm:p-12 aspect-square flex flex-col justify-between bg-[#6BA292] overflow-hidden rounded-tr-2xl rounded-br-2xl sm:rounded-l-full">
                 <div className="flex flex-col items-center justify-center">
-                  <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 mb-1">₹50L+</h3>
-                  <p className="text-gray-700 text-xs sm:text-sm">Total Loans Disbursed</p>
+                  <h3 className="text-2xl sm:text-4xl md:text-6xl font-medium text-white mb-1">₹50L+</h3>
+                  <p className="text-white text-xs sm:text-sm">Total Loans Disbursed</p>
                 </div>
                 <div className="flex justify-end">
-                  {/* <div className="w-8 h-8 sm:w-12 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center">
-                    <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
-                  </div> */}
-                    <Image src={globeIcon} alt="Globe" width={70} height={50} className="rotate-12" />
-                </div>
-              </div>
+                  <RotatingSVG/>
 
-              {/* Bottom Left - Processing Time Card */}
-              <div className="p-4 sm:p-6 aspect-square flex flex-col justify-between relative bg-orange-100 overflow-hidden rounded-bl-2xl rounded-tl-2xl sm:rounded-tr-[10rem] md:rounded-tr-[15rem]">
-                <div className="flex items-center justify-center flex-1">
-                  <Sparkles className="w-10 h-10 sm:w-16 sm:h-16 text-orange-700" />
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center">
+                    <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
+                  </div>
+                  <Image src={globeIcon} alt="Globe" width={70} height={50} className="rotate-12" />
+                </div>
+              </div> */}
+              <div className="p-6 sm:p-12 aspect-square grid grid-cols-2 bg-[#90d2bf] overflow-hidden rounded-tr-2xl rounded-br-2xl sm:rounded-l-full">
+                <div className="flex flex-col justify-center sm:h-[70%]">
+                  <div>
+                    <p className="text-[#2D3E50] text-xs sm:text-xl md:text-2xl my-auto">Loans</p>
+                  </div>
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm text-gray-700 mb-1 sm:mb-2">Processing Time</p>
-                  <div className="text-lg sm:text-2xl font-bold text-gray-800">24 Hours</div>
+                    <div className="flex flex-col items-center">
+                      <h3 className="text-2xl sm:text-4xl md:text-6xl font-medium text-[#2D3E50] mb-1">₹50L+</h3>
+                    </div>
+                    <div className="flex justify-end mt-8">
+                      <RotatingSVG />
+
+                      {/* <div className="w-8 h-8 sm:w-12 sm:h-12 border-2 border-gray-600 rounded-full flex items-center justify-center">
+                    <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
+                  </div> */}
+                      {/* <Image src={globeIcon} alt="Globe" width={70} height={50} className="rotate-12" /> */}
+                    </div>
+                  </div>
+              </div>
+
+
+              {/* Bottom Left - Processing Time Card */}
+              <div className="p-4 sm:p-6 aspect-square flex flex-col justify-between relative bg-[#3A6EA5] overflow-hidden rounded-bl-2xl rounded-tl-2xl sm:rounded-tr-[10rem] md:rounded-tr-[15rem]">
+                <div className="flex items-center justify-center flex-1">
+                  <Sparkles className="w-10 h-10 sm:w-16 sm:h-16 text-white animate-breathing" />
+                </div>
+                <div>
+                  <p className="text-white text-xl mb-1">Processing Time</p>
+                  <div className="text-lg sm:text-3xl font-medium text-white">24 Hours</div>
                 </div>
               </div>
 
               {/* Bottom Right - Interest Rate Card */}
-              <div className="p-4 sm:p-6 aspect-square flex flex-col justify-between text-black relative bg-purple-100">
+              <div className="p-4 sm:p-6 aspect-square flex flex-col justify-between text-black relative bg-[#2D3E50]">
                 <div>
                   <div className="flex items-center gap-1 mb-1">
-                    <h3 className="text-lg sm:text-2xl font-bold">8.5%</h3>
-                    <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <h3 className="text-2xl sm:text-4xl md:text-6xl font-medium text-white mb-1">8.5%</h3>
+                    <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
-                  <p className="text-black/80 text-xs sm:text-sm">Starting Interest Rate</p>
+                  {/* <p className="text-white text-xl">Starting Interest Rate</p> */}
                 </div>
 
-                {/* Chart visualization */}
-                <div className="mt-2 sm:mt-4">
-                  <svg className="w-full h-5 sm:h-8" viewBox="0 0 80 20">
-                    <polyline
-                      points="0,15 20,12 40,8 60,10 80,4"
-                      fill="none"
-                      stroke="black"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <circle cx="80" cy="4" r="2" fill="white" />
-                  </svg>
-                </div>
+                                 {/* Chart visualization */}
+                 <div className="mt-2 sm:mt-4 ">
+                   <svg className="w-full h-12 sm:h-16" viewBox="0 0 80 35">
+                     <polyline
+                       points="0,30 10,25 20,28 30,20 40,22 50,15 60,18 70,12 80,3"
+                       fill="none"
+                       stroke="white"
+                       strokeWidth="2.5"
+                       strokeLinecap="round"
+                       strokeLinejoin="round"
+                       className="animate-draw-chart"
+                       style={{ strokeDasharray: "200", strokeDashoffset: "0" }}
+                     />
+                     <circle cx="80" cy="3" r="3" fill="white" className="animate-draw-chart" />
+                   </svg>
+                 </div>
+                 <div>
+                 <p className="text-white text-xl md:text-2xl flex justify-end">Interest Rate</p>
+                 </div>
               </div>
             </div>
           </div>
