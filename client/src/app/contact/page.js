@@ -123,13 +123,14 @@ export default function ContactPage() {
           >
             <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
               <FaHeadset className="mr-2" />
-              We're here to help
+              We&apos;re here to help
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 tracking-tighter">
-              Let's <span className="text-[var(--primary-blue)] italic tiemposfine">Connect</span>
+              Let&apos;s{' '}
+              <span className="text-[var(--primary-blue)] italic tiemposfine">Connect</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Have questions about our services? Need help with your loan application? We're
+              Have questions about our services? Need help with your loan application? We&apos;re
               here to help you every step of the way with personalized support.
             </p>
           </motion.div>
@@ -171,7 +172,7 @@ export default function ContactPage() {
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Get in Touch</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose your preferred way to connect with us. We're here to help you 24/7.
+              Choose your preferred way to connect with us. We&apos;re here to help you 24/7.
             </p>
           </motion.div>
 
@@ -229,7 +230,7 @@ export default function ContactPage() {
             >
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Send us a Message</h2>
-                <p className="text-gray-600">We'll get back to you within 24 hours</p>
+                <p className="text-gray-600">We&apos;ll get back to you within 24 hours</p>
               </div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -410,7 +411,7 @@ export default function ContactPage() {
           >
             <h2 className="text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Don't wait! Contact us today and take the first step towards achieving your
+              Don&apos;t wait! Contact us today and take the first step towards achieving your
               financial goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

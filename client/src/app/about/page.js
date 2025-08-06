@@ -146,7 +146,7 @@ export default function AboutPage() {
               About <span className="text-[var(--primary-blue)] italic tiemposfine">Borrowww</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              India's leading digital lending platform, revolutionizing the way people access
+              India&apos;s leading digital lending platform, revolutionizing the way people access
               credit. We make financial inclusion a reality through technology and trust.
             </p>
           </motion.div>
@@ -202,7 +202,7 @@ export default function AboutPage() {
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
                 We believe that everyone should have the opportunity to achieve their dreams, and
-                access to credit shouldn't be a barrier to success.
+                access to credit shouldn&apos;t be a barrier to success.
               </p>
               <div className="flex items-center gap-4">
                 <motion.button
@@ -234,10 +234,10 @@ export default function AboutPage() {
                 Our Vision
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                India's Most Trusted Digital Lender
+                India&apos;s Most Trusted Digital Lender
               </h3>
               <p className="text-gray-600 leading-relaxed mb-8">
-                To become India's most trusted and preferred digital lending platform, serving
+                To become India&apos;s most trusted and preferred digital lending platform, serving
                 millions of customers with innovative financial solutions.
               </p>
               <div className="space-y-4">
@@ -361,7 +361,7 @@ export default function AboutPage() {
                   platform that would make credit accessible, transparent, and hassle-free.
                 </p>
                 <p>
-                  Today, we've helped over 50,000 customers achieve their financial goals,
+                  Today, we&apos;ve helped over 50,000 customers achieve their financial goals,
                   disbursing more than ₹500 crores in loans with a 95% approval rate.
                 </p>
               </div>
@@ -384,7 +384,9 @@ export default function AboutPage() {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h4 className="font-semibold text-gray-900">{milestone.title}</h4>
-                        <span className="text-[var(--primary-blue)] font-bold">{milestone.year}</span>
+                        <span className="text-[var(--primary-blue)] font-bold">
+                          {milestone.year}
+                        </span>
                       </div>
                       <p className="text-gray-600 text-sm">{milestone.description}</p>
                     </div>

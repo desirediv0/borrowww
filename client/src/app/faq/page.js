@@ -177,19 +177,24 @@ export default function FAQPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+      {/* Hero Section - Updated to match LAP style */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center mb-12"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Frequently Asked <span className="text-[#396A9F]">Questions</span>
+            <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
+              <FaSearch className="mr-2" />
+              Frequently Asked Questions
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 tracking-tighter">
+              Frequently Asked{' '}
+              <span className="text-[var(--primary-blue)] italic tiemposfine">Questions</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Find answers to common questions about our services, loan processes, and CIBIL score
               checking.
             </p>
@@ -197,7 +202,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Search and Categories */}
+      {/* Search and Categories - Updated */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Search Bar */}
@@ -214,7 +219,7 @@ export default function FAQPage() {
                 placeholder="Search for questions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                className="w-full pl-12 pr-4 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-colors duration-200"
               />
             </div>
           </motion.div>
@@ -232,7 +237,7 @@ export default function FAQPage() {
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
                   activeCategory === category.id
-                    ? 'bg-[#396A9F] text-white shadow-lg'
+                    ? 'bg-[var(--primary-blue)] text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -243,7 +248,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - Updated */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatePresence mode="wait">
@@ -311,7 +316,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Quick Contact */}
+      {/* Quick Contact - Updated */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -330,7 +335,7 @@ export default function FAQPage() {
                 href="tel:+919560069525"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-3 bg-[#396A9F] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#396A9F]/90 transition-colors duration-200"
+                className="flex items-center justify-center gap-3 bg-[var(--primary-blue)] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[var(--primary-blue-dark)] transition-colors duration-200"
               >
                 <FaPhone />
                 Call Support
@@ -339,7 +344,7 @@ export default function FAQPage() {
                 href="https://wa.me/919560069525"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-3 border-2 border-[#396A9F] text-[#396A9F] px-8 py-3 rounded-full font-semibold hover:bg-[#396A9F] hover:text-white transition-colors duration-200"
+                className="flex items-center justify-center gap-3 border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] px-8 py-3 rounded-xl font-semibold hover:bg-[var(--primary-blue)] hover:text-white transition-colors duration-200"
               >
                 <FaWhatsapp />
                 WhatsApp Support
@@ -349,7 +354,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Popular Topics */}
+      {/* Popular Topics - Updated */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -404,7 +409,7 @@ export default function FAQPage() {
                       setActiveCategory('all');
                       setSearchTerm(topic.title.split(' ')[0]);
                     }}
-                    className="text-[#396A9F] hover:text-[#396A9F]/80 font-medium text-sm"
+                    className="text-[var(--primary-blue)] hover:text-[var(--primary-blue-dark)] font-medium text-sm"
                   >
                     View Questions →
                   </button>
