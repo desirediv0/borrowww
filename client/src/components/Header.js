@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { logo } from '@/assets';
-import { IconChevronDown, IconMenu2, IconX } from '@tabler/icons-react';
+import { IconChevronDown, IconMenu2, IconUser, IconX } from '@tabler/icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Header() {
@@ -162,7 +162,7 @@ export default function Header() {
                 transition={{ delay: 0.6 }}
                 onClick={() => router.push('/auth')}
               >
-                Apply for Loan
+                <IconUser size={16} />
               </motion.button>
             </div>
 
