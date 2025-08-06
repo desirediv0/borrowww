@@ -60,28 +60,28 @@ export default function ContactPage() {
       title: 'Call Us',
       details: ['+91 9560069525', '+91 9560069526'],
       action: 'tel:+919560069525',
-      bgColor: 'bg-gradient-to-br from-[#396A9F] to-[#2D4A6B]',
+      bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
     },
     {
       icon: FaEnvelope,
       title: 'Email Us',
       details: ['support@borrowww.com', 'info@borrowww.com'],
       action: 'mailto:support@borrowww.com',
-      bgColor: 'bg-gradient-to-br from-[#396A9F] to-[#2D4A6B]',
+      bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
     },
     {
       icon: FaWhatsapp,
       title: 'WhatsApp',
       details: ['+91 9560069525'],
       action: 'https://wa.me/919560069525',
-      bgColor: 'bg-gradient-to-br from-[#396A9F] to-[#2D4A6B]',
+      bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
     },
     {
       icon: FaMapMarkerAlt,
       title: 'Visit Us',
       details: ['Borrowww Tower, Financial District', 'Mumbai, Maharashtra 400001'],
       action: '#',
-      bgColor: 'bg-gradient-to-br from-[#396A9F] to-[#2D4A6B]',
+      bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
     },
   ];
 
@@ -112,54 +112,31 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#396A9F]/5 via-white to-[#396A9F]/10 py-24 overflow-hidden">
-        <div className="absolute inset-0 opacity-50">
-          <div className="absolute inset-0 bg-[#396A9F]/5"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Hero Section - Updated to match LAP style */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center mb-12"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-[#396A9F]/10 text-[#396A9F] rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
               <FaHeadset className="mr-2" />
-              We&apos;re here to help
+              We're here to help
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-              Let&apos;s <span className="text-[#396A9F]">Connect</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 tracking-tighter">
+              Let's <span className="text-[var(--primary-blue)] italic tiemposfine">Connect</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-              Have questions about our services? Need help with your loan application? We&apos;re
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Have questions about our services? Need help with your loan application? We're
               here to help you every step of the way with personalized support.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.a
-                href="tel:+919560069525"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-3 bg-[#396A9F] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#396A9F]/90 transition-colors duration-200 shadow-lg"
-              >
-                <FaPhone />
-                Call Now
-              </motion.a>
-              <motion.a
-                href="https://wa.me/919560069525"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-3 border-2 border-[#396A9F] text-[#396A9F] px-8 py-4 rounded-full font-semibold hover:bg-[#396A9F] hover:text-white transition-colors duration-200"
-              >
-                <FaWhatsapp />
-                WhatsApp Us
-              </motion.a>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section - Updated */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
@@ -172,8 +149,8 @@ export default function ContactPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-16 h-16 bg-[#396A9F]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <feature.icon className="text-[#396A9F] text-2xl" />
+                <div className="w-16 h-16 bg-[var(--primary-blue)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <feature.icon className="text-[var(--primary-blue)] text-2xl" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{feature.description}</p>
@@ -183,7 +160,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Info Cards */}
+      {/* Contact Info Cards - Updated */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -194,7 +171,7 @@ export default function ContactPage() {
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Get in Touch</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose your preferred way to connect with us. We&apos;re here to help you 24/7.
+              Choose your preferred way to connect with us. We're here to help you 24/7.
             </p>
           </motion.div>
 
@@ -208,10 +185,10 @@ export default function ContactPage() {
                 transition={{ delay: index * 0.1 }}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#396A9F] to-[#2D4A6B] rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
-                <div className="relative bg-white p-8 rounded-2xl border-2 border-transparent group-hover:border-[#396A9F] transition-all duration-300">
-                  <div className="w-16 h-16 bg-[#396A9F]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <info.icon className="text-[#396A9F] text-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
+                <div className="relative bg-white p-8 rounded-2xl border-2 border-transparent group-hover:border-[var(--primary-blue)] transition-all duration-300">
+                  <div className="w-16 h-16 bg-[var(--primary-blue)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <info.icon className="text-[var(--primary-blue)] text-2xl" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
                     {info.title}
@@ -227,7 +204,7 @@ export default function ContactPage() {
                     href={info.action}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="block w-full text-center bg-[#396A9F] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#396A9F]/90 transition-colors duration-200"
+                    className="block w-full text-center bg-[var(--primary-blue)] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[var(--primary-blue-dark)] transition-colors duration-200"
                   >
                     Contact Now
                   </motion.a>
@@ -238,7 +215,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Contact Form & Info - Updated */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
@@ -252,7 +229,7 @@ export default function ContactPage() {
             >
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Send us a Message</h2>
-                <p className="text-gray-600">We&apos;ll get back to you within 24 hours</p>
+                <p className="text-gray-600">We'll get back to you within 24 hours</p>
               </div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -267,7 +244,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#396A9F] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-colors duration-200"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -282,7 +259,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#396A9F] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-colors duration-200"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -299,7 +276,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#396A9F] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-colors duration-200"
                       placeholder="Enter your phone number"
                     />
                   </div>
@@ -316,7 +293,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#396A9F] focus:border-transparent transition-colors duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-colors duration-200"
                     >
                       <option value="">Select a subject</option>
                       <option value="loan-inquiry">Loan Inquiry</option>
@@ -339,7 +316,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#396A9F] focus:border-transparent transition-colors duration-200 resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-colors duration-200 resize-none"
                     placeholder="Tell us how we can help you..."
                   />
                 </div>
@@ -349,7 +326,7 @@ export default function ContactPage() {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-[#396A9F] text-white py-4 px-6 rounded-lg font-semibold hover:bg-[#396A9F]/90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+                  className="w-full bg-[var(--primary-blue)] text-white py-4 px-6 rounded-lg font-semibold hover:bg-[var(--primary-blue-dark)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-lg"
                 >
                   {isSubmitting ? 'Sending Message...' : 'Send Message'}
                 </motion.button>
@@ -373,10 +350,10 @@ export default function ContactPage() {
               </div>
 
               {/* Office Hours */}
-              <div className="bg-gradient-to-br from-[#396A9F]/5 to-white p-8 rounded-2xl border border-[#396A9F]/10">
+              <div className="bg-gradient-to-br from-[var(--primary-blue)]/5 to-white p-8 rounded-2xl border border-[var(--primary-blue)]/10">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-[#396A9F]/10 rounded-full flex items-center justify-center">
-                    <FaClock className="text-[#396A9F] text-xl" />
+                  <div className="w-12 h-12 bg-[var(--primary-blue)]/10 rounded-full flex items-center justify-center">
+                    <FaClock className="text-[var(--primary-blue)] text-xl" />
                   </div>
                   <h3 className="text-2xl font-semibold text-gray-900">Office Hours</h3>
                 </div>
@@ -394,13 +371,13 @@ export default function ContactPage() {
                     <span>Closed</span>
                   </div>
                 </div>
-                <p className="text-sm text-gray-500 mt-4 p-3 bg-[#396A9F]/5 rounded-lg">
+                <p className="text-sm text-gray-500 mt-4 p-3 bg-[var(--primary-blue)]/5 rounded-lg">
                   * Emergency support available 24/7 for existing customers
                 </p>
               </div>
 
               {/* Social Media */}
-              <div className="bg-gradient-to-br from-[#396A9F]/5 to-white p-8 rounded-2xl border border-[#396A9F]/10">
+              <div className="bg-gradient-to-br from-[var(--primary-blue)]/5 to-white p-8 rounded-2xl border border-[var(--primary-blue)]/10">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Follow Us</h3>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => (
@@ -409,7 +386,7 @@ export default function ContactPage() {
                       href={social.href}
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-14 h-14 bg-[#396A9F]/10 rounded-full flex items-center justify-center text-[#396A9F] hover:bg-[#396A9F] hover:text-white transition-all duration-200"
+                      className="w-14 h-14 bg-[var(--primary-blue)]/10 rounded-full flex items-center justify-center text-[var(--primary-blue)] hover:bg-[var(--primary-blue)] hover:text-white transition-all duration-200"
                     >
                       <social.icon className="text-xl" />
                     </motion.a>
@@ -421,18 +398,19 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#396A9F] to-[#2D4A6B]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* CTA Section - Updated */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white text-center shadow-2xl"
           >
             <h2 className="text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Don&apos;t wait! Contact us today and take the first step towards achieving your
+              Don't wait! Contact us today and take the first step towards achieving your
               financial goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -440,7 +418,7 @@ export default function ContactPage() {
                 href="tel:+919560069525"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-[#396A9F] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-200"
+                className="bg-white text-[var(--primary-blue)] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-200"
               >
                 Call Now
               </motion.a>
@@ -448,7 +426,7 @@ export default function ContactPage() {
                 href="https://wa.me/919560069525"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[#396A9F] transition-colors duration-200"
+                className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-colors duration-200"
               >
                 WhatsApp Us
               </motion.a>
