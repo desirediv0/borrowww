@@ -1,5 +1,7 @@
 // import { Inter } from 'next/font/google';
 import FloatingContactButton from '@/components/FloatingContactButton';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import LenisProvider from '@/components/LenisProvider';
 import { Toaster } from '@/components/ui/sonner';
 
@@ -20,7 +22,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`overflow-x-hidden`}>
         <LenisProvider />
+        <Header />
         {children}
+        <Footer />
         <FloatingContactButton />
         <Toaster position="top-center" />
       </body>

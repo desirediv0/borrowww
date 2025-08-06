@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { logo } from '@/assets';
 import { IconMenu2, IconX } from '@tabler/icons-react';
@@ -21,7 +22,14 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['CIBIL Check', 'Loan Types', 'Calculator', 'About', 'FAQ'];
+  const navItems = [
+    { name: 'CIBIL Check', href: '#cibil-check' },
+    { name: 'Loan Types', href: '#loan-types' },
+    { name: 'Calculator', href: '#calculator' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'FAQ', href: '/faq' },
+  ];
 
   return (
     <>
@@ -53,28 +61,34 @@ export default function Header() {
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <motion.div
-              className="flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-            >
-              <Image src={logo} alt="Borrowww" width={200} height={80} />
-            </motion.div>
+            <Link href="/">
+              <motion.div
+                className="flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              >
+                <Image src={logo} alt="Borrowww" width={200} height={80} />
+              </motion.div>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item, index) => (
-                <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
-                  className="text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
-                  whileHover={{ y: -2 }}
+                <motion.div
+                  key={item.name}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                 >
-                  {item}
-                </motion.a>
+                  <Link
+                    href={item.href}
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium block"
+                  >
+                    <motion.span whileHover={{ y: -2 }} className="block">
+                      {item.name}
+                    </motion.span>
+                  </Link>
+                </motion.div>
               ))}
             </nav>
 
@@ -124,20 +138,20 @@ export default function Header() {
             >
               <div className="px-4 py-4 space-y-4">
                 {navItems.map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  <Link
+                    key={item.name}
+                    href={item.href}
                     className="block text-gray-600 hover:text-gray-900 font-medium"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 ))}
                 <div className="pt-4 border-t space-y-2">
                   <button className="block w-full text-left text-gray-600 hover:text-gray-900 font-medium">
                     Check CIBIL
                   </button>
-                  <button className="block w-full bg-blue-500 text-white px-4 py-2 rounded-full font-medium">
+                  <button className="block w-full bg-gradient-to-r from-[var(--primary-blue-dark)] to-[var(--primary-blue)] text-white px-4 py-2 rounded-full font-medium">
                     Apply for Loan
                   </button>
                 </div>

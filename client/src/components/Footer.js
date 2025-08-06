@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import logo from '@/assets/logo.png';
 import {
@@ -13,10 +14,30 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   const footerLinks = {
-    Services: ['CIBIL Check', 'Personal Loan', 'Home Loan', 'Business Loan'],
-    Company: ['About Us', 'Careers', 'Press', 'Partners'],
-    Support: ['Help Center', 'Contact Us', 'Documentation', 'Status'],
-    Legal: ['Privacy Policy', 'Terms of Service', 'Security', 'Compliance'],
+    Services: [
+      { name: 'CIBIL Check', href: '#cibil-check' },
+      { name: 'Personal Loan', href: '#personal-loan' },
+      { name: 'Home Loan', href: '#home-loan' },
+      { name: 'Business Loan', href: '#business-loan' },
+    ],
+    Company: [
+      { name: 'About Us', href: '/about' },
+      { name: 'Careers', href: '#' },
+      { name: 'Press', href: '#' },
+      { name: 'Partners', href: '#' },
+    ],
+    Support: [
+      { name: 'Help Center', href: '#' },
+      { name: 'Contact Us', href: '/contact' },
+      { name: 'Documentation', href: '#' },
+      { name: 'Status', href: '#' },
+    ],
+    Legal: [
+      { name: 'Privacy Policy', href: '#' },
+      { name: 'Terms of Service', href: '#' },
+      { name: 'Security', href: '#' },
+      { name: 'Compliance', href: '#' },
+    ],
   };
 
   const socialLinks = [
@@ -33,17 +54,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-12 items-start">
           {/* Logo and Description */}
           <div className="col-span-2 flex flex-col gap-4">
-            <div className="flex items-center gap-3 mb-2">
-              <Image
-                src={logo}
-                alt="Borrowww Logo"
-                width={200}
-                height={40}
-                className="rounded-lg p-1"
-              />
-              {/* <span className="text-2xl font-bold tracking-tight text-blue-700">Borrowww</span> */}
-            </div>
-            <span className="text-blue-600 font-medium text-sm mb-1">
+            <Link href="/">
+              <div className="flex items-center gap-3 mb-2">
+                <Image
+                  src={logo}
+                  alt="Borrowww Logo"
+                  width={200}
+                  height={40}
+                  className="rounded-lg p-1"
+                />
+                {/* <span className="text-2xl font-bold tracking-tight text-blue-700">Borrowww</span> */}
+              </div>
+            </Link>
+            <span className="text-[#396A9F] font-medium text-sm mb-1">
               CIBIL Check & Instant Loan Provider
             </span>
             <p className="text-gray-600 leading-relaxed max-w-sm text-base">
@@ -56,7 +79,7 @@ export default function Footer() {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center hover:bg-blue-100 hover:scale-110 transition-all duration-200 shadow-sm border border-blue-100 text-blue-600"
+                  className="w-10 h-10 bg-[#396A9F]/10 rounded-full flex items-center justify-center hover:bg-[#396A9F]/20 hover:scale-110 transition-all duration-200 shadow-sm border border-[#396A9F]/20 text-[#396A9F]"
                   whileHover={{ scale: 1.15, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, scale: 0 }}
@@ -80,26 +103,30 @@ export default function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
             >
-              <h3 className="font-semibold text-blue-700 mb-4 tracking-wide uppercase text-sm letter-spacing-1">
+              <h3 className="font-semibold text-[#396A9F] mb-4 tracking-wide uppercase text-sm letter-spacing-1">
                 {category}
               </h3>
               <ul className="space-y-3">
                 {links.map((link, linkIndex) => (
                   <motion.li
-                    key={link}
+                    key={link.name}
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 + categoryIndex * 0.1 + linkIndex * 0.05 }}
                   >
-                    <motion.a
-                      href="#"
-                      className="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium text-base"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    <Link
+                      href={link.href}
+                      className="text-gray-600 hover:text-[#396A9F] transition-colors duration-200 font-medium text-base"
                     >
-                      {link}
-                    </motion.a>
+                      <motion.span
+                        whileHover={{ x: 5 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                        className="block"
+                      >
+                        {link.name}
+                      </motion.span>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
@@ -108,7 +135,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-blue-200 via-gray-100 to-blue-200 mb-8" />
+        <div className="w-full h-px bg-gradient-to-r from-[#396A9F]/20 via-gray-100 to-[#396A9F]/20 mb-8" />
 
         {/* Bottom Footer */}
         <motion.div
@@ -125,21 +152,21 @@ export default function Footer() {
           <div className="flex items-center gap-6 text-sm">
             <motion.a
               href="#"
-              className="text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium"
+              className="text-gray-500 hover:text-[#396A9F] transition-colors duration-200 font-medium"
               whileHover={{ y: -2 }}
             >
               Privacy Policy
             </motion.a>
             <motion.a
               href="#"
-              className="text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium"
+              className="text-gray-500 hover:text-[#396A9F] transition-colors duration-200 font-medium"
               whileHover={{ y: -2 }}
             >
               Terms of Service
             </motion.a>
             <motion.a
               href="#"
-              className="text-gray-500 hover:text-blue-600 transition-colors duration-200 font-medium"
+              className="text-gray-500 hover:text-[#396A9F] transition-colors duration-200 font-medium"
               whileHover={{ y: -2 }}
             >
               RBI Compliance

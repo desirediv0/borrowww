@@ -54,7 +54,7 @@ const FloatingContactButton = () => {
         {/* Main Toggle Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="flex items-center justify-center w-16 h-16 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-xl"
+          className="flex items-center justify-center w-16 h-16 bg-[#396A9F] hover:bg-[#255282] text-white rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-xl"
           title={isExpanded ? 'Close Menu' : 'Contact Us'}
         >
           {isExpanded ? <FaTimes size={24} /> : <FaPhone size={24} />}
@@ -72,7 +72,7 @@ const FloatingContactButton = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Make a Call</h3>
               <p className="text-gray-600 mb-6">
                 Would you like to call us at{' '}
-                <span className="font-semibold text-blue-600">{phoneNumber}</span>?
+                <span className="font-semibold text-[#396A9F]">{phoneNumber}</span>?
               </p>
               <div className="flex space-x-3">
                 <button
@@ -104,7 +104,7 @@ const FloatingContactButton = () => {
               <h3 className="text-xl font-semibold text-gray-900 mb-2">WhatsApp Us</h3>
               <p className="text-gray-600 mb-6">
                 Would you like to chat with us on WhatsApp at{' '}
-                <span className="font-semibold text-blue-600">{phoneNumber}</span>?
+                <span className="font-semibold text-[#396A9F]">{phoneNumber}</span>?
               </p>
               <div className="flex space-x-3">
                 <button
