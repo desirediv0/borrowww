@@ -29,13 +29,11 @@ export default function HeroSection() {
           <div className="space-y-6 sm:space-y-8">
             <div>
               <p
-                className="font-medium text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4"
-                style={{ color: 'hsl(217, 91%, 60%)' }}
-              >
+                className="font-medium text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4 text-[var(--primary-blue)]">
                 Fast APPROVAL!
               </p>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-medium text-gray-900 lg:leading-tight xl:leading-tight">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-[5rem] font-medium text-gray-900 lg:leading-tight xl:leading-tight tracking-tighter">
                 Check Your CIBIL
                 <br />
                 Score & Get
@@ -46,14 +44,14 @@ export default function HeroSection() {
               </h1>
             </div>
 
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-lg pt-4 md:pt-16">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-lg pt-4 md:pt-4">
               Get your CIBIL score checked instantly and apply for personal loans, home loans,
               business loans, and more. Quick approval with competitive rates.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
               <button
-                className="text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:opacity-90 transition-all duration-300 shadow-lg bg-gradient-to-r from-[var(--primary-blue-dark)] to-[var(--primary-blue)]"
+                className="text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[var(--primary-blue)] transition-all duration-300 shadow-lg bg-[var(--primary-blue-dark)]"
               >
                 Check CIBIL Score
               </button>
@@ -88,7 +86,7 @@ export default function HeroSection() {
                     <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                 </div> */}
-                <Image src="/2.png" alt="CIBIL Score" width={100} height={100} className="aspect-square w-full mx-auto" />
+                <Image src="/1.avif" alt="CIBIL Score" width={100} height={100} className="aspect-square w-full mx-auto" />
               </div>
 
               {/* Top Right - Loan Amount Card */}

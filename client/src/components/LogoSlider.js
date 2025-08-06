@@ -16,11 +16,11 @@ export default function LogoSlider() {
   ];
 
   return (
-    <div className="overflow-hidden py-8 bg-white">
-      <div className="text-center mb-8">
+    <div className="overflow-hidden py-8 bg-white border-t border-gray-200 border-b">
+      {/* <div className="text-center mb-8">
         <h3 className="text-xl md:text-4xl font-medium text-gray-700 mb-2">Trusted by Leading Banks</h3>
         <p className="text-gray-500">Partnered with top financial institutions across India</p>
-      </div>
+      </div> */}
       <div className="relative w-full">
         <motion.div
           className="flex space-x-40"
