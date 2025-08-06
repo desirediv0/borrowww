@@ -1,3 +1,4 @@
+import Calculator from '@/components/Calculator';
 // import CibilCheckSection from '@/components/CibilCheckSection';
 import FAQSection from '@/components/FAQSection';
 import HeroSection from '@/components/HeroSection';
@@ -16,6 +17,7 @@ export default function Home() {
       {/* <Loans /> */}
       <HomeLoanSections />
       <ValuesSection />
+        <Calculator />
       <LoanCalculator />
       <FAQSection />
     </main>

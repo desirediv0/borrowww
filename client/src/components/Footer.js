@@ -15,10 +15,12 @@ import { motion } from 'framer-motion';
 export default function Footer() {
   const footerLinks = {
     Services: [
-      { name: 'CIBIL Check', href: '#cibil-check' },
-      { name: 'Personal Loan', href: '#personal-loan' },
-      { name: 'Home Loan', href: '#home-loan' },
-      { name: 'Business Loan', href: '#business-loan' },
+      { name: 'CIBIL Check', href: '/calculator/cibil-check' },
+      { name: 'EMI Calculator', href: '/calculator/emi' },
+      { name: 'Balance Transfer', href: '/calculator/balance-transfer' },
+      { name: 'Home Loan', href: '/calculator/home-loan' },
+      { name: 'Loan Against Property', href: '/calculator/loan-against-property' },
+      { name: 'Loan Comparison', href: '/calculator/comparison' },
     ],
     Company: [
       { name: 'About Us', href: '/about' },

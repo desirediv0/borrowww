@@ -257,7 +257,7 @@ export default function AboutPage() {
                 Our Vision
               </div>
               <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                India's Most Trusted Digital Lender
+                India&apos;s Most Trusted Digital Lender
               </h3>
               <p className="text-gray-600 leading-relaxed mb-8">
                 To become India&apos;s most trusted and preferred digital lending platform, serving
