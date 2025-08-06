@@ -1,9 +1,9 @@
 // import { Inter } from 'next/font/google';
-
+import FloatingContactButton from '@/components/FloatingContactButton';
+import LenisProvider from '@/components/LenisProvider';
 import { Toaster } from '@/components/ui/sonner';
 
 import './globals.css';
-import LenisProvider from '@/components/LenisProvider';
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
       <body className={`overflow-x-hidden`}>
         <LenisProvider />
         {children}
+        <FloatingContactButton />
         <Toaster position="top-center" />
       </body>
     </html>
