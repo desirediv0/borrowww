@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import { logo } from '@/assets';
+import { gif, logo } from '@/assets';
 import { IconChevronDown, IconMenu2, IconUser, IconX } from '@tabler/icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -26,7 +26,6 @@ export default function Header() {
   }, []);
 
   const calculatorItems = [
-    { name: 'CIBIL Check', href: '/calculator/cibil-check', icon: '📊' },
     { name: 'EMI Calculator', href: '/calculator/emi', icon: '🧮' },
     { name: 'Balance Transfer', href: '/calculator/balance-transfer', icon: '🔄' },
     { name: 'Home Loan', href: '/calculator/home-loan', icon: '🏠' },
@@ -80,8 +79,14 @@ export default function Header() {
               </motion.div>
             </Link>
 
+            <Link href="/calculator/cibil-check" className="md:hidden flex">
+              <Image src={gif} alt="Borrowww" width={120} height={100} />
+            </Link>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
+              <Link href="/calculator/cibil-check">
+                <Image src={gif} alt="Borrowww" width={120} height={100} />
+              </Link>
               {/* Calculator Dropdown */}
               <div className="relative">
                 <motion.button
@@ -225,9 +230,9 @@ export default function Header() {
                 <div className="pt-4 border-t space-y-2">
                   <button
                     className="block w-full bg-gradient-to-r from-[var(--primary-blue-dark)] to-[var(--primary-blue)] text-white px-4 py-2 rounded-full font-medium"
-                    onClick={() => (window.location.href = '/auth')}
+                    onClick={() => router.push('/auth')}
                   >
-                    Apply for Loan
+                    <IconUser size={16} />
                   </button>
                 </div>
               </div>
