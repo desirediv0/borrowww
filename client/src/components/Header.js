@@ -26,11 +26,11 @@ export default function Header() {
   }, []);
 
   const calculatorItems = [
-    { name: 'EMI Calculator', href: '/calculator/emi', icon: '🧮' },
-    { name: 'Balance Transfer', href: '/calculator/balance-transfer', icon: '🔄' },
-    { name: 'Home Loan', href: '/calculator/home-loan', icon: '🏠' },
-    { name: 'Loan Against Property', href: '/calculator/loan-against-property', icon: '🏢' },
-    { name: 'Loan Comparison', href: '/calculator/comparison', icon: '⚖️' },
+    { name: 'EMI Calculator', href: '/calculator/emi' },
+    { name: 'Balance Transfer', href: '/calculator/balance-transfer' },
+    { name: 'Home Loan', href: '/calculator/home-loan' },
+    { name: 'Loan Against Property', href: '/calculator/loan-against-property' },
+    { name: 'Loan Comparison', href: '/calculator/comparison' },
   ];
 
   const navItems = [
@@ -126,7 +126,6 @@ export default function Header() {
                             className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-200"
                             onClick={() => setIsCalculatorDropdownOpen(false)}
                           >
-                            <span className="text-lg">{item.icon}</span>
                             <span className="font-medium">{item.name}</span>
                           </Link>
                         </motion.div>
@@ -205,7 +204,6 @@ export default function Header() {
                         className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        <span className="text-lg">{item.icon}</span>
                         <span className="font-medium">{item.name}</span>
                       </Link>
                     ))}
