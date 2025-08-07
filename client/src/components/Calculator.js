@@ -91,12 +91,12 @@ export default function Calculator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               className="group"
             >
               <Link
                 href={tool.href}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
                 className="block bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[#396A9F]"
               >
                 <div
