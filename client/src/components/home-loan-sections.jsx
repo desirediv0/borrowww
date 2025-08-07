@@ -17,15 +17,15 @@ export default function HomeLoanSections() {
                 alt="Mobile app showing loan comparison interface"
                 width={1000}
                 height={1000}
-                className="object-cover h-[400px] md:h-[600px]"
+                className="object-cover w-auto h-auto md:h-[600px] "
               />
             </div>
-            <div className="space-y-6 py-16 px-10">
+            <div className="space-y-6 py-16 px-4 md:px-10 ">
               <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
                 Find out if your home loan is competitive
               </h2>
 
-              <p className="text-gray-200 text-lg leading-relaxed">
+              <p className="text-gray-200 md:text-lg leading-relaxed">
                 Think a lower rate&apos;s out of reach? Our Home Loan Health Check can reveal your
                 savings potential. Discover how adjusting your loan might reduce your monthly
                 payments and loan term. Rates can vary—our brokers are here to offer personalised
