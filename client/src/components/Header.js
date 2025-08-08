@@ -34,9 +34,13 @@ export default function Header() {
   ];
 
   const navItems = [
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'FAQ', href: '/faq' },
+    { name: 'EMI Calculator', href: '/calculator/emi' },
+    { name: 'Balance Transfer', href: '/calculator/balance-transfer' },
+    { name: 'Home Loan', href: '/calculator/home-loan' },
+    { name: 'Loan Against Property', href: '/calculator/loan-against-property' },
+    // { name: 'About', href: '/about' },
+    // { name: 'Contact', href: '/contact' },
+    // { name: 'FAQ', href: '/faq' },
   ];
 
   return (
@@ -84,11 +88,11 @@ export default function Header() {
             </Link>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/calculator/cibil-check">
+              {/* <Link href="/calculator/cibil-check">
                 <Image src={gif} alt="Borrowww" width={120} height={100} />
-              </Link>
+              </Link> */}
               {/* Calculator Dropdown */}
-              <div className="relative">
+              {/* <div className="relative">
                 <motion.button
                   className="flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
                   onClick={() => setIsCalculatorDropdownOpen(!isCalculatorDropdownOpen)}
@@ -133,7 +137,7 @@ export default function Header() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </div> */}
 
               {/* Other Navigation Items */}
               {navItems.map((item, index) => (
@@ -157,6 +161,9 @@ export default function Header() {
 
             {/* Auth Buttons */}
             <div className="hidden md:flex items-center space-x-4">
+              <Link href="/calculator/cibil-check">
+                <Image src={gif} alt="Borrowww" width={120} height={100} />
+              </Link>
               <motion.button
                 className="bg-gradient-to-r from-[var(--primary-blue-dark)] to-[var(--primary-blue)] text-white px-6 py-2 rounded-full font-medium hover:bg-[var(--primary-darkgreen)] transition-colors duration-200"
                 whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(45, 90, 74, 0.3)' }}

@@ -127,7 +127,7 @@ export default function HeroSection() {
 
 
               {/* Bottom Left - Processing Time Card */}
-              <div className="p-4 sm:p-6 aspect-square flex flex-col justify-between relative bg-[#3A6EA5] overflow-hidden rounded-bl-2xl rounded-tl-2xl sm:rounded-tr-[10rem] md:rounded-tr-[15rem]">
+              <div className="p-4 sm:p-6 aspect-square flex flex-col justify-between relative bg-[#3A6EA5] overflow-hidden rounded-bl-2xl sm:rounded-tr-[10rem] md:rounded-tr-[15rem]">
                 <div className="flex items-center justify-center flex-1">
                   <Sparkles className="w-10 h-10 sm:w-16 sm:h-16 text-white animate-breathing" />
                 </div>

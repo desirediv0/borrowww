@@ -8,7 +8,7 @@ export default function HomeLoanSections() {
   return (
     <div className="w-full">
       {/* Section 1: Rate Cut */}
-      <section className="bg-[#3a6ea5df]">
+      <section className="bg-white">
         <div className=" mx-auto">
           <div className="grid lg:grid-cols-2 items-center">
             <div className="flex justify-center">
@@ -21,18 +21,18 @@ export default function HomeLoanSections() {
               />
             </div>
             <div className="space-y-6 py-16 px-4 md:px-10 ">
-              <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
                 Find out if your home loan is competitive
               </h2>
 
-              <p className="text-gray-200 md:text-lg leading-relaxed">
+              <p className="text-gray-800 md:text-lg leading-relaxed">
                 Think a lower rate&apos;s out of reach? Our Home Loan Health Check can reveal your
                 savings potential. Discover how adjusting your loan might reduce your monthly
                 payments and loan term. Rates can vary—our brokers are here to offer personalised
                 advice.
               </p>
 
-              <Button className="bg-[#3A6EA5] hover:bg-[#2d5a8a] text-white px-8 py-3 rounded-md font-semibold text-lg">
+              <Button className="bg-[var(--primary-blue-dark)] hover:bg-[var(--primary-blue)] text-white px-8 py-3 rounded-md font-semibold text-lg">
                 CHECK MY HOME LOAN HEALTH
               </Button>
             </div>
@@ -116,41 +116,41 @@ export default function HomeLoanSections() {
 
       {/* Section 3: Credit Score Check */}
       <section>
-        <div className=" bg-[#3a6ea5df] mx-auto">
+        <div className="mx-auto">
           <div className="grid lg:grid-cols-2  items-center">
             <div className="rounded-2xl space-y-6 py-7 px-10">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-100 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
                 Check your credit score for free, in minutes
               </h2>
 
-              <p className="text-gray-200 text-lg leading-relaxed">
+              <p className="text-gray-800 text-lg leading-relaxed">
                 Get home loan ready by checking your credit score.
               </p>
 
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
-                  <span className="text-gray-200">Only takes a few short minutes</span>
+                  <div className="w-2 h-2 rounded-full mt-3 flex-shrink-0"></div>
+                  <span className="text-gray-800">Only takes a few short minutes</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
-                  <span className="text-gray-200">
+                  <span className="text-gray-800">
                     Check as many times as you like with no impact
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
-                  <span className="text-gray-200">Gain clarity on your financial health</span>
+                  <span className="text-gray-800">Gain clarity on your financial health</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-white rounded-full mt-3 flex-shrink-0"></div>
-                  <span className="text-gray-200">
+                  <span className="text-gray-800">
                     Get expert guidance from a Home Loan Specialist
                   </span>
                 </li>
               </ul>
 
-              <Button className="bg-[#3A6EA5] hover:bg-[#2d5a8a] text-white px-8 py-3 rounded-md font-semibold text-lg">
+              <Button className="bg-[var(--primary-blue-dark)] hover:bg-[var(--primary-blue)] text-white px-8 py-3 rounded-md font-semibold text-lg">
                 CHECK MY SCORE
               </Button>
             </div>

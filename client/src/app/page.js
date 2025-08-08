@@ -18,7 +18,7 @@ export default function Home() {
       <HomeLoanSections />
       <ValuesSection />
         <Calculator />
-      <LoanCalculator />
+      {/* <LoanCalculator /> */}
       <FAQSection />
     </main>
   );
