@@ -24,29 +24,31 @@ export default function LoanAgainstPropertyCalculator() {
   const [propertyValue, setPropertyValue] = useState(10000000);
   const [loanAmount, setLoanAmount] = useState(6000000);
   const [interestRate, setInterestRate] = useState(12.5);
-  const [tenure, setTenure] = useState(15);
+  const [tenureYears, setTenureYears] = useState(15);
+  const [tenureMonths, setTenureMonths] = useState(0);
   const [emi, setEmi] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalInterest, setTotalInterest] = useState(0);
 
   useEffect(() => {
     calculateEMI();
-  }, [loanAmount, interestRate, tenure]);
+  }, [loanAmount, interestRate, tenureYears, tenureMonths]);
 
   const calculateEMI = () => {
     const principal = loanAmount;
     const rate = interestRate / 12 / 100; // Monthly interest rate
-    const time = tenure * 12; // Total months
+    const totalMonths = tenureYears * 12 + tenureMonths; // Total months
 
     if (rate === 0) {
-      setEmi(principal / time);
+      setEmi(principal / totalMonths);
     } else {
       const emiValue =
-        (principal * rate * Math.pow(1 + rate, time)) / (Math.pow(1 + rate, time) - 1);
+        (principal * rate * Math.pow(1 + rate, totalMonths)) /
+        (Math.pow(1 + rate, totalMonths) - 1);
       setEmi(emiValue);
     }
 
-    const totalAmountValue = emi * time;
+    const totalAmountValue = emi * totalMonths;
     setTotalAmount(totalAmountValue);
     setTotalInterest(totalAmountValue - principal);
   };
@@ -170,7 +172,7 @@ export default function LoanAgainstPropertyCalculator() {
               <div className="space-y-8">
                 {/* Property Value */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Property Value
                   </label>
                   <div className="relative">
@@ -179,7 +181,7 @@ export default function LoanAgainstPropertyCalculator() {
                       type="number"
                       value={propertyValue}
                       onChange={(e) => setPropertyValue(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                      className="w-full pl-12 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
                       placeholder="Enter property value"
                     />
                   </div>
@@ -202,7 +204,7 @@ export default function LoanAgainstPropertyCalculator() {
 
                 {/* Loan Amount */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Loan Amount Required
                   </label>
                   <div className="relative">
@@ -211,7 +213,7 @@ export default function LoanAgainstPropertyCalculator() {
                       type="number"
                       value={loanAmount}
                       onChange={(e) => setLoanAmount(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                      className="w-full pl-12 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
                       placeholder="Enter loan amount"
                     />
                   </div>
@@ -237,7 +239,7 @@ export default function LoanAgainstPropertyCalculator() {
 
                 {/* Interest Rate */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Interest Rate (% per annum)
                   </label>
                   <div className="relative">
@@ -246,7 +248,7 @@ export default function LoanAgainstPropertyCalculator() {
                       type="number"
                       value={interestRate}
                       onChange={(e) => setInterestRate(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                      className="w-full pl-12 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
                       placeholder="Enter interest rate"
                       step="0.1"
                     />
@@ -270,33 +272,77 @@ export default function LoanAgainstPropertyCalculator() {
 
                 {/* Tenure */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Loan Tenure (Years)
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Loan Tenure
                   </label>
-                  <div className="relative">
-                    <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="number"
-                      value={tenure}
-                      onChange={(e) => setTenure(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
-                      placeholder="Enter tenure"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <input
-                      type="range"
-                      min="5"
-                      max="15"
-                      step="1"
-                      value={tenure}
-                      onChange={(e) => setTenure(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                    <div className="flex justify-between text-sm text-gray-500 mt-2">
-                      <span>5 Years</span>
-                      <span>15 Years</span>
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Years */}
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-2">Years</label>
+                      <div className="relative">
+                        <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+                        <input
+                          type="number"
+                          value={tenureYears}
+                          onChange={(e) => setTenureYears(Number(e.target.value))}
+                          className="w-full pl-8 pr-3 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-sm bg-gray-50 focus:bg-white"
+                          placeholder="Years"
+                          min="0"
+                          max="15"
+                        />
+                      </div>
+                      <div className="mt-2">
+                        <input
+                          type="range"
+                          min="0"
+                          max="15"
+                          step="1"
+                          value={tenureYears}
+                          onChange={(e) => setTenureYears(Number(e.target.value))}
+                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                        />
+                        <div className="flex justify-between text-xs text-gray-500 mt-1">
+                          <span>0</span>
+                          <span>15</span>
+                        </div>
+                      </div>
                     </div>
+
+                    {/* Months */}
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-2">Months</label>
+                      <div className="relative">
+                        <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+                        <input
+                          type="number"
+                          value={tenureMonths}
+                          onChange={(e) => setTenureMonths(Number(e.target.value))}
+                          className="w-full pl-8 pr-3 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-sm bg-gray-50 focus:bg-white"
+                          placeholder="Months"
+                          min="0"
+                          max="11"
+                        />
+                      </div>
+                      <div className="mt-2">
+                        <input
+                          type="range"
+                          min="0"
+                          max="11"
+                          step="1"
+                          value={tenureMonths}
+                          onChange={(e) => setTenureMonths(Number(e.target.value))}
+                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                        />
+                        <div className="flex justify-between text-xs text-gray-500 mt-1">
+                          <span>0</span>
+                          <span>11</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-3 text-sm text-gray-600">
+                    Total Tenure: {tenureYears} years {tenureMonths} months (
+                    {tenureYears * 12 + tenureMonths} months)
                   </div>
                 </div>
               </div>
@@ -314,7 +360,8 @@ export default function LoanAgainstPropertyCalculator() {
                 <h3 className="text-2xl font-bold mb-6">Your Monthly EMI</h3>
                 <div className="text-5xl font-bold mb-4">{formatCurrency(emi)}</div>
                 <p className="text-white/90 mb-8 font-medium">
-                  Monthly payment for {tenure} years at {interestRate}% interest rate
+                  Monthly payment for {tenureYears} years {tenureMonths} months at {interestRate}%
+                  interest rate
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
@@ -356,7 +403,7 @@ export default function LoanAgainstPropertyCalculator() {
                   </div>
                   <div className="flex justify-between items-center py-4">
                     <span className="text-gray-700 font-medium">Number of EMIs</span>
-                    <span className="font-bold text-lg">{tenure * 12}</span>
+                    <span className="font-bold text-lg">{tenureYears * 12 + tenureMonths}</span>
                   </div>
                 </div>
               </div>
@@ -443,7 +490,7 @@ export default function LoanAgainstPropertyCalculator() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => window.location.href = '/auth'}
+                    onClick={() => (window.location.href = '/auth')}
                     className="w-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2"
                   >
                     Login to Apply
@@ -517,7 +564,7 @@ export default function LoanAgainstPropertyCalculator() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/auth'}
+                onClick={() => (window.location.href = '/auth')}
                 className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
               >
                 Login to Apply
@@ -525,7 +572,7 @@ export default function LoanAgainstPropertyCalculator() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/auth'}
+                onClick={() => (window.location.href = '/auth')}
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
               >
                 Register Now
