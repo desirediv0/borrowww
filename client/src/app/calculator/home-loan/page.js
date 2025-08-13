@@ -6,8 +6,6 @@ import {
   FaBuilding,
   FaCalculator,
   FaCalendarAlt,
-  FaCar,
-  FaChartLine,
   FaCheckCircle,
   FaDownload,
   FaHome,
@@ -15,7 +13,6 @@ import {
   FaRupeeSign,
   FaShare,
   FaShieldAlt,
-  FaUser,
 } from 'react-icons/fa';
 
 import { motion } from 'framer-motion';
@@ -23,7 +20,8 @@ import { motion } from 'framer-motion';
 export default function HomeLoanCalculator() {
   const [loanAmount, setLoanAmount] = useState(5000000);
   const [interestRate, setInterestRate] = useState(8.5);
-  const [tenure, setTenure] = useState(20);
+  const [tenureYears, setTenureYears] = useState(20);
+  const [tenureMonths, setTenureMonths] = useState(0);
   const [downPayment, setDownPayment] = useState(20);
   const [propertyValue, setPropertyValue] = useState(6250000);
   const [emi, setEmi] = useState(0);
@@ -32,12 +30,12 @@ export default function HomeLoanCalculator() {
 
   useEffect(() => {
     calculateEMI();
-  }, [loanAmount, interestRate, tenure]);
+  }, [loanAmount, interestRate, tenureYears, tenureMonths]);
 
   const calculateEMI = () => {
     const principal = loanAmount;
     const rate = interestRate / 12 / 100; // Monthly interest rate
-    const time = tenure * 12; // Total months
+    const time = (tenureYears * 12) + tenureMonths; // Total months
 
     if (rate === 0) {
       setEmi(principal / time);
@@ -283,31 +281,69 @@ export default function HomeLoanCalculator() {
                 {/* Tenure */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Loan Tenure (Years)
+                    Loan Tenure
                   </label>
-                  <div className="relative">
-                    <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="number"
-                      value={tenure}
-                      onChange={(e) => setTenure(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
-                      placeholder="Enter tenure"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <input
-                      type="range"
-                      min="5"
-                      max="30"
-                      step="1"
-                      value={tenure}
-                      onChange={(e) => setTenure(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                    <div className="flex justify-between text-sm text-gray-500 mt-2">
-                      <span>5 Years</span>
-                      <span>30 Years</span>
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Years Input */}
+                    <div>
+                      <div className="relative">
+                        <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                        <input
+                          type="number"
+                          value={tenureYears}
+                          onChange={(e) => setTenureYears(Number(e.target.value))}
+                          className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                          placeholder="Years"
+                          min="0"
+                          max="30"
+                        />
+                      </div>
+                      <div className="mt-3">
+                        <input
+                          type="range"
+                          min="0"
+                          max="30"
+                          step="1"
+                          value={tenureYears}
+                          onChange={(e) => setTenureYears(Number(e.target.value))}
+                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                        />
+                        <div className="flex justify-between text-sm text-gray-500 mt-2">
+                          <span>0 Years</span>
+                          <span>30 Years</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Months Input */}
+                    <div>
+                      <div className="relative">
+                        <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                        <input
+                          type="number"
+                          value={tenureMonths}
+                          onChange={(e) => setTenureMonths(Number(e.target.value))}
+                          className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                          placeholder="Months"
+                          min="0"
+                          max="11"
+                        />
+                      </div>
+                      <div className="mt-3">
+                        <input
+                          type="range"
+                          min="0"
+                          max="11"
+                          step="1"
+                          value={tenureMonths}
+                          onChange={(e) => setTenureMonths(Number(e.target.value))}
+                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                        />
+                        <div className="flex justify-between text-sm text-gray-500 mt-2">
+                          <span>0 Months</span>
+                          <span>11 Months</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -326,7 +362,7 @@ export default function HomeLoanCalculator() {
                 <h3 className="text-2xl font-bold mb-6">Your Monthly EMI</h3>
                 <div className="text-5xl font-bold mb-4">{formatCurrency(emi)}</div>
                 <p className="text-white/90 mb-8 font-medium">
-                  Monthly payment for {tenure} years at {interestRate}% interest rate
+                  Monthly payment for {tenureYears} years {tenureMonths > 0 ? `${tenureMonths} months` : ''} at {interestRate}% interest rate
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
@@ -368,29 +404,29 @@ export default function HomeLoanCalculator() {
                   </div>
                   <div className="flex justify-between items-center py-4">
                     <span className="text-gray-700 font-medium">Number of EMIs</span>
-                    <span className="font-bold text-lg">{tenure * 12}</span>
+                    <span className="font-bold text-lg">{(tenureYears * 12) + tenureMonths} ({tenureYears} years {tenureMonths} months)</span>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex-1 bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] text-white py-4 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-3 shadow-lg"
+                    >
+                      <FaDownload />
+                      Download PDF
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex-1 border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] py-4 px-6 rounded-xl font-semibold hover:bg-[var(--primary-blue)] hover:text-white transition-all duration-200 flex items-center justify-center gap-3"
+                    >
+                      <FaShare />
+                      Share Results
+                    </motion.button>
                   </div>
                 </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] text-white py-4 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-3 shadow-lg"
-                >
-                  <FaDownload />
-                  Download PDF
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] py-4 px-6 rounded-xl font-semibold hover:bg-[var(--primary-blue)] hover:text-white transition-all duration-200 flex items-center justify-center gap-3"
-                >
-                  <FaShare />
-                  Share Results
-                </motion.button>
               </div>
             </motion.div>
           </div>

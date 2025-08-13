@@ -8,7 +8,7 @@ import {
   FaDownload,
   FaPercentage,
   FaRupeeSign,
-  FaShare,
+
   FaArrowRight,
   FaHome,
   FaCar,
@@ -21,19 +21,20 @@ import { motion } from 'framer-motion';
 export default function EMICalculator() {
   const [loanAmount, setLoanAmount] = useState(1000000);
   const [interestRate, setInterestRate] = useState(10.5);
-  const [tenure, setTenure] = useState(20);
+  const [tenureYears, setTenureYears] = useState(20);
+  const [tenureMonths, setTenureMonths] = useState(0);
   const [emi, setEmi] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalInterest, setTotalInterest] = useState(0);
 
   useEffect(() => {
     calculateEMI();
-  }, [loanAmount, interestRate, tenure]);
+  }, [loanAmount, interestRate, tenureYears, tenureMonths]);
 
   const calculateEMI = () => {
     const principal = loanAmount;
     const rate = interestRate / 12 / 100; // Monthly interest rate
-    const time = tenure * 12; // Total months
+    const time = (tenureYears * 12) + tenureMonths; // Total months
 
     if (rate === 0) {
       setEmi(principal / time);
@@ -62,30 +63,30 @@ export default function EMICalculator() {
   };
 
   const loanTypes = [
-    { 
-      name: 'Home Loan', 
-      rate: '8.50% - 12.50%', 
+    {
+      name: 'Home Loan',
+      rate: '8.50% - 12.50%',
       amount: '₹5L - ₹2Cr',
       icon: FaHome,
       color: 'from-blue-500 to-blue-600'
     },
-    { 
-      name: 'Personal Loan', 
-      rate: '10.99% - 24.99%', 
+    {
+      name: 'Personal Loan',
+      rate: '10.99% - 24.99%',
       amount: '₹50K - ₹25L',
       icon: FaUser,
       color: 'from-green-500 to-green-600'
     },
-    { 
-      name: 'Business Loan', 
-      rate: '12.00% - 18.00%', 
+    {
+      name: 'Business Loan',
+      rate: '12.00% - 18.00%',
       amount: '₹1L - ₹50L',
       icon: FaBuilding,
       color: 'from-purple-500 to-purple-600'
     },
-    { 
-      name: 'Car Loan', 
-      rate: '9.00% - 15.00%', 
+    {
+      name: 'Car Loan',
+      rate: '9.00% - 15.00%',
       amount: '₹1L - ₹50L',
       icon: FaCar,
       color: 'from-orange-500 to-orange-600'
@@ -126,7 +127,7 @@ export default function EMICalculator() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+              className="bg-white p-8 rounded-3xl h-min shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-12 h-12 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl flex items-center justify-center shadow-lg">
@@ -138,7 +139,7 @@ export default function EMICalculator() {
               <div className="space-y-8">
                 {/* Loan Amount */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Loan Amount
                   </label>
                   <div className="relative">
@@ -147,7 +148,7 @@ export default function EMICalculator() {
                       type="number"
                       value={loanAmount}
                       onChange={(e) => setLoanAmount(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                      className="w-full pl-12 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
                       placeholder="Enter loan amount"
                     />
                   </div>
@@ -170,7 +171,7 @@ export default function EMICalculator() {
 
                 {/* Interest Rate */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Interest Rate (% per annum)
                   </label>
                   <div className="relative">
@@ -179,7 +180,7 @@ export default function EMICalculator() {
                       type="number"
                       value={interestRate}
                       onChange={(e) => setInterestRate(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                      className="w-full pl-12 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
                       placeholder="Enter interest rate"
                       step="0.1"
                     />
@@ -203,32 +204,70 @@ export default function EMICalculator() {
 
                 {/* Tenure */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Loan Tenure (Years)
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Loan Tenure
                   </label>
-                  <div className="relative">
-                    <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="number"
-                      value={tenure}
-                      onChange={(e) => setTenure(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
-                      placeholder="Enter tenure"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <input
-                      type="range"
-                      min="1"
-                      max="30"
-                      step="1"
-                      value={tenure}
-                      onChange={(e) => setTenure(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                    <div className="flex justify-between text-sm text-gray-500 mt-2">
-                      <span>1 Year</span>
-                      <span>30 Years</span>
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Years Input */}
+                    <div>
+                      <div className="relative">
+                        <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                        <input
+                          type="number"
+                          value={tenureYears}
+                          onChange={(e) => setTenureYears(Number(e.target.value))}
+                          className="w-full pl-12 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                          placeholder="Years"
+                          min="0"
+                          max="30"
+                        />
+                      </div>
+                      <div className="mt-3">
+                        <input
+                          type="range"
+                          min="0"
+                          max="30"
+                          step="1"
+                          value={tenureYears}
+                          onChange={(e) => setTenureYears(Number(e.target.value))}
+                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                        />
+                        <div className="flex justify-between text-sm text-gray-500 mt-2">
+                          <span>0 Years</span>
+                          <span>30 Years</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Months Input */}
+                    <div>
+                      <div className="relative">
+                        <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                        <input
+                          type="number"
+                          value={tenureMonths}
+                          onChange={(e) => setTenureMonths(Number(e.target.value))}
+                          className="w-full pl-12 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
+                          placeholder="Months"
+                          min="0"
+                          max="11"
+                        />
+                      </div>
+                      <div className="mt-3">
+                        <input
+                          type="range"
+                          min="0"
+                          max="11"
+                          step="1"
+                          value={tenureMonths}
+                          onChange={(e) => setTenureMonths(Number(e.target.value))}
+                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                        />
+                        <div className="flex justify-between text-sm text-gray-500 mt-2">
+                          <span>0 Months</span>
+                          <span>11 Months</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -247,7 +286,7 @@ export default function EMICalculator() {
                 <h3 className="text-2xl font-bold mb-6">Your Monthly EMI</h3>
                 <div className="text-5xl font-bold mb-4">{formatCurrency(emi)}</div>
                 <p className="text-white/90 mb-8 font-medium">
-                  Monthly payment for {tenure} years at {interestRate}% interest rate
+                  Monthly payment for {tenureYears} years {tenureMonths > 0 ? `${tenureMonths} months` : ''} at {interestRate}% interest rate
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
@@ -283,30 +322,12 @@ export default function EMICalculator() {
                   </div>
                   <div className="flex justify-between items-center py-4">
                     <span className="text-gray-700 font-medium">Number of EMIs</span>
-                    <span className="font-bold text-lg">{tenure * 12}</span>
+                    <span className="font-bold text-lg">{(tenureYears * 12) + tenureMonths} ({tenureYears} years {tenureMonths} months)</span>
                   </div>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] text-white py-4 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-3 shadow-lg"
-                >
-                  <FaDownload />
-                  Download PDF
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] py-4 px-6 rounded-xl font-semibold hover:bg-[var(--primary-blue)] hover:text-white transition-all duration-200 flex items-center justify-center gap-3"
-                >
-                  <FaShare />
-                  Share Results
-                </motion.button>
-              </div>
+
             </motion.div>
           </div>
         </div>
@@ -347,7 +368,7 @@ export default function EMICalculator() {
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900">{loan.name}</h3>
                   </div>
-                  
+
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600 font-medium">Interest Rate:</span>
@@ -358,7 +379,7 @@ export default function EMICalculator() {
                       <span className="font-semibold text-gray-900">{loan.amount}</span>
                     </div>
                   </div>
-                  
+
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

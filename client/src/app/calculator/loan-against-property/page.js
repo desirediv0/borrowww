@@ -172,7 +172,7 @@ export default function LoanAgainstPropertyCalculator() {
               <div className="space-y-8">
                 {/* Property Value */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Property Value
                   </label>
                   <div className="relative">
@@ -204,7 +204,7 @@ export default function LoanAgainstPropertyCalculator() {
 
                 {/* Loan Amount */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Loan Amount Required
                   </label>
                   <div className="relative">
@@ -239,7 +239,7 @@ export default function LoanAgainstPropertyCalculator() {
 
                 {/* Interest Rate */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Interest Rate (% per annum)
                   </label>
                   <div className="relative">
@@ -272,13 +272,13 @@ export default function LoanAgainstPropertyCalculator() {
 
                 {/* Tenure */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Loan Tenure
                   </label>
                   <div className="grid grid-cols-2 gap-4">
                     {/* Years */}
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-2">Years</label>
+                      <label className="block text-xs font-medium text-gray-600 mb-1">Years</label>
                       <div className="relative">
                         <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
                         <input
@@ -310,7 +310,7 @@ export default function LoanAgainstPropertyCalculator() {
 
                     {/* Months */}
                     <div>
-                      <label className="block text-xs font-medium text-gray-600 mb-2">Months</label>
+                      <label className="block text-xs font-medium text-gray-600 mb-1">Months</label>
                       <div className="relative">
                         <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
                         <input
@@ -408,25 +408,6 @@ export default function LoanAgainstPropertyCalculator() {
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] text-white py-4 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-3 shadow-lg"
-                >
-                  <FaDownload />
-                  Download PDF
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] py-4 px-6 rounded-xl font-semibold hover:bg-[var(--primary-blue)] hover:text-white transition-all duration-200 flex items-center justify-center gap-3"
-                >
-                  <FaShare />
-                  Share Results
-                </motion.button>
-              </div>
             </motion.div>
           </div>
         </div>
