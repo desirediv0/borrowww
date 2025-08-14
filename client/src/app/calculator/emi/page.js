@@ -2,17 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import {
+  FaArrowRight,
+  FaBuilding,
   FaCalculator,
   FaCalendarAlt,
+  FaCar,
   FaChartLine,
   FaDownload,
+  FaHome,
   FaPercentage,
   FaRupeeSign,
-
-  FaArrowRight,
-  FaHome,
-  FaCar,
-  FaBuilding,
   FaUser,
 } from 'react-icons/fa';
 
@@ -34,7 +33,7 @@ export default function EMICalculator() {
   const calculateEMI = () => {
     const principal = loanAmount;
     const rate = interestRate / 12 / 100; // Monthly interest rate
-    const time = (tenureYears * 12) + tenureMonths; // Total months
+    const time = tenureYears * 12 + tenureMonths; // Total months
 
     if (rate === 0) {
       setEmi(principal / time);
@@ -68,28 +67,28 @@ export default function EMICalculator() {
       rate: '8.50% - 12.50%',
       amount: '₹5L - ₹2Cr',
       icon: FaHome,
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-[#2D3E50] to-[#2D3E50]',
     },
     {
       name: 'Personal Loan',
       rate: '10.99% - 24.99%',
       amount: '₹50K - ₹25L',
       icon: FaUser,
-      color: 'from-green-500 to-green-600'
+      color: 'from-green-500 to-green-600',
     },
     {
       name: 'Business Loan',
       rate: '12.00% - 18.00%',
       amount: '₹1L - ₹50L',
       icon: FaBuilding,
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-purple-500 to-purple-600',
     },
     {
       name: 'Car Loan',
       rate: '9.00% - 15.00%',
       amount: '₹1L - ₹50L',
       icon: FaCar,
-      color: 'from-orange-500 to-orange-600'
+      color: 'from-orange-500 to-orange-600',
     },
   ];
 
@@ -112,7 +111,8 @@ export default function EMICalculator() {
               EMI <span className="text-[var(--primary-blue)] italic tiemposfine">Calculator</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Calculate your monthly EMI, total interest, and loan breakdown with our advanced EMI calculator
+              Calculate your monthly EMI, total interest, and loan breakdown with our advanced EMI
+              calculator
             </p>
           </motion.div>
         </div>
@@ -286,7 +286,9 @@ export default function EMICalculator() {
                 <h3 className="text-2xl font-bold mb-6">Your Monthly EMI</h3>
                 <div className="text-5xl font-bold mb-4">{formatCurrency(emi)}</div>
                 <p className="text-white/90 mb-8 font-medium">
-                  Monthly payment for {tenureYears} years {tenureMonths > 0 ? `${tenureMonths} months` : ''} at {interestRate}% interest rate
+                  Monthly payment for {tenureYears} years{' '}
+                  {tenureMonths > 0 ? `${tenureMonths} months` : ''} at {interestRate}% interest
+                  rate
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
@@ -322,12 +324,12 @@ export default function EMICalculator() {
                   </div>
                   <div className="flex justify-between items-center py-4">
                     <span className="text-gray-700 font-medium">Number of EMIs</span>
-                    <span className="font-bold text-lg">{(tenureYears * 12) + tenureMonths} ({tenureYears} years {tenureMonths} months)</span>
+                    <span className="font-bold text-lg">
+                      {tenureYears * 12 + tenureMonths} ({tenureYears} years {tenureMonths} months)
+                    </span>
                   </div>
                 </div>
               </div>
-
-
             </motion.div>
           </div>
         </div>
@@ -363,7 +365,9 @@ export default function EMICalculator() {
                   className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[var(--primary-blue)]"
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${loan.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                    <div
+                      className={`w-12 h-12 bg-gradient-to-br ${loan.color} rounded-2xl flex items-center justify-center shadow-lg`}
+                    >
                       <loan.icon className="text-white text-xl" />
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900">{loan.name}</h3>
@@ -372,7 +376,9 @@ export default function EMICalculator() {
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600 font-medium">Interest Rate:</span>
-                      <span className="font-bold text-[var(--primary-blue)] text-lg">{loan.rate}</span>
+                      <span className="font-bold text-[var(--primary-blue)] text-lg">
+                        {loan.rate}
+                      </span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600 font-medium">Loan Amount:</span>
@@ -404,7 +410,9 @@ export default function EMICalculator() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose Our EMI Calculator?</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Why Choose Our EMI Calculator?
+            </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Get accurate calculations and detailed insights for better financial planning
             </p>
@@ -472,13 +480,14 @@ export default function EMICalculator() {
           >
             <h3 className="text-3xl font-bold mb-4">Ready to Apply for a Loan?</h3>
             <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              Get personalized loan offers from top banks. Our experts will help you find the best deal with competitive rates.
+              Get personalized loan offers from top banks. Our experts will help you find the best
+              deal with competitive rates.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/auth'}
+                onClick={() => (window.location.href = '/auth')}
                 className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
               >
                 Login to Apply
@@ -486,7 +495,7 @@ export default function EMICalculator() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/auth'}
+                onClick={() => (window.location.href = '/auth')}
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
               >
                 Register Now

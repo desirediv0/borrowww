@@ -8,15 +8,10 @@ import {
   FaCalculator,
   FaCalendarAlt,
   FaCar,
-  FaChartLine,
-  FaCheckCircle,
   FaDownload,
-  FaEye,
   FaHome,
-  FaPercentage,
   FaRupeeSign,
   FaShare,
-  FaShieldAlt,
   FaUser,
 } from 'react-icons/fa';
 
@@ -34,7 +29,7 @@ export default function LoanComparisonCalculator() {
       name: 'Home Loan',
       rate: 8.5,
       icon: FaHome,
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-[#2D3E50] to-[#2D3E50]',
       description: 'For buying residential property',
       maxAmount: '₹2Cr',
       minTenure: 5,
@@ -480,7 +475,7 @@ export default function LoanComparisonCalculator() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/auth'}
+                onClick={() => (window.location.href = '/auth')}
                 className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
               >
                 Login to Apply
@@ -488,7 +483,7 @@ export default function LoanComparisonCalculator() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/auth'}
+                onClick={() => (window.location.href = '/auth')}
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
               >
                 Register Now

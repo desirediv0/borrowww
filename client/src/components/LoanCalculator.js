@@ -66,7 +66,7 @@ export default function LoanCalculator() {
       minTerm: 5,
       maxTerm: 30,
       description: 'Calculate your monthly EMI for any loan amount',
-      color: 'from-blue-600 to-blue-700',
+      color: 'from-[#2D3E50] to-blue-700',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200',
     },
@@ -80,7 +80,7 @@ export default function LoanCalculator() {
       minTerm: 5,
       maxTerm: 30,
       description: 'Balance Transfer Calculator for better rates',
-      color: 'from-blue-600 to-blue-700',
+      color: 'from-[#2D3E50] to-blue-700',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200',
     },
@@ -206,92 +206,112 @@ export default function LoanCalculator() {
                   <svg className="w-full h-64" viewBox="0 0 200 120">
                     {/* Histogram Bars */}
                     <motion.rect
-                      x="10" y="80" width="16" height="40"
+                      x="10"
+                      y="80"
+                      width="16"
+                      height="40"
                       fill="white"
                       initial={{ height: 0, y: 120 }}
                       animate={{ height: 40, y: 80 }}
                       transition={{
                         duration: 1.2,
                         repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 0
+                        repeatType: 'reverse',
+                        delay: 0,
                       }}
                     />
                     <motion.rect
-                      x="35" y="55" width="16" height="65" 
+                      x="35"
+                      y="55"
+                      width="16"
+                      height="65"
                       fill="white"
                       initial={{ height: 0, y: 120 }}
                       animate={{ height: 65, y: 55 }}
                       transition={{
                         duration: 1.2,
                         repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 0.2
+                        repeatType: 'reverse',
+                        delay: 0.2,
                       }}
                     />
                     <motion.rect
-                      x="60" y="30" width="16" height="90"
+                      x="60"
+                      y="30"
+                      width="16"
+                      height="90"
                       fill="white"
                       initial={{ height: 0, y: 120 }}
                       animate={{ height: 90, y: 30 }}
                       transition={{
                         duration: 1.2,
                         repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 0.4
+                        repeatType: 'reverse',
+                        delay: 0.4,
                       }}
                     />
                     <motion.rect
-                      x="85" y="10" width="16" height="110"
+                      x="85"
+                      y="10"
+                      width="16"
+                      height="110"
                       fill="white"
                       initial={{ height: 0, y: 120 }}
                       animate={{ height: 110, y: 10 }}
                       transition={{
                         duration: 1.2,
                         repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 0.6
+                        repeatType: 'reverse',
+                        delay: 0.6,
                       }}
                     />
                     <motion.rect
-                      x="110" y="20" width="16" height="100"
+                      x="110"
+                      y="20"
+                      width="16"
+                      height="100"
                       fill="white"
                       initial={{ height: 0, y: 120 }}
                       animate={{ height: 100, y: 20 }}
                       transition={{
                         duration: 1.2,
                         repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 0.8
+                        repeatType: 'reverse',
+                        delay: 0.8,
                       }}
                     />
                     <motion.rect
-                      x="135" y="40" width="16" height="80"
+                      x="135"
+                      y="40"
+                      width="16"
+                      height="80"
                       fill="white"
                       initial={{ height: 0, y: 120 }}
                       animate={{ height: 80, y: 40 }}
                       transition={{
                         duration: 1.2,
                         repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 1
+                        repeatType: 'reverse',
+                        delay: 1,
                       }}
                     />
                     <motion.rect
-                      x="160" y="60" width="16" height="60"
+                      x="160"
+                      y="60"
+                      width="16"
+                      height="60"
                       fill="white"
                       initial={{ height: 0, y: 120 }}
                       animate={{ height: 60, y: 60 }}
                       transition={{
                         duration: 1.2,
                         repeat: Infinity,
-                        repeatType: "reverse",
-                        delay: 1.2
+                        repeatType: 'reverse',
+                        delay: 1.2,
                       }}
                     />
                   </svg>
                 </div>
-
               </CardContent>
             </Card>
           </motion.div>
@@ -311,7 +331,7 @@ export default function LoanCalculator() {
                   <div>
                     <CardTitle className="flex items-center gap-2 text-xl">
                       <div className={`p-2 rounded-lg ${currentLoanType.bgColor}`}>
-                        <currentLoanType.icon className="w-5 h-5 text-blue-600" />
+                        <currentLoanType.icon className="w-5 h-5 text-[#2D3E50]" />
                       </div>
                       {currentLoanType.name}
                     </CardTitle>
@@ -346,7 +366,7 @@ export default function LoanCalculator() {
                   >
                     <div className="flex items-center justify-between mb-1">
                       <Label className="text-base font-bold flex items-center gap-2 text-blue-700">
-                        <IndianRupee className="w-4 h-4 text-blue-600" />
+                        <IndianRupee className="w-4 h-4 text-[#2D3E50]" />
                         Loan Amount
                       </Label>
                       <span className="text-xl font-extrabold text-blue-800">
@@ -359,7 +379,7 @@ export default function LoanCalculator() {
                         value={loanAmount}
                         onChange={(e) => setLoanAmount(Number(e.target.value) || 0)}
                         placeholder="Enter loan amount"
-                        className="text-base p-3 border-2 border-blue-200 focus:border-blue-500 rounded-xl bg-white shadow-sm mb-3"
+                        className="text-base p-3 border-2 border-blue-200 focus:border-[#2D3E50] rounded-xl bg-white shadow-sm mb-3"
                         min="0"
                         step="1000"
                       />
@@ -369,11 +389,11 @@ export default function LoanCalculator() {
                         step={10000}
                         value={[loanAmount]}
                         onValueChange={(value) => setLoanAmount(value[0])}
-                        className="w-full h-3 bg-blue-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        thumbClassName="bg-blue-600 border-2 border-white w-6 h-6 shadow-lg"
+                        className="w-full h-3 bg-blue-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#2D3E50]"
+                        thumbClassName="bg-[#2D3E50] border-2 border-white w-6 h-6 shadow-lg"
                         trackClassName="bg-blue-400 h-3 rounded-full"
                       />
-                      <div className="flex justify-between text-xs text-blue-600 mt-1">
+                      <div className="flex justify-between text-xs text-[#2D3E50] mt-1">
                         <span>₹{currentLoanType.minAmount.toLocaleString('en-IN')}</span>
                         <span>₹{currentLoanType.maxAmount.toLocaleString('en-IN')}</span>
                       </div>
@@ -389,7 +409,7 @@ export default function LoanCalculator() {
                   >
                     <div className="flex items-center justify-between mb-1">
                       <Label className="text-base font-bold flex items-center gap-2 text-blue-700">
-                        <Percent className="w-4 h-4 text-blue-600" />
+                        <Percent className="w-4 h-4 text-[#2D3E50]" />
                         Interest Rate (% per annum)
                       </Label>
                       <span className="text-xl font-extrabold text-blue-800">{interestRate}%</span>
@@ -400,7 +420,7 @@ export default function LoanCalculator() {
                         value={interestRate}
                         onChange={(e) => setInterestRate(Number(e.target.value) || 0)}
                         placeholder="Enter interest rate"
-                        className="text-base p-3 border-2 border-blue-200 focus:border-blue-500 rounded-xl bg-white shadow-sm mb-3"
+                        className="text-base p-3 border-2 border-blue-200 focus:border-[#2D3E50] rounded-xl bg-white shadow-sm mb-3"
                         min="0"
                         max="100"
                         step="0.01"
@@ -411,11 +431,11 @@ export default function LoanCalculator() {
                         step={0.1}
                         value={[interestRate]}
                         onValueChange={(value) => setInterestRate(value[0])}
-                        className="w-full h-3 bg-blue-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        thumbClassName="bg-blue-600 border-2 border-white w-6 h-6 shadow-lg"
+                        className="w-full h-3 bg-blue-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#2D3E50]"
+                        thumbClassName="bg-[#2D3E50] border-2 border-white w-6 h-6 shadow-lg"
                         trackClassName="bg-blue-400 h-3 rounded-full"
                       />
-                      <div className="flex justify-between text-xs text-blue-600 mt-1">
+                      <div className="flex justify-between text-xs text-[#2D3E50] mt-1">
                         <span>{currentLoanType.minRate}%</span>
                         <span>{currentLoanType.maxRate}%</span>
                       </div>
@@ -431,7 +451,7 @@ export default function LoanCalculator() {
                   >
                     <div className="flex items-center justify-between mb-1">
                       <Label className="text-base font-bold flex items-center gap-2 text-blue-700">
-                        <Calendar className="w-4 h-4 text-blue-600" />
+                        <Calendar className="w-4 h-4 text-[#2D3E50]" />
                         Loan Term (Years)
                       </Label>
                       <span className="text-xl font-extrabold text-blue-800">{loanTerm} years</span>
@@ -443,11 +463,11 @@ export default function LoanCalculator() {
                         step={1}
                         value={[loanTerm]}
                         onValueChange={(value) => setLoanTerm(value[0])}
-                        className="w-full h-3 bg-blue-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        thumbClassName="bg-blue-600 border-2 border-white w-6 h-6 shadow-lg"
+                        className="w-full h-3 bg-blue-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#2D3E50]"
+                        thumbClassName="bg-[#2D3E50] border-2 border-white w-6 h-6 shadow-lg"
                         trackClassName="bg-blue-400 h-3 rounded-full"
                       />
-                      <div className="flex justify-between text-xs text-blue-600 mt-1">
+                      <div className="flex justify-between text-xs text-[#2D3E50] mt-1">
                         <span>{currentLoanType.minTerm} years</span>
                         <span>{currentLoanType.maxTerm} years</span>
                       </div>
@@ -457,7 +477,7 @@ export default function LoanCalculator() {
                     {activeTab === 'bt' && (
                       <div className="mt-4">
                         <Label className="text-base font-bold flex items-center gap-2 text-blue-700 mb-2">
-                          <RefreshCw className="w-4 h-4 text-blue-600" />
+                          <RefreshCw className="w-4 h-4 text-[#2D3E50]" />
                           BT Period
                         </Label>
                         <div className="flex gap-2">
@@ -465,7 +485,7 @@ export default function LoanCalculator() {
                             onClick={() => setBtPeriod('monthly')}
                             className={`flex-1 ${
                               btPeriod === 'monthly'
-                                ? 'bg-blue-600 text-white'
+                                ? 'bg-[#2D3E50] text-white'
                                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                             }`}
                           >
@@ -475,7 +495,7 @@ export default function LoanCalculator() {
                             onClick={() => setBtPeriod('yearly')}
                             className={`flex-1 ${
                               btPeriod === 'yearly'
-                                ? 'bg-blue-600 text-white'
+                                ? 'bg-[#2D3E50] text-white'
                                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                             }`}
                           >
@@ -494,7 +514,7 @@ export default function LoanCalculator() {
                     >
                       <Button
                         onClick={handleApply}
-                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:opacity-90 text-white py-4 md:py-6 px-8 text-lg font-bold rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300"
+                        className="bg-gradient-to-r from-[#2D3E50] to-blue-700 hover:opacity-90 text-white py-4 md:py-6 px-8 text-lg font-bold rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300"
                       >
                         Apply
                       </Button>
@@ -522,13 +542,13 @@ export default function LoanCalculator() {
                                 loanAmount - (activeTab === 'home' ? downPayment : 0)
                               ).toLocaleString('en-IN')}
                             </div>
-                            <div className="text-xs text-blue-600">Principal</div>
+                            <div className="text-xs text-[#2D3E50]">Principal</div>
                           </div>
                           <div className="text-center p-3 bg-blue-50 rounded-xl border border-blue-200">
                             <div className="text-lg font-bold text-blue-700">
                               ₹{totalInterest.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                             </div>
-                            <div className="text-xs text-blue-600">Total Interest</div>
+                            <div className="text-xs text-[#2D3E50]">Total Interest</div>
                           </div>
                         </div>
                         <div className="text-center p-3 bg-blue-100 rounded-xl border border-blue-300 w-full">

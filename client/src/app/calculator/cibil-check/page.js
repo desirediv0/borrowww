@@ -2,21 +2,14 @@
 
 import { useState } from 'react';
 import {
-  FaArrowRight,
   FaCalendarAlt,
   FaChartLine,
   FaCheckCircle,
-  FaDownload,
   FaEnvelope,
-  FaExclamationTriangle,
-  FaEye,
-  FaEyeSlash,
   FaIdCard,
   FaLock,
   FaPhone,
-  FaShare,
   FaShieldAlt,
-  FaStar,
   FaUser,
 } from 'react-icons/fa';
 
@@ -37,7 +30,6 @@ export default function CIBILCheck() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const [cibilScore, setCibilScore] = useState(null);
 
   const handleInputChange = (e) => {
@@ -61,7 +53,7 @@ export default function CIBILCheck() {
 
   const getScoreCategory = (score) => {
     if (score >= 750) return { category: 'Excellent', color: 'text-green-600', bg: 'bg-green-100' };
-    if (score >= 650) return { category: 'Good', color: 'text-blue-600', bg: 'bg-blue-100' };
+    if (score >= 650) return { category: 'Good', color: 'text-[#2D3E50]', bg: 'bg-blue-100' };
     if (score >= 550) return { category: 'Fair', color: 'text-yellow-600', bg: 'bg-yellow-100' };
     return { category: 'Poor', color: 'text-red-600', bg: 'bg-red-100' };
   };

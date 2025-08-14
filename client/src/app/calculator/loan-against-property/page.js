@@ -6,16 +6,9 @@ import {
   FaBuilding,
   FaCalculator,
   FaCalendarAlt,
-  FaCar,
-  FaChartLine,
   FaCheckCircle,
-  FaDownload,
-  FaHome,
   FaPercentage,
   FaRupeeSign,
-  FaShare,
-  FaShieldAlt,
-  FaUser,
 } from 'react-icons/fa';
 
 import { motion } from 'framer-motion';
@@ -73,7 +66,7 @@ export default function LoanAgainstPropertyCalculator() {
       processingFee: '₹15,000',
       maxAmount: '₹5Cr',
       icon: FaBuilding,
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-[#2D3E50] to-[#2D3E50]',
     },
     {
       name: 'SBI',
@@ -407,7 +400,6 @@ export default function LoanAgainstPropertyCalculator() {
                   </div>
                 </div>
               </div>
-
             </motion.div>
           </div>
         </div>

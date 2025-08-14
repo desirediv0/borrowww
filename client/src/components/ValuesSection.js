@@ -81,7 +81,7 @@ export default function ValuesSection() {
             transition={{ duration: 0.8 }}
           >
             <motion.p
-              className="text-lg text-blue-600 leading-tight mb-3 uppercase font-normal"
+              className="text-lg text-[#2D3E50] leading-tight mb-3 uppercase font-normal"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -126,7 +126,7 @@ export default function ValuesSection() {
           {values.map((value, index) => (
             <motion.div
               key={index}
-              className={`relative overflow-hidden shadow-lg cursor-pointer group border-2 border-blue-100 hover:bg-blue-50 hover:border-blue-50  ${index===1 ? 'hover:rounded-br-[80px]' : 'hover:rounded-tr-[80px]'} duration-300 ease-in-out`}
+              className={`relative overflow-hidden shadow-lg cursor-pointer group border-2 border-blue-100 hover:bg-blue-50 hover:border-blue-50  ${index === 1 ? 'hover:rounded-br-[80px]' : 'hover:rounded-tr-[80px]'} duration-300 ease-in-out`}
               // style={{ borderTopRightRadius: '180px', borderRadius: '32px' }}
               initial={{ scale: 1 }}
               // whileHover={{ scale: 1.04 }}
@@ -201,7 +201,7 @@ export default function ValuesSection() {
                     }}
                     transition={{ duration: 0.4, ease: 'easeInOut' }}
                   >
-                    <IconArrowRight className='-rotate-45' />
+                    <IconArrowRight className="-rotate-45" />
                   </motion.div>
                 </motion.div>
               </div>

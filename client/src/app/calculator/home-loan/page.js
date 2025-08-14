@@ -1,584 +1,515 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import React from 'react';
+
+import Link from 'next/link';
+
 import {
-  FaArrowRight,
-  FaBuilding,
-  FaCalculator,
-  FaCalendarAlt,
-  FaCheckCircle,
-  FaDownload,
-  FaHome,
-  FaPercentage,
-  FaRupeeSign,
-  FaShare,
-  FaShieldAlt,
-} from 'react-icons/fa';
+  ArrowRight,
+  BadgeCheck,
+  Building2,
+  CalendarCheck2,
+  ClipboardCheck,
+  FileCheck2,
+  FileText,
+  Handshake,
+  Home,
+  IndianRupee,
+  MessageSquareMore,
+  Percent,
+  Phone,
+  ShieldCheck,
+  Sparkles,
+  Users,
+} from 'lucide-react';
 
-import { motion } from 'framer-motion';
+export default function HomeLoanServicesPage() {
+  const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    city: '',
+    propertyType: 'Residential',
+    loanAmount: '',
+  });
 
-export default function HomeLoanCalculator() {
-  const [loanAmount, setLoanAmount] = useState(5000000);
-  const [interestRate, setInterestRate] = useState(8.5);
-  const [tenureYears, setTenureYears] = useState(20);
-  const [tenureMonths, setTenureMonths] = useState(0);
-  const [downPayment, setDownPayment] = useState(20);
-  const [propertyValue, setPropertyValue] = useState(6250000);
-  const [emi, setEmi] = useState(0);
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [totalInterest, setTotalInterest] = useState(0);
-
-  useEffect(() => {
-    calculateEMI();
-  }, [loanAmount, interestRate, tenureYears, tenureMonths]);
-
-  const calculateEMI = () => {
-    const principal = loanAmount;
-    const rate = interestRate / 12 / 100; // Monthly interest rate
-    const time = (tenureYears * 12) + tenureMonths; // Total months
-
-    if (rate === 0) {
-      setEmi(principal / time);
-    } else {
-      const emiValue =
-        (principal * rate * Math.pow(1 + rate, time)) / (Math.pow(1 + rate, time) - 1);
-      setEmi(emiValue);
-    }
-
-    const totalAmountValue = emi * time;
-    setTotalAmount(totalAmountValue);
-    setTotalInterest(totalAmountValue - principal);
-  };
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
-
-  const formatNumber = (num) => {
-    return new Intl.NumberFormat('en-IN').format(num);
-  };
-
-  const banks = [
+  const lenders = [
     {
       name: 'HDFC Bank',
-      rate: '8.50%',
-      processingFee: '₹11,000',
-      maxAmount: '₹10Cr',
-      icon: FaHome,
-      color: 'from-blue-500 to-blue-600',
+      rate: '8.50%*',
+      badge: 'Popular',
+      gradient: 'from-[#2D3E50] to-[#2D3E50]',
     },
     {
       name: 'SBI',
-      rate: '8.75%',
-      processingFee: '₹10,000',
-      maxAmount: '₹15Cr',
-      icon: FaBuilding,
-      color: 'from-green-500 to-green-600',
+      rate: '8.65%*',
+      badge: 'Govt. Backed',
+      gradient: 'from-green-500 to-emerald-600',
     },
     {
       name: 'ICICI Bank',
-      rate: '8.85%',
-      processingFee: '₹12,000',
-      maxAmount: '₹12Cr',
-      icon: FaHome,
-      color: 'from-purple-500 to-purple-600',
+      rate: '8.75%*',
+      badge: 'Fast Processing',
+      gradient: 'from-purple-500 to-violet-600',
     },
     {
       name: 'Axis Bank',
-      rate: '8.95%',
-      processingFee: '₹11,500',
-      maxAmount: '₹10Cr',
-      icon: FaBuilding,
-      color: 'from-orange-500 to-orange-600',
+      rate: '8.85%*',
+      badge: 'Low Fees',
+      gradient: 'from-orange-500 to-amber-600',
+    },
+  ];
+
+  const steps = [
+    {
+      icon: ClipboardCheck,
+      title: 'Free Consultation',
+      desc: 'Understanding your needs and suggesting the right loan options.',
+    },
+    {
+      icon: FileCheck2,
+      title: 'Document Pickup',
+      desc: 'Hassle-free document pickup & verification from your doorstep.',
+    },
+    {
+      icon: Building2,
+      title: 'Bank Selection',
+      desc: 'Negotiate best rates & terms with multiple banks on your behalf.',
+    },
+    {
+      icon: CalendarCheck2,
+      title: 'Quick Approval',
+      desc: 'Full support from faster sanction to smooth disbursement.',
     },
   ];
 
   const features = [
     {
-      title: 'Low Interest Rates',
-      description: 'Get competitive home loan rates starting from 8.50%',
-      icon: FaPercentage,
+      icon: Percent,
+      title: 'Competitive Rates',
+      desc: 'Access to the best interest rates available in the market.',
     },
     {
-      title: 'Flexible Tenure',
-      description: 'Choose repayment period from 5 to 30 years',
-      icon: FaCalendarAlt,
+      icon: ShieldCheck,
+      title: 'End-to-End Support',
+      desc: 'Dedicated assistance from application to disbursement.',
     },
     {
-      title: 'Quick Processing',
-      description: 'Fast approval and disbursement within 7-15 days',
-      icon: FaCheckCircle,
+      icon: Handshake,
+      title: 'Multiple Banks',
+      desc: 'Strong partnerships with top lenders for better offers.',
     },
     {
-      title: 'Minimal Documentation',
-      description: 'Simple documentation process with online application',
-      icon: FaShieldAlt,
+      icon: BadgeCheck,
+      title: 'Zero Hidden Charges',
+      desc: 'Transparent process with no surprise fees or charges.',
     },
   ];
 
+  const documents = [
+    'KYC: Aadhaar, PAN Card, Passport/Driving License',
+    'Income Proof: Salary Slips / ITR / Form-16',
+    'Bank Statements: Last 6–12 months',
+    'Property Papers: Agreement to Sell, NOC, Chain Documents',
+    'Employment Proof / Business Registration',
+  ];
+
+  const faqs = [
+    {
+      q: 'What is the minimum down payment required?',
+      a: 'Typically 10–25% of the property value. The exact percentage depends on bank policy and your credit profile.',
+    },
+    {
+      q: 'How long does the processing take?',
+      a: 'Usually 5–12 working days. The process is faster with complete documentation and a clear credit profile.',
+    },
+    {
+      q: 'Floating vs Fixed rate — which is better?',
+      a: 'Floating rates are commonly preferred for short to medium terms. Fixed rates provide stability. We advise based on your specific needs.',
+    },
+    {
+      q: 'Are there prepayment/foreclosure charges?',
+      a: 'Most floating rate home loans have no prepayment charges. Fixed rate loans may have charges. Bank-specific rules apply.',
+    },
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Thanks ${form.name || 'there'}! Our team will call you shortly.`);
+  };
+
   return (
-    <>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-48 -right-32 h-96 w-96 rounded-full bg-[#2D3E50]/10 blur-3xl" />
+          <div className="absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-[#3A6EA5]/10 blur-3xl" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.6 }}
+            className="grid lg:grid-cols-12 gap-10 items-center"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
-              <FaHome className="mr-2" />
-              Home Loan Calculator
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#2D3E50]/10 text-black text-sm font-medium mb-5">
+                <Home className="h-4 w-4" /> Home Loan Assistance
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight font-medium text-black">
+                Get the <span className="text-[#3A6EA5] italic">Best Home Loan</span> for Your Dream
+                Home
+              </h1>
+              <p className="mt-5 text-lg text-gray-600 max-w-2xl">
+                <span className="font-semibold">We secure the best loan deals for you</span>.
+                Multiple banks, better rates, fast approvals. You relax, we handle the paperwork.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <a
+                  href="#lead-form"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] px-6 py-3 text-white font-semibold shadow-lg hover:shadow-xl transition-all"
+                >
+                  Get Free Consultation <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="tel:+919999999999"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#2D3E50] px-6 py-3 text-[#2D3E50] font-semibold hover:bg-[#2D3E50] hover:text-white transition-all"
+                >
+                  <Phone className="h-4 w-4" /> Call Now
+                </a>
+              </div>
+              <div className="mt-6 flex items-center gap-6 text-sm text-gray-600">
+                <div className="inline-flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-yellow-500" /> No Brokerage
+                </div>
+                <div className="inline-flex items-center gap-2">
+                  <BadgeCheck className="h-4 w-4 text-green-600" /> RBI-Regulated Lenders
+                </div>
+                <div className="inline-flex items-center gap-2">
+                  <IndianRupee className="h-4 w-4 text-emerald-600" /> Best Rate Guarantee
+                </div>
+              </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 tracking-tighter">
-              Home Loan{' '}
-              <span className="text-[var(--primary-blue)] italic tiemposfine">Calculator</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Calculate your home loan EMI, eligibility, and get the best rates from top banks. Plan
-              your dream home with our comprehensive calculator.
-            </p>
-          </motion.div>
+
+            {/* Lead Form Card */}
+            <div
+              id="lead-form"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="lg:col-span-5"
+            >
+              <div className="rounded-3xl border border-gray-100 bg-white p-6 shadow-xl">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] flex items-center justify-center text-white">
+                    <MessageSquareMore className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-xl font-semibold">Get Personalized Offers</h3>
+                </div>
+                <div onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="text-sm text-gray-600">Full Name</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Enter Your Name"
+                      className="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 focus:bg-white focus:ring-2 focus:ring-[#2D3E50] focus:border-transparent transition-all"
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm text-gray-600">Mobile Number</label>
+                      <input
+                        type="tel"
+                        pattern="[0-9]{10}"
+                        required
+                        placeholder="Enter Your Mobile Number"
+                        className="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 focus:bg-white focus:ring-2 focus:ring-[#2D3E50] focus:border-transparent transition-all"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm text-gray-600">City</label>
+                      <input
+                        type="text"
+                        placeholder="Enter Your City"
+                        className="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 focus:bg-white focus:ring-2 focus:ring-[#2D3E50] focus:border-transparent transition-all"
+                        value={form.city}
+                        onChange={(e) => setForm({ ...form, city: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm text-gray-600">Property Type</label>
+                      <select
+                        className="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 focus:bg-white focus:ring-2 focus:ring-[#2D3E50] focus:border-transparent transition-all"
+                        value={form.propertyType}
+                        onChange={(e) => setForm({ ...form, propertyType: e.target.value })}
+                      >
+                        <option>Residential</option>
+                        <option>Commercial</option>
+                        <option>Plot</option>
+                        <option>Home Renovation</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-sm text-gray-600">Approx. Loan Amount (₹)</label>
+                      <input
+                        type="number"
+                        placeholder="1,00,000,000"
+                        className="mt-1 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 focus:bg-white focus:ring-2 focus:ring-[#2D3E50] focus:border-transparent transition-all"
+                        value={form.loanAmount}
+                        onChange={(e) => setForm({ ...form, loanAmount: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full rounded-xl bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] py-3 font-semibold text-white shadow-lg hover:shadow-xl transition-all"
+                  >
+                    Get Callback in 10 Minutes
+                  </button>
+                  <p className="text-xs text-gray-500 text-center">
+                    By continuing, you agree to our Terms & Privacy Policy.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Calculator Section */}
+      {/* LENDERS STRIP */}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {lenders.map((l) => (
+              <div
+                key={l.name}
+                className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm hover:shadow-md transition-all"
+              >
+                <div
+                  className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${l.gradient} text-white text-xs font-semibold px-3 py-1`}
+                >
+                  {l.badge}
+                </div>
+                <div className="mt-3 text-lg font-semibold text-gray-900">{l.name}</div>
+                <div className="text-sm text-gray-600">Starting at</div>
+                <div className="text-2xl font-bold text-[#2D3E50]">{l.rate}</div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-xs text-gray-500">
+            *Rates are indicative & subject to lender policy, credit profile, and market conditions.
+          </p>
+        </div>
+      </section>
+
+      {/* FEATURES */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Calculator Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
-            >
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl flex items-center justify-center shadow-lg">
-                  <FaCalculator className="text-white text-xl" />
-                </div>
-                <h2 className="text-2xl font-semibold text-gray-900">Calculate Your Home Loan</h2>
-              </div>
-
-              <div className="space-y-8">
-                {/* Property Value */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Property Value
-                  </label>
-                  <div className="relative">
-                    <FaRupeeSign className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="number"
-                      value={propertyValue}
-                      onChange={(e) => setPropertyValue(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
-                      placeholder="Enter property value"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <input
-                      type="range"
-                      min="1000000"
-                      max="50000000"
-                      step="100000"
-                      value={propertyValue}
-                      onChange={(e) => setPropertyValue(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                    <div className="flex justify-between text-sm text-gray-500 mt-2">
-                      <span>₹10L</span>
-                      <span>₹5Cr</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Down Payment */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Down Payment (%)
-                  </label>
-                  <input
-                    type="number"
-                    value={downPayment}
-                    onChange={(e) => setDownPayment(Number(e.target.value))}
-                    className="w-full px-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
-                    placeholder="Enter down payment percentage"
-                    min="10"
-                    max="90"
-                  />
-                  <div className="mt-3">
-                    <input
-                      type="range"
-                      min="10"
-                      max="90"
-                      step="5"
-                      value={downPayment}
-                      onChange={(e) => setDownPayment(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                    <div className="flex justify-between text-sm text-gray-500 mt-2">
-                      <span>10%</span>
-                      <span>90%</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Loan Amount */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Loan Amount Required
-                  </label>
-                  <div className="bg-gradient-to-br from-[var(--primary-blue)]/10 to-[var(--primary-blue)]/5 rounded-2xl p-4 border border-[var(--primary-blue)]/20">
-                    <div className="text-2xl font-bold text-[var(--primary-blue)]">
-                      {formatCurrency((propertyValue * (100 - downPayment)) / 100)}
-                    </div>
-                    <div className="text-sm text-gray-600 mt-1">
-                      Based on {downPayment}% down payment
-                    </div>
-                  </div>
-                </div>
-
-                {/* Interest Rate */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Interest Rate (% per annum)
-                  </label>
-                  <div className="relative">
-                    <FaPercentage className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="number"
-                      value={interestRate}
-                      onChange={(e) => setInterestRate(Number(e.target.value))}
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
-                      placeholder="Enter interest rate"
-                      step="0.1"
-                    />
-                  </div>
-                  <div className="mt-3">
-                    <input
-                      type="range"
-                      min="6"
-                      max="15"
-                      step="0.1"
-                      value={interestRate}
-                      onChange={(e) => setInterestRate(Number(e.target.value))}
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                    />
-                    <div className="flex justify-between text-sm text-gray-500 mt-2">
-                      <span>6%</span>
-                      <span>15%</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Tenure */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Loan Tenure
-                  </label>
-                  <div className="grid grid-cols-2 gap-4">
-                    {/* Years Input */}
-                    <div>
-                      <div className="relative">
-                        <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                        <input
-                          type="number"
-                          value={tenureYears}
-                          onChange={(e) => setTenureYears(Number(e.target.value))}
-                          className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
-                          placeholder="Years"
-                          min="0"
-                          max="30"
-                        />
-                      </div>
-                      <div className="mt-3">
-                        <input
-                          type="range"
-                          min="0"
-                          max="30"
-                          step="1"
-                          value={tenureYears}
-                          onChange={(e) => setTenureYears(Number(e.target.value))}
-                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                        />
-                        <div className="flex justify-between text-sm text-gray-500 mt-2">
-                          <span>0 Years</span>
-                          <span>30 Years</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Months Input */}
-                    <div>
-                      <div className="relative">
-                        <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                        <input
-                          type="number"
-                          value={tenureMonths}
-                          onChange={(e) => setTenureMonths(Number(e.target.value))}
-                          className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
-                          placeholder="Months"
-                          min="0"
-                          max="11"
-                        />
-                      </div>
-                      <div className="mt-3">
-                        <input
-                          type="range"
-                          min="0"
-                          max="11"
-                          step="1"
-                          value={tenureMonths}
-                          onChange={(e) => setTenureMonths(Number(e.target.value))}
-                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                        />
-                        <div className="flex justify-between text-sm text-gray-500 mt-2">
-                          <span>0 Months</span>
-                          <span>11 Months</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Results */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
-            >
-              {/* EMI Result */}
-              <div className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white shadow-2xl">
-                <h3 className="text-2xl font-bold mb-6">Your Monthly EMI</h3>
-                <div className="text-5xl font-bold mb-4">{formatCurrency(emi)}</div>
-                <p className="text-white/90 mb-8 font-medium">
-                  Monthly payment for {tenureYears} years {tenureMonths > 0 ? `${tenureMonths} months` : ''} at {interestRate}% interest rate
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                    <div className="text-sm text-white/80 font-medium">Total Amount</div>
-                    <div className="text-lg font-bold">{formatCurrency(totalAmount)}</div>
-                  </div>
-                  <div className="bg-white/10 rounded-2xl p-4 backdrop-blur-sm">
-                    <div className="text-sm text-white/80 font-medium">Total Interest</div>
-                    <div className="text-lg font-bold">{formatCurrency(totalInterest)}</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Loan Breakdown */}
-              <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6">Loan Breakdown</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-4 border-b border-gray-100">
-                    <span className="text-gray-700 font-medium">Property Value</span>
-                    <span className="font-bold text-lg">{formatCurrency(propertyValue)}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-4 border-b border-gray-100">
-                    <span className="text-gray-700 font-medium">Down Payment ({downPayment}%)</span>
-                    <span className="font-bold text-lg text-green-600">
-                      {formatCurrency((propertyValue * downPayment) / 100)}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center py-4 border-b border-gray-100">
-                    <span className="text-gray-700 font-medium">Loan Amount</span>
-                    <span className="font-bold text-lg text-[var(--primary-blue)]">
-                      {formatCurrency((propertyValue * (100 - downPayment)) / 100)}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center py-4 border-b border-gray-100">
-                    <span className="text-gray-700 font-medium">Interest Amount</span>
-                    <span className="font-bold text-lg text-red-600">
-                      {formatCurrency(totalInterest)}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center py-4">
-                    <span className="text-gray-700 font-medium">Number of EMIs</span>
-                    <span className="font-bold text-lg">{(tenureYears * 12) + tenureMonths} ({tenureYears} years {tenureMonths} months)</span>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex-1 bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] text-white py-4 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-3 shadow-lg"
-                    >
-                      <FaDownload />
-                      Download PDF
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex-1 border-2 border-[var(--primary-blue)] text-[var(--primary-blue)] py-4 px-6 rounded-xl font-semibold hover:bg-[var(--primary-blue)] hover:text-white transition-all duration-200 flex items-center justify-center gap-3"
-                    >
-                      <FaShare />
-                      Share Results
-                    </motion.button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bank Offers */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Top Bank Offers</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Compare home loan offers from leading banks with competitive rates
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+              Why Choose Our Services
+            </h2>
+            <p className="mt-3 text-gray-600">
+              We don&apos;t just compare rates —{' '}
+              <span className="font-semibold">we negotiate the best deals for you</span>.
             </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {banks.map((bank, index) => (
-              <motion.div
-                key={bank.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((f) => (
+              <div
+                key={f.title}
+                className="rounded-3xl border border-gray-100 bg-white p-6 shadow-lg hover:shadow-xl transition-all group"
               >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[var(--primary-blue)]"
-                >
-                  <div className="flex items-center gap-3 mb-6">
-                    <div
-                      className={`w-12 h-12 bg-gradient-to-br ${bank.color} rounded-2xl flex items-center justify-center shadow-lg`}
-                    >
-                      <bank.icon className="text-white text-xl" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-900">{bank.name}</h3>
-                  </div>
-
-                  <div className="space-y-4 mb-6">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Interest Rate:</span>
-                      <span className="font-bold text-[var(--primary-blue)] text-lg">
-                        {bank.rate}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Processing Fee:</span>
-                      <span className="font-semibold text-gray-900">{bank.processingFee}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-600 font-medium">Max Amount:</span>
-                      <span className="font-semibold text-gray-900">{bank.maxAmount}</span>
-                    </div>
-                  </div>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2"
-                  >
-                    Apply Now
-                    <FaArrowRight className="text-sm" />
-                  </motion.button>
-                </motion.div>
-              </motion.div>
+                <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] text-white flex items-center justify-center mb-4">
+                  <f.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">{f.title}</h3>
+                <p className="mt-2 text-gray-600">{f.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-20 bg-white">
+      {/* HOW IT WORKS */}
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose Our Home Loans?</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Get the best home loan deals with competitive rates and flexible terms
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+              How It Works
+            </h2>
+            <p className="mt-3 text-gray-600">4 simple steps from start to sanction.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((s, i) => (
+              <div
+                key={s.title}
+                className="relative rounded-3xl border border-gray-100 bg-white p-6 shadow-md"
               >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[var(--primary-blue)] text-center"
-                >
-                  <div className="w-16 h-16 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                    <feature.icon className="text-white text-2xl" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                </motion.div>
-              </motion.div>
+                <div className="absolute -top-3 -left-3 h-8 w-8 rounded-xl bg-[#3A6EA5] text-white flex items-center justify-center text-sm font-bold">
+                  {i + 1}
+                </div>
+                <div className="h-12 w-12 rounded-2xl bg-gray-100 text-[#3A6EA5] flex items-center justify-center mb-4">
+                  <s.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900">{s.title}</h3>
+                <p className="mt-2 text-gray-600">{s.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white text-center shadow-2xl"
-          >
-            <h3 className="text-3xl font-bold mb-4">Ready to Buy Your Dream Home?</h3>
-            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              Get personalized home loan offers from top banks. Our experts will help you find the
-              best deal with competitive rates.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/auth'}
-                className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
-              >
-                Login to Apply
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/auth'}
-                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
-              >
-                Register Now
-              </motion.button>
+      {/* ELIGIBILITY & DOCUMENTS */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8">
+          <div className="rounded-3xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-6 shadow">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-10 w-10 rounded-xl bg-[#3A6EA5] text-white flex items-center justify-center">
+                <Users className="h-5 w-5" />
+              </div>
+              <h3 className="text-xl font-semibold">Basic Eligibility</h3>
             </div>
-          </motion.div>
+            <ul className="space-y-3 text-gray-700">
+              <li>• Age: 21–65 years at loan maturity</li>
+              <li>• Stable income: Salaried / Self-employed</li>
+              <li>• CIBIL score: 700+ preferred</li>
+              <li>• Co-applicant allowed for higher eligibility</li>
+              <li>• FOIR/Obligation norms as per lender policy</li>
+            </ul>
+            <div className="mt-5 inline-flex items-center gap-2 rounded-xl border-2 border-[#3A6EA5] px-4 py-2 font-semibold text-[#3A6EA5] hover:bg-[#2D3E50] hover:text-white transition-all cursor-pointer">
+              <FileText className="h-4 w-4" /> Check My Eligibility
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-6 shadow">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-10 w-10 rounded-xl bg-[#3A6EA5] text-white flex items-center justify-center">
+                <FileCheck2 className="h-5 w-5" />
+              </div>
+              <h3 className="text-xl font-semibold">Required Documents</h3>
+            </div>
+            <ul className="space-y-3 text-gray-700">
+              {documents.map((d) => (
+                <li key={d}>• {d}</li>
+              ))}
+            </ul>
+            <p className="text-xs text-gray-500 mt-3">
+              *Exact document list may vary based on bank and applicant profile.
+            </p>
+          </div>
         </div>
       </section>
-    </>
+
+      {/* TESTIMONIALS */}
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+              Happy Homeowners
+            </h2>
+            <p className="mt-3 text-gray-600">
+              Clients who achieved their dream home through our services.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Rajesh Kumar',
+                review:
+                  'Got the best rate and the process was incredibly smooth. The team handled everything from start to finish.',
+              },
+              {
+                name: 'Priya Sharma',
+                review:
+                  'Excellent service! They negotiated a great deal and kept me informed throughout the entire process.',
+              },
+              {
+                name: 'Amit Patel',
+                review:
+                  'Professional and efficient. Saved me both time and money. Highly recommend their services.',
+              },
+            ].map((testimonial, i) => (
+              <div
+                key={i}
+                className="rounded-3xl border border-gray-100 bg-white p-6 shadow hover:shadow-lg transition-all"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="font-semibold">{testimonial.name}</div>
+                  <div className="inline-flex items-center gap-1 text-emerald-600 text-sm">
+                    <BadgeCheck className="h-4 w-4" /> Verified
+                  </div>
+                </div>
+                <p className="mt-3 text-gray-700">&quot;{testimonial.review}&quot;</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((f, idx) => (
+              <details
+                key={idx}
+                className="group rounded-2xl border border-gray-200 p-5 open:bg-gray-50"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-gray-900">
+                  {f.q}
+                  <span className="transition group-open:rotate-180">
+                    <ArrowRight className="h-5 w-5" />
+                  </span>
+                </summary>
+                <p className="mt-3 text-gray-700">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl bg-gradient-to-r from-[#3A6EA5] to-[#3A6EA5] p-8 text-white text-center shadow-2xl">
+            <h3 className="text-3xl font-bold">Ready to Get Started?</h3>
+            <p className="mt-2 text-white/90">
+              Free consultation • Multiple banks • Faster approvals
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="#lead-form"
+                className="rounded-xl bg-white px-8 py-3 font-semibold text-[#3A6EA5] hover:bg-gray-100 transition-all"
+              >
+                Get Loan Offers
+              </Link>
+              <Link
+                href="/auth"
+                className="rounded-xl border-2 border-white px-8 py-3 font-semibold hover:bg-white hover:text-[#3A6EA5] transition-all"
+              >
+                Login / Register
+              </Link>
+            </div>
+          </div>
+          <p className="text-center text-xs text-gray-500 mt-3">
+            *We are a loan facilitation service. Sanctions & Terms are at lender&apos;s discretion.
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }
