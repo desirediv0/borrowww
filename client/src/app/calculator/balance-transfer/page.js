@@ -147,7 +147,7 @@ export default function BalanceTransferCalculator() {
               transition={{ duration: 0.8 }}
               className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
                   <FaTimesCircle className="text-white text-xl" />
                 </div>
@@ -156,7 +156,7 @@ export default function BalanceTransferCalculator() {
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Outstanding Amount
                   </label>
                   <div className="relative">
@@ -173,7 +173,7 @@ export default function BalanceTransferCalculator() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Interest Rate (%)
                   </label>
                   <div className="relative">
@@ -191,7 +191,7 @@ export default function BalanceTransferCalculator() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Remaining Tenure (Years)
                   </label>
                   <div className="relative">
@@ -245,7 +245,7 @@ export default function BalanceTransferCalculator() {
               transition={{ duration: 0.8 }}
               className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg">
                   <FaCheckCircle className="text-white text-xl" />
                 </div>
@@ -254,7 +254,7 @@ export default function BalanceTransferCalculator() {
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Transfer Amount
                   </label>
                   <div className="relative">
@@ -271,7 +271,7 @@ export default function BalanceTransferCalculator() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     New Interest Rate (%)
                   </label>
                   <div className="relative">
@@ -289,7 +289,7 @@ export default function BalanceTransferCalculator() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     New Tenure (Years)
                   </label>
                   <div className="relative">
@@ -306,7 +306,7 @@ export default function BalanceTransferCalculator() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Transfer Fee (%)
                   </label>
                   <input

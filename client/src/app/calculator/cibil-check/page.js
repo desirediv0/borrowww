@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { FaCalendarAlt, FaChartLine, FaCheckCircle, FaLock, FaShieldAlt, FaUser } from "react-icons/fa"
 
 import { motion } from "framer-motion"
@@ -74,6 +74,13 @@ export default function CIBILCheck() {
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [cibilScore, setCibilScore] = useState(null)
+  const [showResults, setShowResults] = useState(false)
+  const [submittedData, setSubmittedData] = useState(null)
+  const resultsRef = useRef(null)
+
+  const generateFakeCibilScore = () => {
+    return Math.floor(Math.random() * (850 - 300 + 1)) + 300
+  }
 
   const validateBureauForm = () => {
     const newErrors = {}
@@ -87,7 +94,7 @@ export default function CIBILCheck() {
     if (!FormData.state) newErrors.state = "State is required"
     if (!FormData.pincode.trim()) newErrors.pincode = "Pincode is required"
     if (!FormData.identity) newErrors.identity = "Identity is required"
-    if (!FormData.identityNumber.trim()) newErrors.identityNumber = "Identity Number is required"
+    if (FormData.identity && !FormData.identityNumber.trim()) newErrors.identityNumber = "Identity Number is required"
     if (!FormData.consent) newErrors.consent = "You must agree to the terms"
 
     if (FormData.mobileNumber && !/^\d{10}$/.test(FormData.mobileNumber)) {
@@ -112,6 +119,9 @@ export default function CIBILCheck() {
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+    if (field === "identity") {
+      setFormData((prev) => ({ ...prev, identityNumber: "" }))
+    }
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: "" }))
     }
@@ -122,10 +132,24 @@ export default function CIBILCheck() {
     if (!validateBureauForm()) return
 
     setIsSubmitting(true)
+
     setTimeout(() => {
-      console.log("form submitted:", FormData)
-      alert("Information submitted successfully!")
+      console.log("[v0] Form submitted successfully!")
+      console.log("[v0] Submitted form data:", FormData)
+      console.table(FormData)
+
+      const generatedScore = generateFakeCibilScore()
+      console.log("[v0] Generated CIBIL Score:", generatedScore)
+
+      setCibilScore(generatedScore)
+      setSubmittedData(FormData)
+      setShowResults(true)
       setIsSubmitting(false)
+
+      // Scroll to results section
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: "smooth" })
+      }, 100)
     }, 2000)
   }
 
@@ -389,10 +413,7 @@ export default function CIBILCheck() {
                     <Label className="text-sm font-medium">
                       Identity <span className="text-red-500">*</span>
                     </Label>
-                    <Select
-                      value={FormData.identity}
-                      onValueChange={(value) => handleInputChange("identity", value)}
-                    >
+                    <Select value={FormData.identity} onValueChange={(value) => handleInputChange("identity", value)}>
                       <SelectTrigger className={errors.identity ? "border-red-500" : ""}>
                         <SelectValue placeholder="-- Please Select --" />
                       </SelectTrigger>
@@ -407,31 +428,32 @@ export default function CIBILCheck() {
                     {errors.identity && <p className="text-red-500 text-xs">{errors.identity}</p>}
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="identityNumber" className="text-sm font-medium">
-                      {FormData.identity ? `${FormData.identity} Number` : "Identity Number"}{" "}
-                      <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="identityNumber"
-                      placeholder={
-                        FormData.identity === "Aadhaar"
-                          ? "Enter 12-digit Aadhaar Number"
-                          : FormData.identity === "PAN"
-                            ? "Enter PAN (e.g., ABCDE1234F)"
-                            : FormData.identity === "Voter Card"
-                              ? "Enter Voter ID Number"
-                              : FormData.identity === "Passport"
-                                ? "Enter Passport Number"
-                                : "Enter Identity Number"
-                      }
-                      value={FormData.identityNumber}
-                      onChange={(e) => handleInputChange("identityNumber", e.target.value.toUpperCase())}
-                      className={errors.identityNumber ? "border-red-500" : ""}
-                      maxLength={FormData.identity === "Aadhaar" ? 12 : FormData.identity === "PAN" ? 10 : undefined}
-                    />
-                    {errors.identityNumber && <p className="text-red-500 text-xs">{errors.identityNumber}</p>}
-                  </div>
+                  {FormData.identity && (
+                    <div className="space-y-2">
+                      <Label htmlFor="identityNumber" className="text-sm font-medium">
+                        {FormData.identity} Number <span className="text-red-500">*</span>
+                      </Label>
+                      <Input
+                        id="identityNumber"
+                        placeholder={
+                          FormData.identity === "Aadhaar"
+                            ? "Enter 12-digit Aadhaar Number"
+                            : FormData.identity === "PAN"
+                              ? "Enter PAN (e.g., ABCDE1234F)"
+                              : FormData.identity === "Voter Card"
+                                ? "Enter Voter ID Number"
+                                : FormData.identity === "Passport"
+                                  ? "Enter Passport Number"
+                                  : "Enter Identity Number"
+                        }
+                        value={FormData.identityNumber}
+                        onChange={(e) => handleInputChange("identityNumber", e.target.value.toUpperCase())}
+                        className={errors.identityNumber ? "border-red-500" : ""}
+                        maxLength={FormData.identity === "Aadhaar" ? 12 : FormData.identity === "PAN" ? 10 : undefined}
+                      />
+                      {errors.identityNumber && <p className="text-red-500 text-xs">{errors.identityNumber}</p>}
+                    </div>
+                  )}
                 </div>
 
                 {/* Consent Checkbox */}
@@ -471,15 +493,15 @@ export default function CIBILCheck() {
               </form>
             </motion.div>
 
-            {/* Info Section */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
-            >
-              {/* CIBIL Score Display */}
-              {cibilScore && (
+            {showResults && (
+              <motion.div
+                ref={resultsRef}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="space-y-8"
+              >
+                {/* CIBIL Score Display */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -494,36 +516,115 @@ export default function CIBILCheck() {
                   </div>
                   <p className="text-white/90">{getScoreDescription(cibilScore)}</p>
                 </motion.div>
-              )}
 
-              {/* Features */}
-              <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6">Why Check CIBIL Score?</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Free & Instant</h4>
-                      <p className="text-gray-600 text-sm">Get your score instantly without any charges</p>
-                    </div>
+                {/* Submitted Data Table */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100"
+                >
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-6">Submitted Information</h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="border-b border-gray-200">
+                          <th className="text-left py-3 px-4 font-semibold text-gray-900">Field</th>
+                          <th className="text-left py-3 px-4 font-semibold text-gray-900">Value</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">First Name</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.firstName}</td>
+                        </tr>
+                        {submittedData?.middleName && (
+                          <tr className="border-b border-gray-100">
+                            <td className="py-3 px-4 text-gray-600">Middle Name</td>
+                            <td className="py-3 px-4 text-gray-900">{submittedData?.middleName}</td>
+                          </tr>
+                        )}
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">Last Name</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.lastName}</td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">Date of Birth</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.dob}</td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">Gender</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.gender}</td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">Mobile Number</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.mobileNumber}</td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">Address</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.address}</td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">State</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.state}</td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">Pincode</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.pincode}</td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">Identity Type</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.identity}</td>
+                        </tr>
+                        <tr className="border-b border-gray-100">
+                          <td className="py-3 px-4 text-gray-600">{submittedData?.identity} Number</td>
+                          <td className="py-3 px-4 text-gray-900">{submittedData?.identityNumber}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Secure & Private</h4>
-                      <p className="text-gray-600 text-sm">Bank-level encryption protects your data</p>
+                </motion.div>
+              </motion.div>
+            )}
+
+            {/* Info Section - only show if no results yet */}
+            {!showResults && (
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="space-y-6"
+              >
+                {/* CIBIL Score Display */}
+                {/* Features */}
+                <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-6">Why Check CIBIL Score?</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Free & Instant</h4>
+                        <p className="text-gray-600 text-sm">Get your score instantly without any charges</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900">Improve Score</h4>
-                      <p className="text-gray-600 text-sm">Get tips to improve your credit score</p>
+                    <div className="flex items-start gap-3">
+                      <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Secure & Private</h4>
+                        <p className="text-gray-600 text-sm">Bank-level encryption protects your data</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold text-gray-900">Improve Score</h4>
+                        <p className="text-gray-600 text-sm">Get tips to improve your credit score</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            )}
           </div>
         </div>
       </section>

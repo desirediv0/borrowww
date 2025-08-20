@@ -16,6 +16,7 @@ import {
 } from 'react-icons/fa';
 
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 export default function EMICalculator() {
   const [loanAmount, setLoanAmount] = useState(1000000);
@@ -25,6 +26,8 @@ export default function EMICalculator() {
   const [emi, setEmi] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalInterest, setTotalInterest] = useState(0);
+
+  const router = useRouter()
 
   useEffect(() => {
     calculateEMI();
@@ -57,9 +60,7 @@ export default function EMICalculator() {
     }).format(amount);
   };
 
-  const formatNumber = (num) => {
-    return new Intl.NumberFormat('en-IN').format(num);
-  };
+
 
   const loanTypes = [
     {
@@ -92,6 +93,9 @@ export default function EMICalculator() {
     },
   ];
 
+
+
+
   return (
     <>
       {/* Hero Section */}
@@ -101,7 +105,7 @@ export default function EMICalculator() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="text-center 2"
           >
             <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
               <FaCalculator className="mr-2" />
@@ -129,17 +133,17 @@ export default function EMICalculator() {
               transition={{ duration: 0.8 }}
               className="bg-white p-8 rounded-3xl h-min shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl flex items-center justify-center shadow-lg">
                   <FaCalculator className="text-white text-xl" />
                 </div>
                 <h2 className="text-2xl font-semibold text-gray-900">Calculate Your EMI</h2>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-5">
                 {/* Loan Amount */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 ">
                     Loan Amount
                   </label>
                   <div className="relative">
@@ -171,7 +175,7 @@ export default function EMICalculator() {
 
                 {/* Interest Rate */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 ">
                     Interest Rate (% per annum)
                   </label>
                   <div className="relative">
@@ -182,7 +186,7 @@ export default function EMICalculator() {
                       onChange={(e) => setInterestRate(Number(e.target.value))}
                       className="w-full pl-12 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 text-lg bg-gray-50 focus:bg-white"
                       placeholder="Enter interest rate"
-                      step="0.1"
+
                     />
                   </div>
                   <div className="mt-3">
@@ -190,7 +194,7 @@ export default function EMICalculator() {
                       type="range"
                       min="5"
                       max="25"
-                      step="0.1"
+
                       value={interestRate}
                       onChange={(e) => setInterestRate(Number(e.target.value))}
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
@@ -204,7 +208,7 @@ export default function EMICalculator() {
 
                 {/* Tenure */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 ">
                     Loan Tenure
                   </label>
                   <div className="grid grid-cols-2 gap-4">
@@ -283,9 +287,9 @@ export default function EMICalculator() {
             >
               {/* EMI Result */}
               <div className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white shadow-2xl">
-                <h3 className="text-2xl font-bold mb-6">Your Monthly EMI</h3>
+                <h3 className="text-2xl font-bold mb-3">Your Monthly EMI</h3>
                 <div className="text-5xl font-bold mb-4">{formatCurrency(emi)}</div>
-                <p className="text-white/90 mb-8 font-medium">
+                <p className="text-white/90 mb-4 font-medium">
                   Monthly payment for {tenureYears} years{' '}
                   {tenureMonths > 0 ? `${tenureMonths} months` : ''} at {interestRate}% interest
                   rate
@@ -306,23 +310,23 @@ export default function EMICalculator() {
               <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Loan Breakdown</h3>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                  <div className="flex justify-between items-center py-1 border-b border-gray-100">
                     <span className="text-gray-700 font-medium">Principal Amount</span>
                     <span className="font-bold text-lg">{formatCurrency(loanAmount)}</span>
                   </div>
-                  <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                  <div className="flex justify-between items-center py-1 border-b border-gray-100">
                     <span className="text-gray-700 font-medium">Interest Amount</span>
                     <span className="font-bold text-lg text-red-600">
                       {formatCurrency(totalInterest)}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                  <div className="flex justify-between items-center py-1 border-b border-gray-100">
                     <span className="text-gray-700 font-medium">Total Amount</span>
                     <span className="font-bold text-lg text-[var(--primary-blue)]">
                       {formatCurrency(totalAmount)}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center py-4">
+                  <div className="flex justify-between items-center py-1">
                     <span className="text-gray-700 font-medium">Number of EMIs</span>
                     <span className="font-bold text-lg">
                       {tenureYears * 12 + tenureMonths} ({tenureYears} years {tenureMonths} months)
@@ -342,7 +346,7 @@ export default function EMICalculator() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Popular Loan Types</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -408,7 +412,7 @@ export default function EMICalculator() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               Why Choose Our EMI Calculator?
@@ -487,7 +491,7 @@ export default function EMICalculator() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => (window.location.href = '/auth')}
+                onClick={() => (router.push('/auth'))}
                 className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
               >
                 Login to Apply
@@ -495,7 +499,7 @@ export default function EMICalculator() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => (window.location.href = '/auth')}
+                onClick={() => (router.push('/auth'))}
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
               >
                 Register Now
