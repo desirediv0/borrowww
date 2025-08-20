@@ -269,7 +269,7 @@ export default function CIBILCheck() {
                       placeholder="Enter First Name"
                       value={FormData.firstName}
                       onChange={(e) => handleInputChange("firstName", e.target.value)}
-                      className={errors.firstName ? "border-red-500" : ""}
+                      className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.firstName ? "border-red-500" : ""}`}
                     />
                     {errors.firstName && <p className="text-red-500 text-xs">{errors.firstName}</p>}
                   </div>
@@ -283,6 +283,7 @@ export default function CIBILCheck() {
                       placeholder="Enter Middle Name"
                       value={FormData.middleName}
                       onChange={(e) => handleInputChange("middleName", e.target.value)}
+                      className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500`}
                     />
                   </div>
 
@@ -290,12 +291,13 @@ export default function CIBILCheck() {
                     <Label htmlFor="lastName" className="text-sm font-medium">
                       Last Name <span className="text-red-500">*</span>
                     </Label>
+
                     <Input
                       id="lastName"
                       placeholder="Enter Last Name"
                       value={FormData.lastName}
                       onChange={(e) => handleInputChange("lastName", e.target.value)}
-                      className={errors.lastName ? "border-red-500" : ""}
+                      className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.lastName ? "border-red-500" : ""}`}
                     />
                     {errors.lastName && <p className="text-red-500 text-xs">{errors.lastName}</p>}
                   </div>
@@ -313,7 +315,7 @@ export default function CIBILCheck() {
                         type="date"
                         value={FormData.dob}
                         onChange={(e) => handleInputChange("dob", e.target.value)}
-                        className={errors.dob ? "border-red-500" : ""}
+                        className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.dob ? "border-red-500" : ""}`}
                       />
                       <CalendarIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
                     </div>
@@ -325,7 +327,7 @@ export default function CIBILCheck() {
                       Gender <span className="text-red-500">*</span>
                     </Label>
                     <Select value={FormData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
-                      <SelectTrigger className={errors.gender ? "border-red-500" : ""}>
+                      <SelectTrigger className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.gender ? "border-red-500" : ""}`}>
                         <SelectValue placeholder="-- Please Select --" />
                       </SelectTrigger>
                       <SelectContent className="bg-white text-black">
@@ -348,7 +350,7 @@ export default function CIBILCheck() {
                       placeholder="Enter Mobile Number"
                       value={FormData.mobileNumber}
                       onChange={(e) => handleInputChange("mobileNumber", e.target.value)}
-                      className={errors.mobileNumber ? "border-red-500" : ""}
+                      className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.mobileNumber ? "border-red-500" : ""}`}
                       maxLength={10}
                     />
                     {errors.mobileNumber && <p className="text-red-500 text-xs">{errors.mobileNumber}</p>}
@@ -365,7 +367,7 @@ export default function CIBILCheck() {
                     placeholder="Enter Address"
                     value={FormData.address}
                     onChange={(e) => handleInputChange("address", e.target.value)}
-                    className={errors.address ? "border-red-500" : ""}
+                    className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.address ? "border-red-500" : ""}`}
                   />
                   {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
                 </div>
@@ -377,7 +379,7 @@ export default function CIBILCheck() {
                       State <span className="text-red-500">*</span>
                     </Label>
                     <Select value={FormData.state} onValueChange={(value) => handleInputChange("state", value)}>
-                      <SelectTrigger className={errors.state ? "border-red-500" : ""}>
+                      <SelectTrigger className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.state ? "border-red-500" : ""}`}>
                         <SelectValue placeholder="-- Please Select --" />
                       </SelectTrigger>
                       <SelectContent className="max-h-60 bg-white text-black">
@@ -400,7 +402,7 @@ export default function CIBILCheck() {
                       placeholder="Enter Pincode"
                       value={FormData.pincode}
                       onChange={(e) => handleInputChange("pincode", e.target.value)}
-                      className={errors.pincode ? "border-red-500" : ""}
+                      className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.pincode ? "border-red-500" : ""}`}
                       maxLength={6}
                     />
                     {errors.pincode && <p className="text-red-500 text-xs">{errors.pincode}</p>}
@@ -414,7 +416,7 @@ export default function CIBILCheck() {
                       Identity <span className="text-red-500">*</span>
                     </Label>
                     <Select value={FormData.identity} onValueChange={(value) => handleInputChange("identity", value)}>
-                      <SelectTrigger className={errors.identity ? "border-red-500" : ""}>
+                      <SelectTrigger className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.identity ? "border-red-500" : ""}`}>
                         <SelectValue placeholder="-- Please Select --" />
                       </SelectTrigger>
                       <SelectContent className="bg-white text-black">
@@ -448,7 +450,7 @@ export default function CIBILCheck() {
                         }
                         value={FormData.identityNumber}
                         onChange={(e) => handleInputChange("identityNumber", e.target.value.toUpperCase())}
-                        className={errors.identityNumber ? "border-red-500" : ""}
+                        className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.identityNumber ? "border-red-500" : ""}`}
                         maxLength={FormData.identity === "Aadhaar" ? 12 : FormData.identity === "PAN" ? 10 : undefined}
                       />
                       {errors.identityNumber && <p className="text-red-500 text-xs">{errors.identityNumber}</p>}
@@ -462,12 +464,12 @@ export default function CIBILCheck() {
                     id="consent"
                     checked={FormData.consent}
                     onCheckedChange={(checked) => handleInputChange("consent", checked)}
-                    className={errors.consent ? "border-red-500" : ""}
+                    className={`rounded-md border border-gray-600  transition-all duration-200 bg-gray-50 focus:bg-white text-black placeholder:text-gray-500 ${errors.consent ? "border-red-500" : ""}`}
                   />
                   <div className="space-y-1">
                     <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
-                      I agree, all information mentioned above is true and I authorize Scoreme Solutions Private Limited
-                      to fetch my bureau data.
+                      I agree, all information mentioned above is true and I authorize Borrowww
+                      to fetch my data.
                     </Label>
                     {errors.consent && <p className="text-red-500 text-xs">{errors.consent}</p>}
                   </div>

@@ -40,7 +40,7 @@ export default function BalanceTransferCalculator() {
 
   useEffect(() => {
     calculateSavings();
-  }, [currentLoan, newLoan]);
+  }, [currentLoan, newLoan, calculateSavings]);
 
   const calculateEMI = (principal, rate, tenure) => {
     const monthlyRate = rate / 12 / 100;
