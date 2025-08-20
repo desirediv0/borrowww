@@ -4,15 +4,11 @@ import { useEffect, useState } from 'react';
 import {
   FaArrowRight,
   FaCalendarAlt,
-  FaChartLine,
   FaCheckCircle,
   FaCreditCard,
-  FaDownload,
   FaExchangeAlt,
   FaPercentage,
   FaRupeeSign,
-  FaShare,
-  FaStar,
   FaTimesCircle,
 } from 'react-icons/fa';
 
@@ -367,24 +363,7 @@ export default function BalanceTransferCalculator() {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 flex items-center justify-center gap-3 shadow-lg"
-              >
-                <FaDownload />
-                Download Report
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200 flex items-center justify-center gap-3"
-              >
-                <FaShare />
-                Share Results
-              </motion.button>
-            </div>
+
           </motion.div>
         </div>
       </section>

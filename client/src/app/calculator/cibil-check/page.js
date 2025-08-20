@@ -1,113 +1,190 @@
-'use client';
+"use client"
 
-import { useState } from 'react';
-import {
-  FaCalendarAlt,
-  FaChartLine,
-  FaCheckCircle,
-  FaEnvelope,
-  FaIdCard,
-  FaLock,
-  FaPhone,
-  FaShieldAlt,
-  FaUser,
-} from 'react-icons/fa';
+import { useState } from "react"
+import { FaCalendarAlt, FaChartLine, FaCheckCircle, FaLock, FaShieldAlt, FaUser } from "react-icons/fa"
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion"
+import { CalendarIcon } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
+const indianStates = [
+  "Andaman and Nicobar Islands",
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chandigarh",
+  "Chhattisgarh",
+  "Dadra and Nagar Haveli",
+  "Daman and Diu",
+  "Delhi",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jammu and Kashmir",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Ladakh",
+  "Lakshadweep",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Puducherry",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+]
+
+const identityTypes = ["Aadhaar", "PAN", "Voter Card", "Passport"]
+const genderOptions = ["Male", "Female", "Transgender"]
 
 export default function CIBILCheck() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    pan: '',
-    dob: '',
-    address: '',
-    city: '',
-    state: '',
-    pincode: '',
-  });
+  const [FormData, setFormData] = useState({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    dob: "",
+    gender: "",
+    mobileNumber: "",
+    address: "",
+    state: "",
+    pincode: "",
+    identity: "",
+    identityNumber: "",
+    consent: false,
+  })
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [cibilScore, setCibilScore] = useState(null);
+  const [errors, setErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [cibilScore, setCibilScore] = useState(null)
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const validateBureauForm = () => {
+    const newErrors = {}
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    if (!FormData.firstName.trim()) newErrors.firstName = "First Name is required"
+    if (!FormData.lastName.trim()) newErrors.lastName = "Last Name is required"
+    if (!FormData.dob) newErrors.dob = "Date of Birth is required"
+    if (!FormData.gender) newErrors.gender = "Gender is required"
+    if (!FormData.mobileNumber.trim()) newErrors.mobileNumber = "Mobile Number is required"
+    if (!FormData.address.trim()) newErrors.address = "Address is required"
+    if (!FormData.state) newErrors.state = "State is required"
+    if (!FormData.pincode.trim()) newErrors.pincode = "Pincode is required"
+    if (!FormData.identity) newErrors.identity = "Identity is required"
+    if (!FormData.identityNumber.trim()) newErrors.identityNumber = "Identity Number is required"
+    if (!FormData.consent) newErrors.consent = "You must agree to the terms"
 
-    // Simulate API call
+    if (FormData.mobileNumber && !/^\d{10}$/.test(FormData.mobileNumber)) {
+      newErrors.mobileNumber = "Mobile Number must be 10 digits"
+    }
+
+    if (FormData.pincode && !/^\d{6}$/.test(FormData.pincode)) {
+      newErrors.pincode = "Pincode must be 6 digits"
+    }
+
+    if (FormData.identity && FormData.identityNumber) {
+      if (FormData.identity === "Aadhaar" && !/^\d{12}$/.test(FormData.identityNumber)) {
+        newErrors.identityNumber = "Aadhaar number must be 12 digits"
+      } else if (FormData.identity === "PAN" && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(FormData.identityNumber)) {
+        newErrors.identityNumber = "PAN must be in format: ABCDE1234F"
+      }
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }))
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: "" }))
+    }
+  }
+
+  const handleBureauSubmit = async (e) => {
+    e.preventDefault()
+    if (!validateBureauForm()) return
+
+    setIsSubmitting(true)
     setTimeout(() => {
-      const mockScore = Math.floor(Math.random() * 300) + 300; // Random score between 300-900
-      setCibilScore(mockScore);
-      setIsSubmitting(false);
-    }, 3000);
-  };
+      console.log("form submitted:", FormData)
+      alert("Information submitted successfully!")
+      setIsSubmitting(false)
+    }, 2000)
+  }
 
   const getScoreCategory = (score) => {
-    if (score >= 750) return { category: 'Excellent', color: 'text-green-600', bg: 'bg-green-100' };
-    if (score >= 650) return { category: 'Good', color: 'text-[#2D3E50]', bg: 'bg-blue-100' };
-    if (score >= 550) return { category: 'Fair', color: 'text-yellow-600', bg: 'bg-yellow-100' };
-    return { category: 'Poor', color: 'text-red-600', bg: 'bg-red-100' };
-  };
+    if (score >= 750) return { category: "Excellent", color: "text-green-600", bg: "bg-green-100" }
+    if (score >= 650) return { category: "Good", color: "text-[#2D3E50]", bg: "bg-blue-100" }
+    if (score >= 550) return { category: "Fair", color: "text-yellow-600", bg: "bg-yellow-100" }
+    return { category: "Poor", color: "text-red-600", bg: "bg-red-100" }
+  }
 
   const getScoreDescription = (score) => {
     if (score >= 750)
-      return 'Excellent credit score! You are likely to get the best loan terms and lowest interest rates.';
-    if (score >= 650)
-      return 'Good credit score. You should be able to get loans with competitive rates.';
-    if (score >= 550) return 'Fair credit score. You may get loans but with higher interest rates.';
-    return 'Poor credit score. You may face difficulties in getting loans. Consider improving your credit score.';
-  };
+      return "Excellent credit score! You are likely to get the best loan terms and lowest interest rates."
+    if (score >= 650) return "Good credit score. You should be able to get loans with competitive rates."
+    if (score >= 550) return "Fair credit score. You may get loans but with higher interest rates."
+    return "Poor credit score. You may face difficulties in getting loans. Consider improving your credit score."
+  }
 
   const factors = [
     {
-      factor: 'Payment History',
-      impact: '35%',
-      description: 'Timely payment of EMIs and credit card bills',
+      factor: "Payment History",
+      impact: "35%",
+      description: "Timely payment of EMIs and credit card bills",
       icon: FaCheckCircle,
     },
     {
-      factor: 'Credit Utilization',
-      impact: '30%',
-      description: 'How much of your available credit you use',
+      factor: "Credit Utilization",
+      impact: "30%",
+      description: "How much of your available credit you use",
       icon: FaChartLine,
     },
     {
-      factor: 'Credit History Length',
-      impact: '15%',
-      description: 'How long you have been using credit',
+      factor: "Credit History Length",
+      impact: "15%",
+      description: "How long you have been using credit",
       icon: FaCalendarAlt,
     },
     {
-      factor: 'Credit Mix',
-      impact: '10%',
-      description: 'Types of credit accounts you have',
+      factor: "Credit Mix",
+      impact: "10%",
+      description: "Types of credit accounts you have",
       icon: FaShieldAlt,
     },
     {
-      factor: 'New Credit',
-      impact: '10%',
-      description: 'Recent credit inquiries and new accounts',
+      factor: "New Credit",
+      impact: "10%",
+      description: "Recent credit inquiries and new accounts",
       icon: FaUser,
     },
-  ];
+  ]
 
   const tips = [
-    'Pay all your bills on time, every time',
-    'Keep your credit utilization below 30%',
+    "Pay all your bills on time, every time",
+    "Keep your credit utilization below 30%",
     "Don't close old credit accounts",
-    'Limit new credit applications',
-    'Monitor your credit report regularly',
-    'Dispute any errors in your credit report',
-  ];
+    "Limit new credit applications",
+    "Monitor your credit report regularly",
+    "Dispute any errors in your credit report",
+  ]
 
   return (
     <>
@@ -125,12 +202,11 @@ export default function CIBILCheck() {
               Free CIBIL Check
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 tracking-tighter">
-              Check Your{' '}
-              <span className="text-[var(--primary-blue)] italic tiemposfine">CIBIL Score</span>
+              Check Your <span className="text-[var(--primary-blue)] italic tiemposfine">CIBIL Score</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Get your free CIBIL score instantly. No hidden charges, no credit card required. Check
-              your credit health and improve your loan eligibility.
+              Get your free CIBIL score instantly. No hidden charges, no credit card required. Check your credit health
+              and improve your loan eligibility.
             </p>
           </motion.div>
         </div>
@@ -139,7 +215,7 @@ export default function CIBILCheck() {
       {/* Form Section */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid  gap-12">
             {/* Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -153,141 +229,245 @@ export default function CIBILCheck() {
                 </div>
                 <div>
                   <h2 className="text-2xl font-semibold text-gray-900">Secure CIBIL Check</h2>
-                  <p className="text-gray-600 text-sm">
-                    Your data is protected with bank-level security
-                  </p>
+                  <p className="text-gray-600 text-sm">Your data is protected with bank-level security</p>
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
-                      First Name *
-                    </label>
+              <form onSubmit={handleBureauSubmit} className="space-y-6">
+                {/* Name Fields */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName" className="text-sm font-medium">
+                      First Name <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="firstName"
+                      placeholder="Enter First Name"
+                      value={FormData.firstName}
+                      onChange={(e) => handleInputChange("firstName", e.target.value)}
+                      className={errors.firstName ? "border-red-500" : ""}
+                    />
+                    {errors.firstName && <p className="text-red-500 text-xs">{errors.firstName}</p>}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="middleName" className="text-sm font-medium">
+                      Middle Name
+                    </Label>
+                    <Input
+                      id="middleName"
+                      placeholder="Enter Middle Name"
+                      value={FormData.middleName}
+                      onChange={(e) => handleInputChange("middleName", e.target.value)}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="lastName" className="text-sm font-medium">
+                      Last Name <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="lastName"
+                      placeholder="Enter Last Name"
+                      value={FormData.lastName}
+                      onChange={(e) => handleInputChange("lastName", e.target.value)}
+                      className={errors.lastName ? "border-red-500" : ""}
+                    />
+                    {errors.lastName && <p className="text-red-500 text-xs">{errors.lastName}</p>}
+                  </div>
+                </div>
+
+                {/* DOB, Gender, Mobile */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="dob" className="text-sm font-medium">
+                      D.O.B (Date of Birth) <span className="text-red-500">*</span>
+                    </Label>
                     <div className="relative">
-                      <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
-                        placeholder="Enter first name"
+                      <Input
+                        id="dob"
+                        type="date"
+                        value={FormData.dob}
+                        onChange={(e) => handleInputChange("dob", e.target.value)}
+                        className={errors.dob ? "border-red-500" : ""}
                       />
+                      <CalendarIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
                     </div>
+                    {errors.dob && <p className="text-red-500 text-xs">{errors.dob}</p>}
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
-                      Last Name *
-                    </label>
-                    <div className="relative">
-                      <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
-                        placeholder="Enter last name"
-                      />
-                    </div>
-                  </div>
-                </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Email Address *
-                  </label>
-                  <div className="relative">
-                    <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
-                      placeholder="Enter email address"
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium">
+                      Gender <span className="text-red-500">*</span>
+                    </Label>
+                    <Select value={FormData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
+                      <SelectTrigger className={errors.gender ? "border-red-500" : ""}>
+                        <SelectValue placeholder="-- Please Select --" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white text-black">
+                        {genderOptions.map((option) => (
+                          <SelectItem key={option} value={option}>
+                            {option}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {errors.gender && <p className="text-red-500 text-xs">{errors.gender}</p>}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="mobileNumber" className="text-sm font-medium">
+                      Mobile Number <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="mobileNumber"
+                      placeholder="Enter Mobile Number"
+                      value={FormData.mobileNumber}
+                      onChange={(e) => handleInputChange("mobileNumber", e.target.value)}
+                      className={errors.mobileNumber ? "border-red-500" : ""}
+                      maxLength={10}
                     />
+                    {errors.mobileNumber && <p className="text-red-500 text-xs">{errors.mobileNumber}</p>}
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Phone Number *
-                  </label>
-                  <div className="relative">
-                    <FaPhone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
-                      placeholder="Enter phone number"
+                {/* Address */}
+                <div className="space-y-2">
+                  <Label htmlFor="address" className="text-sm font-medium">
+                    Address <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="address"
+                    placeholder="Enter Address"
+                    value={FormData.address}
+                    onChange={(e) => handleInputChange("address", e.target.value)}
+                    className={errors.address ? "border-red-500" : ""}
+                  />
+                  {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
+                </div>
+
+                {/* State, Pincode */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium">
+                      State <span className="text-red-500">*</span>
+                    </Label>
+                    <Select value={FormData.state} onValueChange={(value) => handleInputChange("state", value)}>
+                      <SelectTrigger className={errors.state ? "border-red-500" : ""}>
+                        <SelectValue placeholder="-- Please Select --" />
+                      </SelectTrigger>
+                      <SelectContent className="max-h-60 bg-white text-black">
+                        {indianStates.map((state) => (
+                          <SelectItem key={state} value={state}>
+                            {state}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {errors.state && <p className="text-red-500 text-xs">{errors.state}</p>}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="pincode" className="text-sm font-medium">
+                      Pincode <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="pincode"
+                      placeholder="Enter Pincode"
+                      value={FormData.pincode}
+                      onChange={(e) => handleInputChange("pincode", e.target.value)}
+                      className={errors.pincode ? "border-red-500" : ""}
+                      maxLength={6}
                     />
+                    {errors.pincode && <p className="text-red-500 text-xs">{errors.pincode}</p>}
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    PAN Number *
-                  </label>
-                  <div className="relative">
-                    <FaIdCard className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="text"
-                      name="pan"
-                      value={formData.pan}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white uppercase"
-                      placeholder="ABCDE1234F"
-                      maxLength="10"
+                {/* Identity, Identity Number */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium">
+                      Identity <span className="text-red-500">*</span>
+                    </Label>
+                    <Select
+                      value={FormData.identity}
+                      onValueChange={(value) => handleInputChange("identity", value)}
+                    >
+                      <SelectTrigger className={errors.identity ? "border-red-500" : ""}>
+                        <SelectValue placeholder="-- Please Select --" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-white text-black">
+                        {identityTypes.map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {errors.identity && <p className="text-red-500 text-xs">{errors.identity}</p>}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="identityNumber" className="text-sm font-medium">
+                      {FormData.identity ? `${FormData.identity} Number` : "Identity Number"}{" "}
+                      <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="identityNumber"
+                      placeholder={
+                        FormData.identity === "Aadhaar"
+                          ? "Enter 12-digit Aadhaar Number"
+                          : FormData.identity === "PAN"
+                            ? "Enter PAN (e.g., ABCDE1234F)"
+                            : FormData.identity === "Voter Card"
+                              ? "Enter Voter ID Number"
+                              : FormData.identity === "Passport"
+                                ? "Enter Passport Number"
+                                : "Enter Identity Number"
+                      }
+                      value={FormData.identityNumber}
+                      onChange={(e) => handleInputChange("identityNumber", e.target.value.toUpperCase())}
+                      className={errors.identityNumber ? "border-red-500" : ""}
+                      maxLength={FormData.identity === "Aadhaar" ? 12 : FormData.identity === "PAN" ? 10 : undefined}
                     />
+                    {errors.identityNumber && <p className="text-red-500 text-xs">{errors.identityNumber}</p>}
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Date of Birth *
-                  </label>
-                  <div className="relative">
-                    <FaCalendarAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="date"
-                      name="dob"
-                      value={formData.dob}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--primary-blue)] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
-                    />
+                {/* Consent Checkbox */}
+                <div className="flex items-start space-x-3 pt-4">
+                  <Checkbox
+                    id="consent"
+                    checked={FormData.consent}
+                    onCheckedChange={(checked) => handleInputChange("consent", checked)}
+                    className={errors.consent ? "border-red-500" : ""}
+                  />
+                  <div className="space-y-1">
+                    <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
+                      I agree, all information mentioned above is true and I authorize Scoreme Solutions Private Limited
+                      to fetch my bureau data.
+                    </Label>
+                    {errors.consent && <p className="text-red-500 text-xs">{errors.consent}</p>}
                   </div>
                 </div>
 
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] text-white py-4 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-lg flex items-center justify-center gap-3 shadow-lg"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                      Checking CIBIL Score...
-                    </>
-                  ) : (
-                    <>
-                      <FaShieldAlt />
-                      Check CIBIL Score
-                    </>
-                  )}
-                </motion.button>
+                {/* Submit Button */}
+                <div className="pt-6">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full md:w-auto px-12 py-3 bg-[var(--primary-blue)]  hover:bg-[var(--primary-blue)]  text-white font-medium rounded-lg transition-colors duration-200"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Submitting...
+                      </>
+                    ) : (
+                      "Submit"
+                    )}
+                  </Button>
+                </div>
               </form>
             </motion.div>
 
@@ -318,26 +498,20 @@ export default function CIBILCheck() {
 
               {/* Features */}
               <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                  Why Check CIBIL Score?
-                </h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-6">Why Check CIBIL Score?</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold text-gray-900">Free & Instant</h4>
-                      <p className="text-gray-600 text-sm">
-                        Get your score instantly without any charges
-                      </p>
+                      <p className="text-gray-600 text-sm">Get your score instantly without any charges</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold text-gray-900">Secure & Private</h4>
-                      <p className="text-gray-600 text-sm">
-                        Bank-level encryption protects your data
-                      </p>
+                      <p className="text-gray-600 text-sm">Bank-level encryption protects your data</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -363,12 +537,9 @@ export default function CIBILCheck() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              What Affects Your CIBIL Score?
-            </h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">What Affects Your CIBIL Score?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Understanding the factors that influence your credit score helps you make better
-              financial decisions
+              Understanding the factors that influence your credit score helps you make better financial decisions
             </p>
           </motion.div>
 
@@ -392,9 +563,7 @@ export default function CIBILCheck() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900">{factor.factor}</h3>
-                      <span className="text-[var(--primary-blue)] font-bold text-lg">
-                        {factor.impact}
-                      </span>
+                      <span className="text-[var(--primary-blue)] font-bold text-lg">{factor.impact}</span>
                     </div>
                   </div>
                   <p className="text-gray-600 leading-relaxed">{factor.description}</p>
@@ -414,9 +583,7 @@ export default function CIBILCheck() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Tips to Improve Your CIBIL Score
-            </h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Tips to Improve Your CIBIL Score</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Follow these simple steps to boost your credit score and improve your loan eligibility
             </p>
@@ -460,8 +627,8 @@ export default function CIBILCheck() {
           >
             <h3 className="text-3xl font-bold mb-4">Ready to Improve Your Credit Score?</h3>
             <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              Get personalized advice and loan offers based on your credit score. Our experts will
-              help you find the best deals.
+              Get personalized advice and loan offers based on your credit score. Our experts will help you find the
+              best deals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
@@ -483,5 +650,5 @@ export default function CIBILCheck() {
         </div>
       </section>
     </>
-  );
+  )
 }
