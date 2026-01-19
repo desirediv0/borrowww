@@ -12,4 +12,20 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  preview: {
+    port: 4173,
+    host: "0.0.0.0",
+    allowedHosts: [
+      "admin.borrowww.com",
+      "www.admin.borrowww.com",
+    ],
+  },
+  // Add server configuration for development
+  server: {
+    host: "0.0.0.0",
+    allowedHosts: [
+      "admin.borrowww.com",
+      "www.admin.borrowww.com",
+    ],
+  },
 });
