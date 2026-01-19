@@ -1,0 +1,364 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ================== Admin ==================
+model Admin {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String
+  name      String?
+  isActive  Boolean   @default(true)
+  lastLogin DateTime?
+
+  refreshToken String?
+  accessToken  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admins")
+}
+
+// ================== User ==================
+model User {
+  id          String  @id @default(cuid())
+  phoneNumber String  @unique
+  firstName   String?
+  middleName  String?
+  lastName    String?
+
+  dateOfBirth DateTime?
+  gender      Gender?
+  address     String?
+  state       String?
+  pincode     String?
+
+  identityType   IdentityType?
+  identityNumber String?
+
+  isActive   Boolean   @default(true)
+  isVerified Boolean   @default(false)
+  lastLogin  DateTime?
+
+  refreshToken String?
+  accessToken  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  otpSessions  OtpSession[]
+  cibilData    CibilData[]
+  loans        Loan[]
+  userSessions UserSession[]
+
+  // Optimization: always point to latest valid report
+  latestCibilId String?    @unique
+  latestCibil   CibilData? @relation("LatestCibil", fields: [latestCibilId], references: [id])
+
+  @@map("users")
+}
+
+// ================== OTP ==================
+model OtpSession {
+  id          String   @id @default(cuid())
+  phoneNumber String
+  otp         String
+  isVerified  Boolean  @default(false)
+  expiresAt   DateTime
+  attempts    Int      @default(0)
+  maxAttempts Int      @default(3)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([phoneNumber])
+  @@index([expiresAt])
+  @@map("otp_sessions")
+}
+
+// ================== User Sessions ==================
+model UserSession {
+  id             String    @id @default(cuid())
+  sessionId      String    @unique
+  startTime      DateTime  @default(now())
+  endTime        DateTime?
+  isActive       Boolean   @default(true)
+  lastActivity   DateTime  @default(now())
+  currentPage    String?
+  totalPageViews Int       @default(0)
+  pagesVisited   Json?
+  ipAddress      String? // Track IP here
+  userAgent      String?
+  deviceInfo     Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isActive])
+  @@index([lastActivity])
+  @@map("user_sessions")
+}
+
+// ================== CIBIL ==================
+model CibilData {
+  id    String @id @default(cuid())
+  score Int?
+
+  // Personal info snapshot
+  firstName    String?
+  middleName   String?
+  lastName     String?
+  dateOfBirth  DateTime?
+  gender       Gender?
+  mobileNumber String?
+
+  identityType   IdentityType?
+  identityNumber String?
+  panNumber      String?
+
+  address String?
+  state   String?
+  pincode String?
+
+  // CIBIL report storage
+  source     String? // API source name (DeepVue)
+  reportData Json? // encrypted JSON report
+  fetchedAt  DateTime?
+  expiresAt  DateTime? // 28 days from fetchedAt
+
+  // DeepVue specific fields
+  transactionId String? // DeepVue transaction ID
+  sessionUrl    String? // DeepVue session URL
+  pdfUrl        String? // PDF report URL
+
+  // Caching control
+  isCached        Boolean   @default(false)
+  cacheValidUntil DateTime? // Cache expiry (28 days)
+  lastApiCall     DateTime? // Last time we called DeepVue API
+
+  // Tracking request
+  requestedIp String? // save IP from where request triggered
+  requestedUA String? // user agent
+
+  // Status
+  status       CibilCheckStatus @default(UNSUBMITTED)
+  isSubmitted  Boolean          @default(false)
+  tempFormData Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  loans  Loan[]
+
+  // Opposite relation for LatestCibil
+  latestUser User? @relation("LatestCibil")
+
+  @@index([userId, expiresAt])
+  @@index([status])
+  @@index([panNumber])
+  @@map("cibil_data")
+}
+
+// ================== Loans ==================
+model Loan {
+  id             String     @id @default(cuid())
+  type           LoanType
+  amount         Decimal?   @db.Decimal(12, 2)
+  interestRate   Decimal?   @db.Decimal(5, 2)
+  duration       Int?
+  status         LoanStatus @default(PENDING)
+  purpose        String?
+  monthlyIncome  Decimal?   @db.Decimal(12, 2)
+  employmentType String?
+  documents      Json?
+  remarks        String?
+
+  isSubmitted  Boolean @default(false)
+  tempFormData Json?
+
+  approvedAt DateTime?
+  rejectedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  // Relations
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cibilDataId String?
+  cibilData   CibilData? @relation(fields: [cibilDataId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([status])
+  @@index([type])
+  @@map("loans")
+}
+
+// ================== Enums ==================
+enum Gender {
+  Male
+  Female
+  Transgender
+}
+
+enum IdentityType {
+  Aadhaar
+  PAN
+  VoterCard
+  Passport
+}
+
+enum CibilCheckStatus {
+  UNSUBMITTED
+  SUBMITTED
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum LoanType {
+  HOME
+  PERSONAL
+  CAR
+  BUSINESS
+  EDUCATION
+}
+
+enum LoanStatus {
+  PENDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  DISBURSED
+  CLOSED
+}
+
+enum InquiryStatus {
+  PENDING
+  CONTACTED
+  IN_PROGRESS
+  COMPLETED
+  REJECTED
+}
+
+// ================== Credit Check Inquiry ==================
+model CreditCheckInquiry {
+  id           String  @id @default(cuid())
+  firstName    String
+  mobileNumber String
+  consent      Boolean @default(true)
+
+  status InquiryStatus @default(PENDING)
+  notes  String?
+
+  ipAddress String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("credit_check_inquiries")
+}
+
+// ================== Contact Inquiry ==================
+model ContactInquiry {
+  id      String  @id @default(cuid())
+  name    String
+  email   String
+  phone   String?
+  subject String?
+  message String
+
+  status InquiryStatus @default(PENDING)
+  notes  String?
+
+  ipAddress String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_inquiries")
+}
+
+// ================== Home Loan Inquiry ==================
+model HomeLoanInquiry {
+  id             String  @id @default(cuid())
+  name           String
+  phone          String
+  city           String?
+  propertyType   String?
+  loanAmount     String?
+  duration       String?
+  monthlyIncome  String?
+  employmentType String?
+  remarks        String?
+
+  status InquiryStatus @default(PENDING)
+  notes  String?
+
+  ipAddress String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("home_loan_inquiries")
+}
+
+// ================== Referral Inquiry ==================
+model ReferralInquiry {
+  id String @id @default(cuid())
+
+  // Referrer (person making the referral)
+  referrerName  String
+  referrerPhone String
+  referrerEmail String?
+
+  // Referee (person being referred)
+  refereeName  String
+  refereePhone String
+  refereeEmail String?
+
+  // Referral details
+  relationship String? // Friend, Family, Colleague, etc.
+  loanType     String? // Home Loan, Personal Loan, etc.
+  remarks      String?
+
+  status InquiryStatus @default(PENDING)
+  notes  String?
+
+  ipAddress String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("referral_inquiries")
+}

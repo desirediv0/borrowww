@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ascone-green: #2d5a4a;
+  --ascone-light-green: #e8f5f0;
+  --ascone-beige: #f5f2e8;
+  --ascone-gray: #6b7280;
+  --ascone-dark: #1f2937;
+
+  --primary-blue: #3a6ea5;
+  --primary-blue-light: #c4d7e0;
+  --primary-blue-dark: #2d3e50;
+  /* --primary-blue: #1465bf; */
+  --primary-green: #35a446;
+  --primary-darkgreen: #266c2f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Neuemontreal', sans-serif;
+}
+
+/* @font-face {
+  font-family: 'aureate';
+  src: url('/font/aureate-regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'quining';
+  src: url('/font/quning.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'kamelia';
+  src: url('/font/kamelia.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'monschone';
+  src: url('/font/monschone.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+} */
+
+.tiemposfine {
+  font-family: 'Tiemposfine', serif;
+}
+
+@font-face {
+  font-family: 'Tiemposfine';
+  src: url('/font/tiemposfine.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuemontreal';
+  src: url('/font/neuemontreal-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  /* font-display: swap; */
+}
+
+@font-face {
+  font-family: 'Neuemontreal';
+  src: url('/font/neuemontreal-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  /* font-display: swap; */
+}
+
+@font-face {
+  font-family: 'Neuemontreal';
+  src: url('/font/neuemontreal-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  /* font-display: swap; */
+}
+
+@font-face {
+  font-family: 'Neuemontreal';
+  src: url('/font/neuemontreal-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  /* font-display: swap; */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-white text-gray-900;
+    font-family: 'Inter', sans-serif;
+    /* background-color: #E8F0F2; */
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+@keyframes breathing {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.animate-breathing {
+  animation: breathing 2s ease-in-out infinite;
+}
+
+@keyframes drawChart {
+  0% {
+    stroke-dasharray: 0 200;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 200 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-chart {
+  animation: drawChart 3s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.bg {
+  background-image:
+    radial-gradient(circle at 45%, #ab40ff33 6%, #fff0 41%),
+    radial-gradient(circle at 30% 40%, #ff007a33, #fff0 33%);
+}
