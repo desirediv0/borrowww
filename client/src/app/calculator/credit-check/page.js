@@ -20,7 +20,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { isValidIndianNumber } from '@/utils/validation';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://borrowww.com/api';
 
 function CIBILCheckContent() {
   const searchParams = useSearchParams();

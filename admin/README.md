@@ -65,7 +65,7 @@ A modern, responsive admin dashboard for managing loan and credit systems with r
    Create a `.env` file in the admin directory:
 
    ```env
-   VITE_API_URL=http://localhost:4000/api
+   VITE_API_URL=https://borrowww.com/api
    ```
 
 4. **Start the development server**
@@ -77,7 +77,7 @@ A modern, responsive admin dashboard for managing loan and credit systems with r
 
 ### Environment Variables
 
-- `VITE_API_URL`: Backend API endpoint (default: http://localhost:4000/api)
+- `VITE_API_URL`: Backend API endpoint (default: https://borrowww.com/api)
 
 ### API Integration
 

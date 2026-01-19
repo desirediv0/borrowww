@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Phone, Lock, ArrowRight, CheckCircle, Loader2 } from 'lucide-react';
 import { isValidIndianNumber } from '@/utils/validation';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://borrowww.com/api';
 const RESEND_TIMER_SECONDS = 30;
 
 function AuthPageContent() {

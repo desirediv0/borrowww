@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 const CONSENT_KEY = 'borrowww_cookie_consent';
 const SESSION_ID_KEY = 'borrowww_session_id';
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://borrowww.com/api';
 
 // Pages to exclude from tracking (admin pages, etc.)
 const EXCLUDED_PATHS = ['/admin', '/login', '/api'];
