@@ -54,7 +54,11 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "http://localhost:5173",
-    "http://localhost:4173"
+    "http://localhost:4173",
+    "https://admin.borrowww.com",
+    "https://www.admin.borrowww.com",
+    "https://borrowww.com",
+    "https://www.borrowww.com"
   ],
   credentials: true,
   optionsSuccessStatus: 200,
