@@ -14,6 +14,7 @@ import {
     Calendar,
     X,
     Filter,
+    Eye,
 } from 'lucide-react';
 
 import { toast } from "sonner";
@@ -72,7 +73,7 @@ const Referrals = () => {
     const [deleting, setDeleting] = useState(false);
     const [dateFrom, setDateFrom] = useState('');
     const [dateTo, setDateTo] = useState('');
-
+    const [selectedReferral, setSelectedReferral] = useState<ReferralInquiry | null>(null);
     const debouncedSearch = useDebounce(searchQuery, 300);
 
     const fetchReferrals = useCallback(async () => {
@@ -373,6 +374,13 @@ const Referrals = () => {
                                         </td>
                                         <td className="px-4 py-4">
                                             <div className="flex items-center gap-2">
+                                                <button
+                                                    onClick={() => setSelectedReferral(inquiry)}
+                                                    className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                                    title="View Details"
+                                                >
+                                                    <Eye className="h-4 w-4" />
+                                                </button>
                                                 <Select value={inquiry.status} onValueChange={(value) => updateStatus(inquiry.id, value)} disabled={updatingId === inquiry.id}>
                                                     <SelectTrigger className="w-[100px] sm:w-[120px] h-8">
                                                         <SelectValue />
@@ -414,6 +422,98 @@ const Referrals = () => {
                     </div>
                 )}
             </div>
+
+            {/* Detail Modal */}
+            {selectedReferral && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setSelectedReferral(null)}>
+                    <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+                        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+                            <h2 className="text-xl font-bold text-gray-900">Referral Details</h2>
+                            <button onClick={() => setSelectedReferral(null)} className="p-2 hover:bg-gray-100 rounded-lg">
+                                <X className="h-5 w-5 text-gray-500" />
+                            </button>
+                        </div>
+                        <div className="p-6 space-y-6">
+                            {/* Referrer Section */}
+                            <div className="bg-blue-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
+                                    <Users className="h-5 w-5" /> Referrer Details
+                                </h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <p className="text-xs text-blue-600 font-medium">Name</p>
+                                        <p className="text-gray-900 font-medium">{selectedReferral.referrerName}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-blue-600 font-medium">Phone</p>
+                                        <p className="text-gray-900">{selectedReferral.referrerPhone}</p>
+                                    </div>
+                                    <div className="sm:col-span-2">
+                                        <p className="text-xs text-blue-600 font-medium">Email</p>
+                                        <p className="text-gray-900">{selectedReferral.referrerEmail || '-'}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Referee Section */}
+                            <div className="bg-green-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-green-900 mb-3 flex items-center gap-2">
+                                    <Users className="h-5 w-5" /> Referee Details
+                                </h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <p className="text-xs text-green-600 font-medium">Name</p>
+                                        <p className="text-gray-900 font-medium">{selectedReferral.refereeName}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-green-600 font-medium">Phone</p>
+                                        <p className="text-gray-900">{selectedReferral.refereePhone}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-green-600 font-medium">Email</p>
+                                        <p className="text-gray-900">{selectedReferral.refereeEmail || '-'}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-green-600 font-medium">Relationship</p>
+                                        <p className="text-gray-900">{selectedReferral.relationship || '-'}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Additional Info */}
+                            <div className="bg-gray-50 rounded-xl p-4">
+                                <h3 className="font-semibold text-gray-900 mb-3">Additional Information</h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <p className="text-xs text-gray-500 font-medium">Loan Type</p>
+                                        <p className="text-gray-900">{selectedReferral.loanType || '-'}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-gray-500 font-medium">Status</p>
+                                        <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(selectedReferral.status)}`}>
+                                            {selectedReferral.status.replace('_', ' ')}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-gray-500 font-medium">Submitted On</p>
+                                        <p className="text-gray-900">{formatDate(selectedReferral.createdAt)}</p>
+                                    </div>
+                                    <div className="sm:col-span-2">
+                                        <p className="text-xs text-gray-500 font-medium">Remarks</p>
+                                        <p className="text-gray-900">{selectedReferral.remarks || 'No remarks'}</p>
+                                    </div>
+                                    {selectedReferral.notes && (
+                                        <div className="sm:col-span-2">
+                                            <p className="text-xs text-gray-500 font-medium">Admin Notes</p>
+                                            <p className="text-gray-900">{selectedReferral.notes}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

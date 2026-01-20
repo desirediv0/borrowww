@@ -177,6 +177,16 @@ export const registerUser = asyncHandler(async (req, res) => {
     // Decrypt for user response (no masking for user)
     const decryptedUser = decryptUserData(user, false);
 
+    // Link guest session if sessionId provided
+    if (req.body.sessionId) {
+        await prisma.userSession.update({
+            where: { sessionId: req.body.sessionId },
+            data: { userId: user.id }
+        }).catch(() => {
+            // Ignore if session not found or update fails (non-critical)
+        });
+    }
+
     res.status(201).json(new ApiResponsive(201, { user: decryptedUser }, "User registered"));
 });
 
@@ -277,6 +287,16 @@ export const verifyOtp = asyncHandler(async (req, res) => {
         where: { id: user.id },
         data: { accessToken: token, lastLogin: new Date(), isVerified: true }
     });
+
+    // Link guest session if sessionId provided
+    if (req.body.sessionId) {
+        await prisma.userSession.update({
+            where: { sessionId: req.body.sessionId },
+            data: { userId: user.id }
+        }).catch(() => {
+            // Ignore if session not found or update fails (non-critical)
+        });
+    }
 
     // Decrypt for user response
     const decryptedUser = decryptUserData(updatedUser, false);

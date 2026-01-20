@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [admin, setAdmin] = useState<Admin | null>(null);
   const [checking, setChecking] = useState(true);
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://borrowww.com/api';
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_APP_ENV === 'development' ? 'http://localhost:4000/api' : 'https://borrowww.com/api';
 
   const login = async (email: string, password: string): Promise<void> => {
     try {

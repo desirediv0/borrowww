@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Phone, Lock, ArrowRight, CheckCircle, Loader2 } from 'lucide-react';
 import { isValidIndianNumber } from '@/utils/validation';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://borrowww.com/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 const RESEND_TIMER_SECONDS = 30;
 
 function AuthPageContent() {
@@ -96,12 +96,15 @@ function AuthPageContent() {
 
         setLoading(true);
         try {
+            // Get sessionId from localStorage for session tracking
+            const sessionId = localStorage.getItem('borrowww_session_id');
+
             const response = await fetch(`${API_URL}/users/verify-otp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ phoneNumber, otp }),
+                body: JSON.stringify({ phoneNumber, otp, sessionId }),
             });
 
             const data = await response.json();

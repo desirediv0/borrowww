@@ -44,7 +44,7 @@ export default function AdminLoginContent() {
                             type="email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                            placeholder="admin@borrowww.com"
+                            placeholder="your@email.com"
                             required
                         />
                     </div>

@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/select";
 import { isValidIndianNumber } from '@/utils/validation';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://borrowww.com/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
 export default function ReferralPage() {
     const [formData, setFormData] = useState({

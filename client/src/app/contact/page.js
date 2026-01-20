@@ -27,7 +27,7 @@ import {
 import { motion } from 'framer-motion';
 import { isValidIndianNumber } from '@/utils/validation';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://borrowww.com/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -137,7 +137,7 @@ export default function ContactPage() {
       }
       // If API_URL doesn't end with /api (and isn't just root), append /api
       // Simple heuristic: if it doesn't contain '/api', add it.
-      // Safe default is https://borrowww.com/api
+      // Safe default is http://localhost:4000/api
       if (!baseUrl.endsWith('/api')) {
         baseUrl = `${baseUrl}/api`;
       }

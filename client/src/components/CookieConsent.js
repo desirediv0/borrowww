@@ -5,7 +5,7 @@ import { Cookie, X, Check } from 'lucide-react';
 
 const CONSENT_KEY = 'borrowww_cookie_consent';
 const SESSION_ID_KEY = 'borrowww_session_id';
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://borrowww.com/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
 export default function CookieConsent() {
     const [showBanner, setShowBanner] = useState(false);

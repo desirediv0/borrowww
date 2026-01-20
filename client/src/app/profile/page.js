@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://borrowww.com/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
 export default function ProfilePage() {
     const [user, setUser] = useState(null);
@@ -234,43 +234,49 @@ export default function ProfilePage() {
     }
 
     return (
-        <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto space-y-8">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto space-y-8">
 
-                {/* Header Card */}
-                <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-                    <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-3xl font-bold text-white">
-                            {user?.firstName?.charAt(0) || user?.phoneNumber?.charAt(0) || 'U'}
-                        </span>
-                    </div>
-                    <div className="text-center md:text-left flex-1">
-                        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                            {user?.firstName ? `${user.firstName} ${user.lastName || ''}` : 'Complete your profile'}
-                        </h1>
-                        <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-500">
-                            <div className="flex items-center gap-1">
-                                <Phone className="h-4 w-4" />
-                                {user?.phoneNumber}
-                            </div>
-                            <div className="flex items-center gap-1">
-                                <Clock className="h-4 w-4" />
-                                Last login: {getTimeAgo(user?.lastLogin)}
-                            </div>
-                            {user?.isVerified && (
-                                <div className="flex items-center gap-1 text-green-600 font-medium">
-                                    <CheckCircle className="h-4 w-4" />
-                                    Verified Account
+                {/* Header Card - Premium Design */}
+                <div className="bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] rounded-3xl shadow-2xl p-8 md:p-10 text-white relative overflow-hidden">
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+
+                    <div className="relative flex flex-col md:flex-row items-center gap-8">
+                        <div className="w-32 h-32 md:w-36 md:h-36 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl border-4 border-white/30">
+                            <span className="text-5xl md:text-6xl font-bold text-white">
+                                {user?.firstName?.charAt(0) || user?.phoneNumber?.charAt(0) || 'U'}
+                            </span>
+                        </div>
+                        <div className="text-center md:text-left flex-1">
+                            <h1 className="text-3xl md:text-4xl font-bold mb-3">
+                                {user?.firstName ? `${user.firstName} ${user.lastName || ''}` : 'Complete your profile'}
+                            </h1>
+                            <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-white/80">
+                                <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
+                                    <Phone className="h-4 w-4" />
+                                    {user?.phoneNumber}
                                 </div>
+                                <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
+                                    <Clock className="h-4 w-4" />
+                                    Last login: {getTimeAgo(user?.lastLogin)}
+                                </div>
+                                {user?.isVerified && (
+                                    <div className="flex items-center gap-2 bg-green-500/20 px-3 py-1.5 rounded-full text-green-200 font-medium">
+                                        <CheckCircle className="h-4 w-4" />
+                                        Verified
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="flex-shrink-0">
+                            {!isEditing && (
+                                <Button onClick={() => setIsEditing(true)} className="gap-2 bg-white text-[#2D3E50] hover:bg-white/90 font-semibold px-6 py-3 text-base shadow-lg">
+                                    <Edit2 className="h-5 w-5" /> Edit Profile
+                                </Button>
                             )}
                         </div>
-                    </div>
-                    <div>
-                        {!isEditing && (
-                            <Button onClick={() => setIsEditing(true)} className="gap-2">
-                                <Edit2 className="h-4 w-4" /> Edit Profile
-                            </Button>
-                        )}
                     </div>
                 </div>
 
@@ -281,14 +287,16 @@ export default function ProfilePage() {
                     <div className="md:col-span-2 space-y-6">
 
                         {/* Personal Details */}
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center gap-2">
-                                    <User className="h-5 w-5 text-blue-500" />
+                        <Card className="shadow-lg border-0 bg-white rounded-2xl overflow-hidden">
+                            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+                                <CardTitle className="flex items-center gap-3 text-lg">
+                                    <div className="p-2 bg-blue-100 rounded-lg">
+                                        <User className="h-5 w-5 text-blue-600" />
+                                    </div>
                                     Personal Details
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-5 p-6">
                                 <div className="space-y-2">
                                     <Label>First Name</Label>
                                     <Input
@@ -346,14 +354,16 @@ export default function ProfilePage() {
                         </Card>
 
                         {/* Contact Details */}
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center gap-2">
-                                    <MapPin className="h-5 w-5 text-green-500" />
+                        <Card className="shadow-lg border-0 bg-white rounded-2xl overflow-hidden">
+                            <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
+                                <CardTitle className="flex items-center gap-3 text-lg">
+                                    <div className="p-2 bg-green-100 rounded-lg">
+                                        <MapPin className="h-5 w-5 text-green-600" />
+                                    </div>
                                     Contact Details
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-4">
+                            <CardContent className="space-y-5 p-6">
                                 <div className="space-y-2">
                                     <Label>Address</Label>
                                     <Input
@@ -388,14 +398,16 @@ export default function ProfilePage() {
                         </Card>
 
                         {/* Identity Proof */}
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center gap-2">
-                                    <CreditCard className="h-5 w-5 text-purple-500" />
+                        <Card className="shadow-lg border-0 bg-white rounded-2xl overflow-hidden">
+                            <CardHeader className="bg-gradient-to-r from-purple-50 to-violet-50 border-b">
+                                <CardTitle className="flex items-center gap-3 text-lg">
+                                    <div className="p-2 bg-purple-100 rounded-lg">
+                                        <CreditCard className="h-5 w-5 text-purple-600" />
+                                    </div>
                                     Identity Proof
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-5 p-6">
                                 <div className="space-y-2">
                                     <Label>Identity Type</Label>
                                     <Select

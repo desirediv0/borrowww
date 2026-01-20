@@ -14,7 +14,7 @@ interface AdminLoginResponse {
 }
 
 // ...existing code...
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://borrowww.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_APP_ENV === 'development' ? 'http://localhost:4000/api' : 'https://borrowww.com/api';
 
 // API Response handler
 

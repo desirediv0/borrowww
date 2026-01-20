@@ -160,6 +160,28 @@ app.all("*", (req, res) => {
 // Global error handler (always return JSON)
 app.use((err, req, res, next) => {
   const status = err.statusCode || 500;
+
+  // Handle Prisma connection errors specifically
+  if (err.code === 'P1001' || err.message?.includes('Can\'t reach database server')) {
+    console.error('Database connection failed:', err.message);
+    return res.status(503).json({
+      success: false,
+      error: "Service temporarily unavailable. Please try again later.",
+      // Only show details in dev environment, but never show raw connection string
+      stack: process.env.NODE_ENV === "development" ? "Database connection failed" : undefined,
+    });
+  }
+
+  // Handle other Prisma errors
+  if (err.stack?.includes('@prisma/client')) {
+    console.error('Prisma Error:', err);
+    return res.status(500).json({
+      success: false,
+      error: "Internal failure",
+      stack: process.env.NODE_ENV === "development" ? err.message : undefined,
+    });
+  }
+
   res.status(status).json({
     success: false,
     error: err.message || "Internal Server Error",
