@@ -298,6 +298,28 @@ export const deleteUser = asyncHandler(async (req, res) => {
     res.json(new ApiResponsive(200, null, 'User soft deleted'));
 });
 
+/**
+ * Bulk soft delete users
+ *
+ * @route POST /api/admin/users/soft-delete
+ * @body { ids: string[] }
+ * @access Protected
+ */
+export const softDeleteUsers = asyncHandler(async (req, res) => {
+    const { ids } = req.body;
+
+    if (!ids || !Array.isArray(ids) || ids.length === 0) {
+        throw new ApiError(400, 'Array of IDs is required');
+    }
+
+    const result = await softDeleteMany(prisma, 'user', ids);
+    logDataAccess('soft_delete_many', 'User', ids.join(','), req.admin.id);
+
+    res.status(200).json(
+        new ApiResponsive(200, { deletedCount: result.count }, `Soft deleted ${result.count} users`)
+    );
+});
+
 // ================================================================================
 // INQUIRY DATA ACCESS - WITH DECRYPTION
 // ================================================================================

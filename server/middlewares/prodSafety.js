@@ -142,18 +142,21 @@ export const enforceSoftDelete = async (params, next) => {
     }
 
     if (params.action === 'deleteMany') {
-        // BLOCK deleteMany entirely in production
-        console.error('[PRODUCTION SAFETY] deleteMany BLOCKED:', {
-            timestamp: new Date().toISOString(),
-            model: params.model,
-            where: params.args?.where,
-        });
+        // BLOCK deleteMany only for models that have soft delete (isDeleted); allow for Session etc.
+        if (MODELS_WITH_IS_DELETED.has(params.model)) {
+            console.error('[PRODUCTION SAFETY] deleteMany BLOCKED:', {
+                timestamp: new Date().toISOString(),
+                model: params.model,
+                where: params.args?.where,
+            });
 
-        throw new ApiError(
-            403,
-            `PRODUCTION SAFETY: deleteMany on ${params.model} is blocked. ` +
-            'Use updateMany with isDeleted = true for soft delete.'
-        );
+            throw new ApiError(
+                403,
+                `PRODUCTION SAFETY: deleteMany on ${params.model} is blocked. ` +
+                'Use soft delete (POST .../soft-delete) instead.'
+            );
+        }
+        // UserSession and other models without isDeleted: allow hard delete (e.g. session cleanup)
     }
 
     // SECURITY: For find operations, exclude soft-deleted records ONLY on models that have isDeleted

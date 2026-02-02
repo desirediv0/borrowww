@@ -22,6 +22,7 @@ import {
     getUser,
     updateUser,
     deleteUser,
+    softDeleteUsers,
     getAllCreditCheckInquiries,
     getAllContactInquiries,
     getAllHomeLoanInquiries,
@@ -124,6 +125,13 @@ router.put('/users/:id', updateUser);
  * @access Protected
  */
 router.delete('/users/:id', deleteUser);
+
+/**
+ * @route POST /api/admin/users/soft-delete
+ * @desc Bulk soft delete users (body: { ids: string[] })
+ * @access Protected
+ */
+router.post('/users/soft-delete', softDeleteUsers);
 
 // --- Inquiry Management ---
 /**
