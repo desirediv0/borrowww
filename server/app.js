@@ -1,22 +1,4 @@
-/**
- * ================================================================================
- * EXPRESS APPLICATION CONFIGURATION
- * ================================================================================
- * 
- * SECURITY FEATURES:
- * - Session-based authentication with PostgreSQL store
- * - HTTP-only, secure cookies in production
- * - Helmet for security headers
- * - CORS configured for allowed origins
- * - Production safety middleware
- * 
- * ENVIRONMENT VARIABLES REQUIRED:
- * - NODE_ENV: 'development' or 'production'
- * - DATABASE_URL: PostgreSQL connection string
- * - ADMIN_SESSION_SECRET: Strong random string for session signing
- * 
- * ================================================================================
- */
+
 
 import express from "express";
 import cors from "cors";
@@ -73,20 +55,30 @@ app.use(
 );
 
 // ================================================================================
-// CORS CONFIGURATION
+// CORS CONFIGURATION (admin.borrowww.com → borrowww.com/api must be allowed)
 // ================================================================================
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "http://localhost:4173",
+  "https://admin.borrowww.com",
+  "https://www.admin.borrowww.com",
+  "https://borrowww.com",
+  "https://www.borrowww.com",
+  ...(process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(',').map((o) => o.trim()) : []),
+];
+
 const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "http://localhost:4173",
-    "https://admin.borrowww.com",
-    "https://www.admin.borrowww.com",
-    "https://borrowww.com",
-    "https://www.borrowww.com"
-  ],
-  credentials: true, // CRITICAL: Required for session cookies
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g. Postman, same-origin)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, origin);
+    // Allow any subdomain of borrowww.com in production
+    if (origin.endsWith('.borrowww.com') || origin === 'https://borrowww.com') return callback(null, origin);
+    callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true, // CRITICAL: Required for session cookies (admin login)
   optionsSuccessStatus: 200,
 };
 
