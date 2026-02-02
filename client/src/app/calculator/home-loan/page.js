@@ -167,8 +167,8 @@ export default function HomeLoanServicesPage() {
     setIsSubmitting(true);
 
     try {
-      // Call server API directly
-      const response = await fetch(`${API_URL}/inquiries/home-loan`, {
+      // SECURITY: Call encrypted endpoint - data is encrypted on server before saving
+      const response = await fetch(`${API_URL}/client/home-loan`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -885,18 +885,20 @@ export default function HomeLoanServicesPage() {
           offers and expert guidance.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#lead-form"
+          <button
+            type="button"
+            onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-3 font-semibold text-[#3A6EA5] hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
           >
             Apply for Loan <ArrowRight className="h-4 w-4" />
-          </a>
-          <a
-            href="#lead-form"
+          </button>
+          <button
+            type="button"
+            onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white px-8 py-3 font-semibold hover:bg-white hover:text-[#3A6EA5] transition-all"
           >
             Get Free Consultation
-          </a>
+          </button>
         </div>
       </div>
     </div>

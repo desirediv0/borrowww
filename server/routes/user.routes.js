@@ -1,5 +1,5 @@
 import express from "express";
-import { adminAuth } from "../middleware/adminAuth.js";
+import { isAdmin } from "../middlewares/isAdmin.js";
 import {
     listUsers, getUser, updateUser, deleteUser, bulkDeleteUsers,
     registerUser, sendOtp, verifyOtp, getUserProfile, getFullUserProfile, updateUserSelf,
@@ -12,23 +12,23 @@ import { getUserDetails } from "../controllers/user.controller.js";
 const router = express.Router();
 
 // List users (admin only)
-router.get("/", adminAuth, listUsers);
+router.get("/", isAdmin, listUsers);
 // Get user by id
-router.get("/:id", adminAuth, getUser);
+router.get("/:id", isAdmin, getUser);
 
 // Get user details (admin only)
 
 
-router.get("/:id/details", adminAuth, getUserDetails);
+router.get("/:id/details", isAdmin, getUserDetails);
 // User self-update (user can update their own profile)
 router.put("/profile", userAuth, updateUserSelf);
 router.patch("/profile", userAuth, updateUserSelf);
 // Update user
-router.put("/:id", adminAuth, updateUser);
+router.put("/:id", isAdmin, updateUser);
 // Delete user
-router.delete("/:id", adminAuth, deleteUser);
+router.delete("/:id", isAdmin, deleteUser);
 // Bulk delete users (admin only)
-router.delete("/bulk/delete", adminAuth, bulkDeleteUsers);
+router.delete("/bulk/delete", isAdmin, bulkDeleteUsers);
 
 // User registration and OTP
 router.post("/register", registerUser);

@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   FaBuilding,
   FaCalculator,
@@ -13,6 +14,7 @@ import {
 import { motion } from 'framer-motion';
 
 export default function LoanAgainstPropertyCalculator() {
+  const router = useRouter();
   const [propertyValue, setPropertyValue] = useState(10000000);
   const [loanAmount, setLoanAmount] = useState(6000000);
   const [interestRate, setInterestRate] = useState(12.5);
@@ -100,6 +102,9 @@ export default function LoanAgainstPropertyCalculator() {
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
               Calculate your LAP EMI and get funds against your property. Use the loan amount for
               any purpose with competitive rates.
+            </p>
+            <p className="text-base sm:text-lg font-semibold text-[var(--primary-blue)] mt-3">
+              Interest rate from 7.75%* p.a.
             </p>
           </motion.div>
         </div>
@@ -447,17 +452,19 @@ export default function LoanAgainstPropertyCalculator() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => (window.location.href = '/calculator/home-loan')}
+                onClick={() => router.push('/calculator/home-loan')}
                 className="bg-white text-[var(--primary-blue)] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg text-sm sm:text-base"
               >
                 Apply Loan
               </motion.button>
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => (window.location.href = '/contact')}
+                onClick={() => router.push('/contact')}
                 className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200 text-sm sm:text-base"
               >
                 Contact an Expert

@@ -29,7 +29,7 @@ export default function TransparencySection() {
           name: 'Kamlesh Yadav',
           role: 'Senior Loan Advisor',
           phone: 'Available on request',
-          email: 'info.premierpenny@gmail.com',
+          email: 'support@borrowww.com',
         },
         chat: [
           {

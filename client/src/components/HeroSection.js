@@ -35,25 +35,29 @@ export default function HeroSection() {
               and more — with the best interest rates.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-              {/* Buttons with Links */}
-              <Link href="/calculator/home-loan">
-                <button className="text-white px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl md:font-semibold text-sm sm:text-base hover:bg-[var(--primary-blue)] transition-all duration-300 shadow-lg hover:shadow-xl bg-[var(--primary-blue-dark)] whitespace-nowrap">
-                  Apply for Home Loan
-                </button>
+            <p className="text-sm sm:text-base flex flex-wrap items-center gap-x-2 gap-y-1">
+              <span className="text-gray-700 font-medium">Apply to :</span>{' '}
+              <Link
+                href="/calculator/home-loan"
+                className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"
+              >
+                Home Loan
               </Link>
-              <Link href="/calculator/loan-against-property">
-                <button className="text-white px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl md:font-semibold text-sm sm:text-base hover:bg-[var(--primary-blue)] transition-all duration-300 shadow-lg hover:shadow-xl bg-[var(--primary-blue-dark)] whitespace-nowrap">
-                  Loan Against Property
-                </button>
+              <span className="text-gray-400">|</span>
+              <Link
+                href="/calculator/loan-against-property"
+                className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"
+              >
+                Loan Against Property
               </Link>
-
-              <Link href="/calculator/balance-transfer">
-                <button className="text-white px-4 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl md:font-semibold text-sm sm:text-base hover:bg-[var(--primary-blue)] transition-all duration-300 shadow-lg hover:shadow-xl bg-[var(--primary-blue-dark)] whitespace-nowrap">
-                  Balance Transfer
-                </button>
+              <span className="text-gray-400">|</span>
+              <Link
+                href="/calculator/balance-transfer"
+                className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"
+              >
+                Balance Transfer
               </Link>
-            </div>
+            </p>
 
             <div className="flex items-center gap-3 pt-2">
               <div className="flex">

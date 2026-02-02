@@ -44,7 +44,7 @@ export default function RBICompliance() {
         <h2 className="text-2xl font-semibold text-gray-900">6. Grievance Redressal</h2>
         <p>
           For concerns about advisory communication or misuse of data, contact:
-          <strong> info.premierpenny@gmail.com</strong>.
+          <strong> support@borrowww.com</strong>.
         </p>
       </div>
     </section>

@@ -139,7 +139,7 @@ const HomeLoanInquiries = () => {
 
         try {
             setDeleting(true);
-            await inquiryService.bulkDeleteHomeLoanInquiries(Array.from(selectedIds));
+            await inquiryService.softDeleteHomeLoanInquiries(Array.from(selectedIds));
             toast.success(`Deleted ${selectedIds.size} inquiries`);
             setSelectedIds(new Set());
             fetchInquiries();

@@ -6,7 +6,7 @@ import {
     updateReferralStatus,
     getReferralStats,
 } from "../controllers/referral.controller.js";
-import { adminAuth } from "../middleware/adminAuth.js";
+import { isAdmin } from "../middlewares/isAdmin.js";
 
 const router = express.Router();
 
@@ -14,15 +14,15 @@ const router = express.Router();
 router.post("/", createReferralInquiry);
 
 // Admin routes - Get all referrals
-router.get("/", adminAuth, getAllReferralInquiries);
+router.get("/", isAdmin, getAllReferralInquiries);
 
 // Admin routes - Get referral stats
-router.get("/stats", adminAuth, getReferralStats);
+router.get("/stats", isAdmin, getReferralStats);
 
 // Admin routes - Bulk delete referrals
-router.delete("/bulk", adminAuth, bulkDeleteReferralInquiries);
+router.delete("/bulk", isAdmin, bulkDeleteReferralInquiries);
 
 // Admin routes - Update referral status
-router.patch("/:id/status", adminAuth, updateReferralStatus);
+router.patch("/:id/status", isAdmin, updateReferralStatus);
 
 export default router;

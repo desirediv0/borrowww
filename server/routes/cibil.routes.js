@@ -6,24 +6,24 @@ import {
     createCibilData, seedCibilData, getCibilDetails, downloadCibilPdf,
     userGetCibilReport
 } from "../controllers/cibil.controller.js";
-import { adminAuth } from "../middleware/adminAuth.js";
+import { isAdmin } from "../middlewares/isAdmin.js";
 import { userAuth } from "../middleware/userAuth.js";
 
 const router = express.Router();
 
 // Admin routes
-router.get("/", adminAuth, listCibilData);
-router.get("/stats", adminAuth, cibilStats);
-router.get("/submitted", adminAuth, listSubmittedCibil);
-router.get("/summit", adminAuth, listSubmittedCibil); // alias for submitted
-router.post("/summit", adminAuth, listSubmittedCibil); // POST alias for submitted
-router.get("/unsubmitted", adminAuth, listUnsubmittedCibil);
-router.get("/unsummit", adminAuth, listUnsubmittedCibil); // alias for unsubmitted
-router.post("/unsummit", adminAuth, listUnsubmittedCibil); // POST alias for unsubmitted
-router.get("/details/:id", adminAuth, getCibilDetails);
-router.get("/download/:id", adminAuth, downloadCibilPdf);
-router.put("/:id", adminAuth, updateCibilData);
-router.delete("/:id", adminAuth, deleteCibilData);
+router.get("/", isAdmin, listCibilData);
+router.get("/stats", isAdmin, cibilStats);
+router.get("/submitted", isAdmin, listSubmittedCibil);
+router.get("/summit", isAdmin, listSubmittedCibil); // alias for submitted
+router.post("/summit", isAdmin, listSubmittedCibil); // POST alias for submitted
+router.get("/unsubmitted", isAdmin, listUnsubmittedCibil);
+router.get("/unsummit", isAdmin, listUnsubmittedCibil); // alias for unsubmitted
+router.post("/unsummit", isAdmin, listUnsubmittedCibil); // POST alias for unsubmitted
+router.get("/details/:id", isAdmin, getCibilDetails);
+router.get("/download/:id", isAdmin, downloadCibilPdf);
+router.put("/:id", isAdmin, updateCibilData);
+router.delete("/:id", isAdmin, deleteCibilData);
 
 // User routes
 router.get("/my", userAuth, getUserCibilData);
@@ -52,6 +52,6 @@ router.post("/user/fetch-result/:transactionId", userAuth, userGetCibilReport);
 router.delete("/user/unsummit/:id", userAuth, userDeleteUnsummitCibil);
 
 // Seed API (admin only)
-router.post("/seed", adminAuth, seedCibilData);
+router.post("/seed", isAdmin, seedCibilData);
 
 export default router;

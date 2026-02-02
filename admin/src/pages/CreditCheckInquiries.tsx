@@ -155,7 +155,7 @@ const CreditCheckInquiries = () => {
 
         try {
             setDeleting(true);
-            await inquiryService.bulkDeleteCreditCheckInquiries(Array.from(selectedIds));
+            await inquiryService.softDeleteCreditCheckInquiries(Array.from(selectedIds));
             toast.success(`Successfully deleted ${selectedIds.size} inquiries`);
             setSelectedIds(new Set());
             fetchInquiries();

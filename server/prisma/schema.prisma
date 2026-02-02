@@ -49,6 +49,10 @@ model User {
   refreshToken String?
   accessToken  String?
 
+  // SECURITY: Soft delete - NEVER permanently delete user data in production
+  isDeleted Boolean   @default(false)
+  deletedAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -62,6 +66,7 @@ model User {
   latestCibilId String?    @unique
   latestCibil   CibilData? @relation("LatestCibil", fields: [latestCibilId], references: [id])
 
+  @@index([isDeleted])
   @@map("users")
 }
 
@@ -161,6 +166,10 @@ model CibilData {
   isSubmitted  Boolean          @default(false)
   tempFormData Json?
 
+  // SECURITY: Soft delete - CIBIL data must be retained for compliance
+  isDeleted Boolean   @default(false)
+  deletedAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -175,6 +184,7 @@ model CibilData {
   @@index([userId, expiresAt])
   @@index([status])
   @@index([panNumber])
+  @@index([isDeleted])
   @@map("cibil_data")
 }
 
@@ -272,11 +282,16 @@ model CreditCheckInquiry {
   ipAddress String?
   userAgent String?
 
+  // SECURITY: Soft delete - preserve inquiry records
+  isDeleted Boolean   @default(false)
+  deletedAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([status])
   @@index([createdAt])
+  @@index([isDeleted])
   @@map("credit_check_inquiries")
 }
 
@@ -295,11 +310,16 @@ model ContactInquiry {
   ipAddress String?
   userAgent String?
 
+  // SECURITY: Soft delete - preserve contact records
+  isDeleted Boolean   @default(false)
+  deletedAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([status])
   @@index([createdAt])
+  @@index([isDeleted])
   @@map("contact_inquiries")
 }
 
@@ -322,11 +342,16 @@ model HomeLoanInquiry {
   ipAddress String?
   userAgent String?
 
+  // SECURITY: Soft delete - preserve loan inquiry records
+  isDeleted Boolean   @default(false)
+  deletedAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([status])
   @@index([createdAt])
+  @@index([isDeleted])
   @@map("home_loan_inquiries")
 }
 
@@ -355,10 +380,15 @@ model ReferralInquiry {
   ipAddress String?
   userAgent String?
 
+  // SECURITY: Soft delete - preserve referral records
+  isDeleted Boolean   @default(false)
+  deletedAt DateTime?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([status])
   @@index([createdAt])
+  @@index([isDeleted])
   @@map("referral_inquiries")
 }

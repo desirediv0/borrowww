@@ -1,3 +1,17 @@
+/**
+ * ================================================================================
+ * AUTH CONTEXT - SESSION-BASED AUTHENTICATION
+ * ================================================================================
+ * 
+ * SECURITY:
+ * - NO token storage in localStorage (prevents XSS)
+ * - Server manages session via HTTP-only cookies
+ * - Session verified on app load and after actions
+ * - Automatic logout on session expiry
+ * 
+ * ================================================================================
+ */
+
 import React, { useEffect, useState, useCallback } from 'react';
 import { AuthContext } from './AuthContextInstance';
 import type { ReactNode } from 'react';
@@ -6,7 +20,7 @@ interface Admin {
   id: string;
   name: string;
   email: string;
-  userType: string;
+  userType?: string;
   lastLogin?: string;
 }
 
@@ -18,10 +32,6 @@ export interface AuthContextType {
   checkAuth: () => Promise<void>;
 }
 
-
-
-// Removed useAuth to a separate file for better modularity
-
 interface AuthProviderProps {
   children: ReactNode;
 }
@@ -30,8 +40,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [admin, setAdmin] = useState<Admin | null>(null);
   const [checking, setChecking] = useState(true);
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_APP_ENV === 'development' ? 'http://localhost:4000/api' : 'https://borrowww.com/api';
+  // In dev use relative /api so Vite proxy sends to backend → session cookie works (same origin)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ((import.meta.env.DEV ? '' : 'https://borrowww.com') + '/api');
 
+  /**
+   * Login - Server creates session, sets HTTP-only cookie
+   * 
+   * SECURITY: No token stored in localStorage
+   */
   const login = async (email: string, password: string): Promise<void> => {
     try {
       const response = await fetch(`${API_BASE_URL}/admin/login`, {
@@ -39,28 +55,39 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         headers: {
           'Content-Type': 'application/json',
         },
+        // CRITICAL: Include credentials for cookie to be set
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
+
       const data = await response.json();
+
       if (!response.ok) {
-        throw new CustomError(data.message || 'Login failed', { data });
+        throw new CustomError(data.message || data.error || 'Login failed', { data });
       }
-      // Save token and set admin
-      localStorage.setItem('admin_token', data.data.token);
-      setAdmin(data.data.admin);
+
+      // SECURITY: No token storage - session is in HTTP-only cookie
+      // Server response contains admin info only
+      if (data.data?.admin) {
+        setAdmin(data.data.admin);
+      } else if (data.admin) {
+        setAdmin(data.admin);
+      }
     } catch (error) {
       console.error('Login error:', error);
       throw error;
     }
   };
 
+  /**
+   * Logout - Server destroys session and clears cookie
+   */
   const logout = async (): Promise<void> => {
     try {
-      await fetch(`${API_BASE_URL}/admin/auth/logout`, {
+      await fetch(`${API_BASE_URL}/admin/logout`, {
         method: 'POST',
         credentials: 'include',
       });
-      localStorage.removeItem('admin_token');
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
@@ -68,35 +95,60 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  /**
+   * Check if session is valid
+   * 
+   * SECURITY: Server validates cookie, returns admin info if valid
+   */
   const checkAuth = useCallback(async (): Promise<void> => {
     setChecking(true);
     try {
-      const token = localStorage.getItem('admin_token');
-      if (!token) {
-        setAdmin(null);
-        setChecking(false);
-        return;
-      }
-      const response = await fetch(`${API_BASE_URL}/admin/auth/verify-token`, {
+      const response = await fetch(`${API_BASE_URL}/admin/auth/verify`, {
         method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
+        credentials: 'include', // Include session cookie
       });
+
       if (!response.ok) {
         setAdmin(null);
         setChecking(false);
         return;
       }
+
       const data = await response.json();
-      setAdmin(data.data.admin);
+
+      // Extract admin from response
+      if (data.data?.admin) {
+        setAdmin(data.data.admin);
+      } else if (data.admin) {
+        setAdmin(data.admin);
+      } else {
+        setAdmin(null);
+      }
     } catch (error) {
+      console.error('Auth check error:', error);
       setAdmin(null);
     } finally {
       setChecking(false);
     }
   }, [API_BASE_URL]);
 
+  /**
+   * Listen for session expiry events from API service
+   */
+  useEffect(() => {
+    const handleSessionExpiry = () => {
+      setAdmin(null);
+    };
+
+    window.addEventListener('session-expired', handleSessionExpiry);
+    return () => {
+      window.removeEventListener('session-expired', handleSessionExpiry);
+    };
+  }, []);
+
+  /**
+   * Check auth on mount
+   */
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
@@ -112,8 +164,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
+// ================================================================================
+// CUSTOM ERROR CLASS
+// ================================================================================
+
 interface ErrorResponse {
-  data: unknown; // Replace `unknown` with the actual data structure if known
+  data: unknown;
 }
 
 class CustomError extends Error {
@@ -124,5 +180,3 @@ class CustomError extends Error {
     this.response = response;
   }
 }
-
-

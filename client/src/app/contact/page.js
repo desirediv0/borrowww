@@ -142,7 +142,8 @@ export default function ContactPage() {
         baseUrl = `${baseUrl}/api`;
       }
 
-      const url = `${baseUrl}/inquiries/contact`;
+      // SECURITY: Call encrypted endpoint - data is encrypted on server before saving
+      const url = `${baseUrl}/client/contact`;
 
       console.log('Posting to URL:', url);
 
@@ -190,8 +191,8 @@ export default function ContactPage() {
     {
       icon: FaEnvelope,
       title: 'Email Us',
-      details: ['info.premierpenny@gmail.com'],
-      action: 'mailto:info.premierpenny@gmail.com',
+      details: ['support@borrowww.com'],
+      action: 'mailto:support@borrowww.com',
       bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
     },
     {
@@ -204,7 +205,7 @@ export default function ContactPage() {
     {
       icon: FaMapMarkerAlt,
       title: 'Visit Us',
-      details: ['221, 2nd Floor, JMD Megapolis', 'Sector 48, Sohan Road, Gurgaon 122002'],
+      details: ['221, 2nd Floor, JMD Megapolis', 'Sector 48, Sohna Road, Gurgaon 122002'],
       action: '#',
       bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
     },

@@ -39,7 +39,7 @@ export default function Calculator() {
       description: 'Check your credit score instantly',
       icon: FaShieldAlt,
       color: 'from-purple-500 to-purple-600',
-      href: '/calculator/credit-check',
+      href: '/credit-check',
     },
     {
       id: 'home',

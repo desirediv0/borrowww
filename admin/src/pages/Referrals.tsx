@@ -132,7 +132,7 @@ const Referrals = () => {
 
         try {
             setDeleting(true);
-            await referralService.bulkDeleteReferrals(Array.from(selectedIds));
+            await referralService.softDeleteReferrals(Array.from(selectedIds));
             toast.success(`Deleted ${selectedIds.size} referrals`);
             setSelectedIds(new Set());
             fetchReferrals();

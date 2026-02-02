@@ -14,8 +14,10 @@ import {
 } from 'react-icons/fa';
 
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 export default function AboutPage() {
+  const router = useRouter();
   const stats = [
     {
       number: '2700+',
@@ -218,10 +220,10 @@ export default function AboutPage() {
                 Our Vision
               </div>
               <h3 className="text-3xl font-medium text-gray-900 mb-6">
-                India&apos;s Most Trusted Digital Lender
+                India&apos;s Most Trusted Digital Lending Partner
               </h3>
               <p className="text-gray-600 leading-relaxed mb-8">
-                To become India&apos;s most trusted and preferred digital lending platform, serving
+                To become India&apos;s most trusted and preferred digital lending partner, serving
                 millions of customers with innovative financial solutions.
               </p>
               <div className="space-y-4">
@@ -399,15 +401,19 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => router.push('/credit-check')}
                 className="bg-white text-[var(--primary-blue)] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-200"
               >
                 Check Your CIBIL Score
               </motion.button>
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => router.push('/calculator/home-loan')}
                 className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-colors duration-200"
               >
                 Apply for Loan

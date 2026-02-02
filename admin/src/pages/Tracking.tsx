@@ -98,20 +98,20 @@ const Tracking = () => {
     const fetchSessions = async () => {
         setLoading(true);
         setError("");
-        const token = localStorage.getItem("admin_token");
-        if (!token) {
-            setError("Not authenticated. Please login as admin.");
-            navigate("/login");
-            return;
-        }
         try {
-            const data = await fetchAllSessions(token);
+            // SECURITY: Session cookie is sent automatically via credentials: 'include'
+            const data = await fetchAllSessions();
             const processedUser = (data.userSessions || []).map(processSession);
             const processedNonUser = (data.nonUserSessions || []).map(processSession);
 
             setUserSessions(processedUser);
             setNonUserSessions(processedNonUser);
         } catch (err) {
+            // If 401, redirect to login
+            if (err instanceof Error && err.message.includes('401')) {
+                navigate("/login");
+                return;
+            }
             setError("Failed to fetch sessions. Please check if the server is running.");
         } finally {
             setLoading(false);
@@ -131,7 +131,7 @@ const Tracking = () => {
 
         try {
             setDeleting(true);
-            await sessionService.bulkDeleteSessions(Array.from(selectedIds));
+            await sessionService.softDeleteSessions(Array.from(selectedIds));
             toast.success(`Deleted ${selectedIds.size} sessions`);
             setSelectedIds(new Set());
             fetchSessions();

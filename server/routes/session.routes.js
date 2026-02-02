@@ -2,7 +2,7 @@
 import express from "express";
 import { createSession, endSession, updateSession, getAllSessions, getUserSessions, getActiveSession, createAnonSession, endAnonSession, updateAnonSession, getAllSessionsGrouped, bulkDeleteSessions } from "../controllers/session.controller.js";
 import { userAuth } from "../middleware/userAuth.js";
-import { adminAuth } from "../middleware/adminAuth.js";
+import { isAdmin } from "../middlewares/isAdmin.js";
 import { optionalConsent } from "../middleware/consentMiddleware.js";
 
 const router = express.Router();
@@ -23,12 +23,14 @@ router.post('/update', optionalConsent, userAuth, updateSession);
 router.post('/anon/update', optionalConsent, updateAnonSession);
 
 // Get all sessions (admin only)
-router.get('/all', adminAuth, getAllSessions);
+router.get('/all', isAdmin, getAllSessions);
 // Get all sessions grouped by user/non-user (admin only)
-router.get('/all/grouped', adminAuth, getAllSessionsGrouped);
+router.get('/all/grouped', isAdmin, getAllSessionsGrouped);
 
 // Bulk delete sessions (admin only)
-router.delete('/bulk', adminAuth, bulkDeleteSessions);
+router.delete('/bulk', isAdmin, bulkDeleteSessions);
+// Alias for admin app: POST /sessions/soft-delete (same as DELETE /bulk)
+router.post('/soft-delete', isAdmin, bulkDeleteSessions);
 
 // Get sessions for a user (user or admin)
 router.get('/user/:userId?', userAuth, getUserSessions);

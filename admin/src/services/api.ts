@@ -1,3 +1,17 @@
+/**
+ * ================================================================================
+ * ADMIN API SERVICE - SESSION-BASED AUTHENTICATION
+ * ================================================================================
+ * 
+ * SECURITY:
+ * - Uses HTTP-only cookies for authentication (set by server)
+ * - credentials: 'include' sends cookies with every request
+ * - NO token storage in localStorage (prevents XSS attacks)
+ * - Server manages session lifecycle
+ * 
+ * ================================================================================
+ */
+
 import { processUsersArrayForAdmin, processCibilArrayForAdmin, processUserDataForAdmin, processCibilDataForAdmin } from '../utils/dataMasking';
 import type { User, PaginationParams } from '../types';
 
@@ -7,17 +21,20 @@ interface AdminLoginCredentials {
   password: string;
 }
 
-// Define AdminLoginResponse interface
+// Define AdminLoginResponse interface - NO TOKEN RETURNED (session-based)
 interface AdminLoginResponse {
-  token: string;
-  expiresIn: number;
+  admin: {
+    id: string;
+    email: string;
+    name: string;
+  };
+  message: string;
 }
 
-// ...existing code...
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_APP_ENV === 'development' ? 'http://localhost:4000/api' : 'https://borrowww.com/api';
+// In dev use relative /api so Vite proxy sends to backend → session cookie works (same origin)
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ((import.meta.env.DEV ? '' : 'https://borrowww.com') + '/api');
 
 // API Response handler
-
 interface ApiError {
   message: string;
 }
@@ -26,26 +43,42 @@ interface ApiError {
 const handleResponse = async (response: Response): Promise<any> => {
   if (!response.ok) {
     const error: ApiError = await response.json().catch((): ApiError => ({ message: 'Network error' }));
+
+    // Handle 401 - Session expired
+    if (response.status === 401) {
+      // Clear any stale local state
+      window.dispatchEvent(new CustomEvent('session-expired'));
+      throw new Error('Session expired. Please login again.');
+    }
+
     throw new Error(error.message || `HTTP error! status: ${response.status}`);
   }
   return response.json();
 };
 
-// Base fetch with default options
+/**
+ * Base fetch with session cookie support.
+ * 
+ * SECURITY: 
+ * - credentials: 'include' ensures cookies are sent
+ * - NO Authorization header with token
+ * - Server validates session from cookie
+ */
 const apiFetch = async (
   endpoint: string,
   options: RequestInit = {}
 ) => {
   const url = `${API_BASE_URL}${endpoint}`;
-  // Get auth token from localStorage
-  const token = localStorage.getItem('admin_token');
+
   const defaultOptions: RequestInit = {
     headers: {
       'Content-Type': 'application/json',
-      ...(token && { Authorization: `Bearer ${token}` }),
+      // NO Authorization header - session cookie handles auth
     },
+    // CRITICAL: Include cookies with every request
     credentials: 'include' as RequestCredentials,
   };
+
   const finalOptions = {
     ...defaultOptions,
     ...options,
@@ -54,6 +87,7 @@ const apiFetch = async (
       ...options.headers,
     },
   };
+
   try {
     const response = await fetch(url, finalOptions);
     return await handleResponse(response);
@@ -63,81 +97,95 @@ const apiFetch = async (
   }
 };
 
-// Admin Authentication Services
+// ================================================================================
+// ADMIN AUTHENTICATION SERVICES - SESSION BASED
+// ================================================================================
+
 export const adminAuthService = {
-  // Admin login
+  /**
+   * Admin login - Creates session on server
+   * 
+   * SECURITY: Server sets HTTP-only cookie, NOT returned to JavaScript
+   */
   login: async (credentials: AdminLoginCredentials): Promise<AdminLoginResponse> => {
-    return apiFetch('/admin/auth/login', {
+    return apiFetch('/admin/login', {
       method: 'POST',
       body: JSON.stringify(credentials),
     });
   },
 
-  // Get admin profile
-  getProfile: async () => {
-    return apiFetch('/admin/auth/profile');
+  /**
+   * Verify session is valid
+   * 
+   * Server checks cookie and returns admin info if valid
+   */
+  verifySession: async () => {
+    return apiFetch('/admin/auth/verify');
   },
 
-  // Update admin profile
+  /**
+   * Get admin profile
+   */
+  getProfile: async () => {
+    return apiFetch('/admin/profile');
+  },
+
+  /**
+   * Update admin profile
+   */
   updateProfile: async (profileData: { name: string; email: string; phone?: string }) => {
-    return apiFetch('/admin/auth/profile', {
+    return apiFetch('/admin/profile', {
       method: 'PUT',
       body: JSON.stringify(profileData),
     });
   },
 
-  // Change admin password
+  /**
+   * Change admin password
+   */
   changePassword: async (passwordData: { currentPassword: string; newPassword: string }) => {
-    return apiFetch('/admin/auth/change-password', {
+    return apiFetch('/admin/change-password', {
       method: 'PUT',
       body: JSON.stringify(passwordData),
     });
   },
 
-  // Refresh admin token
-  refreshToken: async () => {
-    return apiFetch('/admin/auth/refresh', {
-      method: 'POST',
-    });
-  },
-
-  // Admin logout
+  /**
+   * Admin logout - Destroys session on server
+   */
   logout: async () => {
-    return apiFetch('/admin/auth/logout', {
+    return apiFetch('/admin/logout', {
       method: 'POST',
     });
   },
 
-  // Get dashboard stats
-  getDashboardStats: async () => {
-    return apiFetch('/dashboard/stats');
-  },
-
-  // Get comprehensive dashboard data
+  /**
+   * Get comprehensive dashboard data
+   */
   getComprehensiveDashboard: async () => {
     return apiFetch('/admin/dashboard/comprehensive');
   },
 
-  // Get activity overview
-  getActivityOverview: async () => {
-    return apiFetch('/dashboard/activity');
-  },
-
-  // Create new admin
+  /**
+   * Create new admin (super admin only)
+   */
   createAdmin: async (adminData: { name: string; email: string; password: string }) => {
-    return apiFetch('/admin/auth/create-admin', {
+    return apiFetch('/admin/register', {
       method: 'POST',
       body: JSON.stringify(adminData),
     });
   },
 };
 
-// User Management Services
+// ================================================================================
+// USER MANAGEMENT SERVICES
+// ================================================================================
+
 export const userService = {
-  // Get all users
+  // Get all users (admin endpoint with decryption)
   getAllUsers: async (params: PaginationParams & { role?: string } = {}) => {
     const queryString = new URLSearchParams(params as Record<string, string>).toString();
-    const response = await apiFetch(`/users?${queryString}`);
+    const response = await apiFetch(`/admin/users?${queryString}`);
 
     // Apply data masking for admin view
     if (response.users) {
@@ -149,14 +197,11 @@ export const userService = {
 
   // Get user by ID
   getUserById: async (userId: string) => {
-    const response = await apiFetch(`/users/${userId}`);
+    const response = await apiFetch(`/admin/users/${userId}`);
 
     // Apply data masking for admin view
     if (response.user) {
       response.user = processUserDataForAdmin(response.user);
-    }
-    if (response.cibilSummary) {
-      response.cibilSummary = processCibilArrayForAdmin(response.cibilSummary);
     }
 
     return response;
@@ -164,49 +209,44 @@ export const userService = {
 
   // Get user details with CIBIL and loan summary
   getUserDetails: async (userId: string) => {
-    return apiFetch(`/users/${userId}/details`);
+    return apiFetch(`/admin/users/${userId}/details`);
   },
 
   // Get user activity
   getUserActivity: async (userId: string, days: number = 30) => {
-    return apiFetch(`/users/${userId}/activity?days=${days}`);
+    return apiFetch(`/admin/users/${userId}/activity?days=${days}`);
   },
 
   // Update user
   updateUser: async (userId: string, userData: Partial<User>) => {
-    return apiFetch(`/users/${userId}`, {
+    return apiFetch(`/admin/users/${userId}`, {
       method: 'PUT',
       body: JSON.stringify(userData),
     });
   },
 
-  // Delete user
+  // Soft delete user (SECURITY: Never permanent delete)
   deleteUser: async (userId: string) => {
-    return apiFetch(`/users/${userId}`, {
+    return apiFetch(`/admin/users/${userId}`, {
       method: 'DELETE',
     });
   },
 
   // Get user statistics
   getUserStats: async () => {
-    return apiFetch('/users/stats');
-  },
-
-  // Bulk update users
-  bulkUpdateUsers: async (userIds: string[], updates: Partial<User>) => {
-    return apiFetch('/users/bulk-update', {
-      method: 'PUT',
-      body: JSON.stringify({ userIds, updates }),
-    });
+    return apiFetch('/admin/users/stats');
   },
 
   // Search users
   searchUsers: async (query: string) => {
-    return apiFetch(`/users/search?q=${encodeURIComponent(query)}`);
+    return apiFetch(`/admin/users/search?q=${encodeURIComponent(query)}`);
   },
 };
 
-// CIBIL Management Services
+// ================================================================================
+// CIBIL MANAGEMENT SERVICES
+// ================================================================================
+
 export const cibilService = {
   // Get submitted CIBIL data
   getSubmittedCibilData: async (
@@ -283,7 +323,10 @@ export const cibilService = {
   },
 };
 
-// Loan Management Services
+// ================================================================================
+// LOAN MANAGEMENT SERVICES
+// ================================================================================
+
 export const loanService = {
   // Get all loans
   getAllLoans: async (params: PaginationParams = {}) => {
@@ -312,7 +355,7 @@ export const loanService = {
     });
   },
 
-  // Delete loan
+  // Soft delete loan
   deleteLoan: async (loanId: string) => {
     return apiFetch(`/loans/${loanId}`, {
       method: 'DELETE',
@@ -335,7 +378,10 @@ export const loanService = {
   },
 };
 
-// Utility Services
+// ================================================================================
+// UTILITY SERVICES
+// ================================================================================
+
 export const utilService = {
   // Health check
   healthCheck: async () => {
@@ -363,91 +409,97 @@ export const utilService = {
   },
 };
 
-// Inquiry Services
+// ================================================================================
+// INQUIRY SERVICES - USING NEW ADMIN ENDPOINTS
+// ================================================================================
+
 export const inquiryService = {
   // Get dashboard stats
   getDashboardStats: async () => {
     return apiFetch('/inquiries/dashboard/stats');
   },
 
-  // Get credit check inquiries with search/date filters
+  // Get credit check inquiries (admin endpoint with decryption)
   getCreditCheckInquiries: async (params: { status?: string; page?: number; limit?: number; search?: string; dateFrom?: string; dateTo?: string } = {}) => {
     const queryString = new URLSearchParams(
       Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== '')) as Record<string, string>
     ).toString();
-    return apiFetch(`/inquiries/credit-check?${queryString}`);
+    return apiFetch(`/admin/inquiries/credit-check?${queryString}`);
   },
 
-  // Bulk delete credit check inquiries
-  bulkDeleteCreditCheckInquiries: async (ids: string[]) => {
-    return apiFetch('/inquiries/credit-check/bulk', {
-      method: 'DELETE',
+  // Soft delete credit check inquiries (SECURITY: No permanent delete)
+  softDeleteCreditCheckInquiries: async (ids: string[]) => {
+    return apiFetch('/admin/inquiries/credit-check/soft-delete', {
+      method: 'POST',
       body: JSON.stringify({ ids }),
     });
   },
 
-  // Get contact inquiries with search/date filters
+  // Get contact inquiries
   getContactInquiries: async (params: { status?: string; page?: number; limit?: number; search?: string; dateFrom?: string; dateTo?: string } = {}) => {
     const queryString = new URLSearchParams(
       Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== '')) as Record<string, string>
     ).toString();
-    return apiFetch(`/inquiries/contact?${queryString}`);
+    return apiFetch(`/admin/inquiries/contact?${queryString}`);
   },
 
-  // Bulk delete contact inquiries
-  bulkDeleteContactInquiries: async (ids: string[]) => {
-    return apiFetch('/inquiries/contact/bulk', {
-      method: 'DELETE',
+  // Soft delete contact inquiries
+  softDeleteContactInquiries: async (ids: string[]) => {
+    return apiFetch('/admin/inquiries/contact/soft-delete', {
+      method: 'POST',
       body: JSON.stringify({ ids }),
     });
   },
 
-  // Get home loan inquiries with search/date filters
+  // Get home loan inquiries
   getHomeLoanInquiries: async (params: { status?: string; page?: number; limit?: number; search?: string; dateFrom?: string; dateTo?: string } = {}) => {
     const queryString = new URLSearchParams(
       Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== '')) as Record<string, string>
     ).toString();
-    return apiFetch(`/inquiries/home-loan?${queryString}`);
+    return apiFetch(`/admin/inquiries/home-loan?${queryString}`);
   },
 
-  // Bulk delete home loan inquiries
-  bulkDeleteHomeLoanInquiries: async (ids: string[]) => {
-    return apiFetch('/inquiries/home-loan/bulk', {
-      method: 'DELETE',
+  // Soft delete home loan inquiries
+  softDeleteHomeLoanInquiries: async (ids: string[]) => {
+    return apiFetch('/admin/inquiries/home-loan/soft-delete', {
+      method: 'POST',
       body: JSON.stringify({ ids }),
     });
   },
 
   // Update inquiry status
   updateInquiryStatus: async (type: string, id: string, status: string, notes?: string) => {
-    return apiFetch(`/inquiries/${type}/${id}/status`, {
+    return apiFetch(`/admin/inquiries/${type}/${id}/status`, {
       method: 'PATCH',
       body: JSON.stringify({ status, notes }),
     });
   },
 };
 
-// Referral Services
+// ================================================================================
+// REFERRAL SERVICES
+// ================================================================================
+
 export const referralService = {
-  // Get all referrals with search/date filters
+  // Get all referrals (admin endpoint with decryption)
   getReferrals: async (params: { status?: string; page?: number; limit?: number; search?: string; dateFrom?: string; dateTo?: string } = {}) => {
     const queryString = new URLSearchParams(
       Object.fromEntries(Object.entries(params).filter(([, v]) => v !== undefined && v !== '')) as Record<string, string>
     ).toString();
-    return apiFetch(`/referrals?${queryString}`);
+    return apiFetch(`/admin/inquiries/referral?${queryString}`);
   },
 
-  // Bulk delete referrals
-  bulkDeleteReferrals: async (ids: string[]) => {
-    return apiFetch('/referrals/bulk', {
-      method: 'DELETE',
+  // Soft delete referrals
+  softDeleteReferrals: async (ids: string[]) => {
+    return apiFetch('/admin/inquiries/referral/soft-delete', {
+      method: 'POST',
       body: JSON.stringify({ ids }),
     });
   },
 
   // Update referral status
   updateReferralStatus: async (id: string, status: string, notes?: string) => {
-    return apiFetch(`/referrals/${id}/status`, {
+    return apiFetch(`/admin/inquiries/referral/${id}/status`, {
       method: 'PATCH',
       body: JSON.stringify({ status, notes }),
     });
@@ -459,41 +511,50 @@ export const referralService = {
   },
 };
 
-// Session/Tracking Services
+// ================================================================================
+// SESSION/TRACKING SERVICES
+// ================================================================================
+
 export const sessionService = {
   // Get all sessions grouped
   getAllSessionsGrouped: async () => {
     return apiFetch('/sessions/all/grouped');
   },
 
-  // Bulk delete sessions
-  bulkDeleteSessions: async (ids: string[]) => {
-    return apiFetch('/sessions/bulk', {
-      method: 'DELETE',
+  // Soft delete sessions
+  softDeleteSessions: async (ids: string[]) => {
+    return apiFetch('/sessions/soft-delete', {
+      method: 'POST',
       body: JSON.stringify({ ids }),
     });
   },
 };
 
-// User bulk delete service extension
+// ================================================================================
+// USER BULK SERVICE
+// ================================================================================
+
 export const userBulkService = {
-  // Bulk delete users
-  bulkDeleteUsers: async (ids: string[]) => {
-    return apiFetch('/users/bulk/delete', {
-      method: 'DELETE',
+  // Soft delete users
+  softDeleteUsers: async (ids: string[]) => {
+    return apiFetch('/admin/users/soft-delete', {
+      method: 'POST',
       body: JSON.stringify({ ids }),
     });
   },
 };
 
-// Error handling utility
+// ================================================================================
+// ERROR HANDLING
+// ================================================================================
+
 export const handleApiError = (error: Error): string => {
   console.error('API Error:', error);
 
   // Common error scenarios
-  if (error.message.includes('401') || error.message.includes('Unauthorized')) {
-    // Redirect to admin login
-    window.location.href = '/admin/login';
+  if (error.message.includes('401') || error.message.includes('Unauthorized') || error.message.includes('Session expired')) {
+    // Dispatch event for auth context to handle
+    window.dispatchEvent(new CustomEvent('session-expired'));
     return 'Session expired. Please login again.';
   }
 
@@ -512,21 +573,10 @@ export const handleApiError = (error: Error): string => {
   return error.message || 'An unexpected error occurred.';
 };
 
-// Request interceptor for adding auth token if needed
-export const setAuthToken = (token: string): void => {
-  localStorage.setItem('adminToken', token);
-};
+// ================================================================================
+// EXPORT DEFAULT API OBJECT
+// ================================================================================
 
-export const removeAuthToken = (): void => {
-  localStorage.removeItem('adminToken');
-};
-
-// Get stored auth token
-export const getAuthToken = (): string | null => {
-  return localStorage.getItem('adminToken');
-};
-
-// Export default API object
 const api = {
   adminAuth: adminAuthService,
   users: userService,
@@ -534,10 +584,10 @@ const api = {
   loans: loanService,
   util: utilService,
   inquiries: inquiryService,
+  referrals: referralService,
+  sessions: sessionService,
+  userBulk: userBulkService,
   handleError: handleApiError,
-  setAuthToken,
-  removeAuthToken,
-  getAuthToken,
 };
 
 export default api;

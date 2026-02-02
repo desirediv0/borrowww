@@ -54,7 +54,7 @@ function CIBILCheckContent() {
           consent: decodedData.consent || false,
         }));
         // Clean URL after filling
-        window.history.replaceState({}, '', '/calculator/credit-check');
+        window.history.replaceState({}, '', '/credit-check');
       } catch (e) {
         console.error('Failed to decode form data:', e);
       }
@@ -122,7 +122,7 @@ function CIBILCheckContent() {
         consent: FormData.consent,
       };
       const encodedData = btoa(JSON.stringify(dataToSave));
-      const redirectUrl = `/auth?redirect=${encodeURIComponent('/calculator/credit-check')}&data=${encodedData}`;
+      const redirectUrl = `/auth?redirect=${encodeURIComponent('/credit-check')}&data=${encodedData}`;
       toast.info('Please login to continue');
       router.push(redirectUrl);
       return;
@@ -132,8 +132,8 @@ function CIBILCheckContent() {
     setIsSubmitting(true);
 
     try {
-      // Call server API directly
-      const response = await fetch(`${API_URL}/inquiries/credit-check`, {
+      // SECURITY: Call encrypted endpoint - data is encrypted on server before saving
+      const response = await fetch(`${API_URL}/client/credit-check`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -511,15 +511,19 @@ function CIBILCheckContent() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button
+                  type="button"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => router.push('/contact')}
                   className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
                 >
                   Get Free Consultation
                 </motion.button>
                 <motion.button
+                  type="button"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => router.push('/calculator/home-loan')}
                   className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
                 >
                   View Loan Offers

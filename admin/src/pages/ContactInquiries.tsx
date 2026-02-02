@@ -135,7 +135,7 @@ const ContactInquiries = () => {
 
         try {
             setDeleting(true);
-            await inquiryService.bulkDeleteContactInquiries(Array.from(selectedIds));
+            await inquiryService.softDeleteContactInquiries(Array.from(selectedIds));
             toast.success(`Deleted ${selectedIds.size} inquiries`);
             setSelectedIds(new Set());
             fetchInquiries();

@@ -57,7 +57,7 @@ export async function sendOtpEmail({ to, subject, text, html }, retries = 2) {
         process.env.NEXT_PUBLIC_FROM_EMAIL ||
         process.env.SMTP_USER ||
         process.env.NEXT_PUBLIC_SMTP_USER ||
-        'info.premierpenny@gmail.com';
+        'support@borrowww.com';
 
       const mailOptions = {
         from: fromEmail,
@@ -201,7 +201,7 @@ export function getAdminEmailTemplate(formData) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohan Road, Gurgaon 122002</p>
+            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002</p>
           </div>
         </div>
       </div>
@@ -261,7 +261,7 @@ export function getUserThankYouTemplate({ name }) {
               <p style="font-weight: 600; color: #396A9F; margin-bottom: 15px;">Need immediate assistance?</p>
               <div class="contact-info">
                 <p><strong>Phone:</strong> +91 9560069525 or +91 8264111345</p>
-                <p><strong>Email:</strong> info.premierpenny@gmail.com</p>
+                <p><strong>Email:</strong> support@borrowww.com</p>
               </div>
             </div>
             <p>We appreciate your trust in Borrowww and look forward to assisting you with your financial needs.</p>
@@ -272,7 +272,7 @@ export function getUserThankYouTemplate({ name }) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohan Road, Gurgaon 122002</p>
+            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002</p>
             <p style="margin-top: 20px; font-size: 12px;">This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>
@@ -340,7 +340,7 @@ export function getCreditCheckEmailTemplate({ firstName, mobileNumber }) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohan Road, Gurgaon 122002</p>
+            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002</p>
           </div>
         </div>
       </div>
@@ -441,7 +441,7 @@ export function getHomeLoanEmailTemplate({ name, phone, city, propertyType, loan
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohan Road, Gurgaon 122002</p>
+            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002</p>
           </div>
         </div>
       </div>

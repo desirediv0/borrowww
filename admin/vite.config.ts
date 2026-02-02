@@ -27,5 +27,12 @@ export default defineConfig({
       "admin.borrowww.com",
       "www.admin.borrowww.com",
     ],
+    // Proxy API to backend so session cookie works (same-origin requests)
+    proxy: {
+      "/api": {
+        target: "http://localhost:4000",
+        changeOrigin: true,
+      },
+    },
   },
 });

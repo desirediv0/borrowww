@@ -1,20 +1,42 @@
+/**
+ * ================================================================================
+ * EXPRESS APPLICATION CONFIGURATION
+ * ================================================================================
+ * 
+ * SECURITY FEATURES:
+ * - Session-based authentication with PostgreSQL store
+ * - HTTP-only, secure cookies in production
+ * - Helmet for security headers
+ * - CORS configured for allowed origins
+ * - Production safety middleware
+ * 
+ * ENVIRONMENT VARIABLES REQUIRED:
+ * - NODE_ENV: 'development' or 'production'
+ * - DATABASE_URL: PostgreSQL connection string
+ * - ADMIN_SESSION_SECRET: Strong random string for session signing
+ * 
+ * ================================================================================
+ */
+
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import morgan from "morgan";
+import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
+import pg from "pg";
 import { config } from "dotenv";
-
-// Note: This implementation was requested by client despite being non-compliant with DPDP Act.
-
 
 // Load environment variables
 config();
 
-
 // Import middleware
 import { ApiResponsive } from "./utils/ApiResponsive.js";
+import { enforceSoftDelete } from "./middlewares/prodSafety.js";
+import { prisma } from "./config/db.js";
 
+// Import routes
 import adminRoutes from "./routes/admin.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import cibilRoutes from "./routes/cibil.routes.js";
@@ -25,15 +47,17 @@ import consentRoutes from "./routes/consent.routes.js";
 import inquiryRoutes from "./routes/inquiry.routes.js";
 import referralRoutes from "./routes/referral.routes.js";
 import trackingRoutes from "./routes/tracking.routes.js";
-
-
+import clientRoutes from "./routes/client.routes.js";
 
 const app = express();
 
 // Trust proxy for proper IP address extraction
 app.set('trust proxy', true);
 
-// Security middleware
+// ================================================================================
+// SECURITY MIDDLEWARE
+// ================================================================================
+
 app.use(
   helmet({
     crossOriginEmbedderPolicy: false,
@@ -48,7 +72,9 @@ app.use(
   })
 );
 
-// CORS configuration
+// ================================================================================
+// CORS CONFIGURATION
+// ================================================================================
 
 const corsOptions = {
   origin: [
@@ -60,27 +86,97 @@ const corsOptions = {
     "https://borrowww.com",
     "https://www.borrowww.com"
   ],
-  credentials: true,
+  credentials: true, // CRITICAL: Required for session cookies
   optionsSuccessStatus: 200,
 };
 
-
-// CORS must be applied before any routes
 app.use(cors(corsOptions));
 
-// Body parsing middleware
+// ================================================================================
+// BODY PARSING MIDDLEWARE
+// ================================================================================
+
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(cookieParser());
 
-// Request logging
+// ================================================================================
+// SESSION CONFIGURATION - SECURE SERVER-SIDE SESSIONS
+// ================================================================================
+
+/**
+ * SECURITY: Session configuration for admin authentication
+ * 
+ * - PostgreSQL session store for persistence across restarts
+ * - HTTP-only cookies prevent XSS attacks
+ * - Secure cookies in production prevent MITM
+ * - SameSite protection against CSRF
+ * - 24-hour session expiry
+ */
+
+const PgSession = connectPgSimple(session);
+
+// Session store: pg Pool with SSL that accepts managed DB self-signed certs (DigitalOcean etc.)
+const dbUrl = process.env.DATABASE_URL || '';
+const useSsl = /sslmode=require|ondigitalocean\.com/.test(dbUrl);
+// Remove sslmode from URL so pg uses our ssl config (rejectUnauthorized: false) instead of verify-full
+const sessionConnectionString = dbUrl.replace(/[?&]sslmode=[^&]+/g, '').replace(/\?$|&$/, '') || dbUrl;
+const sessionPool = new pg.Pool({
+  connectionString: sessionConnectionString,
+  ssl: useSsl ? { rejectUnauthorized: false } : false,
+});
+
+// Validate required environment variable
+if (!process.env.ADMIN_SESSION_SECRET) {
+  console.warn('[SECURITY WARNING] ADMIN_SESSION_SECRET not set. Using fallback for development only.');
+}
+
+app.use(session({
+  store: new PgSession({
+    pool: sessionPool,
+    tableName: 'admin_sessions', // Table will be auto-created
+    createTableIfMissing: true,
+  }),
+  secret: process.env.ADMIN_SESSION_SECRET || 'dev-session-secret-change-in-production',
+  name: 'admin.sid', // Custom cookie name (not default connect.sid)
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax',
+    maxAge: 24 * 60 * 60 * 1000,
+    // Dev: domain=localhost so cookie works across ports. Production: use SESSION_COOKIE_DOMAIN if set (e.g. .yourdomain.com)
+    ...(process.env.SESSION_COOKIE_DOMAIN
+      ? { domain: process.env.SESSION_COOKIE_DOMAIN }
+      : (process.env.NODE_ENV !== 'production' && { domain: 'localhost' })),
+  },
+}));
+
+// ================================================================================
+// REQUEST LOGGING
+// ================================================================================
+
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 } else {
   app.use(morgan("combined"));
 }
 
-// Health check endpoint
+// ================================================================================
+// PRISMA MIDDLEWARE - ENFORCE SOFT DELETE
+// ================================================================================
+
+/**
+ * SECURITY: Apply soft delete middleware to Prisma
+ * This intercepts delete operations and converts them to soft deletes
+ */
+prisma.$use(enforceSoftDelete);
+
+// ================================================================================
+// HEALTH CHECK
+// ================================================================================
+
 app.get("/", (req, res) => {
   res.status(200).json(
     new ApiResponsive(
@@ -88,9 +184,10 @@ app.get("/", (req, res) => {
       {
         service: "Borrowww API Server",
         status: "Running",
-        version: "1.0.0",
-        encryption: "Active",
-        consentTracking: "Enabled",
+        version: "2.0.0",
+        encryption: "AWS KMS Active",
+        sessionAuth: "Enabled",
+        softDelete: "Enforced",
         environment: process.env.NODE_ENV || "development",
         timestamp: new Date().toISOString(),
       },
@@ -99,39 +196,44 @@ app.get("/", (req, res) => {
   );
 });
 
-// Mount admin API routes
+// ================================================================================
+// API ROUTES
+// ================================================================================
+
+// Client routes - Public, encryption only
+app.use("/api/client", clientRoutes);
+
+// Admin routes - Protected, decryption allowed
 app.use("/api/admin", adminRoutes);
 
-// Mount user API routes
+// User routes
 app.use("/api/users", userRoutes);
 
-
-// Mount cibil API routes
+// CIBIL routes
 app.use("/api/cibil", cibilRoutes);
 
-
-// Mount loan API routes
-
-// Mount session tracking API routes
+// Session tracking routes
 app.use("/api/sessions", sessionRoutes);
 
-// Mount consent management API routes
+// Consent management routes
 app.use("/api/consent", consentRoutes);
 
-// Mount inquiry API routes
+// Inquiry routes (legacy - consider migrating to /api/client)
 app.use("/api/inquiries", inquiryRoutes);
 
+// Loan routes
 app.use("/api/loans", loanRoutes);
 
-// Mount user loan API routes (user CRUD)
+// User loan routes
 app.use("/api/user/loans", userLoanRoutes);
 
-// Mount referral API routes
+// Referral routes
 app.use("/api/referrals", referralRoutes);
 
-// Mount tracking API routes
+// Tracking routes
 app.use("/api/tracking", trackingRoutes);
 
+// Health check
 app.get("/api/health", (req, res) => {
   res.status(200).json(
     new ApiResponsive(
@@ -147,9 +249,11 @@ app.get("/api/health", (req, res) => {
   );
 });
 
+// ================================================================================
+// ERROR HANDLING
+// ================================================================================
 
-
-// 404 handler for undefined routes
+// 404 handler
 app.all("*", (req, res) => {
   res.status(404).json({
     success: false,
@@ -157,17 +261,21 @@ app.all("*", (req, res) => {
   });
 });
 
-// Global error handler (always return JSON)
+// Global error handler
 app.use((err, req, res, next) => {
+  // Avoid "Cannot set headers after they are sent" when response was already sent (e.g. after login)
+  if (res.headersSent) {
+    return next(err);
+  }
+
   const status = err.statusCode || 500;
 
-  // Handle Prisma connection errors specifically
+  // Handle Prisma connection errors
   if (err.code === 'P1001' || err.message?.includes('Can\'t reach database server')) {
     console.error('Database connection failed:', err.message);
     return res.status(503).json({
       success: false,
       error: "Service temporarily unavailable. Please try again later.",
-      // Only show details in dev environment, but never show raw connection string
       stack: process.env.NODE_ENV === "development" ? "Database connection failed" : undefined,
     });
   }
@@ -190,8 +298,10 @@ app.use((err, req, res, next) => {
   });
 });
 
+// ================================================================================
+// GRACEFUL SHUTDOWN
+// ================================================================================
 
-// Graceful shutdown handling
 process.on("SIGTERM", () => {
   console.log("SIGTERM received, shutting down gracefully");
   process.exit(0);
@@ -202,13 +312,11 @@ process.on("SIGINT", () => {
   process.exit(0);
 });
 
-// Unhandled promise rejection handler
 process.on("unhandledRejection", (err) => {
   console.error("Unhandled Promise Rejection:", err);
   process.exit(1);
 });
 
-// Uncaught exception handler
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);

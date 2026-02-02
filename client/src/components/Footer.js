@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 export default function Footer() {
   const footerLinks = {
     Services: [
-      { name: 'Credit Check', href: '/calculator/credit-check' },
+      { name: 'Credit Check', href: '/credit-check' },
       { name: 'EMI Calculator', href: '/calculator/emi' },
       { name: 'Balance Transfer', href: '/calculator/balance-transfer' },
       { name: 'Home Loan', href: '/calculator/home-loan' },
@@ -76,15 +76,15 @@ export default function Footer() {
               </div>
               <div className="flex items-start gap-3">
                 <FaEnvelope className="text-[#396A9F] mt-1 shrink-0" />
-                <a href="mailto:info.premierpenny@gmail.com" className="text-gray-600 hover:text-[#396A9F] transition-colors text-sm">
-                  info.premierpenny@gmail.com
+                <a href="mailto:support@borrowww.com" className="text-gray-600 hover:text-[#396A9F] transition-colors text-sm">
+                  support@borrowww.com
                 </a>
               </div>
               <div className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-[#396A9F] mt-1 shrink-0" />
                 <p className="text-gray-600 text-sm">
                   221, 2nd Floor, JMD Megapolis,<br />
-                  Sector 48, Sohan Road,<br />
+                  Sector 48, Sohna Road,<br />
                   Gurgaon 122002
                 </p>
               </div>

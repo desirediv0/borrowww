@@ -535,7 +535,7 @@ export default function ProfilePage() {
 
                         {/* Quick Actions */}
                         <div className="grid grid-cols-1 gap-3">
-                            <a href="/calculator/credit-check" className="block">
+                            <a href="/credit-check" className="block">
                                 <Card className="hover:shadow-md transition-all cursor-pointer border-blue-100 bg-blue-50/50">
                                     <CardContent className="p-4 flex items-center gap-3">
                                         <div className="p-2 bg-blue-100 rounded-lg text-blue-600">

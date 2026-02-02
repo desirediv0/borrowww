@@ -44,7 +44,7 @@ export default function PrivacyPolicy() {
         <h2 className="text-2xl font-semibold text-gray-900">5. Your Rights</h2>
         <p>
           You may request access, correction, or deletion of your information by contacting us at
-          <strong> info.premierpenny@gmail.com</strong>.
+          <strong> support@borrowww.com</strong>.
         </p>
 
         <h2 className="text-2xl font-semibold text-gray-900">6. Changes to Policy</h2>
@@ -55,7 +55,7 @@ export default function PrivacyPolicy() {
 
         <h2 className="text-2xl font-semibold text-gray-900">7. Contact</h2>
         <p>
-          For privacy-related concerns, email: <strong>info.premierpenny@gmail.com</strong>
+          For privacy-related concerns, email: <strong>support@borrowww.com</strong>
         </p>
       </div>
     </section>

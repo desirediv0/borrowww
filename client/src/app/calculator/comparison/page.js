@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   FaArrowRight,
   FaBalanceScale,
@@ -15,6 +16,7 @@ import {
 import { motion } from 'framer-motion';
 
 export default function LoanComparisonCalculator() {
+  const router = useRouter();
   const [loanAmount, setLoanAmount] = useState(1000000);
   const [tenure, setTenure] = useState(20);
   const [selectedLoans, setSelectedLoans] = useState(['home', 'personal']);
@@ -251,8 +253,8 @@ export default function LoanComparisonCalculator() {
                         whileTap={{ scale: 0.98 }}
                         onClick={() => handleLoanToggle(loan.id)}
                         className={`p-4 rounded-2xl border-2 transition-all duration-200 flex items-center gap-3 ${selectedLoans.includes(loan.id)
-                            ? 'border-[var(--primary-blue)] bg-[var(--primary-blue)]/5'
-                            : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+                          ? 'border-[var(--primary-blue)] bg-[var(--primary-blue)]/5'
+                          : 'border-gray-200 bg-gray-50 hover:border-gray-300'
                           }`}
                       >
                         <div
@@ -447,17 +449,19 @@ export default function LoanComparisonCalculator() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => (window.location.href = '/calculator/home-loan')}
+                onClick={() => router.push('/calculator/home-loan')}
                 className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
               >
                 Apply Loan
               </motion.button>
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => (window.location.href = '/contact')}
+                onClick={() => router.push('/contact')}
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
               >
                 Contact an Expert

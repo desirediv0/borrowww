@@ -209,7 +209,7 @@ const Users = () => {
 
         try {
             setDeleting(true);
-            await userBulkService.bulkDeleteUsers(Array.from(selectedIds));
+            await userBulkService.softDeleteUsers(Array.from(selectedIds));
             toast.success(`Deleted ${selectedIds.size} users`);
             setSelectedIds(new Set());
             fetchUsers();

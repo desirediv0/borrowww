@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   FaCalendarAlt,
   FaCheckCircle,
@@ -14,6 +15,7 @@ import {
 import { motion } from 'framer-motion';
 
 export default function BalanceTransferCalculator() {
+  const router = useRouter();
   const [currentLoan, setCurrentLoan] = useState({
     amount: 500000,
     rate: 15.5,
@@ -384,6 +386,44 @@ export default function BalanceTransferCalculator() {
                   Interest Savings
                 </div>
               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white text-center shadow-2xl"
+          >
+            <h3 className="text-2xl sm:text-3xl font-medium mb-4">Ready to Get Started?</h3>
+            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+              Transfer your loan to a lower interest rate. Our experts will help you find the best
+              balance transfer offers from top banks.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => router.push('/calculator/home-loan')}
+                className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
+              >
+                Apply for Loan
+              </motion.button>
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => router.push('/contact')}
+                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
+              >
+                Contact an Expert
+              </motion.button>
             </div>
           </motion.div>
         </div>

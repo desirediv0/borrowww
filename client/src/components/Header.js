@@ -107,7 +107,7 @@ export default function Header() {
               </motion.div>
             </Link>
 
-            <Link href="/calculator/credit-check" className="md:hidden flex">
+            <Link href="/credit-check" className="md:hidden flex">
               <Image src={gif} alt="Borrowww" width={100} height={100} />
             </Link>
             {/* Desktop Navigation */}
@@ -134,7 +134,7 @@ export default function Header() {
 
             {/* Auth/Profile Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <Link href="/calculator/credit-check">
+              <Link href="/credit-check">
                 <Image src={gif} alt="Borrowww" width={120} height={100} />
               </Link>
 

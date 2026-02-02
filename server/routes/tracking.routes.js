@@ -27,42 +27,52 @@ router.post("/page-view", async (req, res) => {
         const deviceInfo = parseDeviceInfo(userAgent);
         const now = new Date(timestamp || Date.now());
 
-        // Find or create anonymous session
+        // Find or create anonymous session (handle race: another request may create same sessionId)
         let session = await prisma.userSession.findFirst({
             where: { sessionId }
         });
 
+        let createdNew = false;
         if (!session) {
-            // Create new session
-            session = await prisma.userSession.create({
-                data: {
-                    sessionId,
-                    ipAddress,
-                    userAgent,
-                    deviceInfo: JSON.stringify(deviceInfo),
-                    startTime: now,
-                    lastActivity: now,
-                    isActive: true,
-                    totalPageViews: 1,
-                    pagesVisited: [{
-                        page,
-                        enteredAt: now,
-                        referrer: referrer || null,
-                    }],
-                },
-            });
-        } else {
+            try {
+                session = await prisma.userSession.create({
+                    data: {
+                        sessionId,
+                        ipAddress,
+                        userAgent,
+                        deviceInfo: JSON.stringify(deviceInfo),
+                        startTime: now,
+                        lastActivity: now,
+                        isActive: true,
+                        totalPageViews: 1,
+                        pagesVisited: [{
+                            page,
+                            enteredAt: now,
+                            referrer: referrer || null,
+                        }],
+                    },
+                });
+                createdNew = true;
+            } catch (createErr) {
+                if (createErr.code === 'P2002' && createErr.meta?.target?.includes('sessionId')) {
+                    session = await prisma.userSession.findFirst({ where: { sessionId } });
+                    if (!session) throw createErr;
+                } else {
+                    throw createErr;
+                }
+            }
+        }
+
+        if (session && !createdNew) {
             // Update existing session
             let pagesVisited = Array.isArray(session.pagesVisited)
                 ? session.pagesVisited
                 : [];
 
-            // Mark last page's leftAt time
             if (pagesVisited.length > 0 && !pagesVisited[pagesVisited.length - 1].leftAt) {
                 pagesVisited[pagesVisited.length - 1].leftAt = now;
             }
 
-            // Add new page view
             pagesVisited.push({
                 page,
                 enteredAt: now,
@@ -75,7 +85,7 @@ router.post("/page-view", async (req, res) => {
                     lastActivity: now,
                     totalPageViews: { increment: 1 },
                     pagesVisited: pagesVisited,
-                    ipAddress, // Update IP in case it changed
+                    ipAddress,
                     deviceInfo: JSON.stringify(deviceInfo),
                 },
             });
