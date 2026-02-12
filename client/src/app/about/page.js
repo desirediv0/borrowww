@@ -115,13 +115,12 @@ export default function AboutPage() {
             className="text-center mb-12"
           >
 
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 tracking-tighter">
               About{' '}
               <span className="text-[var(--primary-blue)] italic tiemposfine">Borrowww</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              India&apos;s trusted <span className="font-semibold text-gray-900">Lending Partner</span>, backed by the financial legacy of <span className="font-semibold text-gray-900">Premier Penny</span>. We are revolutionizing the way people access credit, making financial inclusion a reality through technology and trust.
+              <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is a product of <span className="font-semibold text-[var(--primary-blue)]">India&apos;s trusted Lending Partner</span>, backed by the financial legacy of <span className="font-semibold text-[var(--primary-blue)]">Premier Penny</span>. We are revolutionizing the way people access credit, making financial inclusion a reality through technology and trust.
             </p>
           </motion.div>
         </div>
@@ -195,7 +194,7 @@ export default function AboutPage() {
                 <FaStar className="mr-2" />
                 Our Vision
               </div>
-              <h3 className="text-3xl font-medium text-gray-900 mb-6 relative z-10">
+              <h3 className="text-3xl font-bold text-[var(--primary-blue)] mb-6 relative z-10">
                 India&apos;s Most Trusted Digital Lending Partner
               </h3>
               <p className="text-gray-600 leading-relaxed mb-8 relative z-10">
