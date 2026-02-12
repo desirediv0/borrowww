@@ -120,7 +120,7 @@ export default function AboutPage() {
               <span className="text-[var(--primary-blue)] italic tiemposfine">Borrowww</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is powered by one of <span className="font-semibold text-[var(--primary-blue)]">India&apos;s most trusted lending partners</span> and backed by the financial legacy of <span className="font-semibold text-[var(--primary-blue)]">Premier Penny</span>. We are revolutionizing the way people access credit, making financial inclusion a reality through technology and trust.
+              <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is powered by one of <span className="font-semibold text-[var(--primary-blue)]">India&apos;s most trusted lending partner</span> and backed by the financial legacy of <span className="font-semibold text-[var(--primary-blue)]">Premier Penny</span>. We are revolutionizing the way people access credit, making financial inclusion a reality through technology and trust.
             </p>
           </motion.div>
         </div>

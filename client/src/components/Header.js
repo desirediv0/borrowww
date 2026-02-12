@@ -230,16 +230,18 @@ export default function Header() {
 
                 {/* Other Navigation Items */}
                 <div className="border-t pt-4">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="block text-gray-600 hover:text-gray-900 font-medium py-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                  {navItems
+                    .filter(item => !calculatorItems.some(calc => calc.name === item.name))
+                    .map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="block text-gray-600 hover:text-gray-900 font-medium py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
                 </div>
 
                 {/* Mobile Auth Section */}
