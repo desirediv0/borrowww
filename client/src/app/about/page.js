@@ -11,6 +11,7 @@ import {
   FaShieldAlt,
   FaStar,
   FaUsers,
+  FaGem,
 } from 'react-icons/fa';
 
 import { motion } from 'framer-motion';
@@ -49,7 +50,7 @@ export default function AboutPage() {
     {
       icon: FaShieldAlt,
       title: 'Trust & Security',
-      description: 'Your financial data is protected with bank-level security and encryption.',
+      description: 'Backed by Premier Penny\'s legacy of financial integrity and bank-level security.',
       color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
     },
     {
@@ -73,38 +74,12 @@ export default function AboutPage() {
     },
   ];
 
-  const milestones = [
-    {
-      year: '2020',
-      title: 'Founded',
-      description: 'Started with a vision to democratize credit',
-      icon: FaRocket,
-    },
-    {
-      year: '2021',
-      title: 'First 10,000 Customers',
-      description: 'Reached our first major milestone',
-      icon: FaUsers,
-    },
-    {
-      year: '2023',
-      title: '₹100Cr+ Disbursed',
-      description: 'Crossed the ₹100 crore mark in loan disbursals',
-      icon: FaChartLine,
-    },
-    {
-      year: '2024',
-      title: '50,000+ Customers',
-      description: 'Continuing to grow and serve more customers',
-      icon: FaStar,
-    },
-  ];
 
   const features = [
     {
       icon: FaShieldAlt,
-      title: 'Bank-Level Security',
-      description: '256-bit encryption with strict RBI-aligned data protection standards.',
+      title: 'Premier Security Standards',
+      description: 'Bank-grade security protocols backed by Premier Penny\'s trusted infrastructure.',
       color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
     },
     {
@@ -139,17 +114,14 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
-              <FaStar className="mr-2" />
-              About Borrowww
-            </div>
+
+
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 tracking-tighter">
               About{' '}
               <span className="text-[var(--primary-blue)] italic tiemposfine">Borrowww</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              India&apos;s leading digital lending platform, revolutionizing the way people access
-              credit. We make financial inclusion a reality through technology and trust.
+              India&apos;s trusted <span className="font-semibold text-gray-900">Lending Partner</span>, backed by the financial legacy of <span className="font-semibold text-gray-900">Premier Penny</span>. We are revolutionizing the way people access credit, making financial inclusion a reality through technology and trust.
             </p>
           </motion.div>
         </div>
@@ -193,13 +165,13 @@ export default function AboutPage() {
             >
               <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
                 <FaHeart className="mr-2" />
-                Our Mission
+                Our Mission at Premier Penny
               </div>
               <h2 className="text-4xl font-medium text-gray-900 mb-6">
                 Democratizing Access to Credit
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                To democratize access to credit by leveraging technology and data, making financial
+                As a project of Premier Penny, our mission is to democratize access to credit by leveraging technology and data, making financial
                 services accessible to every Indian who deserves it.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
@@ -213,20 +185,24 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100"
+              className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 relative overflow-hidden"
             >
-              <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
+              <div className="absolute top-0 right-0 p-4 opacity-5">
+                <FaGem className="text-9xl" />
+              </div>
+
+              <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6 relative z-10">
                 <FaStar className="mr-2" />
                 Our Vision
               </div>
-              <h3 className="text-3xl font-medium text-gray-900 mb-6">
+              <h3 className="text-3xl font-medium text-gray-900 mb-6 relative z-10">
                 India&apos;s Most Trusted Digital Lending Partner
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-gray-600 leading-relaxed mb-8 relative z-10">
                 To become India&apos;s most trusted and preferred digital lending partner, serving
-                millions of customers with innovative financial solutions.
+                millions of customers with the innovative financial solutions that define the Premier Penny brand.
               </p>
-              <div className="space-y-4">
+              <div className="space-y-4 relative z-10">
                 <div className="flex items-center gap-4 p-4 bg-[var(--primary-blue)]/5 rounded-xl">
                   <div className="w-3 h-3 bg-[var(--primary-blue)] rounded-full"></div>
                   <span className="text-gray-700 font-medium">Financial inclusion for all</span>
@@ -256,7 +232,7 @@ export default function AboutPage() {
           >
             <h2 className="text-4xl font-medium text-gray-900 mb-6">Why Choose Borrowww?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We combine cutting-edge technology with human touch to deliver exceptional financial
+              We combine cutting-edge technology with the human touch and reliability of Premier Penny to deliver exceptional financial
               services
             </p>
           </motion.div>
@@ -295,7 +271,7 @@ export default function AboutPage() {
           >
             <h2 className="text-4xl font-medium text-gray-900 mb-6">Our Core Values</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The principles that guide everything we do at Borrowww
+              The principles that guide everything we do at Borrowww and Premier Penny
             </p>
           </motion.div>
 
@@ -322,68 +298,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Story Section - Updated */}
-      {/* <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
-                <FaRocket className="mr-2" />
-                Our Journey
-              </div>
-              <h2 className="text-4xl font-medium text-gray-900 mb-6">The Borrowww Story</h2>
-              <div className="space-y-6 text-gray-600 leading-relaxed">
-                <p>
-                  Founded in 2020, Borrowww emerged from a simple observation: millions of
-                  Indians were struggling to access credit due to traditional banking barriers.
-                </p>
-                <p>
-                  Our founders, having experienced these challenges firsthand, decided to build a
-                  platform that would make credit accessible, transparent, and hassle-free.
-                </p>
-                <p>
-                  Today, we&apos;ve helped over 50,000 customers achieve their financial goals,
-                  disbursing more than ₹500 crores in loans with a 95% approval rate.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-[var(--primary-blue)]/5 to-white p-8 rounded-3xl shadow-xl border border-[var(--primary-blue)]/10"
-            >
-              <h3 className="text-2xl font-medium text-gray-900 mb-8">Key Milestones</h3>
-              <div className="space-y-6">
-                {milestones.map((milestone, index) => (
-                  <div key={milestone.year} className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[var(--primary-blue)] rounded-2xl flex items-center justify-center text-white font-medium text-lg shadow-lg">
-                      <milestone.icon className="text-xl" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold text-gray-900">{milestone.title}</h4>
-                        <span className="text-[var(--primary-blue)] font-medium">
-                          {milestone.year}
-                        </span>
-                      </div>
-                      <p className="text-gray-600 text-sm">{milestone.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section> */}
-
       {/* CTA Section - Updated */}
       <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -392,20 +306,22 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white text-center shadow-2xl"
+            className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white text-center shadow-2xl relative overflow-hidden"
           >
-            <h2 className="text-4xl font-medium text-white mb-6">Ready to Get Started?</h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('/pattern.png')] opacity-10"></div>
+
+            <h2 className="text-4xl font-medium text-white mb-6 relative z-10">Ready to Get Started with Premier Penny?</h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto relative z-10">
               Join thousands of satisfied customers who have already achieved their financial goals
-              with Borrowww
+              with Borrowww, a Premier Penny innovation.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
               <motion.button
                 type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => router.push('/credit-check')}
-                className="bg-white text-[var(--primary-blue)] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-200"
+                className="bg-white text-[var(--primary-blue)] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
               >
                 Check Your CIBIL Score
               </motion.button>
