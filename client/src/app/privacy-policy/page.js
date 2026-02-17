@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'Privacy Policy | Borrowww',
+  description: 'Read our Privacy Policy to understand how Borrowww collects, uses, and protects your personal information.',
+};
 
 export default function PrivacyPolicy() {
   return (

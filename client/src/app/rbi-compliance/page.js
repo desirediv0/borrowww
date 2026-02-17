@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'RBI Compliance | Borrowww',
+  description: 'Learn about Borrowww\'s commitment to RBI compliance and regulatory standards for digital lending.',
+};
 
 export default function RBICompliance() {
   return (

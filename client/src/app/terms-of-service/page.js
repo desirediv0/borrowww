@@ -1,4 +1,7 @@
-'use client';
+export const metadata = {
+  title: 'Terms of Service | Borrowww',
+  description: 'Review the Terms of Service for using Borrowww. Understand your rights and responsibilities as a user.',
+};
 
 export default function TermsOfService() {
   return (
