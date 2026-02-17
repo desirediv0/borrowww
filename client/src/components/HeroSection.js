@@ -38,21 +38,21 @@ export default function HeroSection() {
             <p className="text-sm sm:text-base flex flex-wrap items-center gap-x-2 gap-y-1">
               <span className="text-gray-700 font-medium">Apply to :</span>{' '}
               <Link
-                href="/calculator/home-loan"
+                href="/home-loan"
                 className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"
               >
                 Home Loan
               </Link>
               <span className="text-gray-400">|</span>
               <Link
-                href="/calculator/loan-against-property"
+                href="/loan-against-property"
                 className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"
               >
                 Loan Against Property
               </Link>
               <span className="text-gray-400">|</span>
               <Link
-                href="/calculator/balance-transfer"
+                href="/balance-transfer"
                 className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"
               >
                 Balance Transfer

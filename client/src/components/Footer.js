@@ -10,11 +10,11 @@ export default function Footer() {
   const footerLinks = {
     Services: [
       { name: 'Credit Check', href: '/credit-check' },
-      { name: 'EMI Calculator', href: '/calculator/emi' },
-      { name: 'Balance Transfer', href: '/calculator/balance-transfer' },
-      { name: 'Home Loan', href: '/calculator/home-loan' },
-      { name: 'Loan Against Property', href: '/calculator/loan-against-property' },
-      { name: 'Loan Comparison', href: '/calculator/comparison' },
+      { name: 'EMI Calculator', href: '/emi' },
+      { name: 'Balance Transfer', href: '/balance-transfer' },
+      { name: 'Home Loan', href: '/home-loan' },
+      { name: 'Loan Against Property', href: '/loan-against-property' },
+      { name: 'Loan Comparison', href: '/comparison' },
     ],
     Company: [
       { name: 'About Us', href: '/about' },

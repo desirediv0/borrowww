@@ -328,7 +328,7 @@ export default function AboutPage() {
                 type="button"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => router.push('/calculator/home-loan')}
+                onClick={() => router.push('/home-loan')}
                 className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-colors duration-200"
               >
                 Apply for Loan

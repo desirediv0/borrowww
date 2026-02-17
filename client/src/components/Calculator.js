@@ -23,7 +23,7 @@ export default function Calculator() {
       description: 'Calculate your monthly EMI for any loan',
       icon: FaCalculator,
       color: 'from-[#2D3E50] to-[#2D3E50]',
-      href: '/calculator/emi',
+      href: '/emi',
     },
     {
       id: 'bt',
@@ -31,7 +31,7 @@ export default function Calculator() {
       description: 'Compare and transfer your loan balance',
       icon: FaCreditCard,
       color: 'from-green-500 to-green-600',
-      href: '/calculator/balance-transfer',
+      href: '/balance-transfer',
     },
     {
       id: 'cibil',
@@ -47,7 +47,7 @@ export default function Calculator() {
       description: 'Calculate home loan EMI and eligibility',
       icon: FaHome,
       color: 'from-orange-500 to-orange-600',
-      href: '/calculator/home-loan',
+      href: '/home-loan',
     },
     {
       id: 'property',
@@ -55,7 +55,7 @@ export default function Calculator() {
       description: 'Calculate LAP EMI and eligibility',
       icon: FaBuilding,
       color: 'from-red-500 to-red-600',
-      href: '/calculator/loan-against-property',
+      href: '/loan-against-property',
     },
     {
       id: 'comparison',
@@ -63,7 +63,7 @@ export default function Calculator() {
       description: 'Compare different loan options',
       icon: FaBalanceScale,
       color: 'from-indigo-500 to-indigo-600',
-      href: '/calculator/comparison',
+      href: '/comparison',
     },
   ];
 
