@@ -25,8 +25,22 @@ function AuthPageContent() {
     const redirectTo = searchParams.get('redirect') || '/profile';
     const redirectData = searchParams.get('data') || '';
 
-    // Check if user is already logged in
+    // Check for logout or existing session
     useEffect(() => {
+        // If coming from a 401/logout flow, force clear everything
+        if (searchParams.get('logout')) {
+            localStorage.removeItem('user_token');
+            localStorage.removeItem('user');
+            localStorage.removeItem('borrowww_session_id');
+            window.dispatchEvent(new Event('auth-change'));
+
+            // Remove 'logout' param from URL without refreshing to avoid loops if they refresh
+            const newParams = new URLSearchParams(searchParams);
+            newParams.delete('logout');
+            router.replace(`/auth?${newParams.toString()}`);
+            return;
+        }
+
         const token = localStorage.getItem('user_token');
         if (token) {
             // Redirect with data if present
@@ -35,7 +49,7 @@ function AuthPageContent() {
                 : redirectTo;
             router.push(finalUrl);
         }
-    }, [redirectTo, redirectData, router]);
+    }, [redirectTo, redirectData, router, searchParams]);
 
     // Resend timer countdown
     useEffect(() => {
@@ -113,6 +127,9 @@ function AuthPageContent() {
                 // Store token
                 localStorage.setItem('user_token', data.data.token);
                 localStorage.setItem('user', JSON.stringify(data.data.user));
+                // Notify other components (Header) of auth change
+                window.dispatchEvent(new Event('auth-change'));
+
                 setStep('success');
 
                 // Redirect after short delay to target page (with data if present)

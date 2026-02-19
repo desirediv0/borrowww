@@ -10,11 +10,14 @@ import { IconMenu2, IconX } from '@tabler/icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { User, LogOut, ChevronDown } from 'lucide-react';
 
+import { usePathname } from 'next/navigation';
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,12 +47,19 @@ export default function Header() {
     checkAuth();
     // Listen for storage changes (login/logout from other tabs)
     window.addEventListener('storage', checkAuth);
-    return () => window.removeEventListener('storage', checkAuth);
-  }, []);
+    // Listen for custom auth event (for same-tab updates not involving navigation)
+    window.addEventListener('auth-change', checkAuth);
+
+    return () => {
+      window.removeEventListener('storage', checkAuth);
+      window.removeEventListener('auth-change', checkAuth);
+    };
+  }, [pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem('user_token');
     localStorage.removeItem('user');
+    window.dispatchEvent(new Event('auth-change'));
     setUser(null);
     setIsProfileDropdownOpen(false);
     window.location.href = '/';

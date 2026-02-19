@@ -130,8 +130,9 @@ function CIBILCheckContent() {
                 if (error.response?.status === 401) {
                     localStorage.removeItem('user_token');
                     localStorage.removeItem('user'); // Optional: clear user data too
+                    window.dispatchEvent(new Event('auth-change'));
                     toast.error("Session expired. Please login again.");
-                    router.push('/auth');
+                    router.push('/auth?logout=true');
                     return true; // Stop retrying
                 }
 
@@ -199,8 +200,9 @@ function CIBILCheckContent() {
             if (err.response?.status === 401) {
                 localStorage.removeItem('user_token');
                 localStorage.removeItem('user');
+                window.dispatchEvent(new Event('auth-change'));
                 toast.error("Session expired. Please login again.");
-                router.push('/auth');
+                router.push('/auth?logout=true');
                 return;
             }
             toast.error("Failed to download PDF");
@@ -298,8 +300,9 @@ function CIBILCheckContent() {
             if (error.response?.status === 401) {
                 localStorage.removeItem('user_token');
                 localStorage.removeItem('user');
+                window.dispatchEvent(new Event('auth-change'));
                 toast.error("Session expired. Please login again.");
-                router.push('/auth');
+                router.push('/auth?logout=true');
                 return;
             }
 
