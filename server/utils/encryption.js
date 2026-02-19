@@ -40,6 +40,12 @@ export async function decrypt(encryptedText) {
         const response = await kmsClient.send(command);
         return Buffer.from(response.Plaintext).toString('utf-8');
     } catch (error) {
+        // Suppress logging for known KMS errors when dealing with potentially legacy plaintext data
+        if (error.name === 'InvalidCiphertextException') {
+            // Treat as not encrypted (legacy data)
+            // console.warn("Decryption skipped: Data is not valid ciphertext (likely plaintext)");
+            throw error;
+        }
         console.error("Decryption error:", error);
         throw new Error("Failed to decrypt data");
     }

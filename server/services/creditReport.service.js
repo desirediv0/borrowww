@@ -223,7 +223,15 @@ export const getAllReportsAdmin = async (page = 1, limit = 10, search = '') => {
         prisma.creditReport.count({ where })
     ]);
 
-    return { reports, total, page, pages: Math.ceil(total / limit) };
+    // Decrypt user details for each report
+    const decryptedReports = await Promise.all(reports.map(async (report) => {
+        if (report.user) {
+            report.user = await encryption.decryptUserData(report.user, false);
+        }
+        return report;
+    }));
+
+    return { reports: decryptedReports, total, page, pages: Math.ceil(total / limit) };
 };
 
 export const getReportDetailAdmin = async (reportId) => {

@@ -29,8 +29,6 @@ class DeepVueService {
             return this.accessToken;
         }
 
-        console.log('[DeepVue] Auth Request Start');
-
         try {
             const params = new URLSearchParams();
             params.append('client_id', this.clientId);
@@ -47,8 +45,6 @@ class DeepVueService {
                 }
             );
 
-            console.log('[DeepVue] Auth Success');
-
             this.accessToken = response.data.access_token;
             // Default 24h, use 23h buffer
             this.tokenExpiry = new Date(Date.now() + 23 * 60 * 60 * 1000);
@@ -61,7 +57,7 @@ class DeepVueService {
     }
 
     async createCibilSession(userData) {
-        console.log('[DeepVue] Session Request Start');
+
 
         try {
             // Validate required fields
@@ -71,7 +67,7 @@ class DeepVueService {
 
             const token = await this.getAccessToken();
             const callbackUrl = getDeepvueCallbackUrl();
-            console.log('[DeepVue] Using Callback URL:', callbackUrl);
+
 
             const payload = {
                 redirect_uri: callbackUrl,
@@ -92,7 +88,6 @@ class DeepVueService {
                 }
             );
 
-            console.log('[DeepVue] Session Success', { txnId: response.data.transaction_id });
 
             if (response.data.code === 201 && response.data.data?.redirect_url) {
                 return {

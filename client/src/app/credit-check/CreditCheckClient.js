@@ -28,7 +28,7 @@ import PaymentHistory from '@/components/PaymentHistory';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import Cookies from 'js-cookie';
+import ChartLineLabel from '@/components/ChartLineLabel';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
@@ -186,8 +186,8 @@ function CIBILCheckContent() {
     const handleDownloadPdf = async () => {
         try {
             const res = await api.get('/credit-report/pdf');
-            if (res.data.pdfSpacesUrl) {
-                window.open(res.data.pdfSpacesUrl, '_blank');
+            if (res.data.url) {
+                window.open(res.data.url, '_blank');
             } else {
                 toast.error("PDF not available yet");
             }
@@ -385,8 +385,8 @@ function CIBILCheckContent() {
                                 {[
                                     { label: 'Total Accounts', value: totalAccounts, color: 'text-gray-900' },
                                     { label: 'Active Accounts', value: activeAccounts, color: 'text-[var(--primary-blue)]' },
-                                    { label: 'Total Balance', value: `₹${parseInt(totalBalance || 0).toLocaleString()}`, color: 'text-gray-900' },
-                                    { label: 'Total Overdue', value: `₹${parseInt(totalOverdue || 0).toLocaleString()}`, color: 'text-red-600' },
+                                    // { label: 'Total Balance', value: `₹${parseInt(totalBalance || 0).toLocaleString()}`, color: 'text-gray-900' },
+                                    // { label: 'Total Overdue', value: `₹${parseInt(totalOverdue || 0).toLocaleString()}`, color: 'text-red-600' },
                                 ].map((stat, idx) => (
                                     <Card key={idx} className="hover:shadow-md transition-shadow">
                                         <CardHeader className="pb-2">
@@ -397,6 +397,11 @@ function CIBILCheckContent() {
                                         </CardContent>
                                     </Card>
                                 ))}
+                            </div>
+
+                            {/* Credit History Chart */}
+                            <div className="h-[300px] w-full mt-6">
+                                <ChartLineLabel history={[]} />
                             </div>
                         </TabsContent>
 
