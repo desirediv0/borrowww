@@ -269,44 +269,49 @@ export const verifyOtp = asyncHandler(async (req, res) => {
     const { phoneNumber, otp } = req.body;
     if (!phoneNumber || !otp) throw new ApiError(400, "Phone number and OTP required");
 
-    // Verify OTP from database
-    const session = await prisma.otpSession.findFirst({
-        where: { phoneNumber, otp, isVerified: false, expiresAt: { gt: new Date() } },
-        orderBy: { createdAt: 'desc' },
-    });
-
-    if (!session) throw new ApiError(400, 'Invalid or expired OTP');
-
-    // Mark OTP as verified
-    await prisma.otpSession.update({ where: { id: session.id }, data: { isVerified: true } });
-
-    // Find or create user
-    let user = await prisma.user.findUnique({ where: { phoneNumber } });
-    if (!user) {
-        user = await prisma.user.create({ data: { phoneNumber } });
-    }
-
-    const token = generateUserToken(user);
-
-    // Update user and capture the updated record
-    const updatedUser = await prisma.user.update({
-        where: { id: user.id },
-        data: { accessToken: token, lastLogin: new Date(), isVerified: true }
-    });
-
-    // Link guest session if sessionId provided
-    if (req.body.sessionId) {
-        await prisma.userSession.update({
-            where: { sessionId: req.body.sessionId },
-            data: { userId: user.id }
-        }).catch(() => {
-            // Ignore if session not found or update fails (non-critical)
+    const result = await prisma.$transaction(async (tx) => {
+        // Verify OTP from database
+        const session = await tx.otpSession.findFirst({
+            where: { phoneNumber, otp, isVerified: false, expiresAt: { gt: new Date() } },
+            orderBy: { createdAt: 'desc' },
         });
-    }
+
+        if (!session) throw new ApiError(400, 'Invalid or expired OTP');
+
+        // Mark OTP as verified
+        await tx.otpSession.update({ where: { id: session.id }, data: { isVerified: true } });
+
+        // Find or create user (Upsert to handle race conditions)
+        const user = await tx.user.upsert({
+            where: { phoneNumber },
+            update: {}, // No changes if user exists, just return it
+            create: { phoneNumber },
+        });
+
+        const token = generateUserToken(user);
+
+        // Update user and capture the updated record
+        const updatedUser = await tx.user.update({
+            where: { id: user.id },
+            data: { accessToken: token, lastLogin: new Date(), isVerified: true }
+        });
+
+        // Link guest session if sessionId provided
+        if (req.body.sessionId) {
+            await tx.userSession.update({
+                where: { sessionId: req.body.sessionId },
+                data: { userId: user.id }
+            }).catch(() => {
+                // Ignore if session not found or update fails (non-critical)
+            });
+        }
+
+        return { token, user: updatedUser };
+    });
 
     // Decrypt for user response
-    const decryptedUser = decryptUserData(updatedUser, false);
-    res.json(new ApiResponsive(200, { token, user: decryptedUser }, 'Login successful'));
+    const decryptedUser = decryptUserData(result.user, false);
+    res.json(new ApiResponsive(200, { token: result.token, user: decryptedUser }, 'Login successful'));
 });
 
 // User Profile (protected)
