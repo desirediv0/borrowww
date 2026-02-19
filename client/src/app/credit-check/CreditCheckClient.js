@@ -108,34 +108,50 @@ function CIBILCheckContent() {
 
                 const res = await api.post('/credit-report/fetch', { transactionId: txnId });
 
+                // If API explicitly returns PROCESSING status, we should retry
+                if (res.data?.status === 'PROCESSING') {
+                    return { shouldRetry: true };
+                }
+
                 if (res.data) {
                     setReport(res.data);
                     toast.success("CIBIL report generated successfully");
                     setFetchingReport(false);
                     // Clear param
                     router.replace('/credit-check');
-                    return true;
+                    return { success: true };
                 }
             } catch (error) {
                 console.error(`Attempt ${attempts} failed:`, error);
+                const status = error.response?.status;
 
                 // Handle 401 (Invalid/Stale Token)
-                if (error.response?.status === 401) {
+                if (status === 401) {
                     toast.error("Session expired. Please login again.");
                     router.push('/auth?logout=true');
-                    return true; // Stop retrying
+                    return { stop: true };
                 }
 
-                // Continue retry mechanism
-                return false;
+                // Stop retrying on 500, 400, 404
+                if (status && [400, 404, 500].includes(status)) {
+                    setReportError("Something went wrong. Please try again.");
+                    setFetchingReport(false);
+                    return { stop: true };
+                }
+
+                // Continue retry mechanism for other errors (Network, timeouts)
+                return { shouldRetry: true };
             }
-            return false;
+            return { shouldRetry: true };
         };
 
         // Retry Loop
         for (let i = 0; i < maxAttempts; i++) {
-            const success = await tryFetch();
-            if (success) return;
+            const result = await tryFetch();
+
+            if (result.success) return;
+            if (result.stop) return;
+
             // Wait 5 seconds before next retry if not last attempt
             if (i < maxAttempts - 1) {
                 await new Promise(resolve => setTimeout(resolve, 5000));
@@ -144,7 +160,7 @@ function CIBILCheckContent() {
 
         // Final Failure
         setFetchingReport(false);
-        setReportError("We are processing your report with the bureau. It may take a few more minutes. Please check back later.");
+        setReportError("Something went wrong. Please try again.");
     };
 
     const checkCache = async () => {
