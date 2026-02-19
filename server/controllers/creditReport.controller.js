@@ -83,10 +83,15 @@ export const getAllReportsAdmin = async (req, res) => {
     try {
         // Assuming admin check is done in middleware
         const { page, limit, search } = req.query;
+        // Determine mask: true unless SUPER_ADMIN
+        const isSuperAdmin = req.user && req.user.role === 'SUPER_ADMIN';
+        const mask = !isSuperAdmin;
+
         const result = await creditReportService.getAllReportsAdmin(
             parseInt(page) || 1,
             parseInt(limit) || 10,
-            search
+            search,
+            mask
         );
         res.json(result);
     } catch (error) {
@@ -96,7 +101,10 @@ export const getAllReportsAdmin = async (req, res) => {
 
 export const getReportDetailAdmin = async (req, res) => {
     try {
-        const report = await creditReportService.getReportDetailAdmin(req.params.id);
+        const isSuperAdmin = req.user && req.user.role === 'SUPER_ADMIN';
+        const mask = !isSuperAdmin;
+
+        const report = await creditReportService.getReportDetailAdmin(req.params.id, mask);
         if (!report) {
             return res.status(404).json({ error: 'Report not found' });
         }
