@@ -167,19 +167,20 @@ const CreditReports = () => {
                                                 </div>
                                                 <div className="ml-4">
                                                     <div className="text-sm font-medium text-gray-900">
-                                                        {report.user?.firstName} {report.user?.lastName}
+                                                        {report.user?.firstName ? `${report.user.firstName} ${report.user.lastName || ''}` : 'Unknown User'}
                                                     </div>
-                                                    <div className="text-sm text-gray-500">{report.user?.phoneNumber}</div>
+                                                    <div className="text-sm text-gray-500">{report.user?.phoneNumber || 'No Phone'}</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="flex items-center">
                                                 <span className={`px-2 py-1 text-xs font-semibold rounded-full 
-                          ${report.creditScore >= 750 ? 'bg-green-100 text-green-800' :
-                                                        report.creditScore >= 650 ? 'bg-yellow-100 text-yellow-800' :
-                                                            report.creditScore >= 550 ? 'bg-orange-100 text-orange-800' : 'bg-red-100 text-red-800'}`}>
-                                                    {report.creditScore}
+                          ${!report.creditScore ? 'bg-gray-100 text-gray-800' :
+                                                        report.creditScore >= 750 ? 'bg-green-100 text-green-800' :
+                                                            report.creditScore >= 650 ? 'bg-yellow-100 text-yellow-800' :
+                                                                report.creditScore >= 550 ? 'bg-orange-100 text-orange-800' : 'bg-red-100 text-red-800'}`}>
+                                                    {report.creditScore || 'N/A'}
                                                 </span>
                                             </div>
                                         </td>
@@ -326,9 +327,24 @@ const CreditReports = () => {
                                         </div>
                                     </div>
 
+                                    {/* Raw Data Toggle (For Debugging/Full View) */}
+                                    <div className="border-t pt-4">
+                                        <details className="group">
+                                            <summary className="flex justify-between items-center font-medium cursor-pointer list-none text-gray-500 hover:text-gray-900">
+                                                <span>Raw JSON Data</span>
+                                                <span className="transition group-open:rotate-180">
+                                                    <ChevronRight className="h-4 w-4" />
+                                                </span>
+                                            </summary>
+                                            <div className="text-xs font-mono bg-gray-50 p-4 rounded-lg mt-2 overflow-auto max-h-96">
+                                                <pre>{JSON.stringify(selectedReport, null, 2)}</pre>
+                                            </div>
+                                        </details>
+                                    </div>
+
                                     {/* PDF Action */}
                                     {selectedReport.pdfSpacesUrl && (
-                                        <div className="flex justify-end">
+                                        <div className="flex justify-end pt-4">
                                             <a
                                                 href={selectedReport.pdfSpacesUrl}
                                                 target="_blank"
