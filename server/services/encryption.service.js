@@ -128,6 +128,14 @@ export async function decryptLarge(combinedString) {
     }
 }
 
+// Helper to mask PAN: ABCDE1234F -> ABC******F
+export const maskPan = (pan) => {
+    if (!pan || pan.length < 5) return pan;
+    const first3 = pan.slice(0, 3);
+    const last1 = pan.slice(-1);
+    return `${first3}******${last1}`;
+};
+
 // Helper to encrypt sensitive fields in a user object
 export const encryptUserData = async (data) => {
     // phoneNumber is NOT encrypted (used for lookups)
@@ -153,8 +161,13 @@ export const decryptUserData = async (user, mask = false) => {
             try {
                 const val = await decrypt(decryptedUser[field]);
                 if (mask && field === 'identityNumber') {
-                    // Mask ID: XXXXX1234
-                    decryptedUser[field] = 'XXXXX' + val.slice(-4);
+                    // Check if it's PAN (by type or length 10 alphanumeric)
+                    if (decryptedUser.identityType === 'PAN' || (val.length === 10 && /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(val))) {
+                        decryptedUser[field] = maskPan(val);
+                    } else {
+                        // Default mask: XXXXX1234
+                        decryptedUser[field] = 'XXXXX' + val.slice(-4);
+                    }
                 } else {
                     decryptedUser[field] = val;
                 }

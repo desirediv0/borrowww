@@ -113,7 +113,13 @@ export default function ProfilePage() {
     const handleSaveProfile = async () => {
         setIsSaving(true);
         try {
-            const response = await api.patch('/users/profile', formData);
+            // Filter out masked identity number to avoid overwriting with asterisks
+            const payload = { ...formData };
+            if (payload.identityNumber && payload.identityNumber.includes('*')) {
+                delete payload.identityNumber;
+            }
+
+            const response = await api.patch('/users/profile', payload);
 
             const data = response.data;
 

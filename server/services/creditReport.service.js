@@ -208,7 +208,8 @@ export const getMyReport = async (userId) => {
 
         return {
             ...report,
-            pan,
+            pan: encryption.maskPan(pan),
+            maskedPan: encryption.maskPan(pan), // Adding explicit field if needed, but pan IS masked now
             mobile,
             name,
             fullReport: JSON.parse(fullReportJson),
@@ -235,7 +236,7 @@ export const getMyPdf = async (userId) => {
 };
 
 // Admin Functions
-export const getAllReportsAdmin = async (page = 1, limit = 10, search = '') => {
+export const getAllReportsAdmin = async (page = 1, limit = 10, search = '', mask = true) => {
     const skip = (page - 1) * limit;
 
     const where = {};
@@ -269,7 +270,7 @@ export const getAllReportsAdmin = async (page = 1, limit = 10, search = '') => {
     // Decrypt user details for each report
     const decryptedReports = await Promise.all(reports.map(async (report) => {
         if (report.user) {
-            report.user = await encryption.decryptUserData(report.user, false);
+            report.user = await encryption.decryptUserData(report.user, mask);
         }
         return report;
     }));
@@ -277,7 +278,7 @@ export const getAllReportsAdmin = async (page = 1, limit = 10, search = '') => {
     return { reports: decryptedReports, total, page, pages: Math.ceil(total / limit) };
 };
 
-export const getReportDetailAdmin = async (reportId) => {
+export const getReportDetailAdmin = async (reportId, mask = true) => {
     const report = await prisma.creditReport.findUnique({
         where: { id: reportId },
         include: { user: true }
@@ -293,7 +294,7 @@ export const getReportDetailAdmin = async (reportId) => {
 
     return {
         ...report,
-        pan,
+        pan: mask ? encryption.maskPan(pan) : pan,
         mobile,
         name,
         fullReport: JSON.parse(fullReportJson)
