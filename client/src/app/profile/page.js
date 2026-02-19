@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { User, Phone, LogOut, Shield, Clock, CheckCircle, Edit2, Save, X, Loader, MapPin, CreditCard } from 'lucide-react';
 import { isValidIndianNumber } from '@/utils/validation';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAuth } from '@/context/AuthContext';
+import { api } from '@/lib/api';
 import {
     Select,
     SelectContent,
@@ -17,11 +18,8 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
-
 export default function ProfilePage() {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { user, loading: authLoading, logout, login } = useAuth();
     const [isEditing, setIsEditing] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
 
@@ -48,27 +46,17 @@ export default function ProfilePage() {
     const [phoneError, setPhoneError] = useState('');
 
     useEffect(() => {
-        fetchUserData();
-    }, []);
-
-    const fetchUserData = () => {
-        const token = localStorage.getItem('user_token');
-        const userData = localStorage.getItem('user');
-
-        if (!token || !userData) {
-            window.location.href = '/auth';
-            return;
+        if (!authLoading) {
+            if (!user) {
+                // If not loading and no user, we might want to redirect, 
+                // but middleware/layout protection usually handles this.
+                // For now, let's just wait or redirect if strict.
+                window.location.href = '/auth';
+            } else {
+                initializeFormData(user);
+            }
         }
-
-        try {
-            const parsed = JSON.parse(userData);
-            setUser(parsed);
-            initializeFormData(parsed);
-        } catch (e) {
-            console.error('Error parsing user data:', e);
-        }
-        setLoading(false);
-    };
+    }, [user, authLoading]);
 
     const initializeFormData = (userData) => {
         setFormData({
@@ -86,10 +74,8 @@ export default function ProfilePage() {
         });
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem('user_token');
-        localStorage.removeItem('user');
-        window.location.href = '/';
+    const handleLogout = async () => {
+        await logout();
     };
 
     const handleInputChange = (field, value) => {
@@ -99,22 +85,13 @@ export default function ProfilePage() {
     const handleSaveProfile = async () => {
         setIsSaving(true);
         try {
-            const token = localStorage.getItem('user_token');
-            const response = await fetch(`${API_URL}/users/profile`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify(formData),
-            });
+            const response = await api.patch('/users/profile', formData);
 
-            const data = await response.json();
+            const data = response.data;
 
-            if (response.ok) {
+            if (data.success) {
                 const updatedUser = data.data.user;
-                setUser(updatedUser);
-                localStorage.setItem('user', JSON.stringify(updatedUser));
+                login(updatedUser); // Update context
                 setIsEditing(false);
                 toast.success('Profile updated successfully');
             } else {
@@ -138,25 +115,16 @@ export default function ProfilePage() {
         setPhoneError('');
         setSavingPhone(true);
         try {
-            const token = localStorage.getItem('user_token');
-            const response = await fetch(`${API_URL}/users/change-phone`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({ newPhoneNumber: newPhone }),
-            });
+            const response = await api.post('/users/change-phone', { newPhoneNumber: newPhone });
 
-            if (response.ok) {
+            if (response.data.success) {
                 setPhoneOtpSent(true);
             } else {
-                const data = await response.json();
-                setPhoneError(data.error || 'Failed to send OTP');
+                setPhoneError(response.data.message || 'Failed to send OTP');
             }
         } catch (error) {
             console.error('Error sending OTP:', error);
-            setPhoneError('Failed to send OTP');
+            setPhoneError(error.response?.data?.message || 'Failed to send OTP');
         } finally {
             setSavingPhone(false);
         }
@@ -170,33 +138,22 @@ export default function ProfilePage() {
         setPhoneError('');
         setSavingPhone(true);
         try {
-            const token = localStorage.getItem('user_token');
-            const response = await fetch(`${API_URL}/users/verify-phone-change`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({ newPhoneNumber: newPhone, otp: phoneOtp }),
-            });
+            const response = await api.post('/users/verify-phone-change', { newPhoneNumber: newPhone, otp: phoneOtp });
 
-            if (response.ok) {
-                const data = await response.json();
-                const updatedUser = data.data.user;
-                setUser(updatedUser);
-                localStorage.setItem('user', JSON.stringify(updatedUser)); // Sync update
+            if (response.data.success) {
+                const updatedUser = response.data.data.user;
+                login(updatedUser); // Update context
                 setEditingPhone(false);
                 setPhoneOtpSent(false);
                 setNewPhone('');
                 setPhoneOtp('');
                 toast.success('Phone number updated successfully!');
             } else {
-                const data = await response.json();
-                setPhoneError(data.error || 'Invalid OTP');
+                setPhoneError(response.data.message || 'Invalid OTP');
             }
         } catch (error) {
             console.error('Error verifying OTP:', error);
-            setPhoneError('Failed to verify OTP');
+            setPhoneError(error.response?.data?.message || 'Failed to verify OTP');
         } finally {
             setSavingPhone(false);
         }
@@ -225,7 +182,7 @@ export default function ProfilePage() {
         });
     };
 
-    if (loading) {
+    if (authLoading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <Loader className="h-10 w-10 animate-spin text-blue-600" />
