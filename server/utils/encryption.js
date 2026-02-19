@@ -1,4 +1,5 @@
-import { KMSClient, EncryptCommand, DecryptCommand } from "@aws-sdk/client-kms";
+import { KMSClient, EncryptCommand, DecryptCommand, GenerateDataKeyCommand } from "@aws-sdk/client-kms";
+import crypto from 'crypto';
 
 const kmsClient = new KMSClient({
     region: process.env.AWS_REGION,
@@ -10,6 +11,7 @@ const kmsClient = new KMSClient({
 
 const KMS_KEY_ID = process.env.AWS_KMS_KEY_ID;
 
+// Small data encryption (Direct KMS) - Limit 4KB
 export async function encrypt(text) {
     if (!text) return null;
 
@@ -40,6 +42,83 @@ export async function decrypt(encryptedText) {
     } catch (error) {
         console.error("Decryption error:", error);
         throw new Error("Failed to decrypt data");
+    }
+}
+
+// Large data encryption (Envelope Encryption: KMS + AES-256-GCM)
+export async function encryptLarge(text) {
+    if (!text) return null;
+
+    try {
+        // 1. Generate Data Key from KMS
+        const dataKeyCommand = new GenerateDataKeyCommand({
+            KeyId: KMS_KEY_ID,
+            KeySpec: 'AES_256',
+        });
+        const dataKeyResponse = await kmsClient.send(dataKeyCommand);
+        const plaintextKey = dataKeyResponse.Plaintext; // Raw bytes
+        const encryptedKey = Buffer.from(dataKeyResponse.CiphertextBlob).toString('base64');
+
+        // 2. Encrypt data locally using the Data Key (AES-256-GCM)
+        const iv = crypto.randomBytes(12); // 96-bit IV for GCM
+        const cipher = crypto.createCipheriv('aes-256-gcm', Buffer.from(plaintextKey), iv);
+
+        let encryptedData = cipher.update(String(text), 'utf8', 'base64');
+        encryptedData += cipher.final('base64');
+        const authTag = cipher.getAuthTag().toString('base64');
+
+        // 3. Return combined structure
+        // Format: { encryptedKey, iv, authTag, encryptedData }
+        return JSON.stringify({
+            k: encryptedKey,
+            iv: iv.toString('base64'),
+            t: authTag,
+            d: encryptedData
+        });
+
+    } catch (error) {
+        console.error("Large Encryption error:", error);
+        throw new Error("Failed to encrypt large data");
+    }
+}
+
+export async function decryptLarge(combinedString) {
+    if (!combinedString) return null;
+
+    try {
+        let parsed;
+        try {
+            parsed = JSON.parse(combinedString);
+        } catch (e) {
+            // Fallback: If not JSON, try standard decrypt (backward compatibility or mistaken call)
+            return await decrypt(combinedString);
+        }
+
+        const { k, iv, t, d } = parsed;
+        if (!k || !iv || !t || !d) {
+            // Fallback attempt if structure doesn't match
+            return await decrypt(combinedString);
+        }
+
+        // 1. Decrypt the Data Key using KMS
+        const decryptCommand = new DecryptCommand({
+            CiphertextBlob: Buffer.from(k, 'base64'),
+        });
+        const keyResponse = await kmsClient.send(decryptCommand);
+        const plaintextKey = keyResponse.Plaintext;
+
+        // 2. Decrypt data locally using AES-256-GCM
+        const decipher = crypto.createDecipheriv('aes-256-gcm', Buffer.from(plaintextKey), Buffer.from(iv, 'base64'));
+        decipher.setAuthTag(Buffer.from(t, 'base64'));
+
+        let decrypted = decipher.update(d, 'base64', 'utf8');
+        decrypted += decipher.final('utf8');
+
+        return decrypted;
+
+    } catch (error) {
+        console.error("Large Decryption error:", error);
+        throw new Error("Failed to decrypt large data");
     }
 }
 

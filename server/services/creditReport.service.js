@@ -80,7 +80,7 @@ export const fetchAndSaveReport = async (userId, transactionId) => {
             encryption.encrypt(data.pan),
             encryption.encrypt(data.mobile),
             encryption.encrypt(data.name),
-            encryption.encrypt(JSON.stringify(data))
+            encryption.encryptLarge(JSON.stringify(data))
         ]);
 
         // 4. Upload PDF
@@ -162,7 +162,7 @@ export const getMyReport = async (userId) => {
         const pan = await encryption.decrypt(report.panEncrypted);
         const mobile = await encryption.decrypt(report.mobileEncrypted);
         const name = await encryption.decrypt(report.nameEncrypted);
-        const fullReportJson = await encryption.decrypt(report.fullReportEncrypted);
+        const fullReportJson = await encryption.decryptLarge(report.fullReportEncrypted);
 
         return {
             ...report,
@@ -238,7 +238,7 @@ export const getReportDetailAdmin = async (reportId) => {
     const pan = await encryption.decrypt(report.panEncrypted);
     const mobile = await encryption.decrypt(report.mobileEncrypted);
     const name = await encryption.decrypt(report.nameEncrypted);
-    const fullReportJson = await encryption.decrypt(report.fullReportEncrypted);
+    const fullReportJson = await encryption.decryptLarge(report.fullReportEncrypted);
 
     return {
         ...report,
