@@ -3,7 +3,7 @@ import { prisma } from "../config/db.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import { ApiResponsive } from "../utils/ApiResponsive.js";
-import { encryptUserData, decryptUserData } from "../utils/encryption.js";
+import { encryptUserData, decryptUserData } from "../services/encryption.service.js";
 import { isValidIndianNumber } from "../utils/validation.js";
 import axios from "axios";
 

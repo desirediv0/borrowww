@@ -3,7 +3,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponsive } from "../utils/ApiResponsive.js";
 import { ApiError } from "../utils/ApiError.js";
 import { deepVueService } from "../services/deepvue.service.js";
-import { encryptCibilData, decryptCibilData } from "../utils/encryption.js";
+import { encryptCibilData, decryptCibilData } from "../services/encryption.service.js";
 
 // User: Submit CIBIL data and create DeepVue session
 export const userSummitCibil = asyncHandler(async (req, res) => {

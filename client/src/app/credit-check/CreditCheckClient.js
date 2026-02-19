@@ -30,7 +30,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import ChartLineLabel from '@/components/ChartLineLabel';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
 function CIBILCheckContent() {
     const searchParams = useSearchParams();
@@ -68,8 +67,8 @@ function CIBILCheckContent() {
                 fetchReportWithRetry(transactionId);
             }
         }
-        // 2. Check Cache if logged in (Fallback)
-        else if (user) {
+        // 2. Check Cache if logged in (Fallback) - ONLY if NO transaction_id
+        else if (user && !transactionId) {
             checkCache();
         }
         // 3. Default (Show Form)
@@ -93,7 +92,7 @@ function CIBILCheckContent() {
                 console.error('Failed to decode form data:', e);
             }
         }
-    }, [searchParams, transactionId, authLoading, user]);
+    }, [searchParams, transactionId, authLoading, user]); // user dependency ensures checkCache runs on login
 
     const fetchReportWithRetry = async (txnId) => {
         setFetchingReport(true);
@@ -306,16 +305,7 @@ function CIBILCheckContent() {
         { factor: 'New Credit', impact: '10%', description: 'Recent credit inquiries and new accounts', icon: FaUser },
     ];
 
-    const tips = [
-        'Pay all your bills on time, every time',
-        'Keep your credit utilization below 30%',
-        "Don't close old credit accounts",
-        'Limit new credit applications',
-        'Monitor your credit report regularly',
-        'Dispute any errors in your credit report',
-    ];
 
-    // --- RENDER STATES ---
 
     // 1. Loading / Fetching
     if (authLoading || loadingReport || fetchingReport) {
@@ -341,7 +331,7 @@ function CIBILCheckContent() {
 
     // 2. Report Display
     if (report) {
-        const { creditScore, totalAccounts, totalBalance, activeAccounts, totalOverdue, expiresAt, fullReport } = report;
+        const { creditScore, totalAccounts, activeAccounts, expiresAt, fullReport, history } = report;
         const accounts = fullReport?.credit_report?.CCRResponse?.CIRReportDataLst?.[0]?.CIRReportData?.RetailAccountDetails || [];
         const personalInfo = fullReport?.credit_report?.CCRResponse?.CIRReportDataLst?.[0]?.CIRReportData?.IDAndContactInfo?.PersonalInfo || {};
 
@@ -381,7 +371,7 @@ function CIBILCheckContent() {
                             </div>
 
                             {/* Stats Grid */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {[
                                     { label: 'Total Accounts', value: totalAccounts, color: 'text-gray-900' },
                                     { label: 'Active Accounts', value: activeAccounts, color: 'text-[var(--primary-blue)]' },
@@ -401,7 +391,7 @@ function CIBILCheckContent() {
 
                             {/* Credit History Chart */}
                             <div className="h-[300px] w-full mt-6">
-                                <ChartLineLabel history={[]} />
+                                <ChartLineLabel history={history || []} />
                             </div>
                         </TabsContent>
 

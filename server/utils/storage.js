@@ -1,4 +1,4 @@
-import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import axios from 'axios';
 
@@ -62,5 +62,19 @@ export async function generateSignedUrl(path, expiresIn = 3600) {
     } catch (error) {
         console.error("Signed URL Error:", error);
         return null;
+    }
+}
+
+export async function deletePdf(path) {
+    if (!path) return;
+    try {
+        const command = new DeleteObjectCommand({
+            Bucket: process.env.SPACES_BUCKET,
+            Key: path,
+        });
+        await s3Client.send(command);
+    } catch (error) {
+        console.error("PDF Delete Error:", error);
+        throw error; // Re-throw to be handled by caller
     }
 }

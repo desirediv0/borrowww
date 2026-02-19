@@ -45,6 +45,9 @@ export default function ProfilePage() {
     const [savingPhone, setSavingPhone] = useState(false);
     const [phoneError, setPhoneError] = useState('');
 
+    // Credit Report State
+    const [creditScore, setCreditScore] = useState(null);
+
     useEffect(() => {
         if (!authLoading) {
             if (!user) {
@@ -54,9 +57,21 @@ export default function ProfilePage() {
                 window.location.href = '/auth';
             } else {
                 initializeFormData(user);
+                fetchCreditScore();
             }
         }
     }, [user, authLoading]);
+
+    const fetchCreditScore = async () => {
+        try {
+            const res = await api.get('/credit-report/check-cache');
+            if (res.data.cached) {
+                setCreditScore(res.data.report.creditScore);
+            }
+        } catch (error) {
+            console.error("Failed to fetch credit score for profile:", error);
+        }
+    };
 
     const initializeFormData = (userData) => {
         setFormData({
@@ -131,8 +146,8 @@ export default function ProfilePage() {
     };
 
     const handleVerifyPhoneOtp = async () => {
-        if (phoneOtp.length !== 4) {
-            setPhoneError('Please enter 4-digit OTP');
+        if (phoneOtp.length !== 6) {
+            setPhoneError('Please enter 6-digit OTP');
             return;
         }
         setPhoneError('');
@@ -459,8 +474,8 @@ export default function ProfilePage() {
                                                 <div className="flex gap-2">
                                                     <Input
                                                         value={phoneOtp}
-                                                        onChange={(e) => setPhoneOtp(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                                                        placeholder="XXXX"
+                                                        onChange={(e) => setPhoneOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
+                                                        placeholder="XXXXXX"
                                                         className="text-center tracking-widest"
                                                     />
                                                     <Button onClick={handleVerifyPhoneOtp} disabled={savingPhone} size="sm" className="bg-green-600 hover:bg-green-700">
@@ -492,16 +507,27 @@ export default function ProfilePage() {
 
                         {/* Quick Actions */}
                         <div className="grid grid-cols-1 gap-3">
+
+
                             <a href="/credit-check" className="block">
                                 <Card className="hover:shadow-md transition-all cursor-pointer border-blue-100 bg-blue-50/50">
-                                    <CardContent className="p-4 flex items-center gap-3">
-                                        <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
-                                            <Shield className="h-5 w-5" />
+                                    <CardContent className="p-4 flex items-center justify-between gap-3">
+                                        <div className="flex items-center gap-3">
+                                            <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
+                                                <Shield className="h-5 w-5" />
+                                            </div>
+                                            <div>
+                                                <p className="font-medium text-gray-900">Credit Score</p>
+                                                <p className="text-xs text-gray-500">
+                                                    {creditScore ? `Current Score: ${creditScore}` : 'Check your score'}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p className="font-medium text-gray-900">Credit Report</p>
-                                            <p className="text-xs text-gray-500">Check your score</p>
-                                        </div>
+                                        {creditScore && (
+                                            <div className={`text-lg font-bold ${creditScore >= 750 ? 'text-green-600' : creditScore >= 650 ? 'text-yellow-600' : 'text-red-600'}`}>
+                                                {creditScore}
+                                            </div>
+                                        )}
                                     </CardContent>
                                 </Card>
                             </a>
@@ -512,7 +538,7 @@ export default function ProfilePage() {
 
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

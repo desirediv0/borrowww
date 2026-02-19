@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { deepVueService } from '../services/deepvue.service.js';
-import * as encryption from '../utils/encryption.js';
+import * as encryption from '../services/encryption.service.js';
 import * as storage from '../utils/storage.js';
 
 const prisma = new PrismaClient();
@@ -96,6 +96,27 @@ export const fetchAndSaveReport = async (userId, transactionId) => {
             doUrl = uploadResult.doUrl;
         }
 
+        // 4.1 Delete previous PDF if exists (Data Retention Policy: Keep DB history, delete old PDF)
+        const previousReport = await prisma.creditReport.findFirst({
+            where: { userId, pdfSpacesPath: { not: null } },
+            orderBy: { fetchedAt: 'desc' }
+        });
+
+        if (previousReport && previousReport.pdfSpacesPath) {
+            try {
+                await storage.deletePdf(previousReport.pdfSpacesPath);
+                // Update DB to reflect PDF deletion
+                await prisma.creditReport.update({
+                    where: { id: previousReport.id },
+                    data: { pdfSpacesPath: null, pdfSpacesUrl: null }
+                });
+                console.log(`Deleted previous PDF for report ${previousReport.id}`);
+            } catch (err) {
+                console.error('Failed to delete previous PDF:', err);
+                // Continue execution, don't fail new report generation
+            }
+        }
+
         // 5. Save to DB
         const savedReport = await prisma.creditReport.create({
             data: {
@@ -158,6 +179,27 @@ export const getMyReport = async (userId) => {
 
         if (!report) return null;
 
+        // Fetch history (last 6 months)
+        const historyData = await prisma.creditReport.findMany({
+            where: {
+                userId: userId,
+                fetchedAt: {
+                    gte: new Date(new Date().setMonth(new Date().getMonth() - 6))
+                }
+            },
+            orderBy: { fetchedAt: 'asc' },
+            select: {
+                fetchedAt: true,
+                creditScore: true
+            }
+        });
+
+        const history = historyData.map(h => ({
+            month: h.fetchedAt.toLocaleString('default', { month: 'short' }),
+            score: h.creditScore,
+            date: h.fetchedAt
+        }));
+
         // Decrypt data
         const pan = await encryption.decrypt(report.panEncrypted);
         const mobile = await encryption.decrypt(report.mobileEncrypted);
@@ -169,7 +211,8 @@ export const getMyReport = async (userId) => {
             pan,
             mobile,
             name,
-            fullReport: JSON.parse(fullReportJson)
+            fullReport: JSON.parse(fullReportJson),
+            history: history // Added history array
         };
     } catch (error) {
         console.error('Get My Report Error:', error);

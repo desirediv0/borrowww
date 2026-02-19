@@ -13,20 +13,10 @@ import {
 } from '@/components/ui/card';
 
 const ChartLineLabel = ({ history = [] }) => {
-    // Determine data to show. If history provided, use it.
-    // Otherwise, show a placeholder or empty state.
-    // For demo purposes, if no history, we might show a static "No History" message
-    // or a specialized empty chart.
+    // 1. Slice to last 6 months if more
+    let chartData = history.length > 0 ? history.slice(-6) : [];
 
-    // Default/Mock data structure if needed for visualization during dev
-    // const chartData = [
-    //   { month: "January", score: 186 },
-    //   { month: "February", score: 305 },
-    //   ...
-    // ];
-
-    const chartData = history.length > 0 ? history : [];
-
+    // 2. Handle 0 data points (Empty)
     if (chartData.length === 0) {
         return (
             <Card className="flex flex-col h-full border-none shadow-none bg-transparent">
@@ -34,15 +24,34 @@ const ChartLineLabel = ({ history = [] }) => {
                     <CardTitle>Credit Score History</CardTitle>
                     <CardDescription>No history available yet.</CardDescription>
                 </CardHeader>
+                <CardContent className="flex-1 flex items-center justify-center min-h-[200px] text-gray-400">
+                    <p>Score history will appear here after your next check.</p>
+                </CardContent>
             </Card>
         );
     }
+
+    // 3. Handle 1 data point (Single) - Add a dummy point to make it a line/area
+    if (chartData.length === 1) {
+        // Create a fake previous point to allow area to render
+        const singlePoint = chartData[0];
+        chartData = [
+            { month: '', score: singlePoint.score }, // Hidden start point
+            singlePoint
+        ];
+    }
+
+    // Calculate trend
+    const latestScore = chartData[chartData.length - 1].score;
+    const previousScore = chartData.length > 1 ? chartData[chartData.length - 2].score : latestScore;
+    const diff = latestScore - previousScore;
+    const percentChange = previousScore > 0 ? ((diff / previousScore) * 100).toFixed(1) : 0;
 
     return (
         <Card className="flex flex-col h-full border-none shadow-none bg-transparent">
             <CardHeader>
                 <CardTitle>Credit Score History</CardTitle>
-                <CardDescription>Your score trend over the last 12 months</CardDescription>
+                <CardDescription>Your score trend over the last 6 months</CardDescription>
             </CardHeader>
             <CardContent className="flex-1 pb-0 min-h-[200px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -92,9 +101,12 @@ const ChartLineLabel = ({ history = [] }) => {
             <CardFooter>
                 <div className="flex w-full items-start gap-2 text-sm">
                     <div className="grid gap-2">
-                        <div className="flex items-center gap-2 font-medium leading-none">
-                            Trending up by 5.2% this month <TrendingUp className="h-4 w-4 text-green-500" />
-                        </div>
+                        {diff !== 0 && (
+                            <div className="flex items-center gap-2 font-medium leading-none">
+                                {diff > 0 ? 'Trending up' : 'Trending down'} by {Math.abs(percentChange)}% this month{' '}
+                                <TrendingUp className={`h-4 w-4 ${diff > 0 ? 'text-green-500' : 'text-red-500'}`} />
+                            </div>
+                        )}
                         <div className="flex items-center gap-2 leading-none text-muted-foreground">
                             Showing total score for the last 6 months
                         </div>
