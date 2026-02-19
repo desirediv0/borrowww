@@ -8,10 +8,11 @@ import { isValidIndianNumber } from "../utils/validation.js";
 import axios from "axios";
 
 // Cookie Options
+// Cookie Options
 const COOKIE_OPTIONS = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // 'none' for cross-site (if needed) or 'lax' for same-site
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     path: "/"
 };

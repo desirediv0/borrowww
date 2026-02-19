@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+// Determine API URL (Force localhost backend if on localhost to fix cookie issues)
+let API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+
+if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    // Override env var to ensure we hit local backend for proper cookie handling (same-site)
+    API_URL = 'http://localhost:4000/api';
+}
 
 export const api = axios.create({
     baseURL: API_URL,

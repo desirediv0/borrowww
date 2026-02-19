@@ -103,7 +103,7 @@ function AuthPageContent() {
             const data = response.data;
 
             if (data.data?.token) {
-                // Update Context (Cookie is already set by server)
+                // Update Context (Cookie is set by server)
                 await login(data.data.user);
 
                 setStep('success');

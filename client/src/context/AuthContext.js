@@ -18,11 +18,9 @@ export function AuthProvider({ children }) {
             const res = await api.get('/users/me');
             setUser(res.data.data.user);
         } catch (error) {
-            // If 401 or fail, user is not logged in
             setUser(null);
             // Optional: Clear client-side artifacts if any exist
             Cookies.remove('user_token');
-            localStorage.removeItem('user_token');
         } finally {
             setLoading(false);
         }
@@ -49,10 +47,8 @@ export function AuthProvider({ children }) {
             console.error('Logout failed', e);
         } finally {
             setUser(null);
+            // Optional: Clear client-side artifacts if any exist
             Cookies.remove('user_token');
-            Cookies.remove('user');
-            localStorage.removeItem('user_token');
-            localStorage.removeItem('user');
             router.push('/');
         }
     };
