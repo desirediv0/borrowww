@@ -125,6 +125,16 @@ function CIBILCheckContent() {
                 }
             } catch (error) {
                 console.error(`Attempt ${attempts} failed:`, error);
+
+                // Handle 401 (Invalid/Stale Token)
+                if (error.response?.status === 401) {
+                    localStorage.removeItem('user_token');
+                    localStorage.removeItem('user'); // Optional: clear user data too
+                    toast.error("Session expired. Please login again.");
+                    router.push('/auth');
+                    return true; // Stop retrying
+                }
+
                 // Continue retry mechanism
                 return false;
             }

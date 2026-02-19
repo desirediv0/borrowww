@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { ApiResponsive } from "../utils/ApiResponsive.js";
 import { isValidIndianNumber } from "../utils/validation.js";
+import { decryptFields, SENSITIVE_FIELDS } from "../utils/kms.util.js";
 
 const prisma = new PrismaClient();
 
@@ -80,9 +81,13 @@ export const getAllCreditCheckInquiries = async (req, res) => {
             prisma.creditCheckInquiry.count({ where }),
         ]);
 
+        const decryptedInquiries = await Promise.all(
+            inquiries.map(item => decryptFields(item, SENSITIVE_FIELDS.CreditCheckInquiry))
+        );
+
         return res.status(200).json(
             new ApiResponsive(200, {
-                inquiries,
+                inquiries: decryptedInquiries,
                 pagination: {
                     total,
                     page: parseInt(page),
@@ -207,9 +212,13 @@ export const getAllContactInquiries = async (req, res) => {
             prisma.contactInquiry.count({ where }),
         ]);
 
+        const decryptedInquiries = await Promise.all(
+            inquiries.map(item => decryptFields(item, SENSITIVE_FIELDS.ContactInquiry))
+        );
+
         return res.status(200).json(
             new ApiResponsive(200, {
-                inquiries,
+                inquiries: decryptedInquiries,
                 pagination: {
                     total,
                     page: parseInt(page),
@@ -338,9 +347,13 @@ export const getAllHomeLoanInquiries = async (req, res) => {
             prisma.homeLoanInquiry.count({ where }),
         ]);
 
+        const decryptedInquiries = await Promise.all(
+            inquiries.map(item => decryptFields(item, SENSITIVE_FIELDS.HomeLoanInquiry))
+        );
+
         return res.status(200).json(
             new ApiResponsive(200, {
-                inquiries,
+                inquiries: decryptedInquiries,
                 pagination: {
                     total,
                     page: parseInt(page),
@@ -442,6 +455,8 @@ export const updateInquiryStatus = async (req, res) => {
 
 // ================== Get Dashboard Stats ==================
 
+// ================== Get Dashboard Stats ==================
+
 export const getDashboardStats = async (req, res) => {
     try {
         const [
@@ -469,6 +484,19 @@ export const getDashboardStats = async (req, res) => {
             }),
         ]);
 
+        // Decrypt data for display
+        const decryptedRecentCreditCheck = await Promise.all(
+            recentCreditCheck.map(item => decryptFields(item, SENSITIVE_FIELDS.CreditCheckInquiry))
+        );
+
+        const decryptedRecentContact = await Promise.all(
+            recentContact.map(item => decryptFields(item, SENSITIVE_FIELDS.ContactInquiry))
+        );
+
+        const decryptedRecentHomeLoan = await Promise.all(
+            recentHomeLoan.map(item => decryptFields(item, SENSITIVE_FIELDS.HomeLoanInquiry))
+        );
+
         return res.status(200).json(
             new ApiResponsive(200, {
                 counts: {
@@ -478,9 +506,9 @@ export const getDashboardStats = async (req, res) => {
                     total: creditCheckCount + contactCount + homeLoanCount,
                 },
                 recentInquiries: {
-                    creditCheck: recentCreditCheck,
-                    contact: recentContact,
-                    homeLoan: recentHomeLoan,
+                    creditCheck: decryptedRecentCreditCheck,
+                    contact: decryptedRecentContact,
+                    homeLoan: decryptedRecentHomeLoan,
                 },
             }, "Dashboard stats fetched successfully")
         );
