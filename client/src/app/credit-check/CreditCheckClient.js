@@ -169,6 +169,15 @@ function CIBILCheckContent() {
             }
         } catch (err) {
             console.error(err);
+            // Handle 401 (Invalid/Stale Token)
+            if (err.response?.status === 401) {
+                localStorage.removeItem('user_token');
+                localStorage.removeItem('user');
+                // No toast here to avoid spamming on load, just silent logout or let user re-login when they try action
+                // Actually, better to redirect if they thought they were logged in?
+                // For checkCache, maybe just clear token so form shows up.
+                return;
+            }
         } finally {
             setLoadingReport(false);
         }
@@ -186,6 +195,14 @@ function CIBILCheckContent() {
                 toast.error("PDF not available yet");
             }
         } catch (err) {
+            console.error("PDF Download Error:", err);
+            if (err.response?.status === 401) {
+                localStorage.removeItem('user_token');
+                localStorage.removeItem('user');
+                toast.error("Session expired. Please login again.");
+                router.push('/auth');
+                return;
+            }
             toast.error("Failed to download PDF");
         }
     };
@@ -276,6 +293,16 @@ function CIBILCheckContent() {
 
         } catch (error) {
             console.error('Session Error:', error);
+
+            // Handle 401 (Invalid/Stale Token)
+            if (error.response?.status === 401) {
+                localStorage.removeItem('user_token');
+                localStorage.removeItem('user');
+                toast.error("Session expired. Please login again.");
+                router.push('/auth');
+                return;
+            }
+
             const errorMsg = error.response?.data?.message || "Failed to start verification.";
             toast.error(errorMsg);
             setIsSubmitting(false);
