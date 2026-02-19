@@ -22,6 +22,7 @@ import { prisma } from "./config/db.js";
 import adminRoutes from "./routes/admin.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import cibilRoutes from "./routes/cibil.routes.js";
+import creditReportRoutes from "./routes/creditReport.routes.js";
 import loanRoutes from "./routes/loan.routes.js";
 import userLoanRoutes from "./routes/userLoan.routes.js";
 import sessionRoutes from "./routes/session.routes.js";
@@ -203,6 +204,9 @@ app.use("/api/users", userRoutes);
 
 // CIBIL routes
 app.use("/api/cibil", cibilRoutes);
+
+// New CIBIL Credit Report routes
+app.use("/api/credit-report", creditReportRoutes);
 
 // Session tracking routes
 app.use("/api/sessions", sessionRoutes);

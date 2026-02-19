@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
     FaCalendarAlt,
@@ -19,6 +19,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { isValidIndianNumber } from '@/utils/validation';
 import { toast } from 'sonner';
+import axios from 'axios';
+import { Loader2, AlertCircle, FileText } from 'lucide-react';
+import ScoreGauge from '@/components/ScoreGauge';
+import AccountCard from '@/components/AccountCard';
+import PaymentHistory from '@/components/PaymentHistory';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
@@ -26,23 +34,46 @@ function CIBILCheckContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
 
+    // Form State
     const [FormData, setFormData] = useState({
         firstName: '',
         mobileNumber: '',
         consent: false,
     });
-
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [, setIsProcessing] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    // Check auth and auto-fill from URL params
+    // Report State
+    const [report, setReport] = useState(null);
+    const [loadingReport, setLoadingReport] = useState(true);
+    const [fetchingReport, setFetchingReport] = useState(false);
+    const [reportError, setReportError] = useState(null);
+    const [retryCount, setRetryCount] = useState(0);
+
+    const transactionId = searchParams.get('transaction_id');
+    const fetchedRef = useRef(false);
+
+    // Initial Load & Auth Check
     useEffect(() => {
         const token = localStorage.getItem('user_token');
-        setIsLoggedIn(!!token);
 
-        // Check for data in URL (returned from auth)
+        // 1. Handle Transaction Callback (Priority)
+        if (transactionId) {
+            if (!fetchedRef.current) {
+                fetchedRef.current = true;
+                fetchReportWithRetry(transactionId);
+            }
+        }
+        // 2. Check Cache if logged in (Fallback)
+        else if (token) {
+            checkCache();
+        }
+        // 3. Default (Show Form)
+        else {
+            setLoadingReport(false);
+        }
+
+        // Handle URL Data (Redirect from Auth)
         const encodedData = searchParams.get('data');
         if (encodedData) {
             try {
@@ -53,43 +84,125 @@ function CIBILCheckContent() {
                     mobileNumber: decodedData.mobileNumber || '',
                     consent: decodedData.consent || false,
                 }));
-                // Clean URL after filling
                 window.history.replaceState({}, '', '/credit-check');
             } catch (e) {
                 console.error('Failed to decode form data:', e);
             }
         }
-    }, [searchParams]);
+    }, [searchParams, transactionId]);
+
+    const fetchReportWithRetry = async (txnId) => {
+        setFetchingReport(true);
+        setReportError(null);
+        let attempts = 0;
+        const maxAttempts = 5;
+
+        const tryFetch = async () => {
+            const token = localStorage.getItem('user_token');
+            // If no token, we might need to handle it? 
+            // Assume user is logged in if they have txnId or session cookie persists.
+            // But for robustness, check token. 
+            // If redirect from DeepVue happens, token should be in localStorage.
+            const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+            try {
+                attempts++;
+                setRetryCount(attempts);
+
+                const res = await axios.post(
+                    `${API_URL}/credit-report/fetch`,
+                    { transactionId: txnId },
+                    { withCredentials: true, headers }
+                );
+
+                if (res.data) {
+                    setReport(res.data);
+                    toast.success("CIBIL report generated successfully");
+                    setFetchingReport(false);
+                    // Clear param
+                    router.replace('/credit-check');
+                    return true;
+                }
+            } catch (error) {
+                console.error(`Attempt ${attempts} failed:`, error);
+                // Continue retry mechanism
+                return false;
+            }
+            return false;
+        };
+
+        // Retry Loop
+        for (let i = 0; i < maxAttempts; i++) {
+            const success = await tryFetch();
+            if (success) return;
+            // Wait 5 seconds before next retry if not last attempt
+            if (i < maxAttempts - 1) {
+                await new Promise(resolve => setTimeout(resolve, 5000));
+            }
+        }
+
+        // Final Failure
+        setFetchingReport(false);
+        setReportError("We are processing your report with the bureau. It may take a few more minutes. Please check back later.");
+    };
+
+    const checkCache = async () => {
+        try {
+            const token = localStorage.getItem('user_token');
+            const headers = { Authorization: `Bearer ${token}` };
+
+            const res = await axios.get(`${API_URL}/credit-report/check-cache`, { withCredentials: true, headers });
+
+            if (res.data.cached) {
+                const fullRes = await axios.get(`${API_URL}/credit-report/my-report`, { withCredentials: true, headers });
+                setReport(fullRes.data);
+            }
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoadingReport(false);
+        }
+    };
+
+    const handleDownloadPdf = async () => {
+        try {
+            const token = localStorage.getItem('user_token');
+            const headers = { Authorization: `Bearer ${token}` };
+
+            const res = await axios.get(`${API_URL}/credit-report/pdf`, { withCredentials: true, headers });
+            if (res.data.pdfSpacesUrl) {
+                window.open(res.data.pdfSpacesUrl, '_blank');
+            } else {
+                toast.error("PDF not available yet");
+            }
+        } catch (err) {
+            toast.error("Failed to download PDF");
+        }
+    };
 
     const validateBureauForm = () => {
         const newErrors = {};
-
-        // Name validation - only letters and spaces
         if (!FormData.firstName.trim()) {
             newErrors.firstName = 'Please enter your name';
         } else if (!/^[a-zA-Z\s]+$/.test(FormData.firstName.trim())) {
             newErrors.firstName = 'Name should contain only letters';
         }
 
-        // Phone validation - strict Indian number
         if (!FormData.mobileNumber.trim()) {
             newErrors.mobileNumber = 'Please enter mobile number';
         } else if (!isValidIndianNumber(FormData.mobileNumber)) {
             newErrors.mobileNumber = 'Please enter a valid mobile number';
         }
 
-        // Consent validation
         if (!FormData.consent) {
             newErrors.consent = 'You must agree to the terms';
         }
 
         setErrors(newErrors);
-        setErrors(newErrors);
         return newErrors;
     };
 
     const handleInputChange = (field, value) => {
-        // Apply regex filters
         let filteredValue = value;
         if (field === 'firstName') {
             filteredValue = value.replace(/[^a-zA-Z\s]/g, '');
@@ -98,12 +211,9 @@ function CIBILCheckContent() {
         }
 
         setFormData((prev) => ({ ...prev, [field]: filteredValue }));
-        if (errors[field]) {
-            setErrors((prev) => ({ ...prev, [field]: '' }));
-        }
+        if (errors[field]) setErrors((prev) => ({ ...prev, [field]: '' }));
     };
 
-    // --- ON SUBMIT: SECURE CIBIL CHECK ---
     const handleBureauSubmit = async (e) => {
         e.preventDefault();
         const formErrors = validateBureauForm();
@@ -112,10 +222,8 @@ function CIBILCheckContent() {
             return;
         }
 
-        // Check if user is logged in
         const token = localStorage.getItem('user_token');
         if (!token) {
-            // Encode form data and redirect to auth
             const dataToSave = {
                 firstName: FormData.firstName,
                 mobileNumber: FormData.mobileNumber,
@@ -132,75 +240,45 @@ function CIBILCheckContent() {
         setIsSubmitting(true);
 
         try {
-            // SECURITY: Call encrypted endpoint - data is encrypted on server before saving
-            const response = await fetch(`${API_URL}/client/credit-check`, {
+            // Background lead save
+            fetch(`${API_URL}/client/credit-check`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    firstName: FormData.firstName,
-                    mobileNumber: FormData.mobileNumber,
-                    consent: FormData.consent,
-                }),
-            });
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(FormData),
+            }).catch(err => console.error("Lead save failed", err));
 
-            const data = await response.json();
+            // Start Session
+            const headers = { Authorization: `Bearer ${token}` };
+            const sessionPayload = {
+                firstName: FormData.firstName,
+                mobileNumber: FormData.mobileNumber
+            };
 
-            if (response.ok) {
-                setIsProcessing(true);
-                setTimeout(() => {
-                    setIsProcessing(false);
-                    toast.success('Thank you! We will process your credit check soon.');
-                    setFormData({
-                        firstName: '',
-                        mobileNumber: '',
-                        consent: false,
-                    });
-                    setErrors({});
-                }, 2000);
+            const res = await axios.post(`${API_URL}/credit-report/session`, sessionPayload, { withCredentials: true, headers });
+
+            if (res.data.success && res.data.redirect_url) {
+                toast.success("Redirecting to verification...");
+                window.location.href = res.data.redirect_url;
             } else {
-                toast.error(data.error || 'Failed to submit. Please try again.');
+                toast.error("Failed to start session. Please try again.");
+                setIsSubmitting(false);
             }
+
         } catch (error) {
-            console.error('Error submitting form:', error);
-            toast.error('Failed to submit. Please try again.');
-        } finally {
+            console.error('Session Error:', error);
+            const errorMsg = error.response?.data?.message || "Failed to start verification.";
+            toast.error(errorMsg);
             setIsSubmitting(false);
         }
     };
 
+    // UI Variables
     const factors = [
-        {
-            factor: 'Payment History',
-            impact: '35%',
-            description: 'Timely payment of EMIs and credit card bills',
-            icon: FaCheckCircle,
-        },
-        {
-            factor: 'Credit Utilization',
-            impact: '30%',
-            description: 'How much of your available credit you use',
-            icon: FaChartLine,
-        },
-        {
-            factor: 'Credit History Length',
-            impact: '15%',
-            description: 'How long you have been using credit',
-            icon: FaCalendarAlt,
-        },
-        {
-            factor: 'Credit Mix',
-            impact: '10%',
-            description: 'Types of credit accounts you have',
-            icon: FaShieldAlt,
-        },
-        {
-            factor: 'New Credit',
-            impact: '10%',
-            description: 'Recent credit inquiries and new accounts',
-            icon: FaUser,
-        },
+        { factor: 'Payment History', impact: '35%', description: 'Timely payment of EMIs and credit card bills', icon: FaCheckCircle },
+        { factor: 'Credit Utilization', impact: '30%', description: 'How much of your available credit you use', icon: FaChartLine },
+        { factor: 'Credit History Length', impact: '15%', description: 'How long you have been using credit', icon: FaCalendarAlt },
+        { factor: 'Credit Mix', impact: '10%', description: 'Types of credit accounts you have', icon: FaShieldAlt },
+        { factor: 'New Credit', impact: '10%', description: 'Recent credit inquiries and new accounts', icon: FaUser },
     ];
 
     const tips = [
@@ -212,8 +290,151 @@ function CIBILCheckContent() {
         'Dispute any errors in your credit report',
     ];
 
+    // --- RENDER STATES ---
+
+    // 1. Loading / Fetching
+    if (loadingReport || fetchingReport) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-gray-50">
+                <div className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 max-w-md w-full mx-4">
+                    <Loader2 className="h-12 w-12 animate-spin text-[var(--primary-blue)] mx-auto mb-6" />
+                    <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                        {fetchingReport ? "Generating Your Report..." : "Loading..."}
+                    </h2>
+                    <p className="text-gray-500 mb-4">
+                        Please do not close this window.
+                    </p>
+                    {fetchingReport && (
+                        <div className="text-sm text-[var(--primary-blue)] bg-blue-50 py-2 px-4 rounded-full inline-block">
+                            Checking status (Attempt {retryCount}/5)...
+                        </div>
+                    )}
+                </div>
+            </div>
+        );
+    }
+
+    // 2. Report Display
+    if (report) {
+        const { creditScore, totalAccounts, totalBalance, activeAccounts, totalOverdue, expiresAt, fullReport } = report;
+        const accounts = fullReport?.credit_report?.CCRResponse?.CIRReportDataLst?.[0]?.CIRReportData?.RetailAccountDetails || [];
+        const personalInfo = fullReport?.credit_report?.CCRResponse?.CIRReportDataLst?.[0]?.CIRReportData?.IDAndContactInfo?.PersonalInfo || {};
+
+        return (
+            <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto">
+                    {/* Header */}
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                        <div>
+                            <h1 className="text-2xl font-bold text-gray-900">Your Credit Report</h1>
+                            <p className="text-sm text-gray-500 mt-1">
+                                Generated on {new Date().toLocaleDateString()}
+                                {expiresAt && ` • Valid until ${new Date(expiresAt).toLocaleDateString()}`}
+                            </p>
+                        </div>
+                        <Button variant="outline" onClick={handleDownloadPdf} className="w-full md:w-auto">
+                            <FileText className="mr-2 h-4 w-4" /> Download Official PDF
+                        </Button>
+                    </div>
+
+                    <Tabs defaultValue="overview" className="space-y-6">
+                        <TabsList className="bg-white p-1 rounded-xl border border-gray-200 w-full md:w-auto justify-start overflow-x-auto">
+                            <TabsTrigger value="overview" className="rounded-lg data-[state=active]:bg-[var(--primary-blue)] data-[state=active]:text-white">Overview</TabsTrigger>
+                            <TabsTrigger value="accounts" className="rounded-lg data-[state=active]:bg-[var(--primary-blue)] data-[state=active]:text-white">Accounts ({accounts.length})</TabsTrigger>
+                            <TabsTrigger value="personal" className="rounded-lg data-[state=active]:bg-[var(--primary-blue)] data-[state=active]:text-white">Personal Info</TabsTrigger>
+                        </TabsList>
+
+                        {/* Overview Tab */}
+                        <TabsContent value="overview" className="space-y-8">
+                            {/* Score Section */}
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <Card className="col-span-1 md:col-start-2 border-none shadow-none bg-transparent">
+                                    <div className="flex justify-center transform scale-100 md:scale-110 transition-transform duration-500">
+                                        <ScoreGauge score={creditScore || 300} />
+                                    </div>
+                                </Card>
+                            </div>
+
+                            {/* Stats Grid */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                {[
+                                    { label: 'Total Accounts', value: totalAccounts, color: 'text-gray-900' },
+                                    { label: 'Active Accounts', value: activeAccounts, color: 'text-[var(--primary-blue)]' },
+                                    { label: 'Total Balance', value: `₹${parseInt(totalBalance || 0).toLocaleString()}`, color: 'text-gray-900' },
+                                    { label: 'Total Overdue', value: `₹${parseInt(totalOverdue || 0).toLocaleString()}`, color: 'text-red-600' },
+                                ].map((stat, idx) => (
+                                    <Card key={idx} className="hover:shadow-md transition-shadow">
+                                        <CardHeader className="pb-2">
+                                            <CardTitle className="text-sm font-medium text-gray-500 uppercase tracking-wide">{stat.label}</CardTitle>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
+                                        </CardContent>
+                                    </Card>
+                                ))}
+                            </div>
+                        </TabsContent>
+
+                        {/* Accounts Tab */}
+                        <TabsContent value="accounts" className="space-y-4">
+                            {accounts.length > 0 ? (
+                                accounts.map((acc, idx) => (
+                                    <div key={idx} className="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
+                                        <AccountCard account={acc} />
+                                        <div className="mt-6 pt-6 border-t border-gray-100">
+                                            <h4 className="text-xs font-semibold text-gray-500 mb-4 uppercase tracking-wider">Payment History (Last 48 Months)</h4>
+                                            <PaymentHistory history={Array.isArray(acc.History48Months) ? acc.History48Months : []} />
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
+                                    <p className="text-gray-500">No active accounts found in your report.</p>
+                                </div>
+                            )}
+                        </TabsContent>
+
+                        {/* Personal Info Tab */}
+                        <TabsContent value="personal">
+                            <Card className="border-none shadow-md">
+                                <CardHeader>
+                                    <CardTitle>Personal Information</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {[
+                                            { label: 'Full Name', value: personalInfo?.Name?.FullName || report.name },
+                                            { label: 'PAN Number', value: report.pan },
+                                            { label: 'Mobile Number', value: report.mobile },
+                                            { label: 'Date of Birth', value: personalInfo?.DateOfBirth },
+                                            { label: 'Gender', value: personalInfo?.Gender },
+                                        ].map((item, idx) => (
+                                            <div key={idx} className="p-4 bg-gray-50 rounded-lg">
+                                                <p className="text-sm font-medium text-gray-500 mb-1">{item.label}</p>
+                                                <p className="text-gray-900 font-semibold">{item.value || 'N/A'}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </TabsContent>
+                    </Tabs>
+                </div>
+            </div>
+        );
+    }
+
+    // 3. Form Display (Default)
     return (
         <>
+            {reportError && (
+                <Alert variant="destructive" className="max-w-7xl mx-auto mt-4 mb-4">
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertTitle>Start Failed</AlertTitle>
+                    <AlertDescription>{reportError}</AlertDescription>
+                </Alert>
+            )}
+
             {/* Hero Section */}
             <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-12 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -242,13 +463,13 @@ function CIBILCheckContent() {
             {/* Form Section */}
             <section className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid gap-6 md:gap-8 md:grid-cols-2 ">
+                    <div className="grid gap-6 md:gap-8 md:grid-cols-2">
                         {/* Form */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="bg-white p-6  rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                            className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
                         >
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-8">
                                 <div className="w-12 h-12 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
@@ -265,7 +486,6 @@ function CIBILCheckContent() {
                             </div>
 
                             <form onSubmit={handleBureauSubmit} className="space-y-6">
-                                {/* Simplified Form - Only Essential Fields */}
                                 <div className="space-y-4">
                                     <div className="space-y-2">
                                         <Label htmlFor="firstName" className="text-sm font-medium">
@@ -301,7 +521,6 @@ function CIBILCheckContent() {
                                         )}
                                     </div>
 
-                                    {/* Consent Checkbox */}
                                     <div className="flex items-start space-x-3 pt-4">
                                         <Checkbox
                                             id="consent"
@@ -311,10 +530,7 @@ function CIBILCheckContent() {
                                             className={`mt-1 rounded border-gray-400 data-[state=checked]:bg-[var(--primary-blue)] data-[state=checked]:border-[var(--primary-blue)] disabled:opacity-50 disabled:cursor-not-allowed ${errors.consent ? 'border-red-500' : ''}`}
                                         />
                                         <div className="space-y-1">
-                                            <Label
-                                                htmlFor="consent"
-                                                className="text-sm leading-relaxed cursor-pointer text-gray-600"
-                                            >
+                                            <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer text-gray-600">
                                                 I agree, all information mentioned above is true and I authorize Borrowww to
                                                 fetch my data.
                                             </Label>
@@ -322,7 +538,6 @@ function CIBILCheckContent() {
                                         </div>
                                     </div>
 
-                                    {/* Submit Button */}
                                     <div className="pt-6">
                                         <Button
                                             type="submit"
@@ -330,10 +545,10 @@ function CIBILCheckContent() {
                                             className="w-full md:w-auto px-12 py-6 bg-[var(--primary-blue)] hover:bg-[var(--primary-blue-dark)] text-white font-medium rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl text-lg"
                                         >
                                             {isSubmitting ? (
-                                                <>
-                                                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                                                    Submitting...
-                                                </>
+                                                <div className="flex items-center">
+                                                    <Loader2 className="animate-spin h-5 w-5 mr-3" />
+                                                    Checking...
+                                                </div>
                                             ) : (
                                                 'Check My Score'
                                             )}
@@ -343,14 +558,13 @@ function CIBILCheckContent() {
                             </form>
                         </motion.div>
 
+                        {/* Features */}
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="space-y-6"
                         >
-                            {/* Features */}
-                            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 h-full">
                                 <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6">
                                     Why Check Credit Score?
                                 </h3>
@@ -362,7 +576,7 @@ function CIBILCheckContent() {
                                         <div>
                                             <h4 className="font-semibold text-gray-900 text-lg">Free & Instant</h4>
                                             <p className="text-gray-600 text-sm mt-1">
-                                                Get your score instantly without any charges or hidden fees.
+                                                Get your score instantly without any charges.
                                             </p>
                                         </div>
                                     </div>
@@ -384,7 +598,7 @@ function CIBILCheckContent() {
                                         <div>
                                             <h4 className="font-semibold text-gray-900 text-lg">Improve Score</h4>
                                             <p className="text-gray-600 text-sm mt-1">
-                                                Get personalized tips to improve your credit score over time.
+                                                Get personalized tips to improve your credit score.
                                             </p>
                                         </div>
                                     </div>
@@ -407,10 +621,6 @@ function CIBILCheckContent() {
                         <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-6">
                             What Affects Your Credit Score?
                         </h2>
-                        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                            Understanding the factors that influence your credit score helps you make better
-                            financial decisions
-                        </p>
                     </motion.div>
 
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -425,7 +635,7 @@ function CIBILCheckContent() {
                             >
                                 <motion.div
                                     whileHover={{ scale: 1.02 }}
-                                    className="bg-white p-6  rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-[var(--primary-blue)] h-full flex flex-col"
+                                    className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100 h-full flex flex-col"
                                 >
                                     <div className="flex items-center gap-3 mb-3">
                                         <div className="w-12 h-12 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl flex items-center justify-center shadow-lg shrink-0">
@@ -438,100 +648,11 @@ function CIBILCheckContent() {
                                             </span>
                                         </div>
                                     </div>
-                                    <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-                                        {factor.description}
-                                    </p>
+                                    <p className="text-gray-600 text-sm leading-relaxed">{factor.description}</p>
                                 </motion.div>
                             </motion.div>
                         ))}
                     </div>
-                </div>
-            </section>
-
-            {/* Tips Section */}
-            <section className="py-12  bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-10"
-                    >
-                        <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-6">
-                            Tips to Improve Your Credit Score
-                        </h2>
-                        <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-                            Follow these simple steps to boost your credit score and improve your loan eligibility
-                        </p>
-                    </motion.div>
-
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                        {tips.map((tip, index) => (
-                            <motion.div
-                                key={tip}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group h-full"
-                            >
-                                <motion.div
-                                    whileHover={{ scale: 1.02 }}
-                                    className="bg-gradient-to-br from-[var(--primary-blue)]/5 to-white p-6  rounded-3xl border border-[var(--primary-blue)]/10 hover:shadow-lg transition-all duration-300 h-full flex items-center justify-start gap-4"
-                                >
-                                    <div className="w-10 h-10 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-full flex items-center justify-center text-white text-sm font-medium shadow-lg shrink-0">
-                                        {index + 1}
-                                    </div>
-                                    <p className="text-gray-700 leading-relaxed font-medium text-sm md:text-base">
-                                        {tip}
-                                    </p>
-                                </motion.div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="py-10 bg-gradient-to-br from-gray-50 to-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 md:p-12 text-white text-center shadow-2xl relative overflow-hidden"
-                    >
-                        <div className="absolute top-0 left-0 w-full h-full bg-[url('/noise.png')] opacity-10 mix-blend-overlay"></div>
-                        <div className="relative z-10">
-                            <h3 className="text-2xl md:text-3xl font-medium mb-4">
-                                Ready to Improve Your Credit Score?
-                            </h3>
-                            <p className="text-white/90 mb-8 max-w-2xl mx-auto text-lg">
-                                Get personalized advice and loan offers based on your credit score. Our experts will
-                                help you find the best deals.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <motion.button
-                                    type="button"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => router.push('/contact')}
-                                    className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
-                                >
-                                    Get Free Consultation
-                                </motion.button>
-                                <motion.button
-                                    type="button"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => router.push('/home-loan')}
-                                    className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
-                                >
-                                    View Loan Offers
-                                </motion.button>
-                            </div>
-                        </div>
-                    </motion.div>
                 </div>
             </section>
         </>

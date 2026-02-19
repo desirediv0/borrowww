@@ -42,7 +42,8 @@ model User {
   identityType   IdentityType?
   identityNumber String?
 
-  isActive   Boolean   @default(true)
+  isActive Boolean @default(true)
+
   isVerified Boolean   @default(false)
   lastLogin  DateTime?
 
@@ -57,10 +58,11 @@ model User {
   updatedAt DateTime @updatedAt
 
   // Relations
-  otpSessions  OtpSession[]
-  cibilData    CibilData[]
-  loans        Loan[]
-  userSessions UserSession[]
+  otpSessions   OtpSession[]
+  cibilData     CibilData[]
+  loans         Loan[]
+  userSessions  UserSession[]
+  creditReports CreditReport[]
 
   // Optimization: always point to latest valid report
   latestCibilId String?    @unique
@@ -391,4 +393,53 @@ model ReferralInquiry {
   @@index([createdAt])
   @@index([isDeleted])
   @@map("referral_inquiries")
+}
+
+// ================== Credit Report (New CIBIL System) ==================
+model CreditReport {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Encrypted fields (AWS KMS) — stored as base64 text
+  panEncrypted        String? @db.Text
+  mobileEncrypted     String? @db.Text
+  nameEncrypted       String? @db.Text
+  fullReportEncrypted String? @db.Text
+
+  // Plain text summary fields (for quick queries & display)
+  creditScore         Int?
+  totalAccounts       Int?    @default(0)
+  activeAccounts      Int?    @default(0)
+  closedAccounts      Int?    @default(0)
+  totalBalance        Float?  @default(0)
+  totalOverdue        Float?  @default(0)
+  totalSanctionAmount Float?  @default(0)
+  totalMonthlyPayment Float?  @default(0) // Added
+  noOfWriteOffs       Int?    @default(0)
+  oldestAccountDate   String?
+  newestAccountDate   String?
+  enquiryCount        Int?    @default(0)
+  enquiryPast30Days   Int?    @default(0) // Added
+  enquiryPast12Months Int?    @default(0) // Added
+
+  // DeepVue reference
+  transactionId String? @unique
+
+  // PDF storage
+  pdfOriginalUrl String? @db.Text
+  pdfSpacesPath  String? // Renamed from pdfDoPath
+  pdfSpacesUrl   String? @db.Text // Renamed from pdfDoUrl
+
+  // 28-day cache control
+  fetchedAt DateTime @default(now())
+  expiresAt DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId, fetchedAt(sort: Desc)])
+  @@index([expiresAt])
+  @@index([userId, expiresAt]) // Added
+  @@map("credit_reports")
 }

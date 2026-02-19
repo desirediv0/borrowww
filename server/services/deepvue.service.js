@@ -1,66 +1,84 @@
 import axios from 'axios';
 import { ApiError } from '../utils/ApiError.js';
+import { getDeepvueCallbackUrl, DEEPVUE_CONFIG } from '../config/deepvue.js';
 
 class DeepVueService {
     constructor() {
-        this.baseURL = process.env.DEEPVUE_BASE_URL || 'https://production.deepvue.tech';
-        this.clientId = process.env.DEEPVUE_CLIENT_ID;
-        this.clientSecret = process.env.DEEPVUE_CLIENT_SECRET;
-        this.apiKey = process.env.DEEPVUE_API_KEY;
         this.accessToken = null;
         this.tokenExpiry = null;
     }
 
-    // Get access token for DeepVue API
-    async getAccessToken() {
-        try {
-            // Check if we have a valid token
-            if (this.accessToken && this.tokenExpiry && new Date() < this.tokenExpiry) {
-                return this.accessToken;
-            }
+    get baseURL() {
+        return DEEPVUE_CONFIG.BASE_URL;
+    }
 
+    get clientId() {
+        return DEEPVUE_CONFIG.CLIENT_ID;
+    }
+
+    get clientSecret() {
+        return DEEPVUE_CONFIG.CLIENT_SECRET;
+    }
+
+    get apiKey() {
+        return DEEPVUE_CONFIG.API_KEY;
+    }
+
+    async getAccessToken() {
+        if (this.accessToken && this.tokenExpiry && new Date() < this.tokenExpiry) {
+            return this.accessToken;
+        }
+
+        console.log('[DeepVue] Auth Request Start');
+
+        try {
             const params = new URLSearchParams();
             params.append('client_id', this.clientId);
             params.append('client_secret', this.clientSecret);
 
-            const response = await axios.post(`${this.baseURL}/v1/authorize`, params, {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-            });
+            const response = await axios.post(
+                `${this.baseURL}/v1/authorize`,
+                params,
+                {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'x-api-key': this.apiKey,
+                    },
+                }
+            );
 
-            if (response.data.access_token) {
-                this.accessToken = response.data.access_token;
-                // Set expiry to 23 hours from now (tokens expire in 24 hours)
-                this.tokenExpiry = new Date(Date.now() + 23 * 60 * 60 * 1000);
-                return this.accessToken;
-            } else {
-                throw new ApiError(500, 'Failed to get access token from DeepVue');
-            }
+            console.log('[DeepVue] Auth Success');
+
+            this.accessToken = response.data.access_token;
+            // Default 24h, use 23h buffer
+            this.tokenExpiry = new Date(Date.now() + 23 * 60 * 60 * 1000);
+            return this.accessToken;
+
         } catch (error) {
-            console.error('DeepVue token error:', error.response?.data || error.message);
-            throw new ApiError(500, 'Failed to authenticate with DeepVue API');
+            console.error('[DeepVue] Auth Failed:', error.response?.data || error.message);
+            throw new Error('DeepVue Authentication Failed');
         }
     }
 
-    // Create CIBIL SDK session - Simplified
     async createCibilSession(userData) {
+        console.log('[DeepVue] Session Request Start');
+
         try {
-            if (!this.clientId || !this.clientSecret || !this.apiKey) {
-                throw new ApiError(500, 'DeepVue credentials not configured');
+            // Validate required fields
+            if (!userData.firstName || !userData.mobileNumber) {
+                throw new ApiError(400, "Full Name and Mobile Number are required for DeepVue Session");
             }
 
             const token = await this.getAccessToken();
+            const callbackUrl = getDeepvueCallbackUrl();
+            console.log('[DeepVue] Using Callback URL:', callbackUrl);
 
-            // Use working redirect_uri with proper TLD (as confirmed working)
             const payload = {
-                redirect_uri: "https://borrowww.vercel.app/callback",  // This worked before!
-                full_name: userData.firstName || "",
-                mobile_number: userData.mobileNumber || "",
+                redirect_uri: callbackUrl,
+                full_name: userData.firstName,
+                mobile_number: userData.mobileNumber,
                 enrich: true
             };
-
-            console.log('Creating DeepVue session with payload:', payload);
 
             const response = await axios.post(
                 `${this.baseURL}/v2/financial-services/credit-bureau/equifax/credit-report/sdk/session`,
@@ -74,7 +92,7 @@ class DeepVueService {
                 }
             );
 
-            console.log('DeepVue session response:', response.data);
+            console.log('[DeepVue] Session Success', { txnId: response.data.transaction_id });
 
             if (response.data.code === 201 && response.data.data?.redirect_url) {
                 return {
@@ -83,28 +101,26 @@ class DeepVueService {
                     redirect_url: response.data.data.redirect_url,
                     session_data: response.data.data
                 };
-            } else {
-                throw new ApiError(500, 'DeepVue session creation failed');
             }
-        } catch (error) {
-            console.error('DeepVue CIBIL session error:', error.response?.data || error.message);
 
-            // Return proper error for production use
             return {
                 success: false,
-                error: error.response?.data || error.message,
-                message: 'Failed to create DeepVue session'
+                message: 'Unexpected response code from DeepVue',
+                deepvue_error: response.data
+            };
+
+        } catch (error) {
+            console.error('[DeepVue] Session Failure:', error.response?.data || error.message);
+            return {
+                success: false,
+                message: 'Failed to create DeepVue session',
+                deepvue_error: error.response?.data || error.message
             };
         }
     }
 
-    // Fetch CIBIL report using transaction ID
     async fetchCibilReport(transactionId) {
         try {
-            if (!this.clientId || !this.clientSecret || !this.apiKey) {
-                throw new ApiError(500, 'DeepVue credentials not configured');
-            }
-
             const token = await this.getAccessToken();
 
             const response = await axios.get(
@@ -121,43 +137,42 @@ class DeepVueService {
             if (response.data.code === 200 && response.data.data) {
                 return {
                     success: true,
-                    credit_score: response.data.data.credit_score,
-                    credit_report: response.data.data.credit_report,
-                    pan: response.data.data.pan,
-                    mobile: response.data.data.mobile,
-                    name: response.data.data.name,
-                    pdf_url: response.data.data.pdf_url,
-                    raw_data: response.data.data
+                    data: response.data.data // Wrapper for creditReportService compatibility
                 };
-            } else {
-                throw new ApiError(404, 'CIBIL report not ready or not found');
             }
-        } catch (error) {
-            console.error('DeepVue fetch report error:', error.response?.data || error.message);
 
-            // If report is not ready, return a specific status
-            if (error.response?.status === 404 || error.response?.data?.message?.includes('not found')) {
+            return {
+                success: false,
+                message: 'Report not ready or invalid response',
+                deepvue_error: response.data
+            };
+
+        } catch (error) {
+            console.error('[DeepVue] Fetch Report Error:', error.response?.data || error.message);
+
+            if (error.response?.status === 404) {
                 return {
                     success: false,
                     status: 'PROCESSING',
-                    message: 'Report is being processed, please try again later'
+                    message: 'Report is being processed'
                 };
             }
 
-            // Return proper error for production use
             return {
                 success: false,
-                error: error.response?.data || error.message,
-                message: 'Failed to fetch CIBIL report from DeepVue'
+                message: 'Failed to fetch CIBIL report',
+                deepvue_error: error.response?.data || error.message
             };
         }
-    }    // Download PDF report
+    }
+
     async downloadCibilPdf(pdfUrl) {
         try {
+            const token = await this.getAccessToken();
             const response = await axios.get(pdfUrl, {
                 responseType: 'arraybuffer',
                 headers: {
-                    'Authorization': `Bearer ${await this.getAccessToken()}`,
+                    'Authorization': `Bearer ${token}`,
                 },
             });
 
@@ -167,7 +182,7 @@ class DeepVueService {
                 contentType: 'application/pdf'
             };
         } catch (error) {
-            console.error('PDF download error:', error);
+            console.error('[DeepVue] PDF Download Error:', error.message);
             throw new ApiError(500, 'Failed to download CIBIL PDF');
         }
     }

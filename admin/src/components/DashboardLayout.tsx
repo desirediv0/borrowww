@@ -49,6 +49,12 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       icon: Activity,
       current: location.pathname === '/tracking',
     },
+    {
+      name: 'Credit Reports',
+      href: '/credit-reports',
+      icon: Shield,
+      current: location.pathname === '/credit-reports',
+    },
   ];
 
   const inquiriesNavigation = [

@@ -205,6 +205,12 @@ export const sendOtp = asyncHandler(async (req, res) => {
         data: { phoneNumber, otp, expiresAt },
     });
 
+    // Development mode: Log OTP to console instead of sending SMS
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`[DEV] OTP for ${phoneNumber}: ${otp}`);
+        return res.json(new ApiResponsive(200, null, 'OTP sent successfully (Dev Mode)'));
+    }
+
     const MSG91_AUTH_KEY = process.env.MSG91_AUTH_KEY;
     const MSG91_TEMPLATE_ID = process.env.MSG91_TEMPLATE_ID;
 
@@ -373,6 +379,12 @@ export const retryOtp = asyncHandler(async (req, res) => {
     // Save new OTP to database
     await prisma.otpSession.create({ data: { phoneNumber, otp, expiresAt } });
 
+    // Development mode: Log OTP to console instead of sending SMS
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`[DEV] OTP for ${phoneNumber}: ${otp}`);
+        return res.json(new ApiResponsive(200, null, 'OTP resent successfully (Dev Mode)'));
+    }
+
     const MSG91_AUTH_KEY = process.env.MSG91_AUTH_KEY;
     const MSG91_TEMPLATE_ID = process.env.MSG91_TEMPLATE_ID;
 
@@ -444,6 +456,12 @@ export const changePhone = asyncHandler(async (req, res) => {
     await prisma.otpSession.create({
         data: { phoneNumber: newPhoneNumber, otp, expiresAt },
     });
+
+    // Development mode: Log OTP to console instead of sending SMS
+    if (process.env.NODE_ENV !== 'production') {
+        console.log(`[DEV] OTP for ${newPhoneNumber}: ${otp}`);
+        return res.json(new ApiResponsive(200, null, 'OTP sent to new phone number (Dev Mode)'));
+    }
 
     // Send OTP via MSG91 Flow API
     const MSG91_AUTH_KEY = process.env.MSG91_AUTH_KEY;

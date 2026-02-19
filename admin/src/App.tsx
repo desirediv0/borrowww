@@ -12,6 +12,7 @@ import HomeLoanInquiries from './pages/HomeLoanInquiries';
 import Tracking from './pages/Tracking';
 import Referrals from './pages/Referrals';
 import Users from './pages/Users';
+import CreditReports from './pages/CreditReports';
 
 
 const App = () => {
@@ -98,6 +99,16 @@ const App = () => {
                 <ProtectedRoute>
                   <DashboardLayout>
                     <Users />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/credit-reports"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout>
+                    <CreditReports />
                   </DashboardLayout>
                 </ProtectedRoute>
               }

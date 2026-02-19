@@ -1,102 +1,128 @@
-import crypto from 'crypto';
+import { KMSClient, EncryptCommand, DecryptCommand } from "@aws-sdk/client-kms";
 
-// Use a consistent key for dev/prod (in prod, this should come from env)
-const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY || 'borrowww-secure-key-32-bytes-long!!'; // Can be any string
-const IV_LENGTH = 16; // For AES, this is always 16
+const kmsClient = new KMSClient({
+    region: process.env.AWS_REGION,
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
+});
 
-// Derive a 32-byte key from the secret string to ensure valid length for aes-256
-const KEY_BUFFER = crypto.createHash('sha256').update(String(ENCRYPTION_KEY)).digest();
+const KMS_KEY_ID = process.env.AWS_KMS_KEY_ID;
 
-// Fields to encrypt for User
-const USER_ENCRYPT_FIELDS = [
-    'email',
-    'address',
-    'pincode',
-    'identityNumber', // PAN/Aadhaar stored here
-    // 'phoneNumber' - Excluded to avoid breaking lookups
-];
+export async function encrypt(text) {
+    if (!text) return null;
 
-// Fields to encrypt for CIBIL Data
-const CIBIL_ENCRYPT_FIELDS = [
-    'panNumber',
-    'identityNumber',
-    'address',
-    'reportData', // Full JSON report
-    // 'mobileNumber' - Excluded to avoid breaking lookups
-];
-
-const encrypt = (text) => {
-    if (!text) return text;
     try {
-        const iv = crypto.randomBytes(IV_LENGTH);
-        const cipher = crypto.createCipheriv('aes-256-cbc', KEY_BUFFER, iv);
-        let encrypted = cipher.update(text);
-        encrypted = Buffer.concat([encrypted, cipher.final()]);
-        return iv.toString('hex') + ':' + encrypted.toString('hex');
+        const command = new EncryptCommand({
+            KeyId: KMS_KEY_ID,
+            Plaintext: Buffer.from(String(text)),
+        });
+
+        const response = await kmsClient.send(command);
+        return Buffer.from(response.CiphertextBlob).toString('base64');
     } catch (error) {
         console.error("Encryption error:", error);
-        return text; // Return original if fail
+        throw new Error("Failed to encrypt data");
     }
-};
+}
 
-const decrypt = (text) => {
-    if (!text) return text;
+export async function decrypt(encryptedText) {
+    if (!encryptedText) return null;
+
     try {
-        const textParts = text.split(':');
-        if (textParts.length < 2) return text; // Not encrypted
-        const iv = Buffer.from(textParts.shift(), 'hex');
-        const encryptedText = Buffer.from(textParts.join(':'), 'hex');
-        const decipher = crypto.createDecipheriv('aes-256-cbc', KEY_BUFFER, iv);
-        let decrypted = decipher.update(encryptedText);
-        decrypted = Buffer.concat([decrypted, decipher.final()]);
-        return decrypted.toString();
+        const command = new DecryptCommand({
+            CiphertextBlob: Buffer.from(encryptedText, 'base64'),
+        });
+
+        const response = await kmsClient.send(command);
+        return Buffer.from(response.Plaintext).toString('utf-8');
     } catch (error) {
-        // console.error("Decryption error:", error);
-        return text; // Return original if fail (might be already plain or invalid)
+        console.error("Decryption error:", error);
+        throw new Error("Failed to decrypt data");
     }
-};
+}
 
-const maskData = (text) => {
-    if (!text || text.length < 4) return text;
-    return '******' + text.slice(-4);
-};
+// Helper to encrypt sensitive fields in a user object
+export const encryptUserData = async (data) => {
+    // phoneNumber is NOT encrypted (used for lookups)
+    const sensitiveFields = ['firstName', 'middleName', 'lastName', 'address', 'identityNumber'];
+    const encryptedData = { ...data };
 
-// Generic object processor
-const processObject = (data, fields, processor) => {
-    if (!data || typeof data !== 'object') return data;
-    const newData = { ...data };
-    for (const field of fields) {
-        if (newData[field]) {
-            newData[field] = processor(newData[field]);
+    for (const field of sensitiveFields) {
+        if (encryptedData[field]) {
+            encryptedData[field] = await encrypt(encryptedData[field]);
         }
     }
-    return newData;
+    return encryptedData;
 };
 
-export const encryptCibilData = (data) => {
-    return processObject(data, CIBIL_ENCRYPT_FIELDS, (val) => {
-        if (typeof val !== 'string') val = String(val);
-        return encrypt(val);
-    });
+// Helper to decrypt user object (with optional masking)
+export const decryptUserData = async (user, mask = false) => {
+    if (!user) return null;
+    const sensitiveFields = ['firstName', 'middleName', 'lastName', 'address', 'identityNumber'];
+    const decryptedUser = { ...user };
+
+    for (const field of sensitiveFields) {
+        if (decryptedUser[field]) {
+            try {
+                const val = await decrypt(decryptedUser[field]);
+                if (mask && field === 'identityNumber') {
+                    // Mask ID: XXXXX1234
+                    decryptedUser[field] = 'XXXXX' + val.slice(-4);
+                } else {
+                    decryptedUser[field] = val;
+                }
+            } catch (e) {
+                // If decryption fails (maybe not encrypted), keep original
+            }
+        }
+    }
+
+    // Handle Phone Number (Plain text, but might need masking)
+    if (decryptedUser.phoneNumber && mask) {
+        const phone = decryptedUser.phoneNumber;
+        decryptedUser.phoneNumber = 'XXXXXX' + phone.slice(-4);
+    }
+
+    return decryptedUser;
 };
 
-export const decryptCibilData = (data, mask = false) => {
-    return processObject(data, CIBIL_ENCRYPT_FIELDS, (val) => {
-        const decrypted = decrypt(val);
-        return mask ? maskData(decrypted) : decrypted;
-    });
+// Helper to encrypt CIBIL data
+export const encryptCibilData = async (data) => {
+    const sensitiveFields = ['firstName', 'middleName', 'lastName', 'mobileNumber', 'panNumber', 'identityNumber', 'address', 'reportData'];
+    const encryptedData = { ...data };
+
+    for (const field of sensitiveFields) {
+        if (encryptedData[field]) {
+            encryptedData[field] = await encrypt(encryptedData[field]);
+        }
+    }
+    return encryptedData;
 };
 
-export const encryptUserData = (data) => {
-    return processObject(data, USER_ENCRYPT_FIELDS, (val) => {
-        if (typeof val !== 'string') val = String(val);
-        return encrypt(val);
-    });
-};
+// Helper to decrypt CIBIL data
+export const decryptCibilData = async (data) => {
+    if (!data) return null;
+    const sensitiveFields = ['firstName', 'middleName', 'lastName', 'mobileNumber', 'panNumber', 'identityNumber', 'address', 'reportData'];
+    const decryptedData = { ...data };
 
-export const decryptUserData = (data, mask = false) => {
-    return processObject(data, USER_ENCRYPT_FIELDS, (val) => {
-        const decrypted = decrypt(val);
-        return mask ? maskData(decrypted) : decrypted;
-    });
+    for (const field of sensitiveFields) {
+        if (decryptedData[field]) {
+            try {
+                decryptedData[field] = await decrypt(decryptedData[field]);
+                // Parse reportData if it's a JSON string
+                if (field === 'reportData') {
+                    try {
+                        decryptedData[field] = JSON.parse(decryptedData[field]);
+                    } catch (e) {
+                        // ignore if not json
+                    }
+                }
+            } catch (e) {
+                // ignore decryption failure
+            }
+        }
+    }
+    return decryptedData;
 };

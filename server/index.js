@@ -1,12 +1,13 @@
-import app from "./app.js";
 import dotenv from "dotenv";
-import { prisma } from "./config/db.js";
-
 dotenv.config({ path: ".env" });
+
+import app from "./app.js";
+import { prisma } from "./config/db.js";
 
 const PORT = process.env.PORT || 4000;
 
 // Note: This implementation was requested by client despite being non-compliant with DPDP Act.
+
 
 
 // Handle unhandled promise rejections
