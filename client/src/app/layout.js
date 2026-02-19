@@ -5,6 +5,7 @@ import LenisProvider from '@/components/LenisProvider';
 import CookieConsent from '@/components/CookieConsent';
 import PageTracker from '@/components/PageTracker';
 import { Toaster } from '@/components/ui/sonner';
+import Providers from '@/components/Providers';
 
 import './globals.css';
 
@@ -18,18 +19,21 @@ export const metadata = {
 
 // Note: This implementation was requested by client despite being non-compliant with DPDP Act.
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`overflow-x-hidden`}>
-        <LenisProvider />
-        <Header />
-        <PageTracker />
-        {children}
-        <Footer />
-        <FloatingContactButton />
-        <CookieConsent />
-        <Toaster position="top-center" />
+        <Providers>
+          <LenisProvider />
+          <Header />
+          <PageTracker />
+          {children}
+          <Footer />
+          <FloatingContactButton />
+          <CookieConsent />
+          <Toaster position="top-center" />
+        </Providers>
       </body>
     </html>
   );

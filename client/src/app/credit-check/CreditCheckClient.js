@@ -19,7 +19,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { isValidIndianNumber } from '@/utils/validation';
 import { toast } from 'sonner';
-import axios from 'axios';
+import { api } from '@/lib/api';
+import { useAuth } from '@/context/AuthContext';
 import { Loader2, AlertCircle, FileText } from 'lucide-react';
 import ScoreGauge from '@/components/ScoreGauge';
 import AccountCard from '@/components/AccountCard';
@@ -27,12 +28,14 @@ import PaymentHistory from '@/components/PaymentHistory';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import Cookies from 'js-cookie';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
 function CIBILCheckContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
+    const { user, loading: authLoading, login } = useAuth();
 
     // Form State
     const [FormData, setFormData] = useState({
@@ -54,8 +57,9 @@ function CIBILCheckContent() {
     const fetchedRef = useRef(false);
 
     // Initial Load & Auth Check
+    // Initial Load & Auth Check
     useEffect(() => {
-        const token = localStorage.getItem('user_token');
+        if (authLoading) return;
 
         // 1. Handle Transaction Callback (Priority)
         if (transactionId) {
@@ -65,7 +69,7 @@ function CIBILCheckContent() {
             }
         }
         // 2. Check Cache if logged in (Fallback)
-        else if (token) {
+        else if (user) {
             checkCache();
         }
         // 3. Default (Show Form)
@@ -89,7 +93,7 @@ function CIBILCheckContent() {
                 console.error('Failed to decode form data:', e);
             }
         }
-    }, [searchParams, transactionId]);
+    }, [searchParams, transactionId, authLoading, user]);
 
     const fetchReportWithRetry = async (txnId) => {
         setFetchingReport(true);
@@ -98,22 +102,11 @@ function CIBILCheckContent() {
         const maxAttempts = 5;
 
         const tryFetch = async () => {
-            const token = localStorage.getItem('user_token');
-            // If no token, we might need to handle it? 
-            // Assume user is logged in if they have txnId or session cookie persists.
-            // But for robustness, check token. 
-            // If redirect from DeepVue happens, token should be in localStorage.
-            const headers = token ? { Authorization: `Bearer ${token}` } : {};
-
             try {
                 attempts++;
                 setRetryCount(attempts);
 
-                const res = await axios.post(
-                    `${API_URL}/credit-report/fetch`,
-                    { transactionId: txnId },
-                    { withCredentials: true, headers }
-                );
+                const res = await api.post('/credit-report/fetch', { transactionId: txnId });
 
                 if (res.data) {
                     setReport(res.data);
@@ -128,9 +121,6 @@ function CIBILCheckContent() {
 
                 // Handle 401 (Invalid/Stale Token)
                 if (error.response?.status === 401) {
-                    localStorage.removeItem('user_token');
-                    localStorage.removeItem('user'); // Optional: clear user data too
-                    window.dispatchEvent(new Event('auth-change'));
                     toast.error("Session expired. Please login again.");
                     router.push('/auth?logout=true');
                     return true; // Stop retrying
@@ -159,25 +149,18 @@ function CIBILCheckContent() {
 
     const checkCache = async () => {
         try {
-            const token = localStorage.getItem('user_token');
-            const headers = { Authorization: `Bearer ${token}` };
-
-            const res = await axios.get(`${API_URL}/credit-report/check-cache`, { withCredentials: true, headers });
+            const res = await api.get('/credit-report/check-cache');
 
             if (res.data.cached) {
-                const fullRes = await axios.get(`${API_URL}/credit-report/my-report`, { withCredentials: true, headers });
+                const fullRes = await api.get('/credit-report/my-report');
                 setReport(fullRes.data);
             }
         } catch (err) {
             console.error(err);
             // Handle 401 (Invalid/Stale Token)
             if (err.response?.status === 401) {
-                localStorage.removeItem('user_token');
-                localStorage.removeItem('user');
-                // No toast here to avoid spamming on load, just silent logout or let user re-login when they try action
-                // Actually, better to redirect if they thought they were logged in?
-                // For checkCache, maybe just clear token so form shows up.
-                return;
+                // AuthContext will likely handle this via socket/event eventually, or just simple redirect
+                // For now, if check cache fails 401, we just don't load report.
             }
         } finally {
             setLoadingReport(false);
@@ -186,10 +169,7 @@ function CIBILCheckContent() {
 
     const handleDownloadPdf = async () => {
         try {
-            const token = localStorage.getItem('user_token');
-            const headers = { Authorization: `Bearer ${token}` };
-
-            const res = await axios.get(`${API_URL}/credit-report/pdf`, { withCredentials: true, headers });
+            const res = await api.get('/credit-report/pdf');
             if (res.data.pdfSpacesUrl) {
                 window.open(res.data.pdfSpacesUrl, '_blank');
             } else {
@@ -198,9 +178,6 @@ function CIBILCheckContent() {
         } catch (err) {
             console.error("PDF Download Error:", err);
             if (err.response?.status === 401) {
-                localStorage.removeItem('user_token');
-                localStorage.removeItem('user');
-                window.dispatchEvent(new Event('auth-change'));
                 toast.error("Session expired. Please login again.");
                 router.push('/auth?logout=true');
                 return;
@@ -251,8 +228,7 @@ function CIBILCheckContent() {
             return;
         }
 
-        const token = localStorage.getItem('user_token');
-        if (!token) {
+        if (!user) {
             const dataToSave = {
                 firstName: FormData.firstName,
                 mobileNumber: FormData.mobileNumber,
@@ -270,20 +246,16 @@ function CIBILCheckContent() {
 
         try {
             // Background lead save
-            fetch(`${API_URL}/client/credit-check`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(FormData),
-            }).catch(err => console.error("Lead save failed", err));
+            api.post('/client/credit-check', FormData)
+                .catch(err => console.error("Lead save failed", err));
 
             // Start Session
-            const headers = { Authorization: `Bearer ${token}` };
             const sessionPayload = {
                 firstName: FormData.firstName,
                 mobileNumber: FormData.mobileNumber
             };
 
-            const res = await axios.post(`${API_URL}/credit-report/session`, sessionPayload, { withCredentials: true, headers });
+            const res = await api.post('/credit-report/session', sessionPayload);
 
             if (res.data.success && res.data.redirect_url) {
                 toast.success("Redirecting to verification...");
@@ -298,9 +270,6 @@ function CIBILCheckContent() {
 
             // Handle 401 (Invalid/Stale Token)
             if (error.response?.status === 401) {
-                localStorage.removeItem('user_token');
-                localStorage.removeItem('user');
-                window.dispatchEvent(new Event('auth-change'));
                 toast.error("Session expired. Please login again.");
                 router.push('/auth?logout=true');
                 return;
@@ -333,13 +302,13 @@ function CIBILCheckContent() {
     // --- RENDER STATES ---
 
     // 1. Loading / Fetching
-    if (loadingReport || fetchingReport) {
+    if (authLoading || loadingReport || fetchingReport) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gray-50">
                 <div className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 max-w-md w-full mx-4">
                     <Loader2 className="h-12 w-12 animate-spin text-[var(--primary-blue)] mx-auto mb-6" />
                     <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                        {fetchingReport ? "Generating Your Report..." : "Loading..."}
+                        {fetchingReport ? "Generating Your Report..." : authLoading ? "Checking Session..." : "Loading..."}
                     </h2>
                     <p className="text-gray-500 mb-4">
                         Please do not close this window.

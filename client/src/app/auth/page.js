@@ -5,13 +5,15 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Phone, Lock, ArrowRight, CheckCircle, Loader2 } from 'lucide-react';
 import { isValidIndianNumber } from '@/utils/validation';
+import { useAuth } from '@/context/AuthContext';
+import { api } from '@/lib/api';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 const RESEND_TIMER_SECONDS = 30;
 
 function AuthPageContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
+    const { login, logout, user } = useAuth();
 
     const [step, setStep] = useState('phone'); // 'phone' | 'otp' | 'success'
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -22,18 +24,14 @@ function AuthPageContent() {
     const [resendTimer, setResendTimer] = useState(0);
 
     // Get redirect params from URL
-    const redirectTo = searchParams.get('redirect') || '/profile';
+    const redirectTo = searchParams.get('redirect') || '/credit-check';
     const redirectData = searchParams.get('data') || '';
 
     // Check for logout or existing session
     useEffect(() => {
         // If coming from a 401/logout flow, force clear everything
         if (searchParams.get('logout')) {
-            localStorage.removeItem('user_token');
-            localStorage.removeItem('user');
-            localStorage.removeItem('borrowww_session_id');
-            window.dispatchEvent(new Event('auth-change'));
-
+            logout();
             // Remove 'logout' param from URL without refreshing to avoid loops if they refresh
             const newParams = new URLSearchParams(searchParams);
             newParams.delete('logout');
@@ -41,15 +39,14 @@ function AuthPageContent() {
             return;
         }
 
-        const token = localStorage.getItem('user_token');
-        if (token) {
+        if (user) {
             // Redirect with data if present
             const finalUrl = redirectData
                 ? `${redirectTo}?data=${redirectData}`
                 : redirectTo;
             router.push(finalUrl);
         }
-    }, [redirectTo, redirectData, router, searchParams]);
+    }, [user, redirectTo, redirectData, router, searchParams, logout]);
 
     // Resend timer countdown
     useEffect(() => {
@@ -72,28 +69,17 @@ function AuthPageContent() {
 
         setLoading(true);
         try {
-            const response = await fetch(`${API_URL}/users/send-otp`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ phoneNumber }),
-            });
+            const response = await api.post('/users/send-otp', { phoneNumber });
+            const data = response.data;
 
-            const data = await response.json();
-
-            if (response.ok) {
-                // In dev mode, OTP might be returned
-                if (data.data?.otp) {
-                    setDevOtp(data.data.otp);
-                }
-                setStep('otp');
-                setResendTimer(RESEND_TIMER_SECONDS); // Start resend timer
-            } else {
-                setError(data.message || 'Failed to send OTP');
+            if (data.data?.otp) {
+                setDevOtp(data.data.otp);
             }
+            setStep('otp');
+            setResendTimer(RESEND_TIMER_SECONDS); // Start resend timer
         } catch (err) {
-            setError('Failed to send OTP. Please try again.');
+            const msg = err.response?.data?.message || err.message;
+            setError(msg || 'Failed to send OTP. Please try again.');
         } finally {
             setLoading(false);
         }
@@ -110,25 +96,15 @@ function AuthPageContent() {
 
         setLoading(true);
         try {
-            // Get sessionId from localStorage for session tracking
+            // Get sessionId from localStorage for session tracking (if any)
             const sessionId = localStorage.getItem('borrowww_session_id');
 
-            const response = await fetch(`${API_URL}/users/verify-otp`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ phoneNumber, otp, sessionId }),
-            });
+            const response = await api.post('/users/verify-otp', { phoneNumber, otp, sessionId });
+            const data = response.data;
 
-            const data = await response.json();
-
-            if (response.ok && data.data?.token) {
-                // Store token
-                localStorage.setItem('user_token', data.data.token);
-                localStorage.setItem('user', JSON.stringify(data.data.user));
-                // Notify other components (Header) of auth change
-                window.dispatchEvent(new Event('auth-change'));
+            if (data.data?.token) {
+                // Update Context (Cookie is already set by server)
+                await login(data.data.user);
 
                 setStep('success');
 
@@ -138,12 +114,14 @@ function AuthPageContent() {
                         ? `${redirectTo}?data=${redirectData}`
                         : redirectTo;
                     router.push(finalUrl);
-                }, 2000);
+                }, 1500);
             } else {
                 setError(data.message || 'Invalid OTP');
             }
         } catch (err) {
-            setError('Failed to verify OTP. Please try again.');
+            console.error(err);
+            const msg = err.response?.data?.message || 'Failed to verify OTP';
+            setError(msg);
         } finally {
             setLoading(false);
         }
@@ -155,26 +133,14 @@ function AuthPageContent() {
         setError('');
         setLoading(true);
         try {
-            const response = await fetch(`${API_URL}/users/retry-otp`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ phoneNumber }),
-            });
+            const response = await api.post('/users/retry-otp', { phoneNumber });
+            const data = response.data;
 
-            const data = await response.json();
-
-            if (response.ok) {
-                if (data.data?.otp) {
-                    setDevOtp(data.data.otp);
-                }
-                setError('');
-                setResendTimer(RESEND_TIMER_SECONDS); // Reset timer
-                // Show success toast/message
-            } else {
-                setError(data.message || 'Failed to resend OTP');
+            if (data.data?.otp) {
+                setDevOtp(data.data.otp);
             }
+            setError('');
+            setResendTimer(RESEND_TIMER_SECONDS); // Reset timer
         } catch (err) {
             setError('Failed to resend OTP');
         } finally {
@@ -336,7 +302,7 @@ function AuthPageContent() {
                                 Login Successful!
                             </h2>
                             <p className="text-gray-600">
-                                Redirecting you to your profile...
+                                Redirecting you...
                             </p>
                             <div className="mt-4">
                                 <Loader2 className="h-6 w-6 animate-spin mx-auto text-[#3A6EA5]" />

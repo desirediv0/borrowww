@@ -3,7 +3,7 @@ import { isAdmin } from "../middlewares/isAdmin.js";
 import {
     listUsers, getUser, updateUser, deleteUser, bulkDeleteUsers,
     registerUser, sendOtp, verifyOtp, getUserProfile, getFullUserProfile, updateUserSelf,
-    changePhone, verifyPhoneChange
+    changePhone, verifyPhoneChange, logoutUser, getMe
 } from "../controllers/user.controller.js";
 import { retryOtp } from "../controllers/user.controller.js";
 import { userAuth } from "../middleware/userAuth.js";
@@ -42,6 +42,8 @@ router.post("/verify-phone-change", userAuth, verifyPhoneChange);
 
 // User profile (protected)
 router.get("/profile", userAuth, getUserProfile);
+router.get("/me", userAuth, getMe);
+router.post("/logout", logoutUser);
 // Full user profile (user info, last CIBIL, all loans)
 router.get("/profile/full", userAuth, getFullUserProfile);
 

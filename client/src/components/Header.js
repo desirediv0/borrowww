@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,15 +8,13 @@ import { gif } from '@/assets';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { User, LogOut, ChevronDown } from 'lucide-react';
-
-import { usePathname } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  const pathname = usePathname();
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,41 +25,9 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Check auth state
-  useEffect(() => {
-    const checkAuth = () => {
-      const token = localStorage.getItem('user_token');
-      const userData = localStorage.getItem('user');
-      if (token && userData) {
-        try {
-          setUser(JSON.parse(userData));
-        } catch (e) {
-          setUser(null);
-        }
-      } else {
-        setUser(null);
-      }
-    };
-
-    checkAuth();
-    // Listen for storage changes (login/logout from other tabs)
-    window.addEventListener('storage', checkAuth);
-    // Listen for custom auth event (for same-tab updates not involving navigation)
-    window.addEventListener('auth-change', checkAuth);
-
-    return () => {
-      window.removeEventListener('storage', checkAuth);
-      window.removeEventListener('auth-change', checkAuth);
-    };
-  }, [pathname]);
-
   const handleLogout = () => {
-    localStorage.removeItem('user_token');
-    localStorage.removeItem('user');
-    window.dispatchEvent(new Event('auth-change'));
-    setUser(null);
+    logout();
     setIsProfileDropdownOpen(false);
-    window.location.href = '/';
   };
 
   const calculatorItems = [

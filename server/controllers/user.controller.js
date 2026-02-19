@@ -7,6 +7,15 @@ import { encryptUserData, decryptUserData } from "../utils/encryption.js";
 import { isValidIndianNumber } from "../utils/validation.js";
 import axios from "axios";
 
+// Cookie Options
+const COOKIE_OPTIONS = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // 'none' for cross-site (if needed) or 'lax' for same-site
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    path: "/"
+};
+
 // List users with pagination
 export const listUsers = asyncHandler(async (req, res) => {
     const page = parseInt(req.query.page) || 1;
@@ -172,22 +181,18 @@ export const registerUser = asyncHandler(async (req, res) => {
     let user = await prisma.user.findUnique({ where: { phoneNumber } });
     if (user) throw new ApiError(400, "User already exists");
 
-    user = await prisma.user.create({ data: { phoneNumber } });
+    // Generate Token
+    const token = generateUserToken(user);
 
-    // Decrypt for user response (no masking for user)
-    const decryptedUser = decryptUserData(user, false);
+    // Save token to user
+    await prisma.user.update({
+        where: { id: user.id },
+        data: { accessToken: token }
+    });
 
-    // Link guest session if sessionId provided
-    if (req.body.sessionId) {
-        await prisma.userSession.update({
-            where: { sessionId: req.body.sessionId },
-            data: { userId: user.id }
-        }).catch(() => {
-            // Ignore if session not found or update fails (non-critical)
-        });
-    }
-
-    res.status(201).json(new ApiResponsive(201, { user: decryptedUser }, "User registered"));
+    res.status(201)
+        .cookie("user_token", token, COOKIE_OPTIONS)
+        .json(new ApiResponsive(201, { user: decryptedUser, token }, "User registered"));
 });
 
 // Send OTP via MSG91 Flow API
@@ -311,7 +316,10 @@ export const verifyOtp = asyncHandler(async (req, res) => {
 
     // Decrypt for user response
     const decryptedUser = decryptUserData(result.user, false);
-    res.json(new ApiResponsive(200, { token: result.token, user: decryptedUser }, 'Login successful'));
+
+    res
+        .cookie("user_token", result.token, COOKIE_OPTIONS)
+        .json(new ApiResponsive(200, { token: result.token, user: decryptedUser }, 'Login successful'));
 });
 
 // User Profile (protected)
@@ -537,4 +545,18 @@ export const verifyPhoneChange = asyncHandler(async (req, res) => {
 
     const decryptedUser = decryptUserData(user, false);
     res.json(new ApiResponsive(200, { user: decryptedUser }, 'Phone number updated successfully'));
+});
+
+// Logout User
+export const logoutUser = asyncHandler(async (req, res) => {
+    res
+        .clearCookie("user_token", { ...COOKIE_OPTIONS, maxAge: 0 })
+        .json(new ApiResponsive(200, {}, "Logged out successfully"));
+});
+
+// Get Current User (Me)
+export const getMe = asyncHandler(async (req, res) => {
+    const user = req.user;
+    const decryptedUser = decryptUserData(user, false);
+    res.json(new ApiResponsive(200, { user: decryptedUser }, "User fetched successfully"));
 });
