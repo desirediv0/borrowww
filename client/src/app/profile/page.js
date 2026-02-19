@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
-import { User, Phone, LogOut, Shield, Clock, CheckCircle, Edit2, Save, X, Loader, MapPin, CreditCard } from 'lucide-react';
+import { User, Phone, LogOut, Shield, Clock, CheckCircle, Edit2, Save, Loader, MapPin } from 'lucide-react';
 import { isValidIndianNumber } from '@/utils/validation';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -400,46 +400,6 @@ export default function ProfilePage() {
                             </CardContent>
                         </Card>
 
-                        {/* Identity Proof */}
-                        <Card className="shadow-lg border-0 bg-white rounded-2xl overflow-hidden">
-                            <CardHeader className="bg-gradient-to-r from-purple-50 to-violet-50 border-b">
-                                <CardTitle className="flex items-center gap-3 text-lg">
-                                    <div className="p-2 bg-purple-100 rounded-lg">
-                                        <CreditCard className="h-5 w-5 text-purple-600" />
-                                    </div>
-                                    Identity Proof
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-5 p-6">
-                                <div className="space-y-2">
-                                    <Label>Identity Type</Label>
-                                    <Select
-                                        value={formData.identityType}
-                                        onValueChange={(val) => handleInputChange('identityType', val)}
-                                        disabled={!isEditing}
-                                    >
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select ID Type" />
-                                        </SelectTrigger>
-                                        <SelectContent className="bg-white">
-                                            <SelectItem value="PAN">PAN Card</SelectItem>
-                                            <SelectItem value="Aadhaar">Aadhaar Card</SelectItem>
-                                            <SelectItem value="VOTER_CARD">Voter Card</SelectItem>
-                                            <SelectItem value="Passport">Passport</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-                                <div className="space-y-2">
-                                    <Label>Identity Number</Label>
-                                    <Input
-                                        value={formData.identityNumber}
-                                        onChange={(e) => handleInputChange('identityNumber', e.target.value.toUpperCase())}
-                                        disabled={!isEditing}
-                                        placeholder="Enter ID Number"
-                                    />
-                                </div>
-                            </CardContent>
-                        </Card>
 
                         {/* Save Actions */}
                         {isEditing && (
