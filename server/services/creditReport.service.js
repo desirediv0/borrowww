@@ -223,11 +223,11 @@ export const getMyReport = async (userId) => {
 export const getMyPdf = async (userId) => {
     try {
         const report = await prisma.creditReport.findFirst({
-            where: { userId, expiresAt: { gt: new Date() } },
+            where: { userId },
             orderBy: { fetchedAt: 'desc' },
-            select: { pdfSpacesUrl: true }
+            select: { id: true, pdfSpacesUrl: true }
         });
-        return report?.pdfSpacesUrl || null;
+        return report;
     } catch (error) {
         console.error('Get PDF Error:', error);
         throw new Error('Failed to get PDF URL');

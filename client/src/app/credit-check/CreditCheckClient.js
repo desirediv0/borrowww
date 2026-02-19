@@ -23,18 +23,17 @@ import { api } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 import { Loader2, AlertCircle, FileText } from 'lucide-react';
 import ScoreGauge from '@/components/ScoreGauge';
-import AccountCard from '@/components/AccountCard';
-import PaymentHistory from '@/components/PaymentHistory';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import ChartLineLabel from '@/components/ChartLineLabel';
+import { Skeleton } from "@/components/ui/skeleton";
 
 
 function CIBILCheckContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
-    const { user, loading: authLoading, login } = useAuth();
+    const { user, loading: authLoading } = useAuth();
 
     // Form State
     const [FormData, setFormData] = useState({
@@ -44,6 +43,7 @@ function CIBILCheckContent() {
     });
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
 
     // Report State
     const [report, setReport] = useState(null);
@@ -55,28 +55,21 @@ function CIBILCheckContent() {
     const transactionId = searchParams.get('transaction_id');
     const fetchedRef = useRef(false);
 
-    // Initial Load & Auth Check
-    // Initial Load & Auth Check
     useEffect(() => {
         if (authLoading) return;
-
-        // 1. Handle Transaction Callback (Priority)
         if (transactionId) {
             if (!fetchedRef.current) {
                 fetchedRef.current = true;
                 fetchReportWithRetry(transactionId);
             }
         }
-        // 2. Check Cache if logged in (Fallback) - ONLY if NO transaction_id
         else if (user && !transactionId) {
             checkCache();
         }
-        // 3. Default (Show Form)
         else {
             setLoadingReport(false);
         }
 
-        // Handle URL Data (Redirect from Auth)
         const encodedData = searchParams.get('data');
         if (encodedData) {
             try {
@@ -92,7 +85,7 @@ function CIBILCheckContent() {
                 console.error('Failed to decode form data:', e);
             }
         }
-    }, [searchParams, transactionId, authLoading, user]); // user dependency ensures checkCache runs on login
+    }, [searchParams, transactionId, authLoading, user]);
 
     const fetchReportWithRetry = async (txnId) => {
         setFetchingReport(true);
@@ -107,7 +100,6 @@ function CIBILCheckContent() {
 
                 const res = await api.post('/credit-report/fetch', { transactionId: txnId });
 
-                // If API explicitly returns PROCESSING status, we should retry
                 if (res.data?.status === 'PROCESSING') {
                     return { shouldRetry: true };
                 }
@@ -124,40 +116,33 @@ function CIBILCheckContent() {
                 console.error(`Attempt ${attempts} failed:`, error);
                 const status = error.response?.status;
 
-                // Handle 401 (Invalid/Stale Token)
                 if (status === 401) {
                     toast.error("Session expired. Please login again.");
                     router.push('/auth?logout=true');
                     return { stop: true };
                 }
 
-                // Stop retrying on 500, 400, 404
                 if (status && [400, 404, 500].includes(status)) {
                     setReportError("Something went wrong. Please try again.");
                     setFetchingReport(false);
                     return { stop: true };
                 }
 
-                // Continue retry mechanism for other errors (Network, timeouts)
                 return { shouldRetry: true };
             }
             return { shouldRetry: true };
         };
-
-        // Retry Loop
         for (let i = 0; i < maxAttempts; i++) {
             const result = await tryFetch();
 
             if (result.success) return;
             if (result.stop) return;
 
-            // Wait 5 seconds before next retry if not last attempt
             if (i < maxAttempts - 1) {
                 await new Promise(resolve => setTimeout(resolve, 5000));
             }
         }
 
-        // Final Failure
         setFetchingReport(false);
         setReportError("Something went wrong. Please try again.");
     };
@@ -172,10 +157,9 @@ function CIBILCheckContent() {
             }
         } catch (err) {
             console.error(err);
-            // Handle 401 (Invalid/Stale Token)
             if (err.response?.status === 401) {
-                // AuthContext will likely handle this via socket/event eventually, or just simple redirect
-                // For now, if check cache fails 401, we just don't load report.
+                toast.error("Session expired. Please login again.");
+                router.push('/auth?logout=true');
             }
         } finally {
             setLoadingReport(false);
@@ -183,21 +167,30 @@ function CIBILCheckContent() {
     };
 
     const handleDownloadPdf = async () => {
+        if (isDownloadingPdf) return;
+        setIsDownloadingPdf(true);
+
         try {
             const res = await api.get('/credit-report/pdf');
-            if (res.data.url) {
+            if (res.data.success && res.data.url) {
                 window.open(res.data.url, '_blank');
+            } else if (res.data.status === 'PROCESSING') {
+                toast.info("PDF is being generated. Please try again in a moment.");
             } else {
-                toast.error("PDF not available yet");
+                toast.error("PDF not available");
             }
         } catch (err) {
             console.error("PDF Download Error:", err);
             if (err.response?.status === 401) {
                 toast.error("Session expired. Please login again.");
                 router.push('/auth?logout=true');
-                return;
+            } else if (err.response?.status === 404) {
+                toast.error("Report not found");
+            } else {
+                toast.error("Failed to download PDF");
             }
-            toast.error("Failed to download PDF");
+        } finally {
+            setIsDownloadingPdf(false);
         }
     };
 
@@ -310,18 +303,22 @@ function CIBILCheckContent() {
     // 1. Loading / Fetching
     if (authLoading || loadingReport || fetchingReport) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gray-50">
-                <div className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 max-w-md w-full mx-4">
-                    <Loader2 className="h-12 w-12 animate-spin text-[var(--primary-blue)] mx-auto mb-6" />
-                    <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                        {fetchingReport ? "Generating Your Report..." : authLoading ? "Checking Session..." : "Loading..."}
-                    </h2>
-                    <p className="text-gray-500 mb-4">
-                        Please do not close this window.
-                    </p>
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="w-full max-w-md p-6 space-y-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                    <div className="flex flex-col items-center space-y-4">
+                        <Skeleton className="h-16 w-16 rounded-full" />
+                        <Skeleton className="h-6 w-48 rounded-lg" />
+                    </div>
+                    <div className="space-y-3">
+                        <Skeleton className="h-4 w-full rounded" />
+                        <Skeleton className="h-4 w-5/6 rounded" />
+                        <Skeleton className="h-4 w-4/6 rounded" />
+                    </div>
                     {fetchingReport && (
-                        <div className="text-sm text-[var(--primary-blue)] bg-blue-50 py-2 px-4 rounded-full inline-block">
-                            Checking status (Attempt {retryCount}/5)...
+                        <div className="pt-2 flex justify-center">
+                            <div className="text-xs font-medium text-[var(--primary-blue)] bg-blue-50 px-3 py-1 rounded-full">
+                                Processing...
+                            </div>
                         </div>
                     )}
                 </div>
@@ -336,10 +333,10 @@ function CIBILCheckContent() {
         const personalInfo = fullReport?.credit_report?.CCRResponse?.CIRReportDataLst?.[0]?.CIRReportData?.IDAndContactInfo?.PersonalInfo || {};
 
         return (
-            <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto">
+            <div className="min-h-screen bg-gray-50/50">
+                <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8">
                     {/* Header */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-4">
                         <div>
                             <h1 className="text-2xl font-bold text-gray-900">Your Credit Report</h1>
                             <p className="text-sm text-gray-500 mt-1">
@@ -347,81 +344,92 @@ function CIBILCheckContent() {
                                 {expiresAt && ` • Valid until ${new Date(expiresAt).toLocaleDateString()}`}
                             </p>
                         </div>
-                        <Button variant="outline" onClick={handleDownloadPdf} className="w-full md:w-auto">
-                            <FileText className="mr-2 h-4 w-4" /> Download Official PDF
+                        <Button
+                            variant="outline"
+                            onClick={handleDownloadPdf}
+                            disabled={isDownloadingPdf}
+                            className="w-full md:w-auto mt-4 md:mt-0 shadow-sm border-gray-200"
+                        >
+                            {isDownloadingPdf ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...
+                                </>
+                            ) : (
+                                <>
+                                    <FileText className="mr-2 h-4 w-4" /> Download Official PDF
+                                </>
+                            )}
                         </Button>
                     </div>
 
-                    <Tabs defaultValue="overview" className="space-y-6">
-                        <TabsList className="bg-white p-1 rounded-xl border border-gray-200 w-full md:w-auto justify-start overflow-x-auto">
-                            <TabsTrigger value="overview" className="rounded-lg data-[state=active]:bg-[var(--primary-blue)] data-[state=active]:text-white">Overview</TabsTrigger>
-                            <TabsTrigger value="accounts" className="rounded-lg data-[state=active]:bg-[var(--primary-blue)] data-[state=active]:text-white">Accounts ({accounts.length})</TabsTrigger>
-                            <TabsTrigger value="personal" className="rounded-lg data-[state=active]:bg-[var(--primary-blue)] data-[state=active]:text-white">Personal Info</TabsTrigger>
+                    <Tabs defaultValue="overview" className="mt-4 space-y-6">
+                        <TabsList className="bg-white p-1 rounded-xl border border-gray-200 w-full md:w-auto justify-start overflow-x-auto shadow-sm">
+                            <TabsTrigger value="overview" className="rounded-lg data-[state=active]:bg-[var(--primary-blue)] data-[state=active]:text-white px-4 py-2">Overview</TabsTrigger>
+                            <TabsTrigger value="personal" className="rounded-lg data-[state=active]:bg-[var(--primary-blue)] data-[state=active]:text-white px-4 py-2">Personal Info</TabsTrigger>
                         </TabsList>
 
                         {/* Overview Tab */}
-                        <TabsContent value="overview" className="space-y-8">
-                            {/* Score Section */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <Card className="col-span-1 md:col-start-2 border-none shadow-none bg-transparent">
-                                    <div className="flex justify-center transform scale-100 md:scale-110 transition-transform duration-500">
-                                        <ScoreGauge score={creditScore || 300} />
-                                    </div>
-                                </Card>
-                            </div>
-
-                            {/* Stats Grid */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {[
-                                    { label: 'Total Accounts', value: totalAccounts, color: 'text-gray-900' },
-                                    { label: 'Active Accounts', value: activeAccounts, color: 'text-[var(--primary-blue)]' },
-                                    // { label: 'Total Balance', value: `₹${parseInt(totalBalance || 0).toLocaleString()}`, color: 'text-gray-900' },
-                                    // { label: 'Total Overdue', value: `₹${parseInt(totalOverdue || 0).toLocaleString()}`, color: 'text-red-600' },
-                                ].map((stat, idx) => (
-                                    <Card key={idx} className="hover:shadow-md transition-shadow">
+                        <TabsContent value="overview" className="space-y-6">
+                            <div className="grid grid-cols-12 gap-6">
+                                {/* Left Column: Chart (8 cols) */}
+                                <div className="col-span-12 lg:col-span-8 flex flex-col h-full">
+                                    <Card className="border-none shadow-sm rounded-2xl bg-white h-full flex flex-col">
                                         <CardHeader className="pb-2">
-                                            <CardTitle className="text-sm font-medium text-gray-500 uppercase tracking-wide">{stat.label}</CardTitle>
+                                            <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                                                <FaChartLine className="h-5 w-5 text-[var(--primary-blue)]" />
+                                                Score History
+                                            </CardTitle>
                                         </CardHeader>
-                                        <CardContent>
-                                            <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
+                                        <CardContent className="flex-1 min-h-[320px] md:min-h-[340px] p-4">
+                                            <div className="h-[320px] md:h-[340px] w-full">
+                                                <ChartLineLabel history={history || []} />
+                                            </div>
                                         </CardContent>
                                     </Card>
-                                ))}
-                            </div>
-
-                            {/* Credit History Chart */}
-                            <div className="h-[300px] w-full mt-6">
-                                <ChartLineLabel history={history || []} />
-                            </div>
-                        </TabsContent>
-
-                        {/* Accounts Tab */}
-                        <TabsContent value="accounts" className="space-y-4">
-                            {accounts.length > 0 ? (
-                                accounts.map((acc, idx) => (
-                                    <div key={idx} className="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-                                        <AccountCard account={acc} />
-                                        <div className="mt-6 pt-6 border-t border-gray-100">
-                                            <h4 className="text-xs font-semibold text-gray-500 mb-4 uppercase tracking-wider">Payment History (Last 48 Months)</h4>
-                                            <PaymentHistory history={Array.isArray(acc.History48Months) ? acc.History48Months : []} />
-                                        </div>
-                                    </div>
-                                ))
-                            ) : (
-                                <div className="text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
-                                    <p className="text-gray-500">No active accounts found in your report.</p>
                                 </div>
-                            )}
+
+                                {/* Right Column: Score + Stats (4 cols) */}
+                                <div className="col-span-12 lg:col-span-4 flex flex-col gap-6">
+                                    {/* Score Gauge */}
+                                    <Card className="border-none shadow-sm rounded-2xl bg-white p-6 flex flex-col items-center justify-center">
+                                        <div className="mb-6 mt-2 transform scale-105">
+                                            <ScoreGauge score={creditScore || 300} />
+                                        </div>
+                                    </Card>
+
+                                    {/* Stats Grid */}
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                                        {[
+                                            { label: 'Total Accounts', value: totalAccounts, color: 'text-gray-900', icon: FaChartLine },
+                                            { label: 'Active Accounts', value: activeAccounts, color: 'text-[var(--primary-blue)]', icon: FaCheckCircle },
+                                        ].map((stat, idx) => (
+                                            <Card key={idx} className="border-none shadow-sm rounded-2xl bg-white hover:shadow-md transition-shadow">
+                                                <CardContent className="flex items-center p-5 gap-4">
+                                                    <div className={`p-3 rounded-full ${idx === 1 ? 'bg-blue-50 text-[var(--primary-blue)]' : 'bg-gray-100 text-gray-600'}`}>
+                                                        <stat.icon className="h-5 w-5" />
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">{stat.label}</p>
+                                                        <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
+                                                    </div>
+                                                </CardContent>
+                                            </Card>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </TabsContent>
+
+
 
                         {/* Personal Info Tab */}
                         <TabsContent value="personal">
-                            <Card className="border-none shadow-md">
-                                <CardHeader>
+                            <Card className="mt-6 border-none shadow-sm rounded-2xl bg-white">
+                                <CardHeader className="border-b border-gray-100 pb-4">
                                     <CardTitle>Personal Information</CardTitle>
                                 </CardHeader>
-                                <CardContent>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <CardContent className="pt-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         {[
                                             { label: 'Full Name', value: personalInfo?.Name?.FullName || report.name },
                                             { label: 'PAN Number', value: report.pan },
@@ -429,9 +437,9 @@ function CIBILCheckContent() {
                                             { label: 'Date of Birth', value: personalInfo?.DateOfBirth },
                                             { label: 'Gender', value: personalInfo?.Gender },
                                         ].map((item, idx) => (
-                                            <div key={idx} className="p-4 bg-gray-50 rounded-lg">
+                                            <div key={idx} className="flex flex-col">
                                                 <p className="text-sm font-medium text-gray-500 mb-1">{item.label}</p>
-                                                <p className="text-gray-900 font-semibold">{item.value || 'N/A'}</p>
+                                                <p className="text-gray-900 font-semibold text-lg border-b border-gray-100 pb-2">{item.value || 'N/A'}</p>
                                             </div>
                                         ))}
                                     </div>

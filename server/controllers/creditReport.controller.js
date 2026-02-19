@@ -52,11 +52,28 @@ export const getMyReport = async (req, res) => {
 
 export const getMyPdf = async (req, res) => {
     try {
-        const url = await creditReportService.getMyPdf(req.user.id);
-        if (!url) {
-            return res.status(404).json({ error: 'PDF not found' });
+        const report = await creditReportService.getMyPdf(req.user.id);
+
+        if (!report) {
+            return res.status(404).json({
+                success: false,
+                message: 'Report not found'
+            });
         }
-        res.json({ url });
+
+        if (report.pdfSpacesUrl) {
+            return res.json({
+                success: true,
+                url: report.pdfSpacesUrl
+            });
+        }
+
+        return res.json({
+            success: false,
+            status: "PROCESSING",
+            message: "PDF is being generated"
+        });
+
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
