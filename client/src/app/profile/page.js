@@ -1,5 +1,7 @@
 'use client';
 
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { User, Phone, LogOut, Shield, Clock, CheckCircle, Edit2, Save, X, Loader, MapPin, CreditCard } from 'lucide-react';
@@ -48,19 +50,30 @@ export default function ProfilePage() {
     // Credit Report State
     const [creditScore, setCreditScore] = useState(null);
 
+    const [fetchingProfile, setFetchingProfile] = useState(true);
+
     useEffect(() => {
-        if (!authLoading) {
-            if (!user) {
-                // If not loading and no user, we might want to redirect, 
-                // but middleware/layout protection usually handles this.
-                // For now, let's just wait or redirect if strict.
-                window.location.href = '/auth';
-            } else {
+        const fetchProfileData = async () => {
+            if (authLoading) return;
+            if (!user) return; // Wait for user to be present from auth context
+
+            try {
+                const res = await api.get('/users/me');
+                if (res.data.success && res.data.data.user) {
+                    initializeFormData(res.data.data.user);
+                }
+                await fetchCreditScore();
+            } catch (error) {
+                console.error("Failed to fetch fresh profile data:", error);
+                // Fallback to context user if fetch fails
                 initializeFormData(user);
-                fetchCreditScore();
+            } finally {
+                setFetchingProfile(false);
             }
-        }
-    }, [user, authLoading]);
+        };
+
+        fetchProfileData();
+    }, [authLoading, user?.id]);
 
     const fetchCreditScore = async () => {
         try {
@@ -197,10 +210,22 @@ export default function ProfilePage() {
         });
     };
 
-    if (authLoading) {
+    if (authLoading || fetchingProfile) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <Loader className="h-10 w-10 animate-spin text-blue-600" />
+            <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-5xl mx-auto space-y-8">
+                    <Skeleton className="h-48 w-full rounded-3xl opacity-80" />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="md:col-span-2 space-y-6">
+                            <Skeleton className="h-80 w-full rounded-2xl" />
+                            <Skeleton className="h-48 w-full rounded-2xl" />
+                        </div>
+                        <div className="space-y-6">
+                            <Skeleton className="h-32 w-full rounded-2xl" />
+                            <Skeleton className="h-20 w-full rounded-xl" />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

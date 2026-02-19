@@ -28,7 +28,7 @@ export const listUsers = asyncHandler(async (req, res) => {
     ]);
 
     // Decrypt user data for admin view (No masking, admin needs full details)
-    const decryptedUsers = users.map(user => decryptUserData(user, false));
+    const decryptedUsers = await Promise.all(users.map(async user => await decryptUserData(user, false)));
 
     res.json(new ApiResponsive(200, { users: decryptedUsers, total, page, limit }, "Users fetched"));
 });
@@ -40,7 +40,7 @@ export const getUser = asyncHandler(async (req, res) => {
     if (!user) throw new ApiError(404, "User not found");
 
     // Decrypt user data for admin view (No masking)
-    const decryptedUser = decryptUserData(user, false);
+    const decryptedUser = await decryptUserData(user, false);
 
     res.json(new ApiResponsive(200, { user: decryptedUser }, "User fetched"));
 });
@@ -87,12 +87,12 @@ export const updateUserSelf = asyncHandler(async (req, res) => {
     }
 
     // Encrypt sensitive data before storing
-    data = encryptUserData(data);
+    data = await encryptUserData(data);
 
     const user = await prisma.user.update({ where: { id: userId }, data });
 
     // Decrypt for user response (full decryption for user)
-    const decryptedUser = decryptUserData(user, false);
+    const decryptedUser = await decryptUserData(user, false);
 
     res.json(new ApiResponsive(200, { user: decryptedUser }, "User updated"));
 });
@@ -135,12 +135,12 @@ export const updateUser = asyncHandler(async (req, res) => {
     }
 
     // Encrypt sensitive data before storing
-    data = encryptUserData(data);
+    data = await encryptUserData(data);
 
     const user = await prisma.user.update({ where: { id: userId }, data });
 
     // Decrypt for admin view (No masking)
-    const decryptedUser = decryptUserData(user, false);
+    const decryptedUser = await decryptUserData(user, false);
 
     res.json(new ApiResponsive(200, { user: decryptedUser }, "User updated"));
 });
@@ -190,6 +190,8 @@ export const registerUser = asyncHandler(async (req, res) => {
         where: { id: user.id },
         data: { accessToken: token }
     });
+
+    const decryptedUser = await decryptUserData(user, false);
 
     res.status(201)
         .cookie("user_token", token, COOKIE_OPTIONS)
@@ -316,7 +318,7 @@ export const verifyOtp = asyncHandler(async (req, res) => {
     });
 
     // Decrypt for user response
-    const decryptedUser = decryptUserData(result.user, false);
+    const decryptedUser = await decryptUserData(result.user, false);
 
     res
         .cookie("user_token", result.token, COOKIE_OPTIONS)
@@ -326,7 +328,7 @@ export const verifyOtp = asyncHandler(async (req, res) => {
 // User Profile (protected)
 export const getUserProfile = asyncHandler(async (req, res) => {
     const user = req.user;
-    const decryptedUser = decryptUserData(user, false);
+    const decryptedUser = await decryptUserData(user, false);
     res.json(new ApiResponsive(200, { user: decryptedUser }, "Profile fetched"));
 });
 
@@ -355,7 +357,7 @@ export const getUserDetails = asyncHandler(async (req, res) => {
     if (!user) throw new ApiError(404, "User not found");
 
     // Decrypt user data for admin view (with masking)
-    const decryptedUser = decryptUserData(user, true);
+    const decryptedUser = await decryptUserData(user, true);
 
     res.json(new ApiResponsive(200, { user: decryptedUser }, "User details fetched"));
 });
@@ -375,7 +377,7 @@ export const getFullUserProfile = asyncHandler(async (req, res) => {
     });
 
     // Decrypt for user response (full data for user)
-    const decryptedUser = decryptUserData(user, false);
+    const decryptedUser = await decryptUserData(user, false);
 
     res.json(new ApiResponsive(200, { user: decryptedUser, lastCibil, loans }, 'Full user profile fetched'));
 });
@@ -544,7 +546,7 @@ export const verifyPhoneChange = asyncHandler(async (req, res) => {
         data: { phoneNumber: newPhoneNumber }
     });
 
-    const decryptedUser = decryptUserData(user, false);
+    const decryptedUser = await decryptUserData(user, false);
     res.json(new ApiResponsive(200, { user: decryptedUser }, 'Phone number updated successfully'));
 });
 
@@ -558,6 +560,6 @@ export const logoutUser = asyncHandler(async (req, res) => {
 // Get Current User (Me)
 export const getMe = asyncHandler(async (req, res) => {
     const user = req.user;
-    const decryptedUser = decryptUserData(user, false);
+    const decryptedUser = await decryptUserData(user, false);
     res.json(new ApiResponsive(200, { user: decryptedUser }, "User fetched successfully"));
 });
