@@ -31,6 +31,7 @@ import inquiryRoutes from "./routes/inquiry.routes.js";
 import referralRoutes from "./routes/referral.routes.js";
 import trackingRoutes from "./routes/tracking.routes.js";
 import clientRoutes from "./routes/client.routes.js";
+import { startCreditReportExpiryJob } from "./jobs/creditReportExpiry.job.js";
 
 const app = express();
 
@@ -317,5 +318,8 @@ process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);
 });
+
+// Start scheduled jobs
+startCreditReportExpiryJob();
 
 export default app;

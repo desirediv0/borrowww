@@ -47,6 +47,7 @@ function CIBILCheckContent() {
 
     // Report State
     const [report, setReport] = useState(null);
+    const [expiredReport, setExpiredReport] = useState(null); // For expired report → show Try Again
     const [loadingReport, setLoadingReport] = useState(true);
     const [fetchingReport, setFetchingReport] = useState(false);
     const [reportError, setReportError] = useState(null);
@@ -118,7 +119,7 @@ function CIBILCheckContent() {
 
                 if (status === 401) {
                     toast.error("Session expired. Please login again.");
-                    router.push('/auth?logout=true');
+                    router.push('/auth?redirect=/credit-check');
                     return { stop: true };
                 }
 
@@ -149,17 +150,25 @@ function CIBILCheckContent() {
 
     const checkCache = async () => {
         try {
-            const res = await api.get('/credit-report/check-cache');
+            setLoadingReport(true);
+            // /my-report returns { status: 'active', ... } or { status: 'expired', ... } or 404
+            const fullRes = await api.get('/credit-report/my-report');
+            const data = fullRes.data;
 
-            if (res.data.cached) {
-                const fullRes = await api.get('/credit-report/my-report');
-                setReport(fullRes.data);
+            if (data?.status === 'expired') {
+                // Report exists but expired → show Try Again UI
+                setExpiredReport(data);
+            } else if (data) {
+                setReport(data);
             }
         } catch (err) {
-            console.error(err);
+            // 404 = no report yet (normal), don't show error
+            if (err.response?.status !== 404) {
+                console.error(err);
+            }
             if (err.response?.status === 401) {
                 toast.error("Session expired. Please login again.");
-                router.push('/auth?logout=true');
+                router.push('/auth?redirect=/credit-check');
             }
         } finally {
             setLoadingReport(false);
@@ -171,28 +180,53 @@ function CIBILCheckContent() {
         setIsDownloadingPdf(true);
 
         try {
-            const res = await api.get('/credit-report/pdf');
-            if (res.data.success && res.data.url) {
-                window.open(res.data.url, '_blank');
-            } else if (res.data.status === 'PROCESSING') {
-                toast.info("PDF is being generated. Please try again in a moment.");
-            } else {
-                toast.error("PDF not available");
+            // Use fetch (not axios) to handle binary blob response properly
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api'}/credit-report/download-pdf`,
+                {
+                    method: 'GET',
+                    credentials: 'include',    // sends HTTP-only session cookie
+                    headers: { 'Accept': 'application/pdf' },
+                }
+            );
+
+            if (response.status === 401) {
+                toast.error('Session expired. Please login again.');
+                router.push('/auth?redirect=/credit-check');
+                return;
             }
+
+            if (response.status === 404) {
+                toast.error('PDF not available for this report.');
+                return;
+            }
+
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                toast.error(errData.message || 'Failed to download PDF');
+                return;
+            }
+
+            // Convert response to blob and trigger browser download
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `credit-report-${new Date().toISOString().slice(0, 10)}.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);   // Free memory
+
+            toast.success('PDF downloaded successfully');
         } catch (err) {
-            console.error("PDF Download Error:", err);
-            if (err.response?.status === 401) {
-                toast.error("Session expired. Please login again.");
-                router.push('/auth?logout=true');
-            } else if (err.response?.status === 404) {
-                toast.error("Report not found");
-            } else {
-                toast.error("Failed to download PDF");
-            }
+            console.error('PDF Download Error:', err);
+            toast.error('Failed to download PDF. Please try again.');
         } finally {
             setIsDownloadingPdf(false);
         }
     };
+
 
     const validateBureauForm = () => {
         const newErrors = {};
@@ -279,7 +313,7 @@ function CIBILCheckContent() {
             // Handle 401 (Invalid/Stale Token)
             if (error.response?.status === 401) {
                 toast.error("Session expired. Please login again.");
-                router.push('/auth?logout=true');
+                router.push('/auth?redirect=/credit-check');
                 return;
             }
 
@@ -328,7 +362,7 @@ function CIBILCheckContent() {
 
     // 2. Report Display
     if (report) {
-        const { creditScore, totalAccounts, activeAccounts, expiresAt, fullReport, history } = report;
+        const { creditScore, totalAccounts, activeAccounts, fetch_date_formatted, expiry_date_formatted, fullReport, history } = report;
         const accounts = fullReport?.credit_report?.CCRResponse?.CIRReportDataLst?.[0]?.CIRReportData?.RetailAccountDetails || [];
         const personalInfo = fullReport?.credit_report?.CCRResponse?.CIRReportDataLst?.[0]?.CIRReportData?.IDAndContactInfo?.PersonalInfo || {};
 
@@ -340,8 +374,10 @@ function CIBILCheckContent() {
                         <div>
                             <h1 className="text-2xl font-bold text-gray-900">Your Credit Report</h1>
                             <p className="text-sm text-gray-500 mt-1">
-                                Generated on {new Date().toLocaleDateString()}
-                                {expiresAt && ` • Valid until ${new Date(expiresAt).toLocaleDateString()}`}
+                                Fetched on {fetch_date_formatted || new Date().toLocaleDateString()}
+                                {expiry_date_formatted && (
+                                    <span className="ml-2 text-green-600 font-medium">• Valid until {expiry_date_formatted}</span>
+                                )}
                             </p>
                         </div>
                         <Button
@@ -432,7 +468,7 @@ function CIBILCheckContent() {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         {[
                                             { label: 'Full Name', value: personalInfo?.Name?.FullName || report.name },
-                                            { label: 'PAN Number', value: report.pan },
+                                            { label: 'PAN Number', value: report.maskedPan || report.pan },
                                             { label: 'Mobile Number', value: report.mobile },
                                             { label: 'Date of Birth', value: personalInfo?.DateOfBirth },
                                             { label: 'Gender', value: personalInfo?.Gender },
@@ -447,6 +483,34 @@ function CIBILCheckContent() {
                             </Card>
                         </TabsContent>
                     </Tabs>
+                </div>
+            </div>
+        );
+    }
+
+    // 2b. EXPIRED Report — Show Try Again
+    if (expiredReport) {
+        return (
+            <div className="min-h-screen bg-gray-50/50 flex items-center justify-center px-4">
+                <div className="max-w-md w-full bg-white rounded-3xl shadow-lg border border-gray-100 p-8 text-center">
+                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <AlertCircle className="h-8 w-8 text-orange-500" />
+                    </div>
+                    <h2 className="text-xl font-bold text-gray-900 mb-2">Credit Report Expired</h2>
+                    <p className="text-gray-500 mb-2">
+                        Your credit report expired on <span className="font-semibold text-gray-700">{expiredReport.expiry_date_formatted}</span>.
+                    </p>
+                    <p className="text-gray-500 text-sm mb-6">
+                        Generate a fresh credit report to see your latest credit score.
+                    </p>
+                    <Button
+                        onClick={() => {
+                            setExpiredReport(null);
+                        }}
+                        className="w-full bg-[var(--primary-blue)] text-white hover:bg-[var(--primary-blue)]/90 rounded-xl py-3"
+                    >
+                        Try Again for New Credit Report
+                    </Button>
                 </div>
             </div>
         );

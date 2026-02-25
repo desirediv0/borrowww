@@ -61,6 +61,7 @@ const Users = () => {
 
     // View Modal State
     const [viewingUser, setViewingUser] = useState<User | null>(null);
+    const [loadingDetail, setLoadingDetail] = useState(false);
 
     useEffect(() => {
         fetchUsers();
@@ -116,6 +117,26 @@ const Users = () => {
             toast.error("Failed to update user status");
         } finally {
             setUpdatingId(null);
+        }
+    };
+
+    const handleViewDetails = async (user: User) => {
+        // Open modal immediately with list data
+        setViewingUser(user);
+        setLoadingDetail(true);
+        try {
+            // Fetch fresh, fully decrypted data from the API
+            const response = await userService.getUserById(user.id);
+            if (response?.data?.user) {
+                setViewingUser(response.data.user);
+            } else if (response?.user) {
+                setViewingUser(response.user);
+            }
+        } catch (err) {
+            console.error('Error fetching user details:', err);
+            // Keep the list data if fetch fails
+        } finally {
+            setLoadingDetail(false);
         }
     };
 
@@ -369,7 +390,7 @@ const Users = () => {
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <button
-                                            onClick={() => setViewingUser(user)}
+                                            onClick={() => handleViewDetails(user)}
                                             className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200"
                                         >
                                             <Eye className="h-4 w-4" /> View Details
@@ -443,6 +464,12 @@ const Users = () => {
                         </div>
 
                         <div className="p-6 space-y-8">
+                            {loadingDetail && (
+                                <div className="flex items-center justify-center py-4">
+                                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-500 mr-2"></div>
+                                    <span className="text-sm text-gray-500">Loading full details...</span>
+                                </div>
+                            )}
                             {/* Personal Info */}
                             <div className="flex items-start gap-4">
                                 <div className="p-3 bg-blue-50 rounded-xl">
@@ -476,6 +503,12 @@ const Users = () => {
                                     <MapPin className="h-6 w-6 text-green-600" />
                                 </div>
                                 <div className="flex-1 space-y-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p className="text-xs text-gray-500 uppercase tracking-wide font-medium">Phone</p>
+                                            <p className="text-gray-900 font-medium font-mono">{viewingUser.phoneNumber || 'Not set'}</p>
+                                        </div>
+                                    </div>
                                     <div>
                                         <p className="text-xs text-gray-500 uppercase tracking-wide font-medium">Address</p>
                                         <p className="text-gray-900 font-medium">{viewingUser.address || 'Not set'}</p>
@@ -505,7 +538,9 @@ const Users = () => {
                                     </div>
                                     <div>
                                         <p className="text-xs text-gray-500 uppercase tracking-wide font-medium">Identity Number</p>
-                                        <p className="text-gray-900 font-medium font-mono tracking-wide">{viewingUser.identityNumber || 'Not set'}</p>
+                                        <p className="text-gray-900 font-medium font-mono tracking-widest text-lg">
+                                            {viewingUser.identityNumber || 'Not set'}
+                                        </p>
                                     </div>
                                 </div>
                             </div>

@@ -17,50 +17,36 @@ export const displayMaskedData = (data: string): string => {
     // If data is already masked (contains *), display as-is
     if (data.includes('*')) return data;
 
-    // If data is encrypted, show as [ENCRYPTED]
+    // If data is encrypted (backend didn't decrypt), show as [ENCRYPTED]
     if (isEncryptedData(data)) return '[ENCRYPTED]';
 
-    // For unencrypted data, apply basic masking
-    if (data.length <= 2) return '***';
-    return data.charAt(0) + '*'.repeat(Math.min(data.length - 2, 5)) + data.charAt(data.length - 1);
+    // Data is already decrypted by backend — show as-is
+    return data;
 };
 
 // Mask mobile number for display
 export const maskMobileNumber = (mobile: string): string => {
     if (!mobile) return '';
-    if (mobile.includes('*') || mobile.includes('-')) return mobile; // Already masked
     if (isEncryptedData(mobile)) return '[ENCRYPTED]';
-
-    if (mobile.length < 6) return '***-***-****';
-    return mobile.substring(0, 3) + '-***-' + mobile.substring(mobile.length - 3);
+    // Show full phone for admin
+    return mobile;
 };
 
 // Mask email for display
 export const maskEmail = (email: string): string => {
     if (!email) return '';
-    if (email.includes('*')) return email; // Already masked
     if (isEncryptedData(email)) return '[ENCRYPTED]';
-
-    const [local, domain] = email.split('@');
-    if (!domain) return displayMaskedData(email);
-
-    const maskedLocal = local.length <= 2 ? '***' :
-        local.charAt(0) + '*'.repeat(local.length - 2) + local.charAt(local.length - 1);
-
-    return `${maskedLocal}@${domain}`;
+    return email;
 };
 
 // Mask address for display
 export const maskAddress = (address: string): string => {
     if (!address) return '';
-    if (address.includes('HIDDEN') || address.includes('***')) return address; // Already masked
     if (isEncryptedData(address)) return '[ENCRYPTED]';
-
-    if (address.length <= 10) return '*** HIDDEN ***';
-    return address.substring(0, 3) + '*** HIDDEN ***' + address.substring(address.length - 3);
+    return address;
 };
 
-// Process user data for admin display
+// Process user data for admin display — show decrypted data fully
 export const processUserDataForAdmin = (user: any) => {
     if (!user) return user;
 
@@ -69,8 +55,8 @@ export const processUserDataForAdmin = (user: any) => {
         firstName: displayMaskedData(user.firstName),
         middleName: displayMaskedData(user.middleName),
         lastName: displayMaskedData(user.lastName),
-        address: maskAddress(user.address),
-        state: displayMaskedData(user.state),
+        address: displayMaskedData(user.address),
+        state: user.state,
         phoneNumber: maskMobileNumber(user.phoneNumber),
         // Keep non-sensitive fields as-is
         id: user.id,
@@ -97,8 +83,8 @@ export const processCibilDataForAdmin = (cibilData: any) => {
         middleName: displayMaskedData(cibilData.middleName),
         lastName: displayMaskedData(cibilData.lastName),
         mobileNumber: maskMobileNumber(cibilData.mobileNumber),
-        address: maskAddress(cibilData.address),
-        state: displayMaskedData(cibilData.state),
+        address: displayMaskedData(cibilData.address),
+        state: cibilData.state,
         // Keep non-sensitive fields as-is
         id: cibilData.id,
         score: cibilData.score,
@@ -132,15 +118,12 @@ export const processCibilArrayForAdmin = (cibilData: any[]) => {
 
 // Get privacy notice for admin
 export const getPrivacyNotice = (): string => {
-    return 'User data is encrypted and masked for privacy protection. Only partial information is visible to administrators.';
+    return 'User data is encrypted in the database. You are viewing decrypted administrative data.';
 };
 
-// Check if current user has permission to view unmasked data (for future use)
-export const canViewUnmaskedData = (adminRole?: string): boolean => {
-    // For now, no admin can view unmasked data
-    // This can be extended in future for super-admin roles
-    console.log('Admin role check:', adminRole); // Future use
-    return false;
+// Admin can always view full data (decryption happens server-side)
+export const canViewUnmaskedData = (_adminRole?: string): boolean => {
+    return true;
 };
 
 export default {

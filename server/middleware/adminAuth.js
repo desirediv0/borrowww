@@ -15,6 +15,11 @@ export const adminAuth = async (req, res, next) => {
             throw new ApiError(401, "Not authorized as admin");
         }
         req.admin = admin;
+
+        // Also expose adminUser on req so shared controllers can check role uniformly.
+        // Controllers check req.user?.role === 'SUPER_ADMIN', so we map admin onto that shape.
+        req.user = { id: admin.id, role: admin.role || 'ADMIN' };
+
         next();
     } catch (err) {
         next(err);

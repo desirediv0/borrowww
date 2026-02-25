@@ -263,6 +263,11 @@ enum LoanStatus {
   CLOSED
 }
 
+enum ReportStatus {
+  ACTIVE
+  EXPIRED
+}
+
 enum InquiryStatus {
   PENDING
   CONTACTED
@@ -430,6 +435,9 @@ model CreditReport {
   pdfOriginalUrl String? @db.Text
   pdfSpacesPath  String? // Renamed from pdfDoPath
   pdfSpacesUrl   String? @db.Text // Renamed from pdfDoUrl
+
+  // Status
+  status ReportStatus @default(ACTIVE)
 
   // 28-day cache control
   fetchedAt DateTime @default(now())

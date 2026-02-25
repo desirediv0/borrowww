@@ -128,12 +128,15 @@ export async function decryptLarge(combinedString) {
     }
 }
 
-// Helper to mask PAN: ABCDE1234F -> ABC******F
+// Helper to mask PAN: ABCDE1234F -> ABC****34F (first 3 visible + stars + last 2 visible)
 export const maskPan = (pan) => {
     if (!pan || pan.length < 5) return pan;
+    // Already masked (contains *)
+    if (pan.includes('*')) return pan;
     const first3 = pan.slice(0, 3);
-    const last1 = pan.slice(-1);
-    return `${first3}******${last1}`;
+    const last2 = pan.slice(-2);
+    const middleLen = Math.max(pan.length - 5, 4); // Always show at least 4 stars
+    return `${first3}${'*'.repeat(middleLen)}${last2}`;
 };
 
 // Helper to encrypt sensitive fields in a user object
