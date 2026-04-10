@@ -1,10 +1,12 @@
 import ComparisonClient from './ComparisonClient';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Loan Comparison - Compare Loans & Interest Rates | Borrowww',
+export const metadata = buildMetadata({
+  title: 'Loan Comparison - Compare Loans and Interest Rates',
   description:
-    'Compare different loan offers side-by-side. Analyze interest rates, fees, and tenure to choose the best loan for your needs.',
-};
+    'Compare loan offers side by side and review interest rates, fees, and tenure options to choose the best fit for your needs.',
+  path: '/comparison',
+});
 
 export default function ComparisonPage() {
   return <ComparisonClient />;

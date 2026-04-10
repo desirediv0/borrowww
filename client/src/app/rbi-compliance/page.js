@@ -1,7 +1,11 @@
-export const metadata = {
-  title: 'RBI Compliance | Borrowww',
-  description: 'Learn about Borrowww\'s commitment to RBI compliance and regulatory standards for digital lending.',
-};
+import { buildMetadata } from '@/lib/seo';
+
+export const metadata = buildMetadata({
+  title: 'RBI Compliance',
+  description:
+    'Learn about Borrowww’s approach to RBI compliance, fair communication, transparency, and lender partnerships.',
+  path: '/rbi-compliance',
+});
 
 export default function RBICompliance() {
   return (

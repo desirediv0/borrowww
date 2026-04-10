@@ -1,11 +1,20 @@
 import EMIClient from './EMIClient';
+import SeoContentBlock from '@/components/SeoContentBlock';
+import { existingPageContent } from '@/content/seoPages';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
-  title: 'EMI Calculator - Calculate Home, Personal & Car Loan EMI',
+export const metadata = buildMetadata({
+  title: 'EMI Calculator - Calculate Home, Personal and Car Loan EMI',
   description:
-    'Calculate your monthly EMI for Home Loan, Personal Loan, and Car Loan with our easy-to-use EMI Calculator.',
-};
+    'Calculate monthly EMI for home loans, personal loans, and car loans with Borrowww\'s easy-to-use EMI calculator.',
+  path: '/emi',
+});
 
 export default function EMIPage() {
-  return <EMIClient />;
+  return (
+    <>
+      <EMIClient />
+      <SeoContentBlock {...existingPageContent.emi} />
+    </>
+  );
 }

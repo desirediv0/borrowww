@@ -1,7 +1,11 @@
-export const metadata = {
-  title: 'Privacy Policy | Borrowww',
-  description: 'Read our Privacy Policy to understand how Borrowww collects, uses, and protects your personal information.',
-};
+import { buildMetadata } from '@/lib/seo';
+
+export const metadata = buildMetadata({
+  title: 'Privacy Policy',
+  description:
+    'Read the Borrowww Privacy Policy to understand how personal information is collected, used, protected, and shared.',
+  path: '/privacy-policy',
+});
 
 export default function PrivacyPolicy() {
   return (

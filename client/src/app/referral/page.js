@@ -1,10 +1,13 @@
 import ReferralClient from './ReferralClient';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = {
-    title: 'Refer a Friend | Borrowww',
-    description: 'Refer your friends and family to Borrowww\'s loan services. Connect them with the best financial assistance and quick loan processing.',
-};
+export const metadata = buildMetadata({
+  title: 'Refer a Friend',
+  description:
+    'Refer friends and family to Borrowww and help them connect with loan services and guided financial assistance.',
+  path: '/referral',
+});
 
 export default function ReferralPage() {
-    return <ReferralClient />;
+  return <ReferralClient />;
 }

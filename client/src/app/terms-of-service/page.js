@@ -1,7 +1,11 @@
-export const metadata = {
-  title: 'Terms of Service | Borrowww',
-  description: 'Review the Terms of Service for using Borrowww. Understand your rights and responsibilities as a user.',
-};
+import { buildMetadata } from '@/lib/seo';
+
+export const metadata = buildMetadata({
+  title: 'Terms of Service',
+  description:
+    'Review the Borrowww Terms of Service to understand user responsibilities, service limitations, and applicable legal terms.',
+  path: '/terms-of-service',
+});
 
 export default function TermsOfService() {
   return (
