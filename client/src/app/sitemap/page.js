@@ -17,6 +17,7 @@ const baseLinks = [
   { href: '/privacy-policy', label: 'Privacy Policy' },
   { href: '/terms-of-service', label: 'Terms of Service' },
   { href: '/rbi-compliance', label: 'RBI Compliance' },
+  { href: '/loan-advisor-gurgaon-for-home-loan', label: 'Loan Advisor Gurgaon for Home Loan' }
 ];
 
 const sitemapLinks = [
