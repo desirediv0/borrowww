@@ -901,6 +901,126 @@ export default function HomeLoanClient() {
                     </button>
                 </div>
             </div>
+
+            {/* ELIGIBILITY SALARY WISE CONTENT SECTION */}
+            <section className="py-14 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+                    {/* Section 1: Eligibility Salary Wise */}
+                    <div>
+                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4">
+                            Home Loan Eligibility Salary Wise in India (2026)
+                        </h2>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                            Home loans in India are pretty much accessible, as approx. 150 – 180 major financial institutions actively offer home loans. The institutions can be broadly categorized into three categories, i.e., Commercial and Scheduled Banks (Public Sector Banks, Private Sector Banks, Small Finance Banks, and Regional Rural Banks), Non-Banking Financial Companies (NBFC) and Affordable Housing Lenders. All category banks are differently governed and have different policies to calculate eligibility. For example, for a bank the minimum salary criteria would be approx. INR 35000/-, whereas for an NBFC or AHL the minimum salary requirement could be as low as INR 15000–20000/-. Along with this come some special schemes by the Government of India, which help lower the threshold limit of salaried applicants.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Generally, the Lenders in India follow the FOIR (Fixed Obligation to Income Ratio) rule to ensure that your existing and current loan EMIs combined do not exceed 60–70% of your net take-home salary.
+                        </p>
+                    </div>
+
+                    {/* Section 2: Eligibility Table */}
+                    <div>
+                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-3">
+                            Net Take-Home Income – to – Loan Eligibility Calculation Table
+                        </h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Refer below for the table that briefly estimates loan amount eligibility based on take-home salary. The loan eligibility calculation is based on monthly income @ 20 years loan tenure, and an ROI of approx. 7.50% annually.
+                        </p>
+                        <div className="overflow-x-auto rounded-2xl shadow-md border border-gray-200">
+                            <table className="w-full text-left">
+                                <thead>
+                                    <tr className="bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] text-white">
+                                        <th className="px-6 py-4 font-semibold text-base">Net Monthly Income</th>
+                                        <th className="px-6 py-4 font-semibold text-base">Estimated Loan Eligibility</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {[
+                                        { income: '₹25,000', eligibility: '₹18 Lakh – ₹22 Lakh' },
+                                        { income: '₹40,000', eligibility: '₹30 Lakh – ₹35 Lakh' },
+                                        { income: '₹60,000', eligibility: '₹48 Lakh – ₹52 Lakh' },
+                                        { income: '₹80,000', eligibility: '₹60 Lakh – ₹65 Lakh' },
+                                        { income: '₹1,00,000+', eligibility: '₹75 Lakh – ₹80 Lakh+' },
+                                    ].map((row, i) => (
+                                        <tr
+                                            key={i}
+                                            className={i % 2 === 0 ? 'bg-white hover:bg-blue-50 transition-colors' : 'bg-gray-50 hover:bg-blue-50 transition-colors'}
+                                        >
+                                            <td className="px-6 py-4 font-medium text-gray-800">{row.income}</td>
+                                            <td className="px-6 py-4 text-gray-700">{row.eligibility}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        <p className="mt-5 text-gray-700 leading-relaxed">
+                            Additionally, with regard to Home Loan for low Salaried income in India, there are several ways to increase loan eligibility, which helps clients to get the maximum loan amount on the basis of income.
+                        </p>
+                    </div>
+
+                    {/* Section 3: PMAY */}
+                    <div className="bg-white rounded-3xl border border-gray-100 shadow-md p-8">
+                        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
+                            1. Benefit of Government Schemes like Pradhan Mantri Awas Yojna (PMAY 2.0)
+                        </h2>
+                        <p className="text-gray-700 leading-relaxed mb-4">
+                            This Government scheme is specifically designed for clients falling in low-income categories, which are LIG (Low Income Groups) or EWS (Economically Weaker Section).
+                        </p>
+                        <ul className="space-y-2 text-gray-700 mb-4 ml-2">
+                            <li className="flex items-start gap-2">
+                                <span className="text-[#3A6EA5] mt-1 font-bold">•</span>
+                                <span><strong>LIG</strong> – Annual family income between INR 3 and 6 lakh</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <span className="text-[#3A6EA5] mt-1 font-bold">•</span>
+                                <span><strong>EWS</strong> – Annual family income less than INR 3 lakh</span>
+                            </li>
+                        </ul>
+                        <p className="text-gray-700 leading-relaxed">
+                            The government offers subsidies and benefits in terms of interest savings or credit guarantees, which helps clients lower their monthly EMI burden to meet daily needs along with availing a housing loan.
+                        </p>
+                    </div>
+
+                    {/* Section 4: Co-applicant */}
+                    <div className="bg-white rounded-3xl border border-gray-100 shadow-md p-8">
+                        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
+                            2. Co-applicant / Co-borrower
+                        </h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            Adding a co-applicant or co-borrower is one of the most easy and effective ways to increase loan eligibility. You can add any blood relative, i.e., father, mother, spouse, brother, or son, as a co-borrower / co-applicant in the loan application, and the combined income will be considered while calculating loan eligibility, which helps increase your eligibility substantially. Some Government banks even allow friends or non-blood relatives to join as co-borrowers as well if they are buying property in a joint name.
+                        </p>
+                    </div>
+
+                    {/* Section 5: Long Tenure */}
+                    <div className="bg-white rounded-3xl border border-gray-100 shadow-md p-8">
+                        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
+                            3. Long Tenure Option
+                        </h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            If you are looking for a larger loan amount, a longer tenure option can also help. Banks offer loan tenures up to 25 or 30 years depending upon the current age of loan applicants. While this costs more interest being a longer period, this helps in reducing the monthly EMI burden. And, as per RBI guidelines, banks offer the option for pre-payment / part-payment in the home loan free of cost so you can pay any partial loan amount during the loan tenure and reduce your tenure or EMI accordingly.
+                        </p>
+                    </div>
+
+                    {/* Section 6: Closure of Existing Loans */}
+                    <div className="bg-white rounded-3xl border border-gray-100 shadow-md p-8">
+                        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
+                            4. Closure of All Existing Running Loans
+                        </h2>
+                        <p className="text-gray-700 leading-relaxed">
+                            While calculating eligibility, lenders look for all existing obligations as per the{' '}
+                            <a
+                                href="https://www.borrowww.com/credit-check"
+                                className="text-[#3A6EA5] font-medium underline underline-offset-2 hover:text-[#2D3E50] transition-colors"
+                            >
+                                credit report
+                            </a>{' '}
+                            and deduct the current EMIs from the net take-home income to assess exact eligibility. So, while applying for a home loan, ensure you close all current small running loans, like loans for the purchase of electronics, mobiles, etc., and any personal loans and credit card dues to get the maximum loan amount sanctioned.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
         </div>
     );
 }
