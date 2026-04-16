@@ -2,9 +2,9 @@ import AboutClient from './AboutClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'About Us - Premier Penny Digital Lending Partner',
+  title: 'About Borrowww | India’s Trusted Loan & Credit Platform',
   description:
-    'Learn more about Borrowww and how we connect borrowers with trusted lenders for home loans, personal loans, and related financial solutions.',
+    'Discover Borrowww, backed by Premier Penny, delivering secure, fast and transparent loan solutions. Empowering financial inclusion with innovative and customer-first lending services.',
   path: '/about',
 });
 

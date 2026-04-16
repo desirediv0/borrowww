@@ -2,9 +2,9 @@ import CreditCheckClient from './CreditCheckClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Free Credit Score Check - Check Your CIBIL Score',
+  title: 'Check Your Free Credit Score Instantly | No Charges, Secure - Borrowww',
   description:
-    'Check your credit score for free with Borrowww, access your detailed credit report, and improve your loan eligibility.',
+    'Check your free credit score online instantly with Borrowww. No hidden charges, no credit card required. Secure, fast & accurate credit report with tips to improve your loan eligibility.',
   path: '/credit-check',
 });
 

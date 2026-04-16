@@ -2,9 +2,9 @@ import ReferralClient from './ReferralClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Refer a Friend',
+  title: 'Refer a Friend for Loans | Borrowww',
   description:
-    'Refer friends and family to Borrowww and help them connect with loan services and guided financial assistance.',
+    'Help friends get the best loans with Borrowww. Quick processing, expert guidance, and priority handling for all your loan referrals.',
   path: '/referral',
 });
 

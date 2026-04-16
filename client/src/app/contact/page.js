@@ -2,9 +2,9 @@ import ContactClient from './ContactClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Contact Us',
+  title: "Let's Connect | Borrowww 24/7 Loan Support",
   description:
-    'Contact Borrowww for loan assistance, application support, and guidance on home loans, credit checks, and other financial services.',
+    'Have questions about loans or credit? Borrowww offers 24/7 personalized support via call, email, or WhatsApp to help you quickly and securely.',
   path: '/contact',
 });
 

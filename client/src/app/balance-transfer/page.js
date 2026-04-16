@@ -2,9 +2,9 @@ import BalanceTransferClient from './BalanceTransferClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Balance Transfer - Transfer Your Home Loan and Save',
+  title: 'Balance Transfer EMI Calculator | Save on Loan Interest - Borrowww',
   description:
-    'Transfer your existing home loan to a new lender with lower interest rates, improved terms, and transparent support from Borrowww.',
+    'Compare your current loan with top banks, calculate savings with our Balance Transfer Calculator, and reduce EMI & interest. Get started with Borrowww today!',
   path: '/balance-transfer',
 });
 

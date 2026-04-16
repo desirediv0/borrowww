@@ -4,9 +4,9 @@ import { existingPageContent } from '@/content/seoPages';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Loan Against Property - Unlock Your Property Value',
+  title: 'Loan Against Property India | Easy Docs & Fast Approval - Borrowww',
   description:
-    'Get a loan against residential or commercial property with competitive interest rates, flexible tenure, and support from Borrowww.',
+    'Get loan against property in India with minimal documents. Use funds for business expansion with low interest rates, long tenure & quick approval from Borrowww.',
   path: '/loan-against-property',
 });
 

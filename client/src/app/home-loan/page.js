@@ -4,9 +4,9 @@ import { existingPageContent } from '@/content/seoPages';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Home Loan - Best Interest Rates and Offers',
+  title: 'Best Home Loan in India | Check Eligibility by Salary & Get Low Rates - Borrowww',
   description:
-    'Apply for a home loan with Borrowww, compare interest rates, check eligibility, and get guided support from top lenders.',
+    'Get the best home loan in India with Borrowww. Check eligibility by salary, enjoy low interest rates, flexible tenure & expert assistance for fast, hassle-free approval.',
   path: '/home-loan',
 });
 

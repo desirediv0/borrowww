@@ -2,9 +2,9 @@ import ComparisonClient from './ComparisonClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Loan Comparison - Compare Loans and Interest Rates',
+  title: 'Loan Comparison Calculator - Borrowww',
   description:
-    'Compare loan offers side by side and review interest rates, fees, and tenure options to choose the best fit for your needs.',
+    'Compare home, personal, business & property loans with Borrowww. Find lowest EMI, interest & savings instantly with our easy loan comparison tool.',
   path: '/comparison',
 });
 

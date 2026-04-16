@@ -15,9 +15,9 @@ import { buildMetadata } from '@/lib/seo';
 // Note: This implementation was requested by client despite being non-compliant with DPDP Act.
 
 export const metadata = buildMetadata({
-  title: 'Borrowww - Credit Check & Instant Loan Provider',
+  title: 'Instant Loan Approval | Home & Business Loans - Borrowww',
   description:
-    'Check your credit score and explore home loan, balance transfer, EMI calculator, and loan comparison tools with Borrowww.',
+    'Get instant loan approval with Borrowww. Check your free credit score and apply for home, personal & business loans at low interest rates. Fast & secure process.',
   path: '/',
   keywords: [
     'Borrowww',
@@ -25,6 +25,8 @@ export const metadata = buildMetadata({
     'home loan',
     'loan comparison',
     'EMI calculator',
+    'instant loan approval',
+    'business loans',
   ],
 });
 

@@ -18,6 +18,7 @@ export default function sitemap() {
     '/terms-of-service',
     '/rbi-compliance',
     '/referral',
+    '/blog',
     ...seoSlugs.map((slug) => `/${slug}`),
   ];
 
