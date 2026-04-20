@@ -9,6 +9,7 @@ import Providers from '@/components/Providers';
 import { buildMetadata, companyInfo, organizationSchema } from '@/lib/seo';
 
 import './globals.css';
+import Script from 'next/script';
 
 export const metadata = {
   metadataBase: new URL(companyInfo.siteUrl),
@@ -50,6 +51,20 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-BPE9276VQP"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-BPE9276VQP');
+          `}
+        </Script>
         <Providers>
           <LenisProvider />
           <Header />
