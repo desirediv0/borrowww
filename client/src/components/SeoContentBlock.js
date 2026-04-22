@@ -3,11 +3,17 @@
 import { useState } from 'react';
 
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { ChevronDown, PhoneCall } from 'lucide-react';
 
 function FaqItem({ item, isOpen, onToggle }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+    >
       <button
         className="flex w-full items-center justify-between gap-4 text-left"
         onClick={onToggle}
@@ -20,8 +26,16 @@ function FaqItem({ item, isOpen, onToggle }) {
           }`}
         />
       </button>
-      {isOpen ? <p className="mt-4 text-sm leading-7 text-slate-600">{item.answer}</p> : null}
-    </div>
+      {isOpen ? (
+        <motion.p
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          className="mt-4 text-sm leading-7 text-slate-600"
+        >
+          {item.answer}
+        </motion.p>
+      ) : null}
+    </motion.div>
   );
 }
 
@@ -39,7 +53,12 @@ export default function SeoContentBlock({
     <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white py-16 sm:py-20">
       <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,#c4d7e044,transparent_65%)]" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-3xl"
+        >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--primary-blue)]">
             SEO Content Section
           </p>
@@ -47,21 +66,28 @@ export default function SeoContentBlock({
             {heading}
           </h2>
           <p className="mt-5 text-base leading-8 text-slate-600">{intro}</p>
-        </div>
+        </motion.div>
 
         <div className="mt-12 grid gap-6">
-          {sections.map((section) => (
-            <article
+          {sections.map((section, idx) => (
+            <motion.article
               key={section.title}
-              className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition-all hover:border-[var(--primary-blue)]/30 hover:shadow-md"
             >
-              <h3 className="text-2xl font-semibold text-slate-900">{section.title}</h3>
+              <h2 className="text-2xl font-semibold text-slate-900">{section.title}</h2>
               <div className="mt-5 space-y-4 text-base leading-8 text-slate-600">
                 {section.paragraphs.map((paragraph) => (
-                  <p key={paragraph.slice(0, 36)}>{paragraph}</p>
+                  <div
+                    key={paragraph.slice(0, 36)}
+                    dangerouslySetInnerHTML={{ __html: paragraph }}
+                  />
                 ))}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
 

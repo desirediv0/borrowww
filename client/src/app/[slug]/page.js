@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-
 import SeoContentBlock from '@/components/SeoContentBlock';
+import SeoHero from '@/components/SeoHero';
 import { seoPageMap, seoSlugs } from '@/content/seoPages';
 import { buildMetadata } from '@/lib/seo';
 
@@ -33,21 +33,7 @@ export default function SeoPage({ params }) {
 
   return (
     <main className="min-h-screen bg-white">
-      <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fbff_0%,#ffffff_55%,#d9e6ef_100%)] py-20">
-        <div className="absolute left-0 top-0 h-40 w-40 rounded-full bg-[var(--primary-blue)]/10 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-56 w-56 rounded-full bg-[var(--primary-blue-dark)]/10 blur-3xl" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--primary-blue)]">
-              {page.type === 'blog' ? 'Borrowww Blog' : 'Borrowww Loan Guide'}
-            </p>
-            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
-              {page.heading}
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-slate-600">{page.intro}</p>
-          </div>
-        </div>
-      </section>
+      <SeoHero page={page} />
 
       <SeoContentBlock
         heading={page.heading}

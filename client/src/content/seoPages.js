@@ -274,38 +274,112 @@ export const seoPages = [
       },
     ],
   }),
-  createLocationServicePage({
+  createBlogPage({
     slug: 'loan-against-property-for-salaried-delhi',
     title: 'Loan Against Property for Salaried in Delhi NCR',
     description:
-      'Explore loan against property options for salaried borrowers in Delhi NCR with Borrowww\'s documentation and lender-matching support.',
-    heading: 'Loan Against Property for Salaried Borrowers in Delhi NCR',
+      'Get a loan against property for salaried in Delhi NCR. Low interest, fast approval, high loan amount, easy eligibility, and flexible repayment options.',
+    heading: 'Loan Against Property for Salaried Delhi NCR',
     intro:
-      'Borrowww helps salaried professionals in Delhi NCR understand loan against property eligibility, documentation, and lender expectations before applying.',
-    location: 'Delhi NCR',
-    primaryService: 'loan against property for salaried borrowers',
-    relatedServices: ['salary-based eligibility review', 'property-backed borrowing', 'tenure planning'],
-    audience: 'salaried applicants',
+      'In the current bustling world, especially in cosmopolitan places like Delhi NCR, unexpected financial requirements can come anytime—whether it’s your wedding plans or your child’s higher education plans or any medical emergencies or consolidating your smaller unsecured loans and cards at a higher rate to one single loan with a lower rate. For salaried individuals who own residential/<a href="https://www.borrowww.com/commercial-property-loan">commercial property</a> or a plot in Delhi NCR, a loan against property is a good, effective way to arrange a large amount of funds.',
+    sections: [
+      {
+        title: 'Unlocking the value of your property with LAP',
+        paragraphs: buildParagraphs([
+          'They come at a much lower rate and higher tenure as compared to personal loans or loans on cards. We can reside in our property or even rent it out and still use this as leverage to arrange funds through a loan against property.',
+        ]),
+      },
+      {
+        title: 'In Delhi NCR, why should we choose LAP?',
+        paragraphs: buildParagraphs([
+          'In the last 2 odd decades there has been significant appreciation in real estate prices in Delhi NCR; we recently saw a huge jump in the last 3-4 years. This appreciation has vastly increased the loan-taking capacity for salaried individuals. A loan against property is a secured loan that can be used for varied purposes, whether it\'s travel / wedding / higher education / or any other legitimate purpose.',
+        ]),
+      },
+      {
+        title: '1. Lower rates compared to unsecured products',
+        paragraphs: buildParagraphs([
+          '<a href="https://www.borrowww.com/loan-against-property">Loans against property</a> are secured by banks by mortgaging a collateral; since this reduces the risks to banks significantly, they offer much lower rates compared to personal loans or credit cards. For salaried professionals earning consistent monthly income, banks offer very competitive rates in Delhi NCR.',
+        ]),
+      },
+      {
+        title: '2. Longer tenor loans and larger loan amounts',
+        paragraphs: buildParagraphs([
+          'Unsecured loans like personal loans have much smaller maximum loan amount caps, like 25-50 lacs in most cases, and a maximum tenor of around 7-8 years. However, in a loan against property, we can take a loan even in crores, and there is no specific capping as long as our property value and income support our loan amount. You can also get tenors up to 15 years subject to your current age, with some lenders even offering tenors of 20 years.',
+        ]),
+      },
+      {
+        title: '3. No change in property usage',
+        paragraphs: buildParagraphs([
+          'The key benefit here is you can keep staying in your home or keep renting it. Whatever be the case, there is no need to change the ownership and occupancy. The lender will just keep the original papers in their secure custody till the time the mortgage is in effect.',
+        ]),
+      },
+      {
+        title: 'Eligibility criteria for salaried individuals',
+        paragraphs: buildParagraphs([
+          'A consistent and stable income reflecting your repayment capacity is a key parameter for getting a loan sanctioned for salaried individuals in Delhi NCR:',
+          '<strong>Age:</strong> Banks usually offer loans from 21 years to 60 years of age, with some deviations allowed at the upper end in case of compensating factors.',
+          '<strong>Work experience:</strong> Banks usually require at least 2-3 years of work experience depending on loan type and profile.',
+          '<strong>Minimum Income:</strong> This can vary from bank to bank, but often in Delhi NCR this ranges from a minimum of INR 25000 to INR 40000. There are other lenders like housing finance companies and non-banking financial companies who can offer loans in case salary is below this bracket.',
+          '<strong>Collateral type:</strong> Collateral, or the property, can be residential as well as commercial; it can also be a plot. It can be self-occupied or rented or even vacated.',
+        ]),
+      },
+      {
+        title: 'Documents Required:',
+        paragraphs: buildParagraphs([
+          'Most banks have become digital now owing to the changing dynamics, and for a salaried applicant, the following documents are required:',
+          '<strong>Know your customer documents:</strong> These are the identity and address documents. Aadhaar Card, PAN Card, Voter ID, or Passport.',
+          '<strong>Income Documents:</strong> Last 2 to 3 years of Form 16, last 3 months of salary slips, and bonus salary slips, if any.',
+          '<strong>Bank Statements:</strong> Last 6 to 12 months\' bank statement showing salary credits.',
+          '<strong>Collateral / Property documents:</strong> Complete chain of papers starting from allotment letter to latest registered title deed (sale deed/conveyance deed, etc.), approved sanction plans, if any, and latest tax receipts.',
+        ]),
+      },
+      {
+        title: 'How can I increase my loan value?',
+        paragraphs: buildParagraphs([
+          'In Delhi NCR, banks get the property valued through their empanelled vendors, and this is a critical step. Banks can offer up to 70-75% of property value depending on loan type and occupancy and subject to income eligibility.',
+          '<strong>If we want to get the maximum amount, we should try and ensure the following:</strong>',
+          '<strong>Ensuring a high CIBIL score:</strong> A good <a href="https://www.borrowww.com/credit-check">CIBIL score</a> will almost always help you negotiate rates and terms better. A good civil score of more than 750 is looked at positively by banks.',
+          '<strong>Complete and clear property chain:</strong> One must ensure there are no legal disputes on the property and the chain is clear without encumbrances.',
+          '<strong>Current loans:</strong> Banks make income eligibility obligatory for your current EMIs. In case you have many smaller loans, then try and close them before applying, or you can also consolidate them into a bigger loan.',
+        ]),
+      },
+      {
+        title: 'Conclusion',
+        paragraphs: buildParagraphs([
+          'This product can be used as a smart financial tool to leverage your property to provide you the liquidity needed to achieve your goals at a competitive interest rate. You need to ensure that documents are in order and choose your lender smartly to get the maximum benefit, which includes comparing interest rates, understanding loan terms, and assessing the lender\'s reputation.',
+        ]),
+      },
+    ],
     faq: [
       {
-        question: 'Can salaried employees get a loan against property?',
+        question: '1. My property is located in “Lal Dora” in Delhi. Can I get a loan?',
         answer:
-          'Yes. Salaried borrowers may be eligible if they meet lender requirements related to income, credit history, and property documentation.',
+          'Yes, while top banks do not fund on Lal Dora land, some housing finance companies and non-banking financial companies do offer loans on Lal Dora land if the title is clear and the area is developed with connectivity.',
       },
       {
-        question: 'What documents are usually required?',
+        question: '2. What is better, a loan against property or a personal loan?',
         answer:
-          'Common documents include salary slips, bank statements, PAN, Aadhaar, employment proof, and property papers.',
+          'If you want a loan with a higher amount and longer tenors, then a loan against property is more suited. They offer a much lower interest rate than a personal loan as well.',
       },
       {
-        question: 'What can the funds be used for?',
+        question: '3. What is the maximum tenure available for salaried employees?',
         answer:
-          'Usage depends on lender policy and applicant profile, but borrowers often use LAP for business needs, education, debt consolidation, or planned expenses.',
+          'Banks normally offer a maximum tenor of 15 years; however, there are certain lenders who might offer tenors up to 20 years subject to age at maturity not crossing retirement age.',
       },
       {
-        question: 'How is LAP different from a personal loan?',
+        question: '4. What happens if I want to prepay my loan?',
         answer:
-          'LAP is secured against property, so it may offer higher loan amounts and longer tenure than an unsecured personal loan.',
+          'As per the latest RBI guidelines, banks normally don’t charge any penalty for foreclosing a loan for individual loans on floating rates. However, some NBFCs or specialized HFCs may charge some penalty; please do ask this question specifically while applying.',
+      },
+      {
+        question: '5. In Delhi NCR, how much time does it take to get a loan against property?',
+        answer:
+          'Since this is a secured loan where, other than income eligibility, banks need to get valuation and legal done for your property, this can take 7-15 working days from the time you submit all documents to get final disbursement.',
+      },
+      {
+        question: '6. I want to apply for the loan; should the property be in my name?',
+        answer:
+          'The property owner has to be either an applicant or co-applicant on the loan. All property owners have to be on the loan mandatorily.',
       },
     ],
   }),
@@ -449,73 +523,171 @@ export const seoPages = [
       },
     ],
   }),
-  createLocationServicePage({
+  createBlogPage({
     slug: 'instant-loan-for-salaried-employees-delhi',
-    title: 'Instant Loan for Salaried Employees in Delhi NCR',
+    title: 'Instant Loan for Salaried Employees in Delhi NCR – Fast Approval 2026',
     description:
-      'Borrowww helps salaried employees in Delhi NCR prepare for instant loan applications with better clarity on documents and lender expectations.',
-    heading: 'Instant Loan for Salaried Employees in Delhi NCR',
+      'Get an instant loan for salaried employees in Delhi NCR with quick approval and minimal documents. Compare top lenders, low interest rates, and easy eligibility. Apply online today for fast disbursal and hassle-free personal loans.',
+    heading: 'Instant loans for salaried employees in Delhi-NCR',
     intro:
-      'Borrowww supports salaried professionals in Delhi NCR who want to apply for an instant loan with fewer surprises and stronger preparation.',
-    location: 'Delhi NCR',
-    primaryService: 'instant salaried loan support',
-    relatedServices: ['salary-based eligibility checks', 'quick loan planning', 'income proof review'],
-    audience: 'salaried employees',
+      'Delhi-NCR, which includes Delhi, Gurgaon, Noida, and Faridabad, is fast-paced, moving constantly just like its metro lines. It doesn\'t matter if it\'s an emergency in the hospital, a sudden house repair, or a new gadget that has gone on sale that is a must-buy for some even though it is on credit; the source of money may be required at any moment. Luckily, with the fintech revolution, the way in which people of the National Capital Region get credit has also been eased out.',
+    sections: [
+      {
+        title: 'Why salaried employees in Delhi-NCR are better off',
+        paragraphs: buildParagraphs([
+          'If you are salaried, working in Delhi-NCR, and looking for an instant loan, or if you are looking for a trustworthy instant loan approval consultant, you have come to the right place where you will get everything you need to secure a loan in a quick and safe manner.',
+          'Generally speaking, lenders view salaried employees as their "favorite" customers. A regular salary credit month-on-month is considered by banks and non-banking financial companies (NBFCs) as a type of financial cushion that minimizes the lending risk.',
+          '<strong>What Makes Residents of Delhi-NCR Better Off:</strong>',
+          '<ul class="list-disc ml-6 space-y-2"><li><strong>Corporate Hubs:</strong> Since Gurgaon and Noida host a large number of global MNCs, lenders usually have "pre-approved" lists of employees of well-known companies.</li><li><strong>High Loan Amounts:</strong> Lenders usually extend higher loan limits (as high as ₹50 lakhs or more) to capable professionals in the NCR area.</li><li><strong>Competitive Interest Rates:</strong> Thanks to the abundant presence of financial institutions, you have the chance to get the best rates after visiting multiple online lenders.</li></ul>',
+        ]),
+      },
+      {
+        title: 'Finding an Instant Loan Approval Consultant Near You',
+        paragraphs: buildParagraphs([
+          'While digital apps are convenient, many people still prefer interacting with a professional to get options to choose from, better interest rates, and tenure as per the requirement. An instant loan approval consultant near me can act as a bridge between the borrower and the lender.',
+          '<strong>What a consultant does for you:</strong>',
+          '<ul class="list-disc ml-6 space-y-2"><li><strong>Credit Health Check:</strong> They analyze your credit score and suggest ways to improve it before you apply.</li><li><strong>Documentation Assistance:</strong> They ensure your KYC and salary slips are ready to prevent rejection.</li><li><strong>Multiple Lender Access:</strong> A consultant knows which specific lender is currently looking for your specific profile.</li></ul>',
+          '<strong>Pro Tip:</strong> Whether you are working in Connaught Place, Nehru Place, or Cyber City, it is always advisable to look for consultants who are "DSAs" (Direct Selling Agents) for multiple banks to get the widest range of options.',
+        ]),
+      },
+      {
+        title: 'Online Loan Approval Without Income Proof in India: The Reality',
+        paragraphs: buildParagraphs([
+          'Recently, there has been quite a lot of talk about <a href="https://www.borrowww.com/home-loan">online loan approval without income proof in India</a>. Apparently, it is a very attractive idea, but it is better to be informed about the working of it so that you don\'t end up being a victim of predatory lending.',
+          '<strong>"No income proof" typically refers to the following:</strong>',
+          '<ul class="list-disc ml-6 space-y-2"><li><strong>Asset-Based Loans:</strong> When you use your gold, securities, or property as collateral, your monthly salary ceases to be an important consideration.</li><li><strong>Alternative Credit Scoring:</strong> Some fresh fintech applications assess your communication, utility bill payments, and regular shopping habits.</li><li><strong>Low-Ticket Micro-Loans:</strong> For small amounts (₹1,000 to ₹10,000), some apps may be satisfied with simply your Aadhaar and PAN card.</li></ul>',
+          'Nevertheless, a caution is in order here as loans without income proof can have significantly higher rates of interest—sometimes between 24% and 48% per annum. You should always check that the app you choose is an RBI-registered NBFC.',
+        ]),
+      },
+      {
+        title: 'How to Get Your Loan Approved: Step-by-Step',
+        paragraphs: buildParagraphs([
+          '<strong>1. Check if You\'re Eligible:</strong> Normally, lenders will want you to be in the 21–60 years age bracket, and you would typically need to earn a minimum monthly income of ₹25,000 to ₹35,000 in Delhi-NCR.',
+          '<strong>2. Prepare Digital Documents:</strong> Have your PAN card, Aadhaar card (linked to mobile for e-KYC), and the last 3–6 months\' bank statements in PDF format.',
+          '<strong>3. Look at the APR:</strong> Compare the Annual Percentage Rate (APR), which is inclusive of processing fees and other hidden charges, rather than just the monthly interest rate.',
+          '<strong>4. EMI Calculator is a Must:</strong> Make sure that you borrow only the amount that you can repay comfortably. Ideally, your total EMIs should not be more than 40% of your take-home salary.',
+        ]),
+      },
+      {
+        title: 'Final Thoughts',
+        paragraphs: buildParagraphs([
+          'Getting instant credit is very alluring because of its convenience, but please keep in mind that lending is a serious undertaking. If you choose a consultant in Noida or just the app on your phone, go through the terms and conditions a couple of times before you tap "Accept."',
+        ]),
+      },
+    ],
     faq: [
       {
-        question: 'Can salaried employees get quick digital loan approvals?',
+        question: '1. Can I get an instant loan in Delhi if I just started my job?',
         answer:
-          'Many lenders offer faster digital workflows, but approval still depends on salary stability, credit profile, and document quality.',
+          'Usually, conventional banks require 12 to 24 months of employment stability. However, modern fintech companies can extend loans to those who have completed just 3 months in the same job.',
       },
       {
-        question: 'What if I do not have traditional income proof?',
+        question: '2. Is it safe to apply for a loan without income proof?',
         answer:
-          'Some cases may still be reviewed based on alternate documentation, but final acceptance depends on lender policy and profile strength.',
+          'It\'s only risk-free if the lender is a registered bank or NBFC with the RBI. Avoid loan apps that request advance "processing fees" before the loan disbursal. Genuine lenders deduct the fee from the loan amount.',
       },
       {
-        question: 'How can I improve approval readiness?',
+        question: '3. How long does the "instant" approval actually take?',
         answer:
-          'Keep salary credits consistent, maintain a healthier credit profile, reduce documentation gaps, and avoid unnecessary parallel applications.',
+          'Digital lenders in Delhi-NCR can give "In-Principle" approval within 5 minutes. Disbursal usually takes between 2 to 24 hours depending on bank working hours.',
       },
       {
-        question: 'Does Borrowww guarantee instant approval?',
+        question: '4. What is the minimum CIBIL score needed for a salaried loan?',
         answer:
-          'No. We help you prepare a stronger case and identify practical options, but final approval remains with the lender.',
+          'A score of 750 or above gets you the lowest interest rates. Some fintech platforms accommodate scores around 600–700, though with higher interest rates.',
+      },
+      {
+        question: '5. Why was my loan application rejected even though I am a salaried person?',
+        answer:
+          'Rejections often occur due to a high debt-to-income ratio, mismatch in KYC documents, or if your employer is marked as "high-risk" by the lender.',
       },
     ],
   }),
-  createLocationServicePage({
+  createBlogPage({
     slug: 'loan-for-low-cibil-score',
-    title: 'Home Loan With Low CIBIL Score in India',
+    title: 'Home Loan with Low CIBIL Score in India – Easy Approval Guide 2026',
     description:
-      'Borrowww helps borrowers with low CIBIL scores understand how to prepare for home loan applications and improve lender confidence.',
-    heading: 'Home Loan With Low CIBIL Score in India',
+      'Looking for a home loan with a low CIBIL score in India? Discover easy approval tips, eligibility criteria, low interest options, and trusted lenders offering home loans even with poor credit. Apply smartly for faster approval today.',
+    heading: 'Home Loan with Low Cibil Score India',
     intro:
-      'A lower credit score does not automatically end your home loan journey, but it does require a more careful strategy. Borrowww helps borrowers understand what can still be improved before applying.',
-    location: 'India',
-    primaryService: 'home loan planning for low credit score cases',
-    relatedServices: ['credit profile review', 'document improvement', 'eligibility guidance'],
-    audience: 'borrowers with low or recovering credit scores',
+      'Everyone wishes to have their own home and most of us apply for home loans to fulfil that dream. However sometimes that dream hits a roadblock, low Cibil score. In Banking system, Cibil score is a key indicator for sanctioning a loan and often the benchmark for interest rate offering as well. A lower score is often a red flag and can lead to file rejections.',
+    sections: [
+      {
+        title: 'How to secure a loan with low Cibil score in India?',
+        paragraphs: buildParagraphs([
+          'Today however through this article we will guide you that having low Cibil score doesn’t necessarily mean automatic rejection. It needs a strategic approach to ensure your homeownership journey is successful. Guidance of an expert loan advisor near you for low cibil score can be extremely helpful.',
+        ]),
+      },
+      {
+        title: 'What does “Low Cibil Core” actually mean in the Indian Financial sector',
+        paragraphs: buildParagraphs([
+          'Cibil score in India ranges from 300-900. A score above 750 is considered extremely good whereas scores below 650 are considered low and create red flags. Low Cibil score can be attributed to many factors like delayed credit card payments, high debt leverage and sometimes due to bigger issues like Loan defaults or settlements.',
+          'In India <a href="https://www.borrowww.com/home-loan">home loan</a> with low Score becomes challenging since for many public sector / MNC Banks if the score is below a particular threshold they treat that as an automatic rejection. We can look at public sector or private banks if enough rationale is there. However often in such times the best option is Non-Banking Financial Companies (NBFC) who review the profile beyond the score, they will analyse current repaying capacity situation and other aspects like collateral value.',
+        ]),
+      },
+      {
+        title: 'What are the strategies we can use to secure a approval',
+        paragraphs: buildParagraphs([
+          'In case your Cibil score is low, we need to change our approach from someone who has a high Cibil score. We need to give relevant mitigating factors in our application.',
+          '<strong>Joint Application:</strong> One Simple but effective strategy we can use is applying with a joint applicant. We can add our spouse or parents if they have good Cibil score and if they are generating consistent income. This will make our application stronger and greatly enhance the chances of sanction.',
+          '<strong>Choosing a lower loan value to property value ratio:</strong> Banks may look at the application more favourably if you are paying higher down-payment and the loan amount required vis a vis to property value is 40-60 %',
+          '<strong>Stable Current repaying Capacity:</strong> Many times Cibil score is often impacted by old settlements or due to major events like Covid for e.g. If we can prove to the bank that we have stead income source currently, month filed salary with recent hikes or in case of business, we can show growing turnover. Banks may view our application more favourably.',
+          '<strong>Expanding our options to include NBFC’s:</strong> As highlighted earlier there are specific NBFC’s who work on Low Cibil score cases and review cases with more informal income. They will do their assessments on current repaying capacity, property value etc.',
+        ]),
+      },
+      {
+        title: 'Why is an expert loan advisor required?',
+        paragraphs: buildParagraphs([
+          'Google search for an expert loan advisor near me is not only to help you fill an application and login your case. But they with their experience will guide you and help apply to selected lenders where we are most likely to get a sanction basis for our profile.',
+          'They help with:',
+          '<strong>Cibil Improvement plan:</strong> An expert advisor can help identify the small errors causing <a href="https://www.borrowww.com/credit-check">low Cibil score</a> and thus help improve the score even before applying.',
+          '<strong>Targeted Application:</strong> They will present your case to the bank’s credit manager to identify your current repaying capacity and strengths rather than past credit issues.',
+          '<strong>Help with the Interest rate negotiation:</strong> Cibil score is a key factor in deciding rate of interest for a borrower and people with low scores are often charged with premium rates. An expert advisor will help negotiate rates on your behalf and get you the best deal possible.',
+          '<strong>Screening before application:</strong> They will screen you application and guide you which banks will most likely reject you so that you don’t apply randomly and thus increase hard enquiries on your credit report',
+        ]),
+      },
+      {
+        title: 'Effect of low Cibil score on rates and terms :',
+        paragraphs: buildParagraphs([
+          'It is critical to be aware that we will be charged premium if our Cibil score is low but we need to be practical and look at this a small time measure in the grand scheme of things. By ensuring a clean track on this new loan and ensuring clear repayment history of 18-24 months, our Cibil score will rise. And once it crosses the threshold to a good score we can look at the takeover facility present with every bank to transfer the loan to lower rates.',
+        ]),
+      },
+    ],
     faq: [
       {
-        question: 'Can I get a home loan with a low CIBIL score?',
+        question: '1. My Cibil score is 550. Can I get a loan?',
         answer:
-          'It may still be possible, but approval depends on score level, income stability, repayment history, and lender policy.',
+          'Yes you can but this is difficult, You need to look beyond banks at certain HFC’s of NBFC’s for a higher chance. You should also think of adding a co-applicant with higher score to further improve your chances.',
       },
       {
-        question: 'Should I apply immediately after a score drop?',
+        question: '2. Why does my Cibil score decide my home loan interest rate?',
         answer:
-          'It is usually better to review the reasons behind the score drop and improve the file where possible before applying widely.',
+          'A low Cibil score is often seen as higher default risk. Thus higher the risk higher the pricing, this concept is known as risk based pricing.',
       },
       {
-        question: 'What else do lenders consider beyond the score?',
+        question: '3. Can I improve my chances by applying to multiple banks?',
         answer:
-          'Lenders may also evaluate income, job or business stability, debt obligations, property details, and repayment behaviour.',
+          'No, this is the complete opposite of what you should do. Every time you apply to a bank they will create hard enquiries on your credit report. Multiple enquiries in a very short span of time impacts your score further and taken in a negative manner by the bank. You should consult an expert loan advisor to help guide you to apply to a lender where you are most likely to get the sanction.',
       },
       {
-        question: 'Can Borrowww help me prepare before I apply?',
+        question: '4. I want to improve my Cibil score. How long will it take?',
         answer:
-          'Yes. We help borrowers review credit profile issues, documentation gaps, and practical ways to approach the application more carefully.',
+          'If you ensure timely repayment of all EMI’s and credit card dues while also ensuring lower credit card usage, you should see significant improvement in 6 to 12 months.',
+      },
+      {
+        question: '5. What happens if I have “settled” status in my credit report. Will it hamper my loan application?',
+        answer:
+          'Settled status means you have not paid the entire amount and entered into a compromise with the lender. This is seen as a big negative by banks. However if the settlement is quite old and you have paid your recent EMI’s and dues timely, a specialised advisor can help guide you to get a loan.',
+      },
+      {
+        question: '6. What happens if I don’t have any credit history. My credit report says -1 or NA?',
+        answer:
+          'Yes, you can. No credit history is much better than bad credit history. Banks will review your income documents, bank statements and collateral documents to grant you a loan.',
+      },
+      {
+        question: '7. I have low Cibil score? What documents are critical for my application.',
+        answer:
+          'Apart from your standard documents, you should share last 6 month bank statements showing no recent bounces, latest income tax returns and a mail or letter explaining the reason behind low Cibil score specially if that happened due to a major event like medical emergency etc.',
       },
     ],
   }),
