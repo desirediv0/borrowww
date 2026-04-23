@@ -39,7 +39,7 @@ export default function SeoPage({ params }) {
         heading={page.heading}
         intro={page.intro}
         sections={page.sections}
-        faqs={page.faqs}
+        faqs={page.faq}
         ctaTitle="Need help with your loan profile?"
         ctaDescription="Borrowww can help you compare options, understand documentation, and move ahead with a clearer borrowing plan."
       />

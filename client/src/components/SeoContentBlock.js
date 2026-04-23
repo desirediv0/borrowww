@@ -27,13 +27,12 @@ function FaqItem({ item, isOpen, onToggle }) {
         />
       </button>
       {isOpen ? (
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           className="mt-4 text-sm leading-7 text-slate-600"
-        >
-          {item.answer}
-        </motion.p>
+          dangerouslySetInnerHTML={{ __html: item.answer }}
+        />
       ) : null}
     </motion.div>
   );
@@ -50,25 +49,10 @@ export default function SeoContentBlock({
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white pb-16 pt-8 sm:pb-20">
       <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,#c4d7e044,transparent_65%)]" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl"
-        >
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--primary-blue)]">
-            SEO Content Section
-          </p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            {heading}
-          </h2>
-          <p className="mt-5 text-base leading-8 text-slate-600">{intro}</p>
-        </motion.div>
-
-        <div className="mt-12 grid gap-6">
+        <div className="grid gap-6">
           {sections.map((section, idx) => (
             <motion.article
               key={section.title}
@@ -79,7 +63,7 @@ export default function SeoContentBlock({
               className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition-all hover:border-[var(--primary-blue)]/30 hover:shadow-md"
             >
               <h2 className="text-2xl font-semibold text-slate-900">{section.title}</h2>
-              <div className="mt-5 space-y-4 text-base leading-8 text-slate-600">
+              <div className="seo-content-rich-text mt-5 space-y-4 text-base leading-8 text-slate-600">
                 {section.paragraphs.map((paragraph) => (
                   <div
                     key={paragraph.slice(0, 36)}
