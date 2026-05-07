@@ -488,41 +488,7 @@ export const seoPages = [
       },
     ],
   }),
-  createLocationServicePage({
-    slug: 'instant-loan-services-ghaziabad',
-    title: 'Instant Loan Services in Ghaziabad',
-    description:
-      'Borrowww helps borrowers in Ghaziabad explore practical instant loan services with cleaner documentation and eligibility guidance.',
-    heading: 'Instant Loan Services in Ghaziabad',
-    intro:
-      'Borrowww helps borrowers in Ghaziabad understand how instant loan applications are evaluated and how to prepare for quicker processing.',
-    location: 'Ghaziabad',
-    primaryService: 'instant loan support',
-    relatedServices: ['quick document preparation', 'income-based loan matching', 'application readiness'],
-    audience: 'borrowers looking for faster loan movement',
-    faq: [
-      {
-        question: 'Does instant loan mean guaranteed immediate disbursal?',
-        answer:
-          'No. Instant loan usually refers to faster digital processing, but the final timeline still depends on lender checks and documentation.',
-      },
-      {
-        question: 'Can low paperwork improve speed?',
-        answer:
-          'Clear and accurate paperwork usually helps, while incomplete or inconsistent details may delay lender review.',
-      },
-      {
-        question: 'Do you help salaried and self-employed borrowers?',
-        answer:
-          'We can guide both profiles, though available options and required documents vary by lender and applicant type.',
-      },
-      {
-        question: 'Will checking options hurt my credit score?',
-        answer:
-          'A consultation with Borrowww does not affect your credit score. Multiple formal lender applications, however, should be planned carefully.',
-      },
-    ],
-  }),
+
   createBlogPage({
     slug: 'instant-loan-for-salaried-employees-delhi',
     title: 'Instant Loan for Salaried Employees in Delhi NCR – Fast Approval 2026',
@@ -691,41 +657,7 @@ export const seoPages = [
       },
     ],
   }),
-  createLocationServicePage({
-    slug: 'first-time-loan-consultant',
-    title: 'Best Loan Consultant for First Time Borrower in Delhi',
-    description:
-      'Borrowww helps first-time borrowers in Delhi understand loan basics, eligibility, documents, and lender comparison before applying.',
-    heading: 'Best Loan Consultant for First-Time Borrowers in Delhi',
-    intro:
-      'Borrowww helps first-time borrowers in Delhi move from confusion to clarity with practical guidance on loan eligibility, documentation, and lender choices.',
-    location: 'Delhi',
-    primaryService: 'loan consultation for first-time borrowers',
-    relatedServices: ['eligibility planning', 'document readiness', 'loan option comparison'],
-    audience: 'first-time borrowers',
-    faq: [
-      {
-        question: 'Why do first-time borrowers need a consultant?',
-        answer:
-          'First-time borrowers often need help understanding loan terms, required documents, repayment planning, and lender expectations.',
-      },
-      {
-        question: 'Can you help me choose the right loan type?',
-        answer:
-          'Yes. We help you compare options based on your purpose, profile, income pattern, and repayment comfort.',
-      },
-      {
-        question: 'Will I need a strong credit score as a first-time borrower?',
-        answer:
-          'A healthier credit profile helps, but lenders also review income, liabilities, and overall application quality.',
-      },
-      {
-        question: 'Can I get support even if I am still exploring options?',
-        answer:
-          'Yes. Early guidance is often more useful because it helps you plan before making avoidable mistakes.',
-      },
-    ],
-  }),
+
   createLocationServicePage({
     slug: 'commercial-property-loan',
     title: 'Commercial Property Loan Agent Near Me',

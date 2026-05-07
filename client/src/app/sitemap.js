@@ -19,6 +19,10 @@ export default function sitemap() {
     '/rbi-compliance',
     '/referral',
     '/blog',
+    '/first-time-loan-consultant',
+    '/instant-loan-services-ghaziabad',
+
+
     ...seoSlugs.map((slug) => `/${slug}`),
   ];
 
