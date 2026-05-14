@@ -239,38 +239,89 @@ export const seoPages = [
       },
     ],
   }),
-  createLocationServicePage({
+  createBlogPage({
     slug: 'home-loan-consultant-noida',
-    title: 'Home Loan Consultant Noida Sector Wise',
+    title: 'Home Loan Consultant in Noida | Expert Loan Advisor',
     description:
-      'Find a home loan consultant in Noida with Borrowww. Compare lender options, prepare documents, and move your application with confidence.',
+      'Get expert help from a home loan consultant in Noida for home loans, LAP, balance transfer & fast loan approval.',
     heading: 'Home Loan Consultant in Noida',
     intro:
-      'Borrowww supports borrowers across Noida with practical home loan consultancy, lender comparison, and documentation guidance suited to local property-buying needs.',
-    location: 'Noida',
-    primaryService: 'home loan consultancy',
-    relatedServices: ['sector-wise property loan planning', 'loan consultancy services', 'rate comparison'],
-    audience: 'home buyers across different Noida sectors',
+      'Noida has seen tremendous growth in the last decade and has fast become a residential and commercial hub with many people looking to buy properties there. However, due to the complexity of the market, getting a loan is not as simple as looking at the lowest interest rate. So whether you want to buy a villa, a small apartment, a plot, or a commercial showroom, a home loan consultant in Noida will help you get the best offer.',
+    sections: [
+      {
+        title: 'How does the Noida real estate market look?',
+        paragraphs: buildParagraphs([
+          'This is a unique market due to its structured, sector-wise development. There are different checks required to buy a high rise in sector 150 compared to an independent floor in sector 44. A specialized loan consultant will help bridge the gap between your requirements and the best bank option available for that.',
+          'We at Borrowww\'s provided services, which are customized as per your needs and provide end-to-end solutions. We will help find the best fit as per your requirements. Our team will analyze your financial documents and evaluate your property and check the legal requirements and match that with the best banks or NBFCs that will offer the desired loan amount at the best possible rate.',
+        ]),
+      },
+      {
+        title: 'Expertise based on sectors:',
+        paragraphs: buildParagraphs([
+          'A sector in Noida does not mean just a pin code; the legal and technical flow varies with the sector and, accordingly, the banks that are most active there.',
+          '<strong>• Old Established Hubs (Sectors 15, 18, 19, 27, 44):</strong> These are old established sectors with premium rates and clear titles; most banks are active here with good loan-to-value ratios for loans.',
+          '<strong>• New growth corridors in the residential market (Sectors 74 – 78):</strong> These sectors constitute huge group housing societies; some of these are pre-approved projects with public or private banks. We will help you get the best deal from these options based on your financial eligibility.',
+          '<strong>• Noida Expressway (Sectors 137, 143, 150):</strong> There are some premium projects here, often called "new Noida." Banks can sometimes offer special schemes for the luxury properties here.',
+          '<strong>• Commercial / Industrial Zones (Sectors 62, 63):</strong> If you have a property in this zone and are looking for LAP to expand your business, specialized mortgage consultancy can help get the best offer based on the property and the financial evaluation.',
+        ]),
+      },
+      {
+        title: 'Our primary advisory / consultancy services',
+        paragraphs: buildParagraphs([
+          '<strong>1. Fresh Property Purchase:</strong> We help first-time buyers or investors get the best deal for the new property purchase.',
+          '<strong>2. Loan Against Property (LAP):</strong> We help clients unlock the value to their existing property and get maximum funds for the business expansion. Whether you want the funds for business growth or a wedding or education, we will ensure you get the maximum loan amount at the best possible rate.',
+          '<strong>3. Home Loan balance transfer and home loan top-up:</strong> Whether you are looking to transfer your existing loan from a higher rate to a lower rate or you are looking for a top-up for any urgent need, our consultancy services will help you in both. If you are paying a higher EMI and are looking to reduce the same, our team will review and guide you on how to do the same.',
+          '<strong>4. Legal review and documentation assistance:</strong> We will help you with documentation from login till disbursement; we will help get the file ready to be presented to the bank. We will also review the legal and guide if anything is needed and help resolve the same.',
+          '<strong>5. Credit check:</strong> Not sure about your credit score? We help with a free credit score check, and in case of any issues, we will help provide a credit score improvement plan.',
+        ]),
+      },
+      {
+        title: 'The advantage of working with a professional loan consultant',
+        paragraphs: buildParagraphs([
+          'A specialized Noida consultant knows the requirements of the authority and the specific documentation required and will help in smooth legal and technical verification by the bank.',
+          'Since we are connected with multiple banks, we can help you negotiate the best deals and are aware of how to present the case. We will help provide a transparent comparison of costs between different lenders without leaving any hidden charges, thus ensuring there are no surprises at disbursement.',
+        ]),
+      },
+      {
+        title: 'Why Us?',
+        paragraphs: buildParagraphs([
+          'We are proud to be client-centric in providing all solutions. Our approach is based on 3 pillars:',
+          '<strong>• Customization:</strong> Each transaction is different due to the requirements, property chain, and financials; we provide personalized solutions that are tailored to suit your needs.',
+          '<strong>• Quick Process:</strong> We ensure that all documentation at any stage of loan sanction is picked up within 24-48 hrs due to our local presence in Noida.',
+          '<strong>• Transparency:</strong> We provide a clear comparison of banks showing all kinds of charges without any hidden costs. The entire process is explained at the login stage by our team.',
+        ]),
+      },
+    ],
     faq: [
       {
-        question: 'Why do borrowers in Noida seek a home loan consultant?',
+        question: '1. In Noida, which banks are currently offering the best home loan rates?',
         answer:
-          'A consultant helps compare lenders, review eligibility, and align the loan with property value, income profile, and documentation readiness.',
+          'Interest rates fluctuate with changes in guidelines; generally speaking, leading PSU banks like SBI, some MNC banks like HSBC and Shinhan Bank, and leading private banks like Axis, ICICI, HDFC, etc. offer competitive rates.',
       },
       {
-        question: 'Do different Noida sectors affect the loan process?',
+        question: '2. I am buying a property in Noida Extension (Greater Noida West). Can I get a home loan?',
         answer:
-          'Project approvals, builder documentation, and property details can influence lender comfort, so local guidance can be useful.',
+          'Yes, most of the banks are funding in Noida Extension if the project is RERA approved and the project is pre-approved by the bank. We maintain a list of projects approved by various banks and thus help speed up the process.',
       },
       {
-        question: 'Can Borrowww assist with both ready-to-move and under-construction properties?',
+        question: '3. What is the maximum loan-to-value ratio I can get a home loan?',
         answer:
-          'Yes. We help borrowers understand lender expectations for different property stages and document sets.',
+          'For home loans up to INR 30 Lacs\' banks can generally offer 90%, from INR 30 lakhs to INR 75. Lacs\' banks can generally offer 80% and above INR 75 lacs; they may offer 75%. There are certain options wherein we can get a higher LTV basis profile and lender.',
       },
       {
-        question: 'How early should I speak to a consultant?',
+        question: '4. How long will it take to get my loan disbursed in Noida?',
         answer:
-          'It is best to connect before paying a booking amount or submitting multiple applications so you can plan your eligibility properly.',
+          'It will normally take 7-12 working days to get a loan sanctioned from the time you submit all documentation. In certain cases if a transaction is complex, it may take longer.',
+      },
+      {
+        question: '5. Is NOIC required from the Noida authority for a loan?',
+        answer:
+          'In case of a resale purchase, a Transfer Memorandum (TM) from the Noida Authority is often required. For a LAP, permission to mortgage from the Noida Authority is mostly required.',
+      },
+      {
+        question: '6. I am a business owner with fluctuating income. Can I get a loan?',
+        answer:
+          'Yes, our consultancy services specialize in surrogate programs, and we provide tailored services for business owners in the thriving Noida market.',
       },
     ],
   }),
@@ -383,38 +434,79 @@ export const seoPages = [
       },
     ],
   }),
-  createLocationServicePage({
+  createBlogPage({
     slug: 'loan-against-property-consultant-gurgaon',
-    title: 'Loan Against Property Consultant Gurgaon',
+    title: 'Loan Against Property Consultant Gurgaon | Expert',
     description:
-      'Need a loan against property consultant in Gurgaon? Borrowww helps you plan eligibility, documents, and lender selection.',
-    heading: 'Loan Against Property Consultant in Gurgaon',
+      'Find the best loan against property consultant in Gurgaon for LAP, home loans, balance transfer & low interest rates.',
+    heading: 'Loan Against Property Consultant Gurgaon',
     intro:
-      'Borrowww supports Gurgaon borrowers who want to unlock property value through a well-planned LAP application with clearer lender matching.',
-    location: 'Gurgaon',
-    primaryService: 'loan against property consulting',
-    relatedServices: ['commercial and residential property funding', 'business expansion funding', 'secured loan structuring'],
-    audience: 'borrowers using property-backed loans for planned funding needs',
+      'Getting a loan against property or a home loan in a dynamic market like Gurgaon is not only about the lowest interest rate; it requires an expert advisor who understands the local market, understanding of financial analysis, banking policy, and deep knowledge of the various costs involved in the process. So whether you want to buy a new home in the fast-growing Gurgaon market or simply transfer your loan to a lower rate or want to leverage your property for capital for your business expansion, having a strategic mortgage advisor is crucial.',
+    sections: [
+      {
+        title: 'Why is an expert mortgage advisor needed?',
+        paragraphs: buildParagraphs([
+          'This is a very unique market comprising authority (HUDA) plots, luxury apartments on Golf Course Road, and affordable housing near Sohna; every property has different technical and legal requirements for the bank. A loan advisor will help you understand what’s the best fit for your property type.',
+        ]),
+      },
+      {
+        title: 'Helping with interest rates:',
+        paragraphs: buildParagraphs([
+          'Interest rates are not flat; they are dependent on various factors like your CIBIL score, your income profile, and the location of your property. A good loan advisor will not just tell you about one bank; he will give you a full comparative analysis among various banks with the tentative loan amount you may get, as they are well versed with the banks\' policies.',
+          '<strong>• Public Sector Banks:</strong> They are generally with the lowest rates subject to your CIBIL but are, however, very rigid on paperwork.',
+          '<strong>• Private Banks:</strong> They are more aggressive in income structuring and are often quicker than public sector banks.',
+          '<strong>• Housing Finance Companies (HFCs):</strong> HFCs or NBFCs are ideal where there is more deviation needed either in income assessment or property’s technical / legal assessment.',
+        ]),
+      },
+      {
+        title: 'Understanding the total cost and not just interest rate',
+        paragraphs: buildParagraphs([
+          'A loan advisor will help you decode the total cost. If you have a low interest rate but there are high processing fees, legal charges, or prepayment penalties, it may still be costlier as compared to a lender with a higher rate but less overall cost. This scenario is where the loan advisor will help guide you, as sometimes borrowers can only focus on interest rate alone.',
+        ]),
+      },
+      {
+        title: 'Here are different loan solutions available for residents in Gurgaon:',
+        paragraphs: buildParagraphs([
+          '<strong>1. Fresh home loan for all property types:</strong> The loan process is different if you are buying an under-construction property, a ready-to-move high-rise, or even a builder floor. Whether you are purchasing a ready-to-move-in apartment or a builder floor, the loan process varies. We will help you identify banks that have already approved your specific project and save time.',
+          '<strong>2. Loan Against Property (LAP) for Business Expansion:</strong> For self-employed business owners, LAP helps leverage your property to generate capital in a cost-effective way. They are significantly cheaper than business loans, and you can leverage your residential, commercial, or industrial property to generate capital for expansion, daily working capital needs, or debt consolidation.',
+          '<strong>3. Home loan balance transfer and top-up:</strong> If your current rate is high and you are paying a higher EMI, a balance transfer can help you save lacs in interest over the loan tenor. We will evaluate your amortisation schedule, and review if switching to a new lender if financially viable or not.',
+        ]),
+      },
+      {
+        title: 'Why business owners / professionals choose us:',
+        paragraphs: buildParagraphs([
+          'Demography in Gurgaon is very interesting—professionals in the field of IT or consultancy value efficiency and transparency. We have a client-centric approach:',
+          '<strong>• Local knowledge:</strong> We are based out of Gurgaon and understand the documentation of various authorities.',
+          '<strong>• Client-centric negotiation:</strong> We deal with multiple lenders on a daily basis and can help get the best negotiated rates and overall terms.',
+          '<strong>• One-stop shop – end-to-end handling:</strong> We will manage the entire process from login to legal and technical checks to final disbursement.',
+        ]),
+      },
+    ],
     faq: [
       {
-        question: 'Why speak to a LAP consultant in Gurgaon before applying?',
+        question: '1. What are the current home loan rates in Gurgaon?',
         answer:
-          'A consultant helps review the borrower profile, property suitability, probable documentation needs, and lender fit before the application is filed.',
+          'Interest rates of banks are linked to the repo rate as disclosed by the RBI. Generally, you can get the best interest rates with a CIBIL score of 750 and above. Some MNC and private banks are currently aggressive in pricing for professionals in Gurgaon.',
       },
       {
-        question: 'Can Borrowww help with business expansion cases?',
+        question: '2. I have a residential property in Gurgaon; how much Loan Against Property (LAP) can I get?',
         answer:
-          'Yes. We help applicants prepare a cleaner LAP profile for business-related funding where lender documentation is especially important.',
+          'Typically on a residential property, banks can go as high as 75% of property value; this is dependent on income program and CIBIL score also and differs from bank to bank.',
       },
       {
-        question: 'Does property type matter in LAP approval?',
+        question: '3. Can I get a home loan for a builder floor in Gurgaon?',
         answer:
-          'Yes. Property type, legal clarity, marketability, and valuation can all affect eligibility and final terms.',
+          'Yes, but this requires more documentation than buying a high-rise apartment. Banks will also sanction plans/occupation certificates and complete the legal chain to verify the title. Working with an advisor will ensure you get the correct fit as per your requirement.',
       },
       {
-        question: 'How long can the process take?',
+        question: '4. What is a floating-rate loan and a fixed-rate loan?',
         answer:
-          'The timeline depends on documentation, property evaluation, and lender process, but early preparation usually improves speed.',
+          'Fixed Rate: In these, the rate generally remains fixed for a specific period of time, irrespective of whether rates are going up or down in markets. This can be beneficial in a rising rate scenario where you remain protected against hikes. Floating Rate: The rates are linked to a benchmark; for example, banks are linked to the repo rate, and rates fluctuate as and when there are changes in the repo rate. There are generally fewer prepayment penalties in floating-rate loans.',
+      },
+      {
+        question: '5. How many days will it to take get the loan process done?',
+        answer:
+          'It varies from loan to loan, for a standard home loan banks may take 7-12 working days wherein for LAP banks can take 12-15 working days from day of complete documents submission. However in cases with deviations banks may take longer as enhanced due diligence is done. Want to find the best deals? Contact us and we will evaluate your profile and find the best deal for you.',
       },
     ],
   }),
@@ -453,38 +545,81 @@ export const seoPages = [
       },
     ],
   }),
-  createLocationServicePage({
+  createBlogPage({
     slug: 'best-loan-agent-faridabad',
-    title: 'Best Loan Agent in Faridabad',
+    title: 'Best Loan Agent in Faridabad for Home, Business & LAP Loans',
     description:
-      'Borrowww supports borrowers in Faridabad with guided loan consultation, lender comparison, and application planning.',
+      'Find the best loan agent in Faridabad for home loans, LAP, MSME & business loans with expert guidance, quick approval, and better interest rates.',
     heading: 'Best Loan Agent in Faridabad',
     intro:
-      'Borrowww helps Faridabad borrowers plan loan applications with clarity, better documentation, and lender options matched to actual needs.',
-    location: 'Faridabad',
-    primaryService: 'loan advisory support',
-    relatedServices: ['home loan support', 'secured borrowing guidance', 'application planning'],
-    audience: 'borrowers seeking structured loan support',
+      'Faridabad has seen rapid growth in the last decade or so, both in industrial and residential development and rates. Getting a good financial partner is thus critical to ensure a reduced debt burden. So whether you are looking for a home loan, a LAP (loan against property), or even a personal or business loan, it is important to have someone who has local expertise.',
+    sections: [
+      {
+        title: 'Best choices for loan solutions in Faridabad',
+        paragraphs: buildParagraphs([
+          'Faridabad is a major industrial and residential hub. There are new high rises in the greater Faridabad area, old established sectors and colonies like Charmwood and Sainik Colony, and industrial sectors. There is a huge demand for loans in this area. But a professional loan advisor is not someone who will log your case; he will help guide you to find the best fit as per your requirements and financials.',
+        ]),
+      },
+      {
+        title: 'Why are loan advisors needed in the Faridabad market?',
+        paragraphs: buildParagraphs([
+          'Quite a few times people walk into a bank directly and feel that this is the best way to take out a loan. A financial advisor, on the other hand, works with multiple banks and is aware of their policies and products. The property market is a complex market wherein we have plots, builder floors, Lal Dora, etc., and thus this needs expertise to find the correct fit to avoid multiple rejections or reduced eligibility.',
+        ]),
+      },
+      {
+        title: 'Loan advisors will ensure the following:',
+        paragraphs: buildParagraphs([
+          '<strong>• Collateral Fitment:</strong> He will guide you with property eligibility, which banks or NBFCs are funding which kind of properties rather than you going to multiple banks.',
+          '<strong>• Negotiated interest rates:</strong> He will help get you the best possible rates with banks based on your CIBIL and profile.',
+          '<strong>• Quick Processing:</strong> They will help present your case properly, which effectively reduces the turnaround time.',
+        ]),
+      },
+      {
+        title: 'Services offered by financial advisors',
+        paragraphs: buildParagraphs([
+          '<strong>1. Home Loans (new purchase or balance transfers or top-ups):</strong> Buying a home in Faridabad is a dream for many, a milestone. The main goal is to find the required amount with the least possible rate, whether you are buying a high-rise or a builder floor. A good financial advisor will help you in getting the best overall offer, whether you are looking for a new purchase or just want to transfer your loan to a lower rate or are looking for a top-up.',
+          '<strong>2. Loan Against Property:</strong> If you are the owner of residential, commercial, or industrial property in Faridabad, you can leverage the same to get a loan against property. This can be used to expand your business or even any personal requirements like weddings. Good financial advisors can guide you with banks that will offer the most LTV on your property.',
+          '<strong>3. MSME Loans and Business Loans:</strong> Faridabad is a big industrial hub, and capital requirements are always there whether you are in the manufacturing or services sector. Financial consultants will help in getting timely access to the same, whether you need overdraft limits of business loans or working capital loans.',
+        ]),
+      },
+      {
+        title: 'What is the strategic advantage of loan consultants?',
+        paragraphs: buildParagraphs([
+          'The best loan advisors know your requirements, understand your profile, evaluate your financials, and gauge your property value to find the best fit for you. They have professional integrity, which ensures full transparency and avoids hidden charges. They have local insights and are aware of which banks or NBFCs will suit your profile better, thus helping you avoid the hassle of applying to multiple banks.',
+          'They will handle the entire documentation, which will remove your hassles and reduce stress. They will work as a single point of contact for you, thus helping you avoid interaction with multiple people.',
+        ]),
+      },
+    ],
     faq: [
       {
-        question: 'What should I check before choosing a loan agent?',
+        question: '1. What are the current home loan interest rates in Faridabad?',
         answer:
-          'Look for transparent guidance, realistic communication, and support with eligibility, documents, and lender comparison rather than vague promises.',
+          'Interest rates being banks are mostly floating rate loans tied to the repo rate as declared by the RBI. Currently home loans are starting from 7.1% and may go up to 9% for banks as well and even 11-12% in the case of some NBFCs. A specialized advisor will help find the best fit for you.',
       },
       {
-        question: 'Can Borrowww help compare more than one loan type?',
+        question: '2. I have a property in Lal Dora, an unauthorized colony. Can I get a loan?',
         answer:
-          'Yes. We help borrowers understand which loan type is more practical based on purpose, eligibility, and repayment comfort.',
+          'Yes; however, mainstream banks are primarily not doing such properties. Certain NBFC and housing finance companies are providing loans in this segment at a higher rate. A specialized loan advisor will know the exact institution based on the property in specific areas.',
       },
       {
-        question: 'Does Borrowww directly approve loans?',
+        question: '3. What maximum tenor can I get for a LAP in Faridabad?',
         answer:
-          'No. Final approval rests with the lender. Borrowww helps you prepare and present a stronger application.',
+          'Mostly banks offer 15 years on a loan against property. However, certain lenders may go up to 20 years subject to property and age at maturity.',
       },
       {
-        question: 'Can I talk to the team before sharing documents?',
+        question: '4. How much time does it take to get a loan disbursement?',
         answer:
-          'Yes. An initial discussion helps clarify the purpose, probable eligibility, and next best step before paperwork starts.',
+          'It can take 7-12 days to get a loan disbursal if all documents are complete from the date of submission of documents. It may take longer in complicated transactions.',
+      },
+      {
+        question: '5. Should I go through an agent or approach a bank directly?',
+        answer:
+          'It is advisable to approach an agent, as he will provide you with comparative options from multiple lenders. He will also ensure that you don’t need to apply to multiple banks and avoid rejections. They will also help negotiate rates for you.',
+      },
+      {
+        question: '6. What are the documents required for a loan in Faridabad?',
+        answer:
+          'The basic documents include: Know Your Customer documents (identity and address documents), Financial documents (Last 3 years\' income tax returns with complete financials for business owners, last 12 months\' bank statements, last 3 months\' salary slips, and 2-year form 16 for salaried), and Property (Complete chain of property documents).',
       },
     ],
   }),
