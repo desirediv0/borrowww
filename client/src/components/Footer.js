@@ -21,6 +21,7 @@ export default function Footer() {
       { name: 'Blog', href: '/blog/' },
       { name: 'Refer a Friend', href: '/referral' },
       { name: 'Partners', href: '#' },
+      { name: 'Sitemap', href: '/sitemap.html' },
     ],
     Support: [
       { name: 'Help Center', href: '#' },
