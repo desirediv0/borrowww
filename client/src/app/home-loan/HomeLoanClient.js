@@ -46,74 +46,100 @@ export default function HomeLoanClient() {
 
     const steps = [
         {
+            icon: Home,
+            title: 'Choose the type of loan',
+            desc: 'Select the right loan product that fits your property requirements.',
+        },
+        {
             icon: ClipboardCheck,
-            title: 'Free Consultation',
-            desc: 'Understanding your needs and suggesting the right loan options.',
+            title: 'Fill up the basic details',
+            desc: 'Provide your basic details via our simple lead form.',
         },
         {
             icon: FileCheck2,
-            title: 'Document Pickup',
-            desc: 'Hassle-free document pickup & verification from your doorstep.',
+            title: 'Provide all the documents',
+            desc: 'Submit required documents for quick verification.',
         },
         {
-            icon: Building2,
-            title: 'Bank Selection',
-            desc: 'Negotiate best rates & terms with multiple banks on your behalf.',
-        },
-        {
-            icon: CalendarCheck2,
-            title: 'Quick Approval',
-            desc: 'Full support from faster sanction to smooth disbursement.',
+            icon: Users,
+            title: 'Wait for discussion',
+            desc: 'Our relationship manager will contact you for a detailed discussion.',
         },
     ];
 
     const features = [
         {
+            icon: Building2,
+            title: 'Access to multiple banks',
+            desc: 'Partnerships with leading Indian banks & NBFCs.',
+        },
+        {
             icon: Percent,
-            title: 'Competitive Rates',
-            desc: 'Access to the best interest rates available in the market.',
+            title: 'Competitive interest rates',
+            desc: 'We help you find and negotiate the best market rates.',
+        },
+        {
+            icon: CalendarCheck2,
+            title: 'Faster approval support',
+            desc: 'Quick support to accelerate your loan sanction.',
         },
         {
             icon: ShieldCheck,
-            title: 'End-to-End Support',
-            desc: 'Dedicated assistance from application to disbursement.',
+            title: 'Flexible tenure options',
+            desc: 'Explore different tenure lengths to match your EMI comfort.',
         },
         {
             icon: Handshake,
-            title: 'Multiple Banks',
-            desc: 'Strong partnerships with top lenders for better offers.',
+            title: 'End-to-end assistance',
+            desc: 'Our team guides you from application to disbursement.',
         },
         {
             icon: BadgeCheck,
-            title: 'Zero Hidden Charges',
-            desc: 'Transparent process with no surprise fees or charges.',
+            title: 'Transparent process',
+            desc: 'Clear terms and conditions with zero hidden surprises.',
         },
     ];
 
-    const documents = [
-        'KYC: Aadhaar, PAN Card, Passport/Driving License',
-        'Income Proof: Salary Slips / ITR / Form-16',
-        'Bank Statements: Last 6–12 months',
-        'Property Papers: Agreement to Sell, NOC, Chain Documents',
-        'Employment Proof / Business Registration',
+    const loanTypes = [
+        {
+            title: 'Ready property loans',
+            desc: 'Work well for buyers looking for quicker possession.',
+            icon: Home,
+        },
+        {
+            title: 'Under-construction property loans',
+            desc: 'Need a more flexible disbursement structure.',
+            icon: Building2,
+        },
+        {
+            title: 'Home loan balance transfers',
+            desc: 'Ideal for borrowers looking for better interest rates or improved repayment terms.',
+            icon: Percent,
+        },
+        {
+            title: 'Plot loans',
+            desc: 'Help you get your dream land for building a home.',
+            icon: ShieldCheck,
+        },
+        {
+            title: 'Plot and construction loan',
+            desc: 'Lets you buy a land and customize/construct your dream home.',
+            icon: FileCheck2,
+        },
     ];
 
     const faqs = [
         {
-            q: 'What is the minimum down payment required?',
-            a: 'Typically 10–25% of the property value. The exact percentage depends on bank policy and your credit profile.',
+            q: 'What type of home loans can I apply for?',
+            a: 'Our platform allows you to choose from different types of home loans, including: Ready property loans, Under-construction property loans, Plot loans, Plot plus construction loans, and Home loan balance transfers.',
         },
         {
-            q: 'How long does the processing take?',
-            a: 'Usually 5–12 working days. The process is faster with complete documentation and a clear credit profile.',
+            q: 'Can Borrowww help me compare multiple banks?',
+            a: 'Our platform will connect borrowers with the leading Indian banks and NBFC’s. You can easily compare suitable loan options, best interest rates and repayment structures in one place.',
         },
         {
-            q: 'Floating vs Fixed rate — which is better?',
-            a: 'Floating rates are commonly preferred for short to medium terms. Fixed rates provide stability. We advise based on your specific needs.',
-        },
-        {
-            q: 'Are there prepayment/foreclosure charges?',
-            a: 'Most floating rate home loans have no prepayment charges. Fixed rate loans may have charges. Bank-specific rules apply.',
+            q: 'Do you provide support during the loan process?',
+            a: 'Our team will assist you with documentation, coordination and application follow-ups from start to finish.',
         },
     ];
 
@@ -148,15 +174,12 @@ export default function HomeLoanClient() {
         }
 
         setErrors(newErrors);
-        setErrors(newErrors);
         return newErrors;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validate before submitting
-        // Validate before submitting
         const formErrors = validateForm();
         if (Object.keys(formErrors).length > 0) {
             toast.error(Object.values(formErrors)[0]);
@@ -167,7 +190,6 @@ export default function HomeLoanClient() {
         setIsSubmitting(true);
 
         try {
-            // SECURITY: Call encrypted endpoint - data is encrypted on server before saving
             const response = await fetch(`${API_URL}/client/home-loan`, {
                 method: 'POST',
                 headers: {
@@ -217,13 +239,18 @@ export default function HomeLoanClient() {
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#2D3E50]/10 text-black text-sm font-medium mb-5">
                                 <Home className="h-4 w-4" /> Home Loan Assistance
                             </div>
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight font-medium text-black">
-                                Get the <span className="text-[#3A6EA5] italic">Best Home Loan</span> for Your Dream
-                                Home
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight font-medium text-black leading-tight">
+                                Simplify Your Home Buying Journey with{' '}
+                                <span className="text-[#3A6EA5] italic font-semibold">Borrowww’s Secured Loans</span>
                             </h1>
-                            <p className="mt-5 text-lg text-gray-600 max-w-2xl">
-                                <span className="font-semibold">We secure the best loan deals for you</span>.
-                                Multiple banks, better rates, fast approvals. You relax, we handle the paperwork.
+                            <p className="mt-5 text-lg text-gray-600 max-w-2xl leading-relaxed">
+                                Are you in search of the right home loan provider platform? We understand that it takes time, there are so many aspects to consider. Then, the rates change, bank policies differ, and paperwork often feels exhausting after a point.
+                            </p>
+                            <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed">
+                                That is why you must connect with us at Borrowww and we know how to help you avoid that confusion. Our platform has strong partnerships with the leading banks and NBFC’s in India. We connect you with them and guide you through the loan process with practical support that actually helps.
+                            </p>
+                            <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed font-light">
+                                Potential home buyers already know the property they want but others still believe in comparing projects, budgets and repayment plans. We work with both. Our team lets you explore suitable loan options based on your requirement instead of always choosing a one-size-fits-all solution.
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                 <a
@@ -238,14 +265,6 @@ export default function HomeLoanClient() {
                                 >
                                     <Phone className="h-4 w-4" /> Call Now
                                 </a>
-                            </div>
-                            <div className="mt-6 flex items-center gap-6 text-sm text-gray-600">
-                                <div className="inline-flex items-center gap-2">
-                                    <BadgeCheck className="h-4 w-4 text-green-600" /> RBI-Regulated Lenders
-                                </div>
-                                <div className="inline-flex items-center gap-2">
-                                    <IndianRupee className="h-4 w-4 text-emerald-600" /> Best Rate Guarantee
-                                </div>
                             </div>
                         </div>
 
@@ -269,7 +288,6 @@ export default function HomeLoanClient() {
                                             className={`mt-1 w-full rounded-xl border ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-gray-50'} px-4 py-3 focus:bg-white focus:ring-2 focus:ring-[#2D3E50] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
                                             value={form.name}
                                             onChange={(e) => {
-                                                // Only allow letters and spaces
                                                 const value = e.target.value.replace(/[^a-zA-Z\s]/g, '');
                                                 setForm({ ...form, name: value });
                                                 if (errors.name) setErrors({ ...errors, name: '' });
@@ -289,7 +307,6 @@ export default function HomeLoanClient() {
                                                 className={`mt-1 w-full rounded-xl border ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-gray-50'} px-4 py-3 focus:bg-white focus:ring-2 focus:ring-[#2D3E50] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
                                                 value={form.phone}
                                                 onChange={(e) => {
-                                                    // Only allow numbers
                                                     const value = e.target.value.replace(/\D/g, '');
                                                     setForm({ ...form, phone: value });
                                                     if (errors.phone) setErrors({ ...errors, phone: '' });
@@ -337,7 +354,6 @@ export default function HomeLoanClient() {
                                                 className={`mt-1 w-full rounded-xl border ${errors.loanAmount ? 'border-red-500 bg-red-50' : 'border-gray-200 bg-gray-50'} px-4 py-3 focus:bg-white focus:ring-2 focus:ring-[#2D3E50] focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
                                                 value={form.loanAmount}
                                                 onChange={(e) => {
-                                                    // Only allow numbers
                                                     const value = e.target.value.replace(/\D/g, '');
                                                     setForm({ ...form, loanAmount: value });
                                                     if (errors.loanAmount) setErrors({ ...errors, loanAmount: '' });
@@ -388,10 +404,9 @@ export default function HomeLoanClient() {
                                                     className="w-20 rounded border border-gray-200 px-2 py-1 text-sm focus:ring-2 focus:ring-[#3A6EA5] focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                                                     placeholder="months"
                                                     aria-label="Custom Duration Months"
-                                                />
+                                                 />
                                                 <span className="text-xs text-gray-400">months</span>
                                             </div>
-                                            {/* Only show selected months and years above, no extra ticks */}
                                         </div>
                                         <div>
                                             <label className="text-sm text-gray-600">Monthly Income (₹)</label>
@@ -462,399 +477,129 @@ export default function HomeLoanClient() {
                 </div>
             </section>
 
-            {/* HOME LOAN SUMMARY - expanded content + apply flow */}
-            <section className="py-12 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+            {/* CHOOSE THE RIGHT LOAN FOR YOUR PROPERTY PLANS */}
+            <section className="py-16 bg-[#2D3E50]/5">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {/* Hero Section */}
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight mb-4">
-                            Your Home, Your Future—Financed with Ease
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 leading-tight">
+                            Choose the Right Loan for Your Property Plans
                         </h2>
-                        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                            Discover flexible home loan options, low interest rates, and expert support—all in one
-                            place.
-                        </p>
-                        <p className="mt-4 text-gray-700 max-w-3xl mx-auto">
-                            A home loan is a type of secured financing offered based on the value of the property
-                            you intend to purchase. Whether you&apos;re planning to buy a new home, build one from
-                            the ground up, or upgrade your current space, a home loan can help you access the
-                            funds you need. At Borrowww, we make it easy to discover and choose the ideal
-                            home loan tailored to your goals.
+                        <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                            We offer support for multiple loan requirements to suit your individual needs:
                         </p>
                     </div>
 
-                    {/* Benefits Cards */}
-                    <div className="mb-16">
-                        <h3 className="text-2xl sm:text-3xl font-medium text-gray-900 text-center mb-8">
-                            Home Loan Benefits Made Simple
-                        </h3>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                                    <Percent className="h-8 w-8 text-white" />
-                                </div>
-                                <h4 className="text-lg font-semibold text-gray-900 mb-2">Low Interest Rates</h4>
-                                <p className="text-gray-600 text-sm">
-                                    Cheaper than most other loans because of long repayment time.
-                                </p>
-                            </div>
-
-                            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                                    <IndianRupee className="h-8 w-8 text-white" />
-                                </div>
-                                <h4 className="text-lg font-semibold text-gray-900 mb-2">Tax Savings</h4>
-                                <p className="text-gray-600 text-sm">
-                                    Get up to ₹2 lakh off yearly on interest and principal under Sections 80C &amp;
-                                    24.
-                                </p>
-                            </div>
-
-                            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                                    <ArrowRight className="h-8 w-8 text-white" />
-                                </div>
-                                <h4 className="text-lg font-semibold text-gray-900 mb-2">Loan Transfer Option</h4>
-                                <p className="text-gray-600 text-sm">
-                                    Switch to another bank for better rates and save money.
-                                </p>
-                            </div>
-
-                            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                                    <CalendarCheck2 className="h-8 w-8 text-white" />
-                                </div>
-                                <h4 className="text-lg font-semibold text-gray-900 mb-2">Flexible Tenure</h4>
-                                <p className="text-gray-600 text-sm">
-                                    Choose up to 30 years or repay early if eligible.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Loan Type Cards */}
-                    <div className="mb-16">
-                        <h3 className="text-2xl sm:text-3xl font-medium text-gray-900 text-center mb-8">
-                            Choose Your Loan Type
-                        </h3>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {/* Ready Property Loan */}
-                            <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-blue-200 group">
-                                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <Home className="h-7 w-7 text-white" />
-                                </div>
-                                <h4 className="text-xl font-semibold text-gray-900 mb-3">Ready Property Loan</h4>
-                                <p className="text-gray-600 mb-4">Move In, Stress-Free</p>
-                                <ul className="space-y-2 text-sm text-gray-700 mb-6">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-blue-600 mt-1">•</span>
-                                        <span>Up to 90% Loan Coverage</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-blue-600 mt-1">•</span>
-                                        <span>Fast Disbursement</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-blue-600 mt-1">•</span>
-                                        <span>Flexible Tenure up to 30 years</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-blue-600 mt-1">•</span>
-                                        <span>Interest-Only Option</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* Under-Construction Property Loan */}
-                            <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-green-200 group">
-                                <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <Building2 className="h-7 w-7 text-white" />
-                                </div>
-                                <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                                    Under-Construction Property Loan
-                                </h4>
-                                <p className="text-gray-600 mb-4">Build Your Future Home</p>
-                                <ul className="space-y-2 text-sm text-gray-700 mb-6">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-green-600 mt-1">•</span>
-                                        <span>Stage-Wise Loan Disbursement</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-green-600 mt-1">•</span>
-                                        <span>Lower Property Costs</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-green-600 mt-1">•</span>
-                                        <span>Interest-Only EMIs during construction</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-green-600 mt-1">•</span>
-                                        <span>Tax Benefits After Possession</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-green-600 mt-1">•</span>
-                                        <span>RERA-approved projects</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* Balance Transfer */}
-                            <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-purple-200 group">
-                                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <ArrowRight className="h-7 w-7 text-white" />
-                                </div>
-                                <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                                    Home Loan Balance Transfer
-                                </h4>
-                                <p className="text-gray-600 mb-4">Save More Every Month</p>
-                                <ul className="space-y-2 text-sm text-gray-700 mb-6">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-purple-600 mt-1">•</span>
-                                        <span>Lower Interest Rates</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-purple-600 mt-1">•</span>
-                                        <span>Easy Transfer Process</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-purple-600 mt-1">•</span>
-                                        <span>More Savings for life&apos;s priorities</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* Plot + Construction Loan */}
-                            <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-orange-200 group">
-                                <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <Building2 className="h-7 w-7 text-white" />
-                                </div>
-                                <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                                    Plot + Construction Loan
-                                </h4>
-                                <p className="text-gray-600 mb-4">Build Your Way</p>
-                                <ul className="space-y-2 text-sm text-gray-700 mb-6">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-orange-600 mt-1">•</span>
-                                        <span>Staged payments as construction progresses</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-orange-600 mt-1">•</span>
-                                        <span>Full freedom to customize your home</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-orange-600 mt-1">•</span>
-                                        <span>Ideal if you plan to start building within 2–3 years</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-orange-600 mt-1">•</span>
-                                        <span>Tax benefits under Sections 80C &amp; 24B</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* Plot Loan */}
-                            <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-teal-200 group">
-                                <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <Home className="h-7 w-7 text-white" />
-                                </div>
-                                <h4 className="text-xl font-semibold text-gray-900 mb-3">Plot Loan</h4>
-                                <p className="text-gray-600 mb-4">Start with the Perfect Plot</p>
-                                <ul className="space-y-2 text-sm text-gray-700 mb-6">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-teal-600 mt-1">•</span>
-                                        <span>Cheapest Interest Rates</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-teal-600 mt-1">•</span>
-                                        <span>Build When You&apos;re Ready – Up to 3 years</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-teal-600 mt-1">•</span>
-                                        <span>Local Support throughout the process</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* Why Borrowww */}
-                            <div className="bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 text-white group">
-                                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                    <ShieldCheck className="h-7 w-7 text-white" />
-                                </div>
-                                <h4 className="text-xl font-semibold mb-3">Why Borrowww?</h4>
-                                <p className="text-white/90 mb-4">
-                                    Owning a home is a major life milestone. At Borrowww, we&apos;re here to make
-                                    your home loan journey simple and stress-free.
-                                </p>
-                                <ul className="space-y-2 text-sm text-white/90 mb-6">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-white mt-1">•</span>
-                                        <span>Competitive rates</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-white mt-1">•</span>
-                                        <span>Simple documentation</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-white mt-1">•</span>
-                                        <span>Expert guidance</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* FEATURES */}
-            <section className="py-10 bg-gradient-to-b from-white to-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-4">
-                            Why Choose Our Services
-                        </h2>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            We don&apos;t just compare rates —{' '}
-                            <span className="font-semibold text-gray-900">
-                                we negotiate the best deals for you
-                            </span>
-                            .
-                        </p>
-                    </div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {features.map((f, index) => (
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {loanTypes.map((type, i) => (
                             <div
-                                key={f.title}
-                                className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-gray-100 hover:border-[#3A6EA5]/30 group"
+                                key={i}
+                                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-[#3A6EA5]/30 group"
                             >
-                                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] text-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg">
-                                    <f.icon className="h-7 w-7" />
+                                <div className="w-14 h-14 bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-md">
+                                    <type.icon className="h-7 w-7 text-white" />
                                 </div>
-                                <h3 className="text-xl font-semibold text-gray-900 mb-2">{f.title}</h3>
-                                <p className="text-gray-600 leading-relaxed">{f.desc}</p>
+                                <h4 className="text-xl font-semibold text-gray-900 mb-3">{type.title}</h4>
+                                <p className="text-gray-600 leading-relaxed">{type.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* HOW IT WORKS */}
-            <section className="py-12 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+            {/* WHY BORROWERS PREFER BORROWWW */}
+            <section className="py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 mb-4">
-                            How It Works
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 leading-tight">
+                            Why Borrowers Prefer Borrowww
                         </h2>
-                        <p className="text-lg text-gray-600">4 simple steps from start to sanction.</p>
+                        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                            Our platform offers multiple perks and brings you closer to your dream.
+                        </p>
                     </div>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {features.map((f, index) => (
+                            <div
+                                key={index}
+                                className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+                            >
+                                <div className="w-12 h-12 rounded-xl bg-[#3A6EA5]/10 text-[#3A6EA5] flex items-center justify-center mb-5 group-hover:bg-[#3A6EA5] group-hover:text-white transition-all duration-300">
+                                    <f.icon className="h-6 w-6" />
+                                </div>
+                                <h3 className="text-lg font-semibold text-gray-900 mb-2">{f.title}</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">{f.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* WHAT'S OUR APPROACH */}
+            <section className="py-16 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 leading-tight">
+                            What’s Our Approach
+                        </h2>
+                        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                            Seeking a home loan from our platform is a simple process. All you must do is follow these simple steps:
+                        </p>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {steps.map((s, i) => (
                             <div
-                                key={s.title}
-                                className="relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-gray-100 hover:border-[#3A6EA5]/30 group"
+                                key={i}
+                                className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group"
                             >
                                 <div className="absolute -top-4 -left-4 h-10 w-10 rounded-xl bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] text-white flex items-center justify-center text-base font-bold shadow-lg group-hover:scale-110 transition-transform">
                                     {i + 1}
                                 </div>
-                                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 text-[#3A6EA5] flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-[#3A6EA5] group-hover:to-[#2D3E50] group-hover:text-white transition-all duration-300 shadow-md">
-                                    <s.icon className="h-7 w-7" />
+                                <div className="w-14 h-14 rounded-2xl bg-[#3A6EA5]/5 text-[#3A6EA5] flex items-center justify-center mb-5 group-hover:bg-gradient-to-br group-hover:from-[#3A6EA5] group-hover:to-[#2D3E50] group-hover:text-white transition-all duration-300">
+                                    <s.icon className="h-6 w-6" />
                                 </div>
-                                <h3 className="text-xl font-semibold text-gray-900 mb-2">{s.title}</h3>
-                                <p className="text-gray-600 leading-relaxed">{s.desc}</p>
+                                <h3 className="text-lg font-semibold text-gray-900 mb-2">{s.title}</h3>
+                                <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* ELIGIBILITY & DOCUMENTS */}
+            {/* LET US HELP YOU MOVE FORWARD (CTA) */}
             <section className="py-12 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-8">
-                    <div className="rounded-3xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-6 shadow">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="h-10 w-10 rounded-xl bg-[#3A6EA5] text-white flex items-center justify-center">
-                                <Users className="h-5 w-5" />
-                            </div>
-                            <h3 className="text-xl font-semibold">Basic Eligibility</h3>
-                        </div>
-                        <ul className="space-y-3 text-gray-700">
-                            <li>• Age: 21–80 years at loan maturity</li>
-                            <li>• Stable income: Salaried / Self-employed</li>
-                            <li>• Credit score: 700+ preferred</li>
-                            <li>• Co-applicant allowed for higher eligibility</li>
-                            <li>• FOIR/Obligation norms as per lender policy</li>
-                        </ul>
-                    </div>
-
-                    <div className="rounded-3xl border border-gray-100 bg-gradient-to-br from-white to-gray-50 p-6 shadow">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="h-10 w-10 rounded-xl bg-[#3A6EA5] text-white flex items-center justify-center">
-                                <FileCheck2 className="h-5 w-5" />
-                            </div>
-                            <h3 className="text-xl font-semibold">Required Documents</h3>
-                        </div>
-                        <ul className="space-y-3 text-gray-700">
-                            {documents.map((d) => (
-                                <li key={d}>• {d}</li>
-                            ))}
-                        </ul>
-                        <p className="text-xs text-black mt-3">
-                            *Exact document list may vary based on bank and applicant profile.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* TESTIMONIALS */}
-            <section className="py-12 bg-gradient-to-b from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-10">
-                        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-gray-900">
-                            Happy Homeowners
-                        </h2>
-                        <p className="mt-3 text-gray-600">
-                            Clients who achieved their dream home through our services.
+                    <div className="rounded-3xl bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] p-10 text-white text-center shadow-2xl">
+                        <h3 className="text-2xl sm:text-3xl font-semibold mb-4">Let Us Help You Move Forward</h3>
+                        <p className="text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                            Does buying a home sound challenging to you? With Borrowww, the entire procedure becomes simple and accessible. Connect with us and explore the best home loan options that fit your property goals with confidence.
                         </p>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {[
-                            {
-                                name: 'Rajesh Kumar',
-                                review:
-                                    'Got the best rate and the process was incredibly smooth. The team handled everything from start to finish.',
-                            },
-                            {
-                                name: 'Priya Sharma',
-                                review:
-                                    'Excellent service! They negotiated a great deal and kept me informed throughout the entire process.',
-                            },
-                            {
-                                name: 'Amit Patel',
-                                review:
-                                    'Professional and efficient. Saved me both time and money. Highly recommend their services.',
-                            },
-                        ].map((testimonial, i) => (
-                            <div
-                                key={i}
-                                className="rounded-3xl border border-gray-100 bg-white p-6 shadow hover:shadow-lg transition-all"
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button
+                                type="button"
+                                onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-3 font-semibold text-[#3A6EA5] hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
                             >
-                                <div className="flex items-center justify-between">
-                                    <div className="font-semibold">{testimonial.name}</div>
-                                    <div className="inline-flex items-center gap-1 text-emerald-600 text-sm">
-                                        <BadgeCheck className="h-4 w-4" /> Verified
-                                    </div>
-                                </div>
-                                <p className="mt-3 text-gray-700">&quot;{testimonial.review}&quot;</p>
-                            </div>
-                        ))}
+                                Apply for Loan <ArrowRight className="h-4 w-4" />
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white px-8 py-3 font-semibold hover:bg-white hover:text-[#3A6EA5] transition-all"
+                            >
+                                Get Free Consultation
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* FAQ */}
-            <section className="py-12 bg-white">
+            <section className="py-16 bg-gradient-to-b from-white to-gray-50">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-10">
-                        <h2 className="text-3xl sm:text-4xl font-medium tracking-tight text-gray-900">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
                             Frequently Asked Questions
                         </h2>
                     </div>
@@ -862,165 +607,21 @@ export default function HomeLoanClient() {
                         {faqs.map((f, idx) => (
                             <details
                                 key={idx}
-                                className="group rounded-2xl border border-gray-200 p-5 open:bg-gray-50"
+                                className="group rounded-2xl border border-gray-200 p-5 bg-white open:bg-gray-50 transition-all"
                             >
-                                <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-gray-900">
+                                <summary className="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
                                     {f.q}
                                     <span className="transition group-open:rotate-180">
-                                        <ArrowRight className="h-5 w-5" />
+                                        <ArrowRight className="h-5 w-5 text-[#3A6EA5]" />
                                     </span>
                                 </summary>
-                                <p className="mt-3 text-gray-700">{f.a}</p>
+                                <p className="mt-3 text-gray-700 leading-relaxed">{f.a}</p>
                             </details>
                         ))}
                     </div>
                 </div>
             </section>
-
-            {/* CTA */}
-            <div className="rounded-3xl my-5 bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] p-8  text-white text-center shadow-2xl max-w-7xl mx-auto">
-                <h3 className="text-2xl sm:text-3xl font-medium mb-4">Ready to Get Started?</h3>
-                <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                    Discover the best loan options and competitive rates with us today! Get personalized
-                    offers and expert guidance.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                        type="button"
-                        onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-3 font-semibold text-[#3A6EA5] hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
-                    >
-                        Apply for Loan <ArrowRight className="h-4 w-4" />
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white px-8 py-3 font-semibold hover:bg-white hover:text-[#3A6EA5] transition-all"
-                    >
-                        Get Free Consultation
-                    </button>
-                </div>
-            </div>
-
-            {/* ELIGIBILITY SALARY WISE CONTENT SECTION */}
-            <section className="py-14 bg-gradient-to-b from-gray-50 via-white to-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-
-                    {/* Section 1: Eligibility Salary Wise */}
-                    <div>
-                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4">
-                            Home Loan Eligibility Salary Wise in India (2026)
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
-                            Home loans in India are pretty much accessible, as approx. 150 – 180 major financial institutions actively offer home loans. The institutions can be broadly categorized into three categories, i.e., Commercial and Scheduled Banks (Public Sector Banks, Private Sector Banks, Small Finance Banks, and Regional Rural Banks), Non-Banking Financial Companies (NBFC) and Affordable Housing Lenders. All category banks are differently governed and have different policies to calculate eligibility. For example, for a bank the minimum salary criteria would be approx. INR 35000/-, whereas for an NBFC or AHL the minimum salary requirement could be as low as INR 15000–20000/-. Along with this come some special schemes by the Government of India, which help lower the threshold limit of salaried applicants.
-                        </p>
-                        <p className="text-gray-700 leading-relaxed">
-                            Generally, the Lenders in India follow the FOIR (Fixed Obligation to Income Ratio) rule to ensure that your existing and current loan EMIs combined do not exceed 60–70% of your net take-home salary.
-                        </p>
-                    </div>
-
-                    {/* Section 2: Eligibility Table */}
-                    <div>
-                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-3">
-                            Net Take-Home Income – to – Loan Eligibility Calculation Table
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed mb-6">
-                            Refer below for the table that briefly estimates loan amount eligibility based on take-home salary. The loan eligibility calculation is based on monthly income @ 20 years loan tenure, and an ROI of approx. 7.50% annually.
-                        </p>
-                        <div className="overflow-x-auto rounded-2xl shadow-md border border-gray-200">
-                            <table className="w-full text-left">
-                                <thead>
-                                    <tr className="bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] text-white">
-                                        <th className="px-6 py-4 font-semibold text-base">Net Monthly Income</th>
-                                        <th className="px-6 py-4 font-semibold text-base">Estimated Loan Eligibility</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {[
-                                        { income: '₹25,000', eligibility: '₹18 Lakh – ₹22 Lakh' },
-                                        { income: '₹40,000', eligibility: '₹30 Lakh – ₹35 Lakh' },
-                                        { income: '₹60,000', eligibility: '₹48 Lakh – ₹52 Lakh' },
-                                        { income: '₹80,000', eligibility: '₹60 Lakh – ₹65 Lakh' },
-                                        { income: '₹1,00,000+', eligibility: '₹75 Lakh – ₹80 Lakh+' },
-                                    ].map((row, i) => (
-                                        <tr
-                                            key={i}
-                                            className={i % 2 === 0 ? 'bg-white hover:bg-blue-50 transition-colors' : 'bg-gray-50 hover:bg-blue-50 transition-colors'}
-                                        >
-                                            <td className="px-6 py-4 font-medium text-gray-800">{row.income}</td>
-                                            <td className="px-6 py-4 text-gray-700">{row.eligibility}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                        <p className="mt-5 text-gray-700 leading-relaxed">
-                            Additionally, with regard to Home Loan for low Salaried income in India, there are several ways to increase loan eligibility, which helps clients to get the maximum loan amount on the basis of income.
-                        </p>
-                    </div>
-
-                    {/* Section 3: PMAY */}
-                    <div className="bg-white rounded-3xl border border-gray-100 shadow-md p-8">
-                        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
-                            1. Benefit of Government Schemes like Pradhan Mantri Awas Yojna (PMAY 2.0)
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
-                            This Government scheme is specifically designed for clients falling in low-income categories, which are LIG (Low Income Groups) or EWS (Economically Weaker Section).
-                        </p>
-                        <ul className="space-y-2 text-gray-700 mb-4 ml-2">
-                            <li className="flex items-start gap-2">
-                                <span className="text-[#3A6EA5] mt-1 font-bold">•</span>
-                                <span><strong>LIG</strong> – Annual family income between INR 3 and 6 lakh</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <span className="text-[#3A6EA5] mt-1 font-bold">•</span>
-                                <span><strong>EWS</strong> – Annual family income less than INR 3 lakh</span>
-                            </li>
-                        </ul>
-                        <p className="text-gray-700 leading-relaxed">
-                            The government offers subsidies and benefits in terms of interest savings or credit guarantees, which helps clients lower their monthly EMI burden to meet daily needs along with availing a housing loan.
-                        </p>
-                    </div>
-
-                    {/* Section 4: Co-applicant */}
-                    <div className="bg-white rounded-3xl border border-gray-100 shadow-md p-8">
-                        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
-                            2. Co-applicant / Co-borrower
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed">
-                            Adding a co-applicant or co-borrower is one of the most easy and effective ways to increase loan eligibility. You can add any blood relative, i.e., father, mother, spouse, brother, or son, as a co-borrower / co-applicant in the loan application, and the combined income will be considered while calculating loan eligibility, which helps increase your eligibility substantially. Some Government banks even allow friends or non-blood relatives to join as co-borrowers as well if they are buying property in a joint name.
-                        </p>
-                    </div>
-
-                    {/* Section 5: Long Tenure */}
-                    <div className="bg-white rounded-3xl border border-gray-100 shadow-md p-8">
-                        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
-                            3. Long Tenure Option
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed">
-                            If you are looking for a larger loan amount, a longer tenure option can also help. Banks offer loan tenures up to 25 or 30 years depending upon the current age of loan applicants. While this costs more interest being a longer period, this helps in reducing the monthly EMI burden. And, as per RBI guidelines, banks offer the option for pre-payment / part-payment in the home loan free of cost so you can pay any partial loan amount during the loan tenure and reduce your tenure or EMI accordingly.
-                        </p>
-                    </div>
-
-                    {/* Section 6: Closure of Existing Loans */}
-                    <div className="bg-white rounded-3xl border border-gray-100 shadow-md p-8">
-                        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3">
-                            4. Closure of All Existing Running Loans
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed">
-                            While calculating eligibility, lenders look for all existing obligations as per the{' '}
-                            <a
-                                href="https://www.borrowww.com/credit-check"
-                                className="text-[#3A6EA5] font-medium underline underline-offset-2 hover:text-[#2D3E50] transition-colors"
-                            >
-                                credit report
-                            </a>{' '}
-                            and deduct the current EMIs from the net take-home income to assess exact eligibility. So, while applying for a home loan, ensure you close all current small running loans, like loans for the purchase of electronics, mobiles, etc., and any personal loans and credit card dues to get the maximum loan amount sanctioned.
-                        </p>
-                    </div>
-
-                </div>
-            </section>
         </div>
     );
 }
+

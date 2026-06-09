@@ -1,6 +1,4 @@
 import HomeLoanClient from './HomeLoanClient';
-import SeoContentBlock from '@/components/SeoContentBlock';
-import { existingPageContent } from '@/content/seoPages';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -14,7 +12,6 @@ export default function HomeLoanPage() {
   return (
     <>
       <HomeLoanClient />
-      <SeoContentBlock {...existingPageContent.homeLoan} />
     </>
   );
 }
