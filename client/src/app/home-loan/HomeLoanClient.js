@@ -63,7 +63,7 @@ export default function HomeLoanClient() {
         {
             icon: Users,
             title: 'Wait for discussion',
-            desc: 'Our relationship manager will contact you for a detailed discussion.',
+            desc: 'Wait till our relationship manager contact you for detailed discussion.',
         },
     ];
 
@@ -103,27 +103,27 @@ export default function HomeLoanClient() {
     const loanTypes = [
         {
             title: 'Ready property loans',
-            desc: 'Work well for buyers looking for quicker possession.',
+            desc: 'Ready property loans work well for buyers looking for quicker possession',
             icon: Home,
         },
         {
             title: 'Under-construction property loans',
-            desc: 'Need a more flexible disbursement structure.',
+            desc: 'Under-construction property loans need a more flexible disbursement structure',
             icon: Building2,
         },
         {
             title: 'Home loan balance transfers',
-            desc: 'Ideal for borrowers looking for better interest rates or improved repayment terms.',
+            desc: 'Home loan balance transfers are ideal for borrowers looking for better interest rates or improved repayment terms.',
             icon: Percent,
         },
         {
             title: 'Plot loans',
-            desc: 'Help you get your dream land for building a home.',
+            desc: 'Plot loans help you get your dream land for building a home',
             icon: ShieldCheck,
         },
         {
             title: 'Plot and construction loan',
-            desc: 'Lets you buy a land and customize/construct your dream home.',
+            desc: 'Plot and construction loan lets you buy a land and customize construct your dream home',
             icon: FileCheck2,
         },
     ];
@@ -131,7 +131,14 @@ export default function HomeLoanClient() {
     const faqs = [
         {
             q: 'What type of home loans can I apply for?',
-            a: 'Our platform allows you to choose from different types of home loans, including: Ready property loans, Under-construction property loans, Plot loans, Plot plus construction loans, and Home loan balance transfers.',
+            a: 'Our platform allows you to choose from different types of home loans, including-',
+            bullets: [
+                'Ready property loans',
+                'Under-construction property loans',
+                'Plot loans',
+                'Plot plus construction loans',
+                'Home loan balance transfers',
+            ],
         },
         {
             q: 'Can Borrowww help me compare multiple banks?',
@@ -615,7 +622,16 @@ export default function HomeLoanClient() {
                                         <ArrowRight className="h-5 w-5 text-[#3A6EA5]" />
                                     </span>
                                 </summary>
-                                <p className="mt-3 text-gray-700 leading-relaxed">{f.a}</p>
+                                <div className="mt-3 text-gray-700 leading-relaxed space-y-2">
+                                    <p>{f.a}</p>
+                                    {f.bullets && (
+                                        <ul className="list-disc pl-5 space-y-1">
+                                            {f.bullets.map((bullet, bIdx) => (
+                                                <li key={bIdx}>{bullet}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
                             </details>
                         ))}
                     </div>

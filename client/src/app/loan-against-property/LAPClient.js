@@ -7,6 +7,7 @@ import {
     FaCalculator,
     FaCalendarAlt,
     FaCheckCircle,
+    FaChevronDown,
     FaPercentage,
     FaRupeeSign,
 } from 'react-icons/fa';
@@ -59,24 +60,44 @@ export default function LAPClient() {
 
     const features = [
         {
-            title: 'High Loan Amount',
-            description: 'Get up to 75% of your property value as loan',
-            icon: FaRupeeSign,
-        },
-        {
-            title: 'Flexible Usage',
-            description: 'Use funds for business, education, or any purpose',
+            title: 'Lenient Assessments',
+            description: 'Lenient assessment frameworks to review diverse collateral profiles.',
             icon: FaCheckCircle,
         },
         {
-            title: 'Lower Interest',
-            description: 'Competitive rates compared to personal loans',
+            title: 'Higher Eligibility',
+            description: 'Get up to 75% of your property market value from our partner banks.',
+            icon: FaRupeeSign,
+        },
+        {
+            title: 'Flexible Repayment',
+            description: 'Extended and flexible repayment windows matching your cash flow cycles.',
+            icon: FaCalendarAlt,
+        },
+        {
+            title: 'Zero Restrictions',
+            description: 'Deploy funds instantly for operations, inventory, or machinery upgrades.',
             icon: FaPercentage,
         },
         {
-            title: 'Long Tenure',
-            description: 'Repayment period up to 15 years',
-            icon: FaCalendarAlt,
+            title: 'Multiple End-Use Options',
+            description: 'Avail of our facility for business expansion, higher education, personal use, weddings, or medical emergencies.',
+            icon: FaBuilding,
+        },
+    ];
+
+    const faqs = [
+        {
+            q: 'Can we apply if our property is currently rented out to a corporate tenant?',
+            a: 'Our partner network accepts self-owned properties that are leased to commercial or residential tenants. The existing lease will not block your application but serves as an additional verification of property viability during our appraisal process.',
+        },
+        {
+            q: 'Who must join the loan structure as a co-applicant for corporate properties?',
+            a: 'It is important for all co-owners of the pledged property to join the loan structure. Partners or directors for business entities must come in as co-applicants. Women co-applicants are highly encouraged and can sometimes help secure optimal processing terms.',
+        },
+        {
+            q: 'How do you value a property if it has both commercial and residential zones?',
+            a: 'We often look at mixed-use properties. Our partner banks send certified evaluators to assess each zone independently before combining them into a final valuation report.',
         },
     ];
 
@@ -89,23 +110,30 @@ export default function LAPClient() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center"
+                        className="max-w-4xl mx-auto text-center"
                     >
                         <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
                             <FaBuilding className="mr-2" />
-                            Loan Against Property Calculator
+                            Secured Financing
                         </div>
-                        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-gray-900 mb-4 sm:mb-6 tracking-tight">
-                            Loan Against{' '}
-                            <span className="text-[var(--primary-blue)] italic tiemposfine">Property</span>
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-gray-900 mb-6 tracking-tight leading-tight">
+                            Unlock Capital from Your Property to{' '}
+                            <span className="text-[var(--primary-blue)] italic tiemposfine font-semibold">Fund Strategic Business Growth</span>
                         </h1>
-                        <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-                            Calculate your LAP EMI and get funds against your property. Use the loan amount for
-                            any purpose with competitive rates.
-                        </p>
-                        <p className="text-base sm:text-lg font-semibold text-[var(--primary-blue)] mt-3">
-                            Interest rate from 7.75%* p.a.
-                        </p>
+                        <div className="space-y-4 text-base sm:text-lg text-gray-600 leading-relaxed px-4 text-left sm:text-center">
+                            <p>
+                                Pledging your property to fund commercial expansion often feels like a major step and it certainly is. Real estate is valuable and we believe that value should always work for you when your enterprise needs financial backing.
+                            </p>
+                            <p>
+                                That is why we built Borrowww. As one of the leading loan facilitator platforms, we provide streamlined options for loan against property. Get direct access to premier Indian banks and NBFC’s. Our system connects your financial goals to transparent as well as secured funding options.
+                            </p>
+                            <p>
+                                Many small business owners struggle with standard bank filters. Our platform has changed the scenario. We assess your actual property value alongside your operational strength. For these types of loans, you can use rented residential / commercial units, self-owned residential / commercial spaces or open plots as collateral.
+                            </p>
+                            <p className="font-semibold text-gray-800">
+                                Our managers ensure you get maximum leverage and they ensure to provides access to substantial capital based on clear property evaluations.
+                            </p>
+                        </div>
                     </motion.div>
                 </div>
             </section>
@@ -397,14 +425,14 @@ export default function LAPClient() {
                         className="text-center mb-8"
                     >
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 mb-4">
-                            Why Choose Loan Against Property?
+                            Why Companies Scale With Our Structured Credit Models
                         </h2>
                         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                            Get the best LAP deals with competitive rates and flexible terms
+                            Borrowww focuses entirely on making your borrowing procedure efficient. Traditional corporate financing setups are time-consuming and involve endless documentation. We cut down that stress by offering-
                         </p>
                     </motion.div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
                         {features.map((feature, index) => (
                             <motion.div
                                 key={feature.title}
@@ -416,14 +444,16 @@ export default function LAPClient() {
                             >
                                 <motion.div
                                     whileHover={{ scale: 1.02 }}
-                                    className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 group-hover:border-[var(--primary-blue)]/30 text-center transform hover:-translate-y-2"
+                                    className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 group-hover:border-[var(--primary-blue)]/30 text-center h-full transform hover:-translate-y-2 flex flex-col justify-between"
                                 >
-                                    <div className="w-16 h-16 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform">
-                                        <feature.icon className="text-white text-2xl" />
+                                    <div>
+                                        <div className="w-16 h-16 bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                                            <feature.icon className="text-white text-2xl" />
+                                        </div>
+                                        <h3 className="text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
+                                            {feature.title}
+                                        </h3>
                                     </div>
-                                    <h3 className="text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
-                                        {feature.title}
-                                    </h3>
                                     <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                                         {feature.description}
                                     </p>
@@ -444,11 +474,10 @@ export default function LAPClient() {
                         className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-6  text-white text-center shadow-2xl"
                     >
                         <h3 className="text-2xl sm:text-3xl font-medium mb-4">
-                            Ready to Get Funds Against Your Property?
+                            Choose Borrowww for the Ideal Loan Against Property Perks
                         </h3>
-                        <p className="text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
-                            Get personalized LAP offers from top banks. Our experts will help you find the best
-                            deal with competitive rates.
+                        <p className="text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+                            You do not have to sell valuable assets to capture immediate market opportunities. Retain your property ownership while utilizing its equity. We manage the application coordination, bank follow-ups, and structural compliance from start to finish. Contact our team today to evaluate your eligibility.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <motion.button
@@ -471,6 +500,33 @@ export default function LAPClient() {
                             </motion.button>
                         </div>
                     </motion.div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="py-16 bg-gradient-to-b from-white to-gray-50 border-t border-gray-100">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
+                            Frequently Asked Questions
+                        </h2>
+                    </div>
+                    <div className="space-y-4">
+                        {faqs.map((f, idx) => (
+                            <details
+                                key={idx}
+                                className="group rounded-2xl border border-gray-200 p-5 bg-white open:bg-gray-50 transition-all"
+                            >
+                                <summary className="flex cursor-pointer list-none items-center justify-between font-semibold text-gray-900">
+                                    {f.q}
+                                    <span className="transition group-open:rotate-180">
+                                        <FaChevronDown className="h-5 w-5 text-[var(--primary-blue)]" />
+                                    </span>
+                                </summary>
+                                <p className="mt-3 text-gray-700 leading-relaxed">{f.a}</p>
+                            </details>
+                        ))}
+                    </div>
                 </div>
             </section>
         </>

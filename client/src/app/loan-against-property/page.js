@@ -1,6 +1,4 @@
 import LAPClient from './LAPClient';
-import SeoContentBlock from '@/components/SeoContentBlock';
-import { existingPageContent } from '@/content/seoPages';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -14,7 +12,6 @@ export default function LoanAgainstPropertyPage() {
   return (
     <>
       <LAPClient />
-      <SeoContentBlock {...existingPageContent.loanAgainstProperty} />
     </>
   );
 }
