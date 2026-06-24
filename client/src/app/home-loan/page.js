@@ -2,9 +2,9 @@ import HomeLoanClient from './HomeLoanClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Best Home Loan in India | Check Eligibility by Salary & Get Low Rates - Borrowww',
+  title: 'Home Loan in India – Check Eligibility by Salary & Get Low Interest Rates',
   description:
-    'Get the best home loan in India with Borrowww. Check eligibility by salary, enjoy low interest rates, flexible tenure & expert assistance for fast, hassle-free approval.',
+    'Simplify your home buying journey through Borrowww’s secured loans. Check eligibility by salary, get low interest rates, and apply for a home loan in India.',
   path: '/home-loan',
 });
 

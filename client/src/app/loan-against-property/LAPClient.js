@@ -88,17 +88,57 @@ export default function LAPClient() {
 
     const faqs = [
         {
-            q: 'Can we apply if our property is currently rented out to a corporate tenant?',
-            a: 'Our partner network accepts self-owned properties that are leased to commercial or residential tenants. The existing lease will not block your application but serves as an additional verification of property viability during our appraisal process.',
+            q: "What exactly is a loan against property, and how does it work?",
+            a: "Think of a loan against property — or LAP, as most people end up calling it — as a way to unlock the money that’s already sitting in real estate you own, without having to sell it. You pledge a house, a shop, an office, or even an industrial unit as security, and in return the lender gives you a chunk of its market value as a loan. The property stays yours the whole time. You keep living in it or running your business out of it, and you simply repay the amount in EMIs over the agreed tenure. Since there’s collateral backing everything, the interest works out noticeably cheaper than a personal loan — and that, for most borrowers, is the real attraction."
         },
         {
-            q: 'Who must join the loan structure as a co-applicant for corporate properties?',
-            a: 'It is important for all co-owners of the pledged property to join the loan structure. Partners or directors for business entities must come in as co-applicants. Women co-applicants are highly encouraged and can sometimes help secure optimal processing terms.',
+            q: "What is the current interest rate on a loan against property in India?",
+            a: "As of 2026, LAP rates in India mostly start somewhere around 7.75% per annum. Where you actually land, though, comes down to a handful of things — the lender you pick, your credit history, the type of property, and whether you go with a fixed or floating rate. On the higher end, rates can climb to roughly 12–14% for riskier profiles. Private sector banks usually sit at the cheaper end of that band, while NBFCs charge a little more but tend to move faster on approvals. One thing to remember: these rates shift every time the RBI changes its repo rate, so it’s always worth checking the live number before applying. On Borrowww you can put offers from partner banks and NBFCs side by side and see which one actually suits you."
         },
         {
-            q: 'How do you value a property if it has both commercial and residential zones?',
-            a: 'We often look at mixed-use properties. Our partner banks send certified evaluators to assess each zone independently before combining them into a final valuation report.',
+            q: "How much loan can I get against my property?",
+            a: "Two things mostly decide this — what your property is worth in the open market, and what kind of property it is. Lenders work on a figure called the Loan-to-Value (LTV) ratio, and you’ll typically be offered somewhere between 50% and 75% of the value. Residential property gets the most generous treatment here, often in the 70–75% range. Commercial and industrial spaces are funded a bit more cautiously. After that, your income and credit record fine-tune the final number you’re sanctioned."
         },
+        {
+            q: "What is the eligibility criteria for a loan against property?",
+            a: "At its core, a lender is checking two things: can you repay comfortably, and is the property clean on paper? So they look at your age, how steady your income is, your credit score, the loans you’re already servicing, and the legal standing of the property itself. Both salaried and self-employed applicants are eligible, usually anywhere between 21 and 70 years of age. A CIBIL score of 750 or above is what unlocks the sharper rates, and the property has to come with a clear, dispute-free title — there’s no getting around that part."
+        },
+        {
+            q: "What documents are required for a loan against property?",
+            a: "Nothing too exotic, but there is a fair bit of paperwork to round up. You’ll need your KYC (Aadhaar and PAN), an address proof, and income proof — salary slips plus Form 16 if you’re salaried, or ITRs and financial statements if you’re self-employed. Add your last six months’ bank statements and the complete set of property papers, including the title deed and tax receipts. If there’s one thing that quietly holds up most approvals, it’s messy or incomplete property documents. Sorting those out before you apply genuinely saves you days of back-and-forth later."
+        },
+        {
+            q: "Can I use a loan against property for business expansion?",
+            a: "Yes — and it’s one of the most common reasons people take a LAP in the first place. Whether you’re opening a new branch, shoring up working capital, or buying equipment, the loan gives you a bigger ticket size and a lower rate than an unsecured business loan would, simply because your property is backing it. There’s a useful bonus too: when the money actually goes into the business, the interest you pay can often be claimed as a deduction at tax time."
+        },
+        {
+            q: "What types of property can I pledge for a loan against property?",
+            a: "Quite a range, as it turns out. A residential property works whether you live in it or rent it out. Commercial spaces — shops, offices, and the like — are accepted. And in plenty of cases, industrial property or even a vacant plot of land can be pledged as well. The non-negotiables stay the same across all of them: the property has to be in your name, with a clear title and the proper approvals in place. Just keep in mind that both the LTV and the rate on offer will vary by property type, with residential usually walking away with the friendliest terms."
+        },
+        {
+            q: "How long does it take to get a loan against property approved?",
+            a: "If your documents are in order and the lender runs a digital verification, an initial approval can come through in just a few days. The full sanction and the money actually reaching your account usually take around 7 to 10 working days after that. What eats up most of the time is the property valuation and the legal title check — there’s no real shortcut around either of them. So once again, the cleaner your paperwork is upfront, the quicker the whole thing moves."
+        },
+        {
+            q: "What is the maximum tenure for a loan against property?",
+            a: "Most lenders in India let you spread repayment over as long as 15 years, and a few stretch it even further. A longer tenure pulls your monthly EMI down and can help you qualify for a larger amount, which sounds great on the surface. The catch is that a longer term also means more total interest paid over the life of the loan. It’s genuinely worth weighing both sides before you settle on a tenure rather than just picking the lowest possible EMI."
+        },
+        {
+            q: "Are there any tax benefits on a loan against property?",
+            a: "This one comes down entirely to where the money ends up going. Use the loan for business purposes, and the interest can be claimed as a business expense under Section 37(1). Put it toward buying or constructing a residential house, and you may be able to claim interest under Section 24(b). But if the funds go toward personal spending — a wedding, a holiday, a big purchase — there’s no tax benefit to claim. Since tax treatment can get fiddly, it’s a good idea to run your specific case past a CA before assuming a deduction applies."
+        },
+        {
+            q: "Can we apply if our property is currently rented out to a corporate tenant?",
+            a: "Our partner network accepts self-owned properties that are leased to commercial or residential tenants. The existing lease will not block your application but serves as an additional verification of property viability during our appraisal process."
+        },
+        {
+            q: "Who must join the loan structure as a co-applicant for corporate properties?",
+            a: "It is important for all co-owners of the pledged property to join the loan structure. Partners or directors for business entities must come in as co-applicants. Women co-applicants are highly encouraged and can sometimes help secure optimal processing terms."
+        },
+        {
+            q: "How do you value a property if it has both commercial and residential zones?",
+            a: "We often look at mixed-use properties. Our partner banks send certified evaluators to assess each zone independently before combining them into a final valuation report."
+        }
     ];
 
     return (
@@ -117,15 +157,18 @@ export default function LAPClient() {
                             Secured Financing
                         </div>
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-gray-900 mb-6 tracking-tight leading-tight">
-                            Unlock Capital from Your Property to{' '}
-                            <span className="text-[var(--primary-blue)] italic tiemposfine font-semibold">Fund Strategic Business Growth</span>
+                            Loan Against Property in India with{' '}
+                            <span className="text-[var(--primary-blue)] italic tiemposfine font-semibold">Minimal Documents & Fast Approval</span>
                         </h1>
+                        <h2 className="text-xl sm:text-2xl font-medium text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                            Unlock Capital from Your Property to Fund Strategic Business Growth
+                        </h2>
                         <div className="space-y-4 text-base sm:text-lg text-gray-600 leading-relaxed px-4 text-left sm:text-center">
                             <p>
                                 Pledging your property to fund commercial expansion often feels like a major step and it certainly is. Real estate is valuable and we believe that value should always work for you when your enterprise needs financial backing.
                             </p>
                             <p>
-                                That is why we built Borrowww. As one of the leading loan facilitator platforms, we provide streamlined options for loan against property. Get direct access to premier Indian banks and NBFC’s. Our system connects your financial goals to transparent as well as secured funding options.
+                                That is why we built <a href="https://www.borrowww.com/" className="text-[var(--primary-blue)] hover:underline font-semibold">Borrowww</a>. As one of the leading loan facilitator platforms, we provide streamlined options for loan against property. Get direct access to premier Indian banks and NBFC’s. Our system connects your financial goals to transparent as well as secured funding options.
                             </p>
                             <p>
                                 Many small business owners struggle with standard bank filters. Our platform has changed the scenario. We assess your actual property value alongside your operational strength. For these types of loans, you can use rented residential / commercial units, self-owned residential / commercial spaces or open plots as collateral.
@@ -508,7 +551,7 @@ export default function LAPClient() {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
-                            Frequently Asked Questions
+                            Loan Against Property – Frequently Asked Questions
                         </h2>
                     </div>
                     <div className="space-y-4">
@@ -529,6 +572,25 @@ export default function LAPClient() {
                     </div>
                 </div>
             </section>
+
+            {/* FAQ Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": faqs.map((f) => ({
+                            "@type": "Question",
+                            "name": f.q,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": f.a
+                            }
+                        }))
+                    })
+                }}
+            />
         </>
     );
 }

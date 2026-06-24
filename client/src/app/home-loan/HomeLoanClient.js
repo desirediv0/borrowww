@@ -148,6 +148,46 @@ export default function HomeLoanClient() {
             q: 'Do you provide support during the loan process?',
             a: 'Our team will assist you with documentation, coordination and application follow-ups from start to finish.',
         },
+        {
+            q: "What is the minimum salary required to get a home loan in India?",
+            a: "Most lenders look for a minimum monthly income of around ₹25,000 for salaried applicants, though this varies by city and bank. The bigger factor is your repayment capacity — banks usually keep your EMI within 40–50% of your net monthly income. A higher salary simply means you qualify for a larger loan amount."
+        },
+        {
+            q: "How is home loan eligibility calculated on the basis of salary?",
+            a: "Lenders calculate eligibility using your net monthly income, existing EMIs, age, and your FOIR (Fixed Obligation to Income Ratio). As a rough guide, you can borrow around 60 times your monthly salary. So if you earn ₹50,000 a month, your eligibility could be close to ₹30 lakh — subject to your credit score and the property value."
+        },
+        {
+            q: "What is the maximum home loan amount I can get?",
+            a: "The maximum amount depends on your income, age, credit profile, and the property’s market value. Banks typically finance up to 75–90% of the property cost, with the rest paid by you as a down payment. On the income side, your eligible amount is tied to how much EMI you can comfortably manage each month."
+        },
+        {
+            q: "What documents are required to apply for a home loan?",
+            a: "You generally need identity proof (Aadhaar, PAN), address proof, income proof (salary slips and Form 16 for salaried, or ITR for self-employed), your last 6 months’ bank statements, and the property papers. Keeping these ready upfront speeds up verification and approval considerably."
+        },
+        {
+            q: "What is the current home loan interest rate in India?",
+            a: "Home loan interest rates in India usually fall between 7.10% and 9.5% per annum, depending on the lender, your credit score, the loan amount, and whether you choose a fixed or floating rate. A strong CIBIL score of 750 and above often helps you negotiate a lower rate."
+        },
+        {
+            q: "Can I get a home loan with a low CIBIL score?",
+            a: "It is possible, but more difficult. A score below 650 can lead to rejection or a higher interest rate. Some banks and NBFCs still approve such cases with conditions like a larger down payment or a co-applicant. Improving your score before applying almost always gets you better terms."
+        },
+        {
+            q: "What is a home loan balance transfer and how does it help?",
+            a: "A balance transfer means shifting your existing home loan to another lender that offers a lower interest rate. It can reduce both your EMI and the total interest you pay over the tenure. It works best early in your loan term, when a larger share of each EMI still goes toward interest."
+        },
+        {
+            q: "How long does it take to get a home loan approved?",
+            a: "With complete documents, in-principle approval can come through within 2–7 working days. Final sanction and disbursement depend on property verification and legal checks, which may add a couple of weeks. Submitting accurate paperwork the first time is the easiest way to avoid delays."
+        },
+        {
+            q: "Can I get a home loan for an under-construction property?",
+            a: "Yes. For under-construction properties, the loan is usually disbursed in stages linked to construction progress. During this period you often pay interest only on the amount disbursed (known as pre-EMI), with full EMIs starting once the property is handed over to you."
+        },
+        {
+            q: "What is the maximum tenure available for a home loan?",
+            a: "Home loans in India can run for up to 30 years, though the exact tenure depends on your age when you apply and your expected retirement age. A longer tenure lowers your monthly EMI but increases the total interest you pay over the life of the loan."
+        }
     ];
 
     const [errors, setErrors] = useState({});
@@ -247,14 +287,16 @@ export default function HomeLoanClient() {
                                 <Home className="h-4 w-4" /> Home Loan Assistance
                             </div>
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight font-medium text-black leading-tight">
-                                Simplify Your Home Buying Journey with{' '}
-                                <span className="text-[#3A6EA5] italic font-semibold">Borrowww’s Secured Loans</span>
+                                Home Loan in India – Check Eligibility by Salary & Get Low Interest Rates
                             </h1>
+                            <h2 className="mt-5 text-xl sm:text-2xl font-medium text-gray-600 leading-relaxed">
+                                Simplify Your Home Buying Journey through <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>’s Secured Loans
+                            </h2>
                             <p className="mt-5 text-lg text-gray-600 max-w-2xl leading-relaxed">
                                 Are you in search of the right home loan provider platform? We understand that it takes time, there are so many aspects to consider. Then, the rates change, bank policies differ, and paperwork often feels exhausting after a point.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed">
-                                That is why you must connect with us at Borrowww and we know how to help you avoid that confusion. Our platform has strong partnerships with the leading banks and NBFC’s in India. We connect you with them and guide you through the loan process with practical support that actually helps.
+                                That is why you must connect with us at <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a> and we know how to help you avoid that confusion. Our platform has strong partnerships with the leading banks and NBFC’s in India. We connect you with them and guide you through the loan process with practical support that actually helps.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed font-light">
                                 Potential home buyers already know the property they want but others still believe in comparing projects, budgets and repayment plans. We work with both. Our team lets you explore suitable loan options based on your requirement instead of always choosing a one-size-fits-all solution.
@@ -637,6 +679,25 @@ export default function HomeLoanClient() {
                     </div>
                 </div>
             </section>
+
+            {/* FAQ Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": faqs.map((f) => ({
+                            "@type": "Question",
+                            "name": f.q,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": f.a + (f.bullets ? "\n\n" + f.bullets.join("\n") : "")
+                            }
+                        }))
+                    })
+                }}
+            />
         </div>
     );
 }
