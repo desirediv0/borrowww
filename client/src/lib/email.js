@@ -57,7 +57,7 @@ export async function sendOtpEmail({ to, subject, text, html }, retries = 2) {
         process.env.NEXT_PUBLIC_FROM_EMAIL ||
         process.env.SMTP_USER ||
         process.env.NEXT_PUBLIC_SMTP_USER ||
-        'support@borrowww.com';
+        'support.borrowww@gmail.com';
 
       const mailOptions = {
         from: fromEmail,
@@ -261,7 +261,7 @@ export function getUserThankYouTemplate({ name }) {
               <p style="font-weight: 600; color: #396A9F; margin-bottom: 15px;">Need immediate assistance?</p>
               <div class="contact-info">
                 <p><strong>Phone:</strong> +91 9560069525 or +91 8264111345</p>
-                <p><strong>Email:</strong> support@borrowww.com</p>
+                <p><strong>Email:</strong> support.borrowww@gmail.com</p>
               </div>
             </div>
             <p>We appreciate your trust in Borrowww and look forward to assisting you with your financial needs.</p>

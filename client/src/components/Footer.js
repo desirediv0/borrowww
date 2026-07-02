@@ -77,8 +77,8 @@ export default function Footer() {
               </div>
               <div className="flex items-start gap-3">
                 <FaEnvelope className="text-[#396A9F] mt-1 shrink-0" />
-                <a href="mailto:support@borrowww.com" className="text-gray-600 hover:text-[#396A9F] transition-colors text-sm">
-                  support@borrowww.com
+                <a href="mailto:support.borrowww@gmail.com" className="text-gray-600 hover:text-[#396A9F] transition-colors text-sm">
+                  support.borrowww@gmail.com
                 </a>
               </div>
               <div className="flex items-start gap-3">

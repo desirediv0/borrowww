@@ -185,8 +185,8 @@ export default function ContactClient() {
         {
             icon: FaEnvelope,
             title: 'Email Us',
-            details: ['support@borrowww.com'],
-            action: 'mailto:support@borrowww.com',
+            details: ['support.borrowww@gmail.com'],
+            action: 'mailto:support.borrowww@gmail.com',
             bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
         },
         {

@@ -7,7 +7,7 @@ export const companyInfo = {
   siteUrl: SITE_URL,
   logo: DEFAULT_OG_IMAGE,
   phones: ['+91 9560069525', '+91 8264111345'],
-  email: 'support@borrowww.com',
+  email: 'support.borrowww@gmail.com',
   socialLinks: [
     'https://www.facebook.com/',
     'https://www.instagram.com/',
