@@ -453,7 +453,7 @@ export default function HomeLoanClient() {
                                                     className="w-20 rounded border border-gray-200 px-2 py-1 text-sm focus:ring-2 focus:ring-[#3A6EA5] focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                                                     placeholder="months"
                                                     aria-label="Custom Duration Months"
-                                                 />
+                                                />
                                                 <span className="text-xs text-gray-400">months</span>
                                             </div>
                                         </div>

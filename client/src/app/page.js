@@ -7,6 +7,7 @@ import LoanToolsSection from '@/components/LoanToolsSection';
 import TransparencySection from '@/components/TransparencySection';
 import ValuesSection from '@/components/ValuesSection';
 import { buildMetadata } from '@/lib/seo';
+import PartnerBanks from '@/components/PartnerBanks';
 
 // import VideoSection from '@/components/VideoSection';
 
@@ -34,6 +35,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <HeroSection />
+      <PartnerBanks />
       <ConcernsSection />
       {/* <VideoSection /> */}
       <TransparencySection />
