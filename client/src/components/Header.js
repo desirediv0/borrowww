@@ -33,7 +33,7 @@ export default function Header() {
   const calculatorItems = [
     { name: 'Home Loan', href: '/home-loan' },
     { name: 'Loan Against Property', href: '/loan-against-property' },
-    { name: 'EMI Calculator', href: '/emi' },
+    { name: 'EMI Calculator', href: '/loan-emi-calculator' },
     { name: 'Balance Transfer', href: '/balance-transfer' },
     { name: 'Loan Comparison', href: '/comparison' },
   ];
@@ -41,7 +41,7 @@ export default function Header() {
   const navItems = [
     { name: 'Home Loan', href: '/home-loan' },
     { name: 'Loan Against Property', href: '/loan-against-property' },
-    { name: 'EMI Calculator', href: '/emi' },
+    { name: 'EMI Calculator', href: '/loan-emi-calculator' },
     { name: 'Balance Transfer', href: '/balance-transfer' },
     { name: 'Blog', href: '/blog/' },
   ];

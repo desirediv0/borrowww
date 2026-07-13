@@ -18,6 +18,7 @@ import {
 import { useRouter } from 'next/navigation';
 
 import { motion } from 'framer-motion';
+import PartnerBanks from '@/components/PartnerBanks';
 
 export default function EMIClient() {
     const [loanAmount, setLoanAmount] = useState(1000000);
@@ -117,6 +118,8 @@ export default function EMIClient() {
                     </motion.div>
                 </div>
             </section>
+
+            <PartnerBanks />
 
             {/* Calculator Section */}
             <section className="py-12 bg-white">

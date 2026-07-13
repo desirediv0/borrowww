@@ -23,7 +23,7 @@ export default function Calculator() {
       description: 'Calculate your monthly EMI for any loan',
       icon: FaCalculator,
       color: 'from-[#2D3E50] to-[#2D3E50]',
-      href: '/emi',
+      href: '/loan-emi-calculator',
     },
     {
       id: 'bt',

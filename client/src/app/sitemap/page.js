@@ -8,7 +8,7 @@ const baseLinks = [
   { href: '/credit-check', label: 'Free Credit Score Check - Check Your CIBIL Score' },
   { href: '/home-loan', label: 'Home Loan - Best Interest Rates and Offers' },
   { href: '/loan-against-property', label: 'Loan Against Property - Unlock Your Property Value' },
-  { href: '/emi', label: 'EMI Calculator - Calculate Home, Personal and Car Loan EMI' },
+  { href: '/loan-emi-calculator', label: 'EMI Calculator - Calculate Home, Personal and Car Loan EMI' },
   { href: '/balance-transfer', label: 'Balance Transfer - Transfer Your Home Loan and Save' },
   { href: '/comparison', label: 'Loan Comparison - Compare Loans and Interest Rates' },
   { href: '/about', label: 'About Us' },

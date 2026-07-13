@@ -29,6 +29,7 @@ import { toast } from 'sonner';
 import { isValidIndianNumber } from '@/utils/validation';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
+import PartnerBanks from '@/components/PartnerBanks';
 
 export default function HomeLoanClient() {
     const [form, setForm] = useState({
@@ -187,6 +188,26 @@ export default function HomeLoanClient() {
         {
             q: "What is the maximum tenure available for a home loan?",
             a: "Home loans in India can run for up to 30 years, though the exact tenure depends on your age when you apply and your expected retirement age. A longer tenure lowers your monthly EMI but increases the total interest you pay over the life of the loan."
+        },
+        {
+            q: "Can I prepay my home loan without any penalty?",
+            a: "Yes. As per RBI guidelines, floating-rate home loans taken by individual borrowers cannot carry foreclosure or prepayment charges. This applies whether you prepay a lump sum or close the loan entirely."
+        },
+        {
+            q: "Does my credit score improve after taking a home loan?",
+            a: "A home loan, repaid on time, generally helps your credit score over the medium term by adding a long-tenure secured loan with consistent repayment history. Missed EMIs can hurt your score significantly."
+        },
+        {
+            q: "Can NRIs apply for a home loan in India?",
+            a: "Yes, most banks and several HFCs offer home loans to NRIs for residential property purchase in India, typically requiring an NRE/NRO account, valid passport and visa, overseas income proof, and often a resident co-applicant."
+        },
+        {
+            q: "What happens if my home loan application gets rejected?",
+            a: "A rejection at one lender doesn't mean rejection everywhere. Common fixable reasons include a low credit score, high existing EMI load, or incomplete documentation, all of which can often be addressed before reapplying."
+        },
+        {
+            q: "Is home loan interest tax-deductible in India?",
+            a: "Under the Old Tax Regime, interest on a self-occupied property is deductible up to ₹2 lakh/year under Section 24(b), and principal repayment up to ₹1.5 lakh under Section 80C. The New Tax Regime does not permit these deductions — confirm with a tax professional."
         }
     ];
 
@@ -526,6 +547,8 @@ export default function HomeLoanClient() {
                 </div>
             </section>
 
+            <PartnerBanks />
+
             {/* CHOOSE THE RIGHT LOAN FOR YOUR PROPERTY PLANS */}
             <section className="py-16 bg-[#2D3E50]/5">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -612,6 +635,762 @@ export default function HomeLoanClient() {
                                 <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* IN-DEPTH HOME LOAN GUIDES */}
+            <section className="py-16 bg-[#2D3E50]/[0.02] border-t border-b border-gray-100">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+                            In-Depth Home Loan Insights & Guides
+                        </h2>
+                        <p className="mt-4 text-lg text-gray-600">
+                            Everything you need to know about eligibility, calculations, interest rates, charges, and categories before you apply.
+                        </p>
+                    </div>
+
+                    <div className="space-y-16">
+                        {/* 1. Home Loan Eligibility Calculator */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">1</span>
+                                Home Loan Eligibility Calculator – Check How Much You Can Borrow
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Your home loan eligibility depends primarily on four factors — monthly income, existing EMIs, age, and credit score. Most salaried applicants can borrow roughly 60 times their net monthly salary, subject to a FOIR cap of 60-70%.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Before you shortlist a property, it helps to know your borrowing power. Lenders don't look at income alone — they calculate eligibility using a formula that balances your take-home salary against your current financial commitments. Here's how the maths generally works:
+                            </p>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Monthly Net Income</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Approx. Eligible Loan Amount*</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Approx. EMI (7.5%, 20 yrs)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹40,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹30–33 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹24,000–26,000</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹60,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹42–45 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹36,000–39,000</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹1,00,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹75–78 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹60,000–65,000</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹1,50,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹110–115 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹90,000–95,000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Three levers move your eligibility the most: reducing existing EMIs before applying, adding a co-applicant's income, and improving your CIBIL score above 750. Self-employed applicants are assessed differently — lenders average the last 2–3 years of ITR income rather than a single payslip.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed">
+                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan experts — we'll match you with the lender offering the highest sanction at the lowest rate.
+                            </p>
+                        </div>
+
+                        {/* 2. How Does a Home Loan EMI Calculator Work? */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">2</span>
+                                How Does a Home Loan EMI Calculator Work?
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                EMI is calculated using your loan amount, interest rate, and tenure, via the formula <code className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded font-mono text-sm">EMI = [P × R × (1+R)^N] / [(1+R)^N – 1]</code>, where P is principal, R is monthly interest rate, and N is tenure in months.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                An EMI has two moving parts every month: interest and principal. In the early years, a larger share goes toward interest; as tenure progresses, more reduces principal — this is why prepaying in the first 5–7 years saves the most interest.
+                            </p>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Loan Amount</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Tenure</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Rate</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Monthly EMI</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Total Interest Paid</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹30 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">20 years</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.5%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">~₹24,168</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">~₹28 lakh</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹50 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">20 years</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.5%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">~₹32,224</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">~₹37.33 lakh</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹75 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">25 years</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.75%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">~₹55,424</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">~₹91.27 lakh</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-xs text-gray-500 mb-6 italic">
+                                Figures are approximate and illustrative; use the live EMI Calculator (borrowww.com/emi) for a precise, personalised calculation.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed">
+                                A longer tenure lowers monthly outgo but increases total interest paid; a shorter tenure does the opposite. Most borrowers choose tenure based on comfortable cash flow first, then use prepayment to close the loan faster once income grows.
+                            </p>
+                        </div>
+
+                        {/* 3. Bank-wise Home Loan Interest Rate Comparison in India */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">3</span>
+                                Bank-wise Home Loan Interest Rate Comparison in India
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Home loan interest rates across major Indian banks and NBFCs typically range between 7.10% and 9.50% p.a., depending on credit score, loan amount, and whether the rate is repo-linked or MCLR-based.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Rates move frequently with RBI policy changes, so treat any published number as indicative. Comparing lender categories helps you know where to start:
+                            </p>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Lender Type</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Typical Rate Range*</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Best Suited For</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Public Sector Banks</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.10% – 8.50%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Salaried applicants, lowest processing fees</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Private Sector Banks</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.15% – 9.00%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Faster processing, digital-first applicants</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Housing Finance Companies</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.25% – 9.50%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Self-employed, lower credit score, informal income</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">NBFCs</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">8.00% – 10.00%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Quick disbursal, flexible eligibility norms</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                The lowest advertised rate isn't always the cheapest loan — processing fees, prepayment charges, and mandatory insurance bundling change the real cost. This is where Borrowww adds value: we compare live offers across partner lenders and shortlist the option that's genuinely cheapest for your profile.
+                            </p>
+                        </div>
+
+                        {/* 4. How Does RBI Repo Rate Affect Your Home Loan EMI? */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">4</span>
+                                How Does RBI Repo Rate Affect Your Home Loan EMI?
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Since most home loans are linked to an External Benchmark Lending Rate (EBLR) tied to the repo rate, any RBI rate change is passed on to your loan's interest rate — usually within one quarter.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                When RBI cuts the repo rate, banks on repo-linked loans typically reduce their lending rate, lowering either your EMI or tenure. When RBI hikes it, the reverse happens. Borrowers on older MCLR loans see changes with more delay since MCLR resets only at fixed intervals.
+                            </p>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Repo Rate Change</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Impact on Repo-Linked Loan</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Typical Borrower Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Rate Cut (e.g. -0.25%)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Lower EMI or shorter tenure</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600 font-medium text-[#3A6EA5]">Choose reduced EMI or keep EMI same to close loan faster</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Rate Hike (e.g. +0.25%)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600 font-semibold text-red-600">Higher EMI or longer tenure</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Consider part-prepayment to offset the increase</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">No Change</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">EMI stays the same</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Good time to review balance transfer options if current rate is high</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                If your loan is on MCLR or a fixed rate and market rates have dropped meaningfully, a balance transfer is usually the fastest way to capture the benefit. Our team tracks live repo-linked offers across partner banks and can tell you within minutes whether switching makes financial sense.
+                            </p>
+                        </div>
+
+                        {/* 5. Home Loan Processing Fees & Hidden Charges Explained */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">5</span>
+                                Home Loan Processing Fees & Hidden Charges Explained
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Beyond the interest rate, home loans typically carry processing fees (0.25%–1%), legal/technical valuation charges, stamp duty on the loan agreement, and prepayment charges (mostly waived on floating-rate loans for individuals per RBI rules).
+                            </p>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Charge Type</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Typical Range</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Processing Fee</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">0.25% – 1% of loan amount</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Often negotiable; some lenders waive during festive offers</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Legal & Technical Valuation</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹3,000 – ₹10,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Covers property title check and site valuation</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Stamp Duty on Loan Agreement</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">State-dependent</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Separate from property registration stamp duty</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Prepayment/Foreclosure Charges</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Nil (floating, individual borrower)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Applicable on fixed-rate loans per RBI guidelines</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">CERSAI Registration</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600 font-medium">₹100– ₹200 + GST</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Mandatory security interest registration</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Insurance Bundling</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Varies</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Often optional — read the sanction letter carefully</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                Always ask for the fee break-up in writing before signing the sanction letter — some lenders bundle credit life insurance into the loan amount without clearly flagging it as optional. Our advisors review the full cost sheet with you before you commit.
+                            </p>
+                        </div>
+
+                        {/* 6. Fixed vs Floating vs Repo-Linked Home Loan Rates */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">6</span>
+                                Fixed vs Floating vs Repo-Linked Home Loan Rates: Which Should You Choose?
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Floating and repo-linked rates move with RBI policy and are usually cheaper long-term; fixed rates stay constant for a set period but typically start 0.5–1.5% higher and offer less flexibility on foreclosure.
+                            </p>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Feature</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Fixed Rate</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Floating (MCLR)</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Repo-Linked (EBLR)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Rate Movement</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Constant for tenure/period</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Resets periodically with MCLR</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Directly tracks RBI repo rate</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Transparency</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">High (predictable EMI)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Moderate (bank-set spread)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Highest (faster, clearer transmission)</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Typical Starting Rate</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Higher</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Moderate</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600 font-medium text-[#3A6EA5]">Usually lowest</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Best For</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Budget certainty</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Comfortable with gradual changes</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Fastest benefit from rate cuts</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Foreclosure Charges</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">May apply</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Nil for individuals (RBI mandate)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Nil for individuals (RBI mandate)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Since October 2019, RBI has required most retail floating-rate loans to be linked to an external benchmark like the repo rate, making EBLR the most common choice today. Fixed-rate home loans are less common in India, usually offered only for a limited initial period before converting to floating.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed">
+                                If you value predictability and can accept a slightly higher starting rate, fixed works. If you want your EMI to reflect the true cost of borrowing as RBI policy shifts, repo-linked is generally more transparent and lower-cost over a full tenure.
+                            </p>
+                        </div>
+
+                        {/* 7. Home Loan Benefits by Borrower Category */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">7</span>
+                                Home Loan Benefits by Borrower Category
+                            </h3>
+                            
+                            <div className="space-y-8">
+                                <div className="border-l-4 border-[#3A6EA5] pl-4">
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">7. Women Home Loan Benefits</h4>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        Women borrowers typically get a 0.05%–0.10% interest rate concession from most banks, along with lower stamp duty (1–2% less) in several states when the property is registered solely or jointly in a woman's name.
+                                    </p>
+                                    <p className="text-gray-600 text-sm leading-relaxed mt-2">
+                                        This concession applies whether the woman is the sole applicant or a co-applicant, provided she is a co-owner in most bank policies. States like Delhi, Haryana, UP, and Rajasthan offer reduced stamp duty for women property owners — the combined saving can run into lakhs on a higher-value property.
+                                    </p>
+                                </div>
+
+                                <div className="border-l-4 border-[#2D3E50] pl-4">
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">8. Joint Home Loan Benefits</h4>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        A joint home loan combines the income of two applicants to increase eligibility, and allows both co-borrowers to separately claim tax deductions under Section 80C (principal) and Section 24(b) (interest), up to ₹1.5 lakh and ₹2 lakh respectively — effectively doubling the household's tax benefit if both are co-owners and co-applicants.
+                                    </p>
+                                    <p className="text-gray-600 text-sm leading-relaxed mt-2">
+                                        For eligibility purposes, adding a working spouse or parent as co-applicant often unlocks a meaningfully higher loan amount than either applicant could get alone.
+                                    </p>
+                                </div>
+
+                                <div className="border-l-4 border-[#3A6EA5] pl-4">
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">9. Home Loan for Government Employees</h4>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        Government employees (central, state, PSU) often get preferential rates due to income stability, sometimes with relaxed FOIR norms and reduced documentation.
+                                    </p>
+                                    <p className="text-gray-600 text-sm leading-relaxed mt-2">
+                                        Some public sector banks run dedicated schemes for government staff with marginally lower processing fees. It's worth explicitly asking your relationship manager whether a special scheme applies to your department.
+                                    </p>
+                                </div>
+
+                                <div className="border-l-4 border-[#2D3E50] pl-4">
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">10. Home Loan for Doctors and Professionals</h4>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        Many lenders offer specialised schemes for doctors, CAs, CS, and other qualified professionals, with higher eligibility multiples (sometimes up to 70–80x monthly income) and relaxed income-proof requirements.
+                                    </p>
+                                    <p className="text-gray-600 text-sm leading-relaxed mt-2">
+                                        Since professional income can be less predictable than a salaried applicant's, lenders assessing doctors and professionals typically look at 2–3 years of ITR and practice stability rather than payslips.
+                                    </p>
+                                </div>
+
+                                <div className="border-l-4 border-[#3A6EA5] pl-4">
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">11. Home Loan for Senior Citizens</h4>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        Senior citizens can get home loans, but tenure is typically capped based on age at maturity (commonly 70–75 years), which shortens tenure and raises the EMI compared to a younger applicant for the same loan amount.
+                                    </p>
+                                    <p className="text-gray-600 text-sm leading-relaxed mt-2">
+                                        Adding a younger co-applicant (often an adult child) as co-borrower is the most common way senior citizens extend their effective tenure and improve eligibility.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 12. New Tax Regime vs Old Tax Regime */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">12</span>
+                                New Tax Regime vs Old Tax Regime: Which Is Better for Home Loan Borrowers?
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                The Old Tax Regime allows deductions on both principal (Section 80C, up to ₹1.5 lakh) and interest (Section 24(b), up to ₹2 lakh for self-occupied property). The New Tax Regime does not allow these deductions for a self-occupied home, making the Old Regime generally more beneficial for active home loan borrowers.
+                            </p>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Benefit</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Old Tax Regime</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">New Tax Regime</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Principal Repayment (80C)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Deductible up to ₹1.5 lakh/year</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Not allowed</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Interest on Self-Occupied Property (24b)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Deductible up to ₹2 lakh/year</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Not allowed</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Interest on Let-Out Property</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Fully deductible (no cap)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600 font-medium text-[#3A6EA5]">Allowed, loss set-off restricted</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Best Suited For</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600 font-semibold text-[#3A6EA5]">Borrowers actively repaying a home loan</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Borrowers without major deductions</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                If you're planning to buy with a loan and don't have many other deductions, running both regimes through a calculator before filing is worthwhile — for many borrowers in the early years of repayment (highest interest component), the Old Regime still results in lower tax outgo. This is general information, not personalised advice — confirm your specific position with a qualified tax consultant.
+                            </p>
+                        </div>
+
+                        {/* 13. Home Loan Checklist */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">13</span>
+                                Home Loan Checklist: What to Prepare Before You Apply
+                            </h3>
+                            
+                            <ul className="grid sm:grid-cols-2 gap-4 mb-6">
+                                {[
+                                    "CIBIL/credit score checked and above 700 (ideally 750+)",
+                                    "Last 3 months' salary slips (salaried) or 2–3 years' ITR (self-employed)",
+                                    "Last 12 months' bank statements showing salary/income credits",
+                                    "Identity proof: PAN card and Aadhaar card",
+                                    "Address proof (Aadhaar, voter card, driving license)",
+                                    "Property documents: sale agreement, title deed, approved building plan",
+                                    "Builder's NOC and RERA registration number (under-construction property)",
+                                    "Down payment amount arranged (typically 10–25% of property value)",
+                                    "Existing loan/EMI details for FOIR calculation",
+                                    "Employment continuity proof (offer letter, experience letter, or Form 16)"
+                                ].map((item, idx) => (
+                                    <li key={idx} className="flex items-start gap-2.5 text-gray-600 text-sm">
+                                        <span className="flex-shrink-0 mt-1 flex items-center justify-center w-4 h-4 rounded-full bg-[#3A6EA5]/20 text-[#3A6EA5]">✓</span>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <p className="text-gray-600 leading-relaxed">
+                                Applicants who arrange these documents in advance typically move from application to in-principle approval faster, since most delays come from back-and-forth document requests rather than the credit decision itself.
+                            </p>
+                        </div>
+
+                        {/* 14. Home Loan Myths vs Facts */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">14</span>
+                                Home Loan Myths vs Facts
+                            </h3>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#2D3E50] uppercase tracking-wider w-1/3">Myth</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#3A6EA5] uppercase tracking-wider w-2/3">Fact</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        {[
+                                            { m: "You need a CIBIL score of 900 to get approved", f: "Scores max out at 900, but most lenders approve comfortably at 750+; some approve even at 650–700 with conditions" },
+                                            { m: "The lowest advertised rate is always cheapest", f: "Processing fees, insurance bundling, and prepayment terms can make a 'lower rate' loan costlier overall" },
+                                            { m: "Foreclosing always attracts a penalty", f: "RBI mandates zero foreclosure charges on floating-rate loans for individual borrowers" },
+                                            { m: "Self-employed can't get home loans easily", f: "Many lenders and HFCs specialise in self-employed profiles with tailored income assessment" },
+                                            { m: "You must bank with a lender to get a loan there", f: "Home loans are widely available even where you hold no existing account" },
+                                            { m: "A rejected application stays rejected everywhere", f: "Different lenders have different credit policies — rejection at one doesn't mean rejection elsewhere" }
+                                        ].map((item, idx) => (
+                                            <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
+                                                <td className="px-6 py-4 text-sm font-medium text-red-700 bg-red-50/30">{item.m}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-600 bg-emerald-50/10">{item.f}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        {/* 15. Complete Home Buying Cost Breakdown */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">15</span>
+                                Complete Home Buying Cost Breakdown (Beyond the Property Price)
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                Beyond the property's sale price, buyers should budget an additional 7–10% for stamp duty, registration, GST (on under-construction property), brokerage, and loan-related charges.
+                            </p>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Cost Component</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Typical Range</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Stamp Duty</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">3% – 7% of property value (state-dependent)</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Registration Charges</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">1% of property value (approx.)</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">GST (under-construction only)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">1% (affordable housing) – 5% (others)</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Loan Processing & Legal Fees</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">0.25% – 1% of loan amount</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Brokerage (if applicable)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">1% – 2% of property value</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Interior & Fit-Out (optional)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Varies widely by choice</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm text-gray-900 font-medium">Home Insurance (optional but recommended)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Varies by cover</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                A common budgeting mistake is arranging only the down payment and missing stamp duty and registration, which together can add 4–8% on top of the sale price. Factor these into your total cash requirement before finalising a property.
+                            </p>
+                        </div>
+
+                        {/* 16. Home Loan Trends in India */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">16</span>
+                                Home Loan Trends in India (2026)
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed mb-6">
+                                In 2026, home loan trends in India are shaped by continued repo-linked rate transparency, growing digital/paperless disbursal, rising demand in Tier-2 cities, and increasing use of AI-based credit assessment by lenders.
+                            </p>
+                            <ul className="space-y-4 mb-6">
+                                {[
+                                    { t: "Faster digital disbursal", d: "end-to-end digital verification cutting approval timelines for straightforward salaried applications" },
+                                    { t: "Tier-2 and Tier-3 city growth", d: "demand rising steadily outside metros as infrastructure and remote-work flexibility expand" },
+                                    { t: "Greater rate transparency", d: "repo-linked loans make rate changes easier to track and anticipate than the MCLR era" },
+                                    { t: "Alternate credit assessment", d: "utility payments, GST filings, and digital transaction history considered alongside traditional credit scores" },
+                                    { t: "Balance transfer activity", d: "more existing borrowers actively comparing and switching lenders rather than staying with their original bank" }
+                                ].map((item, idx) => (
+                                    <li key={idx} className="flex items-start gap-3 text-gray-600 text-sm">
+                                        <span className="flex-shrink-0 mt-1.5 flex items-center justify-center w-1.5 h-1.5 rounded-full bg-[#3A6EA5]"></span>
+                                        <div>
+                                            <strong className="text-gray-900 font-semibold">{item.t}:</strong> {item.d}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                            <p className="text-xs text-gray-500 italic">
+                                These are general market observations, not a forecast of future interest rate movements. Always check current rates directly with lenders.
+                            </p>
+                        </div>
+
+                        {/* 17. Home Loan Glossary */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">17</span>
+                                Home Loan Glossary: Key Terms Explained
+                            </h3>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/4">Term</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-3/4">Meaning</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        {[
+                                            { t: "FOIR", m: "Fixed Obligation to Income Ratio — share of income already committed to EMIs/obligations" },
+                                            { t: "EBLR", m: "External Benchmark Lending Rate — the repo-linked rate most floating home loans follow today" },
+                                            { t: "MCLR", m: "Marginal Cost of Funds based Lending Rate — an older benchmark still used by some lenders" },
+                                            { t: "Pre-EMI", m: "Interest-only payment made during construction, before full EMI begins" },
+                                            { t: "LTV Ratio", m: "Loan-to-Value ratio — percentage of property value a lender is willing to finance" },
+                                            { t: "CERSAI", m: "Central Registry that records the security interest created on your property" },
+                                            { t: "Sanction Letter", m: "Formal document confirming loan approval, amount, rate, and terms" },
+                                            { t: "Disbursement", m: "Actual release of loan funds, in full or in stages" },
+                                            { t: "Balance Transfer", m: "Moving an existing home loan to a new lender, usually for a better rate" },
+                                            { t: "Co-applicant", m: "A second borrower (often spouse/parent) whose income is combined for eligibility" }
+                                        ].map((item, idx) => (
+                                            <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
+                                                <td className="px-6 py-4 text-sm font-semibold text-gray-900">{item.t}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-600">{item.m}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        {/* 18. Your Home Loan Journey with Borrowww */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">18</span>
+                                Your Home Loan Journey with Borrowww: Step-by-Step Timeline
+                            </h3>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/4">Stage</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/2">What Happens</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-1/4">Typical Timeframe</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        {[
+                                            { s: "1. Enquiry", w: "Share your requirement via lead form or call", t: "Same day" },
+                                            { s: "2. Eligibility Check", w: "Team assesses income, credit score, and lender fit", t: "1–2 days" },
+                                            { s: "3. Lender Shortlisting", w: "Compare offers across partner banks/NBFCs for your profile", t: "1–2 days" },
+                                            { s: "4. Document Submission", w: "You submit KYC, income, and property documents", t: "1–3 days" },
+                                            { s: "5. In-Principle Approval", w: "Lender issues conditional sanction based on credit assessment", t: "2–7 working days" },
+                                            { s: "6. Property Verification", w: "Legal and technical valuation of the property", t: "3–10 working days" },
+                                            { s: "7. Final Sanction & Disbursement", w: "Loan agreement signed and funds released", t: "3–7 working days after verification" }
+                                        ].map((item, idx) => (
+                                            <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
+                                                <td className="px-6 py-4 text-sm font-semibold text-gray-900">{item.s}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-600">{item.w}</td>
+                                                <td className="px-6 py-4 text-sm font-semibold text-[#3A6EA5]">{item.t}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                Timelines vary by lender workload, property type, and how quickly documents are submitted. Our relationship managers stay involved at every stage, so you always know exactly what's pending and with whom.
+                            </p>
+                        </div>
+
+                        {/* 19. How We've Helped Borrowers */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">19</span>
+                                How We've Helped Borrowers: Illustrative Case Studies
+                            </h3>
+                            
+                            <div className="space-y-6">
+                                <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                                    <h4 className="font-semibold text-gray-900 mb-2">Case 1: First-Time Salaried Buyer, Gurgaon</h4>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        A salaried applicant earning ₹85,000/month wanted a ₹55 lakh loan for a ready property but was initially quoted a higher rate at their existing bank. By comparing offers across our partner lenders, we identified a public sector bank offering a lower repo-linked rate for their credit profile, reducing the EMI by an estimated ₹3,400/month over the tenure.
+                                    </p>
+                                </div>
+
+                                <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                                    <h4 className="font-semibold text-gray-900 mb-2">Case 2: Self-Employed Applicant, Noida</h4>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        A self-employed shop owner with irregular banking history struggled with standard salaried-focused lenders. We routed the application to a housing finance company that assesses self-employed income using GST filings and bank credit patterns rather than payslips, resulting in an approved loan within a workable timeline.
+                                    </p>
+                                </div>
+
+                                <div className="p-5 bg-gray-50 rounded-2xl border border-gray-100">
+                                    <h4 className="font-semibold text-gray-900 mb-2">Case 3: Balance Transfer, Delhi</h4>
+                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                        An existing borrower on an older MCLR-linked loan at a higher rate approached us for a review. We compared their outstanding loan against current repo-linked offers and facilitated a balance transfer that reduced their effective rate, shortening the remaining payoff period without increasing their EMI.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 20. Bank vs NBFC vs Housing Finance Company */}
+                        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">20</span>
+                                Bank vs NBFC vs Housing Finance Company: Which Should You Choose?
+                            </h3>
+                            <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-[#2D3E50]/5">
+                                        <tr>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Factor</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Banks</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">NBFCs</th>
+                                            <th className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Housing Finance Companies</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-100">
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm font-semibold text-gray-900">Regulator</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">RBI</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">RBI</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">RBI (via National Housing Bank oversight)</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm font-semibold text-gray-900">Typical Interest Rates</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Generally lowest</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Slightly higher, faster approval</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Moderate, flexible on income proof</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm font-semibold text-gray-900">Processing Speed</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Moderate</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Fast</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Fast to moderate</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm font-semibold text-gray-900">Best For</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Salaried, strong credit profile</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Quick disbursal, flexible eligibility</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Self-employed, informal income</td>
+                                        </tr>
+                                        <tr className="hover:bg-gray-50/50 transition-colors">
+                                            <td className="px-6 py-4 text-sm font-semibold text-gray-900">Documentation Flexibility</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Stricter</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Moderate</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600 font-medium">Most flexible</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p className="text-gray-600 leading-relaxed">
+                                There's no universally 'best' category — the right choice depends on your income type, credit history, and how quickly you need funds. This is precisely why Borrowww works across all three lender categories rather than pushing one type of institution: we match your specific profile to the lender most likely to approve you at the best available rate.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>

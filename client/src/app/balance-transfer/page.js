@@ -2,9 +2,9 @@ import BalanceTransferClient from './BalanceTransferClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Balance Transfer EMI Calculator | Save on Loan Interest - Borrowww',
+  title: 'Home Loan Balance Transfer: Save Money with Lower Interest Rates | Borrowww',
   description:
-    'Compare your current loan with top banks, calculate savings with our Balance Transfer Calculator, and reduce EMI & interest. Get started with Borrowww today!',
+    'Everything you need to know about transferring your home loan to a new lender. Compare costs, analyze savings, check RBI guidelines, and calculate your break-even point.',
   path: '/balance-transfer',
 });
 

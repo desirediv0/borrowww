@@ -148,9 +148,9 @@ export const existingPageContent = {
     ],
   },
   emi: {
-    heading: 'EMI Calculation Formula With Example in India',
+    heading: 'Loan EMI Calculator – Calculate Your Monthly EMI Instantly',
     intro:
-      'An EMI calculator is useful because it simplifies a formula that many borrowers find technical. Still, understanding the basic EMI formula helps you interpret the result better and make more practical borrowing decisions.',
+      'Before you sign a home loan agreement, there\'s one number that decides how comfortable the next 15–30 years of your life are going to be — your EMI, or Equated Monthly Instalment. Get this number right, and your home loan fits neatly into your monthly budget. Get it wrong, and it can quietly eat into your savings, your travel plans, even your peace of mind.<br/><br/>That\'s exactly why the Home Loan EMI Calculator on Borrowww exists. Instead of relying on a bank executive\'s quick estimate or a rough figure scribbled on the back of a brochure, you can enter your loan amount, interest rate, and tenure, and see your exact monthly outgo, total interest payable, and full repayment schedule — instantly, and for free.<br/><br/>This page walks you through everything: how the EMI calculator works, the formula behind it, what changes your EMI up or down, and how to use that knowledge to negotiate a better deal, choose the right tenure, and plan prepayments smartly. Whether you\'re a first-time buyer in Noida, a self-employed professional in Gurgaon, or someone exploring a home loan balance transfer, this guide — and the calculator above it — is built to help you decide with confidence, not guesswork.',
     sections: [
       {
         title: 'What EMI means and why the formula matters',
@@ -173,27 +173,184 @@ export const existingPageContent = {
           'Borrowww encourages borrowers to use EMI calculations as a planning tool before choosing a loan amount. This is especially helpful for home loans, property-backed loans, and longer-tenure borrowing decisions where future cash flow comfort matters as much as immediate approval.',
         ]),
       },
+      {
+        title: 'What Is an EMI?',
+        paragraphs: buildParagraphs([
+          'EMI (Equated Monthly Instalment) is the fixed amount you pay to your lender every month until your home loan is fully repaid. Each EMI is a blend of two components: Principal (the actual loan amount you borrowed) and Interest (the cost the bank charges for lending you that money).',
+          'Here\'s the part most borrowers don\'t realise until they see it laid out: in the early years of your loan, a much larger share of your EMI goes towards interest, and only a small portion reduces your principal. As the loan matures, this ratio gradually flips — later EMIs pay off more principal and less interest. This pattern is called amortization, and it\'s why paying off a loan early (through prepayment) in the first few years saves you dramatically more interest than doing it later.',
+          'This is also why EMI planning matters so much before you apply. A loan that looks affordable on paper — say, ₹40,000 a month against a ₹90,000 salary — might feel very different once you factor in existing EMIs, insurance premiums, school fees, and everyday expenses. Calculating your EMI upfront, across a few different loan amounts and tenures, helps you borrow an amount your monthly cash flow can genuinely support, not just what the bank is willing to sanction.',
+        ]),
+      },
+      {
+        title: 'How Does the EMI Calculator Work?',
+        paragraphs: buildParagraphs([
+          'Borrowww\'s EMI calculator takes three simple inputs and gives you an instant, accurate answer — the same calculation a bank\'s loan officer would run, minus the wait.',
+          '<strong>The Three Inputs:</strong><br/>• <strong>Loan Amount (Principal):</strong> The amount you intend to borrow after subtracting your down payment from the property\'s value.<br/>• <strong>Interest Rate:</strong> The annual rate your lender charges — fixed or floating, usually linked to the repo rate through EBLR or, for older loans, MCLR.<br/>• <strong>Loan Tenure:</strong> The number of years you\'ll take to repay the loan — commonly 10 to 30 years for home loans in India.',
+          '<strong>The EMI Formula:</strong><br/><code class="bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded font-mono text-sm">EMI = P × R × (1 + R)ⁿ / ((1 + R)ⁿ – 1)</code><br/>Where:<br/>• P = Principal loan amount<br/>• R = Monthly interest rate (annual rate ÷ 12 ÷ 100)<br/>• N = Loan tenure in months (years × 12)',
+          'You\'ll never need to solve this by hand — the calculator does it the instant you enter your numbers — but understanding the formula helps explain why even a small change in interest rate or tenure can shift your EMI by a noticeable amount. Because R and N sit in the exponent, their effect on your EMI isn\'t linear; a 25-basis-point rate hike or a five-year change in tenure can move your monthly outgo more than you\'d expect.',
+          'Once you enter your details, the EMI calculator instantly shows your monthly instalment, the total interest you\'ll pay over the loan tenure, and the total amount (principal + interest) you\'ll repay by the end — along with a month-by-month amortization schedule if you want to see exactly how your loan balance reduces over time.',
+        ]),
+      },
+      {
+        title: 'Benefits of Using Borrowww\'s EMI Calculator',
+        paragraphs: buildParagraphs([
+          '• <strong>Instant results:</strong> No waiting for a callback — see your EMI the moment you enter your numbers.<br/>• <strong>Better financial planning:</strong> Know exactly how much of your monthly income will go towards your home loan before you commit.<br/>• <strong>Compare multiple loan scenarios:</strong> Test different loan amounts, rates, and tenures side by side to find what fits your budget.<br/>• <strong>Understand total interest payable:</strong> See the real cost of borrowing, not just the monthly figure.<br/>• <strong>Compare tenures:</strong> Quickly check how a 15-year loan compares with a 20-year or 25-year one on both EMI and total interest.<br/>• <strong>Plan prepayments:</strong> Estimate how a lump-sum payment today changes your future EMI or tenure.<br/>• <strong>Estimate affordability:</strong> Work backwards from an EMI you\'re comfortable with to figure out the loan amount you should apply for.',
+        ]),
+      },
+      {
+        title: 'How to Use the EMI Calculator',
+        paragraphs: buildParagraphs([
+          '<strong>1. Enter your loan amount</strong> – Input the home loan amount you need, after subtracting your down payment from the property value.<br/><strong>2. Choose your interest rate</strong> – Enter the rate quoted by your lender, or use the current average home loan rate to get a ballpark figure.<br/><strong>3. Select your tenure</strong> – Pick the number of years you\'d like to repay the loan over, typically between 10 and 30 years.<br/><strong>4. View your EMI</strong> – The calculator instantly displays your monthly EMI, total interest payable, and total repayment amount.<br/><strong>5. Compare different loan options</strong> – Adjust the amount, rate, or tenure to see how each change affects your EMI, and pick the combination that suits your budget best.',
+        ]),
+      },
+      {
+        title: 'Factors That Affect Your EMI',
+        paragraphs: buildParagraphs([
+          '• <strong>Loan amount:</strong> The larger the principal, the higher your EMI, all else being equal. This is why increasing your down payment directly reduces your monthly outgo.<br/>• <strong>Interest rate:</strong> Even a 0.25–0.50% difference in interest rate can change your EMI by a few hundred to a few thousand rupees a month, depending on loan size.<br/>• <strong>Loan tenure:</strong> A longer tenure lowers your EMI but increases the total interest you pay over the life of the loan — and vice versa.<br/>• <strong>Credit score (CIBIL Score):</strong> A higher CIBIL score (typically 750+) usually gets you a better interest rate, since lenders view you as lower risk.<br/>• <strong>Repo rate:</strong> For floating-rate loans linked to the RBI\'s repo rate through EBLR, any change in the repo rate eventually feeds into your interest rate and EMI.<br/>• <strong>Floating vs fixed rates:</strong> Floating rates move with the market and can rise or fall over your tenure; fixed rates stay constant but are usually set a little higher to begin with.<br/>• <strong>Existing financial obligations:</strong> Lenders assess your total EMI obligations (existing loans, credit cards) against your income before approving a new loan amount, which indirectly shapes how much you can comfortably borrow.',
+        ]),
+      },
+      {
+        title: 'Sample EMI Calculation Table',
+        paragraphs: buildParagraphs([
+          'Here\'s how the numbers actually look across a few common loan scenarios (figures rounded to the nearest rupee; actual rates depend on your lender and profile):',
+          '<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="min-w-full divide-y divide-slate-200"><thead class="bg-slate-50"><tr><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Loan Amount</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Interest Rate</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Tenure</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Monthly EMI</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Total Interest</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Total Amount</th></tr></thead><tbody class="bg-white divide-y divide-slate-100"><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹30,00,000</td><td class="px-6 py-4 text-sm text-slate-600">8.5%</td><td class="px-6 py-4 text-sm text-slate-600">20 yrs</td><td class="px-6 py-4 text-sm text-slate-600">₹26,035</td><td class="px-6 py-4 text-sm text-slate-600">₹32,48,327</td><td class="px-6 py-4 text-sm text-slate-600">₹62,48,327</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹50,00,000</td><td class="px-6 py-4 text-sm text-slate-600">8.5%</td><td class="px-6 py-4 text-sm text-slate-600">20 yrs</td><td class="px-6 py-4 text-sm text-slate-600">₹43,391</td><td class="px-6 py-4 text-sm text-slate-600">₹54,13,879</td><td class="px-6 py-4 text-sm text-slate-600">₹1,04,13,879</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹50,00,000</td><td class="px-6 py-4 text-sm text-slate-600">9.0%</td><td class="px-6 py-4 text-sm text-slate-600">20 yrs</td><td class="px-6 py-4 text-sm text-slate-600">₹44,986</td><td class="px-6 py-4 text-sm text-slate-600">₹57,96,711</td><td class="px-6 py-4 text-sm text-slate-600">₹1,07,96,711</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹75,00,000</td><td class="px-6 py-4 text-sm text-slate-600">8.5%</td><td class="px-6 py-4 text-sm text-slate-600">15 yrs</td><td class="px-6 py-4 text-sm text-slate-600">₹73,855</td><td class="px-6 py-4 text-sm text-slate-600">₹57,93,984</td><td class="px-6 py-4 text-sm text-slate-600">₹1,32,93,984</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹1,00,00,000</td><td class="px-6 py-4 text-sm text-slate-600">8.75%</td><td class="px-6 py-4 text-sm text-slate-600">25 yrs</td><td class="px-6 py-4 text-sm text-slate-600">₹82,214</td><td class="px-6 py-4 text-sm text-slate-600">₹1,46,64,309</td><td class="px-6 py-4 text-sm text-slate-600">₹2,46,64,309</td></tr></tbody></table></div>',
+          '<span class="text-xs text-slate-400 italic">Note: These are illustrative figures based on the standard EMI formula. Actual rates vary by lender, loan scheme, and borrower profile — always confirm the exact rate in your sanction letter.</span>',
+        ]),
+      },
+      {
+        title: 'EMI by Loan Amount',
+        paragraphs: buildParagraphs([
+          'Assuming an 8.5% annual interest rate over a 20-year tenure, here\'s roughly what you\'d pay each month for different loan amounts:',
+          '<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="min-w-full divide-y divide-slate-200"><thead class="bg-slate-50"><tr><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Loan Amount</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Monthly EMI (approx.)</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Total Interest (approx.)</th></tr></thead><tbody class="bg-white divide-y divide-slate-100"><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹10 Lakh</td><td class="px-6 py-4 text-sm text-slate-600">₹8,678</td><td class="px-6 py-4 text-sm text-slate-600">₹10,82,776</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹20 Lakh</td><td class="px-6 py-4 text-sm text-slate-600">₹17,356</td><td class="px-6 py-4 text-sm text-slate-600">₹21,65,552</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹30 Lakh</td><td class="px-6 py-4 text-sm text-slate-600">₹26,035</td><td class="px-6 py-4 text-sm text-slate-600">₹32,48,327</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹50 Lakh</td><td class="px-6 py-4 text-sm text-slate-600">₹43,391</td><td class="px-6 py-4 text-sm text-slate-600">₹54,13,879</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹75 Lakh</td><td class="px-6 py-4 text-sm text-slate-600">₹65,087</td><td class="px-6 py-4 text-sm text-slate-600">₹81,20,818</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">₹1 Crore</td><td class="px-6 py-4 text-sm text-slate-600">₹86,782</td><td class="px-6 py-4 text-sm text-slate-600">₹1,08,27,758</td></tr></tbody></table></div>',
+          'Notice how the EMI scales almost linearly with loan amount at a fixed rate and tenure — a ₹1 crore loan costs roughly ten times the EMI of a ₹10 lakh loan under the same terms. This is a handy shortcut when you\'re estimating affordability for a property you\'re considering.',
+        ]),
+      },
+      {
+        title: 'EMI by Loan Tenure',
+        paragraphs: buildParagraphs([
+          'Here\'s how tenure alone changes things, using a ₹50 lakh loan at 8.5% as the base:',
+          '<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="min-w-full divide-y divide-slate-200"><thead class="bg-slate-50"><tr><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Tenure</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Monthly EMI</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Total Interest</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Total Repayment</th></tr></thead><tbody class="bg-white divide-y divide-slate-100"><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">10 years</td><td class="px-6 py-4 text-sm text-slate-600">₹61,993</td><td class="px-6 py-4 text-sm text-slate-600">₹24,39,141</td><td class="px-6 py-4 text-sm text-slate-600">₹74,39,141</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">15 years</td><td class="px-6 py-4 text-sm text-slate-600">₹49,237</td><td class="px-6 py-4 text-sm text-slate-600">₹38,62,656</td><td class="px-6 py-4 text-sm text-slate-600">₹88,62,656</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">20 years</td><td class="px-6 py-4 text-sm text-slate-600">₹43,391</td><td class="px-6 py-4 text-sm text-slate-600">₹54,13,879</td><td class="px-6 py-4 text-sm text-slate-600">₹1,04,13,879</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">25 years</td><td class="px-6 py-4 text-sm text-slate-600">₹40,261</td><td class="px-6 py-4 text-sm text-slate-600">₹70,78,406</td><td class="px-6 py-4 text-sm text-slate-600">₹1,20,78,406</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">30 years</td><td class="px-6 py-4 text-sm text-slate-600">₹38,446</td><td class="px-6 py-4 text-sm text-slate-600">₹88,40,443</td><td class="px-6 py-4 text-sm text-slate-600">₹1,38,40,443</td></tr></tbody></table></div>',
+          '• <strong>10 years:</strong> Highest EMI, but you pay by far the least total interest and become debt-free the fastest.<br/>• <strong>20 years:</strong> A middle ground most salaried borrowers choose — EMI stays manageable while total interest doesn\'t balloon excessively.<br/>• <strong>30 years:</strong> Lowest EMI, which helps affordability today, but you end up paying more than double the loan amount in interest alone over the tenure.',
+        ]),
+      },
+      {
+        title: 'Short Tenure vs Long Tenure',
+        paragraphs: buildParagraphs([
+          'There\'s no universally \'right\' tenure — it\'s a trade-off between monthly affordability and long-term cost. A practical approach many borrowers use: choose the shortest tenure whose EMI still leaves comfortable room in the monthly budget, and use prepayments later to shorten it further if income grows.',
+          '<div class="overflow-x-auto my-6 rounded-2xl border border-slate-200 shadow-sm"><table class="min-w-full divide-y divide-slate-200"><thead class="bg-slate-50"><tr><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Factor</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Short Tenure (e.g., 10 yrs)</th><th class="px-6 py-4 text-left text-xs font-semibold text-slate-700 uppercase tracking-wider">Long Tenure (e.g., 30 yrs)</th></tr></thead><tbody class="bg-white divide-y divide-slate-100"><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">Monthly EMI</td><td class="px-6 py-4 text-sm text-slate-600">Higher</td><td class="px-6 py-4 text-sm text-slate-600">Lower</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">Total interest paid</td><td class="px-6 py-4 text-sm text-slate-600">Significantly lower</td><td class="px-6 py-4 text-sm text-slate-600">Significantly higher</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">Loan gets closed</td><td class="px-6 py-4 text-sm text-slate-600">Faster</td><td class="px-6 py-4 text-sm text-slate-600">Slower</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">Monthly cash flow</td><td class="px-6 py-4 text-sm text-slate-600">Tighter</td><td class="px-6 py-4 text-sm text-slate-600">More breathing room</td></tr><tr class="hover:bg-slate-50/50 transition-colors"><td class="px-6 py-4 text-sm text-slate-900 font-medium">Best suited for</td><td class="px-6 py-4 text-sm text-slate-600">Higher, stable income earners</td><td class="px-6 py-4 text-sm text-slate-600 font-semibold text-[#3A6EA5]">Those prioritising affordability today</td></tr></tbody></table></div>',
+        ]),
+      },
+      {
+        title: 'Fixed vs Floating Interest Rates',
+        paragraphs: buildParagraphs([
+          '<strong>Fixed Interest Rate:</strong><br/>• <strong>Advantage:</strong> Your EMI stays exactly the same for the entire tenure (or a fixed period), making budgeting simple and predictable.<br/>• <strong>Disadvantage:</strong> Fixed rates are usually priced a little higher than floating rates at the outset, and you don\'t benefit if market rates fall.',
+          '<strong>Floating Interest Rate:</strong><br/>• <strong>Advantage:</strong> Typically starts lower than fixed rates, and your EMI can reduce if the repo rate and your lender\'s benchmark rate fall.<br/>• <strong>Disadvantage:</strong> Your EMI (or tenure) can also rise if rates go up, adding an element of uncertainty to long-term planning.',
+          '<strong>Who Should Choose Which?</strong><br/>If predictability matters more to you than optimising for the lowest possible cost, fixed rates offer peace of mind. If you\'re comfortable with some variability and want to benefit from potential rate cuts over a long tenure, floating rates — the more common choice for home loans in India today — tend to work out cheaper over time for most borrowers.',
+        ]),
+      },
+      {
+        title: 'How Prepayment Reduces Your EMI',
+        paragraphs: buildParagraphs([
+          'Prepayment means paying an extra lump sum towards your loan, over and above your regular EMIs. It can be partial (a portion of the outstanding principal) or full (closing the entire loan, also called foreclosure). Because interest is calculated on your outstanding principal, any amount you prepay reduces the base on which future interest is charged — which is why prepaying early in your tenure saves the most.',
+          'Here\'s a real example using the ₹50 lakh loan at 8.5% over 20 years (EMI: ₹43,391):<br/>• After 5 years of regular EMIs, the outstanding balance is approximately ₹44.06 lakh.<br/>• If you make a ₹5 lakh prepayment at this point, your outstanding balance drops to about ₹39.06 lakh.<br/>• <strong>Option 1 – Reduce tenure, keep EMI the same:</strong> Your loan closes roughly 3 years earlier, saving approximately ₹10.7 lakh in interest over the remaining tenure.<br/>• <strong>Option 2 – Reduce EMI, keep tenure the same:</strong> Your monthly EMI drops to about ₹38,467 — a saving of nearly ₹4,900 every month.',
+          'Most financial planners recommend the \'reduce tenure\' option wherever your monthly budget allows it, since it saves considerably more interest over the life of the loan. For home loans in India, most banks — under RBI rules — don\'t charge prepayment penalties on floating-rate loans, which makes this one of the most effective, low-risk ways to cut your total interest outgo.',
+        ]),
+      },
+      {
+        title: 'How RBI Repo Rate Affects EMI',
+        paragraphs: buildParagraphs([
+          'The repo rate is the rate at which the Reserve Bank of India lends money to commercial banks. Since 2019, most floating-rate retail loans, including home loans, are linked to this rate through the External Benchmark Lending Rate (EBLR) framework — a shift from the older Marginal Cost of Funds based Lending Rate (MCLR) system that many existing borrowers may still be on.',
+          '• When the RBI raises the repo rate, banks typically pass on the increase to EBLR-linked home loans within a quarter, raising your interest rate and, in turn, your EMI or tenure.<br/>• When the RBI cuts the repo rate, EBLR-linked borrowers usually see their rate — and EMI — reduce faster than those on MCLR, since EBLR resets are more frequent and more directly tied to the repo rate.<br/>• If you\'re on an older MCLR-linked loan, it\'s worth checking with your lender whether switching to EBLR (or a balance transfer to a lower-rate lender) could reduce your effective rate.',
+        ]),
+      },
+      {
+        title: 'Tips to Reduce Your EMI',
+        paragraphs: buildParagraphs([
+          '• <strong>Increase your down payment:</strong> A larger down payment means a smaller principal to borrow, directly lowering your EMI.<br/>• <strong>Choose a longer tenure:</strong> Stretching your tenure reduces your monthly EMI, though it increases total interest — useful if affordability today is the priority.<br/>• <strong>Improve your credit score:</strong> A CIBIL score of 750 or above generally qualifies you for better interest rates, which lowers your EMI.<br/>• <strong>Consider a balance transfer:</strong> If your current lender\'s rate is higher than what\'s available elsewhere, transferring your loan to a lower-rate lender can meaningfully cut your EMI.<br/>• <strong>Negotiate your interest rate:</strong> Existing customers with a good repayment history, or those with competing offers in hand, often have more room to negotiate than they expect.<br/>• <strong>Make part-prepayments:</strong> Even small, occasional lump-sum payments towards your principal — bonuses, tax refunds, maturity proceeds — add up to real interest savings over time.',
+        ]),
+      },
+      {
+        title: 'Common EMI Calculation Mistakes',
+        paragraphs: buildParagraphs([
+          '• <strong>Ignoring processing fees and other charges:</strong> These add to your effective cost of borrowing but don\'t show up in a basic EMI calculation.<br/>• <strong>Using the wrong interest rate:</strong> Comparing a floating rate against a fixed one (or an outdated rate) without adjusting for the difference.<br/>• <strong>Forgetting existing EMIs:</strong> Calculating affordability based on gross income alone, without accounting for current loan or credit card obligations.<br/>• <strong>Overlooking rate resets:</strong> Assuming a floating EMI will remain constant for the full tenure, when it can change with repo rate movements.<br/>• <strong>Not accounting for prepayment charges on fixed loans:</strong> Some fixed-rate loans do carry foreclosure charges, unlike most floating-rate home loans.<br/>• <strong>Choosing tenure based on EMI alone:</strong> Picking the longest tenure purely to minimise EMI, without weighing the extra total interest that comes with it.',
+        ]),
+      },
     ],
     faqs: [
       {
-        question: 'What is the formula used in EMI calculation?',
+        question: 'What is EMI in a home loan?',
         answer:
-          'The standard formula uses principal, monthly interest rate, and total number of monthly instalments to calculate the EMI.',
+          'EMI, or Equated Monthly Instalment, is the fixed monthly payment you make towards your home loan. It includes both principal repayment and interest, calculated using your loan amount, interest rate, and tenure.',
       },
       {
-        question: 'Why does total interest increase when tenure increases?',
+        question: 'How is home loan EMI calculated?',
         answer:
-          'A longer tenure spreads repayment over more months, which usually increases the total interest paid across the life of the loan.',
+          'Home loan EMI is calculated using the formula EMI = P × R × (1 + R)ⁿ / ((1 + R)ⁿ – 1), where P is the principal, R is the monthly interest rate, and N is the tenure in months. Borrowww\'s EMI calculator applies this formula instantly once you enter your details.',
       },
       {
-        question: 'Is manual EMI calculation necessary?',
+        question: 'What is a good EMI to income ratio?',
         answer:
-          'Not usually. A calculator is faster, but understanding the formula helps you interpret the result better.',
+          'Most lenders prefer your total EMI obligations to stay within 40–50% of your monthly income, though many financial planners suggest keeping it closer to 30–35% for comfortable, sustainable repayment.',
       },
       {
-        question: 'Should I choose the lowest EMI possible?',
+        question: 'Does a higher CIBIL score reduce my EMI?',
         answer:
-          'Not always. The right EMI should balance monthly affordability with overall interest cost.',
+          'Yes. A higher CIBIL score, typically 750 and above, generally helps you qualify for a lower interest rate, which reduces your EMI on the same loan amount and tenure.',
+      },
+      {
+        question: 'What happens to my EMI if the repo rate changes?',
+        answer:
+          'If your loan is on a floating rate linked to EBLR, a repo rate change usually gets passed on to your interest rate within a quarter, which can increase or decrease your EMI or tenure accordingly.',
+      },
+      {
+        question: 'Is it better to reduce EMI or tenure after a prepayment?',
+        answer:
+          'Reducing tenure while keeping the EMI unchanged typically saves more total interest, since your loan closes faster. Reducing the EMI while keeping tenure the same instead frees up monthly cash flow. The right choice depends on your financial priorities.',
+      },
+      {
+        question: 'Can I change my home loan tenure after taking the loan?',
+        answer:
+          'Some lenders allow tenure changes, especially after a part-prepayment or in case of income changes, subject to their internal policies. It\'s best to check directly with your lender or discuss it with a loan expert.',
+      },
+      {
+        question: 'What is the difference between fixed and floating interest rates?',
+        answer:
+          'A fixed rate stays constant for the loan tenure (or a specified period), offering predictable EMIs. A floating rate moves with market benchmarks like the repo rate, which can raise or lower your EMI over time.',
+      },
+      {
+        question: 'Are there charges for prepaying my home loan?',
+        answer:
+          'As per RBI guidelines, most floating-rate home loans for individual borrowers don\'t carry prepayment or foreclosure charges. Fixed-rate loans may still have such charges, so it\'s worth checking your loan agreement.',
+      },
+      {
+        question: 'What documents are needed to apply for a home loan?',
+        answer:
+          'Typically, you\'ll need identity and address proof, income documents (salary slips or ITRs), bank statements, property documents, and passport-size photographs. Requirements can vary slightly by lender and employment type.',
+      },
+      {
+        question: 'Can self-employed professionals use the EMI calculator?',
+        answer:
+          'Yes, the EMI calculator works the same way regardless of employment type. Self-employed applicants may additionally want to factor in income variability when deciding on a comfortable EMI.',
+      },
+      {
+        question: 'What is a home loan balance transfer?',
+        answer:
+          'A balance transfer lets you move your existing home loan to a new lender offering a lower interest rate or better terms, which can reduce your EMI or overall interest cost.',
+      },
+      {
+        question: 'Does loan tenure affect loan eligibility?',
+        answer:
+          'Yes. A longer tenure lowers the EMI for a given loan amount, which can improve your loan eligibility since lenders assess affordability based on your EMI-to-income ratio.',
+      },
+      {
+        question: 'How accurate is an online EMI calculator?',
+        answer:
+          'An EMI calculator gives a mathematically accurate result based on the inputs you provide. The actual EMI in your sanction letter may vary slightly if your final approved rate, tenure, or loan amount differs from your estimate.',
+      },
+      {
+        question: 'Should I choose the maximum tenure my lender offers?',
+        answer:
+          'Not necessarily. While a maximum tenure lowers your EMI, it also increases total interest substantially. It\'s usually better to choose the shortest tenure your monthly budget can comfortably support.',
       },
     ],
   },

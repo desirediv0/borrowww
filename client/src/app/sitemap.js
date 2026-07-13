@@ -10,7 +10,7 @@ export default function sitemap() {
     '/contact',
     '/home-loan',
     '/loan-against-property',
-    '/emi',
+    '/loan-emi-calculator',
     '/balance-transfer',
     '/credit-check',
     '/comparison',

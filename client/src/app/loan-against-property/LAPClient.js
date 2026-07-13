@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fa';
 
 import { motion } from 'framer-motion';
+import PartnerBanks from '@/components/PartnerBanks';
 
 export default function LAPClient() {
     const router = useRouter();
@@ -180,6 +181,8 @@ export default function LAPClient() {
                     </motion.div>
                 </div>
             </section>
+
+            <PartnerBanks />
 
             {/* Calculator Section */}
             <section className="py-12 bg-white">
