@@ -662,7 +662,7 @@ export default function HomeLoanClient() {
                                 Your home loan eligibility depends primarily on four factors — monthly income, existing EMIs, age, and credit score. Most salaried applicants can borrow roughly 60 times their net monthly salary, subject to a FOIR cap of 60-70%.
                             </p>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Before you shortlist a property, it helps to know your borrowing power. Lenders don't look at income alone — they calculate eligibility using a formula that balances your take-home salary against your current financial commitments. Here's how the maths generally works:
+                                Before you shortlist a property, it helps to know your borrowing power. Lenders don&apos;t look at income alone — they calculate eligibility using a formula that balances your take-home salary against your current financial commitments. Here&apos;s how the maths generally works:
                             </p>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
                                 <table className="min-w-full divide-y divide-gray-200">
@@ -698,10 +698,10 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Three levers move your eligibility the most: reducing existing EMIs before applying, adding a co-applicant's income, and improving your CIBIL score above 750. Self-employed applicants are assessed differently — lenders average the last 2–3 years of ITR income rather than a single payslip.
+                                Three levers move your eligibility the most: reducing existing EMIs before applying, adding a co-applicant&apos;s income, and improving your CIBIL score above 750. Self-employed applicants are assessed differently — lenders average the last 2–3 years of ITR income rather than a single payslip.
                             </p>
                             <p className="text-gray-600 leading-relaxed">
-                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan experts — we'll match you with the lender offering the highest sanction at the lowest rate.
+                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan experts — we&apos;ll match you with the lender offering the highest sanction at the lowest rate.
                             </p>
                         </div>
 
@@ -807,7 +807,7 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                The lowest advertised rate isn't always the cheapest loan — processing fees, prepayment charges, and mandatory insurance bundling change the real cost. This is where Borrowww adds value: we compare live offers across partner lenders and shortlist the option that's genuinely cheapest for your profile.
+                                The lowest advertised rate isn&apos;t always the cheapest loan — processing fees, prepayment charges, and mandatory insurance bundling change the real cost. This is where Borrowww adds value: we compare live offers across partner lenders and shortlist the option that&apos;s genuinely cheapest for your profile.
                             </p>
                         </div>
 
@@ -818,7 +818,7 @@ export default function HomeLoanClient() {
                                 How Does RBI Repo Rate Affect Your Home Loan EMI?
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Since most home loans are linked to an External Benchmark Lending Rate (EBLR) tied to the repo rate, any RBI rate change is passed on to your loan's interest rate — usually within one quarter.
+                                Since most home loans are linked to an External Benchmark Lending Rate (EBLR) tied to the repo rate, any RBI rate change is passed on to your loan&apos;s interest rate — usually within one quarter.
                             </p>
                             <p className="text-gray-600 leading-relaxed mb-6">
                                 When RBI cuts the repo rate, banks on repo-linked loans typically reduce their lending rate, lowering either your EMI or tenure. When RBI hikes it, the reverse happens. Borrowers on older MCLR loans see changes with more delay since MCLR resets only at fixed intervals.
@@ -985,7 +985,7 @@ export default function HomeLoanClient() {
                                 <div className="border-l-4 border-[#3A6EA5] pl-4">
                                     <h4 className="text-lg font-semibold text-gray-900 mb-2">7. Women Home Loan Benefits</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        Women borrowers typically get a 0.05%–0.10% interest rate concession from most banks, along with lower stamp duty (1–2% less) in several states when the property is registered solely or jointly in a woman's name.
+                                        Women borrowers typically get a 0.05%–0.10% interest rate concession from most banks, along with lower stamp duty (1–2% less) in several states when the property is registered solely or jointly in a woman&apos;s name.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
                                         This concession applies whether the woman is the sole applicant or a co-applicant, provided she is a co-owner in most bank policies. States like Delhi, Haryana, UP, and Rajasthan offer reduced stamp duty for women property owners — the combined saving can run into lakhs on a higher-value property.
@@ -995,7 +995,7 @@ export default function HomeLoanClient() {
                                 <div className="border-l-4 border-[#2D3E50] pl-4">
                                     <h4 className="text-lg font-semibold text-gray-900 mb-2">8. Joint Home Loan Benefits</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        A joint home loan combines the income of two applicants to increase eligibility, and allows both co-borrowers to separately claim tax deductions under Section 80C (principal) and Section 24(b) (interest), up to ₹1.5 lakh and ₹2 lakh respectively — effectively doubling the household's tax benefit if both are co-owners and co-applicants.
+                                        A joint home loan combines the income of two applicants to increase eligibility, and allows both co-borrowers to separately claim tax deductions under Section 80C (principal) and Section 24(b) (interest), up to ₹1.5 lakh and ₹2 lakh respectively — effectively doubling the household&apos;s tax benefit if both are co-owners and co-applicants.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
                                         For eligibility purposes, adding a working spouse or parent as co-applicant often unlocks a meaningfully higher loan amount than either applicant could get alone.
@@ -1008,7 +1008,7 @@ export default function HomeLoanClient() {
                                         Government employees (central, state, PSU) often get preferential rates due to income stability, sometimes with relaxed FOIR norms and reduced documentation.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
-                                        Some public sector banks run dedicated schemes for government staff with marginally lower processing fees. It's worth explicitly asking your relationship manager whether a special scheme applies to your department.
+                                        Some public sector banks run dedicated schemes for government staff with marginally lower processing fees. It&apos;s worth explicitly asking your relationship manager whether a special scheme applies to your department.
                                     </p>
                                 </div>
 
@@ -1018,7 +1018,7 @@ export default function HomeLoanClient() {
                                         Many lenders offer specialised schemes for doctors, CAs, CS, and other qualified professionals, with higher eligibility multiples (sometimes up to 70–80x monthly income) and relaxed income-proof requirements.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
-                                        Since professional income can be less predictable than a salaried applicant's, lenders assessing doctors and professionals typically look at 2–3 years of ITR and practice stability rather than payslips.
+                                        Since professional income can be less predictable than a salaried applicant&apos;s, lenders assessing doctors and professionals typically look at 2–3 years of ITR and practice stability rather than payslips.
                                     </p>
                                 </div>
 
@@ -1077,8 +1077,8 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                If you're planning to buy with a loan and don't have many other deductions, running both regimes through a calculator before filing is worthwhile — for many borrowers in the early years of repayment (highest interest component), the Old Regime still results in lower tax outgo. This is general information, not personalised advice — confirm your specific position with a qualified tax consultant.
-                            </p>
+                                        If you&apos;re planning to buy with a loan and don&apos;t have many other deductions, running both regimes through a calculator before filing is worthwhile — for many borrowers in the early years of repayment (highest interest component), the Old Regime still results in lower tax outgo. This is general information, not personalised advice — confirm your specific position with a qualified tax consultant.
+                                    </p>
                         </div>
 
                         {/* 13. Home Loan Checklist */}
@@ -1130,11 +1130,11 @@ export default function HomeLoanClient() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         {[
                                             { m: "You need a CIBIL score of 900 to get approved", f: "Scores max out at 900, but most lenders approve comfortably at 750+; some approve even at 650–700 with conditions" },
-                                            { m: "The lowest advertised rate is always cheapest", f: "Processing fees, insurance bundling, and prepayment terms can make a 'lower rate' loan costlier overall" },
+                                            { m: "The lowest advertised rate is always cheapest", f: "Processing fees, insurance bundling, and prepayment terms can make a &apos;lower rate&apos; loan costlier overall" },
                                             { m: "Foreclosing always attracts a penalty", f: "RBI mandates zero foreclosure charges on floating-rate loans for individual borrowers" },
-                                            { m: "Self-employed can't get home loans easily", f: "Many lenders and HFCs specialise in self-employed profiles with tailored income assessment" },
+                                            { m: "Self-employed can&apos;t get home loans easily", f: "Many lenders and HFCs specialise in self-employed profiles with tailored income assessment" },
                                             { m: "You must bank with a lender to get a loan there", f: "Home loans are widely available even where you hold no existing account" },
-                                            { m: "A rejected application stays rejected everywhere", f: "Different lenders have different credit policies — rejection at one doesn't mean rejection elsewhere" }
+                                            { m: "A rejected application stays rejected everywhere", f: "Different lenders have different credit policies — rejection at one doesn&apos;t mean rejection elsewhere" }
                                         ].map((item, idx) => (
                                             <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
                                                 <td className="px-6 py-4 text-sm font-medium text-red-700 bg-red-50/30">{item.m}</td>
@@ -1153,7 +1153,7 @@ export default function HomeLoanClient() {
                                 Complete Home Buying Cost Breakdown (Beyond the Property Price)
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Beyond the property's sale price, buyers should budget an additional 7–10% for stamp duty, registration, GST (on under-construction property), brokerage, and loan-related charges.
+                                Beyond the property&apos;s sale price, buyers should budget an additional 7–10% for stamp duty, registration, GST (on under-construction property), brokerage, and loan-related charges.
                             </p>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
                                 <table className="min-w-full divide-y divide-gray-200">
@@ -1302,7 +1302,7 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                Timelines vary by lender workload, property type, and how quickly documents are submitted. Our relationship managers stay involved at every stage, so you always know exactly what's pending and with whom.
+                                Timelines vary by lender workload, property type, and how quickly documents are submitted. Our relationship managers stay involved at every stage, so you always know exactly what&apos;s pending and with whom.
                             </p>
                         </div>
 
@@ -1310,7 +1310,7 @@ export default function HomeLoanClient() {
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
                                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">19</span>
-                                How We've Helped Borrowers: Illustrative Case Studies
+                                How We&apos;ve Helped Borrowers: Illustrative Case Studies
                             </h3>
                             
                             <div className="space-y-6">
@@ -1388,7 +1388,7 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                There's no universally 'best' category — the right choice depends on your income type, credit history, and how quickly you need funds. This is precisely why Borrowww works across all three lender categories rather than pushing one type of institution: we match your specific profile to the lender most likely to approve you at the best available rate.
+                                There&apos;s no universally &apos;best&apos; category — the right choice depends on your income type, credit history, and how quickly you need funds. This is precisely why Borrowww works across all three lender categories rather than pushing one type of institution: we match your specific profile to the lender most likely to approve you at the best available rate.
                             </p>
                         </div>
                     </div>

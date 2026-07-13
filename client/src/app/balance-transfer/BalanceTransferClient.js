@@ -410,7 +410,7 @@ export default function BalanceTransferClient() {
                         {/* Intro */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <p className="text-gray-600 leading-relaxed">
-                                Switching your home loan to a new lender is one of those financial decisions that sounds simple on paper but gets complicated fast once you start looking at the actual numbers. Everyone tells you "switch if you find a lower rate," but nobody tells you how much lower it needs to be, when it stops making sense, or what it actually costs to make the move. This guide digs into that deeper layer — the calculations, the timing, the regulations, and the practical judgment calls that decide whether a balance transfer genuinely saves you money.
+                                Switching your home loan to a new lender is one of those financial decisions that sounds simple on paper but gets complicated fast once you start looking at the actual numbers. Everyone tells you &quot;switch if you find a lower rate,&quot; but nobody tells you how much lower it needs to be, when it stops making sense, or what it actually costs to make the move. This guide digs into that deeper layer — the calculations, the timing, the regulations, and the practical judgment calls that decide whether a balance transfer genuinely saves you money.
                             </p>
                         </div>
 
@@ -421,7 +421,7 @@ export default function BalanceTransferClient() {
                                 When you transfer your home loan, your new lender essentially pays off your existing outstanding balance to your current bank or housing finance company, and you begin repaying that same amount to the new lender instead — usually at a lower interest rate, better tenure terms, or improved service.
                             </p>
                             <p className="text-gray-600 leading-relaxed">
-                                Your original loan doesn't vanish; it gets closed out through the new lender's disbursal, and a fresh loan account is opened in its place. The property mortgage is then re-registered in favour of the new lender, which is why legal verification and property valuation happen again, almost as if you were applying for a fresh loan — because in many ways, you are.
+                                Your original loan doesn&apos;t vanish; it gets closed out through the new lender&apos;s disbursal, and a fresh loan account is opened in its place. The property mortgage is then re-registered in favour of the new lender, which is why legal verification and property valuation happen again, almost as if you were applying for a fresh loan — because in many ways, you are.
                             </p>
                         </div>
 
@@ -431,22 +431,22 @@ export default function BalanceTransferClient() {
                             
                             <div className="space-y-6">
                                 <div>
-                                    <h4 className="text-base font-semibold text-[#3A6EA5] mb-2">RBI's 2025 Pre-payment Charges Directions</h4>
+                                    <h4 className="text-base font-semibold text-[#3A6EA5] mb-2">RBI&apos;s 2025 Pre-payment Charges Directions</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
                                         The Reserve Bank of India (Pre-payment Charges on Loans) Directions, 2025 took effect for loans sanctioned or renewed on or after January 1, 2026. They build on the long-standing rule that individual borrowers cannot be charged foreclosure or prepayment penalties on floating-rate loans taken for non-business purposes. The 2025 Directions extend similar protection to floating-rate business loans taken by individuals and Micro and Small Enterprises, and they apply the rule consistently across banks, co-operative banks, NBFCs, and All India Financial Institutions — closing a gap where NBFCs had more room to levy such charges than banks.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
-                                        The Directions also require that any applicable prepayment terms be clearly disclosed in the sanction letter, loan agreement, and Key Facts Statement, and they prohibit lenders from reinstating charges that were previously waived. For anyone comparing balance transfer offers, this means it's worth asking directly whether your loan — and the new lender's loan — falls under this protection, since fixed-rate loans and some older loans sanctioned before January 1, 2026 may still follow different terms.
+                                        The Directions also require that any applicable prepayment terms be clearly disclosed in the sanction letter, loan agreement, and Key Facts Statement, and they prohibit lenders from reinstating charges that were previously waived. For anyone comparing balance transfer offers, this means it&apos;s worth asking directly whether your loan — and the new lender&apos;s loan — falls under this protection, since fixed-rate loans and some older loans sanctioned before January 1, 2026 may still follow different terms.
                                     </p>
                                 </div>
 
                                 <div>
                                     <h4 className="text-base font-semibold text-[#2D3E50] mb-2">RBI Repo Rate and What It Means for Your Balance Transfer Timing</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        As of mid-2026, the RBI has held the repo rate at 5.25% since a 25 basis point cut in December 2025, keeping it unchanged through its February, April, and June 2026 policy reviews, with the Monetary Policy Committee's next scheduled meeting in early August 2026. For borrowers, the practical implication is straightforward: loans linked to the repo rate (often labelled EBLR or RLLR) have been broadly stable through the first half of 2026, while borrowers still on an older MCLR or base-rate structure may be paying noticeably more, since those benchmarks transmit RBI rate changes more slowly and less transparently.
+                                        As of mid-2026, the RBI has held the repo rate at 5.25% since a 25 basis point cut in December 2025, keeping it unchanged through its February, April, and June 2026 policy reviews, with the Monetary Policy Committee&apos;s next scheduled meeting in early August 2026. For borrowers, the practical implication is straightforward: loans linked to the repo rate (often labelled EBLR or RLLR) have been broadly stable through the first half of 2026, while borrowers still on an older MCLR or base-rate structure may be paying noticeably more, since those benchmarks transmit RBI rate changes more slowly and less transparently.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2 font-medium">
-                                        If your existing loan hasn't moved to a repo-linked rate, that gap alone can be worth investigating through a balance transfer, independent of any promotional rate a new lender is offering.
+                                        If your existing loan hasn&apos;t moved to a repo-linked rate, that gap alone can be worth investigating through a balance transfer, independent of any promotional rate a new lender is offering.
                                     </p>
                                 </div>
                             </div>
@@ -485,10 +485,10 @@ export default function BalanceTransferClient() {
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Signs That You Should Switch Your Lender</h3>
                             <ul className="grid sm:grid-cols-2 gap-3 text-sm text-gray-600">
-                                <li>• Existing lender hasn't passed on recent rate cuts.</li>
+                                <li>• Existing lender hasn&apos;t passed on recent rate cuts.</li>
                                 <li>• Facing poor customer service or slow resolution.</li>
                                 <li>• Credit score has improved significantly.</li>
-                                <li>• Need a top-up loan and current lender isn't competitive.</li>
+                                <li>• Need a top-up loan and current lender isn&apos;t competitive.</li>
                                 <li>• Existing loan is on older benchmarks like MCLR or Base Rate.</li>
                             </ul>
                         </div>
@@ -525,7 +525,7 @@ export default function BalanceTransferClient() {
                             <div className="border-t border-gray-100 pt-4 mt-6">
                                 <h4 className="font-semibold text-gray-800 text-base mb-2">Break-even Calculation</h4>
                                 <p className="text-gray-600 text-sm leading-relaxed">
-                                    Suppose your total switching cost comes to ₹35,000, and the new lender's lower rate saves you ₹3,500 per month in interest. <strong className="text-gray-900">Break-even period = ₹35,000 ÷ ₹3,500 = 10 months.</strong> If your remaining tenure is longer than 10 months, the switch makes financial sense.
+                                    Suppose your total switching cost comes to ₹35,000, and the new lender&apos;s lower rate saves you ₹3,500 per month in interest. <strong className="text-gray-900">Break-even period = ₹35,000 ÷ ₹3,500 = 10 months.</strong> If your remaining tenure is longer than 10 months, the switch makes financial sense.
                                 </p>
                             </div>
 
@@ -825,13 +825,13 @@ export default function BalanceTransferClient() {
                             
                             <div className="space-y-4">
                                 {[
-                                    { q: "How many times can I do a home loan balance transfer?", a: "There's no strict legal limit, but each transfer involves fresh processing fees and verification costs, so it only makes sense when the savings genuinely justify the effort each time." },
-                                    { q: "Does a balance transfer affect my credit score?", a: "It doesn't negatively impact your score, provided your existing loan account is closed properly and you continue timely repayments without gaps." },
-                                    { q: "Can I transfer my home loan if I have missed a few EMI payments in the past?", a: "It's possible, but missed payments can affect the rate and terms offered and may lead to a more cautious assessment." },
-                                    { q: "Is it necessary to inform my current lender before applying elsewhere?", a: "Not strictly mandatory before comparing offers, but you'll need a foreclosure letter and outstanding balance certificate once you proceed." },
+                                    { q: "How many times can I do a home loan balance transfer?", a: "There&apos;s no strict legal limit, but each transfer involves fresh processing fees and verification costs, so it only makes sense when the savings genuinely justify the effort each time." },
+                                    { q: "Does a balance transfer affect my credit score?", a: "It doesn&apos;t negatively impact your score, provided your existing loan account is closed properly and you continue timely repayments without gaps." },
+                                    { q: "Can I transfer my home loan if I have missed a few EMI payments in the past?", a: "It&apos;s possible, but missed payments can affect the rate and terms offered and may lead to a more cautious assessment." },
+                                    { q: "Is it necessary to inform my current lender before applying elsewhere?", a: "Not strictly mandatory before comparing offers, but you&apos;ll need a foreclosure letter and outstanding balance certificate once you proceed." },
                                     { q: "Can I transfer my home loan to the same bank but a different branch for a better rate?", a: "Some banks allow an internal rate revision without a full balance transfer, which can be simpler and faster." },
                                     { q: "What is the ideal remaining tenure to consider a balance transfer?", a: "Generally 3 years or more, so interest savings have enough time to outweigh switching costs." },
-                                    { q: "Does the new lender consider my old loan's repayment history?", a: "Yes, your credit report reflects this, and a strong track record can positively influence the new lender's offer." },
+                                    { q: "Does the new lender consider my old loan&apos;s repayment history?", a: "Yes, your credit report reflects this, and a strong track record can positively influence the new lender&apos;s offer." },
                                     { q: "Can I negotiate a lower rate with my current lender instead of transferring?", a: "Yes, many borrowers successfully negotiate a rate reduction by highlighting a competing offer." },
                                     { q: "What is the difference between balance transfer and refinancing?", a: "In India, these terms are generally used interchangeably to describe moving your loan to a new lender." },
                                     { q: "Will I need to redo property registration during a balance transfer?", a: "No re-registration of the sale, but the mortgage charge is transferred and re-registered to the new lender." },
@@ -841,17 +841,17 @@ export default function BalanceTransferClient() {
                                     { q: "What documents does my existing lender need to release for the transfer?", a: "Typically a foreclosure letter, NOC, and the original property documents." },
                                     { q: "Can self-employed borrowers apply for a home loan balance transfer?", a: "Yes, though income is reassessed through updated ITRs, business financials, and bank statements." },
                                     { q: "Does balance transfer include transferring home loan insurance as well?", a: "Generally not automatically — it may need to be reassigned or reissued in favour of the new lender." },
-                                    { q: "What happens to my existing home loan account after the transfer is complete?", a: "It's marked as closed; obtain a formal closure letter and updated encumbrance certificate." },
+                                    { q: "What happens to my existing home loan account after the transfer is complete?", a: "It&apos;s marked as closed; obtain a formal closure letter and updated encumbrance certificate." },
                                     { q: "Can I switch lenders if my property is still under construction?", a: "Possible but more complex, since the new lender needs to verify construction stage and coordinate with the builder." },
-                                    { q: "Will my EMI date change after a balance transfer?", a: "Yes, typically aligned to the new lender's billing cycle." },
+                                    { q: "Will my EMI date change after a balance transfer?", a: "Yes, typically aligned to the new lender&apos;s billing cycle." },
                                     { q: "Should I choose the lender offering the lowest rate or the one with the best overall terms?", a: "Weigh processing fees, prepayment flexibility, service quality, and top-up terms together, not just the rate." },
-                                    { q: "Does RBI's new prepayment rule mean my balance transfer is completely free?", a: "No — it removes foreclosure and prepayment charges, but processing, legal, valuation, and stamp duty costs still typically apply." },
-                                    { q: "What is CERSAI and why does it matter in a balance transfer?", a: "It's the central registry recording mortgage charges — part of why legal verification takes a few weeks." },
+                                    { q: "Does RBI&apos;s new prepayment rule mean my balance transfer is completely free?", a: "No — it removes foreclosure and prepayment charges, but processing, legal, valuation, and stamp duty costs still typically apply." },
+                                    { q: "What is CERSAI and why does it matter in a balance transfer?", a: "It&apos;s the central registry recording mortgage charges — part of why legal verification takes a few weeks." },
                                     { q: "Can I do a balance transfer if my loan is a joint loan with my spouse?", a: "Yes, but both co-applicants must consent to foreclosure, and both are reassessed by the new lender." },
                                     { q: "Is a balance transfer better than asking for a top-up from my current lender?", a: "Depends on the numbers — if your base rate is also high, a transfer with a top-up often works out better." },
                                     { q: "What is the difference between MCLR and a repo-linked lending rate?", a: "MCLR changes infrequently and with lag; repo-linked rates move directly and quickly with RBI decisions." },
                                     { q: "Can NRIs transfer a home loan without visiting India?", a: "Often yes, with a valid Power of Attorney and remote documentation, though this varies by lender." },
-                                    { q: "Does the new lender check my existing lender's records directly?", a: "No, it primarily relies on your credit bureau report and the documentation you provide." },
+                                    { q: "Does the new lender check my existing lender&apos;s records directly?", a: "No, it primarily relies on your credit bureau report and the documentation you provide." },
                                     { q: "What if my property valuation comes in lower than my outstanding loan amount?", a: "This can affect your loan-to-value ratio and may reduce the sanctioned amount." }
                                 ].map((item, idx) => (
                                     <details key={idx} className="group rounded-2xl border border-gray-200 p-5 bg-white open:bg-gray-50/50 transition-all">
