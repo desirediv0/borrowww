@@ -15,6 +15,8 @@ export default function Footer() {
       { name: 'Home Loan', href: '/home-loan' },
       { name: 'Loan Against Property', href: '/loan-against-property' },
       { name: 'Loan Comparison', href: '/comparison' },
+      { name: 'Home Loan Documents', href: '/home-loan-documents' },
+      { name: 'Home Loan Eligibility', href: '/home-loan-eligibility' },
     ],
     Company: [
       { name: 'About Us', href: '/about' },
