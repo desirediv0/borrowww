@@ -19,6 +19,8 @@ export default function sitemap() {
     '/rbi-compliance',
     '/referral',
     '/blog',
+    '/home-loan-documents',
+    '/home-loan-eligibility',
     '/first-time-loan-consultant',
     '/instant-loan-services-ghaziabad',
 
