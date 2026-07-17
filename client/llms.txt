@@ -1,0 +1,55 @@
+# Borrowww
+
+> Borrowww is India's loan advisory and credit-check platform. It helps individuals and businesses check their credit score for free and apply for home loans, loans against property, business loans, and balance transfers at competitive interest rates (starting from 7.10%* p.a.), through partnerships with banks like ICICI Bank, Bank of Baroda, and Bajaj Finserv. The platform emphasizes zero commission, transparent processing, and lifetime advisor support before, during, and after loan approval.
+
+Borrowww connects borrowers with dedicated loan advisors who guide them from credit check through document verification, bank coordination, and final disbursal, with real-time application tracking. Headquartered in Gurgaon, India.
+
+## Main Pages
+- [Home](https://borrowww.com/): Overview of loan services, interest rates, lending partners, and EMI calculator
+- [About Us](https://borrowww.com/about): Company background and mission
+- [Contact Us](https://borrowww.com/contact): Contact details and support channels
+- [Referral](https://borrowww.com/referral): Refer-a-friend program
+- [Loan Comparison](https://borrowww.com/comparison): Compare loan offers across lenders
+- [RBI Compliance](https://borrowww.com/rbi-compliance): Regulatory compliance information
+
+## Loan Services
+- [Home Loan](https://borrowww.com/home-loan): Home loan application and details
+- [Loan Against Property](https://borrowww.com/loan-against-property): Secured loans against property
+- [Commercial Property Loan](https://borrowww.com/commercial-property-loan): Loans for commercial property
+- [Credit Check](https://borrowww.com/credit-check): Free credit score check
+- [EMI Calculator](https://borrowww.com/loan-emi-calculator): Calculate monthly EMI, affordability, and down payment
+- [Balance Transfer](https://borrowww.com/balance-transfer): Transfer existing loans for better rates
+- [Loan for Low CIBIL Score](https://borrowww.com/loan-for-low-cibil-score): Loan options for applicants with low credit scores
+- [Instant Loan for Salaried Employees, Delhi](https://borrowww.com/instant-loan-for-salaried-employees-delhi): Quick loans for salaried employees in Delhi
+- [Property Loan for Salaried, Delhi](https://borrowww.com/loan-against-property-for-salaried-delhi): Property-backed loans for salaried applicants in Delhi
+
+## Location Pages
+- [Loan Services, Ghaziabad](https://www.borrowww.com/instant-loan-services-ghaziabad)
+- [Home Loan Consultant, Noida](https://www.borrowww.com/home-loan-consultant-noida)
+- [Loan Advisor, Gurgaon](https://www.borrowww.com/loan-advisor-gurgaon-for-home-loan)
+- [Property Consultant, Gurgaon](https://www.borrowww.com/loan-against-property-consultant-gurgaon)
+- [Home Loan Advisor, Delhi NCR](https://www.borrowww.com/best-home-loan-advisor-delhi-ncr)
+- [Loan Agent, Faridabad](https://www.borrowww.com/best-loan-agent-faridabad)
+- [First Time Loan Consultant](https://www.borrowww.com/first-time-loan-consultant)
+
+## Blog
+- [Blog](https://borrowww.com/blog/): Articles on loans, credit scores, and personal finance in India
+- [Instant Approval Options for Salaried Employees in Delhi NCR](https://borrowww.com/blog/2026/05/08/instant-approval-options-for-salaried-employees-in-delhi-ncr/)
+- [Improving Your Credit Score in India](https://borrowww.com/blog/2026/05/08/improving-your-credit-score-in-india/)
+- [Loan Against Property Consultant in Gurgaon](https://borrowww.com/blog/2026/05/01/loan-against-property-consultant-in-gurgaon/)
+- [Free Credit Score Check in Delhi NCR](https://borrowww.com/blog/2026/05/01/free-credit-score-check-in-delhi-ncr/)
+- [Commercial Property Loan Agent Near Me](https://borrowww.com/blog/2026/04/28/commercial-property-loan-agent-near-me-financing-needs/)
+- [EMI Calculation Formula with Example (India)](https://borrowww.com/blog/2026/04/28/emi-calculation-formula-with-example-india/)
+- [How to Secure a Loan in India Without Income Proof](https://borrowww.com/blog/2026/04/28/how-to-secure-a-loan-in-india-without-income-proof/)
+- [Expand Business with Loan Against Property](https://borrowww.com/blog/2026/04/28/expand-business-with-loan-against-property/)
+- [Secured and Unsecured Loan in India](https://borrowww.com/blog/2026/04/28/secured-and-unsecured-loan-india/)
+
+## Legal
+- [Privacy Policy](https://borrowww.com/privacy-policy)
+- [Terms of Service](https://borrowww.com/terms-of-service)
+- [RBI Compliance](https://borrowww.com/rbi-compliance)
+
+## Contact
+- Phone: +91 9560069525 / +91 8264111345
+- Email: support.borrowww@gmail.com
+- Address: 221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002, India
