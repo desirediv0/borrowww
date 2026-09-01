@@ -20,10 +20,9 @@ export default function Footer() {
     ],
     Company: [
       { name: 'About Us', href: '/about' },
-      { name: 'Blog', href: '/blog/' },
       { name: 'Refer a Friend', href: '/referral' },
       { name: 'Partners', href: '#' },
-      { name: 'Sitemap', href: '/sitemap.html' },
+      { name: 'Sitemap', href: '/sitemap' },
     ],
     Support: [
       { name: 'Help Center', href: '#' },

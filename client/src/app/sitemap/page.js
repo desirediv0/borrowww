@@ -11,6 +11,7 @@ const baseLinks = [
   { href: '/loan-emi-calculator', label: 'EMI Calculator - Calculate Home, Personal and Car Loan EMI' },
   { href: '/balance-transfer', label: 'Balance Transfer - Transfer Your Home Loan and Save' },
   { href: '/comparison', label: 'Loan Comparison - Compare Loans and Interest Rates' },
+  { href: '/faq', label: 'Frequently Asked Questions' },
   { href: '/about', label: 'About Us' },
   { href: '/referral', label: 'Refer a Friend' },
   { href: '/contact', label: 'Contact Us' },

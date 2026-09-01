@@ -8,11 +8,9 @@ export const companyInfo = {
   logo: DEFAULT_OG_IMAGE,
   phones: ['+91 9560069525', '+91 8264111345'],
   email: 'support.borrowww@gmail.com',
-  socialLinks: [
-    'https://www.facebook.com/',
-    'https://www.instagram.com/',
-    'https://www.linkedin.com/',
-  ],
+  // Add the official Borrowww profile URLs here (full URLs, not domain roots).
+  // Left empty on purpose: placeholder links produce invalid `sameAs` data.
+  socialLinks: [],
 };
 
 export const organizationSchema = {
@@ -24,7 +22,7 @@ export const organizationSchema = {
   description:
     'Borrowww provides home loans, personal loans, and financial solutions in India.',
   areaServed: 'India',
-  sameAs: companyInfo.socialLinks,
+  ...(companyInfo.socialLinks.length ? { sameAs: companyInfo.socialLinks } : {}),
   contactPoint: companyInfo.phones.map((telephone) => ({
     '@type': 'ContactPoint',
     telephone,

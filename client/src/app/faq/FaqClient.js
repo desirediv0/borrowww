@@ -5,7 +5,7 @@ import { FaChevronDown, FaPhone, FaSearch, FaWhatsapp } from 'react-icons/fa';
 
 import { AnimatePresence, motion } from 'framer-motion';
 
-export default function FAQPage() {
+export default function FaqClient() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [openItems, setOpenItems] = useState(new Set());
