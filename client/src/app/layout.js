@@ -17,6 +17,9 @@ export const metadata = {
     default: 'Borrowww - Credit Check & Instant Loan Provider',
     template: '%s | Borrowww',
   },
+  verification: {
+    google: 'qorbnjJugXr2DDz1ymR3wzzzX5qqA-1n80_VQLPnHdw',
+  },
   applicationName: 'Borrowww',
   category: 'Finance',
   authors: [{ name: 'Borrowww' }],
