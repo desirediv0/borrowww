@@ -13,6 +13,7 @@ model Admin {
   email     String    @unique
   password  String
   name      String?
+  role      AdminRole @default(ADMIN)
   isActive  Boolean   @default(true)
   lastLogin DateTime?
 
@@ -225,6 +226,11 @@ model Loan {
 }
 
 // ================== Enums ==================
+enum AdminRole {
+  ADMIN
+  SUPER_ADMIN
+}
+
 enum Gender {
   Male
   Female

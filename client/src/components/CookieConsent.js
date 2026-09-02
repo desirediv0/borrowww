@@ -7,35 +7,41 @@ const CONSENT_KEY = 'borrowww_cookie_consent';
 const SESSION_ID_KEY = 'borrowww_session_id';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
+function generateSessionId() {
+    return 'sess_' + Math.random().toString(36).slice(2, 11) + '_' + Date.now();
+}
+
 export default function CookieConsent() {
     const [showBanner, setShowBanner] = useState(false);
 
     useEffect(() => {
         const consent = localStorage.getItem(CONSENT_KEY);
         if (!consent) {
-            const timer = setTimeout(() => {
-                setShowBanner(true);
-            }, 1200);
+            const timer = setTimeout(() => setShowBanner(true), 1200);
             return () => clearTimeout(timer);
         }
     }, []);
 
-    const generateSessionId = () => {
-        return 'sess_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
-    };
-
     const handleAccept = async () => {
-        const sessionId = generateSessionId();
+        const sessionId = localStorage.getItem(SESSION_ID_KEY) || generateSessionId();
         localStorage.setItem(CONSENT_KEY, 'accepted');
         localStorage.setItem(SESSION_ID_KEY, sessionId);
         setShowBanner(false);
 
         try {
+            // 1) Persist the consent server-side (sets the httpOnly-readable
+            //    `trackingConsent=accepted` cookie the API middleware checks).
+            await fetch(`${API_URL}/consent/accept`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            // 2) Open the anonymous tracking session.
             await fetch(`${API_URL}/sessions/anon`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     sessionId,
                     currentPage: window.location.pathname,
@@ -48,10 +54,21 @@ export default function CookieConsent() {
         }
     };
 
-    const handleReject = () => {
+    const handleReject = async () => {
         localStorage.setItem(CONSENT_KEY, 'rejected');
         localStorage.removeItem(SESSION_ID_KEY);
         setShowBanner(false);
+
+        try {
+            // Record the explicit decline server-side so the API stops tracking.
+            await fetch(`${API_URL}/consent/decline`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+            });
+        } catch (error) {
+            console.error('Error recording consent decline:', error);
+        }
     };
 
     if (!showBanner) return null;

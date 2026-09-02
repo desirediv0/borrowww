@@ -65,6 +65,7 @@ export const isAdmin = async (req, res, next) => {
                 id: true,
                 email: true,
                 name: true,
+                role: true,
                 isActive: true,
             },
         });
@@ -81,8 +82,11 @@ export const isAdmin = async (req, res, next) => {
             throw new ApiError(401, 'Account deactivated. Contact super admin.');
         }
 
-        // SECURITY: Attach admin to request for downstream use
+        // SECURITY: Attach admin to request for downstream use.
+        // Keep the DB role authoritative; refresh the session copy in case it
+        // was changed since login.
         req.admin = admin;
+        req.session.adminRole = admin.role || 'ADMIN';
 
         // AUDIT: Log successful admin access (for sensitive operations)
         // This creates an audit trail for compliance

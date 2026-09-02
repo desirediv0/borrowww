@@ -105,14 +105,18 @@ function CIBILCheckContent() {
                     return { shouldRetry: true };
                 }
 
-                if (res.data) {
+                // A valid report always carries a status of 'active'/'expired'
+                // or at least a creditScore. Anything else = keep waiting only
+                // if we still have attempts, never treat empty as success.
+                if (res.data && (res.data.status || res.data.creditScore != null)) {
                     setReport(res.data);
                     toast.success("CIBIL report generated successfully");
                     setFetchingReport(false);
-                    // Clear param
                     router.replace('/credit-check');
                     return { success: true };
                 }
+
+                return { shouldRetry: true };
             } catch (error) {
                 console.error(`Attempt ${attempts} failed:`, error);
                 const status = error.response?.status;
@@ -181,11 +185,12 @@ function CIBILCheckContent() {
 
         try {
             // Use fetch (not axios) to handle binary blob response properly
+            const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api'}/credit-report/download-pdf`,
+                `${apiBase}/credit-report/download-pdf`,
                 {
                     method: 'GET',
-                    credentials: 'include',    // sends HTTP-only session cookie
+                    credentials: 'include',    // sends HTTP-only auth cookie
                     headers: { 'Accept': 'application/pdf' },
                 }
             );
@@ -302,8 +307,13 @@ function CIBILCheckContent() {
             if (res.data.success && res.data.redirect_url) {
                 toast.success("Redirecting to verification...");
                 window.location.href = res.data.redirect_url;
+            } else if (res.data.alreadyCached) {
+                // User already has a valid report in the 28-day window — just show it.
+                toast.info(res.data.message || "You already have a valid credit report.");
+                setIsSubmitting(false);
+                await checkCache();
             } else {
-                toast.error("Failed to start session. Please try again.");
+                toast.error(res.data.message || "Failed to start session. Please try again.");
                 setIsSubmitting(false);
             }
 

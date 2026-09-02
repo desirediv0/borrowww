@@ -66,10 +66,13 @@ export const loginAdmin = asyncHandler(async (req, res) => {
         throw new ApiError(401, 'Account deactivated. Contact super admin.');
     }
 
-    // SECURITY: Create session with admin info
+    // SECURITY: Create session with admin info.
+    // `authRole` gates admin-panel access; `adminRole` (from the DB) decides
+    // whether this admin may see unmasked PII like full PAN.
     req.session.adminId = admin.id;
     req.session.email = admin.email;
     req.session.role = 'admin';
+    req.session.adminRole = admin.role || 'ADMIN';
     req.session.loginAt = new Date().toISOString();
 
     // Update last login
@@ -130,7 +133,7 @@ export const verifyAdminSession = asyncHandler(async (req, res) => {
     // If we get here, isAdmin middleware already validated the session
     res.status(200).json(
         new ApiResponsive(200, {
-            admin: { id: req.admin.id, email: req.admin.email, name: req.admin.name },
+            admin: { id: req.admin.id, email: req.admin.email, name: req.admin.name, role: req.admin.role },
             sessionExpiresAt: req.session.cookie.expires,
         }, 'Session valid')
     );
@@ -145,11 +148,21 @@ export const verifyAdminSession = asyncHandler(async (req, res) => {
  * @access Protected (super admin only)
  */
 export const registerAdmin = asyncHandler(async (req, res) => {
-    const { email, password, name } = req.body;
+    // SECURITY: only a SUPER_ADMIN may create new admin accounts.
+    if ((req.admin?.role || req.session?.adminRole) !== 'SUPER_ADMIN') {
+        throw new ApiError(403, 'Only a super admin can create admin accounts.');
+    }
+
+    const { email, password, name, role } = req.body;
 
     if (!email || !password) {
         throw new ApiError(400, 'Email and password are required');
     }
+    if (password.length < 10) {
+        throw new ApiError(400, 'Password must be at least 10 characters.');
+    }
+
+    const requestedRole = role === 'SUPER_ADMIN' ? 'SUPER_ADMIN' : 'ADMIN';
 
     const existing = await prisma.admin.findUnique({ where: { email } });
     if (existing) {
@@ -160,7 +173,7 @@ export const registerAdmin = asyncHandler(async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const admin = await prisma.admin.create({
-        data: { email, password: hashedPassword, name },
+        data: { email, password: hashedPassword, name, role: requestedRole },
     });
 
     // AUDIT: Log admin creation
@@ -171,6 +184,7 @@ export const registerAdmin = asyncHandler(async (req, res) => {
             id: admin.id,
             email: admin.email,
             name: admin.name,
+            role: admin.role,
         }, 'Admin registered successfully')
     );
 });
@@ -187,6 +201,7 @@ export const getAdminProfile = asyncHandler(async (req, res) => {
             id: req.admin.id,
             email: req.admin.email,
             name: req.admin.name,
+            role: req.admin.role,
         }, 'Profile fetched')
     );
 });

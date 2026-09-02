@@ -98,20 +98,17 @@ export const isTrackingAllowed = (req) => {
  * @returns {string}
  */
 export const getClientIp = (req) => {
-    // Get the first IP from x-forwarded-for header (in case of multiple proxies)
-    const forwardedFor = req.headers['x-forwarded-for'];
-    if (forwardedFor) {
-        const ips = forwardedFor.split(',').map(ip => ip.trim());
-        return ips[0];
-    }
+    // `app.set('trust proxy', true)` makes Express derive req.ip from the
+    // X-Forwarded-For chain correctly. Prefer it over trusting raw headers,
+    // which a client can spoof.
+    if (req.ip) return req.ip;
 
-    // Try other headers and properties
+    const forwardedFor = req.headers['x-forwarded-for'];
+    if (forwardedFor) return forwardedFor.split(',')[0].trim();
+
     return req.headers['x-real-ip'] ||
-        req.headers['x-client-ip'] ||
-        req.connection?.remoteAddress ||
         req.socket?.remoteAddress ||
-        (req.connection?.socket ? req.connection.socket.remoteAddress : null) ||
-        req.ip ||
+        req.connection?.remoteAddress ||
         'unknown';
 };
 

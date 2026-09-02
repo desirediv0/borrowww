@@ -21,7 +21,10 @@ import * as storage from '../utils/storage.js';
  * SECURITY: role is stored in server-side session — cannot be spoofed by client.
  */
 function isSuperAdmin(req) {
-    return req.session?.role === 'SUPER_ADMIN';
+    // `role` is always 'admin' for panel access; the privilege tier lives in
+    // `adminRole` (set from the DB by isAdmin / loginAdmin). Fall back to
+    // req.admin.role which isAdmin also populates.
+    return req.session?.adminRole === 'SUPER_ADMIN' || req.admin?.role === 'SUPER_ADMIN';
 }
 
 // ─── USER Endpoints ───────────────────────────────────────────────────────────
@@ -38,7 +41,7 @@ export const getSession = async (req, res) => {
         mobileNumber: req.body.mobileNumber || req.user.phoneNumber,
     };
 
-    const session = await creditReportService.getSession(userData);
+    const session = await creditReportService.getSession(userData, req.user.id);
     res.json(session);
 };
 

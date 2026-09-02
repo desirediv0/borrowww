@@ -73,11 +73,14 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (e.g. Postman, same-origin)
+    // No Origin header: same-origin navigations, health checks, curl/Postman.
+    // These carry no browser cookies cross-site, so allowing them is safe, but
+    // in production we only do so for non-browser tooling (no CORS needed).
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, origin);
-    // Allow any subdomain of borrowww.com in production
-    if (origin.endsWith('.borrowww.com') || origin === 'https://borrowww.com') return callback(null, origin);
+    // Allow any HTTPS subdomain of borrowww.com in production
+    if (/^https:\/\/([a-z0-9-]+\.)*borrowww\.com$/.test(origin)) return callback(null, origin);
+    console.warn('[CORS] Blocked origin:', origin);
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true, // CRITICAL: Required for session cookies (admin login)

@@ -5,16 +5,28 @@ import ApiError from "../utils/ApiError.js";
 import { ApiResponsive } from "../utils/ApiResponsive.js";
 import { encryptUserData, decryptUserData } from "../services/encryption.service.js";
 import { isValidIndianNumber } from "../utils/validation.js";
+import { consumeRateLimit } from "../utils/rateLimiter.js";
 import axios from "axios";
 
-// Cookie Options
-// Cookie Options
+// OTP abuse-prevention limits
+const OTP_SEND_MAX_PER_HOUR = 5;          // per phone number
+const OTP_SEND_MAX_PER_IP_HOUR = 15;      // per client IP
+const OTP_VERIFY_MAX_PER_10MIN = 10;      // per phone number (guessing attempts)
+const OTP_MAX_ATTEMPTS_PER_CODE = 5;      // wrong guesses allowed against one OTP row
+
+// Cookie Options — shared by every place that sets/clears `user_token`.
+// In production the client (www.borrowww.com) and API may sit on different
+// hosts, so we need SameSite=None + Secure, and an optional parent-domain
+// (COOKIE_DOMAIN, e.g. ".borrowww.com") so the cookie is sent to the API host.
 const COOKIE_OPTIONS = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    path: "/"
+    path: "/",
+    ...(process.env.NODE_ENV === "production" && process.env.COOKIE_DOMAIN
+        ? { domain: process.env.COOKIE_DOMAIN }
+        : {}),
 };
 
 // List users with pagination
@@ -177,35 +189,17 @@ const generateUserToken = (user) => {
     });
 };
 
-// User Register (phone/OTP)
-export const registerUser = asyncHandler(async (req, res) => {
-    const { phoneNumber } = req.body;
-    if (!phoneNumber) throw new ApiError(400, "Phone number required");
-    if (!isValidIndianNumber(phoneNumber)) throw new ApiError(400, "Invalid or fake phone number");
-    let user = await prisma.user.findUnique({ where: { phoneNumber } });
-    if (user) throw new ApiError(400, "User already exists");
-
-    // Generate Token
-    const token = generateUserToken(user);
-
-    // Save token to user
-    await prisma.user.update({
-        where: { id: user.id },
-        data: { accessToken: token }
-    });
-
-    const decryptedUser = await decryptUserData(user, true); // Mask on registration
-
-    res.status(201)
-        .cookie("user_token", token, COOKIE_OPTIONS)
-        .json(new ApiResponsive(201, { user: decryptedUser, token }, "User registered"));
-});
-
 // Send OTP via MSG91 Flow API
 export const sendOtp = asyncHandler(async (req, res) => {
     const { phoneNumber } = req.body;
     if (!phoneNumber) throw new ApiError(400, "Phone number required");
     if (!isValidIndianNumber(phoneNumber)) throw new ApiError(400, "Invalid or fake phone number");
+
+    // SECURITY: throttle OTP sends — stop SMS bombing / cost abuse
+    consumeRateLimit(`otp-send:${phoneNumber}`, OTP_SEND_MAX_PER_HOUR, 60 * 60 * 1000,
+        "Too many OTP requests for this number. Please try again after an hour.");
+    consumeRateLimit(`otp-send-ip:${req.ip}`, OTP_SEND_MAX_PER_IP_HOUR, 60 * 60 * 1000,
+        "Too many OTP requests. Please try again later.");
 
     // Generate 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -280,14 +274,33 @@ export const verifyOtp = asyncHandler(async (req, res) => {
     const { phoneNumber, otp } = req.body;
     if (!phoneNumber || !otp) throw new ApiError(400, "Phone number and OTP required");
 
+    // SECURITY: throttle verify attempts per number — stop 6-digit brute force
+    consumeRateLimit(`otp-verify:${phoneNumber}`, OTP_VERIFY_MAX_PER_10MIN, 10 * 60 * 1000,
+        "Too many incorrect attempts. Please request a new OTP and try again later.");
+
     const result = await prisma.$transaction(async (tx) => {
-        // Verify OTP from database
-        const session = await tx.otpSession.findFirst({
-            where: { phoneNumber, otp, isVerified: false, expiresAt: { gt: new Date() } },
+        // Look at the latest non-verified OTP row for this number (regardless of
+        // whether the submitted code matches) so we can count wrong guesses.
+        const latest = await tx.otpSession.findFirst({
+            where: { phoneNumber, isVerified: false, expiresAt: { gt: new Date() } },
             orderBy: { createdAt: 'desc' },
         });
 
-        if (!session) throw new ApiError(400, 'Invalid or expired OTP');
+        if (!latest) throw new ApiError(400, 'Invalid or expired OTP. Please request a new one.');
+
+        if (latest.attempts >= (latest.maxAttempts || OTP_MAX_ATTEMPTS_PER_CODE)) {
+            throw new ApiError(429, 'This OTP is locked after too many wrong attempts. Please request a new one.');
+        }
+
+        if (latest.otp !== String(otp)) {
+            await tx.otpSession.update({
+                where: { id: latest.id },
+                data: { attempts: { increment: 1 } },
+            });
+            throw new ApiError(400, 'Invalid OTP');
+        }
+
+        const session = latest;
 
         // Mark OTP as verified
         await tx.otpSession.update({ where: { id: session.id }, data: { isVerified: true } });
@@ -323,9 +336,12 @@ export const verifyOtp = asyncHandler(async (req, res) => {
     // Decrypt for user response (Masked)
     const decryptedUser = await decryptUserData(result.user, true);
 
+    // SECURITY: token travels ONLY in the HTTP-only cookie — never in the JSON
+    // body, so client-side JS (and any XSS) can't read it. Client just needs
+    // to know the login succeeded.
     res
         .cookie("user_token", result.token, COOKIE_OPTIONS)
-        .json(new ApiResponsive(200, { token: result.token, user: decryptedUser }, 'Login successful'));
+        .json(new ApiResponsive(200, { user: decryptedUser, authenticated: true }, 'Login successful'));
 });
 
 // User Profile (protected)
@@ -391,6 +407,12 @@ export const retryOtp = asyncHandler(async (req, res) => {
     const { phoneNumber } = req.body;
     if (!phoneNumber) throw new ApiError(400, 'Phone number required');
     if (!isValidIndianNumber(phoneNumber)) throw new ApiError(400, "Invalid or fake phone number");
+
+    // SECURITY: same throttle as sendOtp — resend must not be a bypass
+    consumeRateLimit(`otp-send:${phoneNumber}`, OTP_SEND_MAX_PER_HOUR, 60 * 60 * 1000,
+        "Too many OTP requests for this number. Please try again after an hour.");
+    consumeRateLimit(`otp-send-ip:${req.ip}`, OTP_SEND_MAX_PER_IP_HOUR, 60 * 60 * 1000,
+        "Too many OTP requests. Please try again later.");
 
     // Generate new 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -544,18 +566,45 @@ export const verifyPhoneChange = asyncHandler(async (req, res) => {
     // Mark OTP as verified
     await prisma.otpSession.update({ where: { id: session.id }, data: { isVerified: true } });
 
-    // Update user's phone number
-    const user = await prisma.user.update({
+    // Update user's phone number. The JWT carries the old phoneNumber, so
+    // re-issue the token and refresh the cookie; also drop any other sessions.
+    const freshUser = await prisma.user.update({
         where: { id: userId },
-        data: { phoneNumber: newPhoneNumber }
+        data: { phoneNumber: newPhoneNumber },
     });
 
-    const decryptedUser = await decryptUserData(user, true);
-    res.json(new ApiResponsive(200, { user: decryptedUser }, 'Phone number updated successfully'));
+    const newToken = generateUserToken(freshUser);
+    await prisma.user.update({
+        where: { id: userId },
+        data: { accessToken: newToken },
+    });
+
+    const decryptedUser = await decryptUserData(freshUser, true);
+    res
+        .cookie("user_token", newToken, COOKIE_OPTIONS)
+        .json(new ApiResponsive(200, { user: decryptedUser }, 'Phone number updated successfully'));
 });
 
 // Logout User
 export const logoutUser = asyncHandler(async (req, res) => {
+    // SECURITY: invalidate the stored token so the old JWT can't be replayed
+    // for the rest of its 7-day life even if it was captured.
+    try {
+        let token = req.cookies?.user_token;
+        if (!token && req.headers.authorization?.startsWith("Bearer ")) {
+            token = req.headers.authorization.split(" ")[1];
+        }
+        if (token) {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            await prisma.user.updateMany({
+                where: { id: decoded.id },
+                data: { accessToken: null },
+            });
+        }
+    } catch (e) {
+        // Token already invalid/expired — nothing to clear.
+    }
+
     res
         .clearCookie("user_token", { ...COOKIE_OPTIONS, maxAge: 0 })
         .json(new ApiResponsive(200, {}, "Logged out successfully"));

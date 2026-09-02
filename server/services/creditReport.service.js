@@ -105,9 +105,22 @@ export const checkCache = async (userId) => {
 
 // ─── USER: Create DeepVue Session ────────────────────────────────────────────
 
-export const getSession = async (userData) => {
-    // GUARD: Don't create a session if user already has a valid report
-    // (Secondary check — primary is in fetchAndSaveReport)
+export const getSession = async (userData, userId) => {
+    // GUARD: don't spend a DeepVue session (and money) if the user already has
+    // a valid report inside the 28-day window — return the cached one instead.
+    if (userId) {
+        const existingActive = await prisma.creditReport.findFirst({
+            where: { userId, status: 'ACTIVE', expiresAt: { gt: new Date() } },
+            orderBy: { fetchedAt: 'desc' },
+        });
+        if (existingActive) {
+            return {
+                success: false,
+                alreadyCached: true,
+                message: `Your credit report is already valid until ${formatDate(existingActive.expiresAt)}.`,
+            };
+        }
+    }
     return await deepVueService.createCibilSession(userData);
 };
 
@@ -513,10 +526,15 @@ export const getAllReportsAdmin = async (
             report.fetch_date_formatted = formatDate(report.fetchedAt);
             report.expiry_date_formatted = formatDate(report.expiresAt);
 
-            // SECURITY: Remove CDN URL from list response
+            // SECURITY: strip CDN/internal URLs and raw ciphertext from list rows
+            report.hasPdf = !!report.pdfSpacesPath;
             delete report.pdfSpacesUrl;
             delete report.pdfOriginalUrl;
-            // Keep pdfSpacesPath so frontend knows if PDF exists (for download button)
+            delete report.pdfSpacesPath;
+            delete report.panEncrypted;
+            delete report.mobileEncrypted;
+            delete report.nameEncrypted;
+            delete report.fullReportEncrypted;
             return report;
         }),
     );
@@ -578,8 +596,16 @@ export const getReportDetailAdmin = async (reportId, isSuperAdmin = false) => {
 
     const isExpired = report.status === 'EXPIRED' || new Date(report.expiresAt) < new Date();
 
+    // Strip raw encrypted blobs and internal storage URLs from the payload —
+    // the admin UI only needs the decrypted/derived values below.
+    const {
+        panEncrypted, mobileEncrypted, nameEncrypted, fullReportEncrypted,
+        pdfSpacesUrl, pdfOriginalUrl, pdfSpacesPath,
+        ...safeReport
+    } = report;
+
     return {
-        ...report,
+        ...safeReport,
         // PAN: Full only for SUPER_ADMIN; masked for regular admin
         pan: isSuperAdmin ? pan : encryption.maskPan(pan),
         mobile,
@@ -588,9 +614,7 @@ export const getReportDetailAdmin = async (reportId, isSuperAdmin = false) => {
         statusLabel: isExpired ? 'expired' : 'active',
         fetch_date_formatted: formatDate(report.fetchedAt),
         expiry_date_formatted: formatDate(report.expiresAt),
-        // SECURITY: Remove CDN URL — admin downloads via /admin/:id/download-pdf
-        pdfSpacesUrl: undefined,
-        hasPdf: !!report.pdfSpacesPath,
+        hasPdf: !!pdfSpacesPath,
     };
 };
 

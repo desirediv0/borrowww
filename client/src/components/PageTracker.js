@@ -30,9 +30,12 @@ export default function PageTracker() {
                 localStorage.setItem(SESSION_ID_KEY, sessionId);
             }
 
-            // Call server tracking API directly (not Next.js API route)
+            // Call server tracking API directly (not Next.js API route).
+            // credentials:'include' sends the `trackingConsent` cookie so the
+            // server-side consent gate can see it.
             await fetch(`${API_URL}/tracking/page-view`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },

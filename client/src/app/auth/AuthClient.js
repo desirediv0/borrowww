@@ -102,8 +102,8 @@ function AuthPageContent() {
             const response = await api.post('/users/verify-otp', { phoneNumber, otp, sessionId });
             const data = response.data;
 
-            if (data.data?.token) {
-                // Update Context (Cookie is set by server)
+            if (data.success && data.data?.user) {
+                // Cookie is set by the server; just sync the client context.
                 await login(data.data.user);
 
                 setStep('success');

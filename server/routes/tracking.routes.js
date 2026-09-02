@@ -1,18 +1,29 @@
 import express from "express";
 import { prisma } from "../config/db.js";
-
+import { isAdmin } from "../middlewares/isAdmin.js";
 
 const router = express.Router();
 
 import {
+    optionalConsent,
+    isTrackingAllowed,
     getClientIp,
     getUserAgent,
     parseDeviceInfo
 } from "../middleware/consentMiddleware.js";
 
-// Track page view - Public endpoint
-router.post("/page-view", async (req, res) => {
+// Track page view - Public endpoint (only records when tracking consent is present)
+router.post("/page-view", optionalConsent, async (req, res) => {
     try {
+        // DPDP: no server-side tracking without an explicit consent cookie.
+        if (!isTrackingAllowed(req)) {
+            return res.status(202).json({
+                success: false,
+                skipped: true,
+                message: "Tracking consent not present — page view not recorded.",
+            });
+        }
+
         const { sessionId, page, timestamp, referrer } = req.body;
 
         if (!sessionId || !page) {
@@ -109,8 +120,8 @@ router.post("/page-view", async (req, res) => {
     }
 });
 
-// Get session details - Admin endpoint (optional)
-router.get("/sessions", async (req, res) => {
+// Get session details - Admin endpoint (SECURITY: was previously unprotected)
+router.get("/sessions", isAdmin, async (req, res) => {
     try {
         const { page = 1, limit = 20 } = req.query;
         const skip = (parseInt(page) - 1) * parseInt(limit);

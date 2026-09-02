@@ -77,9 +77,12 @@ export default function ProfileClient() {
 
     const fetchCreditScore = async () => {
         try {
+            // /check-cache returns { cached, creditScore, expiry_date_formatted }
             const res = await api.get('/credit-report/check-cache');
-            if (res.data.cached) {
-                setCreditScore(res.data.report.creditScore);
+            if (res.data?.cached && res.data.creditScore != null) {
+                setCreditScore(res.data.creditScore);
+            } else {
+                setCreditScore(null);
             }
         } catch (error) {
             console.error("Failed to fetch credit score for profile:", error);

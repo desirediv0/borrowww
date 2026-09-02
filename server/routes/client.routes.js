@@ -19,8 +19,18 @@ import {
     createHomeLoanInquiry,
     createReferralInquiry,
 } from '../controllers/client.controller.js';
+import { rateLimit } from '../utils/rateLimiter.js';
 
 const router = express.Router();
+
+// SECURITY: public form endpoints — cap submissions per IP to stop spam / flooding.
+const formLimiter = rateLimit({
+    max: 20,
+    windowMs: 60 * 60 * 1000,
+    keyPrefix: 'client-form',
+    message: 'Too many submissions. Please try again later.',
+});
+router.use(formLimiter);
 
 // ================================================================================
 // PUBLIC ROUTES - Client Website Submissions

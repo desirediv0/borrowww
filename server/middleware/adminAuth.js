@@ -9,7 +9,12 @@ export const adminAuth = async (req, res, next) => {
             throw new ApiError(401, "No token provided");
         }
         const token = authHeader.split(" ")[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_SECRET);
+        } catch (e) {
+            throw new ApiError(401, "Session expired. Please login again.");
+        }
         const admin = await prisma.admin.findUnique({ where: { id: decoded.id } });
         if (!admin || !admin.isActive) {
             throw new ApiError(401, "Not authorized as admin");

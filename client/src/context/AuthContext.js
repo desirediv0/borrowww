@@ -14,13 +14,20 @@ export function AuthProvider({ children }) {
 
     const fetchUser = async () => {
         try {
-            // Try to get user from backend (cookie)
             const res = await api.get('/users/me');
             setUser(res.data.data.user);
         } catch (error) {
-            setUser(null);
-            // Optional: Clear client-side artifacts if any exist
-            Cookies.remove('user_token');
+            const status = error?.response?.status;
+
+            // Only a real auth failure (401/403) means "not logged in".
+            // Network errors / 5xx: keep whatever we had so a blip doesn't
+            // flash the user as logged out.
+            if (status === 401 || status === 403) {
+                setUser(null);
+                Cookies.remove('user_token');
+            } else if (!user) {
+                setUser(null);
+            }
         } finally {
             setLoading(false);
         }
@@ -30,9 +37,9 @@ export function AuthProvider({ children }) {
         fetchUser();
     }, []);
 
-    // Login: Just refresh user state (api sets cookie)
+    // Login: server already set the cookie. If the caller passes the user
+    // object (from verify-otp / profile update) use it directly; otherwise refetch.
     const login = async (userData) => {
-        // If userData passed (from register/otp response), set it directly to avoid extra call
         if (userData) {
             setUser(userData);
         } else {
@@ -47,7 +54,6 @@ export function AuthProvider({ children }) {
             console.error('Logout failed', e);
         } finally {
             setUser(null);
-            // Optional: Clear client-side artifacts if any exist
             Cookies.remove('user_token');
             router.push('/');
         }
