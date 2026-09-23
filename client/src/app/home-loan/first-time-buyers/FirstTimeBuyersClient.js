@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { ChevronDown, Home } from 'lucide-react';
+import { ChevronDown, Home, Phone } from 'lucide-react';
 
 const faqs = [
   {
@@ -81,8 +81,14 @@ const checklistGroups = [
 
 function Section({ title, children }) {
   return (
-    <article className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-      <h2 className="text-2xl font-semibold text-slate-900">{title}</h2>
+    <article className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#3A6EA5]/30 hover:shadow-md sm:p-8">
+      <div className="flex items-start gap-3">
+        <span
+          aria-hidden="true"
+          className="mt-1.5 h-8 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-b from-[#2D3E50] to-[#3A6EA5]"
+        />
+        <h2 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">{title}</h2>
+      </div>
       <div className="mt-5 space-y-4 text-base leading-8 text-slate-600">{children}</div>
     </article>
   );
@@ -90,9 +96,15 @@ function Section({ title, children }) {
 
 function Bullets({ items }) {
   return (
-    <ul className="list-disc space-y-2 pl-6 marker:text-[#3A6EA5]">
+    <ul className="space-y-2.5">
       {items.map((item) => (
-        <li key={item}>{item}</li>
+        <li key={item} className="flex gap-3 text-base leading-7 text-slate-600">
+          <span
+            aria-hidden="true"
+            className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#3A6EA5]"
+          />
+          <span>{item}</span>
+        </li>
       ))}
     </ul>
   );
@@ -103,37 +115,68 @@ export default function FirstTimeBuyersClient() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
-      <section className="border-b border-slate-100 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
+      <section className="relative overflow-hidden border-b border-slate-100 bg-gradient-to-br from-slate-50 via-white to-[#c4d7e0]/50">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute -top-40 -right-32 h-96 w-96 rounded-full bg-[#2D3E50]/10 blur-3xl" />
+          <div className="absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-[#3A6EA5]/10 blur-3xl" />
+        </div>
+        <div className="relative mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex flex-wrap justify-center gap-1 text-sm text-slate-500"
+          >
             <span>Home</span>
-            <span className="mx-2">›</span>
+            <span className="mx-1" aria-hidden="true">
+              ›
+            </span>
             <span>Home Loan</span>
-            <span className="mx-2">›</span>
-            <span className="text-slate-800">First-Time Buyers</span>
+            <span className="mx-1" aria-hidden="true">
+              ›
+            </span>
+            <span className="font-medium text-slate-800">First-Time Buyers</span>
           </nav>
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#2D3E50]/10 px-3 py-1.5 text-sm font-medium text-[#2D3E50]">
-            <Home className="h-4 w-4" /> Home Loan for First-Time Buyers
+          <div className="mt-6 flex justify-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#3A6EA5]/20 bg-white/80 px-4 py-1.5 text-sm font-medium text-[#2D3E50] shadow-sm backdrop-blur">
+              <Home className="h-4 w-4 text-[#3A6EA5]" aria-hidden="true" /> Home Loan for
+              First-Time Buyers
+            </span>
           </div>
-          <h1 className="mt-4 max-w-4xl text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Home Loan for First-Time Buyers
+          <h1 className="mt-5 text-center text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            Home Loan{' '}
+            <span className="italic tiemposfine text-[#2D3E50]">for First-Time Buyers</span>
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-            Buying your first home involves a lot more than choosing a property you like. Before you
-            get there, you need a clear picture of what you can comfortably afford, how much you can
-            put down, what a lender will expect from you, and how the loan you take on today will
-            play out over the next 15–25 years. A home loan for first time buyers is not
-            fundamentally different from any other home loan in how it is structured, but the
-            decisions around it carry extra weight simply because this is likely the largest
-            financial commitment you have made so far.
-          </p>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600">
-            This page walks through the first-time home buyer journey — from understanding
-            affordability and eligibility to documentation, interest rates, EMI planning and the
-            costs that often get overlooked. Wherever a topic has its own dedicated page on
-            Borrowww, we&apos;ve kept the explanation here brief and pointed you to the detailed
-            page for the specifics.
-          </p>
+          <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center text-base leading-8 text-slate-600 sm:text-lg">
+            <p>
+              Buying your first home involves a lot more than choosing a property you like. Before
+              you get there, you need a clear picture of what you can comfortably afford, how much
+              you can put down, what a lender will expect from you, and how the loan you take on
+              today will play out over the next 15–25 years. A home loan for first time buyers is
+              not fundamentally different from any other home loan in how it is structured, but the
+              decisions around it carry extra weight simply because this is likely the largest
+              financial commitment you have made so far.
+            </p>
+            <p className="text-base">
+              This page walks through the first-time home buyer journey — from understanding
+              affordability and eligibility to documentation, interest rates, EMI planning and the
+              costs that often get overlooked. Wherever a topic has its own dedicated page on
+              Borrowww, we&apos;ve kept the explanation here brief and pointed you to the detailed
+              page for the specifics.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href="tel:+919560069525"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:shadow-xl sm:w-auto"
+            >
+              <Phone className="h-4 w-4" aria-hidden="true" /> Talk to an Advisor
+            </a>
+            <a
+              href="tel:+919560069525"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#2D3E50] px-6 py-3 text-sm font-semibold text-[#2D3E50] transition-all hover:bg-[#2D3E50] hover:text-white sm:w-auto"
+            >
+              Check Eligibility
+            </a>
+          </div>
         </div>
       </section>
 
@@ -547,7 +590,7 @@ export default function FirstTimeBuyersClient() {
             {checklistGroups.map((group) => (
               <div
                 key={group.title}
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-5"
+                className="rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-5 transition-all duration-300 hover:border-[#3A6EA5]/30 hover:shadow-sm"
               >
                 <h4 className="font-semibold text-slate-900">{group.title}</h4>
                 <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-600">
@@ -563,50 +606,85 @@ export default function FirstTimeBuyersClient() {
           </div>
         </Section>
 
-        <section className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-          <h2 className="text-2xl font-semibold text-slate-900">
-            Frequently Asked Questions About Home Loans for First-Time Buyers
-          </h2>
-          <div className="mt-6 grid gap-4">
+        <section className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm sm:p-8">
+          <div className="mb-7 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#2D3E50]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#2D3E50]">
+              FAQ
+            </span>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
+              Frequently Asked Questions About Home Loans for First-Time Buyers
+            </h2>
+          </div>
+          <div className="grid gap-3">
             {faqs.map((item, index) => (
-              <div key={item.q} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <div
+                key={item.q}
+                className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+                  openIndex === index
+                    ? 'border-[#3A6EA5]/40 bg-[#3A6EA5]/5 shadow-sm'
+                    : 'border-slate-200 bg-slate-50 hover:border-slate-300'
+                }`}
+              >
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between gap-4 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                   onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
                   aria-expanded={openIndex === index}
                 >
                   <span className="text-base font-semibold text-slate-900">{item.q}</span>
                   <ChevronDown
-                    className={`h-5 w-5 flex-shrink-0 text-slate-500 transition-transform ${
-                      openIndex === index ? 'rotate-180' : ''
+                    className={`h-5 w-5 flex-shrink-0 transition-transform ${
+                      openIndex === index ? 'rotate-180 text-[#3A6EA5]' : 'text-slate-400'
                     }`}
                   />
                 </button>
                 {openIndex === index ? (
-                  <p className="mt-4 text-sm leading-7 text-slate-600">{item.a}</p>
+                  <p className="border-t border-slate-200/80 px-5 pb-4 pt-3 text-sm leading-7 text-slate-600">
+                    {item.a}
+                  </p>
                 ) : null}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="rounded-[28px] bg-[#2D3E50] p-8 text-white shadow-xl">
-          <h2 className="text-2xl font-semibold">
-            Start Your First Home Loan Journey With Borrowww
-          </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-white/80">
-            Buying your first home is a significant milestone, and understanding the process —
-            affordability, eligibility, documentation, interest rates and the true cost of borrowing
-            — puts you in a much stronger position to make an informed decision. Loan terms, rates
-            and requirements vary across lenders and change over time, so it&apos;s always worth
-            verifying the latest applicable details directly with the lender before you commit.
-          </p>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80">
-            Ready to explore your options? Visit Borrowww&apos;s home loan page to get started,
-            check your eligibility, review the documents you&apos;ll likely need, and use the EMI
-            calculator to plan your budget before you start house-hunting.
-          </p>
+        <section className="relative overflow-hidden rounded-[28px] bg-gradient-to-r from-[#2D3E50] via-[#2D3E50] to-[#3A6EA5] p-7 text-white shadow-xl sm:p-10">
+          <div
+            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-2xl"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -bottom-24 -left-12 h-64 w-64 rounded-full bg-white/5 blur-3xl"
+            aria-hidden="true"
+          />
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-semibold tracking-tight">
+                Start Your First Home Loan Journey With Borrowww
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-white/85">
+                Buying your first home is a significant milestone, and understanding the process —
+                affordability, eligibility, documentation, interest rates and the true cost of
+                borrowing — puts you in a much stronger position to make an informed decision. Loan
+                terms, rates and requirements vary across lenders and change over time, so it&apos;s
+                always worth verifying the latest applicable details directly with the lender before
+                you commit.
+              </p>
+              <p className="mt-4 text-sm leading-7 text-white/85">
+                Ready to explore your options? Visit Borrowww&apos;s home loan page to get started,
+                check your eligibility, review the documents you&apos;ll likely need, and use the
+                EMI calculator to plan your budget before you start house-hunting.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-3">
+              <a
+                href="tel:+919560069525"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#2D3E50] shadow-lg transition hover:bg-slate-100"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" /> Call Borrowww
+              </a>
+            </div>
+          </div>
         </section>
       </div>
     </main>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { ChevronDown, Home } from 'lucide-react';
+import { ChevronDown, Home, Phone } from 'lucide-react';
 
 const faqs = [
   {
@@ -49,8 +49,14 @@ const faqs = [
 
 function Section({ title, children }) {
   return (
-    <article className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-      <h2 className="text-2xl font-semibold text-slate-900">{title}</h2>
+    <article className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#3A6EA5]/30 hover:shadow-md sm:p-8">
+      <div className="flex items-start gap-3">
+        <span
+          aria-hidden="true"
+          className="mt-1.5 h-8 w-1.5 flex-shrink-0 rounded-full bg-gradient-to-b from-[#2D3E50] to-[#3A6EA5]"
+        />
+        <h2 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">{title}</h2>
+      </div>
       <div className="mt-5 space-y-4 text-base leading-8 text-slate-600">{children}</div>
     </article>
   );
@@ -58,9 +64,15 @@ function Section({ title, children }) {
 
 function Bullets({ items }) {
   return (
-    <ul className="list-disc space-y-2 pl-6 marker:text-[#3A6EA5]">
+    <ul className="space-y-2.5">
       {items.map((item) => (
-        <li key={item}>{item}</li>
+        <li key={item} className="flex gap-3 text-base leading-7 text-slate-600">
+          <span
+            aria-hidden="true"
+            className="mt-2.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#3A6EA5]"
+          />
+          <span>{item}</span>
+        </li>
       ))}
     </ul>
   );
@@ -71,37 +83,67 @@ export default function InterestRatesClient() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
-      <section className="border-b border-slate-100 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
+      <section className="relative overflow-hidden border-b border-slate-100 bg-gradient-to-br from-slate-50 via-white to-[#c4d7e0]/50">
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute -top-40 -right-32 h-96 w-96 rounded-full bg-[#2D3E50]/10 blur-3xl" />
+          <div className="absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-[#3A6EA5]/10 blur-3xl" />
+        </div>
+        <div className="relative mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex flex-wrap justify-center gap-1 text-sm text-slate-500"
+          >
             <span>Home</span>
-            <span className="mx-2">›</span>
+            <span className="mx-1" aria-hidden="true">
+              ›
+            </span>
             <span>Home Loan</span>
-            <span className="mx-2">›</span>
-            <span className="text-slate-800">Interest Rates</span>
+            <span className="mx-1" aria-hidden="true">
+              ›
+            </span>
+            <span className="font-medium text-slate-800">Interest Rates</span>
           </nav>
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#2D3E50]/10 px-3 py-1.5 text-sm font-medium text-[#2D3E50]">
-            <Home className="h-4 w-4" /> Home Loan Interest Rates
+          <div className="mt-6 flex justify-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#3A6EA5]/20 bg-white/80 px-4 py-1.5 text-sm font-medium text-[#2D3E50] shadow-sm backdrop-blur">
+              <Home className="h-4 w-4 text-[#3A6EA5]" aria-hidden="true" /> Home Loan Interest
+              Rates
+            </span>
           </div>
-          <h1 className="mt-4 max-w-4xl text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Home Loan Interest Rates
+          <h1 className="mt-5 text-center text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            Home Loan <span className="italic tiemposfine text-[#2D3E50]">Interest Rates</span>
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-            When you take a home loan, the interest rate is one of the biggest factors that decides
-            how much the loan will actually cost you. Two borrowers taking the same loan amount for
-            the same tenure can end up paying very different totals simply because of the rate
-            attached to their loan. Over a repayment period of 15, 20 or 25 years, even a small
-            difference in the home loan interest rate can change your EMI and add up to a
-            substantial difference in the total amount you repay.
-          </p>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-slate-600">
-            This page explains how home loan interest rates work, what lenders typically consider
-            while pricing a loan, the difference between fixed and floating rate structures, and how
-            you can compare offers more effectively. The goal is to help you understand the
-            mechanics clearly, not to promise a specific rate, since actual home loan interest rates
-            depend on the lender, your profile and prevailing market conditions at the time you
-            apply.
-          </p>
+          <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center text-base leading-8 text-slate-600 sm:text-lg">
+            <p>
+              When you take a home loan, the interest rate is one of the biggest factors that
+              decides how much the loan will actually cost you. Two borrowers taking the same loan
+              amount for the same tenure can end up paying very different totals simply because of
+              the rate attached to their loan. Over a repayment period of 15, 20 or 25 years, even a
+              small difference in the home loan interest rate can change your EMI and add up to a
+              substantial difference in the total amount you repay.
+            </p>
+            <p className="text-base">
+              This page explains how home loan interest rates work, what lenders typically consider
+              while pricing a loan, the difference between fixed and floating rate structures, and
+              how you can compare offers more effectively. The goal is to help you understand the
+              mechanics clearly, not to promise a specific rate, since actual home loan interest
+              rates depend on the lender, your profile and prevailing market conditions at the time
+              you apply.
+            </p>
+          </div>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href="tel:+919560069525"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:shadow-xl sm:w-auto"
+            >
+              <Phone className="h-4 w-4" aria-hidden="true" /> Talk to an Advisor
+            </a>
+            <a
+              href="tel:+919560069525"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#2D3E50] px-6 py-3 text-sm font-semibold text-[#2D3E50] transition-all hover:bg-[#2D3E50] hover:text-white sm:w-auto"
+            >
+              Compare Offers
+            </a>
+          </div>
         </div>
       </section>
 
@@ -433,49 +475,85 @@ export default function InterestRatesClient() {
           </p>
         </Section>
 
-        <section className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-          <h2 className="text-2xl font-semibold text-slate-900">
-            Frequently Asked Questions About Home Loan Interest Rates
-          </h2>
-          <div className="mt-6 grid gap-4">
+        <section className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm sm:p-8">
+          <div className="mb-7 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#2D3E50]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#2D3E50]">
+              FAQ
+            </span>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
+              Frequently Asked Questions About Home Loan Interest Rates
+            </h2>
+          </div>
+          <div className="grid gap-3">
             {faqs.map((item, index) => (
-              <div key={item.q} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+              <div
+                key={item.q}
+                className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+                  openIndex === index
+                    ? 'border-[#3A6EA5]/40 bg-[#3A6EA5]/5 shadow-sm'
+                    : 'border-slate-200 bg-slate-50 hover:border-slate-300'
+                }`}
+              >
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between gap-4 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                   onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
                   aria-expanded={openIndex === index}
                 >
                   <span className="text-base font-semibold text-slate-900">{item.q}</span>
                   <ChevronDown
-                    className={`h-5 w-5 flex-shrink-0 text-slate-500 transition-transform ${
-                      openIndex === index ? 'rotate-180' : ''
+                    className={`h-5 w-5 flex-shrink-0 transition-transform ${
+                      openIndex === index ? 'rotate-180 text-[#3A6EA5]' : 'text-slate-400'
                     }`}
                   />
                 </button>
                 {openIndex === index ? (
-                  <p className="mt-4 text-sm leading-7 text-slate-600">{item.a}</p>
+                  <p className="border-t border-slate-200/80 px-5 pb-4 pt-3 text-sm leading-7 text-slate-600">
+                    {item.a}
+                  </p>
                 ) : null}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="rounded-[28px] bg-[#2D3E50] p-8 text-white shadow-xl">
-          <h2 className="text-2xl font-semibold">Explore Your Home Loan Options With Borrowww</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-white/80">
-            Understanding how home loan interest rates are determined — and what you can reasonably
-            compare and check — puts you in a better position to evaluate offers rather than relying
-            on the headline rate alone. Rates, charges and terms vary across lenders and change over
-            time, so it is always worth verifying the latest applicable terms directly with the
-            lender before making a decision.
-          </p>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80">
-            Looking to understand your home loan options? Explore Borrowww&apos;s home loan
-            resources to compare the factors that can influence your borrowing decision, check your
-            eligibility, review the documents you may need, and use the EMI calculator to plan your
-            repayment before you apply.
-          </p>
+        <section className="relative overflow-hidden rounded-[28px] bg-gradient-to-r from-[#2D3E50] via-[#2D3E50] to-[#3A6EA5] p-7 text-white shadow-xl sm:p-10">
+          <div
+            className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-2xl"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute -bottom-24 -left-12 h-64 w-64 rounded-full bg-white/5 blur-3xl"
+            aria-hidden="true"
+          />
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-semibold tracking-tight">
+                Explore Your Home Loan Options With Borrowww
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-white/85">
+                Understanding how home loan interest rates are determined — and what you can
+                reasonably compare and check — puts you in a better position to evaluate offers
+                rather than relying on the headline rate alone. Rates, charges and terms vary across
+                lenders and change over time, so it is always worth verifying the latest applicable
+                terms directly with the lender before making a decision.
+              </p>
+              <p className="mt-4 text-sm leading-7 text-white/85">
+                Looking to understand your home loan options? Explore Borrowww&apos;s home loan
+                resources to compare the factors that can influence your borrowing decision, check
+                your eligibility, review the documents you may need, and use the EMI calculator to
+                plan your repayment before you apply.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-3">
+              <a
+                href="tel:+919560069525"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#2D3E50] shadow-lg transition hover:bg-slate-100"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" /> Call Borrowww
+              </a>
+            </div>
+          </div>
         </section>
       </div>
     </main>
