@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 
 import { ChevronDown, Home, Phone } from 'lucide-react';
 
@@ -155,11 +156,15 @@ export default function EligibilityClient() {
             aria-label="Breadcrumb"
             className="flex flex-wrap justify-center gap-1 text-sm text-slate-500"
           >
-            <span>Home</span>
+            <Link href="/" className="hover:text-[#3A6EA5] hover:underline">
+              Home
+            </Link>
             <span className="mx-1" aria-hidden="true">
               ›
             </span>
-            <span>Home Loan</span>
+            <Link href="/home-loan" className="hover:text-[#3A6EA5] hover:underline">
+              Home Loan
+            </Link>
             <span className="mx-1" aria-hidden="true">
               ›
             </span>
