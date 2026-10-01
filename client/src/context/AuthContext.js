@@ -13,6 +13,14 @@ export function AuthProvider({ children }) {
     const router = useRouter();
 
     const fetchUser = async () => {
+        // Logged-out visitors (and crawlers) have no `logged_in` flag cookie,
+        // so skip the /users/me call entirely instead of firing a guaranteed 401.
+        if (!Cookies.get('logged_in')) {
+            setUser(null);
+            setLoading(false);
+            return;
+        }
+
         try {
             const res = await api.get('/users/me');
             setUser(res.data.data.user);
@@ -25,6 +33,7 @@ export function AuthProvider({ children }) {
             if (status === 401 || status === 403) {
                 setUser(null);
                 Cookies.remove('user_token');
+                Cookies.remove('logged_in');
             } else if (!user) {
                 setUser(null);
             }
@@ -55,6 +64,7 @@ export function AuthProvider({ children }) {
         } finally {
             setUser(null);
             Cookies.remove('user_token');
+            Cookies.remove('logged_in');
             router.push('/');
         }
     };

@@ -74,6 +74,7 @@ export const userAuth = async (req, res, next) => {
                     data: { accessToken: fresh },
                 });
                 res.cookie("user_token", fresh, COOKIE_OPTIONS);
+                res.cookie("logged_in", "1", { ...COOKIE_OPTIONS, httpOnly: false });
             }
         } catch (renewErr) {
             // Non-fatal — the request still proceeds with the current valid token.

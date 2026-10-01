@@ -341,6 +341,7 @@ export const verifyOtp = asyncHandler(async (req, res) => {
     // to know the login succeeded.
     res
         .cookie("user_token", result.token, COOKIE_OPTIONS)
+        .cookie("logged_in", "1", FLAG_COOKIE_OPTIONS)
         .json(new ApiResponsive(200, { user: decryptedUser, authenticated: true }, 'Login successful'));
 });
 
@@ -582,6 +583,7 @@ export const verifyPhoneChange = asyncHandler(async (req, res) => {
     const decryptedUser = await decryptUserData(freshUser, true);
     res
         .cookie("user_token", newToken, COOKIE_OPTIONS)
+        .cookie("logged_in", "1", FLAG_COOKIE_OPTIONS)
         .json(new ApiResponsive(200, { user: decryptedUser }, 'Phone number updated successfully'));
 });
 
@@ -607,6 +609,7 @@ export const logoutUser = asyncHandler(async (req, res) => {
 
     res
         .clearCookie("user_token", { ...COOKIE_OPTIONS, maxAge: 0 })
+        .clearCookie("logged_in", { ...FLAG_COOKIE_OPTIONS, maxAge: 0 })
         .json(new ApiResponsive(200, {}, "Logged out successfully"));
 });
 
