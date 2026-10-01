@@ -1,4 +1,14 @@
 User-agent: *
+Allow: /
+
+# Backend API - never crawl or index
+Disallow: /api/
+
+# Account / login pages - not for search
+Disallow: /auth
+Disallow: /profile
+
+# WordPress blog (served under /blog)
 Disallow: /wp-admin/
 Allow: /wp-admin/admin-ajax.php
 Disallow: /cgi-bin/
