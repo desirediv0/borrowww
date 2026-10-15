@@ -1,4 +1,5 @@
 import HomeLoanClient from './HomeLoanClient';
+import RelatedGuides from '@/components/category/RelatedGuides';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -12,6 +13,7 @@ export default function HomeLoanPage() {
   return (
     <>
       <HomeLoanClient />
+      <RelatedGuides cluster="home" />
     </>
   );
 }

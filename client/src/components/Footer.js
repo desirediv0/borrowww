@@ -6,6 +6,8 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
 
 import { motion } from 'framer-motion';
 
+import { GUIDE_GROUPS, GUIDE_GROUP_ORDER } from '@/content/guideLinks';
+
 export default function Footer() {
   const footerLinks = {
     Services: [
@@ -138,6 +140,38 @@ export default function Footer() {
             </motion.div>
           ))}
         </div>
+
+        {/* Loan guides: crawlable links to every guide page */}
+        <nav aria-label="Loan guides" className="mb-12 border-t border-gray-300 pt-10">
+          <h3 className="font-semibold text-[#396A9F] mb-6 tracking-wide uppercase text-sm">Loan Guides</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {GUIDE_GROUP_ORDER.map((key) => {
+              const group = GUIDE_GROUPS[key];
+              return (
+                <div key={key}>
+                  <Link
+                    href={group.hubPath}
+                    className="font-semibold text-gray-800 hover:text-[#396A9F] transition-colors"
+                  >
+                    {group.hubLabel}
+                  </Link>
+                  <ul className="mt-3 space-y-2">
+                    {group.links.map((link) => (
+                      <li key={link.path}>
+                        <Link
+                          href={link.path}
+                          className="text-sm text-gray-600 hover:text-[#396A9F] transition-colors"
+                        >
+                          {link.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </nav>
 
         {/* Divider */}
         <div className="w-full h-px bg-gradient-to-r from-[#396A9F]/20 via-gray-100 to-[#396A9F]/20 mb-8" />

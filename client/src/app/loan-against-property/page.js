@@ -1,4 +1,5 @@
 import LAPClient from './LAPClient';
+import RelatedGuides from '@/components/category/RelatedGuides';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -12,6 +13,7 @@ export default function LoanAgainstPropertyPage() {
   return (
     <>
       <LAPClient />
+      <RelatedGuides cluster="lap" />
     </>
   );
 }

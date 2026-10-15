@@ -1,5 +1,6 @@
 import EMIClient from './EMIClient';
 import SeoContentBlock from '@/components/SeoContentBlock';
+import RelatedGuides from '@/components/category/RelatedGuides';
 import { existingPageContent } from '@/content/seoPages';
 import { buildMetadata } from '@/lib/seo';
 
@@ -174,6 +175,7 @@ export default function EMIPage() {
     <>
       <EMIClient />
       <SeoContentBlock {...existingPageContent.emi} />
+      <RelatedGuides cluster="emi" />
       
       {/* Schema Markups published before end of body */}
       <script

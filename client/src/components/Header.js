@@ -9,12 +9,21 @@ import { IconMenu2, IconX } from '@tabler/icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { User, LogOut, ChevronDown } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import { GUIDE_GROUPS } from '@/content/guideLinks';
+
+// Nav items that open a dropdown of guide pages (desktop) / nested links (mobile).
+const SUBMENUS = {
+  'Home Loan': GUIDE_GROUPS.home,
+  'Loan Against Property': GUIDE_GROUPS.lap,
+  'EMI Calculator': GUIDE_GROUPS.emi,
+  'Balance Transfer': GUIDE_GROUPS.bt,
+};
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
-  const [isHomeLoanDropdownOpen, setIsHomeLoanDropdownOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null);
   const { user, logout } = useAuth();
 
   useEffect(() => {
@@ -31,14 +40,6 @@ export default function Header() {
     setIsProfileDropdownOpen(false);
   };
 
-  const calculatorItems = [
-    { name: 'Home Loan', href: '/home-loan' },
-    { name: 'Loan Against Property', href: '/loan-against-property' },
-    { name: 'EMI Calculator', href: '/loan-emi-calculator' },
-    { name: 'Balance Transfer', href: '/balance-transfer' },
-    { name: 'Loan Comparison', href: '/comparison' },
-  ];
-
   const navItems = [
     { name: 'Home Loan', href: '/home-loan' },
     { name: 'Loan Against Property', href: '/loan-against-property' },
@@ -47,13 +48,11 @@ export default function Header() {
     { name: 'Blog', href: '/blog/' },
   ];
 
-  const homeLoanSubmenu = [
-    { name: 'Eligibility', href: '/home-loan/eligibility' },
-    { name: 'Interest Rates', href: '/home-loan/interest-rates' },
-    { name: 'Documents Required', href: '/home-loan/documents-required' },
-    { name: 'Salaried', href: '/home-loan/salaried' },
-    { name: 'Self-Employed', href: '/home-loan/self-employed' },
-    { name: 'First-Time Buyers', href: '/home-loan/first-time-buyers' },
+  // Mobile menu: the four loan sections (with their guides) first, then the rest.
+  const mobileLoanSections = navItems.filter((item) => SUBMENUS[item.name]);
+  const mobileOtherItems = [
+    { name: 'Loan Comparison', href: '/comparison' },
+    ...navItems.filter((item) => !SUBMENUS[item.name]),
   ];
 
   return (
@@ -105,8 +104,12 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                   className="relative"
-                  onMouseEnter={() => item.name === 'Home Loan' && setIsHomeLoanDropdownOpen(true)}
-                  onMouseLeave={() => item.name === 'Home Loan' && setIsHomeLoanDropdownOpen(false)}
+                  onMouseEnter={() => SUBMENUS[item.name] && setOpenMenu(item.name)}
+                  onMouseLeave={() => setOpenMenu(null)}
+                  onFocus={() => SUBMENUS[item.name] && setOpenMenu(item.name)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget)) setOpenMenu(null);
+                  }}
                 >
                   <Link
                     href={item.href}
@@ -115,35 +118,35 @@ export default function Header() {
                     <motion.span whileHover={{ y: -2 }} className="block">
                       {item.name}
                     </motion.span>
-                    {item.name === 'Home Loan' && (
-                      <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isHomeLoanDropdownOpen ? 'rotate-180' : ''}`} />
+                    {SUBMENUS[item.name] && (
+                      <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openMenu === item.name ? 'rotate-180' : ''}`} />
                     )}
                   </Link>
-                  {item.name === 'Home Loan' && (
+                  {SUBMENUS[item.name] && (
                     <AnimatePresence>
-                      {isHomeLoanDropdownOpen && (
+                      {openMenu === item.name && (
                         <motion.div
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
-                          className="absolute left-0 top-full mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50"
+                          className="absolute left-0 top-full mt-2 w-64 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50"
                         >
                           <Link
-                            href="/home-loan"
+                            href={SUBMENUS[item.name].hubPath}
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-50 transition-colors font-medium"
-                            onClick={() => setIsHomeLoanDropdownOpen(false)}
+                            onClick={() => setOpenMenu(null)}
                           >
-                            Home Loan Overview
+                            {SUBMENUS[item.name].hubLabel} Overview
                           </Link>
                           <div className="border-t border-gray-100 my-1" />
-                          {homeLoanSubmenu.map((sub) => (
+                          {SUBMENUS[item.name].links.map((sub) => (
                             <Link
-                              key={sub.href}
-                              href={sub.href}
+                              key={sub.path}
+                              href={sub.path}
                               className="block px-4 py-2 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
-                              onClick={() => setIsHomeLoanDropdownOpen(false)}
+                              onClick={() => setOpenMenu(null)}
                             >
-                              {sub.name}
+                              {sub.label}
                             </Link>
                           ))}
                         </motion.div>
@@ -231,58 +234,50 @@ export default function Header() {
               className="md:hidden bg-white border-t"
             >
               <div className="px-4 py-4 space-y-4">
-                {/* Calculator Section */}
+                {/* Loan sections, each with its guides */}
                 <div>
                   <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
-                    Calculators
+                    Loans &amp; Calculators
                   </div>
-                  <div className="space-y-2">
-                    {calculatorItems.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="flex items-center gap-3 px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors duration-200"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        <span className="font-medium">{item.name}</span>
-                      </Link>
+                  <div className="space-y-1">
+                    {mobileLoanSections.map((item) => (
+                      <div key={item.name}>
+                        <Link
+                          href={item.href}
+                          className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                        <div className="pl-6 pb-2 space-y-1">
+                          {SUBMENUS[item.name].links.map((sub) => (
+                            <Link
+                              key={sub.path}
+                              href={sub.path}
+                              className="block text-gray-500 hover:text-gray-900 text-sm py-1"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {sub.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Other Navigation Items */}
                 <div className="border-t pt-4">
-                  <Link
-                    href="/home-loan"
-                    className="block text-gray-600 hover:text-gray-900 font-medium py-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Home Loan
-                  </Link>
-                  <div className="pl-4 space-y-1 pb-2">
-                    {homeLoanSubmenu.map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className="block text-gray-500 hover:text-gray-900 text-sm py-1"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-                  {navItems
-                    .filter(item => !calculatorItems.some(calc => calc.name === item.name) && item.name !== 'Home Loan')
-                    .map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block text-gray-600 hover:text-gray-900 font-medium py-2"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                  {mobileOtherItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="block text-gray-600 hover:text-gray-900 font-medium py-2"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
                 </div>
 
                 {/* Mobile Auth Section */}

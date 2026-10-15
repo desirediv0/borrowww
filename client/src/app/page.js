@@ -8,6 +8,7 @@ import TransparencySection from '@/components/TransparencySection';
 import ValuesSection from '@/components/ValuesSection';
 import { buildMetadata } from '@/lib/seo';
 import PartnerBanks from '@/components/PartnerBanks';
+import LoanGuidesSection from '@/components/category/LoanGuidesSection';
 
 // import VideoSection from '@/components/VideoSection';
 
@@ -45,6 +46,7 @@ export default function Home() {
 
       {/* <HomeLoanSections /> */}
       <ValuesSection />
+      <LoanGuidesSection />
       {/* <Calculator /> */}
       <FAQSection />
     </main>

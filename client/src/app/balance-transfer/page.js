@@ -1,4 +1,5 @@
 import BalanceTransferClient from './BalanceTransferClient';
+import RelatedGuides from '@/components/category/RelatedGuides';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -9,5 +10,10 @@ export const metadata = buildMetadata({
 });
 
 export default function BalanceTransferPage() {
-  return <BalanceTransferClient />;
+  return (
+    <>
+      <BalanceTransferClient />
+      <RelatedGuides cluster="bt" />
+    </>
+  );
 }

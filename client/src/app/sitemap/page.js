@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { seoPages } from '@/content/seoPages';
+import { GUIDE_GROUPS, GUIDE_GROUP_ORDER } from '@/content/guideLinks';
 import { buildMetadata, companyInfo } from '@/lib/seo';
 
 const baseLinks = [
@@ -21,8 +22,14 @@ const baseLinks = [
   { href: '/loan-advisor-gurgaon-for-home-loan', label: 'Loan Advisor Gurgaon for Home Loan' }
 ];
 
+// Every guide page (home loan, loan against property, EMI calculators, balance transfer).
+const guideLinks = GUIDE_GROUP_ORDER.flatMap((key) =>
+  GUIDE_GROUPS[key].links.map((link) => ({ href: link.path, label: link.title })),
+);
+
 const sitemapLinks = [
   ...baseLinks,
+  ...guideLinks,
   ...seoPages.map((page) => ({
     href: `/${page.slug}`,
     label: page.title,
