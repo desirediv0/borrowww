@@ -9,9 +9,15 @@ Disallow: /auth
 Disallow: /profile
 
 # WordPress blog (served under /blog)
-Disallow: /wp-admin/
-Allow: /wp-admin/admin-ajax.php
-Disallow: /cgi-bin/
-Disallow: /tmp/
+Disallow: /blog/wp-admin/
+Allow: /blog/wp-admin/admin-ajax.php
+
+# WordPress feeds and archive pages - duplicates of the posts, not for search
+Disallow: /blog/feed/
+Disallow: /blog/*/feed/
+Disallow: /blog/comments/
+Disallow: /blog/author/
+Disallow: /blog/page/
+Disallow: /blog/category/*/page/
 
 Sitemap: https://www.borrowww.com/sitemap.xml

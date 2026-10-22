@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
@@ -54,11 +53,6 @@
   </url>
   <url>
        <loc>https://www.borrowww.com/referral</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/sitemap</loc>
        <lastmod>2026-09-01T07:51:00+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
@@ -173,32 +167,7 @@
        <priority>0.6400</priority>
   </url>
   <url>
-       <loc>https://www.borrowww.com/blog/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/comments/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/home/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/category/finance/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
        <loc>https://www.borrowww.com/blog/home-loan-for-self-employed-documents-eligibility-approval-tips/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/author/admin/</loc>
        <lastmod>2026-09-01T07:51:00+00:00</lastmod>
        <priority>0.5120</priority>
   </url>
@@ -248,81 +217,6 @@
        <priority>0.5120</priority>
   </url>
   <url>
-       <loc>https://www.borrowww.com/blog/page/2/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/category/finance/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/category/finance/page/2/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/home-loan-for-self-employed-documents-eligibility-approval-tips/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/author/admin/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/author/admin/page/2/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/best-home-loan-advisor-in-delhi-ncr-how-to-choose-the-right-expert-in-2026/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/does-home-loan-balance-transfer-affect-your-cibil-score-myths-vs-facts/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/affordable-home-loan-in-india-interest-rates-eligibility-emi-guide-2026/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/home-loan-balance-transfer-process-explained-step-by-step-in-2026/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/what-is-a-joint-home-loan-benefits-eligibility-how-it-works/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/instant-approval-options-for-salaried-employees-in-delhi-ncr/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/improving-your-credit-score-in-india/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/loan-against-property-consultant-in-gurgaon/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/free-credit-score-check-in-delhi-ncr/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.4096</priority>
-  </url>
-  <url>
        <loc>https://www.borrowww.com/blog/commercial-property-loan-agent-near-me-financing-needs/</loc>
        <lastmod>2026-09-01T07:51:00+00:00</lastmod>
        <priority>0.4096</priority>
@@ -346,31 +240,6 @@
        <loc>https://www.borrowww.com/blog/secured-and-unsecured-loan-india/</loc>
        <lastmod>2026-09-01T07:51:00+00:00</lastmod>
        <priority>0.4096</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/commercial-property-loan-agent-near-me-financing-needs/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.3277</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/emi-calculation-formula-with-example-india/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.3277</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/how-to-secure-a-loan-in-india-without-income-proof/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.3277</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/expand-business-with-loan-against-property/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.3277</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/blog/secured-and-unsecured-loan-india/feed/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.3277</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/home-loan/eligibility</loc>
