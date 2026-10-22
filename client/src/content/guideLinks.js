@@ -16,7 +16,7 @@ export const GUIDE_GROUPS = {
         "title": "Home Loan Interest Rates"
       },
       {
-        "path": "/home-loan/documents-required",
+        "path": "/home-loan-documents",
         "label": "Documents Required",
         "title": "Home Loan Documents Required"
       },

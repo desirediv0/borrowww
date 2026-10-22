@@ -69,7 +69,7 @@ const HOME_PAGES = [
   },
   {
     cluster: 'home',
-    path: '/home-loan/documents-required',
+    path: '/home-loan-documents',
     title: 'Home Loan Documents Required',
     navLabel: 'Documents Required',
     summary: 'KYC, income proof and property papers for salaried and self-employed applicants.',

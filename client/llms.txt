@@ -28,7 +28,7 @@ Borrowww connects borrowers with dedicated loan advisors who guide them from cre
 - [Home Loan overview](https://www.borrowww.com/home-loan)
 - [Home Loan Eligibility](https://www.borrowww.com/home-loan/eligibility)
 - [Home Loan Interest Rates](https://www.borrowww.com/home-loan/interest-rates)
-- [Home Loan Documents Required](https://www.borrowww.com/home-loan/documents-required)
+- [Home Loan Documents Required](https://www.borrowww.com/home-loan-documents)
 - [Home Loan for Salaried Employees](https://www.borrowww.com/home-loan/salaried)
 - [Home Loan for Self-Employed](https://www.borrowww.com/home-loan/self-employed)
 - [Home Loan for First-Time Buyers](https://www.borrowww.com/home-loan/first-time-buyers)

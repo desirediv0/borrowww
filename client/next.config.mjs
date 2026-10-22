@@ -7,6 +7,12 @@ const nextConfig = {
         destination: '/loan-emi-calculator',
         permanent: true,
       },
+      // Duplicate of /home-loan-documents; consolidated into the older URL.
+      {
+        source: '/home-loan/documents-required',
+        destination: '/home-loan-documents',
+        permanent: true,
+      },
       // Flat URLs used by the hyperlinks inside the category-page briefs; the
       // pages themselves live at the nested "Suggested URL" given in each brief.
       ...[
