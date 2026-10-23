@@ -138,7 +138,7 @@ export default function ComparisonClient() {
             <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-14">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
@@ -164,7 +164,7 @@ export default function ComparisonClient() {
                     <div className="grid lg:grid-cols-2 gap-12">
                         {/* Calculator Form */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={false}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 max-h-min"
@@ -275,7 +275,7 @@ export default function ComparisonClient() {
 
                         {/* Results */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={false}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             className="space-y-6"
@@ -308,7 +308,7 @@ export default function ComparisonClient() {
                                         {comparisonResults.map((loan, index) => (
                                             <motion.div
                                                 key={loan.id}
-                                                initial={{ opacity: 0, y: 20 }}
+                                                initial={false}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: index * 0.1 }}
                                                 className="border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-all duration-200"
@@ -363,7 +363,7 @@ export default function ComparisonClient() {
             <section className="py-14 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-16"
@@ -378,7 +378,7 @@ export default function ComparisonClient() {
                         {loanTypes.map((loan, index) => (
                             <motion.div
                                 key={loan.id}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -437,35 +437,33 @@ export default function ComparisonClient() {
             <section className="py-14 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white text-center shadow-2xl"
                     >
                         <h3 className="text-3xl font-medium mb-4">Ready to Apply for the Best Loan?</h3>
                         <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                            Get personalized loan offers from top banks based on your comparison. Our experts will
+                            Get personalised loan offers from top banks based on your comparison. Our experts will
                             help you find the best deal.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <motion.button
-                                type="button"
+                            <motion.a
+                                href="/home-loan"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => router.push('/home-loan')}
-                                className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
+                                className="inline-block bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
                             >
-                                Apply Loan
-                            </motion.button>
-                            <motion.button
-                                type="button"
+                                Apply for Loan
+                            </motion.a>
+                            <motion.a
+                                href="/contact"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => router.push('/contact')}
-                                className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
+                                className="inline-block border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200"
                             >
                                 Contact an Expert
-                            </motion.button>
+                            </motion.a>
                         </div>
                     </motion.div>
                 </div>

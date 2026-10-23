@@ -3,9 +3,9 @@ import { buildMetadata } from '@/lib/seo';
 import SelfEmployedHomeLoanClient from './SelfEmployedHomeLoanClient';
 
 export const metadata = buildMetadata({
-  title: 'Home Loan for Self-Employed in India | Borrowww',
+  title: 'Home Loan for Self-Employed Borrowers in India | Borrowww',
   description:
-    'Explore how a home loan for self employed borrowers works in India — eligibility, income documents, EMI planning and application tips, on Borrowww.',
+    'Explore how a home loan for self-employed borrowers works in India: eligibility, income documents, EMI planning and application tips, on Borrowww.',
   path: '/home-loan/self-employed',
   keywords: [
     'home loan for self employed',
@@ -26,7 +26,7 @@ const faqSchema = {
       name: 'Can a self-employed person get a home loan?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Self-employed individuals, including business owners, professionals, consultants and freelancers, can apply for a home loan. Approval and terms depend on the lender assessment of the specific applicant income documentation, credit history and overall financial profile, rather than on self-employment status alone.',
+        text: 'Yes. Self-employed individuals, including business owners, professionals, consultants and freelancers, can apply for a home loan. Approval and terms depend on the lender’s assessment of the specific applicant’s income documentation, credit history and overall financial profile, rather than on self-employment status alone.',
       },
     },
     {
@@ -82,7 +82,7 @@ const faqSchema = {
       name: 'How much home loan can a self-employed person get?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'This depends on documented income, existing obligations, credit profile, the property value, the down payment and the lender own assessment — not simply a multiple of business turnover. It is generally advisable to borrow an amount comfortable to repay rather than the maximum eligible amount.',
+        text: 'This depends on documented income, existing obligations, credit profile, the property value, the down payment and the lender’s own assessment, not simply a multiple of business turnover. It is generally advisable to borrow an amount comfortable to repay rather than the maximum eligible amount.',
       },
     },
     {
@@ -90,7 +90,7 @@ const faqSchema = {
       name: 'Are home loan interest rates different for self-employed borrowers?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Not inherently. The interest rate offered depends on factors like credit profile, documented income, loan amount and tenure, and the lender own policies — not on employment type alone. Self-employed borrowers are not automatically charged higher or lower rates than salaried applicants.',
+        text: 'Not inherently. The interest rate offered depends on factors like credit profile, documented income, loan amount and tenure, and the lender’s own policies, not on employment type alone. Self-employed borrowers are not automatically charged higher or lower rates than salaried applicants.',
       },
     },
     {
@@ -106,7 +106,7 @@ const faqSchema = {
       name: 'Can a self-employed borrower apply with a co-applicant?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes, self-employed applicants can apply jointly with a co-applicant, such as a spouse or family member, which may allow combined eligible income to be considered. This does not automatically guarantee a higher loan amount, since it depends on the combined strength of both applicants profiles.',
+        text: 'Yes, self-employed applicants can apply jointly with a co-applicant, such as a spouse or family member, which may allow combined eligible income to be considered. This does not automatically guarantee a higher loan amount, since it depends on the combined strength of both applicants’ profiles.',
       },
     },
     {

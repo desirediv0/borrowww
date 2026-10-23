@@ -231,14 +231,14 @@ export default function CibilCheckSection() {
         {/* Section Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <motion.div
             className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={false}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
@@ -255,7 +255,7 @@ export default function CibilCheckSection() {
 
           <motion.h2
             className="text-4xl lg:text-5xl font-medium text-gray-900 mb-6"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
@@ -265,7 +265,7 @@ export default function CibilCheckSection() {
 
           <motion.p
             className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
@@ -278,7 +278,7 @@ export default function CibilCheckSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - Form */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -297,7 +297,7 @@ export default function CibilCheckSection() {
                     stroke="#3b82f6"
                     strokeWidth="8"
                     strokeLinecap="round"
-                    initial={{ strokeDasharray: '0 251.2' }}
+                    initial={false}
                     animate={{ strokeDasharray: '188.4 251.2' }}
                     transition={{ duration: 2, delay: 1 }}
                   />
@@ -306,7 +306,7 @@ export default function CibilCheckSection() {
                     y="45"
                     textAnchor="middle"
                     className="text-xs font-medium fill-gray-100"
-                    initial={{ opacity: 0 }}
+                    initial={false}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2 }}
                   >
@@ -317,7 +317,7 @@ export default function CibilCheckSection() {
                     y="58"
                     textAnchor="middle"
                     className="text-xs fill-gray-200"
-                    initial={{ opacity: 0 }}
+                    initial={false}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 2.2 }}
                   >
@@ -473,7 +473,7 @@ export default function CibilCheckSection() {
 
           {/* Right Side - Features & Info */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -485,7 +485,7 @@ export default function CibilCheckSection() {
                 <motion.div
                   key={feature.title}
                   className="group p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={false}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + index * 0.1 }}
@@ -525,7 +525,7 @@ export default function CibilCheckSection() {
             {/* Why Check CIBIL Score Card */}
             <motion.div
               className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 p-8 rounded-3xl relative overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.8 }}
@@ -582,7 +582,7 @@ export default function CibilCheckSection() {
                       <motion.div
                         key={index}
                         className="flex items-center gap-2"
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={false}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.8 + index * 0.1 }}
@@ -607,7 +607,7 @@ export default function CibilCheckSection() {
             {/* Stats Card with Animated Numbers */}
             <motion.div
               className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 1 }}
@@ -620,7 +620,7 @@ export default function CibilCheckSection() {
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={false}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 1 + index * 0.2 }}

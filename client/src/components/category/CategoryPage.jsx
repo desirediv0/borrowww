@@ -301,7 +301,7 @@ export default function CategoryPage({ page }) {
       <RelatedGuides
         cluster={page.cluster}
         excludePath={page.path}
-        heading={`More ${cluster.label.toLowerCase()} guides`}
+        heading={cluster.moreGuidesHeading || `More ${cluster.label.toLowerCase()} guides`}
       />
     </main>
   );

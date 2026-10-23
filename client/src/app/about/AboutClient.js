@@ -63,7 +63,7 @@ export default function AboutClient() {
             icon: FaUsers,
             title: 'Customer First',
             description:
-                'Every decision we make is centered around providing the best customer experience.',
+                'Every decision we make is centred on providing the best customer experience.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
@@ -109,7 +109,7 @@ export default function AboutClient() {
             <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
@@ -120,7 +120,7 @@ export default function AboutClient() {
                             <span className="text-[var(--primary-blue)] italic tiemposfine">Borrowww</span>
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is powered by one of <span className="font-semibold text-[var(--primary-blue)]">India&apos;s most trusted lending partner</span> and backed by the financial legacy of <span className="font-semibold text-[var(--primary-blue)]">Premier Penny</span>. We are revolutionizing the way people access credit, making financial inclusion a reality through technology and trust.
+                            <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is powered by one of <span className="font-semibold text-[var(--primary-blue)]">India’s most trusted lending partners</span> and backed by the financial legacy of <span className="font-semibold text-[var(--primary-blue)]">Premier Penny</span>. We are changing the way people access credit, making financial inclusion a reality through technology and trust.
                         </p>
                     </motion.div>
                 </div>
@@ -133,7 +133,7 @@ export default function AboutClient() {
                         {stats.map((stat, index) => (
                             <motion.div
                                 key={stat.label}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -157,7 +157,7 @@ export default function AboutClient() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
@@ -167,20 +167,20 @@ export default function AboutClient() {
                                 Our Mission at Premier Penny
                             </div>
                             <h2 className="text-4xl font-medium text-gray-900 mb-6">
-                                Democratizing Access to Credit
+                                Democratising Access to Credit
                             </h2>
                             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                                As a project of Premier Penny, our mission is to democratize access to credit by leveraging technology and data, making financial
+                                As a project of Premier Penny, our mission is to democratise access to credit by leveraging technology and data, making financial
                                 services accessible to every Indian who deserves it.
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed mb-8">
                                 We believe that everyone should have the opportunity to achieve their dreams, and
-                                access to credit shouldn&apos;t be a barrier to success.
+                                access to credit shouldn’t be a barrier to success.
                             </p>
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
@@ -195,10 +195,10 @@ export default function AboutClient() {
                                 Our Vision
                             </div>
                             <h3 className="text-3xl font-bold text-[var(--primary-blue)] mb-6 relative z-10">
-                                India&apos;s Most Trusted Digital Lending Partner
+                                India’s Most Trusted Digital Lending Partner
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-8 relative z-10">
-                                To become India&apos;s most trusted and preferred digital lending partner, serving
+                                To become India’s most trusted and preferred digital lending partner, serving
                                 millions of customers with the innovative financial solutions that define the Premier Penny brand.
                             </p>
                             <div className="space-y-4 relative z-10">
@@ -224,7 +224,7 @@ export default function AboutClient() {
             <section className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-16"
@@ -232,7 +232,7 @@ export default function AboutClient() {
                         <h2 className="text-4xl font-medium text-gray-900 mb-6">Why Choose Borrowww?</h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                             We combine cutting-edge technology with the human touch and reliability of Premier Penny to deliver exceptional financial
-                            services
+                            services.
                         </p>
                     </motion.div>
 
@@ -240,7 +240,7 @@ export default function AboutClient() {
                         {features.map((feature, index) => (
                             <motion.div
                                 key={feature.title}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -263,7 +263,7 @@ export default function AboutClient() {
             <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-16"
@@ -278,7 +278,7 @@ export default function AboutClient() {
                         {values.map((value, index) => (
                             <motion.div
                                 key={value.title}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -301,7 +301,7 @@ export default function AboutClient() {
             <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
@@ -315,24 +315,22 @@ export default function AboutClient() {
                             with Borrowww, a Premier Penny innovation.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
-                            <motion.button
-                                type="button"
+                            <motion.a
+                                href="/credit-check"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => router.push('/credit-check')}
-                                className="bg-white text-[var(--primary-blue)] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+                                className="inline-block bg-white text-[var(--primary-blue)] px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
                             >
                                 Check Your CIBIL Score
-                            </motion.button>
-                            <motion.button
-                                type="button"
+                            </motion.a>
+                            <motion.a
+                                href="/home-loan"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => router.push('/home-loan')}
-                                className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-colors duration-200"
+                                className="inline-block border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-colors duration-200"
                             >
                                 Apply for Loan
-                            </motion.button>
+                            </motion.a>
                         </div>
                     </motion.div>
                 </div>

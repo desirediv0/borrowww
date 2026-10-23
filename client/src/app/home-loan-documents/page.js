@@ -259,7 +259,7 @@ export default function HomeLoanDocumentsPage() {
                                 Every paper answers one question the bank has to settle before it lends: who you are, where you live, what you earn, how stable that income is, and whether the property is legally clean.
                             </p>
                             <p className="mt-4 text-gray-600 leading-relaxed">
-                                The bank holds the property as security for 15 to 30 years. That is why the property papers get the closest look, and why identity and address proof follow RBI&apos;s{' '}
+                                The bank holds the property as security for 15 to 30 years. That is why the property papers get the closest look, and why identity and address proof follow RBI’s{' '}
                                 <a href={sources[0].href} target="_blank" rel="noopener noreferrer" className="text-[#3A6EA5] font-medium hover:underline">KYC rules</a>.
                             </p>
                         </div>
@@ -382,7 +382,7 @@ export default function HomeLoanDocumentsPage() {
                             Property documents required for a home loan
                         </h2>
                         <p className="mt-4 text-gray-600 leading-relaxed">
-                            The bank&apos;s lawyer reads these before any money moves. For a resale flat this is the slowest part of the whole loan, so start here.
+                            The bank’s lawyer reads these before any money moves. For a resale flat this is the slowest part of the whole loan, so start here.
                         </p>
                     </div>
 
@@ -566,7 +566,7 @@ export default function HomeLoanDocumentsPage() {
                             <h3 className="text-base font-semibold text-gray-900">How this page is kept accurate</h3>
                             <p className="mt-3 text-sm text-gray-600 leading-relaxed">
                                 First published <time dateTime={DATE_PUBLISHED}>15 July 2026</time>. Last updated <time dateTime={DATE_MODIFIED}>{UPDATED_LABEL}</time>.
-                                The lists follow RBI&apos;s KYC rules and the papers lenders on our panel ask for. Each bank can add its own items, so your lender&apos;s checklist is final.
+                                The lists follow RBI’s KYC rules and the papers lenders on our panel ask for. Each bank can add its own items, so your lender’s checklist is final.
                             </p>
                         </div>
                         <div className="rounded-2xl border border-gray-100 bg-gray-50 p-6">
@@ -607,7 +607,7 @@ export default function HomeLoanDocumentsPage() {
                                 {source.label}
                             </a>
                         ))}
-                        . Bank and NBFC checklists differ slightly; your lender&apos;s own list is final.
+                        . Bank and NBFC checklists differ slightly; your lender’s own list is final.
                     </p>
                 </div>
             </section>

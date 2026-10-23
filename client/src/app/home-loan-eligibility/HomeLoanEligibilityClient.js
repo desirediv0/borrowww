@@ -124,17 +124,17 @@ export default function HomeLoanEligibilityClient() {
 
     // Table Data
     const criteriaOverview = [
-        { criteria: 'Age', req: '21–65 years (salaried), up to 70–75 years (self-employed)' },
+        { criteria: 'Age', req: '21-65 years (salaried), up to 70-75 years (self-employed)' },
         { criteria: 'Minimum Income', req: 'Varies by lender; typically ₹25,000+ per month (salaried)' },
         { criteria: 'CIBIL Score', req: '700+ recommended, 750+ ideal' },
-        { criteria: 'Employment Stability', req: '1–2 years with current employer / 2–3 years in business' },
+        { criteria: 'Employment Stability', req: '1-2 years with current employer / 2-3 years in business' },
         { criteria: 'Existing Obligations', req: 'Total EMIs ideally within 70-75% of net income for salaried, higher for business owners' },
         { criteria: 'Nationality', req: 'Resident Indian or NRI (with additional documentation)' }
     ];
 
     const incomeReqs = [
         { type: 'Salaried Employee', basis: 'Gross/net monthly salary, Form 16, salary slips' },
-        { type: 'Self-Employed Professional', basis: 'ITR (2–3 years), profit statements' },
+        { type: 'Self-Employed Professional', basis: 'ITR (2-3 years), profit statements' },
         { type: 'Business Owner', basis: 'Turnover, net profit, GST returns, audited statements' },
         { type: 'NRI', basis: 'Overseas salary certificate, NRE/NRO account statements' }
     ];
@@ -142,20 +142,20 @@ export default function HomeLoanEligibilityClient() {
     const ageReqs = [
         { type: 'Salaried', min: '21 years', max: '60-65 years' },
         { type: 'Self-Employed', min: '21 years', max: '70-75 years' },
-        { type: 'NRI', min: '21 years', max: '60–65 years' }
+        { type: 'NRI', min: '21 years', max: '60-65 years' }
     ];
 
     const cibilGuide = [
-        { score: '750–900', rating: 'Excellent', outcome: 'High approval chance, best interest rates', bg: 'bg-emerald-50 text-emerald-700 border-emerald-100' },
-        { score: '700–749', rating: 'Good', outcome: 'Generally approved by most lenders', bg: 'bg-teal-50 text-teal-700 border-teal-100' },
-        { score: '650–699', rating: 'Fair', outcome: 'May be approved with stricter terms', bg: 'bg-amber-50 text-amber-700 border-amber-100' },
+        { score: '750-900', rating: 'Excellent', outcome: 'High approval chance, best interest rates', bg: 'bg-emerald-50 text-emerald-700 border-emerald-100' },
+        { score: '700-749', rating: 'Good', outcome: 'Generally approved by most lenders', bg: 'bg-teal-50 text-teal-700 border-teal-100' },
+        { score: '650-699', rating: 'Fair', outcome: 'May be approved with stricter terms', bg: 'bg-amber-50 text-amber-700 border-amber-100' },
         { score: 'Below 650', rating: 'Poor', outcome: 'High rejection risk; co-applicant may help', bg: 'bg-red-50 text-red-700 border-red-100' }
     ];
 
     const docsOverview = [
         { type: 'Identity & Address Proof', salaried: 'Required', self: 'Required' },
         { type: 'Income Proof', salaried: 'Salary slips, Form 16', self: 'ITR, P&L statement' },
-        { type: 'Bank Statements', salaried: 'Last 6 months', self: 'Last 6–12 months' },
+        { type: 'Bank Statements', salaried: 'Last 6 months', self: 'Last 6-12 months' },
         { type: 'Employment/Business Proof', salaried: 'Employment letter', self: 'Business registration, GST returns' },
         { type: 'Property Documents', salaried: 'Required', self: 'Required' }
     ];
@@ -170,9 +170,9 @@ export default function HomeLoanEligibilityClient() {
     ];
 
     const comparisonTable = [
-        { param: 'Income Proof', salaried: 'Salary slips, Form 16', self: 'ITR, P&L statement (2–3 yrs)' },
-        { param: 'Employment Stability Required', salaried: '1–2 years', self: '2–3 years in business' },
-        { param: 'Age Limit', salaried: 'Up to 60 years', self: 'Up to 65–70 years' },
+        { param: 'Income Proof', salaried: 'Salary slips, Form 16', self: 'ITR, P&L statement (2-3 yrs)' },
+        { param: 'Employment Stability Required', salaried: '1-2 years', self: '2-3 years in business' },
+        { param: 'Age Limit', salaried: 'Up to 60 years', self: 'Up to 65-70 years' },
         { param: 'Income Assessment', salaried: 'Fixed monthly salary', self: 'Averaged annual profit' },
         { param: 'Documentation Complexity', salaried: 'Lower', self: 'Slightly higher' }
     ];
@@ -192,11 +192,11 @@ export default function HomeLoanEligibilityClient() {
         },
         {
             q: "What is the age limit for a home loan?",
-            a: "Most lenders accept salaried applicants between 21 and 65 years of age, while self-employed individuals can often apply up to 70 or 75 years, since business income doesn't depend on a fixed retirement age. Your age at the time of application directly affects the maximum loan tenure you're offered — younger applicants typically qualify for longer tenures, which can lower EMIs and increase overall eligibility. If you're closer to the upper age limit, adding a younger co-applicant can help extend the tenure and improve your eligible loan amount."
+            a: "Most lenders accept salaried applicants between 21 and 65 years of age, while self-employed individuals can often apply up to 70 or 75 years, since business income doesn't depend on a fixed retirement age. Your age at the time of application directly affects the maximum loan tenure you're offered. Younger applicants typically qualify for longer tenures, which can lower EMIs and increase overall eligibility. If you're closer to the upper age limit, adding a younger co-applicant can help extend the tenure and improve your eligible loan amount."
         },
         {
             q: "How is home loan eligibility calculated?",
-            a: "Lenders primarily use the Fixed Obligation to Income Ratio (FOIR) method, which looks at your total monthly income, subtracts existing EMIs and financial obligations, and determines how much of the remaining income can go towards a new home loan EMI, usually within 70–75% of net income for salaried and higher for business owners. From there, they calculate the maximum loan amount based on the applicable interest rate and chosen tenure. Other factors like age, credit score, employment stability, and property value also influence the final eligible amount, which is why the same salary can result in different eligibility for different applicants."
+            a: "Lenders primarily use the Fixed Obligation to Income Ratio (FOIR) method, which looks at your total monthly income, subtracts existing EMIs and financial obligations, and determines how much of the remaining income can go towards a new home loan EMI, usually within 70-75% of net income for salaried and higher for business owners. From there, they calculate the maximum loan amount based on the applicable interest rate and chosen tenure. Other factors like age, credit score, employment stability, and property value also influence the final eligible amount, which is why the same salary can result in different eligibility for different applicants."
         },
         {
             q: "What CIBIL score is required for home loan eligibility?",
@@ -208,11 +208,11 @@ export default function HomeLoanEligibilityClient() {
         },
         {
             q: "How much home loan can I get based on my salary?",
-            a: "As a general guideline, many lenders allow a home loan EMI of up to 70–75% of your net monthly income, after accounting for existing obligations. For example, higher take-home income, fewer existing EMIs, and a longer tenure can all increase your eligible loan amount. However, the exact figure depends on the lender's specific policies, your age, credit score, and the property's value. Using a home loan eligibility calculator gives you a quick, personalised estimate based on your actual income and financial situation."
+            a: "As a general guideline, many lenders allow a home loan EMI of up to 70-75% of your net monthly income, after accounting for existing obligations. Higher take-home income, fewer existing EMIs and a longer tenure can all increase your eligible loan amount. However, the exact figure depends on the lender's specific policies, your age, credit score, and the property's value. Using a home loan eligibility calculator gives you a quick, personalised estimate based on your actual income and financial situation."
         },
         {
             q: "Does existing EMI affect home loan eligibility?",
-            a: "Yes, significantly. Lenders calculate your total monthly financial obligations, including existing car loans, personal loans, or credit card dues, before determining how much additional EMI you can comfortably afford. Higher existing EMIs reduce the portion of your income available for a new home loan, which lowers your eligible loan amount. If you're planning to apply for a home loan soon, paying off smaller existing debts beforehand can meaningfully improve your eligibility and may also help you secure a larger loan amount at more favourable terms."
+            a: "Yes, significantly. Lenders calculate your total monthly financial obligations, including existing car loans, personal loans, or credit card dues, before determining how much additional EMI you can comfortably afford. Higher existing EMIs reduce the portion of your income available for a new home loan, which lowers your eligible loan amount. If you're planning to apply for a home loan soon, paying off smaller existing debts beforehand can meaningfully improve your eligibility and may also help you secure a larger loan amount on more favourable terms."
         },
         {
             q: "What documents are required to check home loan eligibility?",
@@ -228,11 +228,11 @@ export default function HomeLoanEligibilityClient() {
         },
         {
             q: "Is a co-applicant required for a home loan?",
-            a: "A co-applicant isn't always mandatory, but adding one — typically a spouse, parent, or sibling with a stable income — can significantly boost your combined eligibility, especially if your individual income falls short of the required loan amount. A co-applicant's income and credit score are considered alongside yours, which can increase the total loan amount you qualify for. This is a common strategy among young professionals and first-time buyers looking to purchase a higher-value property than their individual income alone would support."
+            a: "A co-applicant isn't always mandatory, but adding one (typically a spouse, parent or sibling with a stable income) can significantly boost your combined eligibility, especially if your individual income falls short of the required loan amount. A co-applicant's income and credit score are considered alongside yours, which can increase the total loan amount you qualify for. This is a common strategy among young professionals and first-time buyers looking to purchase a higher-value property than their individual income alone would support."
         },
         {
             q: "How does property value affect home loan eligibility?",
-            a: "Lenders typically finance up to 75–90% of a property's assessed market value, a ratio known as Loan-to-Value (LTV). This means the property's value sets an upper ceiling on the loan amount, regardless of your income. However, your income and repayment capacity still determine the actual eligible amount within that ceiling. A higher-value property doesn't automatically increase your eligibility if your income doesn't support the corresponding EMI, which is why both factors are assessed together."
+            a: "Lenders typically finance up to 75-90% of a property's assessed market value, a ratio known as Loan-to-Value (LTV). This means the property's value sets an upper ceiling on the loan amount, regardless of your income. However, your income and repayment capacity still determine the actual eligible amount within that ceiling. A higher-value property doesn't automatically increase your eligibility if your income doesn't support the corresponding EMI, which is why both factors are assessed together."
         },
         {
             q: "What is the difference between home loan eligibility and home loan approval?",
@@ -252,7 +252,7 @@ export default function HomeLoanEligibilityClient() {
         },
         {
             q: "What is the minimum down payment required for a home loan?",
-            a: "Since lenders typically finance 75–90% of a property's value, you'll usually need to arrange 10–25% of the property cost as a down payment, depending on the loan amount and lender policy. A larger down payment reduces the loan amount required, which can improve your eligibility and lower your monthly EMI. Planning your down payment in advance, alongside other costs like registration and stamp duty, ensures a smoother and more predictable home-buying process overall."
+            a: "Since lenders typically finance 75-90% of a property's value, you'll usually need to arrange 10-25% of the property cost as a down payment, depending on the loan amount and lender policy. A larger down payment reduces the loan amount required, which can improve your eligibility and lower your monthly EMI. Planning your down payment in advance, alongside other costs like registration and stamp duty, ensures a smoother and more predictable home-buying process overall."
         },
         {
             q: "How can Borrowww help me check my home loan eligibility?",
@@ -275,13 +275,13 @@ export default function HomeLoanEligibilityClient() {
                                 <ShieldCheck className="h-4 w-4 text-[#3A6EA5]" /> Eligibility Criteria 2026
                             </div>
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight font-medium text-black leading-tight">
-                                Home Loan Eligibility Criteria 2026 – Check Now
+                                Home Loan Eligibility Criteria 2026 - Check Now
                             </h1>
                             <p className="mt-5 text-lg text-gray-600 max-w-2xl leading-relaxed">
-                                If you&apos;ve started looking at properties, chances are you&apos;ve also started worrying about whether a bank or NBFC will actually approve your home loan application. It&apos;s a fair concern. Home loan eligibility isn&apos;t just one number — it&apos;s a combination of your income, age, job stability, existing debts, credit score, and even the property you&apos;re planning to buy.
+                                If you’ve started looking at properties, chances are you’ve also started worrying about whether a bank or NBFC will actually approve your home loan application. It’s a fair concern. Home loan eligibility isn’t just one number. It’s a combination of your income, age, job stability, existing debts, credit score, and even the property you’re planning to buy.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed">
-                                At <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>, we&apos;ve spent years helping salaried employees, self-employed professionals, and business owners understand exactly where they stand before they apply. This guide breaks down every eligibility factor lenders use in India today, in plain language, so you can walk into the process with confidence instead of guesswork.
+                                At <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>, we’ve spent years helping salaried employees, self-employed professionals, and business owners understand exactly where they stand before they apply. This guide breaks down every eligibility factor lenders use in India today, in plain language, so you can walk into the process with confidence instead of guesswork.
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                 <a
@@ -463,13 +463,13 @@ export default function HomeLoanEligibilityClient() {
                                 What Is Home Loan Eligibility & Why Does It Matter?
                             </h2>
                             <p className="mt-4 text-gray-600 leading-relaxed">
-                                Home loan eligibility refers to the maximum loan amount a lender is willing to sanction based on your ability to repay it. It isn&apos;t a fixed figure — it changes from person to person and even from lender to lender, depending on how each one assesses risk.
+                                Home loan eligibility refers to the maximum loan amount a lender is willing to sanction based on your ability to repay it. It isn’t a fixed figure. It changes from person to person and even from lender to lender, depending on how each one assesses risk.
                             </p>
                             <p className="mt-4 text-gray-600 leading-relaxed">
-                                In simple terms, eligibility is the bank&apos;s way of answering one question: &quot;If we lend this person money, how confident are we that they&apos;ll pay it back on time, every month, for the next 15 to 30 years?&quot; That confidence is built from several ingredients — your income, your job or business stability, your existing loans and credit cards, your age, and your credit score.
+                                In simple terms, eligibility is the bank’s way of answering one question: &quot;If we lend this person money, how confident are we that they’ll pay it back on time, every month, for the next 15 to 30 years?&quot; That confidence is built from several things: your income, your job or business stability, your existing loans and credit cards, your age, and your credit score.
                             </p>
                             <p className="mt-4 text-gray-600 leading-relaxed">
-                                Many buyers make the mistake of finalising a property first and checking eligibility later. This often leads to disappointment — either the loan amount sanctioned is lower than expected, or the application gets rejected altogether, which can also affect your credit score.
+                                Many buyers make the mistake of finalising a property first and checking eligibility later. This often leads to disappointment: either the sanctioned loan amount is lower than expected, or the application gets rejected altogether, which can also affect your credit score.
                             </p>
                         </div>
                         <div className="lg:col-span-6 space-y-6">
@@ -501,7 +501,7 @@ export default function HomeLoanEligibilityClient() {
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-semibold text-gray-900">Who Can Apply & Eligibility Criteria Overview</h2>
                         <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
-                            Lenders evaluate your application based on age, income, stability, and CIBIL rating.
+                            Lenders evaluate your application based on age, income, stability and CIBIL score.
                         </p>
                     </div>
 
@@ -559,8 +559,8 @@ export default function HomeLoanEligibilityClient() {
             <section className="py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-semibold text-gray-900">Eligibility details by Applicant Profile</h2>
-                        <p className="mt-3 text-gray-600">Choose your profile to check customized eligibility considerations.</p>
+                        <h2 className="text-3xl font-semibold text-gray-900">Eligibility Details by Applicant Profile</h2>
+                        <p className="mt-3 text-gray-600">Choose your profile to check customised eligibility considerations.</p>
                     </div>
 
                     {/* Navigation Tabs */}
@@ -574,7 +574,7 @@ export default function HomeLoanEligibilityClient() {
                                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                     }`}
                             >
-                                {tab.charAt(0).toUpperCase() + tab.slice(1).replace('-', ' ')}
+                                {{ salaried: 'Salaried', 'self-employed': 'Self-employed', 'business-owners': 'Business owners', nri: 'NRI' }[tab]}
                             </button>
                         ))}
                     </div>
@@ -608,11 +608,11 @@ export default function HomeLoanEligibilityClient() {
                             <div>
                                 <h3 className="text-2xl font-semibold text-gray-900 mb-3">Eligibility for Self-Employed Individuals</h3>
                                 <p className="text-gray-600 mb-5">
-                                    Lenders average the last two to three years&apos; earnings rather than relying on a single year&apos;s figures to account for income fluctuations.
+                                    Lenders usually average the last two to three years’ earnings, rather than relying on a single year’s figures, to account for income fluctuations.
                                 </p>
                                 <ul className="grid sm:grid-cols-2 gap-3 mb-6">
                                     {[
-                                        'Income Tax Returns (ITR) for the last 2–3 years',
+                                        'Income Tax Returns (ITR) for the last 2-3 years',
                                         'Profit & Loss statements and balance sheets',
                                         'Continuity and stability of professional practice',
                                         'Business registration and qualification certifications',
@@ -631,7 +631,7 @@ export default function HomeLoanEligibilityClient() {
                             <div>
                                 <h3 className="text-2xl font-semibold text-gray-900 mb-3">Eligibility for Business Owners</h3>
                                 <p className="text-gray-600 mb-5">
-                                    Business owners face a detailed assessment as lenders require proof that the business entity is legally compliant and financially healthy.
+                                    Business owners face a detailed assessment, as lenders require proof that the business entity is legally compliant and financially healthy.
                                 </p>
                                 <ul className="grid sm:grid-cols-2 gap-3 mb-6">
                                     {[
@@ -654,7 +654,7 @@ export default function HomeLoanEligibilityClient() {
                             <div>
                                 <h3 className="text-2xl font-semibold text-gray-900 mb-3">Eligibility for NRIs</h3>
                                 <p className="text-gray-600 mb-5">
-                                    Subject to RBI&apos;s FEMA compliance, NRIs purchasing properties in India must verify foreign income and establish local representatives.
+                                    Subject to FEMA compliance under RBI rules, NRIs buying property in India must verify their foreign income and appoint a representative in India.
                                 </p>
                                 <ul className="grid sm:grid-cols-2 gap-3 mb-6">
                                     {[
@@ -744,7 +744,7 @@ export default function HomeLoanEligibilityClient() {
                     <div className="grid lg:grid-cols-12 gap-8 items-start">
                         {/* Table 8: Salaried vs Self-Employed */}
                         <div className="lg:col-span-6 bg-white p-6 rounded-3xl border border-gray-100 shadow-lg">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">Comparison Table — Salaried vs Self-Employed Eligibility</h3>
+                            <h3 className="text-xl font-bold text-gray-900 mb-4">Comparison Table: Salaried vs Self-Employed Eligibility</h3>
                             <div className="overflow-x-auto">
                                 <table className="min-w-full divide-y divide-gray-200">
                                     <thead className="bg-[#2D3E50]">
@@ -825,10 +825,10 @@ export default function HomeLoanEligibilityClient() {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
                     <h2 className="text-3xl font-semibold text-gray-900 mb-6">How Lenders Calculate Eligibility</h2>
                     <p className="text-gray-600 leading-relaxed mb-6">
-                        Most lenders use a method called the <strong>Fixed Obligation to Income Ratio (FOIR)</strong> to determine how much you can borrow. In simple terms, they calculate your total monthly income, subtract existing obligations like EMIs and credit card payments, and then determine how much of the remaining amount can comfortably go towards a new home loan EMI — usually keeping the total obligations within 70–75% of your net income.
+                        Most lenders use a method called the <strong>Fixed Obligation to Income Ratio (FOIR)</strong> to determine how much you can borrow. In simple terms, they calculate your total monthly income, subtract existing obligations like EMIs and credit card payments, and then determine how much of the remaining amount can comfortably go towards a new home loan EMI, usually keeping the total obligations within 70-75% of your net income.
                     </p>
                     <p className="text-gray-600 leading-relaxed">
-                        From there, lenders reverse-calculate the maximum loan amount based on the applicable interest rate and chosen tenure. This is why two people with the same salary can be eligible for very different loan amounts — existing debt, age, and credit score all shift the final number.
+                        From there, lenders reverse-calculate the maximum loan amount based on the applicable interest rate and chosen tenure. This is why two people with the same salary can be eligible for very different loan amounts: existing debt, age and credit score all shift the final number.
                     </p>
                 </div>
             </section>
@@ -912,10 +912,10 @@ export default function HomeLoanEligibilityClient() {
                         <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">Using an Eligibility Calculator</h3>
                             <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                                A home loan eligibility calculator is a simple online tool that estimates the loan amount you may qualify for, based on inputs like your monthly income, age, existing EMIs, interest rate, and preferred tenure. It doesn&apos;t replace a formal bank assessment, but it gives you a fairly accurate starting estimate within seconds.
+                                A home loan eligibility calculator is a simple online tool that estimates the loan amount you may qualify for, based on inputs like your monthly income, age, existing EMIs, interest rate, and preferred tenure. It doesn’t replace a formal bank assessment, but it gives you a fairly accurate starting estimate within seconds.
                             </p>
                             <p className="text-sm text-gray-600 leading-relaxed">
-                                Borrowww&apos;s home loan eligibility calculator lets you check your estimated eligibility instantly, without any impact on your credit score, so you can plan your home purchase with much greater clarity.
+                                Borrowww’s home loan eligibility calculator lets you check your estimated eligibility instantly, without any impact on your credit score, so you can plan your home purchase with much greater clarity.
                             </p>
                         </div>
                     </div>
@@ -929,7 +929,7 @@ export default function HomeLoanEligibilityClient() {
                         <div>
                             <h2 className="text-3xl font-bold mb-6">Why Choose Borrowww</h2>
                             <p className="text-gray-300 mb-6 leading-relaxed">
-                                At Borrowww, we don&apos;t just process loan applications — we help you understand exactly where you stand and what your options are. Our approach is built around transparency, simplicity, and genuine guidance, whether you&apos;re a salaried professional, a self-employed individual, or a business owner exploring your first home purchase.
+                                At Borrowww, we don’t just process loan applications. We help you understand exactly where you stand and what your options are. Our approach is built around transparency, simplicity, and genuine guidance, whether you’re a salaried professional, a self-employed individual, or a business owner exploring your first home purchase.
                             </p>
                             <ul className="space-y-3">
                                 {[
@@ -954,7 +954,7 @@ export default function HomeLoanEligibilityClient() {
                                     { step: '1', title: 'Check Eligibility', desc: 'Check your eligibility using our free online calculator' },
                                     { step: '2', title: 'Compare Offers', desc: 'Compare loan offers from multiple banks and NBFCs based on your profile' },
                                     { step: '3', title: 'Select Lender', desc: 'Select the best-fit lender based on interest rate, tenure, and terms' },
-                                    { step: '4', title: 'Submit Documents', desc: 'Submit your documents — income proof, identity proof, and property papers' },
+                                    { step: '4', title: 'Submit Documents', desc: 'Submit your documents: income proof, identity proof and property papers' },
                                     { step: '5', title: 'Application Review', desc: 'Application review by the chosen lender, with support from our advisory team' },
                                     { step: '6', title: 'Loan Sanction', desc: 'Loan sanction once verification and property checks are complete' },
                                     { step: '7', title: 'Disbursement', desc: 'Disbursement of funds directly towards your property purchase' }

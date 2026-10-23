@@ -19,16 +19,16 @@ const faqs = [
     a: 'Credit score and repayment history are generally considered important inputs while assessing an application, since they indicate how reliably you have managed credit in the past. A stronger credit profile may support access to more competitive terms, though it is evaluated alongside other factors rather than in isolation.',
   },
   {
-    q: 'Which is better, fixed or floating home loan interest rate?',
+    q: 'Which is better, a fixed or floating home loan interest rate?',
     a: 'Neither option is universally better. A fixed rate offers predictable EMIs for a defined period but may not reduce if market rates fall, while a floating rate is linked to a benchmark and can move up or down over the tenure. The right choice depends on your risk appetite, expected holding period and comfort with EMI fluctuations.',
   },
   {
     q: 'How does the interest rate affect home loan EMI?',
-    a: 'The interest rate is one of three inputs — along with loan amount and tenure — used to calculate EMI. A higher rate increases the EMI for the same loan amount and tenure, while a lower rate reduces it. Even a modest change in the rate can noticeably change the EMI and total interest paid over a long tenure.',
+    a: 'The interest rate is one of the three inputs used to calculate EMI, along with the loan amount and tenure. A higher rate increases the EMI for the same loan amount and tenure, while a lower rate reduces it. Even a modest change in the rate can noticeably change the EMI and total interest paid over a long tenure.',
   },
   {
     q: 'Can home loan interest rates change during the loan tenure?',
-    a: 'Yes, if you have a floating rate loan, the applicable rate can change when the underlying benchmark is revised, which may affect your EMI or the remaining tenure. Fixed rate loans generally remain unchanged during the fixed period, though the exact terms — including whether the fixed period covers the entire tenure — vary by lender and product.',
+    a: 'Yes, if you have a floating rate loan, the applicable rate can change when the underlying benchmark is revised, which may affect your EMI or the remaining tenure. Fixed rate loans generally remain unchanged during the fixed period, though the exact terms, including whether the fixed period covers the entire tenure, vary by lender and product.',
   },
   {
     q: 'Can I negotiate my home loan interest rate?',
@@ -44,7 +44,7 @@ const faqs = [
   },
   {
     q: 'What should I compare apart from the home loan interest rate?',
-    a: 'Beyond the interest rate, it is worth comparing the type of rate (fixed or floating), the benchmark and reset mechanism, tenure, processing and other charges, prepayment or foreclosure terms, the resulting EMI, total repayment amount, and the overall loan terms and conditions. Comparing only the headline rate can miss significant differences in the total cost of borrowing.',
+    a: 'Beyond the interest rate, compare the type of rate (fixed or floating), the benchmark and reset mechanism, tenure, processing and other charges, prepayment or foreclosure terms, the resulting EMI, total repayment amount, and the overall loan terms and conditions. Comparing only the headline rate can miss significant differences in the total cost of borrowing.',
   },
 ];
 
@@ -164,7 +164,7 @@ export default function InterestRatesClient() {
             When you repay a home loan, each instalment is generally split into two parts: the
             principal (the portion that reduces your outstanding loan balance) and the interest (the
             cost of borrowing on the balance still outstanding). The interest rate, the loan amount
-            and the tenure together determine your EMI, or Equated Monthly Instalment — the fixed
+            and the tenure together determine your EMI, or Equated Monthly Instalment, the fixed
             monthly payment you make until the loan is repaid.
           </p>
           <p>
@@ -194,7 +194,7 @@ export default function InterestRatesClient() {
             to any single lender.
           </p>
           <p>
-            This is also why prepaying a portion of the loan, where the lender&apos;s terms allow
+            This is also why prepaying a portion of the loan, where the lender’s terms allow
             it, can reduce the outstanding principal earlier and potentially lower the total
             interest paid over the life of the loan. You can use a home loan EMI calculator to see
             how changes in tenure or prepayment can affect your EMI and overall interest outgo for
@@ -251,8 +251,8 @@ export default function InterestRatesClient() {
           </h3>
           <p>
             The property being financed, including factors such as its legal status, location and
-            market value, is generally assessed by the lender. The loan-to-value (LTV) ratio — the
-            proportion of the property&apos;s value being financed through the loan — is also
+            market value, is generally assessed by the lender. The loan-to-value (LTV) ratio, the
+            proportion of the property’s value being financed through the loan, is also
             typically taken into account.
           </p>
 
@@ -269,7 +269,7 @@ export default function InterestRatesClient() {
             Relationship With the Lender
           </h3>
           <p>
-            Some lenders may consider an applicant&apos;s existing relationship with them, such as a
+            Some lenders may consider an applicant’s existing relationship with them, such as a
             salary account, prior loans or other banking history, as one of several inputs while
             evaluating an application. This varies by lender and is not a guaranteed factor in every
             case.
@@ -279,15 +279,15 @@ export default function InterestRatesClient() {
             Market and Lending Conditions
           </h3>
           <p>
-            Broader market conditions, the lender&apos;s cost of funds, applicable regulatory
+            Broader market conditions, the lender’s cost of funds, applicable regulatory
             benchmarks and internal lending policies also play a role in how interest rates are set
             and revised from time to time. These conditions can change, which is one reason
             advertised rates are typically described as starting from a certain level rather than
             fixed for all applicants at all times.
           </p>
           <p>
-            It is worth remembering that no single factor discussed above determines approval or
-            pricing on its own — lenders typically evaluate applications holistically. You can check
+            No single factor discussed above determines approval or pricing on its own. Lenders
+            typically look at the application as a whole. You can check
             the general criteria lenders look for on the home loan eligibility page and see the
             documentation usually required on the home loan documents page.
           </p>
@@ -319,15 +319,15 @@ export default function InterestRatesClient() {
           <p>
             A floating interest rate is linked to a benchmark rate determined by the lender (such as
             an external benchmark rate mandated by the Reserve Bank of India, or an internal
-            reference rate, depending on the lender&apos;s structure). As the benchmark moves, the
-            applicable interest rate — and consequently the EMI or tenure — may be revised
+            reference rate, depending on the lender’s structure). As the benchmark moves, the
+            applicable interest rate, and with it the EMI or tenure, may be revised
             periodically. Floating rates can offer the potential benefit of lower interest costs if
             the benchmark declines, but they also carry the possibility of the rate increasing if
             the benchmark rises. The specific reset frequency and benchmark used should always be
             confirmed with the lender.
           </p>
           <p>
-            Neither structure is universally better — the right choice depends on your risk
+            Neither structure is universally better. The right choice depends on your risk
             appetite, how long you intend to hold the loan, your expectations about future rate
             movements, and how comfortable you are with potential EMI fluctuations. It is advisable
             to read the specific terms and conditions applicable to your loan, including reset
@@ -348,7 +348,7 @@ export default function InterestRatesClient() {
             Illustrative example (not a real or current offer): Suppose a borrower takes a home loan
             of ₹50,00,000 for a tenure of 20 years. If the applicable interest rate were,
             hypothetically, around 9% per annum, the EMI would be higher than it would be at a
-            hypothetical rate of 8% per annum for the same amount and tenure — and the total
+            hypothetical rate of 8% per annum for the same amount and tenure, and the total
             interest paid over 20 years would also be noticeably higher at the higher rate. These
             figures are purely illustrative to demonstrate the relationship between rate, EMI and
             total interest; they are not indicative of any current or lender-specific rate.
@@ -407,14 +407,14 @@ export default function InterestRatesClient() {
           />
           <p>
             These are general good practices rather than guarantees, and the final rate offered will
-            still depend on the lender&apos;s own assessment and policies at the time of
+            still depend on the lender’s own assessment and policies at the time of
             application.
           </p>
         </Section>
 
         <Section title="Home Loan Interest Rates for Different Borrower Profiles">
           <p>
-            Interest rates and terms offered can vary depending on a borrower&apos;s profile, since
+            Interest rates and terms offered can vary depending on a borrower’s profile, since
             lenders assess each application individually. Some broad examples of how profiles can
             differ include:
           </p>
@@ -428,8 +428,8 @@ export default function InterestRatesClient() {
             ]}
           />
           <p>
-            None of these profiles is assigned a fixed or predetermined rate — the examples above
-            simply illustrate that a lender&apos;s assessment is individualised rather than uniform
+            None of these profiles is assigned a fixed or predetermined rate. The examples above
+            simply illustrate that a lender’s assessment is individualised rather than uniform
             across all applicants.
           </p>
         </Section>
@@ -443,10 +443,10 @@ export default function InterestRatesClient() {
             have a different overall cost once these charges are taken into account.
           </p>
           <p>
-            Because of this, it is useful to review the complete set of loan terms — not the
-            interest rate in isolation — before deciding on a lender or a specific loan product.
+            Because of this, it is useful to review the complete set of loan terms, not just the
+            interest rate, before deciding on a lender or a specific loan product.
             Reading the sanction letter and loan agreement carefully, and asking the lender to
-            clarify any charges you don&apos;t understand, is a reasonable and prudent step before
+            clarify any charges you don’t understand, is a reasonable and prudent step before
             signing.
           </p>
         </Section>
@@ -463,7 +463,7 @@ export default function InterestRatesClient() {
               'Loan tenure and how it affects both EMI and total interest.',
               'Total repayment amount over the full tenure.',
               'Applicable charges, including processing and other fees.',
-              'Rate type — fixed, floating or hybrid.',
+              'Rate type: fixed, floating or hybrid.',
               'Reset conditions applicable to floating rates.',
               'Prepayment and foreclosure conditions.',
               'Your eligibility based on income, credit profile and other criteria.',
@@ -537,14 +537,14 @@ export default function InterestRatesClient() {
                 Explore Your Home Loan Options With Borrowww
               </h2>
               <p className="mt-3 text-sm leading-7 text-white/85">
-                Understanding how home loan interest rates are determined — and what you can
-                reasonably compare and check — puts you in a better position to evaluate offers
+                Understanding how home loan interest rates are determined, and what you can
+                reasonably compare and check, puts you in a better position to evaluate offers
                 rather than relying on the headline rate alone. Rates, charges and terms vary across
-                lenders and change over time, so it is always worth verifying the latest applicable
+                lenders and change over time, so always verify the latest applicable
                 terms directly with the lender before making a decision.
               </p>
               <p className="mt-4 text-sm leading-7 text-white/85">
-                Looking to understand your home loan options? Explore Borrowww&apos;s home loan
+                Looking to understand your home loan options? Explore Borrowww’s home loan
                 resources to compare the factors that can influence your borrowing decision, check
                 your eligibility, review the documents you may need, and use the EMI calculator to
                 plan your repayment before you apply.

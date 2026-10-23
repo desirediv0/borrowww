@@ -71,15 +71,15 @@ export default function Calculator() {
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-medium text-gray-900 mb-6">Financial Calculators</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Use our comprehensive financial tools to make informed decisions about your loans and
-            credit
+            Use our financial tools to make informed decisions about your loans and
+            credit.
           </p>
         </motion.div>
 
@@ -87,7 +87,7 @@ export default function Calculator() {
           {calculatorTools.map((tool, index) => (
             <motion.div
               key={tool.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
@@ -117,7 +117,7 @@ export default function Calculator() {
 
         {/* Quick EMI Calculator */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}

@@ -53,18 +53,18 @@ export default function HomeLoanClient() {
         },
         {
             icon: ClipboardCheck,
-            title: 'Fill up the basic details',
+            title: 'Fill in the basic details',
             desc: 'Provide your basic details via our simple lead form.',
         },
         {
             icon: FileCheck2,
             title: 'Provide all the documents',
-            desc: 'Submit required documents for quick verification.',
+            desc: 'Submit the required documents for quick verification.',
         },
         {
             icon: Users,
             title: 'Wait for discussion',
-            desc: 'Wait till our relationship manager contact you for detailed discussion.',
+            desc: 'Wait for our relationship manager to contact you for a detailed discussion.',
         },
     ];
 
@@ -104,12 +104,12 @@ export default function HomeLoanClient() {
     const loanTypes = [
         {
             title: 'Ready property loans',
-            desc: 'Ready property loans work well for buyers looking for quicker possession',
+            desc: 'Ready property loans work well for buyers looking for quicker possession.',
             icon: Home,
         },
         {
             title: 'Under-construction property loans',
-            desc: 'Under-construction property loans need a more flexible disbursement structure',
+            desc: 'Under-construction property loans need a more flexible disbursement structure.',
             icon: Building2,
         },
         {
@@ -119,20 +119,20 @@ export default function HomeLoanClient() {
         },
         {
             title: 'Plot loans',
-            desc: 'Plot loans help you get your dream land for building a home',
+            desc: 'Plot loans help you buy the land to build your dream home on.',
             icon: ShieldCheck,
         },
         {
             title: 'Plot and construction loan',
-            desc: 'Plot and construction loan lets you buy a land and customize construct your dream home',
+            desc: 'Plot and construction loan lets you buy land and build your dream home.',
             icon: FileCheck2,
         },
     ];
 
     const faqs = [
         {
-            q: 'What type of home loans can I apply for?',
-            a: 'Our platform allows you to choose from different types of home loans, including-',
+            q: 'What types of home loans can I apply for?',
+            a: 'Our platform allows you to choose from different types of home loans, including:',
             bullets: [
                 'Ready property loans',
                 'Under-construction property loans',
@@ -143,7 +143,7 @@ export default function HomeLoanClient() {
         },
         {
             q: 'Can Borrowww help me compare multiple banks?',
-            a: 'Our platform will connect borrowers with the leading Indian banks and NBFC’s. You can easily compare suitable loan options, best interest rates and repayment structures in one place.',
+            a: 'Our platform connects borrowers with leading Indian banks and NBFCs. You can compare suitable loan options, the best interest rates and repayment structures in one place.',
         },
         {
             q: 'Do you provide support during the loan process?',
@@ -151,15 +151,15 @@ export default function HomeLoanClient() {
         },
         {
             q: "What is the minimum salary required to get a home loan in India?",
-            a: "Most lenders look for a minimum monthly income of around ₹25,000 for salaried applicants, though this varies by city and bank. The bigger factor is your repayment capacity — banks usually keep your EMI within 40–50% of your net monthly income. A higher salary simply means you qualify for a larger loan amount."
+            a: "Most lenders look for a minimum monthly income of around ₹25,000 for salaried applicants, though this varies by city and bank. The bigger factor is your repayment capacity - banks usually keep your EMI within 40-50% of your net monthly income. A higher salary simply means you qualify for a larger loan amount."
         },
         {
             q: "How is home loan eligibility calculated on the basis of salary?",
-            a: "Lenders calculate eligibility using your net monthly income, existing EMIs, age, and your FOIR (Fixed Obligation to Income Ratio). As a rough guide, you can borrow around 60 times your monthly salary. So if you earn ₹50,000 a month, your eligibility could be close to ₹30 lakh — subject to your credit score and the property value."
+            a: "Lenders calculate eligibility using your net monthly income, existing EMIs, age, and your FOIR (Fixed Obligation to Income Ratio). As a rough guide, you can borrow around 60 times your monthly salary. So if you earn ₹50,000 a month, your eligibility could be close to ₹30 lakh - subject to your credit score and the property value."
         },
         {
             q: "What is the maximum home loan amount I can get?",
-            a: "The maximum amount depends on your income, age, credit profile, and the property’s market value. Banks typically finance up to 75–90% of the property cost, with the rest paid by you as a down payment. On the income side, your eligible amount is tied to how much EMI you can comfortably manage each month."
+            a: "The maximum amount depends on your income, age, credit profile, and the property’s market value. Banks typically finance up to 75-90% of the property cost, with the rest paid by you as a down payment. On the income side, your eligible amount is tied to how much EMI you can comfortably manage each month."
         },
         {
             q: "What documents are required to apply for a home loan?",
@@ -179,7 +179,7 @@ export default function HomeLoanClient() {
         },
         {
             q: "How long does it take to get a home loan approved?",
-            a: "With complete documents, in-principle approval can come through within 2–7 working days. Final sanction and disbursement depend on property verification and legal checks, which may add a couple of weeks. Submitting accurate paperwork the first time is the easiest way to avoid delays."
+            a: "With complete documents, in-principle approval can come through within 2-7 working days. Final sanction and disbursement depend on property verification and legal checks, which may add a couple of weeks. Submitting accurate paperwork the first time is the easiest way to avoid delays."
         },
         {
             q: "Can I get a home loan for an under-construction property?",
@@ -207,7 +207,7 @@ export default function HomeLoanClient() {
         },
         {
             q: "Is home loan interest tax-deductible in India?",
-            a: "Under the Old Tax Regime, interest on a self-occupied property is deductible up to ₹2 lakh/year under Section 24(b), and principal repayment up to ₹1.5 lakh under Section 80C. The New Tax Regime does not permit these deductions — confirm with a tax professional."
+            a: "Under the Old Tax Regime, interest on a self-occupied property is deductible up to ₹2 lakh/year under Section 24(b), and principal repayment up to ₹1.5 lakh under Section 80C. The New Tax Regime does not permit these deductions - confirm with a tax professional."
         }
     ];
 
@@ -308,19 +308,19 @@ export default function HomeLoanClient() {
                                 <Home className="h-4 w-4" /> Home Loan Assistance
                             </div>
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight font-medium text-black leading-tight">
-                                Home Loan in India – Check Eligibility by Salary & Get Low Interest Rates
+                                Home Loan in India - Check Eligibility by Salary & Get Low Interest Rates
                             </h1>
                             <h2 className="mt-5 text-xl sm:text-2xl font-medium text-gray-600 leading-relaxed">
-                                Simplify Your Home Buying Journey through <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>’s Secured Loans
+                                Make Home Buying Simpler with <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>’s Secured Loans
                             </h2>
                             <p className="mt-5 text-lg text-gray-600 max-w-2xl leading-relaxed">
-                                Are you in search of the right home loan provider platform? We understand that it takes time, there are so many aspects to consider. Then, the rates change, bank policies differ, and paperwork often feels exhausting after a point.
+                                Are you looking for the right home loan provider platform? We understand that it takes time; there are so many aspects to consider. Rates change, bank policies differ, and the paperwork often feels exhausting after a point.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed">
-                                That is why you must connect with us at <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a> and we know how to help you avoid that confusion. Our platform has strong partnerships with the leading banks and NBFC’s in India. We connect you with them and guide you through the loan process with practical support that actually helps.
+                                That is why you should connect with us at <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>. We know how to help you avoid that confusion. Our platform has strong partnerships with the leading banks and NBFCs in India. We connect you with them and guide you through the loan process with practical support that actually helps.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed font-light">
-                                Potential home buyers already know the property they want but others still believe in comparing projects, budgets and repayment plans. We work with both. Our team lets you explore suitable loan options based on your requirement instead of always choosing a one-size-fits-all solution.
+                                Some home buyers already know the property they want, while others are still comparing projects, budgets and repayment plans. We work with both. Our team helps you explore suitable loan options based on your requirements instead of a one-size-fits-all solution.
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                 <a
@@ -345,7 +345,7 @@ export default function HomeLoanClient() {
                                     <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] flex items-center justify-center text-white">
                                         <MessageSquareMore className="h-5 w-5" />
                                     </div>
-                                    <h3 className="text-xl font-semibold">Get Personalized Offers</h3>
+                                    <h3 className="text-xl font-semibold">Get Personalised Offers</h3>
                                 </div>
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div>
@@ -612,10 +612,10 @@ export default function HomeLoanClient() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 leading-tight">
-                            What’s Our Approach
+                            What’s Our Approach?
                         </h2>
                         <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                            Seeking a home loan from our platform is a simple process. All you must do is follow these simple steps:
+                            Getting a home loan through our platform is simple. Just follow these steps:
                         </p>
                     </div>
 
@@ -656,13 +656,13 @@ export default function HomeLoanClient() {
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
                                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">1</span>
-                                Home Loan Eligibility Calculator – Check How Much You Can Borrow
+                                Home Loan Eligibility Calculator - Check How Much You Can Borrow
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Your home loan eligibility depends primarily on four factors — monthly income, existing EMIs, age, and credit score. Most salaried applicants can borrow roughly 60 times their net monthly salary, subject to a FOIR cap of 60-70%.
+                                Your home loan eligibility depends primarily on four factors - monthly income, existing EMIs, age, and credit score. Most salaried applicants can borrow roughly 60 times their net monthly salary, subject to a FOIR cap of 60-70%.
                             </p>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Before you shortlist a property, it helps to know your borrowing power. Lenders don&apos;t look at income alone — they calculate eligibility using a formula that balances your take-home salary against your current financial commitments. Here&apos;s how the maths generally works:
+                                Before you shortlist a property, it helps to know your borrowing power. Lenders don’t look at income alone - they calculate eligibility using a formula that balances your take-home salary against your current financial commitments. Here’s how the maths generally works:
                             </p>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
                                 <table className="min-w-full divide-y divide-gray-200">
@@ -676,32 +676,32 @@ export default function HomeLoanClient() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹40,000</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹30–33 lakh</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹24,000–26,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹30-33 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹24,000-26,000</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹60,000</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹42–45 lakh</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹36,000–39,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹42-45 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹36,000-39,000</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹1,00,000</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹75–78 lakh</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹60,000–65,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹75-78 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹60,000-65,000</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">₹1,50,000</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹110–115 lakh</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹90,000–95,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹110-115 lakh</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹90,000-95,000</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Three levers move your eligibility the most: reducing existing EMIs before applying, adding a co-applicant&apos;s income, and improving your CIBIL score above 750. Self-employed applicants are assessed differently — lenders average the last 2–3 years of ITR income rather than a single payslip.
+                                Three levers move your eligibility the most: reducing existing EMIs before applying, adding a co-applicant’s income, and improving your CIBIL score above 750. Self-employed applicants are assessed differently - lenders average the last 2-3 years of ITR income rather than a single payslip.
                             </p>
                             <p className="text-gray-600 leading-relaxed">
-                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan experts — we&apos;ll match you with the lender offering the highest sanction at the lowest rate.
+                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan experts - we’ll match you with the lender offering the highest sanction at the lowest rate.
                             </p>
                         </div>
 
@@ -712,10 +712,10 @@ export default function HomeLoanClient() {
                                 How Does a Home Loan EMI Calculator Work?
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                EMI is calculated using your loan amount, interest rate, and tenure, via the formula <code className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded font-mono text-sm">EMI = [P × R × (1+R)^N] / [(1+R)^N – 1]</code>, where P is principal, R is monthly interest rate, and N is tenure in months.
+                                EMI is calculated using your loan amount, interest rate, and tenure, via the formula <code className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded font-mono text-sm">EMI = [P × R × (1+R)^N] / [(1+R)^N - 1]</code>, where P is principal, R is monthly interest rate, and N is tenure in months.
                             </p>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                An EMI has two moving parts every month: interest and principal. In the early years, a larger share goes toward interest; as tenure progresses, more reduces principal — this is why prepaying in the first 5–7 years saves the most interest.
+                                An EMI has two moving parts every month: interest and principal. In the early years, a larger share goes toward interest; as tenure progresses, more reduces principal - this is why prepaying in the first 5-7 years saves the most interest.
                             </p>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
                                 <table className="min-w-full divide-y divide-gray-200">
@@ -785,29 +785,29 @@ export default function HomeLoanClient() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Public Sector Banks</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">7.10% – 8.50%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.10% - 8.50%</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Salaried applicants, lowest processing fees</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Private Sector Banks</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">7.15% – 9.00%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.15% - 9.00%</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Faster processing, digital-first applicants</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Housing Finance Companies</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">7.25% – 9.50%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.25% - 9.50%</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Self-employed, lower credit score, informal income</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">NBFCs</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">8.00% – 10.00%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">8.00% - 10.00%</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Quick disbursal, flexible eligibility norms</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                The lowest advertised rate isn&apos;t always the cheapest loan — processing fees, prepayment charges, and mandatory insurance bundling change the real cost. This is where Borrowww adds value: we compare live offers across partner lenders and shortlist the option that&apos;s genuinely cheapest for your profile.
+                                The lowest advertised rate isn’t always the cheapest loan - processing fees, prepayment charges, and mandatory insurance bundling change the real cost. This is where Borrowww adds value: we compare live offers across partner lenders and shortlist the option that’s genuinely cheapest for your profile.
                             </p>
                         </div>
 
@@ -818,7 +818,7 @@ export default function HomeLoanClient() {
                                 How Does RBI Repo Rate Affect Your Home Loan EMI?
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Since most home loans are linked to an External Benchmark Lending Rate (EBLR) tied to the repo rate, any RBI rate change is passed on to your loan&apos;s interest rate — usually within one quarter.
+                                Since most home loans are linked to an External Benchmark Lending Rate (EBLR) tied to the repo rate, any RBI rate change is passed on to your loan’s interest rate - usually within one quarter.
                             </p>
                             <p className="text-gray-600 leading-relaxed mb-6">
                                 When RBI cuts the repo rate, banks on repo-linked loans typically reduce their lending rate, lowering either your EMI or tenure. When RBI hikes it, the reverse happens. Borrowers on older MCLR loans see changes with more delay since MCLR resets only at fixed intervals.
@@ -863,7 +863,7 @@ export default function HomeLoanClient() {
                                 Home Loan Processing Fees & Hidden Charges Explained
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Beyond the interest rate, home loans typically carry processing fees (0.25%–1%), legal/technical valuation charges, stamp duty on the loan agreement, and prepayment charges (mostly waived on floating-rate loans for individuals per RBI rules).
+                                Beyond the interest rate, home loans typically carry processing fees (0.25%-1%), legal/technical valuation charges, stamp duty on the loan agreement, and prepayment charges (mostly waived on floating-rate loans for individuals per RBI rules).
                             </p>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
                                 <table className="min-w-full divide-y divide-gray-200">
@@ -877,12 +877,12 @@ export default function HomeLoanClient() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Processing Fee</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">0.25% – 1% of loan amount</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">0.25% - 1% of loan amount</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Often negotiable; some lenders waive during festive offers</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Legal & Technical Valuation</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">₹3,000 – ₹10,000</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">₹3,000 - ₹10,000</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Covers property title check and site valuation</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
@@ -897,19 +897,19 @@ export default function HomeLoanClient() {
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">CERSAI Registration</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600 font-medium">₹100– ₹200 + GST</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600 font-medium">₹100-₹200 + GST</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Mandatory security interest registration</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Insurance Bundling</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Varies</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">Often optional — read the sanction letter carefully</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">Often optional - read the sanction letter carefully</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                Always ask for the fee break-up in writing before signing the sanction letter — some lenders bundle credit life insurance into the loan amount without clearly flagging it as optional. Our advisors review the full cost sheet with you before you commit.
+                                Always ask for the fee break-up in writing before signing the sanction letter - some lenders bundle credit life insurance into the loan amount without clearly flagging it as optional. Our advisors review the full cost sheet with you before you commit.
                             </p>
                         </div>
 
@@ -920,7 +920,7 @@ export default function HomeLoanClient() {
                                 Fixed vs Floating vs Repo-Linked Home Loan Rates: Which Should You Choose?
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Floating and repo-linked rates move with RBI policy and are usually cheaper long-term; fixed rates stay constant for a set period but typically start 0.5–1.5% higher and offer less flexibility on foreclosure.
+                                Floating and repo-linked rates move with RBI policy and are usually cheaper long-term; fixed rates stay constant for a set period but typically start 0.5-1.5% higher and offer less flexibility on foreclosure.
                             </p>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
                                 <table className="min-w-full divide-y divide-gray-200">
@@ -983,19 +983,19 @@ export default function HomeLoanClient() {
                             
                             <div className="space-y-8">
                                 <div className="border-l-4 border-[#3A6EA5] pl-4">
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">7. Women Home Loan Benefits</h4>
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Women Home Loan Benefits</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        Women borrowers typically get a 0.05%–0.10% interest rate concession from most banks, along with lower stamp duty (1–2% less) in several states when the property is registered solely or jointly in a woman&apos;s name.
+                                        Women borrowers typically get a 0.05%-0.10% interest rate concession from most banks, along with lower stamp duty (1-2% less) in several states when the property is registered solely or jointly in a woman’s name.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
-                                        This concession applies whether the woman is the sole applicant or a co-applicant, provided she is a co-owner in most bank policies. States like Delhi, Haryana, UP, and Rajasthan offer reduced stamp duty for women property owners — the combined saving can run into lakhs on a higher-value property.
+                                        This concession applies whether the woman is the sole applicant or a co-applicant, provided she is a co-owner in most bank policies. States like Delhi, Haryana, UP, and Rajasthan offer reduced stamp duty for women property owners - the combined saving can run into lakhs on a higher-value property.
                                     </p>
                                 </div>
 
                                 <div className="border-l-4 border-[#2D3E50] pl-4">
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">8. Joint Home Loan Benefits</h4>
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Joint Home Loan Benefits</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        A joint home loan combines the income of two applicants to increase eligibility, and allows both co-borrowers to separately claim tax deductions under Section 80C (principal) and Section 24(b) (interest), up to ₹1.5 lakh and ₹2 lakh respectively — effectively doubling the household&apos;s tax benefit if both are co-owners and co-applicants.
+                                        A joint home loan combines the income of two applicants to increase eligibility, and allows both co-borrowers to separately claim tax deductions under Section 80C (principal) and Section 24(b) (interest), up to ₹1.5 lakh and ₹2 lakh respectively - effectively doubling the household’s tax benefit if both are co-owners and co-applicants.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
                                         For eligibility purposes, adding a working spouse or parent as co-applicant often unlocks a meaningfully higher loan amount than either applicant could get alone.
@@ -1003,29 +1003,29 @@ export default function HomeLoanClient() {
                                 </div>
 
                                 <div className="border-l-4 border-[#3A6EA5] pl-4">
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">9. Home Loan for Government Employees</h4>
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Home Loan for Government Employees</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
                                         Government employees (central, state, PSU) often get preferential rates due to income stability, sometimes with relaxed FOIR norms and reduced documentation.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
-                                        Some public sector banks run dedicated schemes for government staff with marginally lower processing fees. It&apos;s worth explicitly asking your relationship manager whether a special scheme applies to your department.
+                                        Some public sector banks run dedicated schemes for government staff with marginally lower processing fees. It’s worth explicitly asking your relationship manager whether a special scheme applies to your department.
                                     </p>
                                 </div>
 
                                 <div className="border-l-4 border-[#2D3E50] pl-4">
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">10. Home Loan for Doctors and Professionals</h4>
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Home Loan for Doctors and Professionals</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        Many lenders offer specialised schemes for doctors, CAs, CS, and other qualified professionals, with higher eligibility multiples (sometimes up to 70–80x monthly income) and relaxed income-proof requirements.
+                                        Many lenders offer specialised schemes for doctors, CAs, CS, and other qualified professionals, with higher eligibility multiples (sometimes up to 70-80x monthly income) and relaxed income-proof requirements.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
-                                        Since professional income can be less predictable than a salaried applicant&apos;s, lenders assessing doctors and professionals typically look at 2–3 years of ITR and practice stability rather than payslips.
+                                        Since professional income can be less predictable than a salaried applicant’s, lenders assessing doctors and professionals typically look at 2-3 years of ITR and practice stability rather than payslips.
                                     </p>
                                 </div>
 
                                 <div className="border-l-4 border-[#3A6EA5] pl-4">
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">11. Home Loan for Senior Citizens</h4>
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Home Loan for Senior Citizens</h4>
                                     <p className="text-gray-600 text-sm leading-relaxed">
-                                        Senior citizens can get home loans, but tenure is typically capped based on age at maturity (commonly 70–75 years), which shortens tenure and raises the EMI compared to a younger applicant for the same loan amount.
+                                        Senior citizens can get home loans, but tenure is typically capped based on age at maturity (commonly 70-75 years), which shortens tenure and raises the EMI compared to a younger applicant for the same loan amount.
                                     </p>
                                     <p className="text-gray-600 text-sm leading-relaxed mt-2">
                                         Adding a younger co-applicant (often an adult child) as co-borrower is the most common way senior citizens extend their effective tenure and improve eligibility.
@@ -1034,10 +1034,10 @@ export default function HomeLoanClient() {
                             </div>
                         </div>
 
-                        {/* 12. New Tax Regime vs Old Tax Regime */}
+                        {/* 8. New Tax Regime vs Old Tax Regime */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">12</span>
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">8</span>
                                 New Tax Regime vs Old Tax Regime: Which Is Better for Home Loan Borrowers?
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
@@ -1077,27 +1077,27 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                        If you&apos;re planning to buy with a loan and don&apos;t have many other deductions, running both regimes through a calculator before filing is worthwhile — for many borrowers in the early years of repayment (highest interest component), the Old Regime still results in lower tax outgo. This is general information, not personalised advice — confirm your specific position with a qualified tax consultant.
+                                        If you’re planning to buy with a loan and don’t have many other deductions, running both regimes through a calculator before filing is worthwhile - for many borrowers in the early years of repayment (highest interest component), the Old Regime still results in lower tax outgo. This is general information, not personalised advice - confirm your specific position with a qualified tax consultant.
                                     </p>
                         </div>
 
-                        {/* 13. Home Loan Checklist */}
+                        {/* 9. Home Loan Checklist */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">13</span>
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">9</span>
                                 Home Loan Checklist: What to Prepare Before You Apply
                             </h3>
                             
                             <ul className="grid sm:grid-cols-2 gap-4 mb-6">
                                 {[
                                     "CIBIL/credit score checked and above 700 (ideally 750+)",
-                                    "Last 3 months' salary slips (salaried) or 2–3 years' ITR (self-employed)",
+                                    "Last 3 months' salary slips (salaried) or 2-3 years' ITR (self-employed)",
                                     "Last 12 months' bank statements showing salary/income credits",
                                     "Identity proof: PAN card and Aadhaar card",
-                                    "Address proof (Aadhaar, voter card, driving license)",
+                                    "Address proof (Aadhaar, voter card, driving licence)",
                                     "Property documents: sale agreement, title deed, approved building plan",
                                     "Builder's NOC and RERA registration number (under-construction property)",
-                                    "Down payment amount arranged (typically 10–25% of property value)",
+                                    "Down payment amount arranged (typically 10-25% of property value)",
                                     "Existing loan/EMI details for FOIR calculation",
                                     "Employment continuity proof (offer letter, experience letter, or Form 16)"
                                 ].map((item, idx) => (
@@ -1113,10 +1113,10 @@ export default function HomeLoanClient() {
                             </p>
                         </div>
 
-                        {/* 14. Home Loan Myths vs Facts */}
+                        {/* 10. Home Loan Myths vs Facts */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">14</span>
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">10</span>
                                 Home Loan Myths vs Facts
                             </h3>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
@@ -1129,12 +1129,12 @@ export default function HomeLoanClient() {
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         {[
-                                            { m: "You need a CIBIL score of 900 to get approved", f: "Scores max out at 900, but most lenders approve comfortably at 750+; some approve even at 650–700 with conditions" },
-                                            { m: "The lowest advertised rate is always cheapest", f: "Processing fees, insurance bundling, and prepayment terms can make a &apos;lower rate&apos; loan costlier overall" },
+                                            { m: "You need a CIBIL score of 900 to get approved", f: "Scores max out at 900, but most lenders approve comfortably at 750+; some approve even at 650-700 with conditions" },
+                                            { m: "The lowest advertised rate is always cheapest", f: "Processing fees, insurance bundling, and prepayment terms can make a ‘lower rate’ loan costlier overall" },
                                             { m: "Foreclosing always attracts a penalty", f: "RBI mandates zero foreclosure charges on floating-rate loans for individual borrowers" },
-                                            { m: "Self-employed can&apos;t get home loans easily", f: "Many lenders and HFCs specialise in self-employed profiles with tailored income assessment" },
+                                            { m: "Self-employed can’t get home loans easily", f: "Many lenders and HFCs specialise in self-employed profiles with tailored income assessment" },
                                             { m: "You must bank with a lender to get a loan there", f: "Home loans are widely available even where you hold no existing account" },
-                                            { m: "A rejected application stays rejected everywhere", f: "Different lenders have different credit policies — rejection at one doesn&apos;t mean rejection elsewhere" }
+                                            { m: "A rejected application stays rejected everywhere", f: "Different lenders have different credit policies - rejection at one doesn’t mean rejection elsewhere" }
                                         ].map((item, idx) => (
                                             <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
                                                 <td className="px-6 py-4 text-sm font-medium text-red-700 bg-red-50/30">{item.m}</td>
@@ -1146,14 +1146,14 @@ export default function HomeLoanClient() {
                             </div>
                         </div>
 
-                        {/* 15. Complete Home Buying Cost Breakdown */}
+                        {/* 11. Complete Home Buying Cost Breakdown */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">15</span>
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">11</span>
                                 Complete Home Buying Cost Breakdown (Beyond the Property Price)
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Beyond the property&apos;s sale price, buyers should budget an additional 7–10% for stamp duty, registration, GST (on under-construction property), brokerage, and loan-related charges.
+                                Beyond the property’s sale price, buyers should budget an additional 7-10% for stamp duty, registration, GST (on under-construction property), brokerage, and loan-related charges.
                             </p>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
                                 <table className="min-w-full divide-y divide-gray-200">
@@ -1166,7 +1166,7 @@ export default function HomeLoanClient() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Stamp Duty</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">3% – 7% of property value (state-dependent)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">3% - 7% of property value (state-dependent)</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Registration Charges</td>
@@ -1174,15 +1174,15 @@ export default function HomeLoanClient() {
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">GST (under-construction only)</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">1% (affordable housing) – 5% (others)</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">1% (affordable housing) - 5% (others)</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Loan Processing & Legal Fees</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">0.25% – 1% of loan amount</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">0.25% - 1% of loan amount</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Brokerage (if applicable)</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">1% – 2% of property value</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">1% - 2% of property value</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Interior & Fit-Out (optional)</td>
@@ -1196,14 +1196,14 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                A common budgeting mistake is arranging only the down payment and missing stamp duty and registration, which together can add 4–8% on top of the sale price. Factor these into your total cash requirement before finalising a property.
+                                A common budgeting mistake is arranging only the down payment and missing stamp duty and registration, which together can add 4-8% on top of the sale price. Factor these into your total cash requirement before finalising a property.
                             </p>
                         </div>
 
-                        {/* 16. Home Loan Trends in India */}
+                        {/* 12. Home Loan Trends in India */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">16</span>
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">12</span>
                                 Home Loan Trends in India (2026)
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
@@ -1230,10 +1230,10 @@ export default function HomeLoanClient() {
                             </p>
                         </div>
 
-                        {/* 17. Home Loan Glossary */}
+                        {/* 13. Home Loan Glossary */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">17</span>
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">13</span>
                                 Home Loan Glossary: Key Terms Explained
                             </h3>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
@@ -1246,11 +1246,11 @@ export default function HomeLoanClient() {
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         {[
-                                            { t: "FOIR", m: "Fixed Obligation to Income Ratio — share of income already committed to EMIs/obligations" },
-                                            { t: "EBLR", m: "External Benchmark Lending Rate — the repo-linked rate most floating home loans follow today" },
-                                            { t: "MCLR", m: "Marginal Cost of Funds based Lending Rate — an older benchmark still used by some lenders" },
+                                            { t: "FOIR", m: "Fixed Obligation to Income Ratio - share of income already committed to EMIs/obligations" },
+                                            { t: "EBLR", m: "External Benchmark Lending Rate - the repo-linked rate most floating home loans follow today" },
+                                            { t: "MCLR", m: "Marginal Cost of Funds based Lending Rate - an older benchmark still used by some lenders" },
                                             { t: "Pre-EMI", m: "Interest-only payment made during construction, before full EMI begins" },
-                                            { t: "LTV Ratio", m: "Loan-to-Value ratio — percentage of property value a lender is willing to finance" },
+                                            { t: "LTV Ratio", m: "Loan-to-Value ratio - percentage of property value a lender is willing to finance" },
                                             { t: "CERSAI", m: "Central Registry that records the security interest created on your property" },
                                             { t: "Sanction Letter", m: "Formal document confirming loan approval, amount, rate, and terms" },
                                             { t: "Disbursement", m: "Actual release of loan funds, in full or in stages" },
@@ -1267,11 +1267,11 @@ export default function HomeLoanClient() {
                             </div>
                         </div>
 
-                        {/* 18. Your Home Loan Journey with Borrowww */}
+                        {/* 14. Your Home Loan Process with Borrowww */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">18</span>
-                                Your Home Loan Journey with Borrowww: Step-by-Step Timeline
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">14</span>
+                                Your Home Loan Process with Borrowww: Step-by-Step Timeline
                             </h3>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
                                 <table className="min-w-full divide-y divide-gray-200">
@@ -1285,12 +1285,12 @@ export default function HomeLoanClient() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         {[
                                             { s: "1. Enquiry", w: "Share your requirement via lead form or call", t: "Same day" },
-                                            { s: "2. Eligibility Check", w: "Team assesses income, credit score, and lender fit", t: "1–2 days" },
-                                            { s: "3. Lender Shortlisting", w: "Compare offers across partner banks/NBFCs for your profile", t: "1–2 days" },
-                                            { s: "4. Document Submission", w: "You submit KYC, income, and property documents", t: "1–3 days" },
-                                            { s: "5. In-Principle Approval", w: "Lender issues conditional sanction based on credit assessment", t: "2–7 working days" },
-                                            { s: "6. Property Verification", w: "Legal and technical valuation of the property", t: "3–10 working days" },
-                                            { s: "7. Final Sanction & Disbursement", w: "Loan agreement signed and funds released", t: "3–7 working days after verification" }
+                                            { s: "2. Eligibility Check", w: "Team assesses income, credit score, and lender fit", t: "1-2 days" },
+                                            { s: "3. Lender Shortlisting", w: "Compare offers across partner banks/NBFCs for your profile", t: "1-2 days" },
+                                            { s: "4. Document Submission", w: "You submit KYC, income, and property documents", t: "1-3 days" },
+                                            { s: "5. In-Principle Approval", w: "Lender issues conditional sanction based on credit assessment", t: "2-7 working days" },
+                                            { s: "6. Property Verification", w: "Legal and technical valuation of the property", t: "3-10 working days" },
+                                            { s: "7. Final Sanction & Disbursement", w: "Loan agreement signed and funds released", t: "3-7 working days after verification" }
                                         ].map((item, idx) => (
                                             <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
                                                 <td className="px-6 py-4 text-sm font-semibold text-gray-900">{item.s}</td>
@@ -1302,15 +1302,15 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                Timelines vary by lender workload, property type, and how quickly documents are submitted. Our relationship managers stay involved at every stage, so you always know exactly what&apos;s pending and with whom.
+                                Timelines vary by lender workload, property type, and how quickly documents are submitted. Our relationship managers stay involved at every stage, so you always know exactly what’s pending and with whom.
                             </p>
                         </div>
 
-                        {/* 19. How We've Helped Borrowers */}
+                        {/* 15. How We've Helped Borrowers */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">19</span>
-                                How We&apos;ve Helped Borrowers: Illustrative Case Studies
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">15</span>
+                                How We’ve Helped Borrowers: Illustrative Case Studies
                             </h3>
                             
                             <div className="space-y-6">
@@ -1337,10 +1337,10 @@ export default function HomeLoanClient() {
                             </div>
                         </div>
 
-                        {/* 20. Bank vs NBFC vs Housing Finance Company */}
+                        {/* 16. Bank vs NBFC vs Housing Finance Company */}
                         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-3">
-                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">20</span>
+                                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#3A6EA5]/10 text-[#3A6EA5] text-sm font-bold flex-shrink-0">16</span>
                                 Bank vs NBFC vs Housing Finance Company: Which Should You Choose?
                             </h3>
                             <div className="overflow-x-auto my-6 rounded-2xl border border-gray-200 shadow-sm">
@@ -1388,7 +1388,7 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                There&apos;s no universally &apos;best&apos; category — the right choice depends on your income type, credit history, and how quickly you need funds. This is precisely why Borrowww works across all three lender categories rather than pushing one type of institution: we match your specific profile to the lender most likely to approve you at the best available rate.
+                                There’s no universally ‘best’ category - the right choice depends on your income type, credit history, and how quickly you need funds. This is precisely why Borrowww works across all three lender categories rather than pushing one type of institution: we match your specific profile to the lender most likely to approve you at the best available rate.
                             </p>
                         </div>
                     </div>

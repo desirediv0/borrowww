@@ -48,7 +48,7 @@ const checklist = [
     {
         icon: Building2,
         title: 'Direct Disbursement',
-        desc: 'Make sure the app is linked to a proper licensed bank or NBFC. This ensures it’s safe and regulated.'
+        desc: 'Make sure the app is linked to a properly licensed bank or NBFC. This ensures it’s safe and regulated.'
     },
     {
         icon: Lock,
@@ -60,14 +60,14 @@ const checklist = [
 const faqs = [
     {
         q: '1. What’s the usual interest rate for instant loans in Ghaziabad?',
-        a: 'Right now, interest rates are at a range of 9.99% - 14% per year if the borrower\'s CIBIL score is good. If your score is lower or loan amount is small, rates can be higher. Always check your KFS for the total borrowing cost.'
+        a: 'Right now, interest rates range from 9.99% to 14% per year if the borrower\'s CIBIL score is good. If your score is lower or the loan amount is small, rates can be higher. Always check your KFS for the total borrowing cost.'
     },
     {
         q: '2. Just how instant is instant?',
         a: 'With most digital lenders, you’ll usually get approval in under two minutes thanks to AI. After you sign using e-NACH or Aadhaar OTP, the money generally reaches your account within 30 minutes to 2 hours.'
     },
     {
-        q: '3. CIBIL score under 650—can you still get a loan?',
+        q: '3. CIBIL score under 650 - can you still get a loan?',
         a: 'Yes, many fintech lenders in Ghaziabad use “Alternative Data Scoring.” They also check things like utility bills, GST records, and bank transaction patterns. If your score’s low, you might pay higher interest, but getting a loan is still possible.'
     },
     {
@@ -76,7 +76,7 @@ const faqs = [
     },
     {
         q: '5. Are there hidden charges or processing fees?',
-        a: 'All charges are clearly listed in the Key Fact Statement (KFS). Usually, there’s a one-time processing fee of around 1% to 3% plus GST. Under the new rules, once a lender signs, you cannot add any surprise changes later.'
+        a: 'All charges are clearly listed in the Key Fact Statement (KFS). Usually, there’s a one-time processing fee of around 1% to 3% plus GST. Under the new rules, once the loan is signed, the lender cannot add any surprise charges later.'
     }
 ];
 
@@ -191,7 +191,7 @@ export default function InstantLoanGhaziabadClient() {
                                 Instant Loan Services in <span className="text-yellow-400">Ghaziabad</span>
                             </h1>
                             <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
-                                Speedy, Secure, and Smooth — get credit solutions in minutes, not days. Fully RBI-compliant lending with zero foreclosure charges.
+                                Speedy, Secure, and Smooth - get credit solutions in minutes, not days. Fully RBI-compliant lending with zero foreclosure charges.
                             </p>
                             <div className="flex flex-wrap gap-6 mb-10">
                                 <div className="flex items-center gap-3">
@@ -223,7 +223,7 @@ export default function InstantLoanGhaziabadClient() {
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-gray-900">Instant Approval</h3>
-                                        <p className="text-sm text-gray-500">Fill details to get started</p>
+                                        <p className="text-sm text-gray-500">Fill in your details to get started</p>
                                     </div>
                                 </div>
                                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -304,7 +304,7 @@ export default function InstantLoanGhaziabadClient() {
                         {[
                             { title: 'Speedy', desc: 'Approval in under 2 minutes with AI-driven credit checks.', icon: Zap, color: 'text-yellow-500' },
                             { title: 'Secure', desc: 'RBI-compliant processes ensuring your data and funds are safe.', icon: ShieldCheck, color: 'text-green-500' },
-                            { title: 'Smooth', desc: '100% digital journey with zero paperwork or branch visits.', icon: CheckCircle2, color: 'text-blue-500' }
+                            { title: 'Smooth', desc: '100% digital process with zero paperwork or branch visits.', icon: CheckCircle2, color: 'text-blue-500' }
                         ].map((item, i) => (
                             <div key={i} className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-xl hover:-translate-y-2 transition-all group">
                                 <div className={`w-16 h-16 rounded-2xl bg-gray-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
@@ -323,16 +323,16 @@ export default function InstantLoanGhaziabadClient() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Why Ghaziabad loves digital instant loans?</h2>
+                            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Why does Ghaziabad love digital instant loans?</h2>
                             <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
                                 <p>
-                                    Ghaziabad is growing really fast, especially for professionals and small business owners. Surprise medical bills, AC breakdowns, or sudden business deals can come up anytime. In such situations, you don’t want to wait for days—you need money quickly.
+                                    Ghaziabad is growing really fast, especially for professionals and small business owners. Surprise medical bills, AC breakdowns, or sudden business deals can come up anytime. In such situations, you don’t want to wait for days - you need money quickly.
                                 </p>
                                 <p>
                                     Lenders now use <strong>Smart AI</strong> to check your credit in real time. This really helps younger professionals or small shop owners in areas like <strong>Raj Nagar Extension</strong> who may not have a <Link href="/credit-check" className="text-[#3A6EA5] font-semibold underline underline-offset-4">CIBIL history</Link> but do have regular digital transactions.
                                 </p>
                                 <p>
-                                    With the new <strong>RBI Digital Lending Rules in 2026</strong>, things feel a lot safer. The foreclosure charges or pre-payment charges are zeroed out—if you have funds, you can just pay the outstanding principal and your loan is closed. No penalties, no drama.
+                                    With the new <strong>RBI Digital Lending Rules in 2026</strong>, things feel a lot safer. Foreclosure and prepayment charges are now zero, so if you have funds, you can just pay the outstanding principal and your loan is closed. No penalties, no drama.
                                 </p>
                             </div>
                         </div>
@@ -379,7 +379,7 @@ export default function InstantLoanGhaziabadClient() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <div>
-                            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">Common reasons for using Instant Loans</h2>
+                            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">Common reasons for using instant loans</h2>
                             <div className="grid sm:grid-cols-2 gap-4">
                                 {commonReasons.map((r, i) => (
                                     <div key={i} className="flex items-center gap-3 p-4 rounded-2xl bg-gray-50 border border-gray-100">
@@ -393,7 +393,7 @@ export default function InstantLoanGhaziabadClient() {
                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
                             <h3 className="text-2xl font-bold mb-4">No Collateral Required</h3>
                             <p className="text-white/80 text-lg leading-relaxed mb-6">
-                                Whether you need ₹5,000 or ₹500,000, these unsecured personal loans are based on your verified income and how you manage your money. No assets needed.
+                                Whether you need ₹5,000 or ₹5,00,000, these unsecured personal loans are based on your verified income and how you manage your money. No assets needed.
                             </p>
                             <div className="flex items-center gap-4 py-4 border-t border-white/10">
                                 <CreditCard className="h-8 w-8 text-yellow-400" />

@@ -9,7 +9,7 @@ import { ChevronDown, PhoneCall } from 'lucide-react';
 function FaqItem({ item, isOpen, onToggle }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
@@ -28,7 +28,7 @@ function FaqItem({ item, isOpen, onToggle }) {
       </button>
       {isOpen ? (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
+          initial={false}
           animate={{ opacity: 1, height: 'auto' }}
           className="mt-4 text-sm leading-7 text-slate-600"
           dangerouslySetInnerHTML={{ __html: item.answer }}
@@ -56,7 +56,7 @@ export default function SeoContentBlock({
           {sections.map((section, idx) => (
             <motion.article
               key={section.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}

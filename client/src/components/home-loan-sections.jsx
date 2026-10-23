@@ -26,9 +26,9 @@ export default function HomeLoanSections() {
               </h2>
 
               <p className="text-gray-800 md:text-lg leading-relaxed">
-                Think a lower rate&apos;s out of reach? Our Home Loan Health Check can reveal your
+                Think a lower rate’s out of reach? Our Home Loan Health Check can reveal your
                 savings potential. Discover how adjusting your loan might reduce your monthly
-                payments and loan term. Rates can vary—our brokers are here to offer personalised
+                payments and loan term. Rates can vary, and our brokers are here to offer personalised
                 advice.
               </p>
 
@@ -55,7 +55,7 @@ export default function HomeLoanSections() {
             </div>
             <div className="space-y-8 py-16 px-10">
               <h2 className="text-4xl lg:text-5xl font-medium text-gray-800 leading-tight">
-                A rate cut is here. Here&apos;s how we can help
+                A rate cut is here. Here’s how we can help
               </h2>
 
               <div className="space-y-6">
@@ -99,7 +99,7 @@ export default function HomeLoanSections() {
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
                       Our Home Loan Specialists do the work. They liaise with the lender, keep you
-                      updated on your loan&apos;s progress, and are available to answer your
+                      updated on your loan’s progress, and are available to answer your
                       questions via phone, email or live chat.
                     </p>
                   </div>

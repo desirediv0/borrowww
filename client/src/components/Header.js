@@ -59,7 +59,7 @@ export default function Header() {
     <>
       {/* Top Banner */}
       <motion.div
-        initial={{ y: -100 }}
+        initial={false}
         animate={{ y: 0 }}
         className="bg-[var(--primary-blue-dark)] text-white py-3 px-4 text-center text-sm relative"
       >
@@ -74,7 +74,7 @@ export default function Header() {
       <motion.header
         className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-white'
           }`}
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
@@ -100,7 +100,7 @@ export default function Header() {
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                   className="relative"

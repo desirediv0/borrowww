@@ -4,7 +4,7 @@ import LoanAdvisorGurgaonClient from './LoanAdvisorGurgaonClient';
 export const metadata = buildMetadata({
   title: 'Loan Advisor in Gurgaon for Home Loan & Property Loan',
   description:
-    'Find the best loan advisor in Gurgaon for home loan & loan against property. Get lowest interest rates, maximum eligibility & expert guidance today.',
+    'Find the best loan advisor in Gurgaon for home loan & loan against property. Get the lowest interest rates, maximum eligibility & expert guidance today.',
   path: '/loan-advisor-gurgaon-for-home-loan',
   keywords: [
     'loan advisor in Gurgaon',

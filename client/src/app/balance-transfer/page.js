@@ -5,7 +5,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata = buildMetadata({
   title: 'Home Loan Balance Transfer: Save Money with Lower Interest Rates | Borrowww',
   description:
-    'Everything you need to know about transferring your home loan to a new lender. Compare costs, analyze savings, check RBI guidelines, and calculate your break-even point.',
+    'Everything you need to know about transferring your home loan to a new lender. Compare costs, analyse savings, check RBI guidelines, and calculate your break-even point.',
   path: '/balance-transfer',
 });
 

@@ -5,7 +5,7 @@ import EligibilityClient from './EligibilityClient';
 export const metadata = buildMetadata({
   title: 'Home Loan Eligibility: Criteria, Salary & Calculation',
   description:
-    'Check home loan eligibility in India: how lenders assess income, age, credit score, existing EMIs and property value, with clear salary-based.',
+    'Check home loan eligibility in India: how lenders assess income, age, credit score, existing EMIs and property value, with clear salary-based examples.',
   path: '/home-loan/eligibility',
   keywords: [
     'home loan eligibility',
@@ -43,7 +43,7 @@ const faqSchema = {
       name: 'How much home loan can I get on a ₹50,000 salary?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'It depends on the lender policy, your EMIs, rate and tenure. As an illustration, with no existing EMIs, a 50% income limit and an 8.5% rate, a ₹50,000 net salary supports about ₹28.8 lakh over 20 years or about ₹32.5 lakh over 30 years. Actual offers can be higher or lower.',
+        text: 'It depends on the lender’s policy, your EMIs, rate and tenure. As an illustration, with no existing EMIs, a 50% income limit and an 8.5% rate, a ₹50,000 net salary supports about ₹28.8 lakh over 20 years or about ₹32.5 lakh over 30 years. Actual offers can be higher or lower.',
       },
     },
     {
@@ -51,7 +51,7 @@ const faqSchema = {
       name: 'What is the minimum salary required for a home loan?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'There is no single minimum across lenders. Some list around ₹10,000 per month for salaried applicants, while others set higher thresholds. In practice, the loan amount you need matters more, because your income must support the EMI for that amount within the lender repayment limit.',
+        text: 'There is no single minimum across lenders. Some list around ₹10,000 per month for salaried applicants, while others set higher thresholds. In practice, the loan amount you need matters more, because your income must support the EMI for that amount within the lender’s repayment limit.',
       },
     },
     {
@@ -91,7 +91,7 @@ const faqSchema = {
       name: 'Can a co-applicant improve home loan eligibility?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Often, yes. An earning co-applicant such as a spouse or parent lets the lender consider combined income, which can increase the eligible amount. The co-applicant credit history and obligations are assessed too. An older co-applicant may reduce the tenure offered, so their age also matters.',
+        text: 'Often, yes. An earning co-applicant such as a spouse or parent lets the lender consider combined income, which can increase the eligible amount. The co-applicant’s credit history and obligations are assessed too. An older co-applicant may reduce the tenure offered, so their age also matters.',
       },
     },
     {

@@ -87,7 +87,7 @@ export default function CookieConsent() {
                             We value your privacy
                         </h3>
                         <p className="text-gray-600 text-sm">
-                            We use cookies to enhance your browsing experience and analyze site traffic.
+                            We use cookies to improve your browsing experience and analyse site traffic.
                             By clicking &quot;Accept&quot;, you consent to our use of cookies for analytics purposes.
                         </p>
                     </div>

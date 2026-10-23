@@ -160,7 +160,7 @@ export default function ReferralClient() {
         return (
             <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-[#3A6EA5]/10 flex items-center justify-center py-12 px-4">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={false}
                     animate={{ opacity: 1, scale: 1 }}
                     className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center"
                 >
@@ -169,7 +169,7 @@ export default function ReferralClient() {
                     </div>
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">Thank You!</h2>
                     <p className="text-gray-600 mb-6">
-                        Your referral has been submitted successfully. Our team will contact your friend soon!
+                        Your referral has been submitted successfully. Our team will contact your friend soon.
                     </p>
                     <div className="flex flex-col gap-3">
                         <button
@@ -195,7 +195,7 @@ export default function ReferralClient() {
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-10"
                 >
@@ -206,19 +206,19 @@ export default function ReferralClient() {
                         Refer a Friend
                     </h1>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Know someone who needs a loan? Refer them to us and help them get the best financial assistance!
+                        Know someone who needs a loan? Refer them to us and help them get the best financial assistance.
                     </p>
                 </motion.div>
 
                 {/* Benefits */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                     className="grid md:grid-cols-3 gap-4 mb-10"
                 >
                     {[
-                        { icon: Users, title: 'Help Your Friends', desc: 'Connect them with best loan options' },
+                        { icon: Users, title: 'Help Your Friends', desc: 'Connect them with the best loan options' },
                         { icon: Heart, title: 'Quick Processing', desc: 'Priority handling for referrals' },
                         { icon: CheckCircle, title: 'Expert Guidance', desc: 'Personal loan advisor support' },
                     ].map((item, i) => (
@@ -234,7 +234,7 @@ export default function ReferralClient() {
 
                 {/* Form */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                     className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 border border-gray-100"
@@ -305,12 +305,12 @@ export default function ReferralClient() {
                         <div>
                             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                                 <Users className="h-5 w-5 text-[#3A6EA5]" />
-                                Friend&apos;s Details
+                                Friend’s Details
                             </h3>
                             <div className="grid md:grid-cols-3 gap-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Friend&apos;s Name *
+                                        Friend’s Name *
                                     </label>
                                     <input
                                         type="text"
@@ -325,7 +325,7 @@ export default function ReferralClient() {
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Friend&apos;s Phone *
+                                        Friend’s Phone *
                                     </label>
                                     <div className="relative">
                                         <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -344,7 +344,7 @@ export default function ReferralClient() {
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                                        Friend&apos;s Email (Optional)
+                                        Friend’s Email (Optional)
                                     </label>
                                     <div className="relative">
                                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />

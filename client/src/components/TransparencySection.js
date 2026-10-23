@@ -22,7 +22,7 @@ export default function TransparencySection() {
       id: 1,
       title: 'Reach out to us, anytime',
       description:
-        'Call, chat, or share your concerns — your Borrowww advisor responds personally and guides you throughout your loan journey.',
+        'Call, chat, or share your concerns - your Borrowww advisor responds personally and guides you through your loan process.',
       phoneContent: {
         header: 'Borrowww Advisor',
         advisor: {
@@ -64,7 +64,7 @@ export default function TransparencySection() {
           {
             sender: 'advisor',
             message:
-              'We’re always here to help you with anything related to your loan — better rates, savings tips, transfer help, or financial planning.\n\nJust message us anytime!',
+              'We’re always here to help you with anything related to your loan - better rates, savings tips, transfer help, or financial planning.\n\nJust message us anytime!',
           },
         ],
         buttons: [
@@ -78,7 +78,7 @@ export default function TransparencySection() {
       id: 3,
       title: 'Smart, clutter-free updates',
       description:
-        'Track only the important steps of your loan process directly from your account. No spam messages — just essential updates.',
+        'Track only the important steps of your loan process directly from your account. No spam messages - just essential updates.',
       phoneContent: {
         notifications: [
           {
@@ -103,7 +103,7 @@ export default function TransparencySection() {
       id: 4,
       title: 'Monitor your loan progress',
       description:
-        'No need to follow up again and again. View your loan progress, banker actions, and updates — right on your screen.',
+        'No need to follow up again and again. View your loan progress, banker actions, and updates - right on your screen.',
       phoneContent: {
         header: 'Borrowww Dashboard',
         status: 'Your Loan Application is under process',
@@ -112,7 +112,7 @@ export default function TransparencySection() {
           bank: 'HDFC Bank',
           status: 'Documents Submitted',
           requestedOn: '30 June, 1:20 PM',
-          amount: '₹90 Lacs',
+          amount: '₹90 Lakh',
         },
         progress: {
           title: 'Bank verification in progress',
@@ -151,8 +151,8 @@ export default function TransparencySection() {
             Always transparent, always available
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-gray-600 max-w-2xl mx-auto px-2">
-            Borrowww keeps you informed every step of the way - your dream home journey stays
-            transparent and accessible
+            Borrowww keeps you informed at every step, so the process of buying your dream home
+            stays transparent and accessible.
           </p>
         </div>
 
@@ -404,7 +404,7 @@ function SlideTwoContent({ slide }) {
             </span>
           </p>
           <p className="text-gray-700 break-words">
-            Visit the bank&apos;s website to make an online payment or reach out to us!
+            Visit the bank’s website to make an online payment or reach out to us!
           </p>
         </div>
       </div>

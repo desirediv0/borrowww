@@ -99,7 +99,7 @@ export default function EMIClient() {
             <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         className="text-center 2"
@@ -127,7 +127,7 @@ export default function EMIClient() {
                     <div className="grid lg:grid-cols-2 gap-12">
                         {/* Calculator Form */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={false}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             className="bg-white p-8 rounded-3xl h-min shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
@@ -273,7 +273,7 @@ export default function EMIClient() {
 
                         {/* Results */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={false}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             className="space-y-6"
@@ -338,7 +338,7 @@ export default function EMIClient() {
             <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-8"
@@ -355,7 +355,7 @@ export default function EMIClient() {
                         {loanTypes.map((loan, index) => (
                             <motion.div
                                 key={loan.name}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -406,7 +406,7 @@ export default function EMIClient() {
             <section className="py-12 bg-gradient-to-b from-white to-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-8"
@@ -421,7 +421,7 @@ export default function EMIClient() {
 
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={false}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             className="text-center bg-white p-6 rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:border-[var(--primary-blue)]/30"
@@ -436,7 +436,7 @@ export default function EMIClient() {
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={false}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
@@ -452,7 +452,7 @@ export default function EMIClient() {
                         </motion.div>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={false}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
@@ -474,14 +474,14 @@ export default function EMIClient() {
             <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-8 text-white text-center shadow-2xl"
                     >
                         <h3 className="text-3xl font-medium mb-4">Ready to Apply for a Loan?</h3>
                         <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                            Get personalized loan offers from top banks. Our experts will help you find the best
+                            Get personalised loan offers from top banks. Our experts will help you find the best
                             deal with competitive rates.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -491,7 +491,7 @@ export default function EMIClient() {
                                 onClick={() => router.push('/home-loan')}
                                 className="bg-white text-[var(--primary-blue)] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg"
                             >
-                                Apply Loan
+                                Apply for Loan
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}

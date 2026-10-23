@@ -16,7 +16,7 @@ export default function ValuesSection() {
       ),
       title: 'Transparent Process',
       description:
-        'Complete transparency in credit score checking and loan processing. No hidden charges, clear terms, and honest communication throughout your journey.',
+        'Complete transparency in credit score checking and loan processing. No hidden charges, clear terms, and honest communication throughout the process.',
       bgColor: 'bg-white',
       textColor: 'text-gray-900',
     },
@@ -49,7 +49,7 @@ export default function ValuesSection() {
       ),
       title: 'Smart Bank Choice',
       description:
-        'Get guided support to find the right bank faster with minimal paperwork and smart matchmaking — making your loan process quick and effortless.',
+        'Get guided support to find the right bank faster with minimal paperwork and smart matchmaking, so your loan process is quick and easy.',
       bgColor: 'bg-white',
       textColor: 'text-gray-900',
     },
@@ -75,14 +75,14 @@ export default function ValuesSection() {
         {/* Section Header */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <motion.p
               className="text-lg text-[#2D3E50] leading-tight mb-3 uppercase font-normal"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
@@ -91,7 +91,7 @@ export default function ValuesSection() {
             </motion.p>
             <motion.h2
               className="text-2xl md:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
@@ -103,19 +103,19 @@ export default function ValuesSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <motion.p
               className="text-lg text-gray-600 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              We are India&apos;s leading credit score checking and loan provider platform, helping
+              We are India’s leading credit score checking and loan provider platform, helping
               millions of customers achieve their financial goals with ease and transparency.
             </motion.p>
           </motion.div>
@@ -127,15 +127,12 @@ export default function ValuesSection() {
             <motion.div
               key={index}
               className={`relative overflow-hidden shadow-lg cursor-pointer group border-2 border-blue-100 hover:bg-blue-50 hover:border-blue-50  ${index === 1 ? 'hover:rounded-br-[80px]' : 'hover:rounded-tr-[80px]'} duration-300 ease-in-out`}
-              initial={{ scale: 1 }}
+              initial={false}
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <motion.div
                 className="absolute inset-0 z-0"
-                initial={{
-                  clipPath: 'ellipse(0% 0% at 100% 0%)',
-                  backgroundColor: '#e0f2fe',
-                }}
+                initial={false}
                 whileHover={{
                   clipPath: 'ellipse(120% 80% at 100% 0%)',
                 }}
@@ -146,7 +143,7 @@ export default function ValuesSection() {
               <div className="relative z-10 p-5 md:p-10 flex flex-col h-full justify-between">
                 <motion.div
                   className="mb-8"
-                  initial={{ scale: 1, rotate: 0 }}
+                  initial={false}
                   whileHover={{ scale: 1.13, rotate: 8 }}
                   transition={{ duration: 0.4, ease: 'easeInOut' }}
                 >
@@ -156,7 +153,7 @@ export default function ValuesSection() {
                 </motion.div>
                 <motion.h3
                   className="text-xl md:text-2xl font-semibold text-gray-900 mb-2 md:mb-4"
-                  initial={{ y: 0 }}
+                  initial={false}
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.25, ease: 'easeInOut' }}
                 >
@@ -166,7 +163,7 @@ export default function ValuesSection() {
                 {/* Description */}
                 <motion.p
                   className="text-gray-600 leading-relaxed mb-8 text-sm md:text-base"
-                  initial={{ opacity: 0.8 }}
+                  initial={false}
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.25 }}
                 >
@@ -177,15 +174,13 @@ export default function ValuesSection() {
                 {/* Arrow button with smooth transitions */}
                 <motion.div
                   className="flex items-center justify-start"
-                  initial={{ x: 0 }}
+                  initial={false}
                   whileHover={{ x: 6 }}
                   transition={{ duration: 0.25, ease: 'easeInOut' }}
                 >
                   <motion.div
                     className="md:w-14 md:h-14 w-12 h-12 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-[var(--primary-blue-dark)] to-[var(--primary-blue)] cursor-pointer text-white"
-                    initial={{
-                      scale: 1,
-                    }}
+                    initial={false}
                     whileHover={{
                       scale: 1.12,
                     }}

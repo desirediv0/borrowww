@@ -12,10 +12,10 @@ export default function FAQSection() {
     {
       question: 'How do I check my credit score?',
       answer:
-        'You can check your credit score online by submitting basic details like your PAN number and contact information. credit verification is handled securely by credit bureaus.',
+        'You can check your credit score online by submitting basic details like your PAN number and contact information. Credit verification is handled securely by credit bureaus.',
     },
     {
-      question: 'What documents are required for loan application?',
+      question: 'What documents are required for a loan application?',
       answer:
         'Common documents include identity proof (PAN/Aadhaar), address proof, income proof (salary slips/bank statements), and employment or business proof. Required documents may vary based on the bank and loan type.',
     },
@@ -37,7 +37,7 @@ export default function FAQSection() {
     {
       question: 'Can I apply for multiple loans simultaneously?',
       answer:
-        'Yes, you can apply for multiple loan types, but approval depends on your income, credit profile, and existing liabilities. We recommend checking eligibility first to avoid impact on credit score.',
+        'Yes, you can apply for multiple loan types, but approval depends on your income, credit profile, and existing liabilities. We recommend checking eligibility first to avoid an impact on your credit score.',
     },
   ];
 
@@ -47,14 +47,14 @@ export default function FAQSection() {
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left Side - Title */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <motion.h2
               className="text-2xl md:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
@@ -65,7 +65,7 @@ export default function FAQSection() {
             </motion.h2>
             <motion.p
               className="text-lg text-gray-600 mt-4"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
@@ -77,7 +77,7 @@ export default function FAQSection() {
           {/* Right Side - FAQ Items */}
           <motion.div
             className="space-y-4"
-            initial={{ opacity: 0, x: 50 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -86,7 +86,7 @@ export default function FAQSection() {
               <motion.div
                 key={index}
                 className="border-b border-gray-200 last:border-b-0"
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + index * 0.1 }}

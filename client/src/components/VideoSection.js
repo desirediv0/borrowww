@@ -52,7 +52,7 @@ export default function VideoSection() {
             Success Stories That Inspire
           </h2>
           <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold  mb-2">
-            Over ₹3,000 Crores+ in Loans Disbursed
+            Over ₹3,000 Crore in Loans Disbursed
           </p>
           <p className="text-sm sm:text-base text-gray-600 mt-4 max-w-2xl mx-auto">
             Watch how Borrowww helped thousands of families turn their home ownership dreams

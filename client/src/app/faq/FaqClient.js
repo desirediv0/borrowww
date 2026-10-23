@@ -34,7 +34,7 @@ export default function FaqClient() {
       category: 'cibil',
       question: 'What is a CIBIL score and why is it important?',
       answer:
-        'A CIBIL score is a 3-digit credit score ranging from 300-900. It reflects your repayment history and credit behaviour. A higher score increases your chances of getting better loan offers and lower interest rates.',
+        'A CIBIL score is a 3-digit credit score ranging from 300 to 900. It reflects your repayment history and credit behaviour. A higher score increases your chances of getting better loan offers and lower interest rates.',
     },
     {
       id: 2,
@@ -48,14 +48,14 @@ export default function FaqClient() {
       category: 'cibil',
       question: 'What factors affect my CIBIL score?',
       answer:
-        'Your CIBIL score is influenced by repayment history, credit utilization, length of credit history, number of active loans, and new credit inquiries. Timely payments and low utilization help maintain a strong score.',
+        'Your CIBIL score is influenced by repayment history, credit utilisation, length of credit history, number of active loans, and new credit enquiries. Timely payments and low utilisation help maintain a strong score.',
     },
     {
       id: 4,
       category: 'cibil',
       question: 'How long does it take to improve a CIBIL score?',
       answer:
-        'Improvement depends on your financial habits. With timely payments and disciplined credit usage, noticeable improvement can be seen in 3–6 months, while a major improvement may take longer.',
+        'Improvement depends on your financial habits. With timely payments and disciplined credit usage, noticeable improvement can be seen in 3-6 months, while a major improvement may take longer.',
     },
 
     // Loan Process Questions
@@ -71,14 +71,14 @@ export default function FaqClient() {
       category: 'loans',
       question: 'What are the minimum requirements for loan approval?',
       answer:
-        'General requirements include: Age 21–65 years, Indian resident, minimum income based on loan type, and a CIBIL score of 600+. Approval also depends on income stability and existing loans.',
+        'General requirements include: age 21-65 years, Indian resident, minimum income based on loan type, and a CIBIL score of 600+. Approval also depends on income stability and existing loans.',
     },
     {
       id: 7,
       category: 'loans',
       question: 'What types of loans can I apply for?',
       answer:
-        'You can apply for home loans, personal loans, business loans, and loan-against-property. Each product has different eligibility criteria and documentation requirements based on bank policies.',
+        'You can apply for home loans, personal loans, business loans, and loans against property. Each product has different eligibility criteria and documentation requirements based on bank policies.',
     },
     {
       id: 8,
@@ -92,7 +92,7 @@ export default function FaqClient() {
     {
       id: 9,
       category: 'documents',
-      question: 'What documents are required for loan application?',
+      question: 'What documents are required for a loan application?',
       answer:
         'Generally required documents include ID proof (PAN/Aadhaar), address proof, income proof (salary slips/bank statements), and employment or business proof. Requirements may vary depending on the bank.',
     },
@@ -161,7 +161,7 @@ export default function FaqClient() {
       category: 'technical',
       question: 'How do I update my details?',
       answer:
-        'Login to your profile, update the required information, and verify changes via OTP. Updated details will reflect after completion of verification.',
+        'Log in to your profile, update the required information, and verify the changes via OTP. Your updated details will show once verification is complete.',
     },
   ];
 
@@ -179,7 +179,7 @@ export default function FaqClient() {
       <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
@@ -205,7 +205,7 @@ export default function FaqClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Search Bar */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto mb-8"
@@ -224,7 +224,7 @@ export default function FaqClient() {
 
           {/* Categories */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             className="flex flex-wrap justify-center gap-4 mb-12"
@@ -249,7 +249,7 @@ export default function FaqClient() {
       {/* FAQ Section - Updated */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             {filteredFAQs.length > 0 ? (
               <motion.div
                 key={`${activeCategory}-${searchTerm}`}
@@ -262,7 +262,7 @@ export default function FaqClient() {
                 {filteredFAQs.map((faq, index) => (
                   <motion.div
                     key={faq.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
@@ -299,7 +299,7 @@ export default function FaqClient() {
               </motion.div>
             ) : (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center py-12"
               >
@@ -318,14 +318,14 @@ export default function FaqClient() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-medium text-gray-900 mb-6">Still Have Questions?</h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Our support team is here to help you 24/7. Get in touch with us for personalized
+              Our support team is here to help you 24/7. Get in touch with us for personalised
               assistance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -356,7 +356,7 @@ export default function FaqClient() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-12"
@@ -391,7 +391,7 @@ export default function FaqClient() {
             ].map((topic, index) => (
               <motion.div
                 key={topic.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}

@@ -8,6 +8,12 @@ export const metadata = buildMetadata({
   path: '/credit-check',
 });
 
-export default function CreditCheckPage() {
-  return <CreditCheckClient />;
+export default function CreditCheckPage({ searchParams }) {
+  const first = (value) => (Array.isArray(value) ? value[0] : value) ?? null;
+  return (
+    <CreditCheckClient
+      transactionId={first(searchParams?.transaction_id)}
+      encodedData={first(searchParams?.data)}
+    />
+  );
 }

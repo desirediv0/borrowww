@@ -44,7 +44,7 @@ const loanTypes = [
     'MSME & Startup Loans',
     'Business Loans',
     'Personal Loans',
-    'Commercial vehicle loans',
+    'Commercial Vehicle Loans',
     'Car & Equipment Loans',
 ];
 
@@ -52,17 +52,17 @@ const benefits = [
     {
         icon: Users,
         title: 'Access to Multiple Lenders',
-        desc: 'Loan consultants have tie-ups with multiple government banks, private banks, and NBFCs, allowing one to compare and choose the best deal. Good DSAs have partnerships with over a dozen lenders to increase borrowers\' chances of approval.',
+        desc: 'Loan consultants have tie-ups with multiple government banks, private banks, and NBFCs, so you can compare and choose the best deal. Good DSAs have partnerships with over a dozen lenders to increase borrowers\' chances of approval.',
     },
     {
         icon: Zap,
         title: 'Faster Approval & Disbursal',
-        desc: 'With help completing the documentation in a single go and with expert handling, loan approvals can be significantly faster and hassle-free—sometimes within 48 hours depending on the profile.',
+        desc: 'When the documentation is completed in one go and handled by an expert, loan approval can be much faster and hassle-free, sometimes within 48 hours depending on the profile.',
     },
     {
         icon: Percent,
         title: 'Better Interest Rates',
-        desc: 'This is one of the best reasons to have consultants, as they help negotiate or guide you toward lenders offering competitive interest rates based on your profile. A mere difference of 0.50% in a home loan of 1 crore rupees can save lakhs of money over a period of 20 years.',
+        desc: 'This is one of the best reasons to use a consultant: they help you negotiate, or guide you towards lenders offering competitive interest rates based on your profile. A difference of just 0.50% on a home loan of 1 crore rupees can save you lakhs over a period of 20 years.',
     },
     {
         icon: ShieldCheck,
@@ -71,8 +71,8 @@ const benefits = [
     },
     {
         icon: HandCoins,
-        title: 'Personalized Financial Advice',
-        desc: 'Rather than an approach which is one-size-fits-all, consultants recommend loans in accordance to your income, credit score, future goals, and repayment capacity.',
+        title: 'Personalised Financial Advice',
+        desc: 'Rather than taking a one-size-fits-all approach, consultants recommend loans in accordance with your income, credit score, future goals, and repayment capacity.',
     },
 ];
 
@@ -83,11 +83,11 @@ const choosingCriteria = [
     },
     {
         title: 'Transparency',
-        desc: 'Choose consultants who review the profile thoroughly and understand requirements and documentation before concluding which lender to approach.'
+        desc: 'Choose consultants who review your profile thoroughly and understand your requirements and documentation before deciding which lender to approach.'
     },
     {
         title: 'Lender Network',
-        desc: 'More tie-ups mean better options. So always ask consultants regarding the options of lenders.'
+        desc: 'More tie-ups mean better options, so always ask consultants which lenders they work with.'
     },
     {
         title: 'Customer Support',
@@ -95,22 +95,22 @@ const choosingCriteria = [
     },
     {
         title: 'No False Commitments',
-        desc: 'Be cautious; avoid consultants who ask to make fake documentation for loan approvals; always work with credible professionals.'
+        desc: 'Be cautious. Avoid consultants who ask you to make fake documentation for loan approvals, and always work with credible professionals.'
     }
 ];
 
 const faqs = [
     {
         q: '1. Is it necessary to hire a loan consultant for my first loan?',
-        a: 'No, though it is entirely optional. However, for first-time borrowers, having a consultant helps simplify the process, improves chances of approval, and ensures better loan terms.',
+        a: 'No, it is entirely optional. However, for first-time borrowers, having a consultant helps simplify the process, improves chances of approval, and ensures better loan terms.',
     },
     {
         q: '2. Do loan consultants charge fees?',
-        a: 'Most of the consultants have tie-ups with banks and thus are on commission with banks. Some consultants, however, may charge a service fee. It is advisable to always clarify charges upfront before starting the deal.',
+        a: 'Most consultants have tie-ups with banks and are paid a commission by them. Some consultants, however, may charge a service fee. It is advisable to always clarify charges upfront before starting the deal.',
     },
     {
         q: '3. Can a consultant guarantee loan approval?',
-        a: 'No genuine consultant can guarantee approval. However, with their knowledge and expertise, they can help to choose the right lender for your loan approval depending on your credit profile, income, and lender policies.',
+        a: 'No genuine consultant can guarantee approval. However, with their knowledge and expertise, they can help you choose the right lender for your loan approval depending on your credit profile, income, and lender policies.',
     },
     {
         q: '4. What documents are required for a loan?',
@@ -123,11 +123,11 @@ const faqs = [
     },
     {
         q: '6. How long does loan approval take?',
-        a: 'Depending upon the loan, a personal loan might be approved from 2 hrs to 24 hrs; however, home loans or loans against property might take days or weeks to approve.',
+        a: 'It depends on the loan. A personal loan might be approved in 2 to 24 hours, while home loans or loans against property might take days or weeks to approve.',
     },
     {
         q: '7. Can consultants help improve my loan eligibility?',
-        a: 'Yes, they can help you to club other family income or guide you on improving your credit score, restructuring income, or choosing suitable lenders for higher loan eligibility.',
+        a: 'Yes, they can help you add a family member’s income or guide you on improving your credit score, restructuring income, or choosing suitable lenders for higher loan eligibility.',
     },
     {
         q: '8. Are loan consultants safe to work with?',
@@ -260,10 +260,10 @@ export default function FirstTimeLoanConsultantClient() {
                                 Best <span className="text-[#3A6EA5] italic">Loan Consultant</span> for First-Time Borrowers in Delhi NCR
                             </h1>
                             <p className="mt-5 text-lg text-gray-600 max-w-2xl">
-                                The first loan always feels overwhelming, whether one is applying for a <Link href="/home-loan" className="text-[#3A6EA5] underline underline-offset-2">home loan</Link>, a loan against property, or project funding for a business.
+                                The first loan always feels overwhelming, whether you are applying for a <Link href="/home-loan" className="text-[#3A6EA5] underline underline-offset-2">home loan</Link>, a loan against property, or project funding for a business.
                             </p>
                             <p className="mt-3 text-lg text-gray-600 max-w-2xl">
-                                In Delhi NCR, we specialize in helping first-time borrowers, guiding them to the correct lenders by understanding their needs and simplifying their loan journey.
+                                In Delhi NCR, we specialise in helping first-time borrowers, guiding them to the right lenders by understanding their needs and simplifying the loan process.
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                 <a
@@ -450,10 +450,10 @@ export default function FirstTimeLoanConsultantClient() {
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed text-lg">
                             <p>
-                                When someone is applying for any loan for the first time, the biggest challenge is not funding—it is rather choosing the right loan product. DSAs or loan consultants act as a bridge between borrowers and lenders, ensuring that the application is structured correctly as per the borrower&apos;s needs and lender requirements and has higher chances of approval.
+                                When someone is applying for any loan for the first time, the biggest challenge is not funding but choosing the right loan product. DSAs or loan consultants act as a bridge between borrowers and lenders, making sure the application is structured correctly for the borrower’s needs and the lender’s requirements, which gives it a higher chance of approval.
                             </p>
                             <p>
-                                A good loan consultant evaluates income, <Link href="/credit-check" className="text-[#3A6EA5] underline underline-offset-2 hover:text-[#2D3E50] transition-colors">credit score</Link>, property, and need / financial goals before recommending suitable loan options. Instead of applying randomly to multiple banks (which can impact your credit score negatively), consultants help streamline the process with limited and targeted applications.
+                                A good loan consultant evaluates income, <Link href="/credit-check" className="text-[#3A6EA5] underline underline-offset-2 hover:text-[#2D3E50] transition-colors">credit score</Link>, property, and needs or financial goals before recommending suitable loan options. Instead of applying randomly to multiple banks (which can impact your credit score negatively), consultants help streamline the process with limited and targeted applications.
                             </p>
                         </div>
                     </div>
@@ -554,10 +554,10 @@ export default function FirstTimeLoanConsultantClient() {
                             <h3 className="text-2xl sm:text-3xl font-semibold mb-6">Final Thoughts</h3>
                             <div className="space-y-4 text-white/90 leading-relaxed text-lg">
                                 <p>
-                                    If you are planning to borrow for the first time in your life, consultants in Delhi NCR can be more than just a middleman—they can be your financial guide. From choosing the right product and lender to ensuring smooth sanctioning and disbursal, their expertise can save you time, money, and stress.
+                                    If you are planning to borrow for the first time in your life, a consultant in Delhi NCR can be more than just a middleman. They can be your financial guide. From choosing the right product and lender to ensuring smooth sanctioning and disbursal, their expertise can save you time, money, and stress.
                                 </p>
                                 <p>
-                                    So, working with a trusted consultant can significantly improve your chances of getting the best deal with minimal hassle. Always take time to do research and ask questions of consultants before choosing, and pick one who prioritizes transparency and long-term relationships.
+                                    Working with a trusted consultant can significantly improve your chances of getting the best deal with minimal hassle. Always take time to do research and ask questions of consultants before choosing, and pick one who prioritises transparency and long-term relationships.
                                 </p>
                             </div>
                             <div className="mt-8">

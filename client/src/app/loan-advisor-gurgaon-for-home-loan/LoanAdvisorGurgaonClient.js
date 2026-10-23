@@ -38,15 +38,15 @@ const products = [
     'Plot purchase loans / plot equity loans / loans against plots',
     'Home loan balance transfer and home loan top-ups',
     'Home loans and loans against property for NRIs',
-    'Pradhan Mantri Awas Yojana (PMAY) Loans',
-    'Loan against commercial / industrial property',
+    'Pradhan Mantri Awas Yojana (PMAY) loans',
+    'Loans against commercial or industrial property',
 ];
 
 const benefits = [
     {
         icon: Percent,
         title: 'Best Possible Rates',
-        desc: 'As a leading loan advisor, we have relationships with all the top lenders and can help you get preferential rates in banks. Even a difference of 0.5% in a loan can help you save lacs in a 20–25-year loan tenor.',
+        desc: 'As a leading loan advisor, we have relationships with all the top lenders and can help you get preferential rates from banks. Even a difference of 0.5% can help you save lakhs over a 20-25-year loan tenure.',
     },
     {
         icon: Zap,
@@ -56,18 +56,18 @@ const benefits = [
     {
         icon: ShieldCheck,
         title: 'Zero Hidden Costs',
-        desc: 'Entire fees charged by banks will be discussed upfront. There are no last-minute surprises.',
+        desc: 'All fees charged by banks are discussed upfront. There are no last-minute surprises.',
     },
 ];
 
 const faqs = [
     {
         q: 'Q1. What is the job of a loan advisor in Gurgaon?',
-        a: 'An advisor will analyze your documents, review your eligibility, and compare the best offers for you from banks and NBFCs. He will help you log in to your application and get the best possible deal for you. They will help you save money, time, and the hassle of managing the entire process yourself.',
+        a: 'An advisor will analyse your documents, review your eligibility, and compare the best offers for you from banks and NBFCs. They will help you log in your application and get the best possible deal, saving you money, time, and the hassle of managing the entire process yourself.',
     },
     {
-        q: 'Q2. What is better? Going to the bank or a loan advisor in Gurgaon?',
-        a: 'Going through a loan advisor will help you immensely. Advisors will compare your application eligibility across banks and lenders and will get you a better negotiated deal. They will also ensure we do not apply incorrectly to lenders where our profile doesn\'t match, thus ensuring there are no unnecessary rejects on our CIBIL.',
+        q: 'Q2. Which is better: going to the bank or a loan advisor in Gurgaon?',
+        a: 'Going through a loan advisor will help you immensely. Advisors will compare your application eligibility across banks and lenders and will get you a better negotiated deal. They will also make sure you do not apply to lenders where your profile doesn’t match, so there are no unnecessary rejections on your CIBIL report.',
     },
     {
         q: 'Q3. What do I need to get the lowest interest rate in Gurgaon?',
@@ -76,23 +76,23 @@ const faqs = [
     },
     {
         q: 'Q4. What is the minimum CIBIL score requirement to get a home loan?',
-        a: 'The majority of lenders prefer a CIBIL score of 750 and above and offer their best rates at that score. Many lenders also allow CIBIL scores from 650–749 but at slightly higher rates. For scores below 650 we can look at NBFCs or banks based on the rationale for the score. We can also look at getting our CIBIL improved before applying by following a program. We will help guide you on how to improve your CIBIL score.',
+        a: 'The majority of lenders prefer a CIBIL score of 750 and above and offer their best rates at that score. Many lenders also allow CIBIL scores from 650-749 but at slightly higher rates. For scores below 650, we can look at NBFCs or banks based on the reason for the low score. We can also work on improving your CIBIL score before you apply by following a programme, and we will guide you on how to do it.',
     },
     {
         q: 'Q5. How much time does it take to get a home loan disbursal in Gurgaon?',
-        a: 'A home loan sanction can take anytime between 5–10 working days normally if all documents are complete, in order and if no extra due diligence is needed. For disbursement it can take anytime between 12 and 15 working days depending on completion of required facilities.',
+        a: 'A home loan sanction normally takes 5-10 working days if all documents are complete and in order and no extra due diligence is needed. Disbursement can take 12 to 15 working days, depending on completion of the required formalities.',
     },
     {
         q: 'Q6. Can a business owner or a doctor get a home loan in Gurgaon?',
-        a: 'Many banks and NBFCs offer home loans to self-employed people. There are specifically designed income products to ensure that business owners can get the maximum possible eligibility based on their profile. Our team is expert in handling self-employed cases and will help in ensuring the best deals for you.',
+        a: 'Many banks and NBFCs offer home loans to self-employed people. Lenders have specially designed products so that business owners can get the maximum possible eligibility based on their profile. Our team has expertise in handling self-employed cases and will help you get the best deal.',
     },
     {
         q: 'Q7. What is the list of documents for a home loan?',
-        a: 'Key documents include your KYC (Pan card / Aadhar card) / address proof (if different from Aadhar) and income documents (last 3 months\' salary slips for salaried or 2 years\' income tax returns and computation of income for self-employed). The last 12 bank statements, property documents, form 16 for salaried employees, and statements of account of running loans. For self-employed, other documents may be needed based on the constitution (e.g., GST certificate / MOA / AOA, etc.).',
+        a: 'Key documents include your KYC (PAN card and Aadhaar card), address proof (if different from Aadhaar) and income documents (last 3 months’ salary slips for salaried applicants, or 2 years’ income tax returns and computation of income for self-employed applicants). You will also need the last 12 months’ bank statements, property documents, Form 16 for salaried employees, and statements of account for running loans. For self-employed applicants, other documents may be needed depending on the business constitution (e.g., GST certificate, MOA/AOA).',
     },
     {
         q: 'Q8. Are there any fees charged by you for the process?',
-        a: 'We have direct tie-ups with the lenders, and they provide us with our fees. We do not charge any fees from you.',
+        a: 'We have direct tie-ups with lenders, and they pay our fees. We do not charge you any fees.',
     },
 ];
 
@@ -126,8 +126,7 @@ function FAQItem({ faq }) {
                             </a>
                             , your income, and property eligibility. The lowest rate depends on your CIBIL score,
                             income stability, loan-to-value ratio, and employment type. A good advisor will assess
-                            your application and ensure they apply to the perfect fit for the best possible rate. A
-                            difference of 0.25% is significant considering home loans have a long tenor.
+                            your application and make sure it goes to the lender that fits best, for the best possible rate. A difference of 0.25% is significant because home loans have a long tenure.
                         </p>
                     ) : (
                         <p className="text-gray-700 leading-relaxed">{faq.a}</p>
@@ -412,25 +411,22 @@ export default function LoanAdvisorGurgaonClient() {
                     {/* Looking for a home loan advisor */}
                     <div className="max-w-4xl">
                         <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-5">
-                            Are you looking for a home loan advisor in Gurgaon? You have come to the perfect place.
+                            Are you looking for a home loan advisor in Gurgaon? You have come to the right place.
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed text-lg">
                             <p>
                                 One of the most important financial decisions in our lives is buying a home. We spend
-                                months, sometimes years, looking for our perfect dream home. The process is already
-                                overwhelming, and to add to it, looking for the{' '}
+                                months, sometimes years, looking for our dream home. The process is already overwhelming, and on top of that, finding the{' '}
                                 <a
                                     href="https://www.borrowww.com/home-loan"
                                     className="text-[#3A6EA5] font-medium underline underline-offset-2 hover:text-[#2D3E50] transition-colors"
                                 >
                                     best home loan
                                 </a>{' '}
-                                option from the dozens of lenders can be very difficult.
+                                option among dozens of lenders can be very difficult.
                             </p>
                             <p>
-                                We will help you choose among the lenders with the perfect fit for your base income
-                                eligibility options and the best interest rate option depending on your loan requirement
-                                and eligibility. We will ensure you get the correct guidance in this complex process.
+                                We will help you choose the lender that best fits your income and eligibility, with the best interest rate for your loan requirement. We will make sure you get the right guidance throughout this complex process.
                             </p>
                         </div>
                     </div>
@@ -483,14 +479,10 @@ export default function LoanAdvisorGurgaonClient() {
                         </h2>
                         <div className="space-y-4 text-gray-700 leading-relaxed text-lg">
                             <p>
-                                Many times, homebuyers approach banks directly but are unaware of where they will get
-                                the maximum loan amount based on their income and property and where they will get the
-                                best rates. Our team of experts will help you choose products among 35+ lenders.
+                                Homebuyers often approach banks directly without knowing where they will get the maximum loan amount for their income and property, or where they will get the best rates. Our team of experts will help you choose from the products of 35+ lenders.
                             </p>
                             <p>
-                                Getting a lower amount at a higher interest rate from bank A doesn&apos;t mean that
-                                you may not be able to get a better deal from bank B. We will help you in this entire
-                                journey and ensure you get the best possible option based on your requirements.
+                                Being offered a lower amount at a higher interest rate by bank A doesn’t mean you can’t get a better deal from bank B. We will help you through the entire process and ensure you get the best possible option based on your requirements.
                             </p>
                         </div>
                     </div>
@@ -502,10 +494,10 @@ export default function LoanAdvisorGurgaonClient() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10">
                         <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-3">
-                            You will get the below when you go ahead with us
+                            What you get when you work with us
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto">
-                            Everything you need — and more — from a single trusted loan advisor in Gurgaon.
+                            Everything you need from a single trusted loan advisor in Gurgaon.
                         </p>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
@@ -534,7 +526,7 @@ export default function LoanAdvisorGurgaonClient() {
                                 Products we specialise in
                             </h2>
                             <p className="text-gray-600 leading-relaxed mb-8">
-                                We advise in a complete range of home loans and loans against property.
+                                We advise on the complete range of home loans and loans against property.
                             </p>
                             <ul className="space-y-3">
                                 {products.map((p) => (
@@ -551,14 +543,10 @@ export default function LoanAdvisorGurgaonClient() {
                             <div className="bg-gradient-to-br from-[#2D3E50] to-[#3A6EA5] rounded-3xl p-8 text-white">
                                 <h2 className="text-2xl sm:text-3xl font-semibold mb-4">Who are our clients?</h2>
                                 <p className="text-white/90 leading-relaxed mb-4">
-                                    We cater to a wide variety of clients. So, whether you are salaried in an IT /
-                                    consultancy company, etc. or a business owner or a professional or a government
-                                    employee, we will ensure we will find the best fit for you.
+                                    We work with a wide variety of clients. Whether you are salaried at an IT or consultancy company, a business owner, a professional or a government employee, we will find the best fit for you.
                                 </p>
                                 <p className="text-white/90 leading-relaxed">
-                                    We also specialise in cases where your CIBIL is low or you get irregular income.
-                                    Our team of experts will find the best possible solution for you, ensuring all
-                                    compliances.
+                                    We also specialise in cases where your CIBIL score is low or your income is irregular. Our team of experts will find the best possible solution for you while meeting all compliance requirements.
                                 </p>
                             </div>
 
@@ -568,9 +556,7 @@ export default function LoanAdvisorGurgaonClient() {
                                     Why does rate matter?
                                 </h2>
                                 <p className="text-gray-700 leading-relaxed mb-4">
-                                    The Gurgaon property market has seen a consistent boom, and thus rates have soared
-                                    dramatically. By getting a low-cost home loan, we can help protect our purchasing
-                                    power and reduce the total outflow.
+                                    The Gurgaon property market has seen a consistent boom, and property prices have soared dramatically. A low-cost home loan helps protect your purchasing power and reduces your total outflow.
                                 </p>
                                 <p className="text-gray-700 leading-relaxed">
                                     We keep track of rate movements and RBI policies on a regular basis. In case of
@@ -595,14 +581,13 @@ export default function LoanAdvisorGurgaonClient() {
                         hours with a list of available options. We will manage everything from there.
                     </p>
                     <p className="text-gray-700 leading-relaxed text-lg mb-10">
-                        Many clients have trusted us through their loan process — we will ensure that the process is
-                        quicker and more stress-free for you than going to a bank.
+                        Many clients have trusted us with their loans, and we will make sure the process is quicker and less stressful for you than going to a bank.
                     </p>
                     <div className="grid sm:grid-cols-3 gap-6 mb-10">
                         {[
-                            { step: '1', title: 'Share Your Details', desc: 'Income, property &amp; loan amount needed — takes 5 minutes.' },
+                            { step: '1', title: 'Share Your Details', desc: 'Income, property & loan amount needed - takes 5 minutes.' },
                             { step: '2', title: 'Get Options in 24 hrs', desc: 'We compare 35+ lenders and call you with the best options.' },
-                            { step: '3', title: 'We Handle the Rest', desc: 'Docs, login, follow-ups &amp; disbursal — all managed end-to-end.' },
+                            { step: '3', title: 'We Handle the Rest', desc: 'Docs, login, follow-ups & disbursal - all managed end-to-end.' },
                         ].map((s) => (
                             <div
                                 key={s.step}
@@ -623,9 +608,9 @@ export default function LoanAdvisorGurgaonClient() {
                         </a>{' '}
                         or{' '}
                         <a href="#lead-form" className="text-[#3A6EA5] hover:underline">
-                            fill out an inquiry form
+                            fill out an enquiry form
                         </a>
-                        , and we will get back to you within 24 hrs.
+                        , and we will get back to you within 24 hours.
                     </p>
                 </div>
             </section>
@@ -655,7 +640,7 @@ export default function LoanAdvisorGurgaonClient() {
                     Ready to Get the Best Loan Deal in Gurgaon?
                 </h3>
                 <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                    Connect with our expert loan advisors today. Zero fees, 35+ lenders, best rates — guaranteed.
+                    Connect with our expert loan advisors today. Zero fees, 35+ lenders, best rates - guaranteed.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <a

@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: 'What are the eligibility criteria for a home loan for self-employed applicants?',
-    a: 'Common considerations include age, documented income, business or professional continuity, credit history, existing liabilities, the loan amount and tenure requested, and property details. Exact criteria vary by lender — see Borrowww’s home loan eligibility page for a fuller explanation.',
+    a: 'Common considerations include age, documented income, business or professional continuity, credit history, existing liabilities, the loan amount and tenure requested, and property details. Exact criteria vary by lender. See Borrowww’s home loan eligibility page for a fuller explanation.',
   },
   {
     q: 'What income documents are required for self-employed home loans?',
@@ -36,11 +36,11 @@ const faqs = [
   },
   {
     q: 'How much home loan can a self-employed person get?',
-    a: 'This depends on documented income, existing obligations, credit profile, the property value, the down payment and the lender’s own assessment — not simply a multiple of business turnover. It’s generally advisable to borrow an amount comfortable to repay rather than the maximum eligible amount.',
+    a: 'This depends on documented income, existing obligations, credit profile, the property value, the down payment and the lender’s own assessment, not simply a multiple of business turnover. It’s generally advisable to borrow an amount comfortable to repay rather than the maximum eligible amount.',
   },
   {
     q: 'Are home loan interest rates different for self-employed borrowers?',
-    a: 'Not inherently. The interest rate offered depends on factors like credit profile, documented income, loan amount and tenure, and the lender’s own policies — not on employment type alone. Self-employed borrowers are not automatically charged higher or lower rates than salaried applicants.',
+    a: 'Not inherently. The interest rate offered depends on factors like credit profile, documented income, loan amount and tenure, and the lender’s own policies, not on employment type alone. Self-employed borrowers are not automatically charged higher or lower rates than salaried applicants.',
   },
   {
     q: 'Can self-employed professionals apply for a home loan?',
@@ -119,22 +119,22 @@ export default function SelfEmployedHomeLoanClient() {
           <div className="mt-6 flex justify-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#3A6EA5]/20 bg-white/80 px-4 py-1.5 text-sm font-medium text-[#2D3E50] shadow-sm backdrop-blur">
               <Home className="h-4 w-4 text-[#3A6EA5]" aria-hidden="true" /> Home Loan for
-              Self-Employed
+              Self-Employed Borrowers
             </span>
           </div>
           <h1 className="mt-5 text-center text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Home Loan <span className="italic tiemposfine text-[#2D3E50]">for Self-Employed</span>
+            Home Loan <span className="italic tiemposfine text-[#2D3E50]">for Self-Employed Borrowers</span>
           </h1>
           <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center text-base leading-8 text-slate-600 sm:text-lg">
             <p>
-              Applying for a home loan for self employed individuals often involves a different
+              Applying for a home loan for self-employed individuals often involves a different
               documentation trail than a salaried application. Business and professional income can
               vary month to month or year to year, so lenders generally rely on a broader set of
-              financial records — tax filings, bank statements, business continuity and more — to
+              financial records, such as tax filings, bank statements and business continuity, to
               assess repayment capacity, rather than a single salary slip.
             </p>
             <p className="text-base">
-              This doesn&apos;t make a home loan harder to get for self-employed applicants, but it
+              This doesn’t make a home loan harder to get for self-employed applicants, but it
               does mean the preparation looks a little different. This page walks through how
               lenders typically assess self-employed borrowers, what documentation may be required,
               and how business owners, professionals, consultants and freelancers can each approach
@@ -162,7 +162,7 @@ export default function SelfEmployedHomeLoanClient() {
         <Section title="Can Self-Employed Individuals Get a Home Loan?">
           <p>
             Yes. Self-employed individuals can apply for a home loan, subject to the applicable
-            lender&apos;s eligibility criteria and its assessment of the specific application.
+            lender’s eligibility criteria and its assessment of the specific application.
             Lenders generally welcome applications from a wide range of self-employed profiles,
             including:
           </p>
@@ -178,8 +178,8 @@ export default function SelfEmployedHomeLoanClient() {
           />
           <p>
             What differs across these profiles is mainly how income is documented and how
-            consistently it can be demonstrated — not whether self-employment itself is acceptable
-            to lenders. The eventual assessment depends on the individual&apos;s financial and
+            consistently it can be demonstrated, not whether self-employment itself is acceptable
+            to lenders. The eventual assessment depends on the individual’s financial and
             business profile, not on the broad category of self-employment alone.
           </p>
         </Section>
@@ -187,7 +187,7 @@ export default function SelfEmployedHomeLoanClient() {
         <Section title="How Do Lenders Assess Home Loan Applications From Self-Employed Borrowers?">
           <p>
             Salaried income is usually verified through a salary slip and employer-issued documents,
-            which makes it relatively straightforward to assess. Self-employed income doesn&apos;t
+            which makes it relatively straightforward to assess. Self-employed income doesn’t
             come with an equivalent single document, so lenders typically look at a combination of
             financial indicators to build a picture of repayment capacity.
           </p>
@@ -196,8 +196,8 @@ export default function SelfEmployedHomeLoanClient() {
             Income and Repayment Capacity
           </h3>
           <p>
-            Lenders typically examine documented income — through tax returns, income computations
-            and financial statements — to assess whether the EMI on the requested loan amount would
+            Lenders typically examine documented income (tax returns, income computations
+            and financial statements) to assess whether the EMI on the requested loan amount would
             be comfortably serviceable.
           </p>
 
@@ -226,7 +226,7 @@ export default function SelfEmployedHomeLoanClient() {
           <h3 className="pt-2 text-xl font-semibold text-slate-900">Credit History</h3>
           <p>
             Past repayment behaviour, as reflected in the credit report, generally forms part of the
-            lender&apos;s assessment, alongside income and business factors.
+            lender’s assessment, alongside income and business factors.
           </p>
 
           <h3 className="pt-2 text-xl font-semibold text-slate-900">Property and Loan Details</h3>
@@ -235,8 +235,8 @@ export default function SelfEmployedHomeLoanClient() {
             the overall assessment and the terms that may be offered.
           </p>
           <p>
-            No single factor above determines approval or the terms offered on its own — lenders
-            generally assess self-employed applications holistically, weighing income documentation,
+            No single factor above determines approval or the terms offered on its own. Lenders
+            generally assess self-employed applications as a whole, weighing income documentation,
             business stability, banking history, credit profile, and the loan and property details
             together.
           </p>
@@ -247,22 +247,22 @@ export default function SelfEmployedHomeLoanClient() {
             Broadly, the eligibility considerations for self-employed applicants include age,
             documented income, the nature and continuity of the business or profession, credit
             history, existing liabilities, the loan amount and tenure requested, property details,
-            and the documentation provided. Exact criteria — including any minimum income or
-            business-continuity expectations — vary by lender and are subject to that lender&apos;s
+            and the documentation provided. Exact criteria, including any minimum income or
+            business-continuity expectations, vary by lender and are subject to that lender’s
             applicable policies.
           </p>
           <p>
             Rather than repeating the complete eligibility framework here, you can review
-            Borrowww&apos;s dedicated home loan eligibility page for a fuller explanation of how
+            Borrowww’s dedicated home loan eligibility page for a fuller explanation of how
             these factors generally apply.
           </p>
         </Section>
 
         <Section title="What Income Documents Are Required for Self-Employed Home Loans?">
           <p>
-            Because self-employed income isn&apos;t captured through a single payslip, lenders
+            Because self-employed income isn’t captured through a single payslip, lenders
             commonly request a set of financial documents to build a complete picture. Depending on
-            your business structure, profession and the specific lender&apos;s policy, this may
+            your business structure, profession and the specific lender’s policy, this may
             include:
           </p>
           <Bullets
@@ -279,17 +279,17 @@ export default function SelfEmployedHomeLoanClient() {
             ]}
           />
           <p>
-            Not every applicant will need to submit every document on this list — the exact
+            Not every applicant will need to submit every document on this list. The exact
             requirements depend on whether you run a business, practise a profession, or work
-            independently as a consultant or freelancer, as well as the specific lender&apos;s
+            independently as a consultant or freelancer, as well as the specific lender’s
             documentation policy.
           </p>
         </Section>
 
         <Section title="Home Loan for Self-Employed Business Owners">
           <p>
-            For business owners — whether operating as a sole proprietorship, partnership or private
-            limited company — lenders typically look beyond gross turnover to assess how
+            For business owners, whether operating as a sole proprietorship, partnership or private
+            limited company, lenders typically look beyond gross turnover to assess how
             consistently income has been documented and reported. Relevant considerations often
             include:
           </p>
@@ -308,20 +308,20 @@ export default function SelfEmployedHomeLoanClient() {
             A business with strong revenue but poorly documented or inconsistent income reporting
             may find the assessment more involved than a smaller business with clean, consistent
             financial records. There is no fixed minimum number of years a business must have
-            operated that applies universally — this depends on the lender&apos;s own policy.
+            operated that applies universally; this depends on the lender’s own policy.
           </p>
         </Section>
 
         <Section title="Home Loan for Self-Employed Professionals">
           <p>
-            Self-employed professionals — such as doctors, lawyers, chartered accountants,
-            architects and independent consultants — are usually assessed based on their
+            Self-employed professionals, such as doctors, lawyers, chartered accountants,
+            architects and independent consultants, are usually assessed based on their
             professional income, which is often documented through tax returns, income computations
             and, in some cases, professional registration or qualification proof.
           </p>
           <p>
             Documentation requirements can differ somewhat by profession and by how the practice is
-            structured — for instance, a professional operating an independent practice may need to
+            structured. For instance, a professional operating an independent practice may need to
             provide different records than one who is a partner in a larger firm. No specific
             profession is automatically entitled to preferential loan terms; the assessment still
             depends on documented income, credit history and the overall application.
@@ -344,8 +344,8 @@ export default function SelfEmployedHomeLoanClient() {
             ]}
           />
           <p>
-            Keeping organised, consistent financial records — even when income varies — generally
-            makes it easier for a lender to assess repayment capacity. This doesn&apos;t mean every
+            Keeping organised, consistent financial records, even when income varies, generally
+            makes it easier for a lender to assess repayment capacity. This doesn’t mean every
             lender treats freelance income identically; policies and the level of scrutiny can vary.
           </p>
         </Section>
@@ -355,14 +355,13 @@ export default function SelfEmployedHomeLoanClient() {
             A credit score is a numerical summary of your credit history, based on factors such as
             repayment track record, existing debt, credit utilisation and the length and mix of your
             credit accounts. For self-employed borrowers, credit history often carries additional
-            weight in the assessment, since it&apos;s an independent, standardised indicator of
+            weight in the assessment, since it’s an independent, standardised indicator of
             financial discipline alongside variable business income.
           </p>
           <p>
-            There isn&apos;t a single credit score that guarantees approval across all lenders —
-            thresholds and their weight in the overall decision vary by lender and by the rest of
-            your application. It&apos;s worth reviewing your credit report before applying, checking
-            for errors such as incorrectly reported accounts or outdated information, and addressing
+            There isn’t a single credit score that guarantees approval across all lenders. Thresholds and their weight in the overall decision vary by lender and by the rest of
+            your application. Review your credit report before applying, check
+            for errors such as incorrectly reported accounts or outdated information, and address
             any discrepancies in advance. You can learn more about understanding your CIBIL score
             for a home loan on Borrowww.
           </p>
@@ -379,7 +378,7 @@ export default function SelfEmployedHomeLoanClient() {
           <p>
             It also helps to separate two different numbers: the maximum loan amount a lender may be
             willing to offer, and the loan amount that is comfortable to repay given your income
-            variability and other commitments. Since self-employed income can fluctuate, it&apos;s
+            variability and other commitments. Since self-employed income can fluctuate, it’s
             often prudent not to borrow right up to the maximum eligible amount, leaving some room
             for months when business income may be lower than average.
           </p>
@@ -388,8 +387,8 @@ export default function SelfEmployedHomeLoanClient() {
         <Section title="Home Loan EMI Planning for Self-Employed Borrowers">
           <p>
             EMI planning matters for every borrower, but it takes on extra importance when your
-            income isn&apos;t the same every month. Before committing to a specific loan amount and
-            tenure, it&apos;s worth thinking through:
+            income isn’t the same every month. Before committing to a specific loan amount and
+            tenure, think through:
           </p>
           <Bullets
             items={[
@@ -407,12 +406,12 @@ export default function SelfEmployedHomeLoanClient() {
             ₹35,00,000 over a 15-year tenure, choosing a longer tenure of, say, 20 years instead
             would lower the EMI but increase the total interest paid over the life of the loan. For
             a self-employed borrower with variable income, a lower EMI with some buffer may
-            sometimes be preferable to the shortest possible tenure — but this depends entirely on
+            sometimes be preferable to the shortest possible tenure, but this depends entirely on
             your own cash flow and risk comfort. These figures are illustrative only and not
             indicative of a current or lender-specific offer.
           </p>
           <p>
-            You can model different loan amounts, tenures and rates using Borrowww&apos;s home loan
+            You can model different loan amounts, tenures and rates using Borrowww’s home loan
             EMI calculator before finalising your budget.
           </p>
         </Section>
@@ -421,17 +420,17 @@ export default function SelfEmployedHomeLoanClient() {
           <p>
             The interest rate applicable to your loan is generally influenced by your credit
             profile, documented income, the loan amount and tenure requested, the property being
-            financed, and the specific lender&apos;s own policies at the time of application. Loans
+            financed, and the specific lender’s own policies at the time of application. Loans
             are typically offered under fixed or floating rate structures, each with its own
             trade-offs around predictability versus potential rate movement over time.
           </p>
           <p>
-            It&apos;s a common misconception that self-employed borrowers are automatically charged
-            higher — or, in some cases, lower — interest rates than salaried applicants. In
+            It’s a common misconception that self-employed borrowers are automatically charged
+            higher (or, in some cases, lower) interest rates than salaried applicants. In
             practice, the rate offered depends on the overall strength of the individual
-            application, not on employment type alone. As with any home loan, it&apos;s worth
-            comparing the complete cost of the loan, not just the advertised starting rate, across a
-            few lenders. You can read more on Borrowww&apos;s home loan interest rates page.
+            application, not on employment type alone. As with any home loan, compare
+            the complete cost of the loan, not just the advertised starting rate, across a
+            few lenders. You can read more on Borrowww’s home loan interest rates page.
           </p>
         </Section>
 
@@ -464,8 +463,8 @@ export default function SelfEmployedHomeLoanClient() {
           <Bullets items={['Property-related documents as requested by the lender.']} />
 
           <p>
-            This list is indicative — the exact documents needed will depend on your specific lender
-            and profile. For a fuller breakdown, see Borrowww&apos;s home loan documents page.
+            This list is indicative. The exact documents needed will depend on your specific lender
+            and profile. For a fuller breakdown, see Borrowww’s home loan documents page.
           </p>
         </Section>
 
@@ -504,7 +503,7 @@ export default function SelfEmployedHomeLoanClient() {
             ]}
           />
           <p>
-            These are all about presenting an accurate, well-organised financial picture — not about
+            These are all about presenting an accurate, well-organised financial picture, not about
             inflating income, hiding liabilities or misrepresenting your business performance, which
             can create serious problems later in the loan process.
           </p>
@@ -517,7 +516,7 @@ export default function SelfEmployedHomeLoanClient() {
           </p>
           <Bullets
             items={[
-              'Variable income: month-to-month fluctuations can make it harder to present a single consistent figure — addressed through documentation over a longer period.',
+              'Variable income: month-to-month fluctuations can make it harder to present a single consistent figure, which is addressed through documentation over a longer period.',
               'Multiple income sources: freelancers and consultants may need to consolidate income across several clients or projects.',
               'Inconsistent documentation: mismatches between tax filings and bank statements can complicate assessment.',
               'Cash-heavy transactions: businesses with significant cash dealings may find it harder to demonstrate documented income.',
@@ -529,8 +528,7 @@ export default function SelfEmployedHomeLoanClient() {
           />
           <p>
             In most cases, the practical solution to these challenges is better financial
-            organisation — consistent tax filings, clean banking records and clear documentation —
-            rather than anything more complicated.
+            organisation (consistent tax filings, clean banking records and clear documentation) rather than anything more complicated.
           </p>
         </Section>
 
@@ -554,7 +552,7 @@ export default function SelfEmployedHomeLoanClient() {
         <Section title="Self-Employed vs Salaried Home Loan Applications">
           <p>
             Lenders generally assess self-employed and salaried applicants using the same broad
-            principles — income, repayment capacity, credit history and property — but the way
+            principles (income, repayment capacity, credit history and property), but the way
             income is documented and verified differs between the two.
           </p>
           <Bullets
@@ -570,7 +568,7 @@ export default function SelfEmployedHomeLoanClient() {
             ]}
           />
           <p>
-            Neither profile is inherently better positioned than the other — a well-documented
+            Neither profile is inherently better positioned than the other. A well-documented
             self-employed application can be just as competitive as a salaried one. The key
             difference lies in the type of paperwork involved, not the outcome.
           </p>
@@ -579,23 +577,23 @@ export default function SelfEmployedHomeLoanClient() {
         <Section title="Should Self-Employed Borrowers Apply Alone or With a Co-Applicant?">
           <p>
             A joint home loan involves applying together with a co-applicant, often a spouse or
-            family member, and can allow the lender to consider both applicants&apos; eligible
+            family member, and can allow the lender to consider both applicants’ eligible
             incomes together. This may affect the loan amount that can be considered, though the
-            exact impact depends on the lender&apos;s specific policy and the co-applicant&apos;s
+            exact impact depends on the lender’s specific policy and the co-applicant’s
             own profile.
           </p>
           <p>
             Both co-applicants are typically responsible for repayment, and ownership of the
             property is usually linked to how the applicants are named on the property documents.
-            Adding a co-applicant doesn&apos;t automatically guarantee a higher loan amount or
-            improved approval chances — it depends on the combined strength of both profiles. You
-            can read more on Borrowww&apos;s joint home loan page.
+            Adding a co-applicant doesn’t automatically guarantee a higher loan amount or
+            improved approval chances. It depends on the combined strength of both profiles. You
+            can read more on Borrowww’s joint home loan page.
           </p>
         </Section>
 
         <Section title="Additional Costs Self-Employed Home Buyers Should Plan For">
           <p>
-            Beyond the loan EMI, it&apos;s worth budgeting for other costs involved in a property
+            Beyond the loan EMI, budget for the other costs involved in a property
             purchase:
           </p>
           <Bullets
@@ -613,7 +611,7 @@ export default function SelfEmployedHomeLoanClient() {
           />
           <p>
             These costs vary considerably by location, property type and the specific transaction,
-            so it&apos;s worth getting a realistic estimate before committing to a purchase,
+            so get a realistic estimate before committing to a purchase,
             especially given the added importance of maintaining a cash buffer when your income can
             fluctuate.
           </p>
@@ -646,7 +644,7 @@ export default function SelfEmployedHomeLoanClient() {
               FAQ
             </span>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900">
-              Frequently Asked Questions About Home Loans for Self-Employed
+              Frequently Asked Questions About Home Loans for Self-Employed Borrowers
             </h2>
           </div>
           <div className="grid gap-3">
@@ -697,7 +695,7 @@ export default function SelfEmployedHomeLoanClient() {
                 Explore Your Home Loan Options With Borrowww
               </h2>
               <p className="mt-3 text-sm leading-7 text-white/85">
-                Being self-employed doesn&apos;t limit your ability to get a home loan — it simply
+                Being self-employed doesn’t limit your ability to get a home loan. It simply
                 means the documentation and assessment process work a little differently, relying
                 more on financial records than a single income document. Understanding what lenders
                 typically look for, and preparing your paperwork accordingly, can make the
@@ -705,7 +703,7 @@ export default function SelfEmployedHomeLoanClient() {
               </p>
               <p className="mt-4 text-sm leading-7 text-white/85">
                 Looking to understand your home loan options as a self-employed borrower? Explore
-                Borrowww&apos;s home loan resources, check your eligibility, review the documents
+                Borrowww’s home loan resources, check your eligibility, review the documents
                 you may need, and use the EMI calculator to plan your repayment before you apply.
               </p>
             </div>

@@ -141,14 +141,14 @@ export default function LoanCalculator() {
         {/* Section Header */}
         <motion.div
           className="text-center mb-8"
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <motion.h2
             className="text-3xl lg:text-4xl font-medium text-gray-900 mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
@@ -157,7 +157,7 @@ export default function LoanCalculator() {
           </motion.h2>
           <motion.p
             className="text-lg text-gray-600 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
@@ -170,7 +170,7 @@ export default function LoanCalculator() {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Left Side - Loan Type Tabs */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -321,7 +321,7 @@ export default function LoanCalculator() {
 
           {/* Right Side - Calculator */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -363,7 +363,7 @@ export default function LoanCalculator() {
                   {/* Loan Amount */}
                   <motion.div
                     className="space-y-3 bg-white rounded-xl p-5"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                   >
@@ -406,7 +406,7 @@ export default function LoanCalculator() {
                   {/* Interest Rate */}
                   <motion.div
                     className="space-y-3 bg-white rounded-xl p-5"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
@@ -448,7 +448,7 @@ export default function LoanCalculator() {
                   {/* Loan Term */}
                   <motion.div
                     className="space-y-3 bg-white rounded-xl p-5"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
@@ -511,7 +511,7 @@ export default function LoanCalculator() {
                     {/* Buttons */}
                     <motion.div
                       className="flex gap-3 pt-3 md:pt-8"
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={false}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
@@ -526,7 +526,7 @@ export default function LoanCalculator() {
 
                   {/* Loan Summary */}
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={false}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >

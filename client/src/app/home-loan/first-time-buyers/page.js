@@ -5,7 +5,7 @@ import FirstTimeBuyersClient from './FirstTimeBuyersClient';
 export const metadata = buildMetadata({
   title: 'Home Loan for First-Time Buyers | Borrowww',
   description:
-    'Planning your first home purchase? Learn how a home loan for first-time buyers works — affordability, eligibility, documents, rates and EMI planning.',
+    'Planning your first home purchase? Learn how a home loan for first-time buyers works: affordability, eligibility, documents, rates and EMI planning.',
   path: '/home-loan/first-time-buyers',
   keywords: [
     'home loan for first-time buyers',
@@ -26,7 +26,7 @@ const faqSchema = {
       name: 'Can a first-time buyer get a home loan?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Being a first-time buyer does not restrict your ability to apply for a home loan — lenders assess your application based on the usual factors such as income, credit history, existing obligations and the property being purchased, regardless of whether it is your first property or not.',
+        text: 'Yes. Being a first-time buyer does not stop you applying for a home loan. Lenders assess your application on the usual factors, such as income, credit history, existing obligations and the property being purchased, whether or not it is your first property.',
       },
     },
     {
@@ -34,7 +34,7 @@ const faqSchema = {
       name: 'What is a home loan for first-time buyers?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'It is simply a housing loan taken by someone purchasing their first property. The loan structure is the same as any other home loan; the term mainly reflects that the buyer is navigating the process — affordability, eligibility, documentation and comparison — for the first time.',
+        text: 'It is simply a housing loan taken by someone purchasing their first property. The loan structure is the same as any other home loan; the term simply means the buyer is going through affordability, eligibility, documentation and loan comparison for the first time.',
       },
     },
     {
@@ -58,7 +58,7 @@ const faqSchema = {
       name: 'Does CIBIL score affect a first-time home loan?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes, your credit score is generally an important input in a lender assessment, even for first-time applicants with no prior home loan history. A stronger score may support access to more favourable terms, though it is considered alongside other factors like income and existing debt.',
+        text: 'Yes, your credit score is generally an important input in a lender’s assessment, even for first-time applicants with no prior home loan history. A stronger score may support access to more favourable terms, though it is considered alongside other factors like income and existing debt.',
       },
     },
     {
@@ -82,7 +82,7 @@ const faqSchema = {
       name: 'Can first-time buyers apply for a joint home loan?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes, applying jointly with a co-applicant, such as a spouse or parent, is common and can allow the lender to consider combined income. This can affect loan amount, repayment responsibility and ownership, so it is worth understanding the implications fully, including consulting a professional for tax-related questions.',
+        text: 'Yes, applying jointly with a co-applicant, such as a spouse or parent, is common and can allow the lender to consider combined income. This can affect loan amount, repayment responsibility and ownership, so make sure you understand the implications fully and consult a professional for tax-related questions.',
       },
     },
     {
@@ -114,7 +114,7 @@ const faqSchema = {
       name: 'How should first-time buyers compare home loan offers?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Look beyond the advertised interest rate to the type of rate, EMI, tenure, total repayment, processing and other charges, prepayment terms, and the lender overall terms and conditions. Comparing the complete cost of the loan, rather than a single headline figure, generally gives a more accurate picture of which offer suits you best.',
+        text: 'Look beyond the advertised interest rate to the type of rate, EMI, tenure, total repayment, processing and other charges, prepayment terms, and the lender’s overall terms and conditions. Comparing the complete cost of the loan, rather than a single headline figure, generally gives a more accurate picture of which offer suits you best.',
       },
     },
   ],

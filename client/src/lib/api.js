@@ -13,7 +13,7 @@ export const api = axios.create({
     },
 });
 
-// Response interceptor — let each caller decide how to react to 401 so we don't
+// Response interceptor - let each caller decide how to react to 401 so we don't
 // trigger redirect loops. AuthContext + the credit-check page handle it.
 api.interceptors.response.use(
     (response) => response,

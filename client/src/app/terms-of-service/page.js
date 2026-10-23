@@ -36,7 +36,7 @@ export default function TermsOfService() {
         <h2 className="text-2xl font-semibold text-gray-900">3. No Guarantee</h2>
         <p>
           We do not guarantee loan approval, specific interest rates, processing time, or outcomes.
-          Final decisions are taken by respective banks/NBFCs.
+          Final decisions are taken by the respective banks/NBFCs.
         </p>
 
         <h2 className="text-2xl font-semibold text-gray-900">4. Third-Party Services</h2>

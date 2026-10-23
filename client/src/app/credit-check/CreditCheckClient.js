@@ -1,7 +1,7 @@
 'use client';
 
-import { Suspense, useEffect, useState, useRef } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import {
     FaCalendarAlt,
     FaChartLine,
@@ -30,8 +30,10 @@ import ChartLineLabel from '@/components/ChartLineLabel';
 import { Skeleton } from "@/components/ui/skeleton";
 
 
-function CIBILCheckContent() {
-    const searchParams = useSearchParams();
+// URL params arrive as props from the server page instead of useSearchParams(),
+// so the page is server-rendered (useSearchParams made Next.js send only the
+// Suspense fallback spinner, which is all search engines saw).
+function CIBILCheckContent({ transactionId = null, encodedData = null }) {
     const router = useRouter();
     const { user, loading: authLoading } = useAuth();
 
@@ -48,12 +50,13 @@ function CIBILCheckContent() {
     // Report State
     const [report, setReport] = useState(null);
     const [expiredReport, setExpiredReport] = useState(null); // For expired report → show Try Again
-    const [loadingReport, setLoadingReport] = useState(true);
+    // Only a report callback (?transaction_id=) starts in the loading state; everyone
+    // else, including search engines, gets the form and explanation immediately.
+    const [loadingReport, setLoadingReport] = useState(Boolean(transactionId));
     const [fetchingReport, setFetchingReport] = useState(false);
     const [reportError, setReportError] = useState(null);
     const [retryCount, setRetryCount] = useState(0);
 
-    const transactionId = searchParams.get('transaction_id');
     const fetchedRef = useRef(false);
 
     useEffect(() => {
@@ -71,7 +74,6 @@ function CIBILCheckContent() {
             setLoadingReport(false);
         }
 
-        const encodedData = searchParams.get('data');
         if (encodedData) {
             try {
                 const decodedData = JSON.parse(atob(encodedData));
@@ -86,7 +88,7 @@ function CIBILCheckContent() {
                 console.error('Failed to decode form data:', e);
             }
         }
-    }, [searchParams, transactionId, authLoading, user]);
+    }, [encodedData, transactionId, authLoading, user]);
 
     const fetchReportWithRetry = async (txnId) => {
         setFetchingReport(true);
@@ -308,7 +310,7 @@ function CIBILCheckContent() {
                 toast.success("Redirecting to verification...");
                 window.location.href = res.data.redirect_url;
             } else if (res.data.alreadyCached) {
-                // User already has a valid report in the 28-day window — just show it.
+                // User already has a valid report in the 28-day window - just show it.
                 toast.info(res.data.message || "You already have a valid credit report.");
                 setIsSubmitting(false);
                 await checkCache();
@@ -336,16 +338,16 @@ function CIBILCheckContent() {
     // UI Variables
     const factors = [
         { factor: 'Payment History', impact: '35%', description: 'Timely payment of EMIs and credit card bills', icon: FaCheckCircle },
-        { factor: 'Credit Utilization', impact: '30%', description: 'How much of your available credit you use', icon: FaChartLine },
+        { factor: 'Credit Utilisation', impact: '30%', description: 'How much of your available credit you use', icon: FaChartLine },
         { factor: 'Credit History Length', impact: '15%', description: 'How long you have been using credit', icon: FaCalendarAlt },
         { factor: 'Credit Mix', impact: '10%', description: 'Types of credit accounts you have', icon: FaShieldAlt },
-        { factor: 'New Credit', impact: '10%', description: 'Recent credit inquiries and new accounts', icon: FaUser },
+        { factor: 'New Credit', impact: '10%', description: 'Recent credit enquiries and new accounts', icon: FaUser },
     ];
 
 
 
     // 1. Loading / Fetching
-    if (authLoading || loadingReport || fetchingReport) {
+    if (loadingReport || fetchingReport) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="w-full max-w-md p-6 space-y-6 bg-white rounded-2xl shadow-sm border border-gray-100">
@@ -498,7 +500,7 @@ function CIBILCheckContent() {
         );
     }
 
-    // 2b. EXPIRED Report — Show Try Again
+    // 2b. EXPIRED Report - Show Try Again
     if (expiredReport) {
         return (
             <div className="min-h-screen bg-gray-50/50 flex items-center justify-center px-4">
@@ -541,7 +543,7 @@ function CIBILCheckContent() {
             <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-12 md:py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         className="text-center mb-8 md:mb-12"
@@ -568,7 +570,7 @@ function CIBILCheckContent() {
                     <div className="grid gap-6 md:gap-8 md:grid-cols-2">
                         {/* Form */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={false}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
@@ -633,7 +635,7 @@ function CIBILCheckContent() {
                                         />
                                         <div className="space-y-1">
                                             <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer text-gray-600">
-                                                I agree, all information mentioned above is true and I authorize Borrowww to
+                                                I agree that all information mentioned above is true, and I authorise Borrowww to
                                                 fetch my data.
                                             </Label>
                                             {errors.consent && <p className="text-red-500 text-xs">{errors.consent}</p>}
@@ -662,13 +664,13 @@ function CIBILCheckContent() {
 
                         {/* Features */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={false}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
                             <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 h-full">
                                 <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-6">
-                                    Why Check Credit Score?
+                                    Why Check Your Credit Score?
                                 </h3>
                                 <div className="space-y-6">
                                     <div className="flex items-start gap-4">
@@ -700,7 +702,7 @@ function CIBILCheckContent() {
                                         <div>
                                             <h4 className="font-semibold text-gray-900 text-lg">Improve Score</h4>
                                             <p className="text-gray-600 text-sm mt-1">
-                                                Get personalized tips to improve your credit score.
+                                                Get personalised tips to improve your credit score.
                                             </p>
                                         </div>
                                     </div>
@@ -715,7 +717,7 @@ function CIBILCheckContent() {
             <section className="py-8 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-10"
@@ -729,7 +731,7 @@ function CIBILCheckContent() {
                         {factors.map((factor, index) => (
                             <motion.div
                                 key={factor.factor}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -761,16 +763,6 @@ function CIBILCheckContent() {
     );
 }
 
-export default function CreditCheckClient() {
-    return (
-        <Suspense
-            fallback={
-                <div className="min-h-screen flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[var(--primary-blue)]"></div>
-                </div>
-            }
-        >
-            <CIBILCheckContent />
-        </Suspense>
-    );
+export default function CreditCheckClient({ transactionId = null, encodedData = null }) {
+    return <CIBILCheckContent transactionId={transactionId} encodedData={encodedData} />;
 }

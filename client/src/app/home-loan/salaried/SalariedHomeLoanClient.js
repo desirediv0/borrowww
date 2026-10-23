@@ -12,15 +12,15 @@ const faqs = [
   },
   {
     q: 'What is the eligibility for a home loan for salaried employees?',
-    a: 'Common considerations include age, salary or income level, employment stability and work experience, existing financial obligations, credit history, the loan amount and tenure requested, and property details. Exact criteria vary by lender — see Borrowww’s home loan eligibility page for a fuller explanation.',
+    a: 'Common considerations include age, salary or income level, employment stability and work experience, existing financial obligations, credit history, the loan amount and tenure requested, and property details. Exact criteria vary by lender. See Borrowww’s home loan eligibility page for a fuller explanation.',
   },
   {
     q: 'How does salary affect home loan eligibility?',
-    a: 'Your salary is a key input in assessing repayment capacity, but lenders also weigh it against existing EMIs, household expenses, the requested tenure and interest rate. A higher salary doesn’t automatically mean you should borrow the maximum eligible amount — it’s worth assessing what’s comfortably affordable as well.',
+    a: 'Your salary is a key input in assessing repayment capacity, but lenders also weigh it against existing EMIs, household expenses, the requested tenure and interest rate. A higher salary doesn’t automatically mean you should borrow the maximum eligible amount. Work out what is comfortably affordable as well.',
   },
   {
     q: 'What documents are required for a salaried home loan?',
-    a: 'Commonly requested documents include identity and address proof, recent salary slips, bank statements showing salary credits, Form 16 or other income tax documents, and property-related documents. Exact requirements vary by lender — see Borrowww’s home loan documents page for details.',
+    a: 'Commonly requested documents include identity and address proof, recent salary slips, bank statements showing salary credits, Form 16 or other income tax documents, and property-related documents. Exact requirements vary by lender. See Borrowww’s home loan documents page for details.',
   },
   {
     q: 'Does CIBIL score affect home loan eligibility for salaried employees?',
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: 'How much home loan can a salaried person get?',
-    a: 'This depends on documented income, existing EMIs, repayment capacity, credit profile, the property value, the down payment and the lender’s own assessment — not salary alone. It’s generally advisable to borrow an amount that’s comfortable to repay rather than the maximum eligible amount.',
+    a: 'This depends on documented income, existing EMIs, repayment capacity, credit profile, the property value, the down payment and the lender’s own assessment, not salary alone. It’s generally advisable to borrow an amount that’s comfortable to repay rather than the maximum eligible amount.',
   },
   {
     q: 'Can a private-sector employee get a home loan?',
@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: 'Can a government employee apply for a home loan?',
-    a: 'Yes, government and public-sector employees can apply for a home loan, subject to the lender’s applicable criteria. While some lenders may offer specific schemes for government employees, this isn’t universal, so it’s worth checking directly with the lender.',
+    a: 'Yes, government and public-sector employees can apply for a home loan, subject to the lender’s applicable criteria. While some lenders may offer specific schemes for government employees, this isn’t universal, so check directly with the lender.',
   },
   {
     q: 'Can a salaried person apply for a joint home loan?',
@@ -44,11 +44,11 @@ const faqs = [
   },
   {
     q: 'How does EMI affect home loan affordability for salaried borrowers?',
-    a: 'The EMI directly affects your monthly cash flow, so it’s worth estimating it before finalising a property rather than after. A comfortable EMI generally leaves room for existing obligations, household expenses and savings, rather than stretching your take-home income to its limit.',
+    a: 'The EMI directly affects your monthly cash flow, so estimate it before finalising a property rather than after. A comfortable EMI generally leaves room for existing obligations, household expenses and savings, rather than stretching your take-home income to its limit.',
   },
   {
     q: 'Are home loan interest rates different for salaried employees?',
-    a: 'Not inherently. The interest rate offered depends on factors like credit profile, income, loan amount and tenure, and the lender’s own policies — not on employment type alone. Salaried applicants are not automatically offered lower rates than self-employed applicants.',
+    a: 'Not inherently. The interest rate offered depends on factors like credit profile, income, loan amount and tenure, and the lender’s own policies, not on employment type alone. Salaried applicants are not automatically offered lower rates than self-employed applicants.',
   },
   {
     q: 'How can a salaried borrower prepare for a home loan application?',
@@ -119,25 +119,26 @@ export default function SalariedHomeLoanClient() {
           <div className="mt-6 flex justify-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#3A6EA5]/20 bg-white/80 px-4 py-1.5 text-sm font-medium text-[#2D3E50] shadow-sm backdrop-blur">
               <Home className="h-4 w-4 text-[#3A6EA5]" aria-hidden="true" /> Home Loan for Salaried
+              Employees
             </span>
           </div>
           <h1 className="mt-5 text-center text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Home Loan <span className="italic tiemposfine text-[#2D3E50]">for Salaried</span>
+            Home Loan <span className="italic tiemposfine text-[#2D3E50]">for Salaried Employees</span>
           </h1>
           <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center text-base leading-8 text-slate-600 sm:text-lg">
             <p>
               A regular salary credit and a stable employment record can make parts of a home loan
-              for salaried applicants relatively straightforward to document — a salary slip, Form
+              for salaried applicants relatively straightforward to document. A salary slip, Form
               16 and a few months of bank statements usually cover much of what a lender needs to
-              see. But a documented income doesn&apos;t automatically translate into approval or the
+              see. But a documented income doesn’t automatically translate into approval or the
               best possible terms. Lenders still look at your complete financial picture: existing
-              obligations, credit history, the loan amount and tenure you&apos;re requesting, and
+              obligations, credit history, the loan amount and tenure you’re requesting, and
               the property itself.
             </p>
             <p className="text-base">
               This page walks through how lenders typically assess salaried applicants, what affects
               eligibility and interest rates, how to plan your EMI realistically, and what to
-              prepare before you apply — whether you work in the private sector, a public-sector
+              prepare before you apply, whether you work in the private sector, a public-sector
               organisation, government service, or a multinational company.
             </p>
           </div>
@@ -162,7 +163,7 @@ export default function SalariedHomeLoanClient() {
         <Section title="Can a Salaried Person Get a Home Loan?">
           <p>
             Yes. Salaried individuals can apply for a home loan, subject to the applicable
-            lender&apos;s eligibility criteria and its assessment of the specific application. This
+            lender’s eligibility criteria and its assessment of the specific application. This
             holds across a range of employment types, including:
           </p>
           <Bullets
@@ -175,8 +176,7 @@ export default function SalariedHomeLoanClient() {
             ]}
           />
           <p>
-            Being salaried doesn&apos;t automatically guarantee approval or a specific set of terms
-            — lender policies differ, and each application is assessed on its own merits, including
+            Being salaried doesn’t automatically guarantee approval or a specific set of terms. Lender policies differ, and each application is assessed on its own merits, including
             income, credit history, existing obligations and the property being financed.
           </p>
         </Section>
@@ -189,13 +189,13 @@ export default function SalariedHomeLoanClient() {
 
           <h3 className="pt-2 text-xl font-semibold text-slate-900">Monthly and Annual Income</h3>
           <p>
-            Your documented salary — reflected in salary slips, bank credits and Form 16 — is
+            Your documented salary, as shown in salary slips, bank credits and Form 16, is
             typically used to assess repayment capacity for the requested loan amount and tenure.
           </p>
 
           <h3 className="pt-2 text-xl font-semibold text-slate-900">Employment Stability</h3>
           <p>
-            How long you&apos;ve been with your current employer, and your broader employment
+            How long you’ve been with your current employer, and your broader employment
             history, can be relevant, since it indicates the likely continuity of your income.
           </p>
 
@@ -215,7 +215,7 @@ export default function SalariedHomeLoanClient() {
 
           <h3 className="pt-2 text-xl font-semibold text-slate-900">Loan Amount and Tenure</h3>
           <p>
-            The amount you&apos;re requesting and the repayment period you choose affect the
+            The amount you’re requesting and the repayment period you choose affect the
             resulting EMI, which in turn affects how the lender views affordability.
           </p>
 
@@ -225,8 +225,8 @@ export default function SalariedHomeLoanClient() {
             reviewed by the lender as part of the overall transaction.
           </p>
           <p>
-            No single factor above determines approval on its own — lenders typically evaluate
-            salaried applications holistically, weighing income, employment stability, existing
+            No single factor above determines approval on its own. Lenders typically assess
+            salaried applications as a whole, weighing income, employment stability, existing
             obligations, credit history and the property together.
           </p>
         </Section>
@@ -236,11 +236,11 @@ export default function SalariedHomeLoanClient() {
             Broadly, eligibility considerations for salaried applicants include age, salary or
             income level, employment profile and work experience, existing financial obligations,
             credit history, the loan amount and tenure requested, property details, and
-            documentation. Exact criteria — including any minimum income expectations — vary by
-            lender and are subject to that lender&apos;s applicable policies.
+            documentation. Exact criteria, including any minimum income expectations, vary by
+            lender and are subject to that lender’s applicable policies.
           </p>
           <p>
-            Rather than repeating the complete framework here, you can review Borrowww&apos;s
+            Rather than repeating the complete framework here, you can review Borrowww’s
             dedicated home loan eligibility page for a fuller explanation of how these factors
             generally apply across borrower types.
           </p>
@@ -249,16 +249,16 @@ export default function SalariedHomeLoanClient() {
         <Section title="How Does Salary Affect Home Loan Eligibility?">
           <p>
             Your salary is a central input in assessing how much loan you could be eligible for, but
-            it&apos;s not the only one. Lenders typically weigh your income against existing EMIs,
+            it’s not the only one. Lenders typically weigh your income against existing EMIs,
             household expenses, the requested tenure and interest rate, and your overall repayment
-            capacity — not income in isolation.
+            capacity, not income in isolation.
           </p>
           <p>
-            It&apos;s worth separating loan eligibility — the maximum amount a lender may be willing
-            to offer based on its assessment — from comfortable affordability — the amount you can
-            repay without straining your monthly budget or compromising other financial goals. A
-            higher salary doesn&apos;t automatically mean you should borrow the maximum amount
-            offered; it&apos;s generally worth working backwards from an EMI that leaves reasonable
+            Keep two figures separate. Loan eligibility is the maximum amount a lender may be
+            willing to offer based on its assessment. Comfortable affordability is the amount you
+            can repay without straining your monthly budget or compromising other financial goals.
+            A higher salary doesn’t automatically mean you should borrow the maximum amount
+            offered; it’s generally better to work backwards from an EMI that leaves reasonable
             room for savings, existing commitments and unexpected expenses.
           </p>
         </Section>
@@ -267,30 +267,30 @@ export default function SalariedHomeLoanClient() {
           <p>
             For employees of private companies, lenders typically rely on salary slips, bank
             statements showing salary credits, and documents like Form 16 to assess income.
-            Employment history — including how long you&apos;ve been with your current employer and
-            your broader career continuity — along with existing obligations and credit profile, are
-            usually reviewed alongside income.
+            Employment history (including how long you’ve been with your current employer and
+            your broader career continuity), existing obligations and credit profile are usually
+            reviewed alongside income.
           </p>
           <p>
             Private-sector employees are not automatically treated more or less favourably than
             other salaried applicants; the strength of an individual application depends on the same
-            broad factors — documented income, stability, credit history and existing liabilities.
+            broad factors: documented income, stability, credit history and existing liabilities.
           </p>
         </Section>
 
         <Section title="Home Loan for Government and Public-Sector Employees">
           <p>
             Government and public-sector employees can apply for home loans in the same way as other
-            salaried applicants, subject to the lender&apos;s applicable criteria. Lenders typically
+            salaried applicants, subject to the lender’s applicable criteria. Lenders typically
             look at salary documentation, employment records, bank statements, existing obligations,
             credit profile and property details.
           </p>
           <p>
             While government employment is sometimes associated with income stability, this does not
             automatically translate into special interest rates, higher eligibility, or guaranteed
-            approval — these still depend on the lender&apos;s own policies and the complete
+            approval. These still depend on the lender’s own policies and the complete
             application. Some lenders may offer specific schemes for government employees, so
-            it&apos;s worth checking directly with the lender whether any such scheme applies to
+            check directly with the lender whether any such scheme applies to
             you.
           </p>
         </Section>
@@ -321,8 +321,8 @@ export default function SalariedHomeLoanClient() {
           <Bullets items={['Property documents requested by the lender.']} />
 
           <p>
-            Not every lender requires every document listed above — the exact list depends on the
-            specific lender and your profile. For a fuller breakdown, see Borrowww&apos;s home loan
+            Not every lender requires every document listed above. The exact list depends on the
+            specific lender and your profile. For a fuller breakdown, see Borrowww’s home loan
             documents page.
           </p>
         </Section>
@@ -335,10 +335,10 @@ export default function SalariedHomeLoanClient() {
             consistent repayment history is generally viewed favourably during the assessment.
           </p>
           <p>
-            There is no single credit score that guarantees approval across all lenders — thresholds
+            There is no single credit score that guarantees approval across all lenders. Thresholds
             and how much weight they carry vary by lender and by the rest of your application. Since
             credit reports can occasionally contain errors, such as an incorrectly reported account
-            or outdated information, it&apos;s worth reviewing your report and addressing any
+            or outdated information, review your report and address any
             discrepancies before you apply. You can learn more about understanding your CIBIL score
             on Borrowww.
           </p>
@@ -354,7 +354,7 @@ export default function SalariedHomeLoanClient() {
           <p>
             The maximum amount a lender is willing to offer is not necessarily the same as the
             amount that is financially comfortable for you to repay. Rather than aiming for the
-            highest eligible loan amount, it&apos;s generally worth assessing what EMI fits
+            highest eligible loan amount, it’s generally better to work out what EMI fits
             comfortably within your monthly budget, factoring in existing commitments and future
             financial goals.
           </p>
@@ -362,9 +362,9 @@ export default function SalariedHomeLoanClient() {
 
         <Section title="Home Loan EMI Planning for Salaried Employees">
           <p>
-            Estimating your EMI before finalising a property — rather than after — gives you a
+            Estimating your EMI before finalising a property, rather than after, gives you a
             realistic sense of what price range actually fits your budget. Before committing,
-            it&apos;s worth reviewing:
+            review:
           </p>
           <Bullets
             items={[
@@ -380,12 +380,12 @@ export default function SalariedHomeLoanClient() {
             Illustrative example (hypothetical, not an actual lender offer): for a loan of
             ₹45,00,000 over a 20-year tenure, opting for a 15-year tenure instead would increase the
             EMI but reduce the total interest paid over the life of the loan. Which option makes
-            more sense depends entirely on your monthly cash flow and financial priorities — these
+            more sense depends entirely on your monthly cash flow and financial priorities. These
             figures are illustrative only and not indicative of a current or lender-specific offer.
           </p>
           <p>
             You can test different combinations of loan amount, tenure and interest rate using
-            Borrowww&apos;s home loan EMI calculator before finalising your budget.
+            Borrowww’s home loan EMI calculator before finalising your budget.
           </p>
         </Section>
 
@@ -393,30 +393,30 @@ export default function SalariedHomeLoanClient() {
           <p>
             The interest rate applicable to your loan is generally influenced by your credit
             profile, income and employment profile, the loan amount and tenure requested, and the
-            specific lender&apos;s own policies at the time of application. Loans are typically
+            specific lender’s own policies at the time of application. Loans are typically
             offered under fixed or floating rate structures, each with different trade-offs between
             predictability and potential rate movement over time.
           </p>
           <p>
-            Being salaried doesn&apos;t automatically mean you&apos;ll be offered the lowest
-            advertised rate — the rate offered depends on the overall strength of your individual
-            application, not on employment type alone. As with any home loan, it&apos;s worth
-            comparing the complete cost across a few lenders rather than the headline rate alone.
-            You can read more on Borrowww&apos;s home loan interest rates page.
+            Being salaried doesn’t automatically mean you’ll be offered the lowest
+            advertised rate. The rate offered depends on the overall strength of your individual
+            application, not on employment type alone. As with any home loan, compare
+            the complete cost across a few lenders rather than the headline rate alone.
+            You can read more on Borrowww’s home loan interest rates page.
           </p>
         </Section>
 
         <Section title="Home Loan Tenure for Salaried Borrowers">
           <p>
-            Loan tenure has a direct effect on your EMI and the total interest you&apos;ll pay. A
+            Loan tenure has a direct effect on your EMI and the total interest you’ll pay. A
             longer tenure generally results in a lower EMI but a higher total interest outgo over
             the life of the loan, while a shorter tenure increases the EMI but usually reduces the
             total interest paid.
           </p>
           <p>
             The right tenure depends on your age, income, affordability, other financial goals, and
-            the terms your lender is willing to offer — there&apos;s no tenure that&apos;s
-            universally correct for every salaried borrower. It&apos;s worth weighing a few tenure
+            the terms your lender is willing to offer. There’s no tenure that’s
+            universally correct for every salaried borrower. Weigh a few tenure
             options against your monthly budget and long-term plans before deciding.
           </p>
         </Section>
@@ -426,14 +426,14 @@ export default function SalariedHomeLoanClient() {
             Yes. A joint home loan involves applying together with a co-applicant, commonly a spouse
             or family member, which can allow the lender to consider combined eligible income. This
             may affect the loan amount that can be considered, though the exact impact depends on
-            the lender&apos;s specific policy and the co-applicant&apos;s own profile.
+            the lender’s specific policy and the co-applicant’s own profile.
           </p>
           <p>
             Both co-applicants are typically responsible for repayment, and ownership of the
             property is usually linked to how the applicants are named on the property documents.
-            Adding a co-applicant doesn&apos;t automatically increase the loan amount or improve
-            approval chances — it depends on the combined strength of both profiles. You can read
-            more on Borrowww&apos;s joint home loan page.
+            Adding a co-applicant doesn’t automatically increase the loan amount or improve
+            approval chances. It depends on the combined strength of both profiles. You can read
+            more on Borrowww’s joint home loan page.
           </p>
         </Section>
 
@@ -471,7 +471,7 @@ export default function SalariedHomeLoanClient() {
             ]}
           />
           <p>
-            These are all about presenting an accurate, well-organised financial picture — not about
+            These are all about presenting an accurate, well-organised financial picture, not about
             manipulating salary documents, hiding liabilities or misrepresenting your financial
             position, which can create serious problems later in the loan process.
           </p>
@@ -496,8 +496,8 @@ export default function SalariedHomeLoanClient() {
 
         <Section title="Additional Costs Salaried Home Buyers Should Plan For">
           <p>
-            The EMI is usually the most visible cost, but it isn&apos;t the only one involved in
-            buying a home. It&apos;s worth budgeting for:
+            The EMI is usually the most visible cost, but it isn’t the only one involved in
+            buying a home. You should also budget for:
           </p>
           <Bullets
             items={[
@@ -514,7 +514,7 @@ export default function SalariedHomeLoanClient() {
           />
           <p>
             These costs vary considerably by location, property type and the specific transaction,
-            so it&apos;s worth getting a realistic estimate before committing to a purchase rather
+            so get a realistic estimate before committing to a purchase rather
             than discovering them midway through the process.
           </p>
         </Section>
@@ -543,7 +543,7 @@ export default function SalariedHomeLoanClient() {
         <Section title="Salaried vs Self-Employed Home Loan Applications">
           <p>
             Lenders generally assess salaried and self-employed applicants using the same broad
-            principles — income, repayment capacity, credit history and property — but the way
+            principles (income, repayment capacity, credit history and property), but the way
             income is documented and verified differs between the two.
           </p>
           <Bullets
@@ -559,9 +559,8 @@ export default function SalariedHomeLoanClient() {
             ]}
           />
           <p>
-            Neither profile is inherently better positioned than the other for securing a home loan
-            — a well-documented application from either can be equally competitive. If you or a
-            co-applicant is self-employed, Borrowww&apos;s page on home loan options for
+            Neither profile is inherently better positioned than the other for securing a home loan. A well-documented application from either can be equally competitive. If you or a
+            co-applicant is self-employed, Borrowww’s page on home loan options for
             self-employed borrowers covers that side of the assessment in more detail.
           </p>
         </Section>
@@ -625,14 +624,14 @@ export default function SalariedHomeLoanClient() {
               <p className="mt-3 text-sm leading-7 text-white/85">
                 A stable salary and organised documentation can make parts of the home loan process
                 more straightforward, but a well-informed application still comes down to
-                understanding your complete financial picture — income, existing obligations, credit
+                understanding your complete financial picture: income, existing obligations, credit
                 profile and what you can comfortably repay. Loan terms, rates and requirements vary
-                across lenders and change over time, so it&apos;s always worth verifying the latest
+                across lenders and change over time, so always verify the latest
                 applicable details directly with the lender before you commit.
               </p>
               <p className="mt-4 text-sm leading-7 text-white/85">
-                Ready to explore your options? Visit Borrowww&apos;s home loan page to get started,
-                check your eligibility, review the documents you&apos;ll likely need, and use the
+                Ready to explore your options? Visit Borrowww’s home loan page to get started,
+                check your eligibility, review the documents you’ll likely need, and use the
                 EMI calculator to plan your budget before you apply.
               </p>
             </div>

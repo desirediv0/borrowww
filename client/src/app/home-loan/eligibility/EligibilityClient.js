@@ -173,7 +173,7 @@ export default function EligibilityClient() {
           <div className="mt-6 flex justify-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#3A6EA5]/20 bg-white/80 px-4 py-1.5 text-sm font-medium text-[#2D3E50] shadow-sm backdrop-blur">
               <Home className="h-4 w-4 text-[#3A6EA5]" aria-hidden="true" /> Home Loan Eligibility:
-              How Much Can You Borrow
+              How Much Can You Borrow?
             </span>
           </div>
           <h1 className="mt-5 text-center text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
@@ -190,9 +190,9 @@ export default function EligibilityClient() {
               There is no single formula that every lender follows. In practice, most start with one
               question: after your current EMIs, how much of your monthly income can safely go
               towards a new home loan EMI? That figure, together with the interest rate and the
-              longest tenure your age allows, sets an income-based limit. The property&apos;s value
+              longest tenure your age allows, sets an income-based limit. The property’s value
               sets a second limit. Your eligible amount is usually the lower of the two, and it is
-              still subject to the lender&apos;s credit, document and legal checks.
+              still subject to the lender’s credit, document and legal checks.
             </p>
             <p className="text-base">
               This guide explains each factor in plain language, shows how the calculation works
@@ -220,7 +220,7 @@ export default function EligibilityClient() {
       <div className="mx-auto max-w-6xl space-y-6 px-4 py-10 sm:px-6 lg:px-8">
         <Section title="At a Glance (General Guidance, Not Lender Policy)">
           <p className="text-sm italic text-slate-500">
-            General guidance, not lender policy. Criteria change — always confirm with your chosen
+            General guidance, not lender policy. Criteria change, so always confirm with your chosen
             lender.
           </p>
           <DataTable
@@ -261,7 +261,7 @@ export default function EligibilityClient() {
             Home loan eligibility is the maximum amount a lender is willing to lend you after
             assessing your repayment capacity and the property. It depends on your net income,
             existing loan EMIs, age, credit history, employment or business stability, the tenure
-            you choose and the property&apos;s value. It is an estimate until the lender verifies
+            you choose and the property’s value. It is an estimate until the lender verifies
             your documents and approves the loan.
           </p>
           <p>
@@ -410,7 +410,7 @@ export default function EligibilityClient() {
           <p>
             Car loans, personal loans, education loans, consumer durable EMIs and credit card dues
             all count as fixed obligations. If you are a guarantor or co-borrower on someone
-            else&apos;s loan, that may also be considered. The more income already committed, the
+            else’s loan, that may also be considered. The more income already committed, the
             less room there is for a home loan EMI.
           </p>
 
@@ -418,13 +418,13 @@ export default function EligibilityClient() {
           <p>
             Many lenders measure repayment capacity with the Fixed Obligation to Income Ratio
             (FOIR): total monthly EMIs, including the proposed home loan EMI, divided by monthly
-            income. If a lender&apos;s limit is 50% and you earn ₹1,00,000 a month, your total EMIs
+            income. If a lender’s limit is 50% and you earn ₹1,00,000 a month, your total EMIs
             should generally stay within ₹50,000.
           </p>
           <p>
             There is no single industry-wide FOIR. Commonly cited ranges are roughly 40% to 60%, and
             some lenders allow a higher share for high-income borrowers. The limit you receive
-            depends on the lender&apos;s policy, your income level and your overall profile.
+            depends on the lender’s policy, your income level and your overall profile.
           </p>
 
           <h3 className="pt-2 text-xl font-semibold text-slate-900">Loan Tenure</h3>
@@ -498,13 +498,9 @@ export default function EligibilityClient() {
             ]}
           />
           <p className="text-sm text-slate-500">
-            Source: lenders&apos; official eligibility calculator pages, checked September 2026.
+            Source: lenders’ official eligibility calculator pages, checked September 2026.
             Criteria change, so always confirm the current terms with the lender. Interest rates
             also differ by lender and profile; see current home loan interest rates.
-          </p>
-          <p className="text-sm italic text-slate-500">
-            Note for web team: re-check both lenders&apos; pages on the day of publishing and update
-            the table and date if anything has changed.
           </p>
         </Section>
 
@@ -512,7 +508,7 @@ export default function EligibilityClient() {
           <p>
             Most lenders calculate eligibility by working out the EMI you can afford, converting
             that EMI into a loan amount using the interest rate and tenure, and then checking it
-            against the property&apos;s LTV limit. The lower figure usually becomes your eligible
+            against the property’s LTV limit. The lower figure usually becomes your eligible
             amount, subject to credit and property checks.
           </p>
           <Bullets
@@ -559,7 +555,7 @@ export default function EligibilityClient() {
           <p>
             Your salary sets the EMI you can afford, and that EMI decides the loan amount at a given
             rate and tenure. Roughly, a higher net salary with no other EMIs supports a larger loan,
-            but the exact figure depends on the lender&apos;s repayment limit, the interest rate,
+            but the exact figure depends on the lender’s repayment limit, the interest rate,
             your age and your credit profile.
           </p>
           <p className="text-sm italic text-slate-500">
@@ -580,7 +576,7 @@ export default function EligibilityClient() {
             Your actual eligibility could be lower or higher than these figures. It will be lower if
             you have existing EMIs, a shorter tenure, a lower repayment limit or a higher rate. It
             may be higher if the lender allows a larger share of income, offers a longer tenure or
-            adds a co-applicant&apos;s income. LTV limits still apply in every case.
+            adds a co-applicant’s income. LTV limits still apply in every case.
           </p>
 
           <h3 className="pt-2 text-xl font-semibold text-slate-900">
@@ -806,7 +802,7 @@ export default function EligibilityClient() {
               },
               {
                 term: 'Keep income stable and well documented.',
-                def: 'Avoid changing jobs just before applying if you can, and self-employed applicants should file ITRs on time with income that reflects the business.',
+                def: 'If you can, avoid changing jobs just before applying. Self-employed applicants should file ITRs on time, with income that reflects the business.',
               },
               {
                 term: 'Choose a suitable tenure.',
@@ -894,7 +890,7 @@ export default function EligibilityClient() {
                 Borrowww helps you understand where your profile stands before you approach a
                 lender. Our advisors can review your income, existing obligations and property
                 plans, explain which factors are limiting your eligibility, and help you compare
-                home loan options with Borrowww from the lenders we work with. Final approval, loan
+                home loan options from the lenders we work with. Final approval, loan
                 amount, interest rate and tenure are always decided by the lender after its own
                 assessment.
               </p>

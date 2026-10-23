@@ -8,11 +8,11 @@ import { ChevronDown, Home, Phone } from 'lucide-react';
 const faqs = [
   {
     q: 'Can a first-time buyer get a home loan?',
-    a: "Yes. Being a first-time buyer doesn't restrict your ability to apply for a home loan — lenders assess your application based on the usual factors such as income, credit history, existing obligations and the property being purchased, regardless of whether it's your first property or not.",
+    a: "Yes. Being a first-time buyer doesn't stop you applying for a home loan. Lenders assess your application on the usual factors, such as income, credit history, existing obligations and the property being purchased, whether or not it's your first property.",
   },
   {
     q: 'What is a home loan for first-time buyers?',
-    a: "It's simply a housing loan taken by someone purchasing their first property. The loan structure is the same as any other home loan; the term mainly reflects that the buyer is navigating the process — affordability, eligibility, documentation and comparison — for the first time.",
+    a: "It's simply a housing loan taken by someone purchasing their first property. The loan structure is the same as any other home loan; the term simply means the buyer is going through affordability, eligibility, documentation and loan comparison for the first time.",
   },
   {
     q: 'How much down payment is needed for a first home?',
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: 'How is home loan eligibility calculated?',
-    a: "Lenders typically assess eligibility using a combination of factors, including income, age, employment or business stability, credit history, existing financial obligations, and the loan amount and tenure requested. There's no single formula that applies across all lenders — see Borrowww's home loan eligibility page for a fuller explanation.",
+    a: "Lenders typically assess eligibility using a combination of factors, including income, age, employment or business stability, credit history, existing financial obligations, and the loan amount and tenure requested. There's no single formula that applies across all lenders. See Borrowww's home loan eligibility page for a fuller explanation.",
   },
   {
     q: 'Does CIBIL score affect a first-time home loan?',
@@ -36,11 +36,11 @@ const faqs = [
   },
   {
     q: 'Can first-time buyers apply for a joint home loan?',
-    a: "Yes, applying jointly with a co-applicant, such as a spouse or parent, is common and can allow the lender to consider combined income. This can affect loan amount, repayment responsibility and ownership, so it's worth understanding the implications fully, including consulting a professional for tax-related questions.",
+    a: "Yes, applying jointly with a co-applicant, such as a spouse or parent, is common and can allow the lender to consider combined income. This can affect loan amount, repayment responsibility and ownership, so make sure you understand the implications fully and consult a professional for tax-related questions.",
   },
   {
     q: 'What documents are required for a first-time home loan?',
-    a: "Commonly required documents include identity and address proof, income proof (salary slips or income tax returns depending on employment type), bank statements, employment or business documents, and property-related documents. Exact requirements vary by lender — see Borrowww's home loan documents page for details by borrower type.",
+    a: "Commonly required documents include identity and address proof, income proof (salary slips or income tax returns depending on employment type), bank statements, employment or business documents, and property-related documents. Exact requirements vary by lender. See Borrowww's home loan documents page for details by borrower type.",
   },
   {
     q: 'How much EMI can a first-time buyer afford?',
@@ -66,7 +66,7 @@ const checklistGroups = [
     items: ['Interest rate', 'EMI', 'Tenure', 'Total cost', 'Terms and charges'],
   },
   {
-    title: 'Before Finalizing the Property',
+    title: 'Before Finalising the Property',
     items: [
       'Property documents',
       'Ownership/title checks',
@@ -155,16 +155,16 @@ export default function FirstTimeBuyersClient() {
               Buying your first home involves a lot more than choosing a property you like. Before
               you get there, you need a clear picture of what you can comfortably afford, how much
               you can put down, what a lender will expect from you, and how the loan you take on
-              today will play out over the next 15–25 years. A home loan for first time buyers is
+              today will play out over the next 15-25 years. A home loan for first-time buyers is
               not fundamentally different from any other home loan in how it is structured, but the
               decisions around it carry extra weight simply because this is likely the largest
               financial commitment you have made so far.
             </p>
             <p className="text-base">
-              This page walks through the first-time home buyer journey — from understanding
+              This page walks through the first-time home buyer journey, from understanding
               affordability and eligibility to documentation, interest rates, EMI planning and the
               costs that often get overlooked. Wherever a topic has its own dedicated page on
-              Borrowww, we&apos;ve kept the explanation here brief and pointed you to the detailed
+              Borrowww, we’ve kept the explanation here brief and pointed you to the detailed
               page for the specifics.
             </p>
           </div>
@@ -189,10 +189,9 @@ export default function FirstTimeBuyersClient() {
         <Section title="What Is a Home Loan for First-Time Buyers?">
           <p>
             A home loan for first-time buyers is simply a housing loan taken by someone purchasing
-            property for the first time. The loan mechanics — principal, interest, EMI, tenure —
-            work the same way as for any other home loan. What differs is that first-time buyers are
-            usually navigating several new concepts at once, often without the benefit of having
-            gone through the process before.
+            property for the first time. The loan mechanics (principal, interest, EMI and tenure) work the same way as for any other home loan. The difference is that first-time buyers
+            usually have to deal with several new concepts at once, without having been through
+            the process before.
           </p>
           <p>As a first-time buyer, you will generally need to think through:</p>
           <Bullets
@@ -207,7 +206,7 @@ export default function FirstTimeBuyersClient() {
             ]}
           />
           <p>
-            It&apos;s worth noting that first-time buyers do not automatically receive special
+            First-time buyers do not automatically receive special
             interest rates or relaxed eligibility criteria unless a specific lender scheme or
             government-linked programme explicitly provides for it. Always verify with the lender
             whether any such scheme applies to your situation rather than assuming it by default.
@@ -234,18 +233,18 @@ export default function FirstTimeBuyersClient() {
             ]}
           />
           <p>
-            Some steps may happen in a different order — for instance, some buyers finalise a
-            property before checking eligibility — but starting with a realistic budget and
+            Some steps may happen in a different order. For instance, some buyers finalise a
+            property before checking eligibility. Even so, starting with a realistic budget and an
             eligibility check generally makes the rest of the process smoother.
           </p>
         </Section>
 
         <Section title="How Much Home Can a First-Time Buyer Afford?">
           <p>
-            It&apos;s useful to separate two different questions: how much loan you may be eligible
+            It’s useful to separate two different questions: how much loan you may be eligible
             for, and how much you can comfortably afford to repay. Lenders assess eligibility based
-            on their own criteria, but that figure doesn&apos;t always account for your full
-            financial picture — your lifestyle, savings goals, or how comfortable you want to be
+            on their own criteria, but that figure doesn’t always account for your full
+            financial picture: your lifestyle, savings goals, or how comfortable you want to be
             month to month.
           </p>
           <p>When estimating a comfortable budget, it helps to look at:</p>
@@ -262,10 +261,10 @@ export default function FirstTimeBuyersClient() {
             ]}
           />
           <p>
-            There isn&apos;t a single income-to-loan ratio that applies universally — this depends
-            on the lender&apos;s policies and your individual financial situation. Rather than
-            borrowing the maximum amount a lender may be willing to offer, it&apos;s generally worth
-            working backwards from an EMI you&apos;re genuinely comfortable with, factoring in some
+            There isn’t a single income-to-loan ratio that applies universally; this depends
+            on the lender’s policies and your individual financial situation. Rather than
+            borrowing the maximum amount a lender may be willing to offer, it’s generally better to
+            work backwards from an EMI you’re genuinely comfortable with, factoring in some
             room for unexpected expenses or income fluctuations.
           </p>
         </Section>
@@ -319,32 +318,32 @@ export default function FirstTimeBuyersClient() {
 
           <h3 className="pt-2 text-xl font-semibold text-slate-900">Loan Amount and Tenure</h3>
           <p>
-            The amount you&apos;re requesting and the tenure you choose can also influence the
-            lender&apos;s assessment and the terms offered.
+            The amount you’re requesting and the tenure you choose can also influence the
+            lender’s assessment and the terms offered.
           </p>
           <p>
-            None of these factors guarantees eligibility on its own — lenders generally look at your
-            profile holistically. For a more detailed breakdown of how this works, see
-            Borrowww&apos;s home loan eligibility criteria page.
+            None of these factors guarantees eligibility on its own. Lenders generally look at your
+            profile as a whole. For a more detailed breakdown of how this works, see
+            Borrowww’s home loan eligibility criteria page.
           </p>
         </Section>
 
         <Section title="How Much Down Payment Is Needed for a First Home?">
           <p>
-            The down payment is the portion of the property&apos;s value that you pay upfront, from
+            The down payment is the portion of the property’s value that you pay upfront, from
             your own funds, rather than through the loan. Lenders generally finance only part of the
-            property&apos;s value, which means you&apos;ll need to arrange the remaining amount
+            property’s value, which means you’ll need to arrange the remaining amount
             yourself.
           </p>
           <p>
             The exact proportion a lender will finance depends on regulatory guidelines, the
-            lender&apos;s own policy, and factors like the property value and type. Rather than
-            assuming a fixed percentage, it&apos;s best to confirm the applicable financing limit
-            directly with the lender you&apos;re considering, since this can vary and change over
+            lender’s own policy, and factors like the property value and type. Rather than
+            assuming a fixed percentage, it’s best to confirm the applicable financing limit
+            directly with the lender you’re considering, since this can vary and change over
             time.
           </p>
           <p>
-            It&apos;s also worth planning for more than just the down payment. Buyers sometimes
+            Plan for more than just the down payment. Buyers sometimes
             stretch their savings entirely to meet the down payment and are then caught off guard by
             registration charges, processing fees, or moving costs that come up around the same
             time. Keeping a buffer beyond the minimum down payment required is generally a sound
@@ -355,40 +354,40 @@ export default function FirstTimeBuyersClient() {
         <Section title="Home Loan Interest Rates for First-Time Buyers">
           <p>
             The interest rate is the cost a lender charges for the loan, usually expressed as an
-            annual percentage of the outstanding amount. It&apos;s one of the biggest factors
-            affecting your EMI and the total amount you&apos;ll repay over the loan tenure.
+            annual percentage of the outstanding amount. It’s one of the biggest factors
+            affecting your EMI and the total amount you’ll repay over the loan tenure.
           </p>
           <p>
             Home loans are generally offered under fixed or floating rate structures. A fixed rate
             stays unchanged for a defined period, offering predictable EMIs, while a floating rate
             is linked to a benchmark and can move up or down over the tenure. Neither is universally
-            better — the right fit depends on your comfort with potential EMI changes and how long
+            better. The right fit depends on your comfort with potential EMI changes and how long
             you expect to hold the loan.
           </p>
           <p>
-            It&apos;s a common misconception that first-time buyers automatically receive the lowest
-            advertised rate. In practice, the rate you&apos;re offered depends on factors such as
-            your credit profile, income, loan amount, tenure and the lender&apos;s own assessment at
-            the time — advertised rates are usually a starting point, not a guarantee for every
-            applicant. It&apos;s worth comparing the complete loan cost, not just the headline rate,
-            across a few lenders. You can read more on Borrowww&apos;s home loan interest rates
+            It’s a common misconception that first-time buyers automatically receive the lowest
+            advertised rate. In practice, the rate you’re offered depends on factors such as
+            your credit profile, income, loan amount, tenure and the lender’s own assessment at
+            the time. Advertised rates are usually a starting point, not a guarantee for every
+            applicant. Compare the complete loan cost, not just the headline rate, across a few
+            lenders. You can read more on Borrowww’s home loan interest rates
             page.
           </p>
         </Section>
 
         <Section title="Choosing the Right Home Loan Tenure">
           <p>
-            Loan tenure has a direct effect on both your EMI and the total interest you&apos;ll pay.
+            Loan tenure has a direct effect on both your EMI and the total interest you’ll pay.
             A longer tenure generally results in a lower EMI but a higher total interest outgo over
             the life of the loan, since interest accrues over a longer period. A shorter tenure
             increases the EMI but usually reduces the total interest paid.
           </p>
           <p>
-            There&apos;s no universally correct tenure — it comes down to balancing monthly
+            There’s no universally correct tenure. It comes down to balancing monthly
             affordability against the overall cost of the loan, and factoring in your income growth
             expectations, other financial goals, and how many years you have left until retirement
-            or other major life changes. It&apos;s worth running a few different tenure options
-            through the numbers before deciding.
+            or other major life changes. Run the numbers on a few different tenures before
+            deciding.
           </p>
         </Section>
 
@@ -396,7 +395,7 @@ export default function FirstTimeBuyersClient() {
           <p>
             Your EMI is calculated using three variables: the loan amount, the interest rate, and
             the tenure. Each EMI you pay is split between an interest component and a principal
-            component — in the earlier years of the loan, a larger portion typically goes towards
+            component. In the earlier years of the loan, a larger portion typically goes towards
             interest, shifting gradually towards principal as the outstanding balance reduces.
           </p>
           <p>
@@ -407,22 +406,22 @@ export default function FirstTimeBuyersClient() {
           </p>
           <p>
             Illustrative example (hypothetical, not an actual lender offer): for a loan of
-            ₹40,00,000 over a 20-year tenure, a small change in the assumed interest rate — say,
-            from 8% to 9% per annum — would noticeably change both the EMI and the total interest
+            ₹40,00,000 over a 20-year tenure, a small change in the assumed interest rate, say
+            from 8% to 9% per annum, would noticeably change both the EMI and the total interest
             paid over the tenure. These numbers are purely illustrative and are meant to show the
             relationship between rate, tenure and EMI, not to represent a current or guaranteed
             rate.
           </p>
           <p>
             You can test different loan amounts, tenures and rates for your own situation using
-            Borrowww&apos;s home loan EMI calculator before you commit to a specific property or
+            Borrowww’s home loan EMI calculator before you commit to a specific property or
             lender.
           </p>
         </Section>
 
         <Section title="Documents First-Time Home Buyers May Need">
           <p>
-            Exact documentation requirements vary by lender and by whether you&apos;re salaried or
+            Exact documentation requirements vary by lender and by whether you’re salaried or
             self-employed, but first-time buyers commonly need to submit:
           </p>
           <Bullets
@@ -437,9 +436,9 @@ export default function FirstTimeBuyersClient() {
             ]}
           />
           <p>
-            Since this is often the first time you&apos;re compiling this kind of paperwork, it
+            Since this is often the first time you’re compiling this kind of paperwork, it
             helps to start early and keep documents organised. For a fuller breakdown by borrower
-            type, see Borrowww&apos;s home loan documents page.
+            type, see Borrowww’s home loan documents page.
           </p>
         </Section>
 
@@ -453,7 +452,7 @@ export default function FirstTimeBuyersClient() {
           </p>
           <p>
             Having a stable salaried income is generally viewed as a positive input, but it does not
-            by itself guarantee approval — lenders still assess the complete application, including
+            by itself guarantee approval. Lenders still assess the complete application, including
             credit history and existing debt.
           </p>
         </Section>
@@ -461,22 +460,21 @@ export default function FirstTimeBuyersClient() {
         <Section title="Home Loan for Self-Employed First-Time Buyers">
           <p>
             Self-employed applicants are usually assessed differently, since income can vary year to
-            year and isn&apos;t captured through salary slips. Lenders commonly look at income tax
+            year and isn’t captured through salary slips. Lenders commonly look at income tax
             returns over a few years, bank statements, business continuity and stability, financial
             statements where applicable, existing obligations, and credit history.
           </p>
           <p>
             Because the assessment process can involve more documentation and scrutiny of business
-            income, it&apos;s worth keeping financial records well organised well in advance of
-            applying. As with salaried applicants, meeting these criteria does not guarantee a
-            specific loan amount or approval — it depends on the lender&apos;s complete evaluation.
+            income, it helps to get your financial records organised well before you
+            apply. As with salaried applicants, meeting these criteria does not guarantee a
+            specific loan amount or approval. It depends on the lender’s complete evaluation.
           </p>
         </Section>
 
         <Section title="Can Two First-Time Buyers Apply Together?">
           <p>
-            Yes, many first-time buyers apply jointly — commonly with a spouse, parent or sibling —
-            as co-applicants. A joint home loan generally allows lenders to consider the combined
+            Yes, many first-time buyers apply jointly as co-applicants, commonly with a spouse, parent or sibling. A joint home loan generally allows lenders to consider the combined
             income of both applicants, which can affect the loan amount that may be considered. Both
             co-applicants are typically responsible for repayment, and ownership of the property is
             usually linked to how the applicants are named on the property documents.
@@ -484,9 +482,9 @@ export default function FirstTimeBuyersClient() {
           <p>
             Joint applications also involve additional documentation for each applicant, and there
             can be tax implications depending on individual circumstances. Since these details
-            depend on personal financial and legal circumstances, it&apos;s advisable to consult a
+            depend on personal financial and legal circumstances, it’s advisable to consult a
             qualified tax or legal professional for guidance specific to your situation rather than
-            relying solely on general information. You can read more on Borrowww&apos;s joint home
+            relying solely on general information. You can read more on Borrowww’s joint home
             loan page.
           </p>
         </Section>
@@ -494,7 +492,7 @@ export default function FirstTimeBuyersClient() {
         <Section title="Other Costs First-Time Buyers Should Budget For">
           <p>
             The property price and monthly EMI are usually the most visible numbers, but they
-            aren&apos;t the only costs involved in buying a first home. It&apos;s worth budgeting
+            aren’t the only costs involved in buying a first home. You should also budget
             for:
           </p>
           <Bullets
@@ -513,7 +511,7 @@ export default function FirstTimeBuyersClient() {
           <p>
             These costs can add up to a meaningful amount over and above the property price, and
             they vary significantly by location, property type and the specific transaction.
-            It&apos;s worth getting a realistic estimate of these before you commit to a purchase,
+            Get a realistic estimate of these before you commit to a purchase,
             rather than discovering them midway through the process.
           </p>
         </Section>
@@ -556,9 +554,8 @@ export default function FirstTimeBuyersClient() {
             ]}
           />
           <p>
-            None of these are unusual mistakes — they&apos;re simply easy to overlook when
-            you&apos;re navigating the process for the first time, which is exactly why it helps to
-            go in prepared.
+            None of these are unusual mistakes. They are easy to overlook when you are going
+            through the process for the first time, which is why it helps to go in prepared.
           </p>
         </Section>
 
@@ -570,7 +567,7 @@ export default function FirstTimeBuyersClient() {
           <Bullets
             items={[
               'Interest rate offered to you specifically.',
-              'Type of rate — fixed, floating or hybrid.',
+              'Type of rate: fixed, floating or hybrid.',
               'Loan amount being offered.',
               'Resulting EMI.',
               'Tenure options available.',
@@ -584,8 +581,8 @@ export default function FirstTimeBuyersClient() {
             ]}
           />
           <p>
-            The lowest advertised rate isn&apos;t necessarily the best overall deal once charges,
-            terms and your specific eligibility are factored in — comparing the complete cost of the
+            The lowest advertised rate isn’t necessarily the best overall deal once charges,
+            terms and your specific eligibility are factored in. Comparing the complete cost of the
             loan generally gives a more accurate picture.
           </p>
         </Section>
@@ -668,16 +665,15 @@ export default function FirstTimeBuyersClient() {
                 Start Your First Home Loan Journey With Borrowww
               </h2>
               <p className="mt-3 text-sm leading-7 text-white/85">
-                Buying your first home is a significant milestone, and understanding the process —
-                affordability, eligibility, documentation, interest rates and the true cost of
-                borrowing — puts you in a much stronger position to make an informed decision. Loan
-                terms, rates and requirements vary across lenders and change over time, so it&apos;s
-                always worth verifying the latest applicable details directly with the lender before
+                Buying your first home is a significant milestone, and understanding the process (affordability, eligibility, documentation, interest rates and the true cost of
+                borrowing) puts you in a much stronger position to make an informed decision. Loan
+                terms, rates and requirements vary across lenders and change over time, so always
+                verify the latest applicable details directly with the lender before
                 you commit.
               </p>
               <p className="mt-4 text-sm leading-7 text-white/85">
-                Ready to explore your options? Visit Borrowww&apos;s home loan page to get started,
-                check your eligibility, review the documents you&apos;ll likely need, and use the
+                Ready to explore your options? Visit Borrowww’s home loan page to get started,
+                check your eligibility, review the documents you’ll likely need, and use the
                 EMI calculator to plan your budget before you start house-hunting.
               </p>
             </div>

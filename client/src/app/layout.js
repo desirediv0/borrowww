@@ -11,6 +11,26 @@ import { buildMetadata, companyInfo, organizationSchema } from '@/lib/seo';
 import './globals.css';
 import Script from 'next/script';
 
+// Site-wide defaults. The canonical is left out on purpose: set here, every page
+// without its own canonical would point Google at the homepage. Each page sets
+// its own canonical through buildMetadata({ path }).
+const { alternates: _homepageCanonical, ...siteDefaults } = buildMetadata({
+  title: 'Borrowww - Credit Check & Instant Loan Provider',
+  description:
+    'Get your credit score checked instantly and apply for personal loans, home loans, business loans, and more with a transparent, guided process.',
+  path: '/',
+  keywords: [
+    'CIBIL check',
+    'credit score',
+    'personal loan',
+    'home loan',
+    'business loan',
+    'instant loan',
+    'loan approval',
+    'credit report',
+  ],
+});
+
 export const metadata = {
   metadataBase: new URL(companyInfo.siteUrl),
   title: {
@@ -22,22 +42,7 @@ export const metadata = {
   authors: [{ name: 'Borrowww' }],
   creator: 'Borrowww',
   publisher: 'Borrowww',
-  ...buildMetadata({
-    title: 'Borrowww - Credit Check & Instant Loan Provider',
-    description:
-      'Get your credit score checked instantly and apply for personal loans, home loans, business loans, and more with a transparent, guided process.',
-    path: '/',
-    keywords: [
-      'CIBIL check',
-      'credit score',
-      'personal loan',
-      'home loan',
-      'business loan',
-      'instant loan',
-      'loan approval',
-      'credit report',
-    ],
-  }),
+  ...siteDefaults,
 };
 
 // Note: This implementation was requested by client despite being non-compliant with DPDP Act.

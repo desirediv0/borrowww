@@ -204,7 +204,7 @@ export const verificationSteps = [
 export const relatedGuides = [
   { href: '/home-loan/eligibility', label: 'Home loan eligibility', note: 'How much you can borrow on your salary' },
   { href: '/home-loan/salaried', label: 'Home loan for salaried employees', note: 'Rates and limits for salaried borrowers' },
-  { href: '/home-loan/self-employed', label: 'Home loan for self-employed', note: 'How banks read business income' },
+  { href: '/home-loan/self-employed', label: 'Home loan for self-employed borrowers', note: 'How banks read business income' },
   { href: '/loan-emi-calculator', label: 'Loan EMI calculator', note: 'Your monthly EMI by amount and tenure' },
   { href: '/balance-transfer/documents', label: 'Balance transfer documents', note: 'Papers needed to move an existing loan' },
 ];

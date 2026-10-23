@@ -151,7 +151,7 @@ function AuthPageContent() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-[#3A6EA5]/10 flex items-center justify-center py-12 px-4">
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 className="w-full max-w-md"
             >

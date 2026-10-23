@@ -58,7 +58,7 @@ export default function PropertyCheckSection() {
       description: 'Get accurate property valuation',
     },
     {
-      title: 'Check if project is bank-approved',
+      title: 'Check if the project is bank-approved',
       description: 'Verify lender approval status',
     },
   ];
@@ -69,7 +69,7 @@ export default function PropertyCheckSection() {
         <div className="text-center mb-8 ">
           {/* Main Heading */}
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight  mb-4">
-            Get a Full Property Check For Free
+            Get a Full Property Check for Free
           </h2>
 
           {/* Subheading 1 */}
@@ -82,7 +82,7 @@ export default function PropertyCheckSection() {
             <div className="relative w-full">
               <p
                 key={currentQuestionIndex}
-                className="text-lg sm:text-xl md:text-2xl  text-gray-800  text-center px-4 animate-fade-in"
+                className="text-lg sm:text-xl md:text-2xl  text-gray-800  text-center px-4"
               >
                 {questions[currentQuestionIndex].text}{' '}
                 <span className=" font-medium ">{questions[currentQuestionIndex].highlight}</span>

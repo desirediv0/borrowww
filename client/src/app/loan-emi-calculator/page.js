@@ -5,9 +5,9 @@ import { existingPageContent } from '@/content/seoPages';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Loan EMI Calculator – Calculate Your Monthly EMI Instantly | Borrowww',
+  title: 'Loan EMI Calculator - Calculate Your Monthly EMI Instantly | Borrowww',
   description:
-    'Calculate your monthly home loan EMI instantly with Borrowww\'s Loan EMI Calculator. Get accurate principal, interest splits, amortization tables, and repayment tips.',
+    'Calculate your monthly home loan EMI instantly with Borrowww\'s Loan EMI Calculator. Get accurate principal and interest splits, amortisation tables and repayment tips.',
   path: '/loan-emi-calculator',
 });
 
@@ -29,7 +29,7 @@ export default function EMIPage() {
         "name": "How is home loan EMI calculated?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Home loan EMI is calculated using the formula EMI = P × R × (1 + R)ⁿ / ((1 + R)ⁿ – 1), where P is the principal, R is the monthly interest rate, and N is the tenure in months. Borrowww's EMI calculator applies this formula instantly once you enter your details."
+          "text": "Home loan EMI is calculated using the formula EMI = P × R × (1 + R)ⁿ / ((1 + R)ⁿ - 1), where P is the principal, R is the monthly interest rate, and n is the tenure in months. Borrowww's EMI calculator applies this formula instantly once you enter your details."
         }
       },
       {
@@ -37,7 +37,7 @@ export default function EMIPage() {
         "name": "What is a good EMI to income ratio?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Most lenders prefer your total EMI obligations to stay within 40–50% of your monthly income, though many financial planners suggest keeping it closer to 30–35% for comfortable, sustainable repayment."
+          "text": "Most lenders prefer your total EMI obligations to stay within 40-50% of your monthly income, though many financial planners suggest keeping it closer to 30-35% for comfortable, sustainable repayment."
         }
       },
       {
@@ -149,7 +149,7 @@ export default function EMIPage() {
       "url": "https://www.borrowww.com/"
     },
     "url": "https://www.borrowww.com/loan-emi-calculator",
-    "description": "Free online EMI calculator to compute home loan monthly instalments, total interest, and amortization schedule."
+    "description": "Free online EMI calculator to compute home loan monthly instalments, total interest and amortisation schedule."
   };
 
   const breadcrumbSchema = {

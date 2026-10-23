@@ -102,15 +102,15 @@ export default function EmiMiniCalculator({ initial, title = 'EMI calculator' })
       <div className="mt-8 grid gap-4 sm:grid-cols-3" aria-live="polite">
         <div className="rounded-2xl bg-[var(--primary-blue-dark)] p-5 text-white">
           <p className="text-xs uppercase tracking-wider text-white/70">Monthly EMI</p>
-          <p className="mt-2 text-2xl font-bold">{result ? formatINR(result.emi) : '—'}</p>
+          <p className="mt-2 text-2xl font-bold">{result ? formatINR(result.emi) : ' - '}</p>
         </div>
         <div className="rounded-2xl bg-slate-50 p-5">
           <p className="text-xs uppercase tracking-wider text-slate-500">Total interest</p>
-          <p className="mt-2 text-2xl font-bold text-slate-900">{result ? formatINR(result.interest) : '—'}</p>
+          <p className="mt-2 text-2xl font-bold text-slate-900">{result ? formatINR(result.interest) : ' - '}</p>
         </div>
         <div className="rounded-2xl bg-slate-50 p-5">
           <p className="text-xs uppercase tracking-wider text-slate-500">Total repayment</p>
-          <p className="mt-2 text-2xl font-bold text-slate-900">{result ? formatINR(result.total) : '—'}</p>
+          <p className="mt-2 text-2xl font-bold text-slate-900">{result ? formatINR(result.total) : ' - '}</p>
         </div>
       </div>
 
@@ -130,7 +130,7 @@ export default function EmiMiniCalculator({ initial, title = 'EMI calculator' })
 
       <p className="mt-5 text-xs leading-5 text-slate-500">
         Illustrative estimate using monthly reducing-balance repayment and a constant rate. It excludes fees, taxes,
-        insurance, prepayments and future rate changes, and is not a lender offer. Your lender&apos;s schedule is the
+        insurance, prepayments and future rate changes, and is not a lender offer. Your lender’s schedule is the
         reference for your account.
       </p>
     </section>

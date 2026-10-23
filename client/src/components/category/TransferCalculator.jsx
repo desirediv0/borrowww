@@ -58,7 +58,7 @@ export default function TransferCalculator({ initial, title = 'Balance transfer 
       </h2>
       <p className="mt-2 text-sm leading-6 text-slate-600">
         Compare your current loan with a proposed offer on the same outstanding balance and the same remaining tenure.
-        Use today&apos;s outstanding principal, not the original loan amount.
+        Use today’s outstanding principal, not the original loan amount.
       </p>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -114,19 +114,19 @@ export default function TransferCalculator({ initial, title = 'Balance transfer 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" aria-live="polite">
         <div className="rounded-2xl bg-slate-50 p-5">
           <p className="text-xs uppercase tracking-wider text-slate-500">Current EMI</p>
-          <p className="mt-2 text-xl font-bold text-slate-900">{result ? formatINR(result.currentEmi) : '—'}</p>
+          <p className="mt-2 text-xl font-bold text-slate-900">{result ? formatINR(result.currentEmi) : ' - '}</p>
         </div>
         <div className="rounded-2xl bg-slate-50 p-5">
           <p className="text-xs uppercase tracking-wider text-slate-500">Proposed EMI</p>
-          <p className="mt-2 text-xl font-bold text-slate-900">{result ? formatINR(result.newEmi) : '—'}</p>
+          <p className="mt-2 text-xl font-bold text-slate-900">{result ? formatINR(result.newEmi) : ' - '}</p>
         </div>
         <div className="rounded-2xl bg-[var(--primary-blue-dark)] p-5 text-white">
           <p className="text-xs uppercase tracking-wider text-white/70">Monthly difference</p>
-          <p className="mt-2 text-xl font-bold">{result ? formatINR(result.monthlyDiff) : '—'}</p>
+          <p className="mt-2 text-xl font-bold">{result ? formatINR(result.monthlyDiff) : ' - '}</p>
         </div>
         <div className="rounded-2xl bg-slate-50 p-5">
           <p className="text-xs uppercase tracking-wider text-slate-500">Net benefit after costs</p>
-          <p className="mt-2 text-xl font-bold text-slate-900">{result ? formatINR(result.net) : '—'}</p>
+          <p className="mt-2 text-xl font-bold text-slate-900">{result ? formatINR(result.net) : ' - '}</p>
         </div>
       </div>
 
@@ -134,7 +134,7 @@ export default function TransferCalculator({ initial, title = 'Balance transfer 
         <p className="mt-5 text-sm leading-6 text-slate-700">
           {saving ? (
             <>
-              Over {result.months} months the scheduled payments differ by about {formatINR(result.grossDiff)}. Simple
+              Over {result.months} months, the scheduled payments differ by about {formatINR(result.grossDiff)}. Simple
               cost recovery takes about {result.recoveryMonths} month{result.recoveryMonths === 1 ? '' : 's'}. If you
               expect to close or sell before then, the transfer may not pay back its costs.
             </>

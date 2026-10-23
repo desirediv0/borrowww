@@ -28,7 +28,7 @@ export const GUIDE_GROUPS = {
       {
         "path": "/home-loan/self-employed",
         "label": "Self-Employed",
-        "title": "Home Loan for Self-Employed"
+        "title": "Home Loan for Self-Employed Borrowers"
       },
       {
         "path": "/home-loan/first-time-buyers",
@@ -59,7 +59,7 @@ export const GUIDE_GROUPS = {
       {
         "path": "/loan-against-property/self-employed",
         "label": "For Self-Employed",
-        "title": "Loan Against Property for Self Employed Applicants"
+        "title": "Loan Against Property for Self-Employed Applicants"
       },
       {
         "path": "/loan-against-property/business",
@@ -141,7 +141,7 @@ export const GUIDE_GROUPS = {
       {
         "path": "/balance-transfer/self-employed",
         "label": "For Self-Employed",
-        "title": "Home Loan Balance Transfer for Self Employed Borrowers"
+        "title": "Home Loan Balance Transfer for Self-Employed Borrowers"
       }
     ]
   }

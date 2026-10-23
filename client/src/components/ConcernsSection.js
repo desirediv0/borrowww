@@ -27,7 +27,7 @@ export default function ConcernsSection() {
             Concerned about
           </p>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-medium text-gray-900 leading-tight px-4 capitalize">
-            Unexpected fees? Rising EMIs? Navigating alone?
+            Unexpected fees? Rising EMIs? Handling it all alone?
           </h2>
         </div>
 

@@ -22,6 +22,7 @@ export const CLUSTERS = {
     hubPath: '/loan-against-property',
     hubLabel: 'Loan Against Property',
     guidesHeading: 'Loan against property guides',
+    moreGuidesHeading: 'More loan against property guides',
     guidesIntro: 'Prepare your application: eligibility, rates, documents, business use and tax questions explained.',
     ctaTitle: 'Talk to Borrowww about a loan against property',
     ctaText:
@@ -33,6 +34,7 @@ export const CLUSTERS = {
     hubPath: '/loan-emi-calculator',
     hubLabel: 'EMI Calculator',
     guidesHeading: 'EMI calculators and guides',
+    moreGuidesHeading: 'More EMI calculator guides',
     guidesIntro: 'Estimate monthly payments by loan amount and tenure, and plan the budget around them.',
     ctaTitle: 'Plan your EMI with Borrowww',
     ctaText:
@@ -44,6 +46,7 @@ export const CLUSTERS = {
     hubPath: '/balance-transfer',
     hubLabel: 'Balance Transfer',
     guidesHeading: 'Home loan balance transfer guides',
+    moreGuidesHeading: 'More balance transfer guides',
     guidesIntro: 'Check eligibility, compare rates and costs, and prepare documents before moving your home loan.',
     ctaTitle: 'Review a balance transfer with Borrowww',
     ctaText:
@@ -84,7 +87,7 @@ const HOME_PAGES = [
   {
     cluster: 'home',
     path: '/home-loan/self-employed',
-    title: 'Home Loan for Self-Employed',
+    title: 'Home Loan for Self-Employed Borrowers',
     navLabel: 'For Self-Employed',
     summary: 'Income documents, EMI planning and application tips for self-employed borrowers.',
   },

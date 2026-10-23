@@ -209,7 +209,7 @@ export default function ContactClient() {
         {
             icon: FaHeadset,
             title: '24/7 Support',
-            description: 'Round the clock customer support for all your queries',
+            description: 'Round-the-clock customer support for all your queries',
         },
         {
             icon: FaShieldAlt,
@@ -236,22 +236,22 @@ export default function ContactClient() {
             <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
                     >
                         <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
                             <FaHeadset className="mr-2" />
-                            We&apos;re here to help
+                            We’re here to help
                         </div>
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 tracking-tighter">
-                            Let&apos;s{' '}
+                            Let’s{' '}
                             <span className="text-[var(--primary-blue)] italic tiemposfine">Connect</span>
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            Have questions about our services? Need help with your loan application? We&apos;re
-                            here to help you every step of the way with personalized support.
+                            Have questions about our services? Need help with your loan application? We’re
+                            here to help you every step of the way with personalised support.
                         </p>
                     </motion.div>
                 </div>
@@ -264,7 +264,7 @@ export default function ContactClient() {
                         {features.map((feature, index) => (
                             <motion.div
                                 key={feature.title}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -285,14 +285,14 @@ export default function ContactClient() {
             <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
                         <h2 className="text-4xl font-medium text-gray-900 mb-6">Get in Touch</h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Choose your preferred way to connect with us. We&apos;re here to help you 24/7.
+                            Choose your preferred way to connect with us. We’re here to help you 24/7.
                         </p>
                     </motion.div>
 
@@ -300,7 +300,7 @@ export default function ContactClient() {
                         {contactInfo.map((info, index) => (
                             <motion.div
                                 key={info.title}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -342,7 +342,7 @@ export default function ContactClient() {
                     <div className="grid lg:grid-cols-2 gap-16">
                         {/* Contact Form */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
@@ -350,7 +350,7 @@ export default function ContactClient() {
                         >
                             <div className="text-center mb-8">
                                 <h2 className="text-3xl font-medium text-gray-900 mb-4">Send us a Message</h2>
-                                <p className="text-gray-600">We&apos;ll get back to you within 24 hours</p>
+                                <p className="text-gray-600">We’ll get back to you within 24 hours</p>
                             </div>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid md:grid-cols-2 gap-6">
@@ -473,7 +473,7 @@ export default function ContactClient() {
 
                         {/* Contact Information */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
@@ -483,7 +483,7 @@ export default function ContactClient() {
                                 <h2 className="text-3xl font-medium text-gray-900 mb-6">Get in Touch</h2>
                                 <p className="text-gray-600 leading-relaxed mb-8 text-lg">
                                     Our team is here to help you with any questions about our services, loan
-                                    applications, or general inquiries. We typically respond within 24 hours.
+                                    applications, or general enquiries. We typically respond within 24 hours.
                                 </p>
                             </div>
 
@@ -540,7 +540,7 @@ export default function ContactClient() {
             <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
@@ -548,7 +548,7 @@ export default function ContactClient() {
                     >
                         <h2 className="text-4xl font-medium text-white mb-6">Ready to Get Started?</h2>
                         <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                            Don&apos;t wait! Contact us today and take the first step towards achieving your
+                            Don’t wait. Contact us today and take the first step towards achieving your
                             financial goals.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

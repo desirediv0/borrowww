@@ -62,7 +62,7 @@ export default function LAPClient() {
     const features = [
         {
             title: 'Lenient Assessments',
-            description: 'Lenient assessment frameworks to review diverse collateral profiles.',
+            description: 'Flexible assessment of different types of collateral.',
             icon: FaCheckCircle,
         },
         {
@@ -82,7 +82,7 @@ export default function LAPClient() {
         },
         {
             title: 'Multiple End-Use Options',
-            description: 'Avail of our facility for business expansion, higher education, personal use, weddings, or medical emergencies.',
+            description: 'Use the loan for business expansion, higher education, personal use, weddings, or medical emergencies.',
             icon: FaBuilding,
         },
     ];
@@ -90,35 +90,35 @@ export default function LAPClient() {
     const faqs = [
         {
             q: "What exactly is a loan against property, and how does it work?",
-            a: "Think of a loan against property — or LAP, as most people end up calling it — as a way to unlock the money that’s already sitting in real estate you own, without having to sell it. You pledge a house, a shop, an office, or even an industrial unit as security, and in return the lender gives you a chunk of its market value as a loan. The property stays yours the whole time. You keep living in it or running your business out of it, and you simply repay the amount in EMIs over the agreed tenure. Since there’s collateral backing everything, the interest works out noticeably cheaper than a personal loan — and that, for most borrowers, is the real attraction."
+            a: "Think of a loan against property - or LAP, as most people end up calling it - as a way to unlock the money that’s already sitting in real estate you own, without having to sell it. You pledge a house, a shop, an office, or even an industrial unit as security, and in return the lender gives you a chunk of its market value as a loan. The property stays yours the whole time. You keep living in it or running your business out of it, and you simply repay the amount in EMIs over the agreed tenure. Since there’s collateral backing everything, the interest works out noticeably cheaper than a personal loan - and that, for most borrowers, is the real attraction."
         },
         {
             q: "What is the current interest rate on a loan against property in India?",
-            a: "As of 2026, LAP rates in India mostly start somewhere around 7.75% per annum. Where you actually land, though, comes down to a handful of things — the lender you pick, your credit history, the type of property, and whether you go with a fixed or floating rate. On the higher end, rates can climb to roughly 12–14% for riskier profiles. Private sector banks usually sit at the cheaper end of that band, while NBFCs charge a little more but tend to move faster on approvals. One thing to remember: these rates shift every time the RBI changes its repo rate, so it’s always worth checking the live number before applying. On Borrowww you can put offers from partner banks and NBFCs side by side and see which one actually suits you."
+            a: "As of 2026, LAP rates in India mostly start somewhere around 7.75% per annum. Where you actually land, though, comes down to a handful of things - the lender you pick, your credit history, the type of property, and whether you go with a fixed or floating rate. On the higher end, rates can climb to roughly 12-14% for riskier profiles. Private sector banks usually sit at the cheaper end of that band, while NBFCs charge a little more but tend to move faster on approvals. One thing to remember: these rates shift every time the RBI changes its repo rate, so it’s always worth checking the live number before applying. On Borrowww you can put offers from partner banks and NBFCs side by side and see which one actually suits you."
         },
         {
             q: "How much loan can I get against my property?",
-            a: "Two things mostly decide this — what your property is worth in the open market, and what kind of property it is. Lenders work on a figure called the Loan-to-Value (LTV) ratio, and you’ll typically be offered somewhere between 50% and 75% of the value. Residential property gets the most generous treatment here, often in the 70–75% range. Commercial and industrial spaces are funded a bit more cautiously. After that, your income and credit record fine-tune the final number you’re sanctioned."
+            a: "Two things mostly decide this - what your property is worth in the open market, and what kind of property it is. Lenders work on a figure called the Loan-to-Value (LTV) ratio, and you’ll typically be offered somewhere between 50% and 75% of the value. Residential property gets the most generous treatment here, often in the 70-75% range. Commercial and industrial spaces are funded a bit more cautiously. After that, your income and credit record fine-tune the final number you’re sanctioned."
         },
         {
-            q: "What is the eligibility criteria for a loan against property?",
-            a: "At its core, a lender is checking two things: can you repay comfortably, and is the property clean on paper? So they look at your age, how steady your income is, your credit score, the loans you’re already servicing, and the legal standing of the property itself. Both salaried and self-employed applicants are eligible, usually anywhere between 21 and 70 years of age. A CIBIL score of 750 or above is what unlocks the sharper rates, and the property has to come with a clear, dispute-free title — there’s no getting around that part."
+            q: "What are the eligibility criteria for a loan against property?",
+            a: "At its core, a lender is checking two things: can you repay comfortably, and is the property clean on paper? So they look at your age, how steady your income is, your credit score, the loans you’re already servicing, and the legal standing of the property itself. Both salaried and self-employed applicants are eligible, usually anywhere between 21 and 70 years of age. A CIBIL score of 750 or above is what unlocks the sharper rates, and the property has to come with a clear, dispute-free title - there’s no getting around that part."
         },
         {
             q: "What documents are required for a loan against property?",
-            a: "Nothing too exotic, but there is a fair bit of paperwork to round up. You’ll need your KYC (Aadhaar and PAN), an address proof, and income proof — salary slips plus Form 16 if you’re salaried, or ITRs and financial statements if you’re self-employed. Add your last six months’ bank statements and the complete set of property papers, including the title deed and tax receipts. If there’s one thing that quietly holds up most approvals, it’s messy or incomplete property documents. Sorting those out before you apply genuinely saves you days of back-and-forth later."
+            a: "Nothing too exotic, but there is a fair bit of paperwork to round up. You’ll need your KYC (Aadhaar and PAN), an address proof, and income proof - salary slips plus Form 16 if you’re salaried, or ITRs and financial statements if you’re self-employed. Add your last six months’ bank statements and the complete set of property papers, including the title deed and tax receipts. If there’s one thing that quietly holds up most approvals, it’s messy or incomplete property documents. Sorting those out before you apply genuinely saves you days of back-and-forth later."
         },
         {
             q: "Can I use a loan against property for business expansion?",
-            a: "Yes — and it’s one of the most common reasons people take a LAP in the first place. Whether you’re opening a new branch, shoring up working capital, or buying equipment, the loan gives you a bigger ticket size and a lower rate than an unsecured business loan would, simply because your property is backing it. There’s a useful bonus too: when the money actually goes into the business, the interest you pay can often be claimed as a deduction at tax time."
+            a: "Yes - and it’s one of the most common reasons people take a LAP in the first place. Whether you’re opening a new branch, shoring up working capital, or buying equipment, the loan gives you a bigger ticket size and a lower rate than an unsecured business loan would, simply because your property is backing it. There’s a useful bonus too: when the money actually goes into the business, the interest you pay can often be claimed as a deduction at tax time."
         },
         {
             q: "What types of property can I pledge for a loan against property?",
-            a: "Quite a range, as it turns out. A residential property works whether you live in it or rent it out. Commercial spaces — shops, offices, and the like — are accepted. And in plenty of cases, industrial property or even a vacant plot of land can be pledged as well. The non-negotiables stay the same across all of them: the property has to be in your name, with a clear title and the proper approvals in place. Just keep in mind that both the LTV and the rate on offer will vary by property type, with residential usually walking away with the friendliest terms."
+            a: "Quite a range, as it turns out. A residential property works whether you live in it or rent it out. Commercial spaces - shops, offices, and the like - are accepted. And in plenty of cases, industrial property or even a vacant plot of land can be pledged as well. The non-negotiables stay the same across all of them: the property has to be in your name, with a clear title and the proper approvals in place. Just keep in mind that both the LTV and the rate on offer will vary by property type, with residential usually walking away with the friendliest terms."
         },
         {
             q: "How long does it take to get a loan against property approved?",
-            a: "If your documents are in order and the lender runs a digital verification, an initial approval can come through in just a few days. The full sanction and the money actually reaching your account usually take around 7 to 10 working days after that. What eats up most of the time is the property valuation and the legal title check — there’s no real shortcut around either of them. So once again, the cleaner your paperwork is upfront, the quicker the whole thing moves."
+            a: "If your documents are in order and the lender runs a digital verification, an initial approval can come through in just a few days. The full sanction and the money actually reaching your account usually take around 7 to 10 working days after that. What eats up most of the time is the property valuation and the legal title check - there’s no real shortcut around either of them. So once again, the cleaner your paperwork is upfront, the quicker the whole thing moves."
         },
         {
             q: "What is the maximum tenure for a loan against property?",
@@ -126,19 +126,19 @@ export default function LAPClient() {
         },
         {
             q: "Are there any tax benefits on a loan against property?",
-            a: "This one comes down entirely to where the money ends up going. Use the loan for business purposes, and the interest can be claimed as a business expense under Section 37(1). Put it toward buying or constructing a residential house, and you may be able to claim interest under Section 24(b). But if the funds go toward personal spending — a wedding, a holiday, a big purchase — there’s no tax benefit to claim. Since tax treatment can get fiddly, it’s a good idea to run your specific case past a CA before assuming a deduction applies."
+            a: "This one comes down entirely to where the money ends up going. Use the loan for business purposes, and the interest can be claimed as a business expense under Section 37(1). Put it toward buying or constructing a residential house, and you may be able to claim interest under Section 24(b). But if the funds go toward personal spending - a wedding, a holiday, a big purchase - there’s no tax benefit to claim. Since tax treatment can get fiddly, it’s a good idea to run your specific case past a CA before assuming a deduction applies."
         },
         {
             q: "Can we apply if our property is currently rented out to a corporate tenant?",
-            a: "Our partner network accepts self-owned properties that are leased to commercial or residential tenants. The existing lease will not block your application but serves as an additional verification of property viability during our appraisal process."
+            a: "Our partner network accepts self-owned properties that are leased to commercial or residential tenants. The existing lease will not block your application; it serves as additional verification of the property’s viability during our appraisal process."
         },
         {
             q: "Who must join the loan structure as a co-applicant for corporate properties?",
-            a: "It is important for all co-owners of the pledged property to join the loan structure. Partners or directors for business entities must come in as co-applicants. Women co-applicants are highly encouraged and can sometimes help secure optimal processing terms."
+            a: "It is important for all co-owners of the pledged property to join the loan structure. Partners or directors for business entities must come in as co-applicants. Adding a woman co-applicant is encouraged and can sometimes help secure better processing terms."
         },
         {
             q: "How do you value a property if it has both commercial and residential zones?",
-            a: "We often look at mixed-use properties. Our partner banks send certified evaluators to assess each zone independently before combining them into a final valuation report."
+            a: "We often see mixed-use properties. Our partner banks send certified evaluators to assess each zone independently before combining them into a final valuation report."
         }
     ];
 
@@ -148,7 +148,7 @@ export default function LAPClient() {
             <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-[var(--primary-blue-light)] py-12 sm:py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         className="max-w-4xl mx-auto text-center"
@@ -166,16 +166,16 @@ export default function LAPClient() {
                         </h2>
                         <div className="space-y-4 text-base sm:text-lg text-gray-600 leading-relaxed px-4 text-left sm:text-center">
                             <p>
-                                Pledging your property to fund commercial expansion often feels like a major step and it certainly is. Real estate is valuable and we believe that value should always work for you when your enterprise needs financial backing.
+                                Pledging your property to fund commercial expansion can feel like a major step, and it is. Real estate is valuable, and we believe that value should work for you when your business needs financial backing.
                             </p>
                             <p>
-                                That is why we built <a href="https://www.borrowww.com/" className="text-[var(--primary-blue)] hover:underline font-semibold">Borrowww</a>. As one of the leading loan facilitator platforms, we provide streamlined options for loan against property. Get direct access to premier Indian banks and NBFC’s. Our system connects your financial goals to transparent as well as secured funding options.
+                                That is why we built <a href="https://www.borrowww.com/" className="text-[var(--primary-blue)] hover:underline font-semibold">Borrowww</a>. As one of the leading loan facilitator platforms, we offer simple options for a loan against property. Get direct access to premier Indian banks and NBFCs. We connect your financial goals with transparent, secured funding options.
                             </p>
                             <p>
-                                Many small business owners struggle with standard bank filters. Our platform has changed the scenario. We assess your actual property value alongside your operational strength. For these types of loans, you can use rented residential / commercial units, self-owned residential / commercial spaces or open plots as collateral.
+                                Many small business owners struggle with standard bank filters. Our platform changes that. We assess your actual property value alongside your operational strength. For these loans, you can use rented residential or commercial units, self-owned residential or commercial spaces, or open plots as collateral.
                             </p>
                             <p className="font-semibold text-gray-800">
-                                Our managers ensure you get maximum leverage and they ensure to provides access to substantial capital based on clear property evaluations.
+                                Our managers make sure you get maximum leverage, and they give you access to substantial capital based on clear property evaluations.
                             </p>
                         </div>
                     </motion.div>
@@ -190,7 +190,7 @@ export default function LAPClient() {
                     <div className="grid lg:grid-cols-2 gap-6 lg:gap-12">
                         {/* Calculator Form */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={false}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             className="bg-white p-6  rounded-3xl shadow-lg border-2 border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
@@ -385,7 +385,7 @@ export default function LAPClient() {
 
                         {/* Results */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={false}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             className="space-y-3"
@@ -465,7 +465,7 @@ export default function LAPClient() {
             <section className="py-12 bg-gradient-to-b from-white to-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="text-center mb-8"
@@ -474,7 +474,7 @@ export default function LAPClient() {
                             Why Companies Scale With Our Structured Credit Models
                         </h2>
                         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                            Borrowww focuses entirely on making your borrowing procedure efficient. Traditional corporate financing setups are time-consuming and involve endless documentation. We cut down that stress by offering-
+                            Borrowww focuses entirely on making your borrowing procedure efficient. Traditional corporate financing is time-consuming and involves endless documentation. We cut down that stress by offering:
                         </p>
                     </motion.div>
 
@@ -482,7 +482,7 @@ export default function LAPClient() {
                         {features.map((feature, index) => (
                             <motion.div
                                 key={feature.title}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
@@ -514,7 +514,7 @@ export default function LAPClient() {
             <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-blue-dark)] rounded-3xl p-6  text-white text-center shadow-2xl"
@@ -523,27 +523,25 @@ export default function LAPClient() {
                             Choose Borrowww for the Ideal Loan Against Property Perks
                         </h3>
                         <p className="text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
-                            You do not have to sell valuable assets to capture immediate market opportunities. Retain your property ownership while utilizing its equity. We manage the application coordination, bank follow-ups, and structural compliance from start to finish. Contact our team today to evaluate your eligibility.
+                            You do not have to sell valuable assets to capture immediate market opportunities. Keep ownership of your property while using its equity. We manage the application coordination, bank follow-ups, and structural compliance from start to finish. Contact our team today to evaluate your eligibility.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <motion.button
-                                type="button"
+                            <motion.a
+                                href="/home-loan"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => router.push('/home-loan')}
-                                className="bg-white text-[var(--primary-blue)] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg text-sm sm:text-base"
+                                className="inline-block bg-white text-[var(--primary-blue)] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg text-sm sm:text-base"
                             >
-                                Apply Loan
-                            </motion.button>
-                            <motion.button
-                                type="button"
+                                Apply for Loan
+                            </motion.a>
+                            <motion.a
+                                href="/contact"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                onClick={() => router.push('/contact')}
-                                className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200 text-sm sm:text-base"
+                                className="inline-block border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-[var(--primary-blue)] transition-all duration-200 text-sm sm:text-base"
                             >
                                 Contact an Expert
-                            </motion.button>
+                            </motion.a>
                         </div>
                     </motion.div>
                 </div>
@@ -554,7 +552,7 @@ export default function LAPClient() {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900">
-                            Loan Against Property – Frequently Asked Questions
+                            Loan Against Property - Frequently Asked Questions
                         </h2>
                     </div>
                     <div className="space-y-4">

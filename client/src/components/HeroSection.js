@@ -32,11 +32,11 @@ export default function HeroSection() {
 
             <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
               Quick and hassle-free loan approvals for home loans, personal loans, business loans
-              and more — with the best interest rates.
+              and more - with the best interest rates.
             </p>
 
             <p className="text-sm sm:text-base flex flex-wrap items-center gap-x-2 gap-y-1">
-              <span className="text-gray-700 font-medium">Apply to :</span>{' '}
+              <span className="text-gray-700 font-medium">Apply to:</span>{' '}
               <Link
                 href="/home-loan"
                 className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"

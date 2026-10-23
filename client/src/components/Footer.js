@@ -61,8 +61,8 @@ export default function Footer() {
               Credit Check & Instant Loan Provider
             </span>
             <p className="text-gray-600 leading-relaxed max-w-sm text-base">
-              India&apos;s leading credit score checking and loan provider platform. Get instant
-              loan approval with competitive rates and transparent process.
+              India’s leading credit score checking and loan provider platform. Get instant
+              loan approval with competitive rates and a transparent process.
             </p>
 
             {/* Contact Information */}
@@ -105,7 +105,7 @@ export default function Footer() {
           {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
             <motion.div
               key={category}
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
@@ -117,7 +117,7 @@ export default function Footer() {
                 {links.map((link, linkIndex) => (
                   <motion.li
                     key={link.name}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={false}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 + categoryIndex * 0.1 + linkIndex * 0.05 }}
@@ -179,7 +179,7 @@ export default function Footer() {
         {/* Bottom Footer */}
         <motion.div
           className="flex flex-col md:flex-row justify-between items-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}

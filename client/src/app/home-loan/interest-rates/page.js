@@ -47,7 +47,7 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'Which is better, fixed or floating home loan interest rate?',
+      name: 'Which is better, a fixed or floating home loan interest rate?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Neither option is universally better. A fixed rate offers predictable EMIs for a defined period but may not reduce if market rates fall, while a floating rate is linked to a benchmark and can move up or down over the tenure. The right choice depends on your risk appetite, expected holding period and comfort with EMI fluctuations.',
@@ -58,7 +58,7 @@ const faqSchema = {
       name: 'How does the interest rate affect home loan EMI?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The interest rate is one of three inputs — along with loan amount and tenure — used to calculate EMI. A higher rate increases the EMI for the same loan amount and tenure, while a lower rate reduces it. Even a modest change in the rate can noticeably change the EMI and total interest paid over a long tenure.',
+        text: 'The interest rate is one of the three inputs used to calculate EMI, along with the loan amount and tenure. A higher rate increases the EMI for the same loan amount and tenure, while a lower rate reduces it. Even a modest change in the rate can noticeably change the EMI and total interest paid over a long tenure.',
       },
     },
     {
@@ -66,7 +66,7 @@ const faqSchema = {
       name: 'Can home loan interest rates change during the loan tenure?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes, if you have a floating rate loan, the applicable rate can change when the underlying benchmark is revised, which may affect your EMI or the remaining tenure. Fixed rate loans generally remain unchanged during the fixed period, though the exact terms — including whether the fixed period covers the entire tenure — vary by lender and product.',
+        text: 'Yes, if you have a floating rate loan, the applicable rate can change when the underlying benchmark is revised, which may affect your EMI or the remaining tenure. Fixed rate loans generally remain unchanged during the fixed period, though the exact terms, including whether the fixed period covers the entire tenure, vary by lender and product.',
       },
     },
     {
@@ -74,7 +74,7 @@ const faqSchema = {
       name: 'Can I negotiate my home loan interest rate?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Some lenders may consider requests for a better rate, particularly for applicants with a strong credit profile, stable income or an existing relationship with the lender. However, this is entirely at the lender discretion and is not guaranteed. Comparing offers from multiple lenders is generally a more reliable way to assess whether you are getting reasonable terms.',
+        text: 'Some lenders may consider requests for a better rate, particularly for applicants with a strong credit profile, stable income or an existing relationship with the lender. However, this is entirely at the lender’s discretion and is not guaranteed. Comparing offers from multiple lenders is generally a more reliable way to assess whether you are getting reasonable terms.',
       },
     },
     {
@@ -82,7 +82,7 @@ const faqSchema = {
       name: 'How can I reduce the total interest paid on a home loan?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Total interest paid can potentially be reduced by choosing a shorter tenure where affordable, making prepayments towards the principal when the lender terms allow it, maintaining a strong credit profile, and comparing offers to secure more favourable terms. Using an EMI calculator can help you evaluate how different choices affect the total interest outgo.',
+        text: 'Total interest paid can potentially be reduced by choosing a shorter tenure where affordable, making prepayments towards the principal when the lender’s terms allow it, maintaining a strong credit profile, and comparing offers to secure more favourable terms. Using an EMI calculator can help you evaluate how different choices affect the total interest outgo.',
       },
     },
     {
@@ -98,7 +98,7 @@ const faqSchema = {
       name: 'What should I compare apart from the home loan interest rate?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Beyond the interest rate, it is worth comparing the type of rate (fixed or floating), the benchmark and reset mechanism, tenure, processing and other charges, prepayment or foreclosure terms, the resulting EMI, total repayment amount, and the overall loan terms and conditions. Comparing only the headline rate can miss significant differences in the total cost of borrowing.',
+        text: 'Beyond the interest rate, compare the type of rate (fixed or floating), the benchmark and reset mechanism, tenure, processing and other charges, prepayment or foreclosure terms, the resulting EMI, total repayment amount, and the overall loan terms and conditions. Comparing only the headline rate can miss significant differences in the total cost of borrowing.',
       },
     },
   ],
