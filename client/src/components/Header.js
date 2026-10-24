@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -24,6 +24,9 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
+  const [openMobileSection, setOpenMobileSection] = useState(null);
+  const [mobileMenuMaxHeight, setMobileMenuMaxHeight] = useState(null);
+  const headerBarRef = useRef(null);
   const { user, logout } = useAuth();
 
   useEffect(() => {
@@ -34,6 +37,28 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // The header is sticky, so a mobile menu taller than the screen can't be scrolled
+  // into view. Cap it to the space below the header bar, let it scroll on its own,
+  // and lock the page behind it while it is open.
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      setOpenMobileSection(null);
+      return;
+    }
+    const updateMaxHeight = () => {
+      const barBottom = headerBarRef.current?.getBoundingClientRect().bottom ?? 0;
+      setMobileMenuMaxHeight(window.innerHeight - barBottom);
+    };
+    updateMaxHeight();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('resize', updateMaxHeight);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('resize', updateMaxHeight);
+    };
+  }, [isMobileMenuOpen]);
 
   const handleLogout = () => {
     logout();
@@ -72,14 +97,14 @@ export default function Header() {
 
       {/* Main Header */}
       <motion.header
-        className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-white'
+        className={`sticky top-0 ${isMobileMenuOpen ? 'z-[60]' : 'z-50'} transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-white'
           }`}
         initial={false}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24">
-          <div className="flex items-center justify-between h-20">
+          <div ref={headerBarRef} className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/">
               <motion.div
@@ -218,6 +243,8 @@ export default function Header() {
               className="md:hidden p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.95 }}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
             </motion.button>
@@ -231,38 +258,57 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t"
+              className="md:hidden bg-white border-t overflow-hidden"
             >
-              <div className="px-4 py-4 space-y-4">
-                {/* Loan sections, each with its guides */}
+              <div
+                className="px-4 py-4 space-y-4 overflow-y-auto overscroll-contain"
+                style={{ maxHeight: mobileMenuMaxHeight ? `${mobileMenuMaxHeight}px` : 'calc(100dvh - 5rem)' }}
+              >
+                {/* Loan sections; each one expands to show its guides */}
                 <div>
                   <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
                     Loans &amp; Calculators
                   </div>
                   <div className="space-y-1">
-                    {mobileLoanSections.map((item) => (
-                      <div key={item.name}>
-                        <Link
-                          href={item.href}
-                          className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
-                        <div className="pl-6 pb-2 space-y-1">
-                          {SUBMENUS[item.name].links.map((sub) => (
+                    {mobileLoanSections.map((item) => {
+                      const isOpen = openMobileSection === item.name;
+                      return (
+                        <div key={item.name}>
+                          <div className="flex items-center">
                             <Link
-                              key={sub.path}
-                              href={sub.path}
-                              className="block text-gray-500 hover:text-gray-900 text-sm py-1"
+                              href={item.href}
+                              className="flex-1 px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg font-medium transition-colors duration-200"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
-                              {sub.label}
+                              {item.name}
                             </Link>
-                          ))}
+                            <button
+                              type="button"
+                              className="p-2 text-gray-500 hover:text-gray-900"
+                              onClick={() => setOpenMobileSection(isOpen ? null : item.name)}
+                              aria-label={`${isOpen ? 'Hide' : 'Show'} ${item.name} guides`}
+                              aria-expanded={isOpen}
+                            >
+                              <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                            </button>
+                          </div>
+                          {isOpen && (
+                            <div className="pl-6 pb-2 space-y-1">
+                              {SUBMENUS[item.name].links.map((sub) => (
+                                <Link
+                                  key={sub.path}
+                                  href={sub.path}
+                                  className="block text-gray-500 hover:text-gray-900 text-sm py-1.5"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  {sub.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 
