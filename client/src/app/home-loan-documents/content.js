@@ -1,5 +1,8 @@
 // Copy and data for /home-loan-documents. Plain module (no 'use client') so the
 // server page and the client islands can both import it.
+import { isPublished } from '@/content/draftPages';
+
+const filterPublished = (guides) => guides.filter((guide) => isPublished(guide.href));
 
 export const PAGE_PATH = '/home-loan-documents';
 export const DATE_PUBLISHED = '2026-07-15';
@@ -23,7 +26,7 @@ export const featuredImage = {
   alt: 'Home loan documents required checklist: KYC documents, income proof, bank statements, property papers and photos',
 };
 
-export const PARENT_COMPANY = 'Premier Penny';
+export const PARENT_COMPANY = 'Premier Penny Ventures Private Limited';
 export const OFFICE_ADDRESS = '221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002';
 
 export const quickAnswer = [
@@ -201,13 +204,13 @@ export const verificationSteps = [
   { step: '7', title: 'Disbursement', desc: 'The bank pays the seller or builder, in one go or in stages.' },
 ];
 
-export const relatedGuides = [
-  { href: '/home-loan/eligibility', label: 'Home loan eligibility', note: 'How much you can borrow on your salary' },
+export const relatedGuides = filterPublished([
+  { href: '/home-loan-eligibility', label: 'Home loan eligibility', note: 'How much you can borrow on your salary' },
   { href: '/home-loan/salaried', label: 'Home loan for salaried employees', note: 'Rates and limits for salaried borrowers' },
   { href: '/home-loan/self-employed', label: 'Home loan for self-employed borrowers', note: 'How banks read business income' },
   { href: '/loan-emi-calculator', label: 'Loan EMI calculator', note: 'Your monthly EMI by amount and tenure' },
   { href: '/balance-transfer/documents', label: 'Balance transfer documents', note: 'Papers needed to move an existing loan' },
-];
+]);
 
 export const faqs = [
   {

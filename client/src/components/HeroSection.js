@@ -5,6 +5,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { isPublished } from '@/content/draftPages';
+
 import { Star } from 'lucide-react';
 
 export default function HeroSection() {
@@ -16,23 +18,22 @@ export default function HeroSection() {
           <div className="space-y-6 sm:space-y-8 lg:space-y-10 ">
             <div>
               <p className="font-medium text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4 text-[var(--primary-blue)]">
-                Fast APPROVAL!
+                Free Loan Advice
               </p>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight tracking-tight">
                 Build Your{' '}
                 <span className="italic tiemposfine text-[var(--primary-blue-dark)]">Home</span>
                 <br />
-                Your Loan Is Our{' '}
+                We Find the Right{' '}
                 <span className="italic tiemposfine text-[var(--primary-blue-dark)]">
-                  Responsibility
+                  Lender
                 </span>
               </h1>
             </div>
 
             <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
-              Quick and hassle-free loan approvals for home loans, personal loans, business loans
-              and more - with the best interest rates.
+              Borrowww is not a bank. We compare home loan and property loan offers from RBI-regulated banks and NBFCs, help with your papers, and stay with you until the bank releases your loan.
             </p>
 
             <p className="text-sm sm:text-base flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -50,13 +51,17 @@ export default function HeroSection() {
               >
                 Loan Against Property
               </Link>
-              <span className="text-gray-400">|</span>
-              <Link
-                href="/balance-transfer"
-                className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"
-              >
-                Balance Transfer
-              </Link>
+              {isPublished('/balance-transfer') && (
+                <>
+                  <span className="text-gray-400">|</span>
+                  <Link
+                    href="/balance-transfer"
+                    className="text-[var(--primary-blue)] font-medium hover:text-[var(--primary-blue-dark)] hover:underline underline-offset-2 transition-colors"
+                  >
+                    Balance Transfer
+                  </Link>
+                </>
+              )}
             </p>
 
             <div className="flex items-center gap-3 pt-2">

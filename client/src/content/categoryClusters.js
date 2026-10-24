@@ -58,7 +58,7 @@ export const CLUSTERS = {
 const HOME_PAGES = [
   {
     cluster: 'home',
-    path: '/home-loan/eligibility',
+    path: '/home-loan-eligibility',
     title: 'Home Loan Eligibility',
     navLabel: 'Eligibility',
     summary: 'How lenders assess income, age, credit score and existing EMIs, with salary-based examples.',

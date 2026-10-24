@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
@@ -13,10 +15,14 @@ export default function RBICompliance() {
       <h1 className="text-4xl font-semibold mb-6 text-[var(--primary-blue-dark)]">
         RBI Compliance & Regulatory Information
       </h1>
-      <p className="text-gray-600 italic mb-10">Last updated: 01 January 2025</p>
+      <p className="text-gray-600 italic mb-10">Last updated: 25 October 2026</p>
 
       <div className="space-y-8 text-[17px] text-gray-700">
         <h2 className="text-2xl font-semibold text-gray-900">1. Our Status</h2>
+        <p>
+          Borrowww is a brand of <strong>Premier Penny Ventures Private Limited</strong>, a private
+          limited company incorporated in India (CIN: U66120DL2024PTC426769).
+        </p>
         <p>
           Borrowww is not a bank or NBFC and does not provide loans or accept
           deposits. We act as a loan advisory and facilitation platform connecting users with
@@ -50,8 +56,11 @@ export default function RBICompliance() {
 
         <h2 className="text-2xl font-semibold text-gray-900">6. Grievance Redressal</h2>
         <p>
-          For concerns about advisory communication or misuse of data, contact:
-          <strong> support.borrowww@gmail.com</strong>.
+          For concerns about advisory communication or misuse of data, see our{' '}
+          <Link href="/grievance-redressal" className="text-[#3A6EA5] font-medium hover:underline">
+            Grievance Redressal
+          </Link>{' '}
+          page for how to raise a complaint, response timelines and escalation options.
         </p>
       </div>
     </section>

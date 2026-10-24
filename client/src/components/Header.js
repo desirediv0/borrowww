@@ -10,14 +10,18 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { User, LogOut, ChevronDown } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { GUIDE_GROUPS } from '@/content/guideLinks';
+import { isPublished } from '@/content/draftPages';
 
 // Nav items that open a dropdown of guide pages (desktop) / nested links (mobile).
-const SUBMENUS = {
-  'Home Loan': GUIDE_GROUPS.home,
-  'Loan Against Property': GUIDE_GROUPS.lap,
-  'EMI Calculator': GUIDE_GROUPS.emi,
-  'Balance Transfer': GUIDE_GROUPS.bt,
-};
+// A section only gets a dropdown while it still has published guides.
+const SUBMENUS = Object.fromEntries(
+  Object.entries({
+    'Home Loan': GUIDE_GROUPS.home,
+    'Loan Against Property': GUIDE_GROUPS.lap,
+    'EMI Calculator': GUIDE_GROUPS.emi,
+    'Balance Transfer': GUIDE_GROUPS.bt,
+  }).filter(([, group]) => group.links.length > 0),
+);
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,14 +75,14 @@ export default function Header() {
     { name: 'EMI Calculator', href: '/loan-emi-calculator' },
     { name: 'Balance Transfer', href: '/balance-transfer' },
     { name: 'Blog', href: '/blog/' },
-  ];
+  ].filter((item) => isPublished(item.href));
 
-  // Mobile menu: the four loan sections (with their guides) first, then the rest.
+  // Mobile menu: loan sections with guides first, then the rest.
   const mobileLoanSections = navItems.filter((item) => SUBMENUS[item.name]);
   const mobileOtherItems = [
     { name: 'Loan Comparison', href: '/comparison' },
     ...navItems.filter((item) => !SUBMENUS[item.name]),
-  ];
+  ].filter((item) => isPublished(item.href));
 
   return (
     <>
@@ -90,7 +94,7 @@ export default function Header() {
       >
         <div className="flex items-center justify-center gap-2">
           <span className="text-pink-300">⚡</span>
-          <span>Free Credit Score Check • Instant Loan Approval</span>
+          <span>Free Credit Score Check • Compare Offers from Banks & NBFCs</span>
           <span className="text-pink-300">›</span>
         </div>
       </motion.div>

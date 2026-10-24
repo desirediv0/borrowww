@@ -5,74 +5,25 @@
 Borrowww connects borrowers with dedicated loan advisors who guide them from credit check through document verification, bank coordination, and final disbursal, with real-time application tracking. Headquartered in Gurgaon, India.
 
 ## Main Pages
-- [Home](https://borrowww.com/): Overview of loan services, interest rates, lending partners, and EMI calculator
-- [About Us](https://borrowww.com/about): Company background and mission
-- [Contact Us](https://borrowww.com/contact): Contact details and support channels
-- [Referral](https://borrowww.com/referral): Refer-a-friend program
-- [Loan Comparison](https://borrowww.com/comparison): Compare loan offers across lenders
-- [RBI Compliance](https://borrowww.com/rbi-compliance): Regulatory compliance information
+- [Home](https://www.borrowww.com/): Overview of loan services, interest rates, lending partners and EMI calculator
+- [About Us](https://www.borrowww.com/about): Company background and mission
+- [Contact Us](https://www.borrowww.com/contact): Contact details and support channels
 
 ## Loan Services
-- [Home Loan](https://borrowww.com/home-loan): Home loan application and details
-- [Loan Against Property](https://borrowww.com/loan-against-property): Secured loans against property
-- [Commercial Property Loan](https://borrowww.com/commercial-property-loan): Loans for commercial property
-- [Credit Check](https://borrowww.com/credit-check): Free credit score check
-- [EMI Calculator](https://borrowww.com/loan-emi-calculator): Calculate monthly EMI, affordability, and down payment
-- [Balance Transfer](https://borrowww.com/balance-transfer): Transfer existing loans for better rates
-- [Loan for Low CIBIL Score](https://borrowww.com/loan-for-low-cibil-score): Loan options for applicants with low credit scores
-- [Instant Loan for Salaried Employees, Delhi](https://borrowww.com/instant-loan-for-salaried-employees-delhi): Quick loans for salaried employees in Delhi
-- [Property Loan for Salaried, Delhi](https://borrowww.com/loan-against-property-for-salaried-delhi): Property-backed loans for salaried applicants in Delhi
+- [Home Loan](https://www.borrowww.com/home-loan): Home loan options, eligibility by salary and interest rates
+- [Loan Against Property](https://www.borrowww.com/loan-against-property): Secured loans against residential or commercial property
+- [Free Credit Check](https://www.borrowww.com/credit-check): Check your credit score for free
+- [EMI Calculator](https://www.borrowww.com/loan-emi-calculator): Calculate monthly EMI, affordability and down payment
 
-## Loan Guides
-### Home Loan
-- [Home Loan overview](https://www.borrowww.com/home-loan)
-- [Home Loan Eligibility](https://www.borrowww.com/home-loan/eligibility)
-- [Home Loan Interest Rates](https://www.borrowww.com/home-loan/interest-rates)
-- [Home Loan Documents Required](https://www.borrowww.com/home-loan-documents)
-- [Home Loan for Salaried Employees](https://www.borrowww.com/home-loan/salaried)
-- [Home Loan for Self-Employed](https://www.borrowww.com/home-loan/self-employed)
-- [Home Loan for First-Time Buyers](https://www.borrowww.com/home-loan/first-time-buyers)
-
-### Loan Against Property
-- [Loan Against Property overview](https://www.borrowww.com/loan-against-property)
-- [Loan Against Property Eligibility](https://www.borrowww.com/loan-against-property/eligibility)
-- [Loan Against Property Interest Rates](https://www.borrowww.com/loan-against-property/interest-rates)
-- [Documents Required for a Loan Against Property](https://www.borrowww.com/loan-against-property/documents)
-- [Loan Against Property for Self Employed Applicants](https://www.borrowww.com/loan-against-property/self-employed)
-- [Loan Against Property for Business Funding](https://www.borrowww.com/loan-against-property/business)
-- [Loan Against Property Tax Benefits](https://www.borrowww.com/loan-against-property/tax-benefits)
-
-### EMI Calculator
-- [EMI Calculator overview](https://www.borrowww.com/loan-emi-calculator)
-- [Home Loan EMI Calculator](https://www.borrowww.com/loan-emi-calculator/home-loan)
-- [Loan Against Property EMI Calculator](https://www.borrowww.com/loan-emi-calculator/loan-against-property)
-- [EMI for a 20 Lakh Home Loan](https://www.borrowww.com/loan-emi-calculator/20-lakh-home-loan-emi)
-- [EMI for a 30 Lakh Home Loan](https://www.borrowww.com/loan-emi-calculator/30-lakh-home-loan)
-- [EMI for a 50 Lakh Home Loan](https://www.borrowww.com/loan-emi-calculator/50-lakh-home-loan-emi)
-- [EMI for a 1 Crore Home Loan](https://www.borrowww.com/loan-emi-calculator/1-crore-home-loan)
-
-### Balance Transfer
-- [Balance Transfer overview](https://www.borrowww.com/balance-transfer)
-- [Home Loan Balance Transfer Eligibility](https://www.borrowww.com/balance-transfer/eligibility)
-- [Home Loan Balance Transfer Interest Rates](https://www.borrowww.com/balance-transfer/interest-rates)
-- [Documents for a Home Loan Balance Transfer](https://www.borrowww.com/balance-transfer/documents)
-- [Benefits of a Home Loan Balance Transfer](https://www.borrowww.com/balance-transfer/benefits)
-- [Home Loan Balance Transfer Calculator](https://www.borrowww.com/balance-transfer/home-loan-balance-transfer-calculator)
-- [Home Loan Balance Transfer for Self Employed Borrowers](https://www.borrowww.com/balance-transfer/self-employed)
-
-## Location Pages
-- [Loan Services, Ghaziabad](https://www.borrowww.com/instant-loan-services-ghaziabad)
-- [Home Loan Consultant, Noida](https://www.borrowww.com/home-loan-consultant-noida)
-- [Loan Advisor, Gurgaon](https://www.borrowww.com/loan-advisor-gurgaon-for-home-loan)
-- [Property Consultant, Gurgaon](https://www.borrowww.com/loan-against-property-consultant-gurgaon)
-- [Home Loan Advisor, Delhi NCR](https://www.borrowww.com/best-home-loan-advisor-delhi-ncr)
-- [Loan Agent, Faridabad](https://www.borrowww.com/best-loan-agent-faridabad)
-- [First Time Loan Consultant](https://www.borrowww.com/first-time-loan-consultant)
+## Guides
+- [Home Loan Documents Required](https://www.borrowww.com/home-loan-documents): KYC, income and property documents for salaried and self-employed applicants
+- [Home Loan Eligibility](https://www.borrowww.com/home-loan-eligibility): Salary, age, CIBIL score and income criteria for a home loan
 
 ## Legal
-- [Privacy Policy](https://borrowww.com/privacy-policy)
-- [Terms of Service](https://borrowww.com/terms-of-service)
-- [RBI Compliance](https://borrowww.com/rbi-compliance)
+- [Privacy Policy](https://www.borrowww.com/privacy-policy)
+- [Terms of Service](https://www.borrowww.com/terms-of-service)
+- [RBI Compliance](https://www.borrowww.com/rbi-compliance): Regulatory status; Borrowww is not a bank or NBFC
+- [Grievance Redressal](https://www.borrowww.com/grievance-redressal): How to raise a complaint and escalate it
 
 ## Contact
 - Phone: +91 9560069525 / +91 8264111345

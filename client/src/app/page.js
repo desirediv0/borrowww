@@ -17,9 +17,9 @@ import LoanGuidesSection from '@/components/category/LoanGuidesSection';
 // Note: This implementation was requested by client despite being non-compliant with DPDP Act.
 
 export const metadata = buildMetadata({
-  title: 'Instant Loan Approval | Home & Business Loans - Borrowww',
+  title: 'Compare Home Loans & Loan Against Property | Borrowww',
   description:
-    'Get instant loan approval with Borrowww. Check your free credit score and apply for home, personal & business loans at low interest rates. Fast & secure process.',
+    'Compare home loan and loan against property offers from RBI-regulated banks and NBFCs. Check your credit score for free and get an advisor to help you apply.',
   path: '/',
   keywords: [
     'Borrowww',
@@ -27,7 +27,7 @@ export const metadata = buildMetadata({
     'home loan',
     'loan comparison',
     'EMI calculator',
-    'instant loan approval',
+    'loan advisor',
     'business loans',
   ],
 });

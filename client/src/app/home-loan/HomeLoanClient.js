@@ -311,10 +311,10 @@ export default function HomeLoanClient() {
                                 Home Loan in India - Check Eligibility by Salary & Get Low Interest Rates
                             </h1>
                             <h2 className="mt-5 text-xl sm:text-2xl font-medium text-gray-600 leading-relaxed">
-                                Make Home Buying Simpler with <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>’s Secured Loans
+                                Make Home Buying Simpler with <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>
                             </h2>
                             <p className="mt-5 text-lg text-gray-600 max-w-2xl leading-relaxed">
-                                Are you looking for the right home loan provider platform? We understand that it takes time; there are so many aspects to consider. Rates change, bank policies differ, and the paperwork often feels exhausting after a point.
+                                Looking for a home loan? Finding the right one takes time, and there is a lot to weigh up. Rates change, bank policies differ, and the paperwork often feels exhausting after a point.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed">
                                 That is why you should connect with us at <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>. We know how to help you avoid that confusion. Our platform has strong partnerships with the leading banks and NBFCs in India. We connect you with them and guide you through the loan process with practical support that actually helps.
@@ -701,7 +701,7 @@ export default function HomeLoanClient() {
                                 Three levers move your eligibility the most: reducing existing EMIs before applying, adding a co-applicant’s income, and improving your CIBIL score above 750. Self-employed applicants are assessed differently - lenders average the last 2-3 years of ITR income rather than a single payslip.
                             </p>
                             <p className="text-gray-600 leading-relaxed">
-                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan experts - we’ll match you with the lender offering the highest sanction at the lowest rate.
+                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan advisors. We’ll compare lenders and show you which ones are likely to lend you the most at the lowest rate.
                             </p>
                         </div>
 

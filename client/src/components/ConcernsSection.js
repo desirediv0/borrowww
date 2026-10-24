@@ -58,7 +58,7 @@ export default function ConcernsSection() {
               </div>
               <div className="flex-1">
                 <h3 className="text-base font-medium text-gray-900 mb-1.5 text-center ">
-                  Best Interest Rates
+                  Compare Bank Rates
                 </h3>
                 <p className="text-sm font-medium text-gray-500 text-center ">
                   Starting from 7.10%* p.a.

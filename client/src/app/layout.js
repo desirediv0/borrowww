@@ -15,9 +15,9 @@ import Script from 'next/script';
 // without its own canonical would point Google at the homepage. Each page sets
 // its own canonical through buildMetadata({ path }).
 const { alternates: _homepageCanonical, ...siteDefaults } = buildMetadata({
-  title: 'Borrowww - Credit Check & Instant Loan Provider',
+  title: 'Borrowww - Free Credit Check & Loan Advisory',
   description:
-    'Get your credit score checked instantly and apply for personal loans, home loans, business loans, and more with a transparent, guided process.',
+    'Check your credit score for free and compare loan offers from RBI-regulated banks and NBFCs. A Borrowww advisor helps you from your first question to disbursal.',
   path: '/',
   keywords: [
     'CIBIL check',
@@ -25,8 +25,8 @@ const { alternates: _homepageCanonical, ...siteDefaults } = buildMetadata({
     'personal loan',
     'home loan',
     'business loan',
-    'instant loan',
-    'loan approval',
+    'loan advisor',
+    'loan comparison',
     'credit report',
   ],
 });
@@ -34,7 +34,7 @@ const { alternates: _homepageCanonical, ...siteDefaults } = buildMetadata({
 export const metadata = {
   metadataBase: new URL(companyInfo.siteUrl),
   title: {
-    default: 'Borrowww - Credit Check & Instant Loan Provider',
+    default: 'Borrowww - Free Credit Check & Loan Advisory',
     template: '%s | Borrowww',
   },
   applicationName: 'Borrowww',

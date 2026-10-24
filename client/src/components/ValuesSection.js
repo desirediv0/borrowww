@@ -16,7 +16,7 @@ export default function ValuesSection() {
       ),
       title: 'Transparent Process',
       description:
-        'Complete transparency in credit score checking and loan processing. No hidden charges, clear terms, and honest communication throughout the process.',
+        'You see every fee and every bank’s terms before you decide. No hidden charges, and straight answers when you ask.',
       bgColor: 'bg-white',
       textColor: 'text-gray-900',
     },
@@ -49,7 +49,7 @@ export default function ValuesSection() {
       ),
       title: 'Smart Bank Choice',
       description:
-        'Get guided support to find the right bank faster with minimal paperwork and smart matchmaking, so your loan process is quick and easy.',
+        'We look at your income, credit score and property, then point you to the banks most likely to say yes.',
       bgColor: 'bg-white',
       textColor: 'text-gray-900',
     },
@@ -61,9 +61,9 @@ export default function ValuesSection() {
           <circle cx="24" cy="24" r="3" fill="currentColor" />
         </svg>
       ),
-      title: 'Competitive Rates',
+      title: 'Compare Rates',
       description:
-        'Access to the best loan rates starting from 7.10%* with flexible repayment options. We partner with leading banks to offer you the most competitive terms.',
+        'Partner bank rates start from 7.10%*. We put the offers side by side so you can pick the one that costs you least.',
       bgColor: 'bg-[#f5f2e8]',
       textColor: 'text-gray-900',
     },
@@ -115,8 +115,7 @@ export default function ValuesSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              We are India’s leading credit score checking and loan provider platform, helping
-              millions of customers achieve their financial goals with ease and transparency.
+              Borrowww is a loan advisory platform, not a lender. We help you check your credit score, compare offers from RBI-regulated banks and NBFCs, and get your application through with an advisor on your side.
             </motion.p>
           </motion.div>
         </div>

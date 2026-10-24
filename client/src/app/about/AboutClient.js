@@ -28,13 +28,13 @@ export default function AboutClient() {
         },
         {
             number: '₹500Cr+',
-            label: 'Loans Disbursed',
+            label: 'Loans Arranged with Partner Banks',
             icon: FaChartLine,
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
             number: '95%',
-            label: 'Approval Rate',
+            label: 'Files Approved by Lenders',
             icon: FaAward,
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
@@ -50,7 +50,7 @@ export default function AboutClient() {
         {
             icon: FaShieldAlt,
             title: 'Trust & Security',
-            description: 'Backed by Premier Penny\'s legacy of financial integrity and bank-level security.',
+            description: 'We keep your data secure and share it with a lender only with your consent.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
@@ -69,7 +69,7 @@ export default function AboutClient() {
         {
             icon: FaGlobe,
             title: 'Innovation',
-            description: 'Leveraging technology to make loan processes faster and more efficient.',
+            description: 'Simple online tools that cut down the back-and-forth with banks.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
     ];
@@ -78,14 +78,14 @@ export default function AboutClient() {
     const features = [
         {
             icon: FaShieldAlt,
-            title: 'Premier Security Standards',
-            description: 'Bank-grade security protocols backed by Premier Penny\'s trusted infrastructure.',
+            title: 'Your Data Stays Safe',
+            description: 'Your details are stored securely and shared with a lender only when you agree.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
             icon: FaRocket,
             title: 'Quick Processing Support',
-            description: 'Tech-enabled guidance that accelerates documentation and bank coordination.',
+            description: 'We check your papers and follow up with the bank, so your file keeps moving.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
@@ -98,7 +98,7 @@ export default function AboutClient() {
             icon: FaLightbulb,
             title: 'Smarter Loan Experience',
             description:
-                'Innovative tools and insights that help you choose better loan options with ease.',
+                'Calculators and plain-English guides that help you pick the right loan.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
     ];
@@ -120,7 +120,7 @@ export default function AboutClient() {
                             <span className="text-[var(--primary-blue)] italic tiemposfine">Borrowww</span>
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is powered by one of <span className="font-semibold text-[var(--primary-blue)]">India’s most trusted lending partners</span> and backed by the financial legacy of <span className="font-semibold text-[var(--primary-blue)]">Premier Penny</span>. We are changing the way people access credit, making financial inclusion a reality through technology and trust.
+                            <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is a loan advisory platform run by <span className="font-semibold text-[var(--primary-blue)]">Premier Penny Ventures Private Limited</span>. We are not a bank or NBFC. We help you compare home loans and loans against property from RBI-regulated lenders, and our advisors stay with you until the bank releases your loan.
                         </p>
                     </motion.div>
                 </div>
@@ -164,18 +164,16 @@ export default function AboutClient() {
                         >
                             <div className="inline-flex items-center px-4 py-2 bg-[var(--primary-blue)]/10 text-[var(--primary-blue)] rounded-full text-sm font-medium mb-6">
                                 <FaHeart className="mr-2" />
-                                Our Mission at Premier Penny
+                                Our Mission
                             </div>
                             <h2 className="text-4xl font-medium text-gray-900 mb-6">
-                                Democratising Access to Credit
+                                Making Loans Easier to Understand
                             </h2>
                             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                                As a project of Premier Penny, our mission is to democratise access to credit by leveraging technology and data, making financial
-                                services accessible to every Indian who deserves it.
+                                Most people take a home loan once or twice in their life. We want each of them to understand the offer in front of them, compare it fairly, and borrow with confidence.
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                                We believe that everyone should have the opportunity to achieve their dreams, and
-                                access to credit shouldn’t be a barrier to success.
+                                Good advice shouldn’t depend on who you know at the bank.
                             </p>
                         </motion.div>
 
@@ -195,11 +193,10 @@ export default function AboutClient() {
                                 Our Vision
                             </div>
                             <h3 className="text-3xl font-bold text-[var(--primary-blue)] mb-6 relative z-10">
-                                India’s Most Trusted Digital Lending Partner
+                                The Loan Advisor People Recommend
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-8 relative z-10">
-                                To become India’s most trusted and preferred digital lending partner, serving
-                                millions of customers with the innovative financial solutions that define the Premier Penny brand.
+                                To be the advisor borrowers recommend to their friends, because we told them the truth about every offer.
                             </p>
                             <div className="space-y-4 relative z-10">
                                 <div className="flex items-center gap-4 p-4 bg-[var(--primary-blue)]/5 rounded-xl">
@@ -231,8 +228,7 @@ export default function AboutClient() {
                     >
                         <h2 className="text-4xl font-medium text-gray-900 mb-6">Why Choose Borrowww?</h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            We combine cutting-edge technology with the human touch and reliability of Premier Penny to deliver exceptional financial
-                            services.
+                            Online tools for the quick stuff, and a real advisor for everything else.
                         </p>
                     </motion.div>
 
@@ -270,7 +266,7 @@ export default function AboutClient() {
                     >
                         <h2 className="text-4xl font-medium text-gray-900 mb-6">Our Core Values</h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            The principles that guide everything we do at Borrowww and Premier Penny
+                            What we hold ourselves to
                         </p>
                     </motion.div>
 
@@ -309,10 +305,9 @@ export default function AboutClient() {
                     >
                         <div className="absolute top-0 left-0 w-full h-full bg-[url('/pattern.png')] opacity-10"></div>
 
-                        <h2 className="text-4xl font-medium text-white mb-6 relative z-10">Ready to Get Started with Premier Penny?</h2>
+                        <h2 className="text-4xl font-medium text-white mb-6 relative z-10">Ready to Get Started?</h2>
                         <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto relative z-10">
-                            Join thousands of satisfied customers who have already achieved their financial goals
-                            with Borrowww, a Premier Penny innovation.
+                            Check your credit score for free, then talk to an advisor about your loan.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
                             <motion.a

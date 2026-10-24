@@ -1,12 +1,14 @@
 // GENERATED from the category page content - keep in sync with categoryPages.json.
 // Only paths and labels, so it is safe to import from client components (Header, Footer).
-export const GUIDE_GROUPS = {
+import { isPublished } from './draftPages';
+
+const ALL_GUIDE_GROUPS = {
   "home": {
     "hubPath": "/home-loan",
     "hubLabel": "Home Loan",
     "links": [
       {
-        "path": "/home-loan/eligibility",
+        "path": "/home-loan-eligibility",
         "label": "Eligibility",
         "title": "Home Loan Eligibility"
       },
@@ -147,4 +149,14 @@ export const GUIDE_GROUPS = {
   }
 };
 
-export const GUIDE_GROUP_ORDER = ['home', 'lap', 'emi', 'bt'];
+// Draft pages (see draftPages.js) are left out of every menu and guide list.
+export const GUIDE_GROUPS = Object.fromEntries(
+  Object.entries(ALL_GUIDE_GROUPS).map(([key, group]) => [
+    key,
+    { ...group, links: group.links.filter((link) => isPublished(link.path)) },
+  ]),
+);
+
+export const GUIDE_GROUP_ORDER = ['home', 'lap', 'emi', 'bt'].filter((key) =>
+  isPublished(GUIDE_GROUPS[key].hubPath),
+);

@@ -5,7 +5,7 @@ import { GUIDE_GROUPS, GUIDE_GROUP_ORDER } from '@/content/guideLinks';
 import { buildMetadata, companyInfo } from '@/lib/seo';
 
 const baseLinks = [
-  { href: '/', label: 'Borrowww - Credit Check & Instant Loan Provider' },
+  { href: '/', label: 'Borrowww - Free Credit Check & Loan Advisory' },
   { href: '/credit-check', label: 'Free Credit Score Check - Check Your CIBIL Score' },
   { href: '/home-loan', label: 'Home Loan - Best Interest Rates and Offers' },
   { href: '/loan-against-property', label: 'Loan Against Property - Unlock Your Property Value' },

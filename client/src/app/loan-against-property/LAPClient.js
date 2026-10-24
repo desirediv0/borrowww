@@ -61,23 +61,23 @@ export default function LAPClient() {
 
     const features = [
         {
-            title: 'Lenient Assessments',
-            description: 'Flexible assessment of different types of collateral.',
+            title: 'Flexible Checks',
+            description: 'Some lenders accept homes, shops, offices and rented property as security.',
             icon: FaCheckCircle,
         },
         {
             title: 'Higher Eligibility',
-            description: 'Get up to 75% of your property market value from our partner banks.',
+            description: 'Partner banks may lend up to 75% of your property’s market value.',
             icon: FaRupeeSign,
         },
         {
             title: 'Flexible Repayment',
-            description: 'Extended and flexible repayment windows matching your cash flow cycles.',
+            description: 'Repayment plans that can match how your business earns.',
             icon: FaCalendarAlt,
         },
         {
-            title: 'Zero Restrictions',
-            description: 'Deploy funds instantly for operations, inventory, or machinery upgrades.',
+            title: 'Use It for Your Business',
+            description: 'Spend it on running costs, stock or new machinery.',
             icon: FaPercentage,
         },
         {
@@ -130,7 +130,7 @@ export default function LAPClient() {
         },
         {
             q: "Can we apply if our property is currently rented out to a corporate tenant?",
-            a: "Our partner network accepts self-owned properties that are leased to commercial or residential tenants. The existing lease will not block your application; it serves as additional verification of the property’s viability during our appraisal process."
+            a: "Our partner network accepts self-owned properties that are leased to commercial or residential tenants. The existing lease will not block your application; it serves as additional verification of the property’s viability during the lender’s valuation."
         },
         {
             q: "Who must join the loan structure as a co-applicant for corporate properties?",
@@ -158,24 +158,24 @@ export default function LAPClient() {
                             Secured Financing
                         </div>
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-gray-900 mb-6 tracking-tight leading-tight">
-                            Loan Against Property in India with{' '}
-                            <span className="text-[var(--primary-blue)] italic tiemposfine font-semibold">Minimal Documents & Fast Approval</span>
+                            Loan Against Property in India:{' '}
+                            <span className="text-[var(--primary-blue)] italic tiemposfine font-semibold">Compare Banks & NBFCs</span>
                         </h1>
                         <h2 className="text-xl sm:text-2xl font-medium text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-                            Unlock Capital from Your Property to Fund Strategic Business Growth
+                            Use the Property You Own to Fund Your Business
                         </h2>
                         <div className="space-y-4 text-base sm:text-lg text-gray-600 leading-relaxed px-4 text-left sm:text-center">
                             <p>
                                 Pledging your property to fund commercial expansion can feel like a major step, and it is. Real estate is valuable, and we believe that value should work for you when your business needs financial backing.
                             </p>
                             <p>
-                                That is why we built <a href="https://www.borrowww.com/" className="text-[var(--primary-blue)] hover:underline font-semibold">Borrowww</a>. As one of the leading loan facilitator platforms, we offer simple options for a loan against property. Get direct access to premier Indian banks and NBFCs. We connect your financial goals with transparent, secured funding options.
+                                That is why we built <a href="https://www.borrowww.com/" className="text-[var(--primary-blue)] hover:underline font-semibold">Borrowww</a>. We are not a lender. We compare loan against property offers from RBI-regulated banks and NBFCs and help you apply to the one that fits.
                             </p>
                             <p>
-                                Many small business owners struggle with standard bank filters. Our platform changes that. We assess your actual property value alongside your operational strength. For these loans, you can use rented residential or commercial units, self-owned residential or commercial spaces, or open plots as collateral.
+                                Many small business owners struggle with standard bank filters. We help you show lenders what your property is worth and how your business actually earns. For these loans, you can use rented residential or commercial units, self-owned residential or commercial spaces, or open plots as collateral.
                             </p>
                             <p className="font-semibold text-gray-800">
-                                Our managers make sure you get maximum leverage, and they give you access to substantial capital based on clear property evaluations.
+                                Our advisors then help you ask for an amount the bank is likely to approve, based on a fair valuation of your property.
                             </p>
                         </div>
                     </motion.div>
@@ -471,10 +471,10 @@ export default function LAPClient() {
                         className="text-center mb-8"
                     >
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-900 mb-4">
-                            Why Companies Scale With Our Structured Credit Models
+                            Why Business Owners Use Borrowww for LAP
                         </h2>
                         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                            Borrowww focuses entirely on making your borrowing procedure efficient. Traditional corporate financing is time-consuming and involves endless documentation. We cut down that stress by offering:
+                            Borrowing against property can mean weeks of paperwork and back-and-forth with the bank. We take most of that off your plate. Here is what our partner lenders offer:
                         </p>
                     </motion.div>
 

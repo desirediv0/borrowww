@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 import { CLUSTERS, getClusterPages } from '@/content/categoryClusters';
+import { isPublished } from '@/content/draftPages';
 
 /**
  * Grid of links to every guide in a cluster. Server-rendered so the links are
@@ -9,7 +10,7 @@ import { CLUSTERS, getClusterPages } from '@/content/categoryClusters';
  */
 export default function RelatedGuides({ cluster, excludePath, heading, intro, tone = 'light', headingLevel = 2 }) {
   const config = CLUSTERS[cluster];
-  const pages = getClusterPages(cluster).filter((p) => p.path !== excludePath);
+  const pages = getClusterPages(cluster).filter((p) => p.path !== excludePath && isPublished(p.path));
   if (!config || pages.length === 0) return null;
 
   const Heading = `h${headingLevel}`;

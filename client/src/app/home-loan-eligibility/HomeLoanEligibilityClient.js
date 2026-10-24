@@ -984,7 +984,7 @@ export default function HomeLoanEligibilityClient() {
                         <a href="/home-loan-documents" className="p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#3A6EA5] text-sm font-semibold text-gray-700 hover:text-[#3A6EA5] transition-all">Required Documents</a>
                         <a href="/home-loan" className="p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#3A6EA5] text-sm font-semibold text-gray-700 hover:text-[#3A6EA5] transition-all">Interest Rates</a>
                         <a href="/loan-emi-calculator" className="p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#3A6EA5] text-sm font-semibold text-gray-700 hover:text-[#3A6EA5] transition-all">EMI Calculator</a>
-                        <a href="/balance-transfer" className="p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#3A6EA5] text-sm font-semibold text-gray-700 hover:text-[#3A6EA5] transition-all">Balance Transfer</a>
+                        <a href="/credit-check" className="p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#3A6EA5] text-sm font-semibold text-gray-700 hover:text-[#3A6EA5] transition-all">Credit Check</a>
                     </div>
                 </div>
             </section>

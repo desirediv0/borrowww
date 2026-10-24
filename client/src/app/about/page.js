@@ -2,9 +2,9 @@ import AboutClient from './AboutClient';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'About Borrowww | India’s Trusted Loan & Credit Platform',
+  title: 'About Borrowww | Loan Advisory & Free Credit Check',
   description:
-    'Discover Borrowww, backed by Premier Penny, delivering secure, fast and transparent loan solutions. Empowering financial inclusion with innovative and customer-first lending services.',
+    'Borrowww is a loan advisory platform run by Premier Penny Ventures Private Limited. We help you compare and apply for loans from RBI-regulated banks and NBFCs.',
   path: '/about',
 });
 

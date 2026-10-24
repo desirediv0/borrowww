@@ -13,11 +13,11 @@ export default function TermsOfService() {
       <h1 className="text-4xl font-semibold mb-6 text-[var(--primary-blue-dark)]">
         Terms of Service
       </h1>
-      <p className="text-gray-600 italic mb-10">Last updated: 01 January 2025</p>
+      <p className="text-gray-600 italic mb-10">Last updated: 25 October 2026</p>
 
       <div className="space-y-8 text-[17px] text-gray-700">
         <p>
-          These terms govern the use of <strong>Borrowww.com</strong>, operated by <strong>Borrowww</strong>. By using our website, you agree to the Terms
+          These terms govern the use of <strong>Borrowww.com</strong>, operated by <strong>Premier Penny Ventures Private Limited</strong> (CIN: U66120DL2024PTC426769) under the brand Borrowww. By using our website, you agree to the Terms
           listed below.
         </p>
 

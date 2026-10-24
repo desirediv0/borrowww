@@ -3,9 +3,9 @@ import RelatedGuides from '@/components/category/RelatedGuides';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'Loan Against Property in India | Minimal Documents & Fast Approval',
+  title: 'Loan Against Property in India | Compare Banks & NBFCs',
   description:
-    'Unlock capital from your property to fund strategic business growth. Get a loan against property in India with minimal documents and fast approval from Borrowww.',
+    'Need money for your business or a big expense? Compare loan against property offers from RBI-regulated banks and NBFCs, and let Borrowww help you apply.',
   path: '/loan-against-property',
 });
 

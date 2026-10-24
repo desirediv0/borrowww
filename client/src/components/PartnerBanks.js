@@ -18,8 +18,8 @@ export default function PartnerBanks() {
           {/* Left Side: Heading (Larger & More Prominent) */}
           <div className="flex-shrink-0 lg:max-w-xs">
             <h2 className="text-2xl sm:text-3xl font-black text-[#2D3E50] tracking-wide uppercase leading-tight">
-              Our Lending{' '}
-              <span className="block text-[#3A6EA5] font-black">Partners</span>
+              Our Partner{' '}
+              <span className="block text-[#3A6EA5] font-black">Banks & NBFCs</span>
             </h2>
             <div className="mt-3 w-16 h-1 bg-gradient-to-r from-[#2D3E50] to-[#3A6EA5] rounded-full"></div>
           </div>

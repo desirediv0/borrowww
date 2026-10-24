@@ -162,8 +162,7 @@ export default function LoanCalculator() {
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
           >
-            Calculate your EMI, interest, and total payment for different types of loans. Get
-            instant loan estimates based on your CIBIL score and requirements.
+            Calculate your EMI, interest, and total payment for different types of loans. See an estimate straight away, based on your credit score and loan amount.
           </motion.p>
         </motion.div>
 

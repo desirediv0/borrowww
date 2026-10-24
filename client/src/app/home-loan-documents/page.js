@@ -336,10 +336,7 @@ export default function HomeLoanDocumentsPage() {
                     <ProfileTabs profiles={profiles} />
                     <p className="mt-8 text-center text-gray-600">
                         Not sure how much these papers will get you?{' '}
-                        <Link href="/home-loan/eligibility" className="text-[#3A6EA5] font-medium hover:underline">Check your home loan eligibility</Link>{' '}
-                        or see the guides for{' '}
-                        <Link href="/home-loan/salaried" className="text-[#3A6EA5] font-medium hover:underline">salaried</Link> and{' '}
-                        <Link href="/home-loan/self-employed" className="text-[#3A6EA5] font-medium hover:underline">self-employed</Link> borrowers.
+                        <Link href="/home-loan-eligibility" className="text-[#3A6EA5] font-medium hover:underline">Check your home loan eligibility</Link>.
                     </p>
                 </div>
             </section>
@@ -419,9 +416,9 @@ export default function HomeLoanDocumentsPage() {
                         </table>
                     </div>
                     <p className="mt-4 text-sm text-gray-600">
-                        Moving a loan you already have? The{' '}
-                        <Link href="/balance-transfer/documents" className="text-[#3A6EA5] font-medium hover:underline">balance transfer documents guide</Link>{' '}
-                        covers it in detail.
+                        Moving a loan you already have?{' '}
+                        <Link href="/contact" className="text-[#3A6EA5] font-medium hover:underline">Talk to an advisor</Link>{' '}
+                        about the papers a balance transfer needs.
                     </p>
                 </div>
             </section>
@@ -572,7 +569,7 @@ export default function HomeLoanDocumentsPage() {
                         <div className="rounded-2xl border border-gray-100 bg-gray-50 p-6">
                             <h3 className="text-base font-semibold text-gray-900">Who we are</h3>
                             <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                                Borrowww is a {PARENT_COMPANY} company. It is not a bank or NBFC and does not provide loans or accept deposits. We act as a loan advisory and facilitation platform connecting users with regulated lenders.{' '}
+                                Borrowww is a brand of {PARENT_COMPANY}. It is not a bank or NBFC and does not provide loans or accept deposits. We act as a loan advisory and facilitation platform connecting users with regulated lenders.{' '}
                                 <Link href="/rbi-compliance" className="text-[#3A6EA5] hover:underline">RBI compliance</Link>
                             </p>
                             <p className="mt-3 text-sm text-gray-600 leading-relaxed">

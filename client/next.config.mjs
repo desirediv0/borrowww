@@ -13,6 +13,12 @@ const nextConfig = {
         destination: '/home-loan-documents',
         permanent: true,
       },
+      // Duplicate of /home-loan-eligibility; consolidated into that URL.
+      {
+        source: '/home-loan/eligibility',
+        destination: '/home-loan-eligibility',
+        permanent: true,
+      },
       // Flat URLs used by the hyperlinks inside the category-page briefs; the
       // pages themselves live at the nested "Suggested URL" given in each brief.
       ...[

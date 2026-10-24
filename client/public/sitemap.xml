@@ -1,279 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
        <loc>https://www.borrowww.com/</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
        <priority>1.0000</priority>
   </url>
   <url>
-       <loc>https://www.borrowww.com/credit-check</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
        <loc>https://www.borrowww.com/home-loan</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/loan-against-property</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-emi-calculator</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/balance-transfer</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/comparison</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/home-loan-documents</loc>
-       <lastmod>2026-10-22T00:00:00+00:00</lastmod>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/home-loan-eligibility</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.borrowww.com/loan-emi-calculator</loc>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://www.borrowww.com/credit-check</loc>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/about</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/referral</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
+       <priority>0.5000</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/contact</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
+       <priority>0.5000</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/privacy-policy</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
+       <priority>0.5000</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/terms-of-service</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
+       <priority>0.5000</priority>
   </url>
   <url>
        <loc>https://www.borrowww.com/rbi-compliance</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.8000</priority>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
+       <priority>0.5000</priority>
   </url>
   <url>
-       <loc>https://www.borrowww.com/faq</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-advisor-gurgaon-for-home-loan</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/best-home-loan-advisor-delhi-ncr</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/home-loan-consultant-noida</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-against-property-for-salaried-delhi</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-against-property-consultant-gurgaon</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/best-loan-agent-faridabad</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/instant-loan-for-salaried-employees-delhi</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-for-low-cibil-score</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/commercial-property-loan</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/home-loan-process-india</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/minimum-cibil-score-home-loan</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/how-to-increase-credit-score</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-without-income-proof</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/secured-vs-unsecured-loan</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/instant-loan-tips</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/free-credit-score-check-delhi</loc>
-       <lastmod>2026-09-01T07:51:00+00:00</lastmod>
-       <priority>0.6400</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/home-loan/eligibility</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/home-loan/interest-rates</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/home-loan/salaried</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/home-loan/self-employed</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/home-loan/first-time-buyers</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-against-property/eligibility</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-against-property/interest-rates</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-against-property/documents</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-against-property/self-employed</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-against-property/business</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-against-property/tax-benefits</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-emi-calculator/home-loan</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-emi-calculator/loan-against-property</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-emi-calculator/20-lakh-home-loan-emi</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-emi-calculator/30-lakh-home-loan</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-emi-calculator/50-lakh-home-loan-emi</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/loan-emi-calculator/1-crore-home-loan</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/balance-transfer/eligibility</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/balance-transfer/interest-rates</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/balance-transfer/documents</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/balance-transfer/benefits</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/balance-transfer/home-loan-balance-transfer-calculator</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
-  </url>
-  <url>
-       <loc>https://www.borrowww.com/balance-transfer/self-employed</loc>
-       <lastmod>2026-10-14T00:00:00+00:00</lastmod>
-       <priority>0.7000</priority>
+       <loc>https://www.borrowww.com/grievance-redressal</loc>
+       <lastmod>2026-10-25T00:00:00+00:00</lastmod>
+       <priority>0.5000</priority>
   </url>
 </urlset>

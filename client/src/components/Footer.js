@@ -7,6 +7,8 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
 import { motion } from 'framer-motion';
 
 import { GUIDE_GROUPS, GUIDE_GROUP_ORDER } from '@/content/guideLinks';
+import { companyInfo } from '@/lib/seo';
+import { isPublished } from '@/content/draftPages';
 
 export default function Footer() {
   const footerLinks = {
@@ -36,6 +38,7 @@ export default function Footer() {
       { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms of Service', href: '/terms-of-service' },
       { name: 'RBI Compliance', href: '/rbi-compliance' },
+      { name: 'Grievance Redressal', href: '/grievance-redressal' },
     ],
   };
 
@@ -58,11 +61,10 @@ export default function Footer() {
               </div>
             </Link>
             <span className="text-[#396A9F] font-medium text-sm mb-1">
-              Credit Check & Instant Loan Provider
+              Free Credit Check & Loan Advisory
             </span>
             <p className="text-gray-600 leading-relaxed max-w-sm text-base">
-              India’s leading credit score checking and loan provider platform. Get instant
-              loan approval with competitive rates and a transparent process.
+              We help you compare loan offers from RBI-regulated banks and NBFCs. An advisor stays with you from your credit check to disbursal.
             </p>
 
             {/* Contact Information */}
@@ -114,7 +116,7 @@ export default function Footer() {
                 {category}
               </h3>
               <ul className="space-y-3">
-                {links.map((link, linkIndex) => (
+                {links.filter((link) => isPublished(link.href)).map((link, linkIndex) => (
                   <motion.li
                     key={link.name}
                     initial={false}
@@ -147,6 +149,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {GUIDE_GROUP_ORDER.map((key) => {
               const group = GUIDE_GROUPS[key];
+              if (group.links.length === 0) return null;
               return (
                 <div key={key}>
                   <Link
@@ -176,6 +179,16 @@ export default function Footer() {
         {/* Divider */}
         <div className="w-full h-px bg-gradient-to-r from-[#396A9F]/20 via-gray-100 to-[#396A9F]/20 mb-8" />
 
+        {/* Regulatory disclosure, shown on every page */}
+        <p className="text-xs leading-relaxed text-gray-500 mb-8">
+          <strong className="text-gray-600">Disclaimer:</strong> Borrowww is a loan advisory and
+          comparison service operated by {companyInfo.legalName} (CIN: {companyInfo.cin}). We are
+          not a bank or a Non-Banking Financial Company (NBFC) registered with the Reserve Bank of
+          India, and we do not lend money or accept deposits. Loan approval, interest rates, fees and
+          all other loan terms are decided solely by the partner bank or NBFC under its own credit
+          policy.
+        </p>
+
         {/* Bottom Footer */}
         <motion.div
           className="flex flex-col md:flex-row justify-between items-center gap-4"
@@ -185,7 +198,7 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <p className="text-gray-500 text-sm mb-2 md:mb-0">
-            © {new Date().getFullYear()} Borrowww, a Premier Penny company. All rights reserved.
+            © {new Date().getFullYear()} Borrowww, a brand of {companyInfo.legalName}. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6 text-sm">
@@ -206,6 +219,12 @@ export default function Footer() {
               className="text-gray-500 hover:text-[#396A9F] transition-colors duration-200 font-medium"
             >
               RBI Compliance
+            </Link>
+            <Link
+              href="/grievance-redressal"
+              className="text-gray-500 hover:text-[#396A9F] transition-colors duration-200 font-medium"
+            >
+              Grievance Redressal
             </Link>
           </div>
         </motion.div>

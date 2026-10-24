@@ -24,6 +24,7 @@ export default function LoanGuidesSection() {
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {GUIDE_GROUP_ORDER.map((key) => {
             const group = GUIDE_GROUPS[key];
+            if (group.links.length === 0) return null;
             return (
               <div key={key} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                 <h3 className="text-lg font-semibold text-slate-900">
