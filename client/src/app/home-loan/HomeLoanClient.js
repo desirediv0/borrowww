@@ -132,7 +132,7 @@ export default function HomeLoanClient() {
     const faqs = [
         {
             q: 'What types of home loans can I apply for?',
-            a: 'Our platform allows you to choose from different types of home loans, including:',
+            a: 'We can help you choose from different types of home loans, including:',
             bullets: [
                 'Ready property loans',
                 'Under-construction property loans',
@@ -143,7 +143,7 @@ export default function HomeLoanClient() {
         },
         {
             q: 'Can Borrowww help me compare multiple banks?',
-            a: 'Our platform connects borrowers with leading Indian banks and NBFCs. You can compare suitable loan options, the best interest rates and repayment structures in one place.',
+            a: 'We connect borrowers with leading Indian banks and NBFCs. You can compare suitable loan options, the best interest rates and repayment structures in one place.',
         },
         {
             q: 'Do you provide support during the loan process?',
@@ -317,7 +317,7 @@ export default function HomeLoanClient() {
                                 Looking for a home loan? Finding the right one takes time, and there is a lot to weigh up. Rates change, bank policies differ, and the paperwork often feels exhausting after a point.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed">
-                                That is why you should connect with us at <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>. We know how to help you avoid that confusion. Our platform has strong partnerships with the leading banks and NBFCs in India. We connect you with them and guide you through the loan process with practical support that actually helps.
+                                That is why you should connect with us at <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>. We know how to help you avoid that confusion. We have strong partnerships with the leading banks and NBFCs in India. We connect you with them and guide you through the loan process with practical support that actually helps.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed font-light">
                                 Some home buyers already know the property they want, while others are still comparing projects, budgets and repayment plans. We work with both. Our team helps you explore suitable loan options based on your requirements instead of a one-size-fits-all solution.
@@ -586,7 +586,7 @@ export default function HomeLoanClient() {
                             Why Borrowers Prefer Borrowww
                         </h2>
                         <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                            Our platform offers multiple perks and brings you closer to your dream.
+                            Working with a consultant makes the whole process easier and brings you closer to your dream.
                         </p>
                     </div>
 
@@ -615,7 +615,7 @@ export default function HomeLoanClient() {
                             What’s Our Approach?
                         </h2>
                         <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                            Getting a home loan through our platform is simple. Just follow these steps:
+                            Getting a home loan with our help is simple. Just follow these steps:
                         </p>
                     </div>
 
@@ -701,7 +701,7 @@ export default function HomeLoanClient() {
                                 Three levers move your eligibility the most: reducing existing EMIs before applying, adding a co-applicant’s income, and improving your CIBIL score above 750. Self-employed applicants are assessed differently - lenders average the last 2-3 years of ITR income rather than a single payslip.
                             </p>
                             <p className="text-gray-600 leading-relaxed">
-                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan advisors. We’ll compare lenders and show you which ones are likely to lend you the most at the lowest rate.
+                                Want an exact number based on your salary, city, and existing obligations? Get a free eligibility check from our loan consultants. We’ll compare lenders and show you which ones are likely to lend you the most at the lowest rate.
                             </p>
                         </div>
 
@@ -909,7 +909,7 @@ export default function HomeLoanClient() {
                                 </table>
                             </div>
                             <p className="text-gray-600 leading-relaxed">
-                                Always ask for the fee break-up in writing before signing the sanction letter - some lenders bundle credit life insurance into the loan amount without clearly flagging it as optional. Our advisors review the full cost sheet with you before you commit.
+                                Always ask for the fee break-up in writing before signing the sanction letter - some lenders bundle credit life insurance into the loan amount without clearly flagging it as optional. Our consultants review the full cost sheet with you before you commit.
                             </p>
                         </div>
 

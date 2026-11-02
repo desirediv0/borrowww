@@ -256,7 +256,7 @@ export default function HomeLoanEligibilityClient() {
         },
         {
             q: "How can Borrowww help me check my home loan eligibility?",
-            a: "Borrowww offers a free, instant home loan eligibility calculator that estimates your loan amount based on your income, age, and existing obligations, without impacting your credit score. Beyond the calculator, our advisory team helps you compare offers from multiple banks and NBFCs, understand documentation requirements, and choose the loan structure that best fits your financial situation. From the first eligibility check to final disbursement, Borrowww supports you at every step of your home loan journey."
+            a: "Borrowww offers a free, instant home loan eligibility calculator that estimates your loan amount based on your income, age, and existing obligations, without impacting your credit score. Beyond the calculator, our consulting team helps you compare offers from multiple banks and NBFCs, understand documentation requirements, and choose the loan structure that best fits your financial situation. From the first eligibility check to final disbursement, Borrowww supports you at every step of your home loan journey."
         }
     ];
 
@@ -933,9 +933,9 @@ export default function HomeLoanEligibilityClient() {
                             </p>
                             <ul className="space-y-3">
                                 {[
-                                    'Access to multiple leading banks and NBFCs on a single platform',
+                                    'Access to multiple leading banks and NBFCs through one consultant',
                                     'A free, instant home loan eligibility check with no impact on your credit score',
-                                    'Dedicated advisors who explain your options in plain language, not jargon',
+                                    'Dedicated consultants who explain your options in plain language, not jargon',
                                     'Support with documentation, comparison, and application, end-to-end',
                                     'A track record of helping first-time buyers, self-employed professionals, and business owners secure home financing confidently'
                                 ].map((item, idx) => (
@@ -955,7 +955,7 @@ export default function HomeLoanEligibilityClient() {
                                     { step: '2', title: 'Compare Offers', desc: 'Compare loan offers from multiple banks and NBFCs based on your profile' },
                                     { step: '3', title: 'Select Lender', desc: 'Select the best-fit lender based on interest rate, tenure, and terms' },
                                     { step: '4', title: 'Submit Documents', desc: 'Submit your documents: income proof, identity proof and property papers' },
-                                    { step: '5', title: 'Application Review', desc: 'Application review by the chosen lender, with support from our advisory team' },
+                                    { step: '5', title: 'Application Review', desc: 'Application review by the chosen lender, with support from our consulting team' },
                                     { step: '6', title: 'Loan Sanction', desc: 'Loan sanction once verification and property checks are complete' },
                                     { step: '7', title: 'Disbursement', desc: 'Disbursement of funds directly towards your property purchase' }
                                 ].map((item, idx) => (

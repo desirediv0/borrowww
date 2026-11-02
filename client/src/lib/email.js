@@ -201,7 +201,7 @@ export function getAdminEmailTemplate(formData) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002</p>
+            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505</p>
           </div>
         </div>
       </div>
@@ -260,7 +260,7 @@ export function getUserThankYouTemplate({ name }) {
             <div class="highlight-box">
               <p style="font-weight: 600; color: #396A9F; margin-bottom: 15px;">Need immediate assistance?</p>
               <div class="contact-info">
-                <p><strong>Phone:</strong> +91 9560069525 or +91 8264111345</p>
+                <p><strong>Phone:</strong> +91 9560069525</p>
                 <p><strong>Email:</strong> support.borrowww@gmail.com</p>
               </div>
             </div>
@@ -272,7 +272,7 @@ export function getUserThankYouTemplate({ name }) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002</p>
+            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505</p>
             <p style="margin-top: 20px; font-size: 12px;">This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>
@@ -340,7 +340,7 @@ export function getCreditCheckEmailTemplate({ firstName, mobileNumber }) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002</p>
+            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505</p>
           </div>
         </div>
       </div>
@@ -441,7 +441,7 @@ export function getHomeLoanEmailTemplate({ name, phone, city, propertyType, loan
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002</p>
+            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505</p>
           </div>
         </div>
       </div>

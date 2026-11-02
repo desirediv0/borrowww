@@ -61,10 +61,10 @@ export default function Footer() {
               </div>
             </Link>
             <span className="text-[#396A9F] font-medium text-sm mb-1">
-              Free Credit Check & Loan Advisory
+              Free Credit Check & Loan Consultancy
             </span>
             <p className="text-gray-600 leading-relaxed max-w-sm text-base">
-              We help you compare loan offers from RBI-regulated banks and NBFCs. An advisor stays with you from your credit check to disbursal.
+              We help you compare loan offers from RBI-regulated banks and NBFCs. A consultant stays with you from your credit check to disbursal.
             </p>
 
             {/* Contact Information */}
@@ -74,9 +74,6 @@ export default function Footer() {
                 <div className="flex flex-col">
                   <a href="tel:+919560069525" className="text-gray-600 hover:text-[#396A9F] transition-colors text-sm">
                     +91 9560069525
-                  </a>
-                  <a href="tel:+918264111345" className="text-gray-600 hover:text-[#396A9F] transition-colors text-sm">
-                    +91 8264111345
                   </a>
                 </div>
               </div>
@@ -89,9 +86,9 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-[#396A9F] mt-1 shrink-0" />
                 <p className="text-gray-600 text-sm">
-                  221, 2nd Floor, JMD Megapolis,<br />
-                  Sector 48, Sohna Road,<br />
-                  Gurgaon 122002
+                  626, 6th Floor, Satya The Hive,<br />
+                  Sector 102, Dwarka Expressway,<br />
+                  Gurgaon 122505
                 </p>
               </div>
               <div className="flex items-start gap-3">
@@ -181,8 +178,7 @@ export default function Footer() {
 
         {/* Regulatory disclosure, shown on every page */}
         <p className="text-xs leading-relaxed text-gray-500 mb-8">
-          <strong className="text-gray-600">Disclaimer:</strong> Borrowww is a loan advisory and
-          comparison service operated by {companyInfo.legalName} (CIN: {companyInfo.cin}). We are
+          <strong className="text-gray-600">Disclaimer:</strong> Borrowww is a loan consultancy operated by {companyInfo.parentCompany}. We are
           not a bank or a Non-Banking Financial Company (NBFC) registered with the Reserve Bank of
           India, and we do not lend money or accept deposits. Loan approval, interest rates, fees and
           all other loan terms are decided solely by the partner bank or NBFC under its own credit
@@ -198,7 +194,7 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <p className="text-gray-500 text-sm mb-2 md:mb-0">
-            © {new Date().getFullYear()} Borrowww, a brand of {companyInfo.legalName}. All rights reserved.
+            © {new Date().getFullYear()} Borrowww, a brand of {companyInfo.parentCompany}. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6 text-sm">

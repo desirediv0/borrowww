@@ -115,7 +115,7 @@ export default function ValuesSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              Borrowww is a loan advisory platform, not a lender. We help you check your credit score, compare offers from RBI-regulated banks and NBFCs, and get your application through with an advisor on your side.
+              Borrowww is a loan consultancy, not a lender. We help you check your credit score, compare offers from RBI-regulated banks and NBFCs, and get your application through with a consultant on your side.
             </motion.p>
           </motion.div>
         </div>

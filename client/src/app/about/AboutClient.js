@@ -50,26 +50,26 @@ export default function AboutClient() {
         {
             icon: FaShieldAlt,
             title: 'Trust & Security',
-            description: 'We keep your data secure and share it with a lender only with your consent.',
+            description: 'We protect your data and only share it with a lender with your explicit consent.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
             icon: FaChartLine,
             title: 'Transparency',
-            description: 'Clear terms, no hidden charges, and complete transparency in all processes.',
+            description: 'Clear terms, no hidden costs, and full transparency throughout every process.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
             icon: FaUsers,
-            title: 'Customer First',
+            title: 'Customer-Centricity',
             description:
-                'Every decision we make is centred on providing the best customer experience.',
+                'An optimal customer experience is our top priority in every decision we make.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
             icon: FaGlobe,
             title: 'Innovation',
-            description: 'Simple online tools that cut down the back-and-forth with banks.',
+            description: 'Simple online tools that significantly reduce the effort required to coordinate with banks.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
     ];
@@ -78,27 +78,27 @@ export default function AboutClient() {
     const features = [
         {
             icon: FaShieldAlt,
-            title: 'Your Data Stays Safe',
-            description: 'Your details are stored securely and shared with a lender only when you agree.',
+            title: 'Your data remains secure',
+            description: 'Your information is stored securely and will only be shared with a lender if you provide your consent.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
             icon: FaRocket,
-            title: 'Quick Processing Support',
-            description: 'We check your papers and follow up with the bank, so your file keeps moving.',
+            title: 'Support for fast processing',
+            description: 'We review your documents and coordinate with the bank to ensure your application moves forward quickly.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
             icon: FaHeart,
             title: 'Customer-First Approach',
-            description: 'Dedicated advisors who guide you at every step for the best loan experience.',
+            description: 'Dedicated consultants support you every step of the way—ensuring an optimal borrowing experience.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
             icon: FaLightbulb,
-            title: 'Smarter Loan Experience',
+            title: 'A smarter way to get a loan',
             description:
-                'Calculators and plain-English guides that help you pick the right loan.',
+                'Calculation tools and easy-to-understand guides help you find the right loan for your needs.',
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
     ];
@@ -120,7 +120,7 @@ export default function AboutClient() {
                             <span className="text-[var(--primary-blue)] italic tiemposfine">Borrowww</span>
                         </h1>
                         <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is a loan advisory platform run by <span className="font-semibold text-[var(--primary-blue)]">Premier Penny Ventures Private Limited</span>. We are not a bank or NBFC. We help you compare home loans and loans against property from RBI-regulated lenders, and our advisors stay with you until the bank releases your loan.
+                            <span className="font-semibold text-[var(--primary-blue)]">Borrowww</span> is a loan consultancy operated by <span className="font-semibold text-[var(--primary-blue)]">Premier Penny</span>. We are neither a bank nor a non-banking financial company (NBFC). We assist you in comparing real estate loans and loans secured by property—offered by lenders that are regulated by the Reserve Bank of India (RBI). Our consultants will guide you through the entire process until the bank disburses the loan.
                         </p>
                     </motion.div>
                 </div>
@@ -170,10 +170,10 @@ export default function AboutClient() {
                                 Making Loans Easier to Understand
                             </h2>
                             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                                Most people take a home loan once or twice in their life. We want each of them to understand the offer in front of them, compare it fairly, and borrow with confidence.
+                                Most people take out a home loan only once or twice in their lives. We want to ensure they understand the offer, can compare options fairly, and feel confident taking out a loan.
                             </p>
                             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                                Good advice shouldn’t depend on who you know at the bank.
+                                Our mission is to provide you with the best possible service—without any false promises.
                             </p>
                         </motion.div>
 
@@ -193,10 +193,10 @@ export default function AboutClient() {
                                 Our Vision
                             </div>
                             <h3 className="text-3xl font-bold text-[var(--primary-blue)] mb-6 relative z-10">
-                                The Loan Advisor People Recommend
+                                Loan consultants recommended by others
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-8 relative z-10">
-                                To be the advisor borrowers recommend to their friends, because we told them the truth about every offer.
+                                We aim to be the consultant that borrowers recommend to their friends—because we’ve been honest with them about every single offer.
                             </p>
                             <div className="space-y-4 relative z-10">
                                 <div className="flex items-center gap-4 p-4 bg-[var(--primary-blue)]/5 rounded-xl">
@@ -205,7 +205,7 @@ export default function AboutClient() {
                                 </div>
                                 <div className="flex items-center gap-4 p-4 bg-[var(--primary-blue)]/5 rounded-xl">
                                     <div className="w-3 h-3 bg-[var(--primary-blue)] rounded-full"></div>
-                                    <span className="text-gray-700 font-medium">Technology-driven solutions</span>
+                                    <span className="text-gray-700 font-medium">Technology-enabled solutions</span>
                                 </div>
                                 <div className="flex items-center gap-4 p-4 bg-[var(--primary-blue)]/5 rounded-xl">
                                     <div className="w-3 h-3 bg-[var(--primary-blue)] rounded-full"></div>
@@ -228,7 +228,7 @@ export default function AboutClient() {
                     >
                         <h2 className="text-4xl font-medium text-gray-900 mb-6">Why Choose Borrowww?</h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Online tools for the quick stuff, and a real advisor for everything else.
+                            Online tools for quick requests – and a personal consultant for everything else.
                         </p>
                     </motion.div>
 
@@ -266,7 +266,7 @@ export default function AboutClient() {
                     >
                         <h2 className="text-4xl font-medium text-gray-900 mb-6">Our Core Values</h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            What we hold ourselves to
+                            The standards by which we measure ourselves
                         </p>
                     </motion.div>
 
@@ -307,7 +307,7 @@ export default function AboutClient() {
 
                         <h2 className="text-4xl font-medium text-white mb-6 relative z-10">Ready to Get Started?</h2>
                         <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto relative z-10">
-                            Check your credit score for free, then talk to an advisor about your loan.
+                            Check your credit score for free, then talk to a consultant about your loan.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
                             <motion.a

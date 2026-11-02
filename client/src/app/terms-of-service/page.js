@@ -17,14 +17,13 @@ export default function TermsOfService() {
 
       <div className="space-y-8 text-[17px] text-gray-700">
         <p>
-          These terms govern the use of <strong>Borrowww.com</strong>, operated by <strong>Premier Penny Ventures Private Limited</strong> (CIN: U66120DL2024PTC426769) under the brand Borrowww. By using our website, you agree to the Terms
+          These terms govern the use of <strong>Borrowww.com</strong>, operated by <strong>Premier Penny</strong> under the brand Borrowww. By using our website, you agree to the Terms
           listed below.
         </p>
 
         <h2 className="text-2xl font-semibold text-gray-900">1. Nature of Services</h2>
         <p>
-          Borrowww is not a bank or NBFC. We do not provide loans directly. We provide loan
-          advisory and facilitate communication between users and regulated financial institutions.
+          Borrowww is not a bank or NBFC. We do not provide loans directly. We work as a loan consultant and facilitate communication between users and regulated financial institutions.
         </p>
 
         <h2 className="text-2xl font-semibold text-gray-900">2. User Responsibilities</h2>
@@ -54,7 +53,7 @@ export default function TermsOfService() {
         <h2 className="text-2xl font-semibold text-gray-900">6. Limitation of Liability</h2>
         <p>
           Borrowww shall not be liable for indirect or consequential damages arising from use
-          of our services or reliance on advisory support.
+          of our services or reliance on consulting support.
         </p>
 
         <h2 className="text-2xl font-semibold text-gray-900">7. Governing Law</h2>

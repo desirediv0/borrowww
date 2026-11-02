@@ -22,12 +22,12 @@ export default function TransparencySection() {
       id: 1,
       title: 'Reach out to us, anytime',
       description:
-        'Call, chat, or share your concerns - your Borrowww advisor responds personally and guides you through your loan process.',
+        'Call, chat, or share your concerns - your Borrowww consultant responds personally and guides you through your loan process.',
       phoneContent: {
-        header: 'Borrowww Advisor',
+        header: 'Borrowww Consultant',
         advisor: {
           name: 'Kamlesh Yadav',
-          role: 'Senior Loan Advisor',
+          role: 'Senior Loan Consultant',
           phone: 'Available on request',
           email: 'support.borrowww@gmail.com',
         },
@@ -35,7 +35,7 @@ export default function TransparencySection() {
           {
             sender: 'advisor',
             message:
-              'Welcome to Borrowww! I’m your dedicated loan advisor. How can I assist you today?',
+              'Welcome to Borrowww! I’m your dedicated loan consultant. How can I assist you today?',
           },
           { sender: 'user', message: 'How do I connect with the bank for my loan process?' },
           {
@@ -57,7 +57,7 @@ export default function TransparencySection() {
       id: 2,
       title: 'Lifetime Support After Loan',
       description:
-        'Even after your loan is approved, our advisors will help you with better interest options, loan transfers, savings, and financial decisions.',
+        'Even after your loan is approved, our consultants will help you with better interest options, loan transfers, savings, and financial decisions.',
       phoneContent: {
         header: 'Available Anytime',
         chat: [
@@ -69,7 +69,7 @@ export default function TransparencySection() {
         ],
         buttons: [
           { text: 'Check better rates', style: 'border-orange-500 text-orange-600 bg-white' },
-          { text: 'Talk to Advisor', style: 'bg-[var(--primary-blue-dark)] text-white' },
+          { text: 'Talk to Consultant', style: 'bg-[var(--primary-blue-dark)] text-white' },
         ],
       },
     },
@@ -193,7 +193,7 @@ export default function TransparencySection() {
                             onClick={() => router.push('/contact')}
                             className="flex items-center justify-center gap-2 bg-white border-2 border-[var(--primary-blue-dark)] text-[var(--primary-blue-dark)] px-4 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-50 transition-all duration-300 w-full"
                           >
-                            <span className="whitespace-nowrap">Contact advisor</span>
+                            <span className="whitespace-nowrap">Contact consultant</span>
                           </button>
                           <a
                             href="tel:+919560069525"
@@ -226,7 +226,7 @@ export default function TransparencySection() {
                             onClick={() => router.push('/contact')}
                             className="flex items-center justify-center gap-2 bg-white border-2 border-[var(--primary-blue-dark)] text-[var(--primary-blue-dark)] px-4 lg:px-6 py-3 rounded-lg font-semibold text-sm hover:bg-gray-50 transition-all duration-300 whitespace-nowrap"
                           >
-                            <span>Contact advisor</span>
+                            <span>Contact consultant</span>
                           </button>
                           <a
                             href="tel:+919560069525"

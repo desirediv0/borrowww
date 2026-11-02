@@ -19,7 +19,7 @@ import LoanGuidesSection from '@/components/category/LoanGuidesSection';
 export const metadata = buildMetadata({
   title: 'Compare Home Loans & Loan Against Property | Borrowww',
   description:
-    'Compare home loan and loan against property offers from RBI-regulated banks and NBFCs. Check your credit score for free and get an advisor to help you apply.',
+    'Compare home loan and loan against property offers from RBI-regulated banks and NBFCs. Check your credit score for free and get a consultant to help you apply.',
   path: '/',
   keywords: [
     'Borrowww',
@@ -27,7 +27,7 @@ export const metadata = buildMetadata({
     'home loan',
     'loan comparison',
     'EMI calculator',
-    'loan advisor',
+    'loan consultant',
     'business loans',
   ],
 });

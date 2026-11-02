@@ -26,8 +26,8 @@ export const featuredImage = {
   alt: 'Home loan documents required checklist: KYC documents, income proof, bank statements, property papers and photos',
 };
 
-export const PARENT_COMPANY = 'Premier Penny Ventures Private Limited';
-export const OFFICE_ADDRESS = '221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002';
+export const PARENT_COMPANY = 'Premier Penny';
+export const OFFICE_ADDRESS = '626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505';
 
 export const quickAnswer = [
   'PAN card',

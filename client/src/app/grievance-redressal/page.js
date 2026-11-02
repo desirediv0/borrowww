@@ -24,7 +24,7 @@ export default function GrievanceRedressal() {
 
       <div className="space-y-8 text-[17px] text-gray-700">
         <p>
-          Borrowww is a brand of <strong>{companyInfo.legalName}</strong> (CIN: {companyInfo.cin}).
+          Borrowww is a brand of <strong>{companyInfo.parentCompany}</strong>.
           If something we did went wrong, such as advice you received, how our team communicated with
           you, or how your personal data was handled, this page explains how to tell us and what
           happens next.
@@ -101,7 +101,7 @@ export default function GrievanceRedressal() {
 
         <h2 className="text-2xl font-semibold text-gray-900">{n(5)}. Office address</h2>
         <p>
-          {companyInfo.legalName}
+          {companyInfo.parentCompany}
           <br />
           {companyInfo.address}
         </p>

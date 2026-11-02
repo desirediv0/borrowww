@@ -25,12 +25,12 @@ export default function PrivacyPolicy() {
         <p>
           We collect personal and non-personal information including your name, contact details,
           loan requirements, device information, and browsing data. Information may also be
-          collected when you contact our advisors.
+          collected when you contact our consultants.
         </p>
 
         <h2 className="text-2xl font-semibold text-gray-900">2. Use of Information</h2>
         <p>
-          We use your information to provide loan advisory support, connect you with lenders (with
+          We use your information to provide loan consulting support, connect you with lenders (with
           your consent), improve communication, and comply with applicable laws. We do not sell your
           personal data.
         </p>

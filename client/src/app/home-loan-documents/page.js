@@ -417,7 +417,7 @@ export default function HomeLoanDocumentsPage() {
                     </div>
                     <p className="mt-4 text-sm text-gray-600">
                         Moving a loan you already have?{' '}
-                        <Link href="/contact" className="text-[#3A6EA5] font-medium hover:underline">Talk to an advisor</Link>{' '}
+                        <Link href="/contact" className="text-[#3A6EA5] font-medium hover:underline">Talk to a consultant</Link>{' '}
                         about the papers a balance transfer needs.
                     </p>
                 </div>
@@ -569,7 +569,7 @@ export default function HomeLoanDocumentsPage() {
                         <div className="rounded-2xl border border-gray-100 bg-gray-50 p-6">
                             <h3 className="text-base font-semibold text-gray-900">Who we are</h3>
                             <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                                Borrowww is a brand of {PARENT_COMPANY}. It is not a bank or NBFC and does not provide loans or accept deposits. We act as a loan advisory and facilitation platform connecting users with regulated lenders.{' '}
+                                Borrowww is a brand of {PARENT_COMPANY}. It is not a bank or NBFC and does not provide loans or accept deposits. We work as a loan consultant, connecting users with regulated lenders.{' '}
                                 <Link href="/rbi-compliance" className="text-[#3A6EA5] hover:underline">RBI compliance</Link>
                             </p>
                             <p className="mt-3 text-sm text-gray-600 leading-relaxed">

@@ -178,7 +178,7 @@ export default function ContactClient() {
         {
             icon: FaPhone,
             title: 'Call Us',
-            details: ['+91 9560069525', '+91 8264111345'],
+            details: ['+91 9560069525'],
             action: 'tel:+919560069525',
             bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
         },
@@ -199,7 +199,7 @@ export default function ContactClient() {
         {
             icon: FaMapMarkerAlt,
             title: 'Visit Us',
-            details: ['221, 2nd Floor, JMD Megapolis', 'Sector 48, Sohna Road, Gurgaon 122002'],
+            details: ['626, 6th Floor, Satya The Hive', 'Sector 102, Dwarka Expressway, Gurgaon 122505'],
             action: '#',
             bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
         },

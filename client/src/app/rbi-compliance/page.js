@@ -20,13 +20,11 @@ export default function RBICompliance() {
       <div className="space-y-8 text-[17px] text-gray-700">
         <h2 className="text-2xl font-semibold text-gray-900">1. Our Status</h2>
         <p>
-          Borrowww is a brand of <strong>Premier Penny Ventures Private Limited</strong>, a private
-          limited company incorporated in India (CIN: U66120DL2024PTC426769).
+          Borrowww is a brand of <strong>Premier Penny</strong>.
         </p>
         <p>
           Borrowww is not a bank or NBFC and does not provide loans or accept
-          deposits. We act as a loan advisory and facilitation platform connecting users with
-          regulated lenders.
+          deposits. We work as a loan consultant, connecting users with regulated lenders.
         </p>
 
         <h2 className="text-2xl font-semibold text-gray-900">2. Working with Regulated Lenders</h2>
@@ -56,7 +54,7 @@ export default function RBICompliance() {
 
         <h2 className="text-2xl font-semibold text-gray-900">6. Grievance Redressal</h2>
         <p>
-          For concerns about advisory communication or misuse of data, see our{' '}
+          For concerns about communication from our consultants or misuse of data, see our{' '}
           <Link href="/grievance-redressal" className="text-[#3A6EA5] font-medium hover:underline">
             Grievance Redressal
           </Link>{' '}

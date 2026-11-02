@@ -22,13 +22,12 @@ export const INDEXABLE_PATHS = new Set([
 
 export const companyInfo = {
   name: 'Borrowww',
-  legalName: 'Premier Penny Ventures Private Limited',
-  cin: 'U66120DL2024PTC426769',
+  parentCompany: 'Premier Penny',
   siteUrl: SITE_URL,
   logo: DEFAULT_OG_IMAGE,
-  phones: ['+91 9560069525', '+91 8264111345'],
+  phones: ['+91 9560069525'],
   email: 'support.borrowww@gmail.com',
-  address: '221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002, Haryana, India',
+  address: '626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505, Haryana, India',
   // Named Grievance Officer shown on /grievance-redressal. The officer block is only
   // published when name, phone and email are all filled in.
   grievanceOfficer: {
@@ -46,16 +45,11 @@ export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',
   name: companyInfo.name,
-  legalName: companyInfo.legalName,
-  identifier: {
-    '@type': 'PropertyValue',
-    propertyID: 'CIN',
-    value: companyInfo.cin,
-  },
+  parentOrganization: { '@type': 'Organization', name: companyInfo.parentCompany },
   url: companyInfo.siteUrl,
   logo: companyInfo.logo,
   description:
-    'Borrowww is a loan advisory platform. It helps people in India compare and apply for home loans and loans against property from RBI-regulated banks and NBFCs. Borrowww does not lend money.',
+    'Borrowww is a loan consultancy. It helps people in India compare and apply for home loans and loans against property from RBI-regulated banks and NBFCs. Borrowww does not lend money.',
   areaServed: 'India',
   ...(companyInfo.socialLinks.length ? { sameAs: companyInfo.socialLinks } : {}),
   contactPoint: companyInfo.phones.map((telephone) => ({

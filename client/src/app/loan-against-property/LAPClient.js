@@ -175,7 +175,7 @@ export default function LAPClient() {
                                 Many small business owners struggle with standard bank filters. We help you show lenders what your property is worth and how your business actually earns. For these loans, you can use rented residential or commercial units, self-owned residential or commercial spaces, or open plots as collateral.
                             </p>
                             <p className="font-semibold text-gray-800">
-                                Our advisors then help you ask for an amount the bank is likely to approve, based on a fair valuation of your property.
+                                Our consultants then help you ask for an amount the bank is likely to approve, based on a fair valuation of your property.
                             </p>
                         </div>
                     </motion.div>

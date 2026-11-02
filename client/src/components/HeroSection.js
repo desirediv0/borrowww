@@ -18,7 +18,7 @@ export default function HeroSection() {
           <div className="space-y-6 sm:space-y-8 lg:space-y-10 ">
             <div>
               <p className="font-medium text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4 text-[var(--primary-blue)]">
-                Free Loan Advice
+                Free Loan Consultation
               </p>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight tracking-tight">
@@ -33,7 +33,7 @@ export default function HeroSection() {
             </div>
 
             <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-xl">
-              Borrowww is not a bank. We compare home loan and property loan offers from RBI-regulated banks and NBFCs, help with your papers, and stay with you until the bank releases your loan.
+              Borrowww is a loan consultant, not a bank. We compare home loan and property loan offers from RBI-regulated banks and NBFCs, help with your papers, and stay with you until the bank releases your loan.
             </p>
 
             <p className="text-sm sm:text-base flex flex-wrap items-center gap-x-2 gap-y-1">

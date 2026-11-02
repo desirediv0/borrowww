@@ -1,8 +1,8 @@
 # Borrowww
 
-> Borrowww is India's loan advisory and credit-check platform. It helps individuals and businesses check their credit score for free and apply for home loans, loans against property, business loans, and balance transfers at competitive interest rates (starting from 7.10%* p.a.), through partnerships with banks like ICICI Bank, Bank of Baroda, and Bajaj Finserv. The platform emphasizes zero commission, transparent processing, and lifetime advisor support before, during, and after loan approval.
+> Borrowww is a loan consultancy and free credit-check service in India. It helps individuals and businesses check their credit score for free and apply for home loans, loans against property, business loans, and balance transfers at competitive interest rates (starting from 7.10%* p.a.), through partnerships with banks like ICICI Bank, Bank of Baroda, and Bajaj Finserv. The platform emphasizes zero commission, transparent processing, and lifetime consultant support before, during, and after loan approval.
 
-Borrowww connects borrowers with dedicated loan advisors who guide them from credit check through document verification, bank coordination, and final disbursal, with real-time application tracking. Headquartered in Gurgaon, India.
+Borrowww connects borrowers with dedicated loan consultants who guide them from credit check through document verification, bank coordination, and final disbursal, with real-time application tracking. Headquartered in Gurgaon, India.
 
 ## Main Pages
 - [Home](https://www.borrowww.com/): Overview of loan services, interest rates, lending partners and EMI calculator
@@ -26,6 +26,6 @@ Borrowww connects borrowers with dedicated loan advisors who guide them from cre
 - [Grievance Redressal](https://www.borrowww.com/grievance-redressal): How to raise a complaint and escalate it
 
 ## Contact
-- Phone: +91 9560069525 / +91 8264111345
+- Phone: +91 9560069525
 - Email: support.borrowww@gmail.com
-- Address: 221, 2nd Floor, JMD Megapolis, Sector 48, Sohna Road, Gurgaon 122002, India
+- Address: 626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505, India
