@@ -201,7 +201,7 @@ export function getAdminEmailTemplate(formData) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505</p>
+            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505, Haryana, India</p>
           </div>
         </div>
       </div>
@@ -272,7 +272,7 @@ export function getUserThankYouTemplate({ name }) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505</p>
+            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505, Haryana, India</p>
             <p style="margin-top: 20px; font-size: 12px;">This is an automated message. Please do not reply to this email.</p>
           </div>
         </div>
@@ -340,7 +340,7 @@ export function getCreditCheckEmailTemplate({ firstName, mobileNumber }) {
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505</p>
+            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505, Haryana, India</p>
           </div>
         </div>
       </div>
@@ -441,7 +441,7 @@ export function getHomeLoanEmailTemplate({ name, phone, city, propertyType, loan
           </div>
           <div class="footer">
             <p><strong>Borrowww</strong></p>
-            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505</p>
+            <p>626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505, Haryana, India</p>
           </div>
         </div>
       </div>

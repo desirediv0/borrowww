@@ -88,7 +88,7 @@ export default function Footer() {
                 <p className="text-gray-600 text-sm">
                   626, 6th Floor, Satya The Hive,<br />
                   Sector 102, Dwarka Expressway,<br />
-                  Gurgaon 122505
+                  Gurgaon 122505, Haryana, India
                 </p>
               </div>
               <div className="flex items-start gap-3">

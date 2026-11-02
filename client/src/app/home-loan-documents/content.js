@@ -27,7 +27,7 @@ export const featuredImage = {
 };
 
 export const PARENT_COMPANY = 'Premier Penny';
-export const OFFICE_ADDRESS = '626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505';
+export const OFFICE_ADDRESS = '626, 6th Floor, Satya The Hive, Sector 102, Dwarka Expressway, Gurgaon 122505, Haryana, India';
 
 export const quickAnswer = [
   'PAN card',

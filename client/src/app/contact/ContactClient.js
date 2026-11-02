@@ -199,7 +199,7 @@ export default function ContactClient() {
         {
             icon: FaMapMarkerAlt,
             title: 'Visit Us',
-            details: ['626, 6th Floor, Satya The Hive', 'Sector 102, Dwarka Expressway, Gurgaon 122505'],
+            details: ['626, 6th Floor, Satya The Hive', 'Sector 102, Dwarka Expressway, Gurgaon 122505, Haryana, India'],
             action: '#',
             bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
         },
