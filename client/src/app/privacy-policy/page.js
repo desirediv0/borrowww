@@ -13,56 +13,51 @@ export default function PrivacyPolicy() {
       <h1 className="text-4xl font-semibold mb-6 text-[var(--primary-blue-dark)]">
         Privacy Policy
       </h1>
-      <p className="text-gray-600 italic mb-10">Last updated: 01 January 2025</p>
+      <p className="text-gray-600 italic mb-10">Last updated: 05 November 2026</p>
 
       <div className="space-y-8 text-[17px] text-gray-700">
         <p>
-          This Privacy Policy explains how <strong>Borrowww</strong> (“Borrowww”, “we”, “our”, “us”) collects, uses, protects, and discloses information when you
-          use our website <strong>Borrowww.com</strong>.
+          At <strong>Borrowww</strong>, we take care of your private data and documents. We do not
+          sell your personal data, and we share it with lenders and service providers only with your
+          consent.
+        </p>
+        <p>
+          Here, we explain what information we collect from you and for what purpose this information
+          or documentation is used.
         </p>
 
-        <h2 className="text-2xl font-semibold text-gray-900">1. Information We Collect</h2>
+        <h2 className="text-2xl font-semibold text-gray-900">Information Collected</h2>
         <p>
-          We collect personal and non-personal information including your name, contact details,
-          loan requirements, device information, and browsing data. Information may also be
-          collected when you contact our consultants.
+          We collect your data, which includes your name, contact number, email address, credit
+          requirements, and device information. If you use our credit check, we also collect the
+          details needed for it and your credit report. Additionally, information may be collected
+          when you interact with our consultants. We store this information so that we can help you
+          with your loan.
+        </p>
+        <p>
+          Our website uses cookies and Google Analytics to understand how the site is used.
         </p>
 
-        <h2 className="text-2xl font-semibold text-gray-900">2. Use of Information</h2>
+        <h2 className="text-2xl font-semibold text-gray-900">Purpose of Information</h2>
         <p>
-          We use your information to provide loan consulting support, connect you with lenders (with
-          your consent), improve communication, and comply with applicable laws. We do not sell your
-          personal data.
+          We use your personal data to help you obtain a loan quickly. This lets us provide loan
+          advice, connect you with lenders, improve communication, and comply with applicable legal
+          requirements.
         </p>
 
-        <h2 className="text-2xl font-semibold text-gray-900">3. Data Sharing</h2>
+        <h2 className="text-2xl font-semibold text-gray-900">Data Exchange</h2>
         <p>
-          We share data only with lenders, service providers, and communication partners{' '}
-          <strong>with your consent</strong>. Banks/NBFCs may have separate privacy practices and
-          policies.
+          We only share data with lenders and service providers with your consent. Banks and other
+          financial institutions may have their own data protection practices and policies.
         </p>
-
-        <h2 className="text-2xl font-semibold text-gray-900">4. Data Protection</h2>
         <p>
-          We use encryption and secure practices to protect your data. However, we encourage users
-          to avoid sharing sensitive passwords, OTPs, or banking credentials with anyone.
+          We employ encryption and secure procedures to protect your data. However, never share
+          sensitive information such as passwords, one-time passwords, or banking-related credentials
+          with any third party.
         </p>
-
-        <h2 className="text-2xl font-semibold text-gray-900">5. Your Rights</h2>
         <p>
-          You may request access, correction, or deletion of your information by contacting us at
-          <strong> support.borrowww@gmail.com</strong>.
-        </p>
-
-        <h2 className="text-2xl font-semibold text-gray-900">6. Changes to Policy</h2>
-        <p>
-          We may update this policy. Revised versions will be posted on our website with updated
-          dates.
-        </p>
-
-        <h2 className="text-2xl font-semibold text-gray-900">7. Contact</h2>
-        <p>
-          For privacy-related concerns, email: <strong>support.borrowww@gmail.com</strong>
+          You can contact us at any time at <strong>support.borrowww@gmail.com</strong> for questions
+          or concerns, or to request a correction or deletion.
         </p>
       </div>
     </section>

@@ -1,7 +1,6 @@
 'use client';
 
 import {
-    FaAward,
     FaChartLine,
     FaGlobe,
     FaHandshake,
@@ -21,21 +20,15 @@ export default function AboutClient() {
     const router = useRouter();
     const stats = [
         {
-            number: '2700+',
+            number: '2800+',
             label: 'Happy Customers',
             icon: FaUsers,
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
-            number: '₹500Cr+',
+            number: '₹300Cr+',
             label: 'Loans Arranged with Partner Banks',
             icon: FaChartLine,
-            color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
-        },
-        {
-            number: '95%',
-            label: 'Files Approved by Lenders',
-            icon: FaAward,
             color: 'from-[var(--primary-blue-dark)] to-[var(--primary-blue)]',
         },
         {
@@ -129,7 +122,7 @@ export default function AboutClient() {
             {/* Stats Section - Updated */}
             <section className="py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
                         {stats.map((stat, index) => (
                             <motion.div
                                 key={stat.label}

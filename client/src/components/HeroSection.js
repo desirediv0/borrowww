@@ -73,7 +73,7 @@ export default function HeroSection() {
               <div className="text-xs sm:text-sm">
                 <div className="font-semibold text-gray-900">4.9/5.0</div>
                 <div className="text-gray-500">
-                  from 10,000+ <span className="underline">customers</span>
+                  from 2800+ <span className="underline">customers</span>
                 </div>
               </div>
             </div>
