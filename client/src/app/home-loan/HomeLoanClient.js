@@ -167,7 +167,7 @@ export default function HomeLoanClient() {
         },
         {
             q: "What is the current home loan interest rate in India?",
-            a: "Home loan interest rates in India usually fall between 7.10% and 9.5% per annum, depending on the lender, your credit score, the loan amount, and whether you choose a fixed or floating rate. A strong CIBIL score of 750 and above often helps you negotiate a lower rate."
+            a: "Home loan interest rates in India usually fall between 7.25% and 9.5% per annum, depending on the lender, your credit score, the loan amount, and whether you choose a fixed or floating rate. A strong CIBIL score of 750 and above often helps you negotiate a lower rate."
         },
         {
             q: "Can I get a home loan with a low CIBIL score?",
@@ -768,7 +768,7 @@ export default function HomeLoanClient() {
                                 Bank-wise Home Loan Interest Rate Comparison in India
                             </h3>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                Home loan interest rates across major Indian banks and NBFCs typically range between 7.10% and 9.50% p.a., depending on credit score, loan amount, and whether the rate is repo-linked or MCLR-based.
+                                Home loan interest rates across major Indian banks and NBFCs typically range between 7.25% and 9.50% p.a., depending on credit score, loan amount, and whether the rate is repo-linked or MCLR-based.
                             </p>
                             <p className="text-gray-600 leading-relaxed mb-6">
                                 Rates move frequently with RBI policy changes, so treat any published number as indicative. Comparing lender categories helps you know where to start:
@@ -785,12 +785,12 @@ export default function HomeLoanClient() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Public Sector Banks</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">7.10% - 8.50%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.25% - 8.50%</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Salaried applicants, lowest processing fees</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm text-gray-900 font-medium">Private Sector Banks</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">7.15% - 9.00%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.25% - 9.00%</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Faster processing, digital-first applicants</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">

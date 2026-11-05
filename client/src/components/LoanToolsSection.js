@@ -9,7 +9,7 @@ export default function LoanToolsSection() {
 
   // EMI Calculator State
   const [emiLoanAmount, setEmiLoanAmount] = useState(8000000);
-  const [emiInterestRate, setEmiInterestRate] = useState(7.1);
+  const [emiInterestRate, setEmiInterestRate] = useState(7.25);
   const [emiTenure, setEmiTenure] = useState(20);
 
   // Affordability Calculator State
@@ -520,7 +520,7 @@ export default function LoanToolsSection() {
                           type="range"
                           min="5"
                           max="25"
-                          step="0.1"
+                          step="0.05"
                           value={emiInterestRate}
                           onChange={(e) => setEmiInterestRate(Number(e.target.value))}
                           className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[var(--primary-blue-dark)]"

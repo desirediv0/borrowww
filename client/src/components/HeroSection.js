@@ -119,7 +119,7 @@ export default function HeroSection() {
               <div className="p-4 sm:p-6 lg:p-8 aspect-square flex flex-col justify-between bg-[#2D3E50] text-white rounded-br-2xl">
                 <div className="flex items-center gap-1">
                   <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium">
-                    7.10%*
+                    7.25%*
                   </h3>
                 </div>
 

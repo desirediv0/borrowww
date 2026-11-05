@@ -63,7 +63,7 @@ export default function ValuesSection() {
       ),
       title: 'Compare Rates',
       description:
-        'Partner bank rates start from 7.10%*. We put the offers side by side so you can pick the one that costs you least.',
+        'Partner bank rates start from 7.25%*. We put the offers side by side so you can pick the one that costs you least.',
       bgColor: 'bg-[#f5f2e8]',
       textColor: 'text-gray-900',
     },

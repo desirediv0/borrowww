@@ -687,12 +687,12 @@ export default function BalanceTransferClient() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm font-semibold text-gray-900">Public Sector Banks</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">7.10% - 8.5%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.25% - 8.5%</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Rate stability, govt-employee schemes</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">
                                             <td className="px-6 py-4 text-sm font-semibold text-gray-900">Large Private Banks</td>
-                                            <td className="px-6 py-4 text-sm text-gray-600">7.15% - 9%</td>
+                                            <td className="px-6 py-4 text-sm text-gray-600">7.25% - 9%</td>
                                             <td className="px-6 py-4 text-sm text-gray-600">Faster digital processing</td>
                                         </tr>
                                         <tr className="hover:bg-gray-50/50 transition-colors">

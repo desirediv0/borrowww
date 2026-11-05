@@ -61,7 +61,7 @@ export default function ConcernsSection() {
                   Compare Bank Rates
                 </h3>
                 <p className="text-sm font-medium text-gray-500 text-center ">
-                  Starting from 7.10%* p.a.
+                  Starting from 7.25%* p.a.
                 </p>
               </div>
             </div>

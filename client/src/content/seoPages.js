@@ -761,7 +761,7 @@ export const seoPages = [
       {
         question: '1. What are the current home loan interest rates in Faridabad?',
         answer:
-          'Bank home loans are mostly floating-rate loans tied to the repo rate set by the RBI. Currently, bank home loan rates start from 7.1% and may go up to 9%, while some NBFCs charge as much as 11-12%. A specialised advisor will help find the best fit for you.',
+          'Bank home loans are mostly floating-rate loans tied to the repo rate set by the RBI. Currently, bank home loan rates start from 7.25% and may go up to 9%, while some NBFCs charge as much as 11-12%. A specialised advisor will help find the best fit for you.',
       },
       {
         question: '2. I have a property in Lal Dora, an unauthorised colony. Can I get a loan?',

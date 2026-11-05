@@ -65,7 +65,7 @@ export default function EMIClient() {
     const loanTypes = [
         {
             name: 'Home Loan',
-            rate: '7.10% - 9.50%',
+            rate: '7.25% - 9.50%',
             amount: '₹5L - ₹2Cr',
             icon: FaHome,
             color: 'from-[#2D3E50] to-[#2D3E50]',
