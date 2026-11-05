@@ -2,13 +2,29 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa';
+import {
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaWhatsapp,
+  FaYoutube,
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+} from 'react-icons/fa';
 
 import { motion } from 'framer-motion';
 
 import { GUIDE_GROUPS, GUIDE_GROUP_ORDER } from '@/content/guideLinks';
 import { companyInfo } from '@/lib/seo';
 import { isPublished } from '@/content/draftPages';
+
+const SOCIAL_ICONS = {
+  YouTube: FaYoutube,
+  Instagram: FaInstagram,
+  Facebook: FaFacebook,
+  LinkedIn: FaLinkedin,
+};
 
 export default function Footer() {
   const footerLinks = {
@@ -24,15 +40,9 @@ export default function Footer() {
     ],
     Company: [
       { name: 'About Us', href: '/about' },
-      { name: 'Refer a Friend', href: '/referral' },
-      { name: 'Partners', href: '#' },
-      { name: 'Sitemap', href: '/sitemap' },
-    ],
-    Support: [
-      { name: 'Help Center', href: '#' },
       { name: 'Contact Us', href: '/contact' },
-      { name: 'Documentation', href: '#' },
-      { name: 'Status', href: '#' },
+      { name: 'Refer a Friend', href: '/referral' },
+      { name: 'Sitemap', href: '/sitemap' },
     ],
     Legal: [
       { name: 'Privacy Policy', href: '/privacy-policy' },
@@ -138,6 +148,31 @@ export default function Footer() {
               </ul>
             </motion.div>
           ))}
+
+          {/* Social profiles */}
+          <div>
+            <h3 className="font-semibold text-[#396A9F] mb-4 tracking-wide uppercase text-sm">
+              Follow Us
+            </h3>
+            <ul className="space-y-3">
+              {companyInfo.socialProfiles.map((profile) => {
+                const Icon = SOCIAL_ICONS[profile.name];
+                return (
+                  <li key={profile.name}>
+                    <a
+                      href={profile.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-gray-600 hover:text-[#396A9F] transition-colors duration-200 font-medium text-base"
+                    >
+                      <Icon className="shrink-0" aria-hidden="true" />
+                      {profile.name}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
 
         {/* Loan guides: crawlable links to every guide page */}

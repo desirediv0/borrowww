@@ -256,7 +256,7 @@ export default function LAPClient() {
                                         <input
                                             type="range"
                                             min="1000000"
-                                            max={propertyValue * 0.6}
+                                            max={propertyValue * 0.75}
                                             step="100000"
                                             value={loanAmount}
                                             onChange={(e) => setLoanAmount(Number(e.target.value))}
@@ -264,11 +264,11 @@ export default function LAPClient() {
                                         />
                                         <div className="flex justify-between text-sm text-gray-500 mt-2">
                                             <span>₹10L</span>
-                                            <span>{formatCurrency(propertyValue * 0.6)}</span>
+                                            <span>{formatCurrency(propertyValue * 0.75)}</span>
                                         </div>
                                     </div>
                                     <div className="mt-2 text-sm text-gray-600">
-                                        Max loan amount: 60% of property value
+                                        Up to 75% of property value, depending on the lender and property type
                                     </div>
                                 </div>
 

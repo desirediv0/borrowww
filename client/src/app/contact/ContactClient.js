@@ -13,8 +13,8 @@ import {
     FaPhone,
     FaRocket,
     FaShieldAlt,
-    FaTwitter,
     FaWhatsapp,
+    FaYoutube,
 } from 'react-icons/fa';
 import {
     Select,
@@ -26,6 +26,7 @@ import {
 
 import { motion } from 'framer-motion';
 import { isValidIndianNumber } from '@/utils/validation';
+import { companyInfo } from '@/lib/seo';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
@@ -200,7 +201,7 @@ export default function ContactClient() {
             icon: FaMapMarkerAlt,
             title: 'Visit Us',
             details: ['626, 6th Floor, Satya The Hive', 'Sector 102, Dwarka Expressway, Gurgaon 122505, Haryana, India'],
-            action: '#',
+            action: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(companyInfo.address)}`,
             bgColor: 'bg-gradient-to-br from-[var(--primary-blue)] to-[var(--primary-blue-dark)]',
         },
     ];
@@ -223,12 +224,17 @@ export default function ContactClient() {
         },
     ];
 
-    const socialLinks = [
-        { icon: FaFacebook, href: '#', label: 'Facebook' },
-        { icon: FaTwitter, href: '#', label: 'Twitter' },
-        { icon: FaLinkedin, href: '#', label: 'LinkedIn' },
-        { icon: FaInstagram, href: '#', label: 'Instagram' },
-    ];
+    const socialIcons = {
+        YouTube: FaYoutube,
+        Instagram: FaInstagram,
+        Facebook: FaFacebook,
+        LinkedIn: FaLinkedin,
+    };
+    const socialLinks = companyInfo.socialProfiles.map((profile) => ({
+        icon: socialIcons[profile.name],
+        href: profile.url,
+        label: profile.name,
+    }));
 
     return (
         <>
@@ -522,6 +528,9 @@ export default function ContactClient() {
                                         <motion.a
                                             key={social.label}
                                             href={social.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={social.label}
                                             whileHover={{ scale: 1.1, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
                                             className="w-14 h-14 bg-[var(--primary-blue)]/10 rounded-full flex items-center justify-center text-[var(--primary-blue)] hover:bg-[var(--primary-blue)] hover:text-white transition-all duration-200"

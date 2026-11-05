@@ -63,8 +63,8 @@ export default function HomeLoanClient() {
         },
         {
             icon: Users,
-            title: 'Waiting for a conversation',
-            desc: 'Wait for one of our consultants to get in touch with you for a detailed discussion.',
+            title: 'Talk to a consultant',
+            desc: 'One of our consultants will call you and go through your requirement in detail.',
         },
     ];
 
@@ -113,8 +113,8 @@ export default function HomeLoanClient() {
             icon: Building2,
         },
         {
-            title: 'Refinancing of home loans',
-            desc: 'Refinancing real estate loans is ideal for borrowers who are interested in better interest rates or improved repayment terms.',
+            title: 'Home loan balance transfer',
+            desc: 'Move your existing home loan to another lender if you want a better interest rate or improved repayment terms.',
             icon: Percent,
         },
         {
@@ -274,7 +274,7 @@ export default function HomeLoanClient() {
                                 Simplify your home buying with <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a>
                             </h2>
                             <p className="mt-5 text-lg text-gray-600 max-w-2xl leading-relaxed">
-                                Are you looking for suitable home loan offers without having to incur any additional costs? With Borrowww, you can assess your creditworthiness based on your salary and take advantage of low interest rates.
+                                Are you looking for a suitable home loan offer? Talking to Borrowww is free. We check how much you can borrow based on your salary and compare interest rates from our partner banks and NBFCs.
                             </p>
                             <p className="mt-4 text-base text-gray-600 max-w-2xl leading-relaxed">
                                 <a href="https://www.borrowww.com/" className="text-[#3A6EA5] hover:underline font-semibold">Borrowww</a> maintains close partnerships with leading banks and non-banking financial companies (NBFCs) in India. We connect you with these providers and help you through the entire loan process, offering support that truly helps you move forward.
@@ -657,6 +657,9 @@ export default function HomeLoanClient() {
                                     </tbody>
                                 </table>
                             </div>
+                            <p className="text-xs text-gray-500 -mt-3 mb-6">
+                                *Rough estimates that assume no other EMIs. Your actual eligibility depends on the lender and your full financial profile.
+                            </p>
                             <p className="text-gray-600 leading-relaxed mb-6">
                                 The factors with the greatest impact on creditworthiness are: reducing existing monthly debt obligations before applying for a loan, combining your income with that of a co-applicant, and raising your CIBIL score to 750 or higher. For self-employed individuals, the assessment process differs; rather than relying on a single payslip, the lender calculates an average income based on financial data from the past two to three years.
                             </p>
@@ -766,6 +769,9 @@ export default function HomeLoanClient() {
                                     </tbody>
                                 </table>
                             </div>
+                            <p className="text-xs text-gray-500 -mt-3 mb-6">
+                                *Indicative ranges that change from time to time. Your actual rate depends on the lender, your credit profile and the loan amount.
+                            </p>
                             <p className="text-gray-600 leading-relaxed">
                                 The lowest advertised interest rate does not necessarily mean that a loan is the most economical option. The actual total costs can vary significantly due to factors such as administrative fees, prepayment penalties, and mandatory insurance. This is where Borrowww comes in. We compare the latest terms offered by our network of financial institutions to carefully select and recommend the option that truly minimizes costs for your specific situation.
                             </p>

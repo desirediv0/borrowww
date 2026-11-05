@@ -192,6 +192,9 @@ export default function ValuesSection() {
             </motion.div>
           ))}
         </div>
+        <p className="mt-6 text-xs text-gray-500">
+          *Starting rate at partner banks for eligible applicants. Your actual rate depends on the lender, your credit profile and the loan amount.
+        </p>
       </div>
     </section>
   );

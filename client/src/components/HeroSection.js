@@ -142,6 +142,9 @@ export default function HeroSection() {
                 </p>
               </div>
             </div>
+            <p className="mt-3 text-xs text-gray-500 max-w-md mx-auto lg:max-w-none">
+              *Starting rate at partner banks for eligible applicants. Your actual rate depends on the lender, your credit profile and the loan amount.
+            </p>
           </div>
         </div>
       </div>

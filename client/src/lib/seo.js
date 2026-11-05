@@ -20,6 +20,14 @@ export const INDEXABLE_PATHS = new Set([
   '/grievance-redressal',
 ]);
 
+// Official Borrowww profiles: shown in the footer and contact page, and used as `sameAs` in schema.
+const SOCIAL_PROFILES = [
+  { name: 'YouTube', url: 'https://www.youtube.com/@Borrowww_4u' },
+  { name: 'Instagram', url: 'https://www.instagram.com/borrowww.27/' },
+  { name: 'Facebook', url: 'https://www.facebook.com/p/Borrowww-61584178885882/' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/company/borrowww/' },
+];
+
 export const companyInfo = {
   name: 'Borrowww',
   parentCompany: 'Premier Penny',
@@ -36,9 +44,8 @@ export const companyInfo = {
     phone: '+91 9560069525',
     email: 'support.borrowww@gmail.com',
   },
-  // Add the official Borrowww profile URLs here (full URLs, not domain roots).
-  // Left empty on purpose: placeholder links produce invalid `sameAs` data.
-  socialLinks: [],
+  socialProfiles: SOCIAL_PROFILES,
+  socialLinks: SOCIAL_PROFILES.map((profile) => profile.url),
 };
 
 export const organizationSchema = {
